@@ -136,7 +136,9 @@
                 app:chipIcon="@drawable/icon_desktop"
                 app:chipIconEnabled="true"
                 app:textEndPadding="0dp"
-                app:textStartPadding="0dp" />
+                app:textStartPadding="0dp"
+                app:chipBackgroundColor="@drawable/bg_chip_state_list"
+                app:chipIconTint="@drawable/bg_chip_icon_state" />
 
             <com.google.android.material.card.MaterialCardView
                 android:id="@+id/editIcon"

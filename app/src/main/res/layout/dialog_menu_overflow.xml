@@ -85,6 +85,7 @@
         android:id="@+id/tabLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="?attr/colorSecondaryContainer"
         app:tabMode="fixed"
         app:tabBackground="?attr/colorSecondaryContainer">
 

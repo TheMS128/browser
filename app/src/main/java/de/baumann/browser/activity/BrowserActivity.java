@@ -1941,7 +1941,7 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
             });
 
             if (listTrusted.isWhite(url) || listStandard.isWhite(url) || listProtected.isWhite(url)) {
-                MaterialCardView cardView = dialogView.findViewById(R.id.editProfile);
+                LinearLayout cardView = dialogView.findViewById(R.id.editProfile);
                 cardView.setVisibility(View.GONE);
                 dialog_warning.setTextColor(colorAlert);
             }

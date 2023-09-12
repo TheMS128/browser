@@ -6,7 +6,7 @@
 - fix: translate text from context menu with deepL
 - updated: translation
 - updated: layout
-- updated: libraries
+- updated: build libraries
 
 
 ### v 10.0 "Clara Zetkin"
