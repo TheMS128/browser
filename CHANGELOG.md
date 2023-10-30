@@ -1,9 +1,10 @@
-### v 10.2 "" (WIP)
+### v 11 "Bertha von Suttner"
 - new: third party cookies control
 - new: stop-loading on progress indicator click
 - fix: Writing to clipboard from JavaScript doesn't work #853
 - fix: recreation of activity on ui-mode change
 - fix: translate text from context menu with deepL
+- fix: crash on start (A14)
 - updated: translation
 - updated: layout
 - updated: build libraries
