@@ -20,6 +20,7 @@ import android.content.ClipData;
 import android.content.ClipboardManager;
 import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.content.res.Configuration;
@@ -283,22 +284,31 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
             int actionBarHeight = TypedValue.complexToDimensionPixelSize(tv.data, getResources().getDisplayMetrics());
             contentFrame.setPadding(0, 0, 0, actionBarHeight); }
 
-        BroadcastReceiver onComplete = new BroadcastReceiver() {
-            public void onReceive(Context ctxt, Intent intent) {
-                // your code
-                MaterialAlertDialogBuilder builder = new MaterialAlertDialogBuilder(context);
-                builder.setTitle(R.string.menu_download);
-                builder.setIcon(R.drawable.icon_download);
-                builder.setMessage(R.string.toast_downloadComplete);
-                builder.setPositiveButton(R.string.app_ok, (dialog, whichButton) -> startActivity(Intent.createChooser(new Intent(DownloadManager.ACTION_VIEW_DOWNLOADS), null)));
-                builder.setNegativeButton(R.string.app_cancel, (dialog, whichButton) -> dialog.cancel());
-                Dialog dialog = builder.create();
-                dialog.show();
-                HelperUnit.setupDialog(context, dialog);
-            }
-        };
+        BroadcastReceiver downloadReceiver = new BroadcastReceiver() {
+            @Override
+            public void onReceive(Context context, Intent intent) {
+                try {
+                    MaterialAlertDialogBuilder builder = new MaterialAlertDialogBuilder(context);
+                    builder.setTitle(R.string.menu_download);
+                    builder.setIcon(R.drawable.icon_download);
+                    builder.setMessage(R.string.toast_downloadComplete);
+                    builder.setPositiveButton(R.string.app_ok, (dialog, whichButton) -> startActivity(Intent.createChooser(new Intent(DownloadManager.ACTION_VIEW_DOWNLOADS), null)));
+                    builder.setNegativeButton(R.string.app_cancel, (dialog, whichButton) -> dialog.cancel());
+                    Dialog dialog = builder.create();
+                    dialog.show();
+                    HelperUnit.setupDialog(context, dialog);
+                } catch (Exception e) {
+                    NinjaToast.show(context, R.string.toast_downloadComplete);
+                }
+            }};
 
-        //registerReceiver(onComplete, new IntentFilter(DownloadManager.ACTION_DOWNLOAD_COMPLETE));
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+                registerReceiver(downloadReceiver, new IntentFilter(DownloadManager.ACTION_DOWNLOAD_COMPLETE), RECEIVER_EXPORTED);
+            }
+        } else {
+            registerReceiver(downloadReceiver, new IntentFilter(DownloadManager.ACTION_DOWNLOAD_COMPLETE));
+        }
 
         initOmniBox();
         initSearchPanel();
@@ -344,6 +354,7 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
             ninjaWebView.loadUrl(sp.getString("favoriteURL", "https://codeberg.org/Gaukler_Faun/FOSS_Browser/wiki"));
         }
     }
+
 
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {

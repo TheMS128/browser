@@ -1,3 +1,7 @@
+### v 12 "" (WIP)
+- fix: Open Downloads after download complete
+
+
 ### v 11 "Bertha von Suttner"
 - new: third party cookies control
 - new: stop-loading on progress indicator click
