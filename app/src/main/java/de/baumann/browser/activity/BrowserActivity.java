@@ -298,7 +298,7 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
                     dialog.show();
                     HelperUnit.setupDialog(context, dialog);
                 } catch (Exception e) {
-                    NinjaToast.show(context, R.string.toast_downloadComplete);
+                    Log.v(TAG, "Failed to show dwonload complete dialog");
                 }
             }};
 
