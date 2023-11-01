@@ -30,7 +30,7 @@
         <SwitchPreferenceCompat
             android:defaultValue="false"
             android:key="sp_tabBackground"
-            android:summary="@string/main_menu_new_tab" />
+            android:summary="@string/dialog_backGround" />
 
         <SwitchPreferenceCompat
             android:defaultValue="false"

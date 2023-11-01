@@ -259,10 +259,10 @@ public class BrowserUnit {
     public static void openInBackground(Activity activity, WebView webView) {
         SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(activity);
 
-
         if (sp.getBoolean("sp_tabBackground", false)) {
 
             String url = webView.getUrl();
+            String m = activity.getString(R.string.dialog_backGround) + " " + activity.getString(R.string.dialog_backGround_yes);
             NotificationManager mNotifyMgr = (NotificationManager) activity.getSystemService(NOTIFICATION_SERVICE);
             Intent intentP = new Intent(activity, BrowserActivity.class);
             PendingIntent pendingIntent = PendingIntent.getActivity(activity, 0, intentP, FLAG_IMMUTABLE);
@@ -282,9 +282,9 @@ public class BrowserUnit {
             NotificationCompat.Builder mBuilder = new NotificationCompat.Builder(activity, "1")
                     .setSmallIcon(R.drawable.icon_web)
                     .setAutoCancel(true)
-                    .setContentTitle(activity.getTitle())
-                    .setContentText(url)
-                    .setContentIntent(pendingIntent); //Set the intent that will fire when the user taps the notification
+                    .setContentTitle(HelperUnit.domain(url))
+                    .setContentText(m)
+                    .setContentIntent(pendingIntent);
             Notification buildNotification = mBuilder.build();
 
             if (sp.getString("dialog_neverAskBackGround", "no").equals("no")) {
@@ -343,6 +343,10 @@ public class BrowserUnit {
                             break;
                     }
                 });
+
+                TextView message = dialogView.findViewById(R.id.message);
+                message.setVisibility(View.VISIBLE);
+                message.setText(R.string.dialog_backGround);
 
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
                     int permissionState = ContextCompat.checkSelfPermission(activity, Manifest.permission.POST_NOTIFICATIONS);
