@@ -259,6 +259,9 @@ public class BackupUnit {
         List<Record> list = action.listBookmark(context, false, 0);
         action.close();
         File file = new File(Environment.getExternalStoragePublicDirectory(DIRECTORY_DOCUMENTS), "browser_backup//list_bookmarks.html");
+
+        File fileTxt = new File(Environment.getExternalStoragePublicDirectory(DIRECTORY_DOCUMENTS), "browser_backup//list_bookmarks.txt");
+
         try {
             BufferedWriter writer = new BufferedWriter(new FileWriter(file, false));
             for (Record record : list) {
@@ -271,9 +274,18 @@ public class BackupUnit {
             }
             writer.close();
             String wasSuccessful = file.getAbsolutePath();
-            if (wasSuccessful.isEmpty()) {
-                System.out.println("was not successful."); } }
-        catch (Exception ignored) { }
+
+            BufferedWriter writerTxt = new BufferedWriter(new FileWriter(fileTxt, false));
+            for (Record record : list) {
+                writerTxt.write(record.getURL());
+                writerTxt.newLine();
+            }
+            writerTxt.close();
+            String wasSuccessfulTxt = fileTxt.getAbsolutePath();
+            if (wasSuccessfulTxt.isEmpty()) {System.out.println("was not successful."); }
+            if (wasSuccessful.isEmpty()) {System.out.println("was not successful.");}
+
+        } catch (Exception ignored) { }
     }
 
     public static void importBookmarks(Context context) {
