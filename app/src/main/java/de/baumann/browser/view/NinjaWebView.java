@@ -4,6 +4,7 @@ import static android.app.PendingIntent.FLAG_IMMUTABLE;
 import static android.content.ContentValues.TAG;
 import static android.content.Context.NOTIFICATION_SERVICE;
 
+import android.Manifest;
 import android.annotation.SuppressLint;
 import android.annotation.TargetApi;
 import android.app.Activity;
@@ -14,6 +15,7 @@ import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.pm.PackageManager;
 import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
@@ -34,7 +36,10 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
+import androidx.core.app.ActivityCompat;
 import androidx.core.app.NotificationCompat;
+import androidx.core.app.NotificationManagerCompat;
+import androidx.core.content.ContextCompat;
 import androidx.preference.PreferenceManager;
 import androidx.webkit.WebSettingsCompat;
 import androidx.webkit.WebViewFeature;
@@ -98,10 +103,13 @@ public class NinjaWebView extends WebView implements AlbumController {
         super(context, attrs, defStyleAttr);
     }
 
+    private Activity activity;
+
     public NinjaWebView(Context context) {
         super(context);
         sp = PreferenceManager.getDefaultSharedPreferences(context);
         String profile = sp.getString("profile", "standard");
+        this.activity = (Activity) context;
         this.context = context;
         this.foreground = false;
         this.desktopMode = false;
@@ -463,7 +471,9 @@ public class NinjaWebView extends WebView implements AlbumController {
 
     @Override
     protected void onWindowVisibilityChanged(int visibility) {
+
         if (sp.getBoolean("sp_audioBackground", false)) {
+
             NotificationManager mNotifyMgr = (NotificationManager) this.context.getSystemService(NOTIFICATION_SERVICE);
             if (visibility == View.GONE) {
 
@@ -483,16 +493,32 @@ public class NinjaWebView extends WebView implements AlbumController {
                 }
 
                 NotificationCompat.Builder mBuilder = new NotificationCompat.Builder(this.context, "2")
-                        .setSmallIcon(R.drawable.icon_audio)
+                        .setSmallIcon(R.drawable.icon_web)
                         .setAutoCancel(true)
                         .setContentTitle(this.getTitle())
                         .setContentText(this.context.getString(R.string.setting_title_audioBackground))
                         .setContentIntent(pendingIntent); //Set the intent that will fire when the user taps the notification
                 Notification buildNotification = mBuilder.build();
                 mNotifyMgr.notify(2, buildNotification);
+
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+                    int permissionState = ContextCompat.checkSelfPermission(activity, Manifest.permission.POST_NOTIFICATIONS);
+
+                    // If the permission is not granted, request it.
+                    if (permissionState == PackageManager.PERMISSION_DENIED) {
+                        ActivityCompat.requestPermissions(this.activity, new String[]{Manifest.permission.POST_NOTIFICATIONS}, 1);
+                    } else {
+                        // Build the notification and add the action.
+                        mNotifyMgr.notify(2, buildNotification);
+                    }
+                } else {
+                    // Build the notification and add the action.
+                    mNotifyMgr.notify(2, buildNotification);
+                }
             } else mNotifyMgr.cancel(2);
             super.onWindowVisibilityChanged(View.VISIBLE);
-        } else super.onWindowVisibilityChanged(visibility);
+        } else
+            super.onWindowVisibilityChanged(visibility);
     }
 
     @Override

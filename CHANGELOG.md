@@ -2,6 +2,7 @@
 - fix: Open Downloads after download complete
 - fix: Custom search engine UI/UX #1113
 - fix: open links in background
+- fix: notification permissions
 
 
 ### v 11 "Bertha von Suttner"

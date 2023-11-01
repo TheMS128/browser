@@ -1,11 +1,22 @@
 package de.baumann.browser.view;
 
+import static android.content.ContentValues.TAG;
+
 import android.annotation.SuppressLint;
+import android.app.Dialog;
+import android.app.DownloadManager;
 import android.content.Context;
+import android.content.Intent;
+import android.util.Log;
 import android.view.GestureDetector;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnTouchListener;
+
+import com.google.android.material.dialog.MaterialAlertDialogBuilder;
+
+import de.baumann.browser.R;
+import de.baumann.browser.unit.HelperUnit;
 
 
 @SuppressWarnings("WeakerAccess")
@@ -50,31 +61,38 @@ public class SwipeTouchListener implements OnTouchListener {
 
         @Override
         public boolean onFling(MotionEvent e1, MotionEvent e2, float velocityX, float velocityY) {
-            if (e1!=null && e2!=null) {
-                try {
-                    float diffY = e2.getY() - e1.getY();
-                    float diffX = e2.getX() - e1.getX();
-                    if (Math.abs(diffX) > Math.abs(diffY)) {
-                        if (Math.abs(diffX) > SWIPE_THRESHOLD && Math.abs(velocityX) > SWIPE_VELOCITY_THRESHOLD) {
-                            if (diffX > 0) {
-                                onSwipeRight();
+
+            try {
+                if (e1!=null && e2!=null) {
+                    try {
+                        float diffY = e2.getY() - e1.getY();
+                        float diffX = e2.getX() - e1.getX();
+                        if (Math.abs(diffX) > Math.abs(diffY)) {
+                            if (Math.abs(diffX) > SWIPE_THRESHOLD && Math.abs(velocityX) > SWIPE_VELOCITY_THRESHOLD) {
+                                if (diffX > 0) {
+                                    onSwipeRight();
+                                } else {
+                                    onSwipeLeft();
+                                }
+                            }
+                        } else if (Math.abs(diffY) > SWIPE_THRESHOLD && Math.abs(velocityY) > SWIPE_VELOCITY_THRESHOLD) {
+                            if (diffY > 0) {
+                                onSwipeBottom();
                             } else {
-                                onSwipeLeft();
+                                onSwipeTop();
                             }
                         }
-                    } else if (Math.abs(diffY) > SWIPE_THRESHOLD && Math.abs(velocityY) > SWIPE_VELOCITY_THRESHOLD) {
-                        if (diffY > 0) {
-                            onSwipeBottom();
-                        } else {
-                            onSwipeTop();
-                        }
+                    } catch (Exception exception) {
+                        exception.printStackTrace();
                     }
-                } catch (Exception exception) {
-                    exception.printStackTrace();
                 }
+                assert e1 != null;
+                assert e2 != null;
+            } catch (Exception e) {
+                Log.v(TAG, "Failed to swipe");
             }
-            assert e1 != null;
-            assert e2 != null;
+
+
             return super.onFling(e1, e2, velocityX, velocityY);
         }
     }

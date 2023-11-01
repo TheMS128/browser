@@ -1,9 +1,18 @@
 package de.baumann.browser.unit;
 
+import static android.app.PendingIntent.FLAG_IMMUTABLE;
+import static android.content.Context.NOTIFICATION_SERVICE;
+
+import android.Manifest;
 import android.app.Activity;
+import android.app.Notification;
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.pm.PackageManager;
 import android.content.pm.ShortcutManager;
 import android.net.Uri;
 import android.os.Build;
@@ -19,6 +28,10 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AlertDialog;
+import androidx.core.app.ActivityCompat;
+import androidx.core.app.NotificationCompat;
+import androidx.core.app.NotificationManagerCompat;
+import androidx.core.content.ContextCompat;
 import androidx.preference.PreferenceManager;
 
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
@@ -33,6 +46,7 @@ import java.util.Objects;
 import java.util.regex.Pattern;
 
 import de.baumann.browser.R;
+import de.baumann.browser.activity.BrowserActivity;
 import de.baumann.browser.database.FaviconHelper;
 import de.baumann.browser.database.RecordAction;
 import de.baumann.browser.objects.CustomRedirect;
@@ -162,9 +176,10 @@ public class BrowserUnit {
     public static void clearCache(Context context) {
         try {
             File dir = context.getCacheDir();
-            if (dir != null && dir.isDirectory()) deleteDir(dir); }
-        catch (Exception exception) {
-            Log.w("browser", "Error clearing cache"); }
+            if (dir != null && dir.isDirectory()) deleteDir(dir);
+        } catch (Exception exception) {
+            Log.w("browser", "Error clearing cache");
+        }
     }
 
     public static void clearCookie() {
@@ -181,7 +196,8 @@ public class BrowserUnit {
         action.close();
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N_MR1) {
             ShortcutManager shortcutManager = context.getSystemService(ShortcutManager.class);
-            Objects.requireNonNull(shortcutManager).removeAllDynamicShortcuts(); }
+            Objects.requireNonNull(shortcutManager).removeAllDynamicShortcuts();
+        }
     }
 
     public static void clearHistory(Context context) {
@@ -191,7 +207,8 @@ public class BrowserUnit {
         action.close();
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N_MR1) {
             ShortcutManager shortcutManager = context.getSystemService(ShortcutManager.class);
-            Objects.requireNonNull(shortcutManager).removeAllDynamicShortcuts(); }
+            Objects.requireNonNull(shortcutManager).removeAllDynamicShortcuts();
+        }
     }
 
     public static void intentURL(Context context, Uri uri) {
@@ -202,7 +219,7 @@ public class BrowserUnit {
         context.startActivity(chooser);
     }
 
-    public static String redirectURL (WebView ninjaWebView, SharedPreferences sp, String url) {
+    public static String redirectURL(WebView ninjaWebView, SharedPreferences sp, String url) {
 
         String domain = HelperUnit.domain(url);
         boolean redirect = sp.getBoolean("redirect", false);
@@ -230,9 +247,7 @@ public class BrowserUnit {
             String substring = url.substring(url.indexOf("youtube.com") + 12);
             url = sp.getString("sp_youTube_string", "https://yewtu.be/") + substring;
             return url;
-        }
-
-        else if (sp.getBoolean("sp_twitter_switch", false) &&
+        } else if (sp.getBoolean("sp_twitter_switch", false) &&
                 domain.equals("twitter.com") || domain.equals("m.twitter.com")) {
             ninjaWebView.stopLoading();
             String substring = url.substring(url.indexOf("twitter.com") + 12);
@@ -248,13 +263,36 @@ public class BrowserUnit {
 
         if (sp.getBoolean("sp_tabBackground", false)) {
 
+            String url = webView.getUrl();
+            NotificationManager mNotifyMgr = (NotificationManager) activity.getSystemService(NOTIFICATION_SERVICE);
+            Intent intentP = new Intent(activity, BrowserActivity.class);
+            PendingIntent pendingIntent = PendingIntent.getActivity(activity, 0, intentP, FLAG_IMMUTABLE);
+
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                String name = "Links background";
+                String description = "Open links in background -> click to open";
+                int importance = NotificationManager.IMPORTANCE_LOW; //Important for heads-up notification
+                NotificationChannel channel = new NotificationChannel("1", name, importance);
+                channel.setDescription(description);
+                channel.setShowBadge(true);
+                channel.setLockscreenVisibility(Notification.VISIBILITY_PUBLIC);
+                NotificationManager notificationManager = activity.getSystemService(NotificationManager.class);
+                notificationManager.createNotificationChannel(channel);
+            }
+
+            NotificationCompat.Builder mBuilder = new NotificationCompat.Builder(activity, "1")
+                    .setSmallIcon(R.drawable.icon_web)
+                    .setAutoCancel(true)
+                    .setContentTitle(activity.getTitle())
+                    .setContentText(url)
+                    .setContentIntent(pendingIntent); //Set the intent that will fire when the user taps the notification
+            Notification buildNotification = mBuilder.build();
+
             if (sp.getString("dialog_neverAskBackGround", "no").equals("no")) {
 
-                String url = webView.getUrl();
-
                 GridItem item_01 = new GridItem(activity.getString(R.string.dialog_backGround_yes), R.drawable.icon_flip_front);
-                GridItem item_02 = new GridItem( activity.getString(R.string.dialog_backGround_no), R.drawable.icon_flip_back);
-                GridItem item_03 = new GridItem( activity.getString(R.string.dialog_backGround_always), R.drawable.icon_save_as);
+                GridItem item_02 = new GridItem(activity.getString(R.string.dialog_backGround_no), R.drawable.icon_flip_back);
+                GridItem item_03 = new GridItem(activity.getString(R.string.dialog_backGround_always), R.drawable.icon_save_as);
 
                 View dialogView = View.inflate(activity, R.layout.dialog_menu, null);
                 MaterialAlertDialogBuilder builder = new MaterialAlertDialogBuilder(activity);
@@ -306,7 +344,19 @@ public class BrowserUnit {
                             break;
                     }
                 });
+
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+                    int permissionState = ContextCompat.checkSelfPermission(activity, Manifest.permission.POST_NOTIFICATIONS);
+                    if (permissionState == PackageManager.PERMISSION_DENIED) {
+                        ActivityCompat.requestPermissions(activity, new String[]{Manifest.permission.POST_NOTIFICATIONS}, 1);
+                    } else {
+                        mNotifyMgr.notify(4, buildNotification);
+                    }
+                } else {
+                    mNotifyMgr.notify(4, buildNotification);
+                }
             } else  {
+                mNotifyMgr.notify(4, buildNotification);
                 activity.moveTaskToBack(true);
             }
         }
