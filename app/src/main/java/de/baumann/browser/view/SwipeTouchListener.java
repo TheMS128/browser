@@ -3,23 +3,14 @@ package de.baumann.browser.view;
 import static android.content.ContentValues.TAG;
 
 import android.annotation.SuppressLint;
-import android.app.Dialog;
-import android.app.DownloadManager;
 import android.content.Context;
-import android.content.Intent;
 import android.util.Log;
 import android.view.GestureDetector;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnTouchListener;
 
-import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 
-import de.baumann.browser.R;
-import de.baumann.browser.unit.HelperUnit;
-
-
-@SuppressWarnings("WeakerAccess")
 public class SwipeTouchListener implements OnTouchListener {
 
     private final GestureDetector gestureDetector;
