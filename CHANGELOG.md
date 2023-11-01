@@ -1,6 +1,7 @@
 ### v 12 "" (WIP)
 - fix: Open Downloads after download complete
 - fix: Custom search engine UI/UX #1113
+- fix: open links in background
 
 
 ### v 11 "Bertha von Suttner"

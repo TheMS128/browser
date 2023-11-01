@@ -1,15 +1,6 @@
 package de.baumann.browser.unit;
 
-import static android.app.PendingIntent.FLAG_IMMUTABLE;
-import static android.content.Context.NOTIFICATION_SERVICE;
-import static androidx.core.app.NotificationCompat.DEFAULT_SOUND;
-import static androidx.core.app.NotificationCompat.DEFAULT_VIBRATE;
-
 import android.app.Activity;
-import android.app.Notification;
-import android.app.NotificationChannel;
-import android.app.NotificationManager;
-import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -17,26 +8,37 @@ import android.content.pm.ShortcutManager;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Environment;
+import android.text.TextUtils;
 import android.util.Log;
+import android.view.Gravity;
+import android.view.View;
 import android.webkit.CookieManager;
 import android.webkit.WebView;
+import android.widget.GridView;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 
-import androidx.core.app.NotificationCompat;
+import androidx.appcompat.app.AlertDialog;
 import androidx.preference.PreferenceManager;
+
+import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 
 import org.json.JSONException;
 
 import java.io.File;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Locale;
 import java.util.Objects;
 import java.util.regex.Pattern;
 
 import de.baumann.browser.R;
-import de.baumann.browser.activity.BrowserActivity;
+import de.baumann.browser.database.FaviconHelper;
 import de.baumann.browser.database.RecordAction;
 import de.baumann.browser.objects.CustomRedirect;
 import de.baumann.browser.objects.CustomRedirectsHelper;
+import de.baumann.browser.view.GridAdapter;
+import de.baumann.browser.view.GridItem;
 
 public class BrowserUnit {
 
@@ -240,38 +242,73 @@ public class BrowserUnit {
         return url;
     }
 
-    public static void openInBackground(Activity activity, Intent intent, String url) {
+    public static void openInBackground(Activity activity, WebView webView) {
         SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(activity);
-        if (sp.getBoolean("sp_tabBackground", false) && !Objects.equals(intent.getPackage(), "de.baumann.browser")) {
 
-            Intent intentP = new Intent(activity, BrowserActivity.class);
-            PendingIntent pendingIntent = PendingIntent.getActivity(activity, 0, intentP, FLAG_IMMUTABLE);
 
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-                String name = "Opened Link";
-                String description = "url of links opened in the background -> click to open";
-                int importance = NotificationManager.IMPORTANCE_HIGH; //Important for heads-up notification
-                NotificationChannel channel = new NotificationChannel("1", name, importance);
-                channel.setDescription(description);
-                channel.setShowBadge(true);
-                channel.setLockscreenVisibility(Notification.VISIBILITY_PUBLIC);
-                NotificationManager notificationManager = activity.getSystemService(NotificationManager.class);
-                notificationManager.createNotificationChannel(channel); }
+        if (sp.getBoolean("sp_tabBackground", false)) {
 
-            NotificationCompat.Builder mBuilder = new NotificationCompat.Builder(activity, "1")
-                    .setSmallIcon(R.drawable.icon_web)
-                    .setContentTitle(activity.getString(R.string.main_menu_new_tab))
-                    .setContentText(url)
-                    .setAutoCancel(true)
-                    .setDefaults(DEFAULT_SOUND | DEFAULT_VIBRATE) //Important for heads-up notification
-                    .setPriority(Notification.PRIORITY_MAX) //Important for heads-up notification
-                    .setContentIntent(pendingIntent); //Set the intent that will fire when the user taps the notification
+            if (sp.getString("dialog_neverAskBackGround", "no").equals("no")) {
 
-            Notification buildNotification = mBuilder.build();
-            NotificationManager mNotifyMgr = (NotificationManager) activity.getSystemService(NOTIFICATION_SERVICE);
-            mNotifyMgr.notify(1, buildNotification);
+                String url = webView.getUrl();
 
-            activity.moveTaskToBack(true);
+                GridItem item_01 = new GridItem(activity.getString(R.string.dialog_backGround_yes), R.drawable.icon_flip_front);
+                GridItem item_02 = new GridItem( activity.getString(R.string.dialog_backGround_no), R.drawable.icon_flip_back);
+                GridItem item_03 = new GridItem( activity.getString(R.string.dialog_backGround_always), R.drawable.icon_save_as);
+
+                View dialogView = View.inflate(activity, R.layout.dialog_menu, null);
+                MaterialAlertDialogBuilder builder = new MaterialAlertDialogBuilder(activity);
+
+                LinearLayout textGroup = dialogView.findViewById(R.id.textGroup);
+                TextView menuURL = dialogView.findViewById(R.id.menuURL);
+                menuURL.setText(webView.getUrl());
+                menuURL.setEllipsize(TextUtils.TruncateAt.MARQUEE);
+                menuURL.setSingleLine(true);
+                menuURL.setMarqueeRepeatLimit(1);
+                menuURL.setSelected(true);
+                textGroup.setOnClickListener(v -> {
+                    menuURL.setEllipsize(TextUtils.TruncateAt.MARQUEE);
+                    menuURL.setSingleLine(true);
+                    menuURL.setMarqueeRepeatLimit(1);
+                    menuURL.setSelected(true);
+                });
+                TextView menuTitle = dialogView.findViewById(R.id.menuTitle);
+                menuTitle.setText(HelperUnit.domain(url));
+                FaviconHelper.setFavicon(activity, dialogView, url, R.id.menu_icon, R.drawable.icon_download);
+                builder.setView(dialogView);
+
+                AlertDialog dialog = builder.create();
+                dialog.show();
+                HelperUnit.setupDialog(activity, dialog);
+
+                Objects.requireNonNull(dialog.getWindow()).setGravity(Gravity.BOTTOM);
+                GridView menu_grid = dialogView.findViewById(R.id.menu_grid);
+                final List<GridItem> gridList = new LinkedList<>();
+                gridList.add(gridList.size(), item_01);
+                gridList.add(gridList.size(), item_02);
+                gridList.add(gridList.size(), item_03);
+                GridAdapter gridAdapter = new GridAdapter(activity, gridList);
+                menu_grid.setAdapter(gridAdapter);
+                gridAdapter.notifyDataSetChanged();
+                menu_grid.setOnItemClickListener((parent, view, position, id) -> {
+                    switch (position) {
+                        case 0:
+                            dialog.cancel();
+                            break;
+                        case 1:
+                            activity.moveTaskToBack(true);
+                            dialog.cancel();
+                            break;
+                        case 2:
+                            sp.edit().putString("dialog_neverAskBackGround", "yes").apply();
+                            activity.moveTaskToBack(true);
+                            dialog.cancel();
+                            break;
+                    }
+                });
+            } else  {
+                activity.moveTaskToBack(true);
+            }
         }
     }
 
