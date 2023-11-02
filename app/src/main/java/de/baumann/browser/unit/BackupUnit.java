@@ -260,7 +260,7 @@ public class BackupUnit {
         action.close();
         File file = new File(Environment.getExternalStoragePublicDirectory(DIRECTORY_DOCUMENTS), "browser_backup//list_bookmarks.html");
 
-        File fileTxt = new File(Environment.getExternalStoragePublicDirectory(DIRECTORY_DOCUMENTS), "browser_backup//list_bookmarks.txt");
+        File fileTxt = new File(Environment.getExternalStoragePublicDirectory(DIRECTORY_DOCUMENTS), "browser_backup//list_bookmarks_simple.html");
 
         try {
             BufferedWriter writer = new BufferedWriter(new FileWriter(file, false));
@@ -276,8 +276,12 @@ public class BackupUnit {
             String wasSuccessful = file.getAbsolutePath();
 
             BufferedWriter writerTxt = new BufferedWriter(new FileWriter(fileTxt, false));
+            String BOOKMARK_TYPE = "<A HREF=\"{url}\">{title}</A><br/>";
             for (Record record : list) {
-                writerTxt.write(record.getURL());
+                String type = BOOKMARK_TYPE;
+                type = type.replace(BOOKMARK_TITLE, record.getTitle());
+                type = type.replace(BOOKMARK_URL, record.getURL());
+                writerTxt.write(type);
                 writerTxt.newLine();
             }
             writerTxt.close();

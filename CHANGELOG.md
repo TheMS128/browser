@@ -1,6 +1,7 @@
 ### v 12 "" (WIP)
 - fix: Open Downloads after download complete
 - fix: Custom search engine UI/UX #1113
+- fix: Cannot import custom Bookmarks #1109
 - fix: open links in background
 - fix: notification permissions
 
