@@ -74,8 +74,8 @@
     <string name="dialog_sortIcon">Sort by icon</string>
     <string name="dialog_sortDate">Sort by date</string>
     <string name="dialog_neverAsk">Dismiss. Never ask this session.</string>
-    <string name="dialog_backGround_yes">foreground.</string>
-    <string name="dialog_backGround_no">background.</string>
+    <string name="dialog_backGround_yes">background.</string>
+    <string name="dialog_backGround_no">foreground.</string>
     <string name="dialog_backGround_always">always in background.</string>
     <string name="dialog_backGround">Open links in …</string>
 

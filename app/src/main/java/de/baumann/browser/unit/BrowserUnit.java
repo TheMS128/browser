@@ -289,8 +289,8 @@ public class BrowserUnit {
 
             if (sp.getString("dialog_neverAskBackGround", "no").equals("no")) {
 
-                GridItem item_01 = new GridItem(activity.getString(R.string.dialog_backGround_yes), R.drawable.icon_flip_front);
-                GridItem item_02 = new GridItem(activity.getString(R.string.dialog_backGround_no), R.drawable.icon_flip_back);
+                GridItem item_01 = new GridItem(activity.getString(R.string.dialog_backGround_no), R.drawable.icon_flip_front);
+                GridItem item_02 = new GridItem(activity.getString(R.string.dialog_backGround_yes), R.drawable.icon_flip_back);
                 GridItem item_03 = new GridItem(activity.getString(R.string.dialog_backGround_always), R.drawable.icon_save_as);
 
                 View dialogView = View.inflate(activity, R.layout.dialog_menu, null);
@@ -333,13 +333,13 @@ public class BrowserUnit {
                             dialog.cancel();
                             break;
                         case 1:
-                            activity.moveTaskToBack(true);
                             dialog.cancel();
+                            displayNotification ( activity,  mNotifyMgr,  buildNotification);
                             break;
                         case 2:
-                            sp.edit().putString("dialog_neverAskBackGround", "yes").apply();
-                            activity.moveTaskToBack(true);
                             dialog.cancel();
+                            sp.edit().putString("dialog_neverAskBackGround", "yes").apply();
+                            displayNotification ( activity,  mNotifyMgr,  buildNotification);
                             break;
                     }
                 });
@@ -347,22 +347,24 @@ public class BrowserUnit {
                 TextView message = dialogView.findViewById(R.id.message);
                 message.setVisibility(View.VISIBLE);
                 message.setText(R.string.dialog_backGround);
-
-                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
-                    int permissionState = ContextCompat.checkSelfPermission(activity, Manifest.permission.POST_NOTIFICATIONS);
-                    if (permissionState == PackageManager.PERMISSION_DENIED) {
-                        ActivityCompat.requestPermissions(activity, new String[]{Manifest.permission.POST_NOTIFICATIONS}, 1);
-                    } else {
-                        mNotifyMgr.notify(4, buildNotification);
-                    }
-                } else {
-                    mNotifyMgr.notify(4, buildNotification);
-                }
             } else  {
-                mNotifyMgr.notify(4, buildNotification);
-                activity.moveTaskToBack(true);
+                displayNotification ( activity,  mNotifyMgr,  buildNotification);
             }
         }
+    }
+
+    private static void displayNotification(Activity activity, NotificationManager mNotifyMgr, Notification buildNotification) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+            int permissionState = ContextCompat.checkSelfPermission(activity, Manifest.permission.POST_NOTIFICATIONS);
+            if (permissionState == PackageManager.PERMISSION_DENIED) {
+                ActivityCompat.requestPermissions(activity, new String[]{Manifest.permission.POST_NOTIFICATIONS}, 1);
+            } else {
+                mNotifyMgr.notify(4, buildNotification);
+            }
+        } else {
+            mNotifyMgr.notify(4, buildNotification);
+        }
+        activity.moveTaskToBack(true);
     }
 
     public static void clearIndexedDB(Context context) {

@@ -494,7 +494,7 @@ public class NinjaWebView extends WebView implements AlbumController {
                 NotificationCompat.Builder mBuilder = new NotificationCompat.Builder(this.context, "2")
                         .setSmallIcon(R.drawable.icon_web)
                         .setAutoCancel(true)
-                        .setContentTitle(this.getTitle())
+                        .setContentTitle(HelperUnit.domain(this.getUrl()))
                         .setContentText(this.context.getString(R.string.setting_title_audioBackground))
                         .setContentIntent(pendingIntent); //Set the intent that will fire when the user taps the notification
                 Notification buildNotification = mBuilder.build();
