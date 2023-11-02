@@ -14,6 +14,7 @@
     <string name="app_permission">To use this feature you must grant permission. After that restart the app.</string>
     <string name="list_empty">List is empty</string>
     <string name="album_title_bookmarks">Bookmarks</string>
+    <string name="album_title_bookmarks_simple">Bookmarks (simple)</string>
     <string name="album_title_history">History</string>
     <string name="album_title_home">Home</string>
     <string name="album_title_tab">Opened Tabs</string>
@@ -74,10 +75,8 @@
     <string name="dialog_sortIcon">Sort by icon</string>
     <string name="dialog_sortDate">Sort by date</string>
     <string name="dialog_neverAsk">Dismiss. Never ask this session.</string>
-    <string name="dialog_backGround_yes">background.</string>
-    <string name="dialog_backGround_no">foreground.</string>
-    <string name="dialog_backGround_always">always in background.</string>
-    <string name="dialog_backGround">Open links in …</string>
+    <string name="dialog_backGround_always">always this session.</string>
+    <string name="dialog_backGround">Open links in background …</string>
 
     <!-- Settings -->
     <string name="setting_label">Settings</string>
@@ -162,6 +161,7 @@
     <string name="setting_title_app">App Settings</string>
     <string name="setting_title_ui">Behavior/UI</string>
     <string name="setting_title_data">Backup</string>
+    <string name="setting_title_backup_exit">Backup on exit?</string>
 
     <string name="setting_filter">Bookmark filter</string>
 

@@ -4,6 +4,7 @@
 - fix: Cannot import custom Bookmarks #1109
 - fix: open links in background
 - fix: notification permissions
+- new: backup on exit (optional)
 
 
 ### v 11 "Bertha von Suttner"

@@ -24,6 +24,8 @@ import static android.Manifest.permission.WRITE_EXTERNAL_STORAGE;
 import static android.os.Build.VERSION.SDK_INT;
 import static android.os.Environment.DIRECTORY_DOCUMENTS;
 
+import static androidx.constraintlayout.motion.utils.Oscillator.TAG;
+
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -35,6 +37,7 @@ import android.os.Handler;
 import android.os.Looper;
 import android.provider.Settings;
 import android.util.Log;
+import android.util.Patterns;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.core.app.ActivityCompat;
@@ -52,6 +55,7 @@ import java.util.Comparator;
 import java.util.List;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
+import java.util.regex.Matcher;
 
 import de.baumann.browser.R;
 import de.baumann.browser.browser.List_protected;
@@ -65,6 +69,7 @@ public class BackupUnit {
 
     public static final int PERMISSION_REQUEST_CODE = 123;
     private static final String BOOKMARK_TYPE = "<DT><A HREF=\"{url}\" ADD_DATE=\"{time}\">{title}</A>";
+    private static final String BOOKMARK_TYPE_SIMPLE = "<DT><A HREF=\"{url}\">{title}</A>";
     private static final String BOOKMARK_TITLE = "{title}";
     private static final String BOOKMARK_URL = "{url}";
     private static final String BOOKMARK_TIME = "{time}";
@@ -125,6 +130,9 @@ public class BackupUnit {
                 case 4:
                     exportBookmarks(context);
                     break;
+                case 5:
+                    exportBookmarksSimple(context);
+                    break;
                 default:
                     exportList(context, 2);
                     break;
@@ -150,6 +158,9 @@ public class BackupUnit {
                     break;
                 case 4:
                     importBookmarks(context);
+                    break;
+                case 5:
+                    importBookmarksSimple(context);
                     break;
                 default:
                     importList(context, 2);
@@ -260,8 +271,6 @@ public class BackupUnit {
         action.close();
         File file = new File(Environment.getExternalStoragePublicDirectory(DIRECTORY_DOCUMENTS), "browser_backup//list_bookmarks.html");
 
-        File fileTxt = new File(Environment.getExternalStoragePublicDirectory(DIRECTORY_DOCUMENTS), "browser_backup//list_bookmarks_simple.html");
-
         try {
             BufferedWriter writer = new BufferedWriter(new FileWriter(file, false));
             for (Record record : list) {
@@ -274,11 +283,21 @@ public class BackupUnit {
             }
             writer.close();
             String wasSuccessful = file.getAbsolutePath();
+            if (wasSuccessful.isEmpty()) {System.out.println("was not successful.");}
+        } catch (Exception ignored) { }
+    }
 
+    public static void exportBookmarksSimple(Context context) {
+        RecordAction action = new RecordAction(context);
+        action.open(false);
+        List<Record> list = action.listBookmark(context, false, 0);
+        action.close();
+        File fileTxt = new File(Environment.getExternalStoragePublicDirectory(DIRECTORY_DOCUMENTS), "browser_backup//list_bookmarks_simple.html");
+
+        try {
             BufferedWriter writerTxt = new BufferedWriter(new FileWriter(fileTxt, false));
-            String BOOKMARK_TYPE = "<A HREF=\"{url}\">{title}</A><br/>";
             for (Record record : list) {
-                String type = BOOKMARK_TYPE;
+                String type = BOOKMARK_TYPE_SIMPLE;
                 type = type.replace(BOOKMARK_TITLE, record.getTitle());
                 type = type.replace(BOOKMARK_URL, record.getURL());
                 writerTxt.write(type);
@@ -287,8 +306,6 @@ public class BackupUnit {
             writerTxt.close();
             String wasSuccessfulTxt = fileTxt.getAbsolutePath();
             if (wasSuccessfulTxt.isEmpty()) {System.out.println("was not successful."); }
-            if (wasSuccessful.isEmpty()) {System.out.println("was not successful.");}
-
         } catch (Exception ignored) { }
     }
 
@@ -296,7 +313,6 @@ public class BackupUnit {
         File file = new File(Environment.getExternalStoragePublicDirectory(DIRECTORY_DOCUMENTS), "browser_backup//list_bookmarks.html");
         List<Record> list = new ArrayList<>();
         try {
-            BrowserUnit.clearBookmark(context);
             RecordAction action = new RecordAction(context);
             action.open(true);
             BufferedReader reader = new BufferedReader(new FileReader(file));
@@ -320,18 +336,47 @@ public class BackupUnit {
                 record.setDesktopMode((date & 16) == 16);
                 record.setNightMode(!((date & 32) == 32));
 
-                if (!action.checkUrl(url, RecordUnit.TABLE_BOOKMARK)) list.add(record);
-            }
+                if (!action.checkUrl(url, RecordUnit.TABLE_BOOKMARK)) list.add(record);}
             reader.close();
             list.sort(Comparator.comparing(Record::getTitle));
-            for (Record record : list) {
-                action.addBookmark(record);
-            }
-            action.close(); }
-        catch (Exception ignored) { }
+            for (Record record : list) {action.addBookmark(record);}
+            action.close();
+        } catch (Exception ignored) { }
         list.size();
     }
 
+    public static void importBookmarksSimple(Context context) {
+        File file = new File(Environment.getExternalStoragePublicDirectory(DIRECTORY_DOCUMENTS), "browser_backup//list_bookmarks_simple.html");
+        List<Record> list = new ArrayList<>();
+        try {
+            RecordAction action = new RecordAction(context);
+            action.open(true);
+            BufferedReader reader = new BufferedReader(new FileReader(file));
+            String line;
+            while ((line = reader.readLine()) != null) {
+                line = line.trim();
+                if (!((line.startsWith("<dt><a ") && line.endsWith("</a>")) || (line.startsWith("<DT><A ") && line.endsWith("</A>")))) {
+                    continue; }
+                String title = getBookmarkTitle(line);
+                String url = extractLinks(line);
+                //if no color defined yet set it red (123 is max: 11 for color + 16 for desktop mode + 32 for List_trusted + 64 for List_standard Content
+                if (title.trim().isEmpty() || url.trim().isEmpty()) {
+                    continue; }
+                Record record = new Record();
+                record.setTitle(title);
+                record.setURL(url);
+                record.setIconColor(1);
+                record.setDesktopMode(false);
+                record.setNightMode(false);
+
+                if (!action.checkUrl(url, RecordUnit.TABLE_BOOKMARK)) list.add(record);}
+            reader.close();
+            list.sort(Comparator.comparing(Record::getTitle));
+            for (Record record : list) {action.addBookmark(record);}
+            action.close();
+        } catch (Exception ignored) { }
+        list.size();
+    }
     private static long getBookmarkDate(String line) {
         for (String string : line.split(" +")) {
             if (string.startsWith("ADD_DATE=\"")) {
@@ -354,5 +399,20 @@ public class BackupUnit {
             if (string.startsWith("href=\"") || string.startsWith("HREF=\"")) return string.substring(6, string.length() - 1);
         }
         return "";
+    }
+
+    public static String extractLinks(String text) {
+        List<String> links = new ArrayList<>();
+        String link = null;
+        Matcher m = Patterns.WEB_URL.matcher(text);
+        while (m.find()) {
+            String url = m.group();
+            Log.d(TAG, "URL extracted: " + url);
+            if (links.isEmpty()) {
+                links.add(url);
+                link = url;
+            }
+        }
+        return link;
     }
 }

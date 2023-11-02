@@ -2,6 +2,11 @@
 
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
 
+    <SwitchPreferenceCompat
+        android:defaultValue="false"
+        android:key="sp_backup_quit"
+        android:title="@string/setting_title_backup_exit" />
+
     <Preference android:summary="@string/data_summary" />
 
     <SwitchPreferenceCompat
@@ -18,6 +23,11 @@
         android:defaultValue="true"
         android:key="bookmark"
         android:summary="@string/album_title_bookmarks" />
+
+    <SwitchPreferenceCompat
+        android:defaultValue="true"
+        android:key="bookmark_simple"
+        android:summary="@string/album_title_bookmarks_simple" />
 
     <SwitchPreferenceCompat
         android:defaultValue="true"

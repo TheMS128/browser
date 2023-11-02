@@ -262,7 +262,7 @@ public class BrowserUnit {
         if (sp.getBoolean("sp_tabBackground", false)) {
 
             String url = webView.getUrl();
-            String m = activity.getString(R.string.dialog_backGround) + " " + activity.getString(R.string.dialog_backGround_yes);
+            String m = activity.getString(R.string.dialog_backGround);
             NotificationManager mNotifyMgr = (NotificationManager) activity.getSystemService(NOTIFICATION_SERVICE);
             Intent intentP = new Intent(activity, BrowserActivity.class);
             PendingIntent pendingIntent = PendingIntent.getActivity(activity, 0, intentP, FLAG_IMMUTABLE);
@@ -289,8 +289,8 @@ public class BrowserUnit {
 
             if (sp.getString("dialog_neverAskBackGround", "no").equals("no")) {
 
-                GridItem item_01 = new GridItem(activity.getString(R.string.dialog_backGround_no), R.drawable.icon_flip_front);
-                GridItem item_02 = new GridItem(activity.getString(R.string.dialog_backGround_yes), R.drawable.icon_flip_back);
+                GridItem item_01 = new GridItem(activity.getString(R.string.app_cancel), R.drawable.icon_close);
+                GridItem item_02 = new GridItem(activity.getString(R.string.app_ok), R.drawable.icon_check);
                 GridItem item_03 = new GridItem(activity.getString(R.string.dialog_backGround_always), R.drawable.icon_save_as);
 
                 View dialogView = View.inflate(activity, R.layout.dialog_menu, null);
@@ -321,9 +321,9 @@ public class BrowserUnit {
                 Objects.requireNonNull(dialog.getWindow()).setGravity(Gravity.BOTTOM);
                 GridView menu_grid = dialogView.findViewById(R.id.menu_grid);
                 final List<GridItem> gridList = new LinkedList<>();
-                gridList.add(gridList.size(), item_01);
-                gridList.add(gridList.size(), item_02);
                 gridList.add(gridList.size(), item_03);
+                gridList.add(gridList.size(), item_02);
+                gridList.add(gridList.size(), item_01);
                 GridAdapter gridAdapter = new GridAdapter(activity, gridList);
                 menu_grid.setAdapter(gridAdapter);
                 gridAdapter.notifyDataSetChanged();
@@ -331,6 +331,8 @@ public class BrowserUnit {
                     switch (position) {
                         case 0:
                             dialog.cancel();
+                            sp.edit().putString("dialog_neverAskBackGround", "yes").apply();
+                            displayNotification ( activity,  mNotifyMgr,  buildNotification);
                             break;
                         case 1:
                             dialog.cancel();
@@ -338,8 +340,6 @@ public class BrowserUnit {
                             break;
                         case 2:
                             dialog.cancel();
-                            sp.edit().putString("dialog_neverAskBackGround", "yes").apply();
-                            displayNotification ( activity,  mNotifyMgr,  buildNotification);
                             break;
                     }
                 });

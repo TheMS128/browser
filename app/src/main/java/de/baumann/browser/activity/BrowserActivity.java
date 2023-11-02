@@ -1,6 +1,7 @@
 package de.baumann.browser.activity;
 
 import static android.content.ContentValues.TAG;
+import static android.os.Environment.DIRECTORY_DOCUMENTS;
 import static android.webkit.WebView.HitTestResult.IMAGE_TYPE;
 import static android.webkit.WebView.HitTestResult.SRC_ANCHOR_TYPE;
 import static android.webkit.WebView.HitTestResult.SRC_IMAGE_ANCHOR_TYPE;
@@ -30,6 +31,7 @@ import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Environment;
 import android.os.Handler;
 import android.os.HandlerThread;
 import android.os.Message;
@@ -96,6 +98,7 @@ import com.google.android.material.tabs.TabLayout;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.LinkedList;
@@ -114,6 +117,7 @@ import de.baumann.browser.browser.List_trusted;
 import de.baumann.browser.database.FaviconHelper;
 import de.baumann.browser.database.Record;
 import de.baumann.browser.database.RecordAction;
+import de.baumann.browser.fragment.Fragment_settings_Backup;
 import de.baumann.browser.unit.BrowserUnit;
 import de.baumann.browser.unit.HelperUnit;
 import de.baumann.browser.unit.RecordUnit;
@@ -426,6 +430,13 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
             if (clearIndexedDB) {
                 BrowserUnit.clearIndexedDB(this);
                 WebStorage.getInstance().deleteAllData(); }
+        }
+
+        if (sp.getBoolean("sp_backup_quit", false)) {String database_app = "//data//" + getPackageName() + "//databases//Ninja4.db";
+            String database_backup = "browser_backup//database.db";
+            File previewsFolder_app = new File(Environment.getDataDirectory(), database_app);
+            File previewsFolder_backup = new File(Environment.getExternalStoragePublicDirectory(DIRECTORY_DOCUMENTS), database_backup);
+            Fragment_settings_Backup.backup(activity, previewsFolder_app, previewsFolder_backup);
         }
 
         BrowserContainer.clear();

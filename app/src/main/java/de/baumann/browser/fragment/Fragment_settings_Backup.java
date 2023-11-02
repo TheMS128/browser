@@ -42,7 +42,7 @@ import de.baumann.browser.view.NinjaToast;
 
 public class Fragment_settings_Backup extends BasePreferenceFragment {
 
-    public File sd;
+    public static File sd;
     public File data;
     public Context context;
     public Activity activity;
@@ -71,31 +71,7 @@ public class Fragment_settings_Backup extends BasePreferenceFragment {
             builder.setIcon(R.drawable.icon_alert);
             builder.setTitle(R.string.app_warning);
             builder.setMessage(R.string.toast_backup);
-            builder.setPositiveButton(R.string.app_ok, (dialog, whichButton) -> {
-                if (!BackupUnit.checkPermissionStorage(context)) {
-                    BackupUnit.requestPermission(activity);
-                } else {
-                    BackupUnit.makeBackupDir();
-                    if (sp.getBoolean("database", false)) {
-                        copyDirectory(previewsFolder_app, previewsFolder_backup);
-                    }
-                    if (sp.getBoolean("settings", false)) {
-                        backupUserPrefs(context);
-                    }
-                    if (sp.getBoolean("bookmark", false)) {
-                        BackupUnit.backupData(getActivity(), 4);
-                    }
-                    if (sp.getBoolean("java", false)) {
-                        BackupUnit.backupData(getActivity(), 1);
-                    }
-                    if (sp.getBoolean("cookie", false)) {
-                        BackupUnit.backupData(getActivity(), 2);
-                    }
-                    if (sp.getBoolean("dom", false)) {
-                        BackupUnit.backupData(getActivity(), 3);
-                    }
-                }
-            });
+            builder.setPositiveButton(R.string.app_ok, (dialog, whichButton) -> backup(activity, previewsFolder_app, previewsFolder_backup));
             builder.setNegativeButton(R.string.app_cancel, (dialog, whichButton) -> dialog.cancel());
             AlertDialog dialog = builder.create();
             dialog.show();
@@ -114,13 +90,16 @@ public class Fragment_settings_Backup extends BasePreferenceFragment {
                     BackupUnit.requestPermission(activity);
                 } else {
                     if (sp.getBoolean("database", false)) {
-                        copyDirectory(previewsFolder_backup, previewsFolder_app);
+                        copyDirectory(activity, previewsFolder_backup, previewsFolder_app);
                     }
                     if (sp.getBoolean("settings", false)) {
                         restoreUserPrefs(context);
                     }
                     if (sp.getBoolean("bookmark", false)) {
                         BackupUnit.restoreData(getActivity(), 4);
+                    }
+                    if (sp.getBoolean("bookmark_simple", false)) {
+                        BackupUnit.restoreData(getActivity(), 5);
                     }
                     if (sp.getBoolean("java", false)) {
                         BackupUnit.restoreData(getActivity(), 1);
@@ -147,8 +126,38 @@ public class Fragment_settings_Backup extends BasePreferenceFragment {
         sp.edit().putInt("restart_changed", 1).apply();
     }
 
+    public static void backup (Activity activity, File sourceLocation, File targetLocation) {
+        SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(activity);
+        if (!BackupUnit.checkPermissionStorage(activity)) {
+            BackupUnit.requestPermission(activity);
+        } else {
+            BackupUnit.makeBackupDir();
+            if (sp.getBoolean("database", false)) {
+                copyDirectory(activity, sourceLocation, targetLocation);
+            }
+            if (sp.getBoolean("settings", false)) {
+                backupUserPrefs(activity);
+            }
+            if (sp.getBoolean("bookmark", false)) {
+                BackupUnit.backupData(activity, 4);
+            }
+            if (sp.getBoolean("bookmark_simple", false)) {
+                BackupUnit.backupData(activity, 5);
+            }
+            if (sp.getBoolean("java", false)) {
+                BackupUnit.backupData(activity, 1);
+            }
+            if (sp.getBoolean("cookie", false)) {
+                BackupUnit.backupData(activity, 2);
+            }
+            if (sp.getBoolean("dom", false)) {
+                BackupUnit.backupData(activity, 3);
+            }
+        }
+    }
+
     /** @noinspection IOStreamConstructor*/ // If targetLocation does not exist, it will be created.
-    private void copyDirectory(File sourceLocation, File targetLocation) {
+    public static void copyDirectory(Activity activity, File sourceLocation, File targetLocation) {
 
         try {
             if (sourceLocation.isDirectory()) {
@@ -157,7 +166,7 @@ public class Fragment_settings_Backup extends BasePreferenceFragment {
                 }
                 String[] children = sourceLocation.list();
                 for (String aChildren : Objects.requireNonNull(children)) {
-                    copyDirectory(new File(sourceLocation, aChildren), new File(targetLocation, aChildren));
+                    copyDirectory(activity, new File(sourceLocation, aChildren), new File(targetLocation, aChildren));
                 }
             } else {
                 // make sure the directory we plan to store the recording in exists
@@ -185,7 +194,7 @@ public class Fragment_settings_Backup extends BasePreferenceFragment {
                 }
                 in.close();
                 out.close();
-                NinjaToast.show(getActivity(), getString(R.string.app_done));
+                NinjaToast.show(activity, activity.getString(R.string.app_done));
             }
         } catch (IOException e) {
             e.printStackTrace();
@@ -193,7 +202,7 @@ public class Fragment_settings_Backup extends BasePreferenceFragment {
     }
 
     /** @noinspection resource*/
-    private void backupUserPrefs(Context context) {
+    public static void backupUserPrefs(Context context) {
         final File prefsFile = new File(context.getFilesDir(), "../shared_prefs/" + context.getPackageName() + "_preferences.xml");
         final File backupFile = new File(sd, "browser_backup/preferenceBackup.xml");
         try {
@@ -202,7 +211,7 @@ public class Fragment_settings_Backup extends BasePreferenceFragment {
             dst.transferFrom(src, 0, src.size());
             src.close();
             dst.close();
-            NinjaToast.show(getActivity(), getString(R.string.app_done));
+            NinjaToast.show(context, context.getString(R.string.app_done));
         } catch (IOException e) {
             e.printStackTrace();
         }
