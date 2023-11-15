@@ -154,14 +154,14 @@
     <string name="localData">Clear on device stored data</string>
 
     <string name="clear_title_deleteDatabase">Delete database</string>
-    <string name="clear_summary_deleteDatabase">Delete the whole database (Startpage, bookmarks, history and all whitelists).</string>
+    <string name="clear_summary_deleteDatabase">Delete the whole database (Startpage, bookmarks, history and all domain-lists).</string>
 
 
     <!-- App setting -->
     <string name="setting_title_app">App Settings</string>
     <string name="setting_title_ui">Behavior/UI</string>
     <string name="setting_title_data">Backup</string>
-    <string name="setting_title_backup_exit">Backup on exit?</string>
+    <string name="setting_title_backup_exit">Backup database (Startpage, bookmarks, history and all domain-lists) on exit?</string>
 
     <string name="setting_filter">Bookmark filter</string>
 
@@ -212,7 +212,7 @@
     <string name="setting_gesture_11">Show fast toggle</string>
 
     <!-- Data -->
-    <string name="title_appData">App data</string>
+    <string name="title_appDatabase">Database</string>
     <string name="hint_database">This will delete current data. Proceed?</string>
     <string name="settings_data_restore">Restore</string>
 
@@ -232,7 +232,7 @@
     <string name="toast_quit_TAB">Do you want to close the TAB?</string>
     <string name="toast_downloadComplete">Download complete. Open file manager?</string>
     <string name="toast_unsecured">Website uses an unsecured connection (\"http\"). Try a secure connection (\"https\")?</string>
-    <string name="toast_backup">Backup data? This will overwrite the old backup.</string>
+    <string name="toast_backup">Backup data? This will overwrite existing backup.</string>
     <string name="dialog_postOnWebsiteHint">URL to open. Will be saved for next use.</string>
     <string name="dialog_postOnWebsite">Post on website</string>
     <string name="dialog_translate">Translate with DeepL</string>

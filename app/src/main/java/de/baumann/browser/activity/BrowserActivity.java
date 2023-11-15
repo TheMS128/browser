@@ -432,11 +432,8 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
                 WebStorage.getInstance().deleteAllData(); }
         }
 
-        if (sp.getBoolean("sp_backup_quit", false)) {String database_app = "//data//" + getPackageName() + "//databases//Ninja4.db";
-            String database_backup = "browser_backup//database.db";
-            File previewsFolder_app = new File(Environment.getDataDirectory(), database_app);
-            File previewsFolder_backup = new File(Environment.getExternalStoragePublicDirectory(DIRECTORY_DOCUMENTS), database_backup);
-            Fragment_settings_Backup.backup(activity, previewsFolder_app, previewsFolder_backup);
+        if (sp.getBoolean("sp_backup_quit", false)) {
+            Fragment_settings_Backup.backup(activity);
         }
 
         BrowserContainer.clear();

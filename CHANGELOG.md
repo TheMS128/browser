@@ -1,9 +1,10 @@
-### v 12 "" (WIP)
+### v 12 "Gandhi" (WIP)
 - fix: Open Downloads after download complete
 - fix: Custom search engine UI/UX #1113
 - fix: Cannot import custom Bookmarks #1109
 - fix: open links in background
 - fix: notification permissions
+- fix: infinite loop verification on gitlab.com #1100
 - new: backup on exit (optional)
 
 
