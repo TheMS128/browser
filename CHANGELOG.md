@@ -1,4 +1,4 @@
-### v 12 "Gandhi" (WIP)
+### v 12 "Gandhi"
 - fix: Open Downloads after download complete
 - fix: Custom search engine UI/UX #1113
 - fix: Cannot import custom Bookmarks #1109

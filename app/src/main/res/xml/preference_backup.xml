@@ -4,8 +4,8 @@
 
     <SwitchPreferenceCompat
         android:defaultValue="false"
-        android:summary="sp_backup_quit"
-        android:title="@string/setting_title_backup_exit" />
+        android:key="sp_backup_quit"
+        android:summary="@string/setting_title_backup_exit" />
 
     <Preference android:summary="@string/data_summary" />
 
