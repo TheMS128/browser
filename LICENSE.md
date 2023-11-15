@@ -11,4 +11,4 @@ GNU Affero General Public License for more details: <https://www.gnu.org/license
 **Used open source libraries:**
 
 "Material Design Icons"
-https://github.com/Templarian/MaterialDesign
+https://fonts.google.com/icons
