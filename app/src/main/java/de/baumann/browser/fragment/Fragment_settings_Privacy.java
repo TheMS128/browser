@@ -159,6 +159,7 @@ public class Fragment_settings_Privacy extends BasePreferenceFragment implements
 
     @Override
     public void onSharedPreferenceChanged(final SharedPreferences sp, String key) {
+        assert key != null;
         if (key.equals("ab_hosts")) {
             AdBlock.downloadHosts(getActivity());
         }

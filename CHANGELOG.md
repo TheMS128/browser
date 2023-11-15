@@ -1,3 +1,8 @@
+### v 13 "" (WIP)
+- switched to Google rounded Material You Icons
+- fix: lint issues
+
+
 ### v 12 "Gandhi"
 - fix: Open Downloads after download complete
 - fix: Custom search engine UI/UX #1113

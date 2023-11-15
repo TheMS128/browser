@@ -117,6 +117,7 @@ public class Fragment_settings extends BasePreferenceFragment implements SharedP
 
     @Override
     public void onSharedPreferenceChanged(final SharedPreferences sp, String key) {
+        assert key != null;
         if (key.equals("sp_userAgent") ||
                 key.equals("sp_search_engine_custom") ||
                 key.equals("searchEngineSwitch") ||

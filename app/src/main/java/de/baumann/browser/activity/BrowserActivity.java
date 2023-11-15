@@ -1,7 +1,6 @@
 package de.baumann.browser.activity;
 
 import static android.content.ContentValues.TAG;
-import static android.os.Environment.DIRECTORY_DOCUMENTS;
 import static android.webkit.WebView.HitTestResult.IMAGE_TYPE;
 import static android.webkit.WebView.HitTestResult.SRC_ANCHOR_TYPE;
 import static android.webkit.WebView.HitTestResult.SRC_IMAGE_ANCHOR_TYPE;
@@ -31,7 +30,6 @@ import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
-import android.os.Environment;
 import android.os.Handler;
 import android.os.HandlerThread;
 import android.os.Message;
@@ -98,7 +96,6 @@ import com.google.android.material.tabs.TabLayout;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
 
-import java.io.File;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.LinkedList;
@@ -400,7 +397,7 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
             sp.edit().putBoolean("pdf_create", false).apply();
             MaterialAlertDialogBuilder builder = new MaterialAlertDialogBuilder(context);
             builder.setTitle(R.string.menu_download);
-            builder.setIcon(R.drawable.icon_alert);
+            builder.setIcon(R.drawable.icon_download);
             builder.setMessage(R.string.toast_downloadComplete);
             builder.setPositiveButton(R.string.app_ok, (dialog, whichButton) -> startActivity(new Intent(Intent.createChooser(new Intent(DownloadManager.ACTION_VIEW_DOWNLOADS), null))));
             builder.setNegativeButton(R.string.app_cancel, (dialog, whichButton) -> dialog.cancel());
@@ -740,7 +737,6 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
                 popup.setOnMenuItemClickListener(item -> {
                     if (item.getItemId() == R.id.menu_delete) {
                         MaterialAlertDialogBuilder builder = new MaterialAlertDialogBuilder(context);
-                        builder.setIcon(R.drawable.icon_alert);
                         builder.setTitle(R.string.menu_delete);
                         builder.setMessage(R.string.hint_database);
                         builder.setIcon(R.drawable.icon_delete);
@@ -1063,7 +1059,7 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
 
         // Tab
 
-        GridItem item_01 = new GridItem( getString(R.string.menu_openFav), R.drawable.icon_star);
+        GridItem item_01 = new GridItem( getString(R.string.menu_openFav), R.drawable.icon_fav);
         GridItem item_02 = new GridItem( getString(R.string.main_menu_new_tabOpen), R.drawable.icon_tab_plus);
         GridItem item_03 = new GridItem( getString(R.string.main_menu_new_tabProfile), R.drawable.icon_profile_trusted);
         GridItem item_04 = new GridItem( getString(R.string.menu_reload), R.drawable.icon_refresh);
@@ -1115,7 +1111,7 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
             } });
 
         // Save
-        GridItem item_21 = new GridItem( getString(R.string.menu_fav), R.drawable.icon_star);
+        GridItem item_21 = new GridItem( getString(R.string.menu_fav), R.drawable.icon_fav);
         GridItem item_22 = new GridItem( getString(R.string.menu_save_home), R.drawable.icon_web);
         GridItem item_23 = new GridItem( getString(R.string.menu_save_bookmark), R.drawable.icon_bookmark);
         GridItem item_24 = new GridItem( getString(R.string.menu_save_pdf), R.drawable.icon_file);
@@ -1408,7 +1404,6 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
                     break;
                 case 7:
                     MaterialAlertDialogBuilder builderSubMenu = new MaterialAlertDialogBuilder(context);
-                    builderSubMenu.setIcon(R.drawable.icon_alert);
                     builderSubMenu.setTitle(R.string.menu_delete);
                     builderSubMenu.setMessage(R.string.hint_database);
                     builderSubMenu.setIcon(R.drawable.icon_delete);
@@ -1511,7 +1506,6 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
                     break;
                 case 4:
                     builderSubMenu = new MaterialAlertDialogBuilder(context);
-                    builderSubMenu.setIcon(R.drawable.icon_alert);
                     builderSubMenu.setTitle(R.string.menu_delete);
                     builderSubMenu.setIcon(R.drawable.icon_delete);
                     builderSubMenu.setMessage(R.string.hint_database);

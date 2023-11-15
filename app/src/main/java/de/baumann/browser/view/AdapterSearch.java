@@ -111,7 +111,7 @@ public class AdapterSearch extends BaseAdapter implements Filterable {
         } else if (item.getType() == BOOKMARK_ITEM) { //Item from bookmarks
             holder.iconView.setImageResource(R.drawable.icon_bookmark);
         } else if (item.getType() == CLIPBOARD_ITEM) {
-            holder.iconView.setImageResource(R.drawable.icon_paste);
+            holder.iconView.setImageResource(R.drawable.icon_clipboard);
         }
 
         try(FaviconHelper faviconHelper = new FaviconHelper(context)) {

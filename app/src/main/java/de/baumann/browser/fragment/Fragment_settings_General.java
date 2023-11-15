@@ -28,7 +28,7 @@ public class Fragment_settings_General extends BasePreferenceFragment  implement
         boolean customSE = sp.getBoolean("searchEngineSwitch", false);
 
         ListPreference searchEngines;
-        searchEngines= (ListPreference)findPreference("sp_search_engine");
+        searchEngines= findPreference("sp_search_engine");
         assert searchEngines != null;
         String customSearchEngine = sp.getString("sp_search_engine_custom", "");
         String text = getString(R.string.setting_title_searchEngine) + ": " + getString(R.string.toast_input_empty);

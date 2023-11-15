@@ -163,7 +163,7 @@
                     android:layout_height="match_parent"
                     android:layout_gravity="center"
                     android:layout_toStartOf="@id/searchBox_cancel"
-                    app:icon="@drawable/icon_arrow_down_gest" />
+                    app:icon="@drawable/icon_down" />
 
                 <Button
                     android:id="@+id/searchBox_up"
@@ -172,7 +172,7 @@
                     android:layout_height="match_parent"
                     android:layout_gravity="center"
                     android:layout_toStartOf="@id/searchBox_down"
-                    app:icon="@drawable/icon_arrow_up_gest" />
+                    app:icon="@drawable/icon_up" />
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/searchBox_input"

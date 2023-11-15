@@ -68,6 +68,7 @@ public class Fragment_settings_Gesture extends BasePreferenceFragment implements
 
     @Override
     public void onSharedPreferenceChanged(final SharedPreferences sp, String key) {
+        assert key != null;
         if (key.equals("sp_gestures_use") || key.equals("sp_gesture_action")) {
             sp.edit().putInt("restart_changed", 1).apply();
         }

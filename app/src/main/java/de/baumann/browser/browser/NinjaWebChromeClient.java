@@ -4,7 +4,6 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.graphics.Bitmap;
-import android.graphics.NinePatch;
 import android.net.Uri;
 import android.view.View;
 import android.webkit.ConsoleMessage;
@@ -15,7 +14,6 @@ import android.webkit.WebChromeClient;
 import android.webkit.WebResourceRequest;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
-import android.widget.Toast;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.preference.PreferenceManager;

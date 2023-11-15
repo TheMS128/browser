@@ -1,1 +1,10 @@
-<!-- drawable/magnify.xml --><vector xmlns:android="http://schemas.android.com/apk/res/android" android:height="24dp" android:width="24dp" android:viewportWidth="24" android:viewportHeight="24"><path android:fillColor="?android:attr/textColorSecondary" android:pathData="M9.5,3A6.5,6.5 0 0,1 16,9.5C16,11.11 15.41,12.59 14.44,13.73L14.71,14H15.5L20.5,19L19,20.5L14,15.5V14.71L13.73,14.44C12.59,15.41 11.11,16 9.5,16A6.5,6.5 0 0,1 3,9.5A6.5,6.5 0 0,1 9.5,3M9.5,5C7,5 5,7 5,9.5C5,12 7,14 9.5,14C12,14 14,12 14,9.5C14,7 12,5 9.5,5Z" /></vector>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="24dp"
+    android:height="24dp"
+    android:viewportWidth="960"
+    android:viewportHeight="960"
+    android:tint="?attr/colorControlNormal">
+  <path
+      android:fillColor="?android:attr/textColorSecondary"
+      android:pathData="M380.77,624.61Q278.31,624.61 207.23,553.54Q136.15,482.46 136.15,380Q136.15,277.54 207.23,206.46Q278.31,135.39 380.77,135.39Q483.23,135.39 554.31,206.46Q625.38,277.54 625.38,380Q625.38,422.85 611,461.85Q596.61,500.85 572.61,529.69L802.77,759.85Q811.08,768.15 811.27,780.73Q811.46,793.31 802.77,802Q794.08,810.69 781.69,810.69Q769.31,810.69 760.62,802L530.46,571.84Q500.46,596.61 461.46,610.61Q422.46,624.61 380.77,624.61ZM380.77,564.62Q458.08,564.62 511.73,510.96Q565.39,457.31 565.39,380Q565.39,302.69 511.73,249.04Q458.08,195.38 380.77,195.38Q303.46,195.38 249.81,249.04Q196.15,302.69 196.15,380Q196.15,457.31 249.81,510.96Q303.46,564.62 380.77,564.62Z"/>
+</vector>

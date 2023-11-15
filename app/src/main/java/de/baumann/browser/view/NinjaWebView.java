@@ -553,8 +553,8 @@ public class NinjaWebView extends WebView implements AlbumController {
 
         if (url.startsWith("http://") && sp.getString("dialog_neverAsk", "no").equals("no")) {
 
-            GridItem item_01 = new GridItem("https://", R.drawable.icon_https);
-            GridItem item_02 = new GridItem( "http://", R.drawable.icon_http);
+            GridItem item_01 = new GridItem("https://", R.drawable.icon_profile_trusted);
+            GridItem item_02 = new GridItem( "http://", R.drawable.icon_profile_changed);
             GridItem item_03 = new GridItem( context.getString(R.string.app_cancel), R.drawable.icon_close);
 
             View dialogView = View.inflate(context, R.layout.dialog_menu, null);
