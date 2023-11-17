@@ -50,12 +50,10 @@ import android.view.Window;
 import android.view.WindowInsets;
 import android.view.WindowInsetsController;
 import android.view.WindowManager;
-import android.webkit.CookieManager;
 import android.webkit.ValueCallback;
 import android.webkit.WebBackForwardList;
 import android.webkit.WebChromeClient;
 import android.webkit.WebSettings;
-import android.webkit.WebStorage;
 import android.webkit.WebView;
 import android.widget.Button;
 import android.widget.CheckBox;
@@ -417,16 +415,7 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
         notificationManager.cancel(1);
 
         if (sp.getBoolean("sp_clear_quit", true)) {
-            boolean clearCache = sp.getBoolean("sp_clear_cache", true);
-            boolean clearCookie = sp.getBoolean("sp_clear_cookie", false);
-            boolean clearHistory = sp.getBoolean("sp_clear_history", false);
-            boolean clearIndexedDB = sp.getBoolean("sp_clearIndexedDB", true);
-            if (clearCache) BrowserUnit.clearCache(this);
-            if (clearCookie) BrowserUnit.clearCookie();
-            if (clearHistory) BrowserUnit.clearHistory(this);
-            if (clearIndexedDB) {
-                BrowserUnit.clearIndexedDB(this);
-                WebStorage.getInstance().deleteAllData(); }
+            BrowserUnit.clearBrowserData(this);
         }
 
         if (sp.getBoolean("sp_backup_quit", false)) {
@@ -2407,16 +2396,7 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
             String text2 = text.replace("/","\\%2F");
             NinjaToast.show(context, context.getString(R.string.dialog_translate_hint));
             String translate = "https://www.deepl.com/translator?share=generic#ee/ce/" + text2;
-            MaterialAlertDialogBuilder builder = new MaterialAlertDialogBuilder(context);
-            WebView wv = new NinjaWebView(this);
-            CookieManager.getInstance().setAcceptCookie(true);
-            wv.getSettings().setJavaScriptEnabled(true);
-            wv.loadUrl(translate);
-            builder.setView(wv);
-            builder.setNegativeButton(R.string.app_ok, (dialog, whichButton) -> dialog.cancel());
-            Dialog dialog = builder.create();
-            dialog.show();
-            HelperUnit.setupDialog(context, dialog);
+            addAlbum(null, translate, true, false, "", null);
             return; }
         else if (intent.getAction() != null && intent.getAction().equals(Intent.ACTION_PROCESS_TEXT)) {
             CharSequence text = getIntent().getCharSequenceExtra(Intent.EXTRA_PROCESS_TEXT);

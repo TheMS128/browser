@@ -8,7 +8,8 @@
         <EditTextPreference
             android:defaultValue="https://codeberg.org/Gaukler_Faun/FOSS_Browser/wiki"
             android:key="favoriteURL"
-            android:title="@string/setting_title_fav" />
+            android:title="@string/setting_title_fav"
+            android:icon="@drawable/icon_fav" />
 
         <de.baumann.browser.preferences.EditTextSwitchPreference
             android:key="sp_userAgent"
@@ -20,7 +21,8 @@
     </PreferenceCategory>
 
     <PreferenceCategory
-        android:title="@string/setting_title_search_engine">
+        android:title="@string/setting_title_search_engine"
+        android:icon="@drawable/icon_search">
 
         <ListPreference
             android:defaultValue="0"

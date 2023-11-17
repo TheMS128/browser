@@ -22,6 +22,7 @@ import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
 import android.webkit.CookieManager;
+import android.webkit.WebStorage;
 import android.webkit.WebView;
 import android.widget.GridView;
 import android.widget.LinearLayout;
@@ -113,7 +114,6 @@ public class BrowserUnit {
             if (query.startsWith(URL_SCHEME_ABOUT) || query.startsWith(URL_SCHEME_MAIL_TO)) {
                 return query;
             }
-
             if (!query.contains("://")) {
                 query = URL_SCHEME_HTTPS + query;
             }
@@ -121,7 +121,6 @@ public class BrowserUnit {
         } else {
             SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(context);
             String customSearchEngine = sp.getString("sp_search_engine_custom", "");
-
             query = query.replace("&", "%26");
 
             //Override UserAgent if own UserAgent is defined
@@ -172,22 +171,6 @@ public class BrowserUnit {
         action.close();
     }
 
-    public static void clearCache(Context context) {
-        try {
-            File dir = context.getCacheDir();
-            if (dir != null && dir.isDirectory()) deleteDir(dir);
-        } catch (Exception exception) {
-            Log.w("browser", "Error clearing cache");
-        }
-    }
-
-    public static void clearCookie() {
-        CookieManager cookieManager = CookieManager.getInstance();
-        cookieManager.flush();
-        cookieManager.removeAllCookies(value -> {
-        });
-    }
-
     public static void clearBookmark(Context context) {
         RecordAction action = new RecordAction(context);
         action.open(true);
@@ -207,6 +190,76 @@ public class BrowserUnit {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N_MR1) {
             ShortcutManager shortcutManager = context.getSystemService(ShortcutManager.class);
             Objects.requireNonNull(shortcutManager).removeAllDynamicShortcuts();
+        }
+    }
+
+    public static void  clearBrowserData(Context context) {
+        SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(context);
+        boolean clearCache = sp.getBoolean("sp_clear_cache", false);
+        boolean clearCookie = sp.getBoolean("sp_clear_cookie", false);
+        boolean clearHistory = sp.getBoolean("sp_clear_history", false);
+        boolean clearIndexedDB = sp.getBoolean("sp_clearIndexedDB", false);
+        boolean clearDB = sp.getBoolean("sp_deleteDatabase", false);
+        if (clearHistory) BrowserUnit.clearHistory(context);
+        if (clearCache)  {
+            try {
+                File dir = context.getCacheDir();
+                if (dir != null && dir.isDirectory()) deleteDir(dir);
+            } catch (Exception exception) {
+                Log.w("browser", "Error clearing cache");
+            }
+        }
+        if (clearCookie) {
+            CookieManager cookieManager = CookieManager.getInstance();
+            cookieManager.flush();
+            cookieManager.removeAllCookies(value -> {
+            });
+        }
+        if (clearDB) {
+            context.deleteDatabase("Ninja4.db");
+            context.deleteDatabase("faviconView.db");
+            sp.edit().putInt("restart_changed", 1).apply();
+        }
+        if (clearIndexedDB) {
+            File data = Environment.getDataDirectory();
+            String blob_storage = "//data//" + context.getPackageName() + "//app_webview//" + "//Default//" + "//blob_storage";
+            String databases = "//data//" + context.getPackageName() + "//app_webview//" + "//Default//" + "//databases";
+            String indexedDB = "//data//" + context.getPackageName() + "//app_webview//" + "//Default//" + "//IndexedDB";
+            String localStorage = "//data//" + context.getPackageName() + "//app_webview//" + "//Default//" + "//Local Storage";
+            String serviceWorker = "//data//" + context.getPackageName() + "//app_webview//" + "//Default//" + "//Service Worker";
+            String sessionStorage = "//data//" + context.getPackageName() + "//app_webview//" + "//Default//" + "//Session Storage";
+            String shared_proto_db = "//data//" + context.getPackageName() + "//app_webview//" + "//Default//" + "//shared_proto_db";
+            String VideoDecodeStats = "//data//" + context.getPackageName() + "//app_webview//" + "//Default//" + "//VideoDecodeStats";
+            String QuotaManager = "//data//" + context.getPackageName() + "//app_webview//" + "//Default//" + "//QuotaManager";
+            String QuotaManager_journal = "//data//" + context.getPackageName() + "//app_webview//" + "//Default//" + "//QuotaManager-journal";
+            String webData = "//data//" + context.getPackageName() + "//app_webview//" + "//Default//" + "//Web Data";
+            String WebDataJournal = "//data//" + context.getPackageName() + "//app_webview//" + "//Default//" + "//Web Data-journal";
+            final File blob_storage_file = new File(data, blob_storage);
+            final File databases_file = new File(data, databases);
+            final File indexedDB_file = new File(data, indexedDB);
+            final File localStorage_file = new File(data, localStorage);
+            final File serviceWorker_file = new File(data, serviceWorker);
+            final File sessionStorage_file = new File(data, sessionStorage);
+            final File shared_proto_db_file = new File(data, shared_proto_db);
+            final File VideoDecodeStats_file = new File(data, VideoDecodeStats);
+            final File QuotaManager_file = new File(data, QuotaManager);
+            final File QuotaManager_journal_file = new File(data, QuotaManager_journal);
+            final File webData_file = new File(data, webData);
+            final File WebDataJournal_file = new File(data, WebDataJournal);
+
+            BrowserUnit.deleteDir(blob_storage_file);
+            BrowserUnit.deleteDir(databases_file);
+            BrowserUnit.deleteDir(indexedDB_file);
+            BrowserUnit.deleteDir(localStorage_file);
+            BrowserUnit.deleteDir(serviceWorker_file);
+            BrowserUnit.deleteDir(sessionStorage_file);
+            BrowserUnit.deleteDir(shared_proto_db_file);
+            BrowserUnit.deleteDir(VideoDecodeStats_file);
+            BrowserUnit.deleteDir(QuotaManager_file);
+            BrowserUnit.deleteDir(QuotaManager_journal_file);
+            BrowserUnit.deleteDir(webData_file);
+            BrowserUnit.deleteDir(WebDataJournal_file);
+            WebStorage.getInstance().deleteAllData();
         }
     }
 
@@ -366,50 +419,6 @@ public class BrowserUnit {
         }
         activity.moveTaskToBack(true);
     }
-
-    public static void clearIndexedDB(Context context) {
-        File data = Environment.getDataDirectory();
-
-        String blob_storage = "//data//" + context.getPackageName() + "//app_webview//" + "//Default//" + "//blob_storage";
-        String databases = "//data//" + context.getPackageName() + "//app_webview//" + "//Default//" + "//databases";
-        String indexedDB = "//data//" + context.getPackageName() + "//app_webview//" + "//Default//" + "//IndexedDB";
-        String localStorage = "//data//" + context.getPackageName() + "//app_webview//" + "//Default//" + "//Local Storage";
-        String serviceWorker = "//data//" + context.getPackageName() + "//app_webview//" + "//Default//" + "//Service Worker";
-        String sessionStorage = "//data//" + context.getPackageName() + "//app_webview//" + "//Default//" + "//Session Storage";
-        String shared_proto_db = "//data//" + context.getPackageName() + "//app_webview//" + "//Default//" + "//shared_proto_db";
-        String VideoDecodeStats = "//data//" + context.getPackageName() + "//app_webview//" + "//Default//" + "//VideoDecodeStats";
-        String QuotaManager = "//data//" + context.getPackageName() + "//app_webview//" + "//Default//" + "//QuotaManager";
-        String QuotaManager_journal = "//data//" + context.getPackageName() + "//app_webview//" + "//Default//" + "//QuotaManager-journal";
-        String webData = "//data//" + context.getPackageName() + "//app_webview//" + "//Default//" + "//Web Data";
-        String WebDataJournal = "//data//" + context.getPackageName() + "//app_webview//" + "//Default//" + "//Web Data-journal";
-
-        final File blob_storage_file = new File(data, blob_storage);
-        final File databases_file = new File(data, databases);
-        final File indexedDB_file = new File(data, indexedDB);
-        final File localStorage_file = new File(data, localStorage);
-        final File serviceWorker_file = new File(data, serviceWorker);
-        final File sessionStorage_file = new File(data, sessionStorage);
-        final File shared_proto_db_file = new File(data, shared_proto_db);
-        final File VideoDecodeStats_file = new File(data, VideoDecodeStats);
-        final File QuotaManager_file = new File(data, QuotaManager);
-        final File QuotaManager_journal_file = new File(data, QuotaManager_journal);
-        final File webData_file = new File(data, webData);
-        final File WebDataJournal_file = new File(data, WebDataJournal);
-
-        BrowserUnit.deleteDir(blob_storage_file);
-        BrowserUnit.deleteDir(databases_file);
-        BrowserUnit.deleteDir(indexedDB_file);
-        BrowserUnit.deleteDir(localStorage_file);
-        BrowserUnit.deleteDir(serviceWorker_file);
-        BrowserUnit.deleteDir(sessionStorage_file);
-        BrowserUnit.deleteDir(shared_proto_db_file);
-        BrowserUnit.deleteDir(VideoDecodeStats_file);
-        BrowserUnit.deleteDir(QuotaManager_file);
-        BrowserUnit.deleteDir(QuotaManager_journal_file);
-        BrowserUnit.deleteDir(webData_file);
-        BrowserUnit.deleteDir(WebDataJournal_file);
-    }
-
     public static boolean deleteDir(File dir) {
         if (dir != null && dir.isDirectory()) {
             String[] children = dir.list();

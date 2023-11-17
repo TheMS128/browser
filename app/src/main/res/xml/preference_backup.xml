@@ -17,31 +17,37 @@
     <SwitchPreferenceCompat
         android:defaultValue="true"
         android:key="settings"
-        android:summary="@string/setting_label" />
+        android:summary="@string/setting_label"
+        android:icon="@drawable/icon_settings" />
+
+
+    <SwitchPreferenceCompat
+        android:defaultValue="true"
+        android:key="java"
+        android:summary="@string/setting_title_profiles_trustedList"
+        android:icon="@drawable/icon_profile_trusted" />
+
+    <SwitchPreferenceCompat
+        android:defaultValue="true"
+        android:key="dom"
+        android:summary="@string/setting_title_profiles_standardList"
+        android:icon="@drawable/icon_profile_standard" />
+
+    <SwitchPreferenceCompat
+        android:defaultValue="true"
+        android:key="cookie"
+        android:summary="@string/setting_title_profiles_protectedList"
+        android:icon="@drawable/icon_profile_protected" />
 
     <SwitchPreferenceCompat
         android:defaultValue="true"
         android:key="bookmark"
-        android:summary="@string/album_title_bookmarks" />
+        android:summary="@string/album_title_bookmarks"
+        android:icon="@drawable/icon_bookmark" />
 
     <SwitchPreferenceCompat
         android:defaultValue="true"
         android:key="bookmark_simple"
         android:summary="@string/album_title_bookmarks_simple" />
-
-    <SwitchPreferenceCompat
-        android:defaultValue="true"
-        android:key="java"
-        android:summary="@string/setting_title_profiles_trustedList" />
-
-    <SwitchPreferenceCompat
-        android:defaultValue="true"
-        android:key="dom"
-        android:summary="@string/setting_title_profiles_standardList" />
-
-    <SwitchPreferenceCompat
-        android:defaultValue="true"
-        android:key="cookie"
-        android:summary="@string/setting_title_profiles_protectedList" />
 
 </PreferenceScreen>

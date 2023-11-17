@@ -1,5 +1,6 @@
-### v 13 "" (WIP)
+### v 13 "Friedrich Hecker" (WIP)
 - switched to Google rounded Material You Icons
+- fix: improvements in backup/restore
 - fix: lint issues
 
 

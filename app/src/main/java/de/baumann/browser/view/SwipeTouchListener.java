@@ -77,13 +77,11 @@ public class SwipeTouchListener implements OnTouchListener {
                         exception.printStackTrace();
                     }
                 }
-                assert e1 != null;
-                assert e2 != null;
             } catch (Exception e) {
                 Log.v(TAG, "Failed to swipe");
             }
 
-
+            assert e2 != null;
             return super.onFling(e1, e2, velocityX, velocityY);
         }
     }

@@ -1,13 +1,11 @@
 package de.baumann.browser.activity;
 
-import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.Window;
 import android.view.WindowManager;
-import android.webkit.WebStorage;
 import android.widget.Button;
 
 import androidx.appcompat.app.AlertDialog;
@@ -15,7 +13,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.app.AppCompatDelegate;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.content.ContextCompat;
-import androidx.preference.PreferenceManager;
 
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 
@@ -56,22 +53,7 @@ public class Settings_Delete extends AppCompatActivity {
             builder.setIcon(R.drawable.icon_delete);
             builder.setTitle(R.string.menu_delete);
             builder.setMessage(R.string.hint_database);
-            builder.setPositiveButton(R.string.app_ok, (dialog, whichButton) -> {
-
-                SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(this);
-                boolean clearCache = sp.getBoolean("sp_clear_cache", false);
-                boolean clearCookie = sp.getBoolean("sp_clear_cookie", false);
-                boolean clearHistory = sp.getBoolean("sp_clear_history", false);
-                boolean clearIndexedDB = sp.getBoolean("sp_clearIndexedDB", false);
-
-                if (clearCache) BrowserUnit.clearCache(this);
-                if (clearCookie) BrowserUnit.clearCookie();
-                if (clearHistory) BrowserUnit.clearHistory(this);
-                if (clearIndexedDB) {
-                    BrowserUnit.clearIndexedDB(this);
-                    WebStorage.getInstance().deleteAllData();
-                }
-            });
+            builder.setPositiveButton(R.string.app_ok, (dialog, whichButton) -> BrowserUnit.clearBrowserData(this));
             builder.setNegativeButton(R.string.app_cancel, (dialog, whichButton) -> dialog.cancel());
             AlertDialog dialog = builder.create();
             dialog.show();

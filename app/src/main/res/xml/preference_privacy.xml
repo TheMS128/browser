@@ -44,7 +44,8 @@
 
     </PreferenceCategory>
 
-    <PreferenceCategory android:title="@string/setting_title_adblock">
+    <PreferenceCategory android:title="@string/setting_title_adblock"
+        android:icon="@drawable/icon_adblock">
 
         <Preference
             android:key="sp_ad_block"
@@ -59,7 +60,8 @@
 
     </PreferenceCategory>
 
-    <PreferenceCategory android:title="@string/privacy_redirect">
+    <PreferenceCategory android:title="@string/privacy_redirect"
+        android:icon="@drawable/icon_redirect">
 
         <de.baumann.browser.preferences.EditTextSwitchPreference
             android:defaultValue="https://yewtu.be/"
@@ -84,7 +86,8 @@
 
     </PreferenceCategory>
 
-    <PreferenceCategory android:title="@string/setting_userScript">
+    <PreferenceCategory android:title="@string/setting_userScript"
+        android:icon="@drawable/icon_java">
 
         <de.baumann.browser.preferences.EditTextSwitchPreference
             android:key="sp_onPageStarted"
