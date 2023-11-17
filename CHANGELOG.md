@@ -1,6 +1,7 @@
 ### v 13 "Friedrich Hecker" (WIP)
 - switched to Google rounded Material You Icons
 - fix: improvements in backup/restore
+- fix: open deepl.com in normal tab
 - fix: lint issues
 
 
