@@ -209,8 +209,6 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
         super.onPause();
     }
 
-    // Overrides
-
     @Override
     public void onSaveInstanceState(Bundle savedInstanceState) {
         // Save opened tabs
@@ -2046,6 +2044,7 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
         View dialogView = View.inflate(context, R.layout.dialog_menu, null);
         builder.setView(dialogView);
         builder.setTitle(R.string.menu_filter);
+        builder.setIcon(R.drawable.icon_bookmark);
         AlertDialog dialog = builder.create();
         dialog.show();
         HelperUnit.setupDialog(context, dialog);
