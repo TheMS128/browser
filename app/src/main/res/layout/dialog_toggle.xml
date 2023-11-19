@@ -208,7 +208,7 @@
         </RelativeLayout>
 
         <LinearLayout
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:layout_marginBottom="5dp"
@@ -217,54 +217,50 @@
             <com.google.android.material.chip.Chip
                 android:id="@+id/chip_profile_changed"
                 style="@style/Widget.Material3.Chip.Suggestion"
-                android:layout_width="0dp"
+                android:layout_width="wrap_content"
                 app:chipIcon="@drawable/icon_profile_changed"
                 app:chipIconEnabled="true"
                 app:textEndPadding="0dp"
                 app:textStartPadding="0dp"
                 android:layout_height="wrap_content"
                 app:chipBackgroundColor="@drawable/bg_chip_state_list"
-                app:chipIconTint="@drawable/bg_chip_icon_state"
-                android:layout_weight="1" />
+                app:chipIconTint="@drawable/bg_chip_icon_state" />
 
             <com.google.android.material.chip.Chip
                 android:id="@+id/chip_profile_trusted"
                 style="@style/Widget.Material3.Chip.Suggestion"
-                android:layout_width="0dp"
+                android:layout_width="wrap_content"
                 app:chipIcon="@drawable/icon_profile_trusted"
                 app:chipIconEnabled="true"
                 app:textEndPadding="0dp"
                 app:textStartPadding="0dp"
                 android:layout_height="wrap_content"
                 app:chipBackgroundColor="@drawable/bg_chip_state_list"
-                app:chipIconTint="@drawable/bg_chip_icon_state"
-                android:layout_weight="1" />
+                app:chipIconTint="@drawable/bg_chip_icon_state" />
 
             <com.google.android.material.chip.Chip
                 android:id="@+id/chip_profile_standard"
                 style="@style/Widget.Material3.Chip.Suggestion"
-                android:layout_width="0dp"
+                android:layout_width="wrap_content"
                 app:chipIcon="@drawable/icon_profile_standard"
                 app:chipIconEnabled="true"
                 app:textEndPadding="0dp"
                 app:textStartPadding="0dp"
                 android:layout_height="wrap_content"
                 app:chipBackgroundColor="@drawable/bg_chip_state_list"
-                app:chipIconTint="@drawable/bg_chip_icon_state"
-                android:layout_weight="1" />
+                app:chipIconTint="@drawable/bg_chip_icon_state" />
 
             <com.google.android.material.chip.Chip
                 android:id="@+id/chip_profile_protected"
                 style="@style/Widget.Material3.Chip.Suggestion"
-                android:layout_width="0dp"
+                android:layout_width="wrap_content"
                 app:chipIcon="@drawable/icon_profile_protected"
                 app:chipIconEnabled="true"
                 app:textEndPadding="0dp"
                 app:textStartPadding="0dp"
                 android:layout_height="wrap_content"
                 app:chipBackgroundColor="@drawable/bg_chip_state_list"
-                app:chipIconTint="@drawable/bg_chip_icon_state"
-                android:layout_weight="1" />
+                app:chipIconTint="@drawable/bg_chip_icon_state" />
 
         </LinearLayout>
 
