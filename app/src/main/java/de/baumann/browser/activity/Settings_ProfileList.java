@@ -39,7 +39,7 @@ import de.baumann.browser.unit.RecordUnit;
 import de.baumann.browser.view.NinjaToast;
 import de.baumann.browser.view.AdapterProfileList;
 
-public class ProfilesList extends AppCompatActivity {
+public class Settings_ProfileList extends AppCompatActivity {
 
     private AdapterProfileList adapter;
     private List<String> list;
@@ -117,7 +117,7 @@ public class ProfilesList extends AppCompatActivity {
                 MaterialCardView cardView = v.findViewById(R.id.cardView);
                 cardView.setVisibility(View.GONE);
                 deleteEntry.setOnClickListener(v1 -> {
-                    MaterialAlertDialogBuilder builder = new MaterialAlertDialogBuilder(ProfilesList.this);
+                    MaterialAlertDialogBuilder builder = new MaterialAlertDialogBuilder(Settings_ProfileList.this);
                     builder.setIcon(R.drawable.icon_delete);
                     builder.setTitle(R.string.menu_delete);
                     builder.setMessage(R.string.hint_database);
@@ -135,12 +135,12 @@ public class ProfilesList extends AppCompatActivity {
                         }
                         list.remove(position);
                         notifyDataSetChanged();
-                        NinjaToast.show(ProfilesList.this, R.string.toast_delete_successful);
+                        NinjaToast.show(Settings_ProfileList.this, R.string.toast_delete_successful);
                     });
                     builder.setNegativeButton(R.string.app_cancel, (dialog, whichButton) -> dialog.cancel());
                     AlertDialog dialog = builder.create();
                     dialog.show();
-                    HelperUnit.setupDialog(ProfilesList.this, dialog);
+                    HelperUnit.setupDialog(Settings_ProfileList.this, dialog);
                 });
                 return v;
             }
@@ -153,14 +153,14 @@ public class ProfilesList extends AppCompatActivity {
             EditText editText = findViewById(R.id.whitelist_edit);
             String domain = editText.getText().toString().trim();
             if (domain.isEmpty()) {
-                NinjaToast.show(ProfilesList.this, R.string.toast_input_empty);
+                NinjaToast.show(Settings_ProfileList.this, R.string.toast_input_empty);
             } else if (!BrowserUnit.isURL(domain)) {
-                NinjaToast.show(ProfilesList.this, R.string.toast_invalid_domain);
+                NinjaToast.show(Settings_ProfileList.this, R.string.toast_invalid_domain);
             } else {
-                RecordAction action1 = new RecordAction(ProfilesList.this);
+                RecordAction action1 = new RecordAction(Settings_ProfileList.this);
                 action1.open(true);
                 if (action1.checkDomain(domain, RecordUnit.TABLE_PROTECTED)) {
-                    NinjaToast.show(ProfilesList.this, R.string.toast_domain_already_exists);
+                    NinjaToast.show(Settings_ProfileList.this, R.string.toast_domain_already_exists);
                 } else {
                     switch (listToLoad) {
                         case "protected":
@@ -175,7 +175,7 @@ public class ProfilesList extends AppCompatActivity {
                     }
                     list.add(0, domain.trim());
                     adapter.notifyDataSetChanged();
-                    NinjaToast.show(ProfilesList.this, R.string.toast_add_whitelist_successful);
+                    NinjaToast.show(Settings_ProfileList.this, R.string.toast_add_whitelist_successful);
                 }
                 action1.close();
             }

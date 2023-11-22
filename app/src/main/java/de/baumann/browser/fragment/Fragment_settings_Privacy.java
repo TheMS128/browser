@@ -24,7 +24,7 @@ import java.util.List;
 import java.util.Objects;
 
 import de.baumann.browser.R;
-import de.baumann.browser.activity.ProfilesList;
+import de.baumann.browser.activity.Settings_ProfileList;
 import de.baumann.browser.activity.Settings_Profile;
 import de.baumann.browser.browser.AdBlock;
 import de.baumann.browser.dialogs.CustomRedirectsDialog;
@@ -101,7 +101,7 @@ public class Fragment_settings_Privacy extends BasePreferenceFragment implements
         assert edit_trusted != null;
         edit_trusted.setOnPreferenceClickListener(preference -> {
             sp.edit().putString("listToLoad", "trusted").apply();
-            Intent intent = new Intent(getActivity(), ProfilesList.class);
+            Intent intent = new Intent(getActivity(), Settings_ProfileList.class);
             requireActivity().startActivity(intent);
             return false;
         });
@@ -109,7 +109,7 @@ public class Fragment_settings_Privacy extends BasePreferenceFragment implements
         assert edit_standard != null;
         edit_standard.setOnPreferenceClickListener(preference -> {
             sp.edit().putString("listToLoad", "standard").apply();
-            Intent intent = new Intent(getActivity(), ProfilesList.class);
+            Intent intent = new Intent(getActivity(), Settings_ProfileList.class);
             requireActivity().startActivity(intent);
             return false;
         });
@@ -117,7 +117,7 @@ public class Fragment_settings_Privacy extends BasePreferenceFragment implements
         assert edit_protected != null;
         edit_protected.setOnPreferenceClickListener(preference -> {
             sp.edit().putString("listToLoad", "protected").apply();
-            Intent intent = new Intent(getActivity(), ProfilesList.class);
+            Intent intent = new Intent(getActivity(), Settings_ProfileList.class);
             requireActivity().startActivity(intent);
             return false;
         });

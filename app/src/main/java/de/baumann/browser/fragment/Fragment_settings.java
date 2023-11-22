@@ -18,7 +18,7 @@ import de.baumann.browser.activity.Settings_Delete;
 import de.baumann.browser.activity.Settings_Filter;
 import de.baumann.browser.activity.Settings_General;
 import de.baumann.browser.activity.Settings_Gesture;
-import de.baumann.browser.activity.Settings_PrivacyActivity;
+import de.baumann.browser.activity.Settings_Privacy;
 import de.baumann.browser.activity.Settings_UI;
 import de.baumann.browser.preferences.BasePreferenceFragment;
 
@@ -67,7 +67,7 @@ public class Fragment_settings extends BasePreferenceFragment implements SharedP
         Preference settings_start = findPreference("settings_start");
         assert settings_start != null;
         settings_start.setOnPreferenceClickListener(preference -> {
-            Intent intent = new Intent(getActivity(), Settings_PrivacyActivity.class);
+            Intent intent = new Intent(getActivity(), Settings_Privacy.class);
             requireActivity().startActivity(intent);
             return false;
         });

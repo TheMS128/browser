@@ -5,6 +5,7 @@
 - fix: open deepl.com in normal tab
 - fix: lint issues
 - fix: theme issues
+- fix: WIKI-links
 - new: backup on exit
 - new: fast search on websites (long press search icon in toolbar)
 

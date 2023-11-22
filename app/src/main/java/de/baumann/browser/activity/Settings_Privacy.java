@@ -19,7 +19,7 @@ import de.baumann.browser.fragment.Fragment_settings_Privacy;
 import de.baumann.browser.unit.BrowserUnit;
 import de.baumann.browser.unit.HelperUnit;
 
-public class Settings_PrivacyActivity extends AppCompatActivity {
+public class Settings_Privacy extends AppCompatActivity {
 
     @Override
     public void onCreate(Bundle savedInstanceState) {

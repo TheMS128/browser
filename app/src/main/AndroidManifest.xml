@@ -130,7 +130,7 @@
             android:theme="@style/AppTheme_day" />
 
         <activity
-            android:name="de.baumann.browser.activity.ProfilesList"
+            android:name="de.baumann.browser.activity.Settings_ProfileList"
             android:label="@string/setting_title_profiles_protectedList"
             android:theme="@style/AppTheme_day" />
 
@@ -145,7 +145,7 @@
             android:theme="@style/AppTheme_day" />
 
         <activity
-            android:name="de.baumann.browser.activity.Settings_PrivacyActivity"
+            android:name="de.baumann.browser.activity.Settings_Privacy"
             android:label="@string/setting_title_profiles_privacy"
             android:theme="@style/AppTheme_day" />
 
