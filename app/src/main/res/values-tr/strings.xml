@@ -98,6 +98,7 @@
     <string name="setting_title_profiles_standard">Standart</string>
     <string name="setting_title_profiles_protected">Korunulan</string>
     <string name="setting_title_profiles_changed">Özel</string>
+    <string name="setting_title_profiles_active">Profil</string>
     <string name="setting_title_profiles_dataUsage">Veri kullanımı</string>
     <string name="setting_title_profiles_privacy">Gizlilik</string>
     <string name="setting_title_profiles_Security">Güvenlik</string>
@@ -112,6 +113,7 @@
     <string name="setting_title_adblockHost">Engellenen içerik</string>
     <string name="setting_title_location">Konum</string>
     <string name="setting_title_history">Geçmiş</string>
+    <string name="setting_title_autofill">Otomatik doldur</string>
     <string name="setting_summary_autofill">Android Nougat ve altı sürümler için form verilerinin kaydedilmesini, Android Oreo ve üstü sürümler içinse otomatik doldurma hizmetini etkinleştirir.</string>
     <!-- browser clear -->
     <string name="data_summary">Tüm dosyalar cihazın \"Documents/browser_backup/\" dizinine aktarılacaktır.</string>
@@ -128,6 +130,7 @@
     <string name="setting_title_data">Yedekle</string>
     <string name="setting_filter">Yer işareti filtresi</string>
     <string name="setting_title_fav">Başlangıç sayfası</string>
+    <string name="setting_title_reload">Yenilemek için aşağı kaydır</string>
     <string name="setting_title_searchEngine">Özel arama motoru</string>
     <string name="setting_title_userAgent">Özel kullanıcı aracısı</string>
     <string name="setting_title_clipboard_record">Pano Kayıtları</string>
@@ -162,6 +165,7 @@
     <string name="setting_gesture_10">Sekmeyi kapat</string>
     <string name="setting_gesture_11">Hızlı geçişi göster</string>
     <!-- Data -->
+    <string name="title_appData">Uygulama verileri</string>
     <string name="hint_database">Bu işlem mevcut verileri silecektir. Devam edilsin mi?</string>
     <string name="settings_data_restore">Geri yükle</string>
     <!-- Others setting -->
@@ -182,6 +186,7 @@
     <string name="dialog_postOnWebsiteHint">Açılacak URL\'yi seçin. Bir sonraki kullanım için kaydedilecektir.</string>
     <string name="dialog_postOnWebsite">Web sitesinde yayınla</string>
     <!-- Whitelist -->
+    <string name="whitelist_menu_clear">Temizle</string>
     <string name="whitelist_edit_hint">Alan adı</string>
     <string name="whitelist_add">Ekle</string>
     <string name="menu_desktopView">Masaüstü görünümü</string>

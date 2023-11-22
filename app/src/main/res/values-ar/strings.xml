@@ -82,9 +82,9 @@
     <string name="privacy_redirect">أعدْ التوجيه</string>
     <string name="privacy_redirect_twitter">تويتر</string>
     <string name="privacy_redirect_youTube">يوتيوب</string>
-    <string name="custom_redirects">Custom redirects</string>
+    <string name="custom_redirects">عمليات إعادة التوجيه المخصصة</string>
     <string name="source">Source</string>
-    <string name="target">Target</string>
+    <string name="target">هدف</string>
     <string name="setting_title_save_data">اطلب \'حفظ البيانات\'</string>
     <string name="setting_title_profiles">ملفات شخصية</string>
     <string name="setting_title_profiles_edit">حرّر الملفات الشخصية</string>
@@ -96,6 +96,7 @@
     <string name="setting_title_profiles_standard">قياسي</string>
     <string name="setting_title_profiles_protected">محمي</string>
     <string name="setting_title_profiles_changed">مخصص</string>
+    <string name="setting_title_profiles_active">ملف شخصي</string>
     <string name="setting_title_profiles_dataUsage">استخدام البيانات</string>
     <string name="setting_title_profiles_privacy">الخصوصية</string>
     <string name="setting_title_profiles_Security">الأمان</string>
@@ -110,6 +111,7 @@
     <string name="setting_title_adblockHost">المحتوى المحظور</string>
     <string name="setting_title_location">الموقع</string>
     <string name="setting_title_history">التأريخ</string>
+    <string name="setting_title_autofill">إستمارة المعلومات</string>
     <string name="setting_summary_autofill">تمكين حفظ بيانات النموذج (أندرويد نوجات وما دونها) أو خدمة التعبئة التلقائية (أندرويد أوريو وما فوق).</string>
     <!-- browser clear -->
     <string name="data_summary">سيتم تصدير جميع الملفات إلى دليل \"Documents / browser_backup /\" لبطاقة SD الخاصة بك.</string>
@@ -126,9 +128,10 @@
     <string name="setting_title_data">النسخ الاحتياطي</string>
     <string name="setting_filter">مرشح العلامات</string>
     <string name="setting_title_fav">المفضلة</string>
+    <string name="setting_title_reload">اسحب لأسفل لإعادة التحميل</string>
     <string name="setting_title_searchEngine">محرك بحث مخصص</string>
     <string name="setting_title_userAgent">وكيل مستخدم مخصص</string>
-    <string name="setting_title_clipboard_record">Clipboard record</string>
+    <string name="setting_title_clipboard_record">سجل الحافظة</string>
     <string name="setting_title_fingerPrint">حماية بصمة الإصبع</string>
     <string name="setting_theme">السمة</string>
     <string name="setting_theme_system">نظام</string>
@@ -160,6 +163,7 @@
     <string name="setting_gesture_10">أغلق التبويب</string>
     <string name="setting_gesture_11">إظهار مفتاح الجلب</string>
     <!-- Data -->
+    <string name="title_appData">بيانات التطبيق</string>
     <string name="hint_database">هذا سيحذف البيانات الحالية. أواصل؟</string>
     <string name="settings_data_restore">يعيد</string>
     <!-- Others setting -->
@@ -180,6 +184,7 @@
     <string name="dialog_postOnWebsiteHint">الرابط للفتح. سيتم حفظه للاستخدام التالي.</string>
     <string name="dialog_postOnWebsite">نشر على الموقع</string>
     <!-- Whitelist -->
+    <string name="whitelist_menu_clear">إفراغ</string>
     <string name="whitelist_edit_hint">النطاق</string>
     <string name="whitelist_add">أضف</string>
     <string name="menu_desktopView">عرض سطح المكتب</string>

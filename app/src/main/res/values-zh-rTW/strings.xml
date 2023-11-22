@@ -89,6 +89,7 @@
     <string name="setting_title_profiles_standard">标准</string>
     <string name="setting_title_profiles_protected">受保护的</string>
     <string name="setting_title_profiles_changed">定制</string>
+    <string name="setting_title_profiles_active">形象</string>
     <string name="setting_title_profiles_dataUsage">数据使用情况</string>
     <string name="setting_title_profiles_privacy">隐私</string>
     <string name="setting_title_profiles_Security">安全问题</string>
@@ -103,6 +104,7 @@
     <string name="setting_title_adblockHost">此內容已被封鎖</string>
     <string name="setting_title_location">位置</string>
     <string name="setting_title_history">歷史紀錄</string>
+    <string name="setting_title_autofill">表單資料</string>
     <string name="setting_summary_autofill">啟用表單數據保存（Android Nougat 及以下）或自動填充服務（Android Oreo 及以上）。</string>
     <!-- browser clear -->
     <string name="data_summary">所有文件都將導出到 SD 卡的“Documents/browser_backup/”目錄。</string>
@@ -119,6 +121,7 @@
     <string name="setting_title_data">備份</string>
     <string name="setting_filter">書籤分類</string>
     <string name="setting_title_fav">首頁</string>
+    <string name="setting_title_reload">向下滑動以重新加載</string>
     <string name="setting_title_searchEngine">自訂搜尋引擎</string>
     <string name="setting_title_userAgent">使用自訂的使用者代理</string>
     <string name="setting_title_clipboard_record">剪切板記錄</string>
@@ -153,6 +156,7 @@
     <string name="setting_gesture_10">關閉分頁</string>
     <string name="setting_gesture_11">顯示快速開關</string>
     <!-- Data -->
+    <string name="title_appData">應用程式資料</string>
     <string name="hint_database">這將會刪除所有資料。仍要繼續？</string>
     <string name="settings_data_restore">恢復</string>
     <!-- Others setting -->
@@ -169,10 +173,11 @@
     <string name="toast_quit_TAB">你想关闭TAB吗？</string>
     <string name="toast_downloadComplete">下載完成。是否開啟檔案管理器？</string>
     <string name="toast_unsecured">此網站使用不安全的連線（http），是否嘗試使用安全連線（https）？</string>
-    <string name="toast_backup">是否備份資料？舊的資料將被覆蓋！</string>
+    <string name="toast_backup">是否備份資料？舊的資料將被覆蓋 .</string>
     <string name="dialog_postOnWebsiteHint">要打開的網址。 將被保存以備下次使用。</string>
     <string name="dialog_postOnWebsite">在網站上發布</string>
     <!-- Whitelist -->
+    <string name="whitelist_menu_clear">清除</string>
     <string name="whitelist_edit_hint">域名</string>
     <string name="whitelist_add">新增</string>
     <string name="menu_desktopView">電腦版網站</string>

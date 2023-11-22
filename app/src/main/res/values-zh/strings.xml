@@ -98,6 +98,7 @@
     <string name="setting_title_profiles_standard">标准</string>
     <string name="setting_title_profiles_protected">受保护</string>
     <string name="setting_title_profiles_changed">自定义</string>
+    <string name="setting_title_profiles_active">配置文件</string>
     <string name="setting_title_profiles_dataUsage">数据使用量</string>
     <string name="setting_title_profiles_privacy">隐私</string>
     <string name="setting_title_profiles_Security">安全性</string>
@@ -112,6 +113,7 @@
     <string name="setting_title_adblockHost">屏蔽的内容</string>
     <string name="setting_title_location">地理位置</string>
     <string name="setting_title_history">历史记录</string>
+    <string name="setting_title_autofill">表单数据</string>
     <string name="setting_summary_autofill">启用表单数据保存（Android 7及以下版本）或自动填充服务（Android 8及以上版本）。</string>
     <!-- browser clear -->
     <string name="data_summary">所有文件将导出到您SD卡的“Documents/browser_backup/”目录。</string>
@@ -128,6 +130,7 @@
     <string name="setting_title_data">备份</string>
     <string name="setting_filter">书签过滤器</string>
     <string name="setting_title_fav">起始页设置</string>
+    <string name="setting_title_reload">向下滑动重新加载</string>
     <string name="setting_title_searchEngine">自定义搜索引擎</string>
     <string name="setting_title_userAgent">自定义User Agent</string>
     <string name="setting_title_clipboard_record">剪切板记录</string>
@@ -162,6 +165,7 @@
     <string name="setting_gesture_10">关闭标签页</string>
     <string name="setting_gesture_11">显示快速切换</string>
     <!-- Data -->
+    <string name="title_appData">应用数据</string>
     <string name="hint_database">这将删除当前数据。是否继续？</string>
     <string name="settings_data_restore">还原</string>
     <!-- Others setting -->
@@ -182,6 +186,7 @@
     <string name="dialog_postOnWebsiteHint">打开的网址。将被保存起来供下次使用。</string>
     <string name="dialog_postOnWebsite">在网站上发布</string>
     <!-- Whitelist -->
+    <string name="whitelist_menu_clear">清除</string>
     <string name="whitelist_edit_hint">域名</string>
     <string name="whitelist_add">添加</string>
     <string name="menu_desktopView">桌面端网页</string>

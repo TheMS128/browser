@@ -94,6 +94,7 @@
     <string name="setting_title_profiles_standard">Standardni</string>
     <string name="setting_title_profiles_protected">Zaštićeni</string>
     <string name="setting_title_profiles_changed">Prilagođeni</string>
+    <string name="setting_title_profiles_active">Profil</string>
     <string name="setting_title_profiles_dataUsage">Korištenje dodataka</string>
     <string name="setting_title_profiles_privacy">Privatnost</string>
     <string name="setting_title_profiles_Security">Sigurnost</string>
@@ -108,6 +109,7 @@
     <string name="setting_title_adblockHost">Blokirani sadržaji</string>
     <string name="setting_title_location">Lokacija</string>
     <string name="setting_title_history">Povijest</string>
+    <string name="setting_title_autofill">Formularni Podaci</string>
     <string name="setting_summary_autofill">Omogućite spašavanje formularskih podataka (Android Nougat i ispod) ili servis za automatsko ispunjavanje (Android Oreo i iznad).</string>
     <!-- browser clear -->
     <string name="data_summary">Sve datoteke će biti izvezene u direktorij \"Documents/browser_backup/\" na vašoj SD kartici.</string>
@@ -124,6 +126,7 @@
     <string name="setting_title_data">Sigurnosna kopija</string>
     <string name="setting_filter">Filter za bilješke</string>
     <string name="setting_title_fav">Omiljena</string>
+    <string name="setting_title_reload">Prevucite prema dolje za ponovno učitavanje</string>
     <string name="setting_title_searchEngine">Prilagođeni pretraživački stroj</string>
     <string name="setting_title_userAgent">Prilagođeni korisnički agent</string>
     <string name="setting_title_fingerPrint">Zaštita otiska prsta</string>
@@ -157,6 +160,7 @@
     <string name="setting_gesture_10">Zatvorite karticu</string>
     <string name="setting_gesture_11">Prikaži brzi prekidač</string>
     <!-- Data -->
+    <string name="title_appData">Podaci aplikacije</string>
     <string name="hint_database">Ovo će izbrisati trenutne podatke. Nastaviti?</string>
     <string name="settings_data_restore">Obnoviti</string>
     <!-- Others setting -->
@@ -177,6 +181,7 @@
     <string name="dialog_postOnWebsiteHint">URL za otvaranje. Biće sačuvan za sljedeću upotrebu.</string>
     <string name="dialog_postOnWebsite">Objavite na web stranici</string>
     <!-- Whitelist -->
+    <string name="whitelist_menu_clear">Očistiti</string>
     <string name="whitelist_edit_hint">Domena</string>
     <string name="whitelist_add">Dodati</string>
     <string name="menu_desktopView">Veliki prikaz</string>

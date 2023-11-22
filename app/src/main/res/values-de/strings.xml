@@ -98,6 +98,7 @@
     <string name="setting_title_profiles_standard">Standard</string>
     <string name="setting_title_profiles_protected">Geschützt</string>
     <string name="setting_title_profiles_changed">Eigenes Profil</string>
+    <string name="setting_title_profiles_active">Pofil</string>
     <string name="setting_title_profiles_dataUsage">Datennutzung</string>
     <string name="setting_title_profiles_privacy">Privatsphäre</string>
     <string name="setting_title_profiles_Security">Sicherheit</string>
@@ -112,6 +113,7 @@
     <string name="setting_title_adblockHost">Blockierter Inhalt</string>
     <string name="setting_title_location">Standortbestimmung</string>
     <string name="setting_title_history">Verlauf</string>
+    <string name="setting_title_autofill">Formulardaten</string>
     <string name="setting_summary_autofill">Aktiviere das Speichern von Formulardaten (Android Nougat und älter) oder den Autofill-Service (Android Oreo und neuer).</string>
     <!-- browser clear -->
     <string name="data_summary">Alle Dateien werden in das Verzeichnis \"Documents/browser_backup/\" Ihrer SD-Karte exportiert.</string>
@@ -121,13 +123,14 @@
     <string name="clear_title_history">Verlauf löschen</string>
     <string name="localData">Auf Gerät gespeicherte Daten löschen</string>
     <string name="clear_title_deleteDatabase">Datenbank löschen</string>
-    <string name="clear_summary_deleteDatabase">Die gesamte Datenbank löschen (Startseite, Lesezeichen, Verlauf und alle Ausnahmen).</string>
+    <string name="clear_summary_deleteDatabase">Die gesamte Datenbank löschen (Startseite, Lesezeichen, Verlauf und Domain-Listen).</string>
     <!-- App setting -->
     <string name="setting_title_app">App-Einstellungen</string>
     <string name="setting_title_ui">Verhalten/Oberfläche</string>
     <string name="setting_title_data">Sicherung</string>
     <string name="setting_filter">Lesezeichen-Filter</string>
     <string name="setting_title_fav">Startseite</string>
+    <string name="setting_title_reload">Nach unten ziehen, um neu zu laden</string>
     <string name="setting_title_searchEngine">Nutzerdefinierte Suchmaschine</string>
     <string name="setting_title_userAgent">Eigener Useragent</string>
     <string name="setting_title_clipboard_record">Zwischenablage</string>
@@ -162,6 +165,7 @@
     <string name="setting_gesture_10">Tab schließen</string>
     <string name="setting_gesture_11">Schnelleinstellungen</string>
     <!-- Data -->
+    <string name="title_appData">App-Daten</string>
     <string name="hint_database">Aktuelle Daten werden gelöscht. Fortfahren?</string>
     <string name="settings_data_restore">Wiederherstellen</string>
     <!-- Others setting -->
@@ -178,10 +182,11 @@
     <string name="toast_quit_TAB">Tab schließen?</string>
     <string name="toast_downloadComplete">Download vollständig. Dateimanager öffnen?</string>
     <string name="toast_unsecured">Diese Website benutzt eine ungesicherte Verbindung (\"http\"). Möchtest du eine sichere Verbindung (\"https\") versuchen?</string>
-    <string name="toast_backup">Daten sichern? Das überschreibt die alte Sicherung.</string>
+    <string name="toast_backup">Daten sichern\? Das überschreibt die bestehende Sicherung.</string>
     <string name="dialog_postOnWebsiteHint">Zu öffnende URL. Wird für die nächste Verwendung gespeichert.</string>
     <string name="dialog_postOnWebsite">Auf Webseite posten</string>
     <!-- Whitelist -->
+    <string name="whitelist_menu_clear">Leeren</string>
     <string name="whitelist_edit_hint">Domain</string>
     <string name="whitelist_add">Hinzufügen</string>
     <string name="menu_desktopView">Desktop-Ansicht</string>
@@ -204,4 +209,12 @@
     <!-- License changelog -->
     <string name="dialog_neverAsk">Verwerfen. Nicht mehr anzeigen.</string>
     <string name="dialog_translate">Übersetze mit DeepL</string>
+    <string name="dialog_translate_hint">Bitte erlaube JavaScript und Cookies für \"deepl.com\".</string>
+    <string name="app_error_copy">Bitte Text auswählen, um zu kopieren ...</string>
+    <string name="dialog_backGround">Links im Hintergrund öffnen …</string>
+    <string name="dialog_backGround_always">Immer in dieser Session.</string>
+    <string name="album_title_bookmarks_simple">Lesezeichen (einfach)</string>
+    <string name="setting_title_cookie_thirdParty">Cookies von Dritten</string>
+    <string name="setting_title_backup_exit">Beim Verlassen die Datenbank (Startseite, Lesezeichen, Verlauf und alle Domain-Listen) sichern\?</string>
+    <string name="title_appDatabase">Datenbank</string>
 </resources>

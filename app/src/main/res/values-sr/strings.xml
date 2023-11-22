@@ -98,6 +98,7 @@
     <string name="setting_title_profiles_standard">Стандардни</string>
     <string name="setting_title_profiles_protected">Заштићени</string>
     <string name="setting_title_profiles_changed">Прилагођено</string>
+    <string name="setting_title_profiles_active">Профил</string>
     <string name="setting_title_profiles_dataUsage">Потрошња података</string>
     <string name="setting_title_profiles_privacy">Приватност</string>
     <string name="setting_title_profiles_Security">Безбедност</string>
@@ -112,6 +113,7 @@
     <string name="setting_title_adblockHost">Блокиран садржај</string>
     <string name="setting_title_location">Локација</string>
     <string name="setting_title_history">Историјат</string>
+    <string name="setting_title_autofill">Подаци Формулара</string>
     <string name="setting_summary_autofill">Дозволите спашавање формуларских података (Андроид Ноугат и испод) или сервис за аутоматско испуњавање (Андроид Орео и изнад).</string>
     <!-- browser clear -->
     <string name="data_summary">Све датотеке биће извезене у фасцикли \"Documents/browser_backup/\" на СД картици.</string>
@@ -128,6 +130,7 @@
     <string name="setting_title_data">Резерва</string>
     <string name="setting_filter">Филтер забелешки</string>
     <string name="setting_title_fav">Омиљена</string>
+    <string name="setting_title_reload">Повуците надоле да бисте поново учитали</string>
     <string name="setting_title_searchEngine">Прилагођени погон за претраживач</string>
     <string name="setting_title_userAgent">Прилагођени кориснички агент</string>
     <string name="setting_title_fingerPrint">Заштита отиска прста</string>
@@ -161,6 +164,7 @@
     <string name="setting_gesture_10">Затворите картицу</string>
     <string name="setting_gesture_11">Прикажи брзи прекидач</string>
     <!-- Data -->
+    <string name="title_appData">Подаци апликације</string>
     <string name="hint_database">Ово ће избрисати тренутне податке. Наставити?</string>
     <string name="settings_data_restore">Обновити</string>
     <!-- Others setting -->
@@ -181,6 +185,7 @@
     <string name="dialog_postOnWebsiteHint">Урл за отварање. Биће сачуван за следећу употребу.</string>
     <string name="dialog_postOnWebsite">Објавите на веб страници</string>
     <!-- Whitelist -->
+    <string name="whitelist_menu_clear">Очистити</string>
     <string name="whitelist_edit_hint">Домен</string>
     <string name="whitelist_add">Додати</string>
     <string name="menu_desktopView">Велики приказ</string>

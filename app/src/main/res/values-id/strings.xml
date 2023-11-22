@@ -110,6 +110,7 @@
     <string name="setting_title_adblockHost">Konten yang Diblokir</string>
     <string name="setting_title_location">Lokasi</string>
     <string name="setting_title_history">Riwayat</string>
+    <string name="setting_title_autofill">Formulir Data</string>
     <string name="setting_summary_autofill">Aktifkan penyimpanan dari formulir data (Android Nougat dan di bawahnya) atau layanan pengisian otomatis (Android Oreo dan di atasnya).</string>
     <!-- browser clear -->
     <string name="data_summary">Seluruh file akan di ekspor ke direktori \"Documents/browser_backup/\" di SD-card Anda.</string>
@@ -126,6 +127,7 @@
     <string name="setting_title_data">Pencadangan</string>
     <string name="setting_filter">Filter penanda</string>
     <string name="setting_title_fav">Favorit</string>
+    <string name="setting_title_reload">Geser ke bawah untuk memuat ulang</string>
     <string name="setting_title_searchEngine">Mesin pencari kustom</string>
     <string name="setting_title_userAgent">Agen pengguna kustom</string>
     <string name="setting_title_clipboard_record">Rekaman Clipboard</string>
@@ -160,6 +162,7 @@
     <string name="setting_gesture_10">Tutup tab</string>
     <string name="setting_gesture_11">Tampilkan pengalihan cepat</string>
     <!-- Data -->
+    <string name="title_appData">Data aplikasi</string>
     <string name="hint_database">Ini akan menghapus data saat ini. Lanjutkan?</string>
     <string name="settings_data_restore">Pulihkan</string>
     <!-- Others setting -->
@@ -180,6 +183,7 @@
     <string name="dialog_postOnWebsiteHint">URL untuk membuka. Akan disimpan untuk penggunaan berikutnya.</string>
     <string name="dialog_postOnWebsite">Posting di situs web</string>
     <!-- Whitelist -->
+    <string name="whitelist_menu_clear">Bersihkan</string>
     <string name="whitelist_add">Tambah</string>
     <string name="menu_desktopView">Tampilan desktop</string>
     <string name="menu_dayView">Tampilan terang</string>
@@ -204,4 +208,5 @@
     <string name="whitelist_edit_hint">ranah (domain)</string>
     <string name="dialog_translate">Terjemahkan dengan DeepL</string>
     <string name="dialog_neverAsk">Bubar. Jangan pernah menanyakan sesi ini.</string>
+    <string name="setting_title_profiles_active">profil</string>
 </resources>

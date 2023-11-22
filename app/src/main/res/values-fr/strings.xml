@@ -98,6 +98,7 @@
     <string name="setting_title_profiles_standard">Standard</string>
     <string name="setting_title_profiles_protected">Protégé</string>
     <string name="setting_title_profiles_changed">Personnalisé</string>
+    <string name="setting_title_profiles_active">Profil</string>
     <string name="setting_title_profiles_dataUsage">Utilisation des données</string>
     <string name="setting_title_profiles_privacy">Vie privée</string>
     <string name="setting_title_profiles_Security">Sécurité</string>
@@ -112,6 +113,7 @@
     <string name="setting_title_adblockHost">Contenu bloqué</string>
     <string name="setting_title_location">Localisation</string>
     <string name="setting_title_history">Historique</string>
+    <string name="setting_title_autofill">Données de formulaire</string>
     <string name="setting_summary_autofill">Activer l\'enregistrement des données du formulaire (Android Nougat et en-dessous) ou le service de remplissage automatique (Android Oreo et au-dessus).</string>
     <!-- browser clear -->
     <string name="data_summary">Tous les fichiers seront exportés vers le répertoire \"Documents/browser_backup/\" de votre carte SD.</string>
@@ -128,6 +130,7 @@
     <string name="setting_title_data">Sauvegarde</string>
     <string name="setting_filter">Filtre de signet</string>
     <string name="setting_title_fav">Favoris</string>
+    <string name="setting_title_reload">Balayez vers le bas pour recharger</string>
     <string name="setting_title_searchEngine">Moteur de recherche personnalisé</string>
     <string name="setting_title_userAgent">Agent utilisateur personnalisé</string>
     <string name="setting_title_clipboard_record">Dossiers du presse-papiers</string>
@@ -162,6 +165,7 @@
     <string name="setting_gesture_10">Fermer l’onglet</string>
     <string name="setting_gesture_11">Montrer la bascule rapide</string>
     <!-- Data -->
+    <string name="title_appData">Données de l\'application</string>
     <string name="hint_database">Cela va supprimer les données actuelles. Continuer ?</string>
     <string name="settings_data_restore">Restaurer</string>
     <!-- Others setting -->
@@ -182,6 +186,7 @@
     <string name="dialog_postOnWebsiteHint">URL à ouvrir. Sera sauvegardé pour la prochaine utilisation.</string>
     <string name="dialog_postOnWebsite">Voir sur le site</string>
     <!-- Whitelist -->
+    <string name="whitelist_menu_clear">Effacer</string>
     <string name="whitelist_edit_hint">Domaine</string>
     <string name="whitelist_add">Ajouter</string>
     <string name="menu_desktopView">Vue bureau</string>

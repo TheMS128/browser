@@ -98,6 +98,7 @@
     <string name="setting_title_profiles_standard">Standardní</string>
     <string name="setting_title_profiles_protected">Chráněný</string>
     <string name="setting_title_profiles_changed">Vlastní</string>
+    <string name="setting_title_profiles_active">Profil</string>
     <string name="setting_title_profiles_dataUsage">Využití dat</string>
     <string name="setting_title_profiles_privacy">Soukromí</string>
     <string name="setting_title_profiles_Security">Zabezpečení</string>
@@ -112,6 +113,7 @@
     <string name="setting_title_adblockHost">Blokovaný obsah</string>
     <string name="setting_title_location">Poloha</string>
     <string name="setting_title_history">Historie</string>
+    <string name="setting_title_autofill">Data formulářů</string>
     <string name="setting_summary_autofill">Povolte ukládání dat formuláře (Android Nougat a nižší) nebo službu automatického vyplňování (Android Oreo a vyšší).</string>
     <!-- browser clear -->
     <string name="data_summary">Všechny soubory budou exportovány do adresáře „Documents/browser_backup/“ na vaší SD kartě.</string>
@@ -128,6 +130,7 @@
     <string name="setting_title_data">Záloha</string>
     <string name="setting_filter">Filtr záložek</string>
     <string name="setting_title_fav">Oblíbené</string>
+    <string name="setting_title_reload">Přejetím dolů znovu načtete</string>
     <string name="setting_title_searchEngine">Vlastní vyhledávač</string>
     <string name="setting_title_userAgent">Vlastní uživatelský agent</string>
     <string name="setting_title_clipboard_record">Záznam schránky</string>
@@ -162,6 +165,7 @@
     <string name="setting_gesture_10">Zavřít kartu</string>
     <string name="setting_gesture_11">Zobrazit rychlé přepínání</string>
     <!-- Data -->
+    <string name="title_appData">Data aplikace</string>
     <string name="hint_database">Tímto odstraníte aktuální data. Chcete pokračovat?</string>
     <string name="settings_data_restore">Obnovit</string>
     <!-- Others setting -->
@@ -182,6 +186,7 @@
     <string name="dialog_postOnWebsiteHint">URL pro otevření. Uloží se pro další použití.</string>
     <string name="dialog_postOnWebsite">Příspěvek na webových stránkách</string>
     <!-- Whitelist -->
+    <string name="whitelist_menu_clear">Vymazat</string>
     <string name="whitelist_edit_hint">Doména</string>
     <string name="whitelist_add">Přidat</string>
     <string name="menu_desktopView">Zobrazení pro PC</string>

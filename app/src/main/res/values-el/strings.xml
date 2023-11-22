@@ -98,6 +98,7 @@
     <string name="setting_title_profiles_standard">Κανονικό</string>
     <string name="setting_title_profiles_protected">Προστατευμένο</string>
     <string name="setting_title_profiles_changed">Προσαρμοσμένο</string>
+    <string name="setting_title_profiles_active">Προφίλ</string>
     <string name="setting_title_profiles_dataUsage">Χρήση δεδομένων</string>
     <string name="setting_title_profiles_privacy">Απόρρητο</string>
     <string name="setting_title_profiles_Security">Ασφάλεια</string>
@@ -112,6 +113,7 @@
     <string name="setting_title_adblockHost">Αποκλεισμένο περιεχόμενο</string>
     <string name="setting_title_location">Τοποθεσία</string>
     <string name="setting_title_history">Ιστορικό</string>
+    <string name="setting_title_autofill">Δεδομένα Φόρμας</string>
     <string name="setting_summary_autofill">Ενεργοποιήστε την αποθήκευση δεδομένων φόρμας (Android Nougat και κάτω) ή την υπηρεσία αυτόματης συμπλήρωσης (Android Oreo και παραπάνω).</string>
     <!-- browser clear -->
     <string name="data_summary">Όλα τα αρχεία θα εξαχθούν στον κατάλογο \"Documents/browser_backup/\" της κάρτας SD σας.</string>
@@ -128,6 +130,7 @@
     <string name="setting_title_data">Αντίγραφα ασφαλείας</string>
     <string name="setting_filter">Φίλτρο σελιδοδεικτών</string>
     <string name="setting_title_fav">Αγαπημένο</string>
+    <string name="setting_title_reload">Σύρετε προς τα κάτω για επαναφόρτωση</string>
     <string name="setting_title_searchEngine">Προσαρμοσμένη μηχανή αναζήτησης</string>
     <string name="setting_title_userAgent">Προσαρμοσμένος user agent</string>
     <string name="setting_title_clipboard_record">Εγγραφή πρόχειρου</string>
@@ -162,6 +165,7 @@
     <string name="setting_gesture_10">Κλείσιμο καρτέλας</string>
     <string name="setting_gesture_11">Εμφάνιση γρήγορης εναλλαγής</string>
     <!-- Data -->
+    <string name="title_appData">Δεδομένα εφαρμογής</string>
     <string name="hint_database">Αυτό θα διαγράψει τα τρέχοντα δεδομένα. Συνέχεια;</string>
     <string name="settings_data_restore">Επαναφορά</string>
     <!-- Others setting -->
@@ -182,6 +186,7 @@
     <string name="dialog_postOnWebsiteHint">URL για άνοιγμα. Θα αποθηκευτεί για επόμενη χρήση.</string>
     <string name="dialog_postOnWebsite">Δημοσίευση στον ιστότοπο</string>
     <!-- Whitelist -->
+    <string name="whitelist_menu_clear">Εκκαθάριση</string>
     <string name="whitelist_add">Προσθήκη</string>
     <string name="menu_desktopView">Προβολή για υπολογιστή</string>
     <string name="menu_dayView">Προβολή ημέρας</string>

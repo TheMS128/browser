@@ -98,6 +98,7 @@
     <string name="setting_title_profiles_standard">標準</string>
     <string name="setting_title_profiles_protected">保護済み</string>
     <string name="setting_title_profiles_changed">カスタム</string>
+    <string name="setting_title_profiles_active">プロファイル</string>
     <string name="setting_title_profiles_dataUsage">データ使用量</string>
     <string name="setting_title_profiles_privacy">プライバシー</string>
     <string name="setting_title_profiles_Security">セキュリティ</string>
@@ -112,6 +113,7 @@
     <string name="setting_title_adblockHost">ブロックされた内容</string>
     <string name="setting_title_location">位置情報</string>
     <string name="setting_title_history">履歴</string>
+    <string name="setting_title_autofill">フォームの入力履歴</string>
     <string name="setting_summary_autofill">フォームのデータの保存 (Android 7 以下) または自動入力サービス (Android 8 以上) を有効にします。</string>
     <!-- browser clear -->
     <string name="data_summary">全てのファイルは SD カードの「Documents/browser_backup/」ディレクトリにエクスポートされます。</string>
@@ -128,6 +130,7 @@
     <string name="setting_title_data">バックアップ</string>
     <string name="setting_filter">ブックマークフィルター</string>
     <string name="setting_title_fav">スタートページ</string>
+    <string name="setting_title_reload">下にスワイプして再読み込み</string>
     <string name="setting_title_searchEngine">カスタム検索エンジン</string>
     <string name="setting_title_userAgent">カスタムユーザーエージェント</string>
     <string name="setting_title_clipboard_record">クリップボードの記録</string>
@@ -162,6 +165,7 @@
     <string name="setting_gesture_10">タブを閉じる</string>
     <string name="setting_gesture_11">高速トグルを表示</string>
     <!-- Data -->
+    <string name="title_appData">アプリデータ</string>
     <string name="hint_database">現在のデータを削除します。続行しますか?</string>
     <string name="settings_data_restore">復元</string>
     <!-- Others setting -->
@@ -182,6 +186,7 @@
     <string name="dialog_postOnWebsiteHint">開くためのURL。次回の使用時に保存されます。</string>
     <string name="dialog_postOnWebsite">ウェブサイトに掲載</string>
     <!-- Whitelist -->
+    <string name="whitelist_menu_clear">消去</string>
     <string name="whitelist_edit_hint">ドメイン</string>
     <string name="whitelist_add">追加</string>
     <string name="menu_desktopView">デスクトップ表示</string>
