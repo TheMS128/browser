@@ -55,6 +55,7 @@ class AdapterTabs {
         albumUrl = albumView.findViewById(R.id.dateView);
 
         ImageView albumClose = albumView.findViewById(R.id.iconView);
+        albumClose.setImageResource(R.drawable.icon_tab_remove);
         albumClose.setVisibility(View.VISIBLE);
         albumClose.setOnClickListener(view -> {
             browserController.removeAlbum(albumController);
@@ -64,7 +65,7 @@ class AdapterTabs {
 
     public void activate() {
         TypedValue typedValue = new TypedValue();
-        context.getTheme().resolveAttribute(R.attr.colorSecondaryContainer, typedValue, true);
+        context.getTheme().resolveAttribute(R.attr.colorPrimaryContainer, typedValue, true);
         int color = typedValue.data;
 
         context.getTheme().resolveAttribute(R.attr.colorError, typedValue, true);
@@ -82,7 +83,7 @@ class AdapterTabs {
 
     void deactivate() {
         TypedValue typedValue = new TypedValue();
-        context.getTheme().resolveAttribute(R.attr.colorSurfaceVariant, typedValue, true);
+        context.getTheme().resolveAttribute(R.attr.colorSecondaryContainer, typedValue, true);
         int color = typedValue.data;
 
         context.getTheme().resolveAttribute(R.attr.colorOnSurfaceVariant, typedValue, true);

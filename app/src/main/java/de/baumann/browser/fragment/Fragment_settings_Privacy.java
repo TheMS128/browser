@@ -58,7 +58,6 @@ public class Fragment_settings_Privacy extends BasePreferenceFragment implements
             MaterialAlertDialogBuilder builder = new MaterialAlertDialogBuilder(context);
             View dialogView = View.inflate(context, R.layout.dialog_menu, null);
             builder.setView(dialogView);
-            builder.setTitle(R.string.setting_title_profiles_edit);
             AlertDialog dialog = builder.create();
             dialog.show();
 

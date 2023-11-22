@@ -4,12 +4,12 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
 
-    <SwitchPreferenceCompat
+    <CheckBoxPreference
         android:defaultValue="true"
         android:key="sp_drm"
         android:summary="@string/hint_DRM_Media"/>
 
-    <SwitchPreferenceCompat
+    <CheckBoxPreference
         android:defaultValue="true"
         android:key="sp_autofill"
         android:summary="@string/setting_summary_autofill" />

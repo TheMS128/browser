@@ -33,6 +33,7 @@ import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.content.pm.ShortcutInfo;
 import android.content.pm.ShortcutManager;
+import android.content.res.Configuration;
 import android.graphics.PorterDuff;
 import android.graphics.drawable.Icon;
 import android.net.Uri;
@@ -316,8 +317,17 @@ public class HelperUnit {
                     context.setTheme(R.style.AppTheme_OLED);
                     break;
                 default:
-                    context.setTheme(R.style.AppTheme);
-                    break;
+                    int nightModeFlags = context.getResources().getConfiguration().uiMode & Configuration.UI_MODE_NIGHT_MASK;
+
+                    switch (nightModeFlags) {
+                        case Configuration.UI_MODE_NIGHT_YES:
+                            context.setTheme(R.style.AppTheme_night);
+                            break;
+                        case Configuration.UI_MODE_NIGHT_NO:
+                        case Configuration.UI_MODE_NIGHT_UNDEFINED:
+                            context.setTheme(R.style.AppTheme_day);
+                            break;
+                    }
             }
         }
     }
@@ -365,7 +375,7 @@ public class HelperUnit {
         else if (newIcon == 1) ib_icon.setCardBackgroundColor(ResourcesCompat.getColor(context.getResources(), R.color.grey, null));
         else if (newIcon == 0) {
             TypedValue typedValue = new TypedValue();
-            context.getTheme().resolveAttribute(R.attr.colorSurfaceVariant, typedValue, true);
+            context.getTheme().resolveAttribute(R.attr.colorSecondaryContainer, typedValue, true);
             int color = typedValue.data;
             ib_icon.setCardBackgroundColor(color);
         }

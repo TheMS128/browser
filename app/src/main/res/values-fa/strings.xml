@@ -29,7 +29,7 @@
     <string name="color_grey">خاکستری</string>
     <!-- Menu -->
     <string name="main_menu_new_tab">زبانه جدید (پیش زمینه)</string>
-    <string name="main_menu_new_tabProfile">برگه جدید (با نمایه...)</string>
+    <string name="main_menu_new_tabProfile">برگه جدید (با نمایه…)</string>
     <string name="main_menu_new_tabOpen">زبانه جدید (پس زمینه)</string>
     <string name="main_omnibox_input_hint">جستجو یا آدرس را وارد نمایید</string>
     <string name="menu_open_with">باز کردن لینک با…</string>
@@ -98,7 +98,6 @@
     <string name="setting_title_profiles_standard">استاندارد</string>
     <string name="setting_title_profiles_protected">حفاظت شده</string>
     <string name="setting_title_profiles_changed">سفارشی</string>
-    <string name="setting_title_profiles_active">نمایه</string>
     <string name="setting_title_profiles_dataUsage">مصرف داده</string>
     <string name="setting_title_profiles_privacy">خصوصی</string>
     <string name="setting_title_profiles_Security">امنیت</string>
@@ -113,7 +112,6 @@
     <string name="setting_title_adblockHost">محتوای مسدود شده</string>
     <string name="setting_title_location">مکان جاری</string>
     <string name="setting_title_history">تاریخچه</string>
-    <string name="setting_title_autofill">محتوای فرم</string>
     <string name="setting_summary_autofill">ذخیره‌سازی محتوای فرم ( اندروید ٧ و پایین‌تر) یا سرویس تکمیل خودکار ( اندروید ۸ و بالاتر) را فعال کنید.</string>
     <!-- browser clear -->
     <string name="data_summary">همه فایلها به پوشه \"Documents/browser_backup/\" کارت حافظه شما صادر می شوند.</string>
@@ -130,7 +128,6 @@
     <string name="setting_title_data">پشتیبان گیری</string>
     <string name="setting_filter">جداسازی نشانک ها</string>
     <string name="setting_title_fav">مورد علاقه</string>
-    <string name="setting_title_reload">برای بارگیری مجدد انگشت خود را به پایین بکشید</string>
     <string name="setting_title_searchEngine">موتور جستجوی سفارشی</string>
     <string name="setting_title_userAgent">سفارشی سازی نماینده کاربری </string>
     <string name="setting_title_clipboard_record">ثبت بریده‌دان</string>
@@ -165,7 +162,6 @@
     <string name="setting_gesture_10">بستن زبانه</string>
     <string name="setting_gesture_11">نمایش تعویض سریع</string>
     <!-- Data -->
-    <string name="title_appData">داده برنامه</string>
     <string name="hint_database">داده جاری حذف خواهد شد،انجام شود؟</string>
     <string name="settings_data_restore">بازیابی</string>
     <!-- Others setting -->
@@ -187,7 +183,6 @@
     <string name="dialog_postOnWebsiteHint">آدرس اینترنتی برای باز کردن برای استفاده بعدی ذخیره می شود.</string>
     <string name="dialog_postOnWebsite">در وب سایت ارسال کنید</string>
     <!-- Whitelist -->
-    <string name="whitelist_menu_clear">پاک کن</string>
     <string name="whitelist_edit_hint">دامنه</string>
     <string name="whitelist_add">افزودن</string>
     <string name="menu_desktopView">DesktopPC نماي</string>

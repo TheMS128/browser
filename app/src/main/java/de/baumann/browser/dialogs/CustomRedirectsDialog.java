@@ -26,6 +26,7 @@ import java.util.Objects;
 import de.baumann.browser.R;
 import de.baumann.browser.objects.CustomRedirect;
 import de.baumann.browser.objects.CustomRedirectsHelper;
+import de.baumann.browser.objects.CustomSearchesHelper;
 import de.baumann.browser.unit.HelperUnit;
 import de.baumann.browser.view.AdapterCustomRedirect;
 
@@ -48,25 +49,17 @@ public class CustomRedirectsDialog extends DialogFragment {
             Log.e("Redirects parsing", e.toString());
         }
 
-        adapter = new AdapterCustomRedirect(redirects);
+        adapter = new AdapterCustomRedirect(redirects, requireContext());
         recyclerView.setAdapter(adapter);
 
         builder.setTitle(R.string.custom_redirects);
         builder.setIcon(R.drawable.icon_redirect);
         builder.setNegativeButton(R.string.app_cancel, null);
-        builder.setPositiveButton(R.string.app_ok, ((dialogInterface, i) -> {
-            try {
-                CustomRedirectsHelper.saveRedirects(requireContext(), adapter.getRedirects());
-            } catch (JSONException e) {
-                throw new RuntimeException(e);
-            }
-        }));
         builder.setNeutralButton(R.string.create_new, null);
         builder.setView(dialogView);
 
         AlertDialog dialog = builder.create();
         HelperUnit.setupDialog(requireContext(), dialog);
-
         // when the button to create a new entry is clicked, don't close the dialog
         dialog.setOnShowListener(dI -> {
             Button b = dialog.getButton(AlertDialog.BUTTON_NEUTRAL);
@@ -88,8 +81,12 @@ public class CustomRedirectsDialog extends DialogFragment {
             String sourceText = Objects.requireNonNull(source.getText()).toString();
             String targetText = Objects.requireNonNull(target.getText()).toString();
             if (targetText.isEmpty() || sourceText.isEmpty()) return;
-
             adapter.addRedirect(new CustomRedirect(sourceText, targetText));
+            try {
+                CustomRedirectsHelper.saveRedirects(requireContext(), adapter.getRedirects());
+            } catch (JSONException e) {
+                throw new RuntimeException(e);
+            }
         }));
         builder.setView(dialogView);
 

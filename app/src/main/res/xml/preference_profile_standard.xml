@@ -4,13 +4,13 @@
 
     <PreferenceCategory android:title="@string/setting_title_profiles_dataUsage">
 
-        <SwitchPreferenceCompat
+        <CheckBoxPreference
             android:defaultValue="true"
             android:icon="@drawable/icon_image"
             android:key="profileStandard_images"
             android:summary="@string/setting_title_images" />
 
-        <SwitchPreferenceCompat
+        <CheckBoxPreference
             android:defaultValue="true"
             android:icon="@drawable/icon_savedata"
             android:key="profileStandard_saveData"
@@ -20,55 +20,55 @@
 
     <PreferenceCategory android:title="@string/setting_title_profiles_privacy">
 
-        <SwitchPreferenceCompat
+        <CheckBoxPreference
             android:defaultValue="false"
             android:icon="@drawable/icon_location"
             android:key="profileStandard_location"
             android:summary="@string/setting_title_location" />
 
-        <SwitchPreferenceCompat
+        <CheckBoxPreference
             android:defaultValue="false"
             android:icon="@drawable/icon_camera"
             android:key="profileStandard_camera"
             android:summary="@string/setting_title_camera" />
 
-        <SwitchPreferenceCompat
+        <CheckBoxPreference
             android:defaultValue="false"
             android:icon="@drawable/icon_microphone"
             android:key="profileStandard_microphone"
             android:summary="@string/setting_title_microphone" />
 
-        <SwitchPreferenceCompat
+        <CheckBoxPreference
             android:defaultValue="true"
             android:icon="@drawable/icon_history"
             android:key="profileStandard_saveHistory"
             android:summary="@string/setting_title_history" />
 
-        <SwitchPreferenceCompat
+        <CheckBoxPreference
             android:defaultValue="false"
             android:icon="@drawable/icon_cookie"
             android:key="profileStandard_cookies"
             android:summary="@string/setting_title_cookie" />
 
-        <SwitchPreferenceCompat
+        <CheckBoxPreference
             android:defaultValue="false"
             android:icon="@drawable/icon_cookie"
             android:key="profileStandard_cookiesThirdParty"
             android:summary="@string/setting_title_cookie_thirdParty" />
 
-        <SwitchPreferenceCompat
+        <CheckBoxPreference
             android:defaultValue="true"
             android:icon="@drawable/icon_dom"
             android:key="profileStandard_dom"
             android:summary="@string/setting_title_dom" />
 
-        <SwitchPreferenceCompat
+        <CheckBoxPreference
             android:defaultValue="true"
             android:icon="@drawable/icon_java"
             android:key="profileStandard_javascript"
             android:summary="@string/setting_title_javascript" />
 
-        <SwitchPreferenceCompat
+        <CheckBoxPreference
             android:defaultValue="false"
             android:icon="@drawable/icon_popup"
             android:key="profileStandard_javascriptPopUp"
@@ -78,13 +78,13 @@
 
     <PreferenceCategory android:title="@string/setting_title_profiles_Security">
 
-        <SwitchPreferenceCompat
+        <CheckBoxPreference
             android:defaultValue="true"
             android:icon="@drawable/icon_adblock"
             android:key="profileStandard_adBlock"
             android:summary="@string/setting_title_adblock" />
 
-        <SwitchPreferenceCompat
+        <CheckBoxPreference
             android:defaultValue="true"
             android:icon="@drawable/icon_fingerprint"
             android:key="profileStandard_fingerPrintProtection"

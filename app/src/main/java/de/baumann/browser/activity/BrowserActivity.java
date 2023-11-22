@@ -70,6 +70,7 @@ import android.widget.Toast;
 import android.widget.VideoView;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.PopupMenu;
@@ -77,6 +78,8 @@ import androidx.cardview.widget.CardView;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 import androidx.preference.PreferenceManager;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 import androidx.webkit.WebSettingsCompat;
 import androidx.webkit.WebViewFeature;
 
@@ -93,6 +96,8 @@ import com.google.android.material.progressindicator.CircularProgressIndicator;
 import com.google.android.material.tabs.TabLayout;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
+
+import org.json.JSONException;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -113,9 +118,12 @@ import de.baumann.browser.database.FaviconHelper;
 import de.baumann.browser.database.Record;
 import de.baumann.browser.database.RecordAction;
 import de.baumann.browser.fragment.Fragment_settings_Backup;
+import de.baumann.browser.objects.CustomRedirect;
+import de.baumann.browser.objects.CustomSearchesHelper;
 import de.baumann.browser.unit.BrowserUnit;
 import de.baumann.browser.unit.HelperUnit;
 import de.baumann.browser.unit.RecordUnit;
+import de.baumann.browser.view.AdapterCustomSearches;
 import de.baumann.browser.view.AdapterSearch;
 import de.baumann.browser.view.GridAdapter;
 import de.baumann.browser.view.GridItem;
@@ -133,7 +141,6 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
     private ImageButton omniBox_overview;
     private int duration;
     private int colorAlert;
-    private int colorAccent;
 
     // Views
     private TextInputEditText omniBox_text;
@@ -158,6 +165,7 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
 
     // Others
     private Button omnibox_close;
+    private Button omnibox_customSearch;
     private BottomNavigationView bottom_navigation;
     private BottomAppBar bottomAppBar;
     private String overViewTab;
@@ -172,6 +180,7 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
     private long filterBy;
     private boolean filter;
     private boolean searchOnSite;
+    private AlertDialog dialogCustomSearches;
     private ValueCallback<Uri[]> filePathCallback = null;
     private AlbumController currentAlbumController = null;
     private ValueCallback<Uri[]> mFilePathCallback;
@@ -210,13 +219,14 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
     }
 
     @Override
-    public void onSaveInstanceState(Bundle savedInstanceState) {
+    public void onSaveInstanceState(@Nullable @org.jetbrains.annotations.Nullable Bundle savedInstanceState) {
         // Save opened tabs
         ArrayList<String> openTabs = new ArrayList<>();
         for (int i = 0; i < BrowserContainer.size(); i++) {
             if (currentAlbumController == BrowserContainer.get(i))
                 openTabs.add(0, ((NinjaWebView) (BrowserContainer.get(i))).getUrl());
             else openTabs.add(((NinjaWebView) (BrowserContainer.get(i))).getUrl()); }
+        assert savedInstanceState != null;
         savedInstanceState.putString("TABS", TextUtils.join("‚‗‚", openTabs));
         //Save profiles
         ArrayList<String> openTabsProfile = new ArrayList<>();
@@ -241,11 +251,8 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
 
         TypedValue typedValue = new TypedValue();
         Resources.Theme theme = context.getTheme();
-        theme.resolveAttribute(R.attr.colorAccent, typedValue, true);
-        colorAccent = typedValue.data;
         theme.resolveAttribute(R.attr.colorError, typedValue, true);
         colorAlert = typedValue.data;
-
         if (getSupportActionBar() != null) getSupportActionBar().hide();
         Window window = this.getWindow();
         window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
@@ -347,8 +354,7 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
         //if still no open Tab open default page
         if (BrowserContainer.size() < 1) {
             if (sp.getBoolean("start_tabStart", false)) showOverview();
-            addAlbum(getString(R.string.app_name), "", true, false, "", null);
-            ninjaWebView.loadUrl(sp.getString("favoriteURL", "https://codeberg.org/Gaukler_Faun/FOSS_Browser/wiki"));
+            addAlbum(getString(R.string.app_name), sp.getString("favoriteURL", "https://codeberg.org/Gaukler_Faun/FOSS_Browser/wiki"), true, false, "", null);
         }
     }
 
@@ -788,7 +794,6 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
         });
 
         badgeTab = bottom_navigation.getOrCreateBadge(R.id.page_0);
-        badgeTab.setBackgroundColor(colorAccent);
         badgeTab.setHorizontalOffset(10);
         badgeTab.setVerticalOffset(10);
         setSelectedTab();
@@ -817,6 +822,26 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
                 omniBox_text.setText("");
             else omniBox_text.clearFocus();
         });
+        omnibox_customSearch = findViewById(R.id.omnibox_customSearch);
+        omnibox_customSearch.setOnLongClickListener(v -> {
+            String query = Objects.requireNonNull(omniBox_text.getText()).toString().trim();
+            showDialogCustomSearches(query);
+            return false;
+        });
+        omnibox_customSearch.setOnClickListener(view -> {
+            String query = Objects.requireNonNull(omniBox_text.getText()).toString().trim();
+            if (query.equals("") || query.equals(ninjaWebView.getUrl())) {
+                NinjaToast.show(context, getString(R.string.toast_input_empty));
+            } else {ninjaWebView.loadUrl(omniBox_text.getText().toString());
+                String customSearches = sp.getString("sp_search_customSearches", "");
+                try {if (customSearches.equals("")) {
+                        dialogCustomSearches.dismiss();
+                    }
+                } catch (Exception e) {
+                    Log.i(TAG, "dialogCustomSearches:" + e);
+                }
+            }
+        });
 
         progressBar = findViewById(R.id.main_progress_bar);
         progressBar.setOnClickListener(v -> {
@@ -825,7 +850,6 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
         });
         bottomAppBar = findViewById(R.id.bottomAppBar);
         badgeDrawable = BadgeDrawable.create(context);
-        badgeDrawable.setBackgroundColor(colorAccent);
 
         Button omnibox_overflow = findViewById(R.id.omnibox_overflow);
         omnibox_overflow.setOnClickListener(v -> showOverflow());
@@ -843,12 +867,18 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
 
         omniBox_text.setOnEditorActionListener((v, actionId, event) -> {
             String query = Objects.requireNonNull(omniBox_text.getText()).toString().trim();
-            ninjaWebView.loadUrl(query);
+            if (omniBox_text.getText().toString().equals("") || omniBox_text.getText().toString().equals(ninjaWebView.getUrl())) {
+                NinjaToast.show(context, getString(R.string.toast_input_empty));
+            } else {
+                ninjaWebView.loadUrl(query);
+            }
             return false;
         });
         omniBox_text.setOnFocusChangeListener((v, hasFocus) -> {
             if (omniBox_text.hasFocus()) {
+                sp.edit().putString("sp_search_customSearches", "").apply();
                 omnibox_close.setVisibility(View.VISIBLE);
+                omnibox_customSearch.setVisibility(View.VISIBLE);
                 list_search.setVisibility(View.VISIBLE);
                 progressBar.setVisibility(View.GONE);
                 omnibox_overflow.setVisibility(View.GONE);
@@ -864,6 +894,7 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
             else {
                 HelperUnit.hideSoftKeyboard(omniBox_text, context);
                 omnibox_close.setVisibility(View.GONE);
+                omnibox_customSearch.setVisibility(View.GONE);
                 list_search.setVisibility(View.GONE);
                 omnibox_overflow.setVisibility(View.VISIBLE);
                 omniBox_overview.setVisibility(View.VISIBLE);
@@ -883,6 +914,15 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
     @SuppressLint({"UnsafeOptInUsageError"})
     private void updateOmniBox() {
 
+        String customSearches = sp.getString("sp_search_customSearches", "");
+        if (Objects.equals(ninjaWebView.getUrl(), "about:blank")) {
+            ninjaWebView.stopLoading();
+        } else if (customSearches.equals("")) {
+            try {dialogCustomSearches.dismiss();}
+            catch (Exception e) {Log.i(TAG, "dialogCustomSearches:" + e);}
+        }
+
+        badgeDrawable.setVisible(BrowserContainer.size() > 1);
         badgeDrawable.setNumber(BrowserContainer.size());
         badgeTab.setNumber(BrowserContainer.size());
         BadgeUtils.attachBadgeDrawable(badgeDrawable, omniBox_tab, findViewById(R.id.layout));
@@ -1195,7 +1235,7 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
         });
 
         // Other
-        GridItem item_31 = new GridItem( getString(R.string.menu_other_searchSite), R.drawable.icon_search);
+        GridItem item_31 = new GridItem( getString(R.string.menu_other_searchSite), R.drawable.icon_search_site);
         GridItem item_32 = new GridItem( getString(R.string.menu_download), R.drawable.icon_download);
         GridItem item_33 = new GridItem( getString(R.string.setting_label), R.drawable.icon_settings);
         GridItem item_36 = new GridItem( getString(R.string.menu_restart), R.drawable.icon_refresh);
@@ -1558,7 +1598,6 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
                         MaterialAlertDialogBuilder builderFilter = new MaterialAlertDialogBuilder(context);
                         View dialogViewFilter = View.inflate(context, R.layout.dialog_menu, null);
                         builderFilter.setView(dialogViewFilter);
-                        builderFilter.setTitle(R.string.menu_filter);
                         AlertDialog dialogFilter = builderFilter.create();
                         dialogFilter.show();
                         HelperUnit.setupDialog(context, dialogFilter);
@@ -2043,8 +2082,6 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
         MaterialAlertDialogBuilder builder = new MaterialAlertDialogBuilder(context);
         View dialogView = View.inflate(context, R.layout.dialog_menu, null);
         builder.setView(dialogView);
-        builder.setTitle(R.string.menu_filter);
-        builder.setIcon(R.drawable.icon_bookmark);
         AlertDialog dialog = builder.create();
         dialog.show();
         HelperUnit.setupDialog(context, dialog);
@@ -2076,6 +2113,62 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
             bottom_navigation.setSelectedItemId(R.id.page_2);
         });
         dialog.setOnCancelListener(dialogInterface -> sp.edit().putString("showFilterDialogX", "false").apply());
+    }
+
+    private void showDialogCustomSearches(String url) {
+        if (url.equals("") || url.equals(ninjaWebView.getUrl())) {
+            NinjaToast.show(context, getString(R.string.toast_input_empty));
+        } else {
+            MaterialAlertDialogBuilder builder = new MaterialAlertDialogBuilder(context);
+            View dialogView = View.inflate(context, R.layout.custom_redirects_list, null);
+            RecyclerView recyclerView = dialogView.findViewById(R.id.redirects_recycler);
+            recyclerView.setLayoutManager(new LinearLayoutManager(context));
+            SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(context);
+            ArrayList<CustomRedirect> redirects = new ArrayList<>();
+            try {
+                redirects = CustomSearchesHelper.getRedirects(sp);
+            } catch (JSONException e) {
+                Log.e("Searches parsing", e.toString());
+            }
+            AdapterCustomSearches adapter = new AdapterCustomSearches(context, ninjaWebView, url, redirects);
+            recyclerView.setAdapter(adapter);
+
+            builder.setTitle(R.string.custom_searches_title);
+            builder.setIcon(R.drawable.icon_custom_searches);
+            builder.setNegativeButton(R.string.app_cancel, null);
+            builder.setNeutralButton(R.string.create_new, ((dialogInterface, i) -> {
+
+                MaterialAlertDialogBuilder builderAddCustom = new MaterialAlertDialogBuilder(context);
+                View dialogViewAddCustom = View.inflate(context, R.layout.create_new_searches, null);
+                TextInputEditText source = dialogViewAddCustom.findViewById(R.id.source);
+                TextInputEditText target = dialogViewAddCustom.findViewById(R.id.target);
+
+                builderAddCustom.setTitle(R.string.custom_searches_title);
+                builderAddCustom.setIcon(R.drawable.icon_custom_searches);
+                builderAddCustom.setNegativeButton(R.string.app_cancel, null);
+                builderAddCustom.setPositiveButton(R.string.app_ok, ((dialogInterface2, i2) -> {
+                    String sourceText = Objects.requireNonNull(source.getText()).toString();
+                    String targetText = Objects.requireNonNull(target.getText()).toString();
+                    if (targetText.isEmpty() || sourceText.isEmpty()) return;
+                    adapter.addRedirect(new CustomRedirect(sourceText, targetText));
+                    try {
+                        CustomSearchesHelper.saveRedirects(context, adapter.getRedirects());
+                    } catch (JSONException e) {
+                        throw new RuntimeException(e);
+                    }
+                }));
+                builderAddCustom.setView(dialogViewAddCustom);
+
+                AlertDialog dialogCustomSearchesNew = builderAddCustom.create();
+                dialogCustomSearchesNew.show();
+                HelperUnit.setupDialog(context, dialogCustomSearchesNew);
+            }));
+            builder.setView(dialogView);
+
+            dialogCustomSearches = builder.create();
+            dialogCustomSearches.show();
+            HelperUnit.setupDialog(context, dialogCustomSearches);
+        }
     }
 
     // Voids
@@ -2386,6 +2479,13 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
             getIntent().setAction("");
             hideOverview();
             postLink(url, null);
+            return; }
+        else if ("customSearches".equals(action)) {
+            addAlbum(null, "", true, false, "", null);
+            getIntent().setAction("");
+            hideOverview();
+            assert url != null;
+            showDialogCustomSearches(url);
             return; }
         else if ("translate".equals(action)) {
             getIntent().setAction("");

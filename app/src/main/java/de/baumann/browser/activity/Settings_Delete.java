@@ -28,6 +28,7 @@ public class Settings_Delete extends AppCompatActivity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        HelperUnit.initTheme(this);
 
         if (getSupportActionBar() != null) getSupportActionBar().hide();
         Window window = this.getWindow();

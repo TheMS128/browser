@@ -15,7 +15,7 @@
             android:id="@+id/source"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="@string/source"
+            android:hint="@string/dialog_title_hint"
             android:imeOptions="actionNext"
             android:inputType="text" />
 
@@ -30,7 +30,7 @@
             android:id="@+id/target"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="@string/target"
+            android:hint="@string/dialog_URL_hint"
             android:imeOptions="actionDone"
             android:inputType="text" />
 

@@ -17,7 +17,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginBottom="?attr/actionBarSize"
-        android:background="?attr/colorSurfaceContainer"
+        android:background="?attr/colorSurface"
         android:divider="@null"
         android:fastScrollEnabled="true"
         android:paddingTop="10dp"
@@ -25,23 +25,12 @@
         android:stackFromBottom="true"
         android:visibility="gone" />
 
-    <TextView
-        android:id="@+id/list_hint"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginBottom="?attr/actionBarSize"
-        android:background="?attr/colorSurface"
-        android:fastScrollEnabled="true"
-        android:padding="25dp"
-        android:stackFromBottom="true"
-        android:text="@string/main_omnibox_input_hint"
-        android:visibility="gone" />
-
     <com.google.android.material.bottomappbar.BottomAppBar
         android:id="@+id/bottomAppBar"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
         android:layout_gravity="bottom"
+        app:backgroundTint="?attr/colorSurface"
 
         app:contentInsetEnd="0dp"
         app:contentInsetLeft="0dp"
@@ -68,6 +57,18 @@
                     android:background="?attr/actionBarItemBackground"
                     android:visibility="gone"
                     app:icon="@drawable/icon_close" />
+
+                <Button
+                    android:id="@+id/omnibox_customSearch"
+                    style="@style/Widget.Material3.Button.IconButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_centerVertical="true"
+                    android:layout_marginEnd="10dp"
+                    android:layout_toStartOf="@id/omnibox_close"
+                    android:background="?attr/actionBarItemBackground"
+                    android:visibility="gone"
+                    app:icon="@drawable/icon_search" />
 
                 <LinearLayout
                     android:id="@+id/omnibox_buttonsView"
@@ -126,7 +127,7 @@
                     android:layout_centerInParent="true"
                     android:layout_marginStart="20dp"
                     android:layout_marginEnd="10dp"
-                    android:layout_toStartOf="@id/omnibox_close"
+                    android:layout_toStartOf="@id/omnibox_customSearch"
                     android:background="@android:color/transparent"
                     android:dropDownAnchor="@id/omniBox_input"
                     android:hint="@string/main_omnibox_input_hint"
@@ -143,8 +144,7 @@
                 android:id="@+id/searchBox"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:visibility="gone"
-                android:background="?attr/colorSurface">
+                android:visibility="gone" >
 
                 <Button
                     android:id="@+id/searchBox_cancel"
@@ -200,7 +200,7 @@
         android:id="@+id/bottomSheetDialog_OverView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="?attr/colorSurfaceContainer"
+        android:background="?attr/colorSurface"
         android:visibility="gone">
 
         <ListView
@@ -208,6 +208,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_above="@+id/bottom_navigation"
+            android:paddingBottom="5dp"
             android:divider="@null"
             android:fastScrollEnabled="true"
             android:stackFromBottom="true"/>
@@ -223,7 +224,8 @@
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
                 android:stackFromBottom="true"
-                android:visibility="gone"/>
+                android:visibility="gone"
+                android:paddingBottom="5dp"/>
 
         </ScrollView>
 
@@ -232,6 +234,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
+            app:backgroundTint="?attr/colorSurface"
             app:menu="@menu/menu_bottom_overview"/>
 
     </RelativeLayout>

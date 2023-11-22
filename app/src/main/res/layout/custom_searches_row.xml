@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-
 <RelativeLayout xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="wrap_content"
+    android:layout_width="match_parent"
     android:layout_height="wrap_content"
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -16,7 +15,7 @@
         android:id="@+id/albumCardView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:cardBackgroundColor="?attr/colorSecondaryContainer">
+        android:backgroundTint="?attr/colorSecondaryContainer">
 
         <RelativeLayout
             android:layout_width="wrap_content"
@@ -43,7 +42,7 @@
             </com.google.android.material.card.MaterialCardView>
 
             <ImageView
-                android:id="@+id/iconView"
+                android:id="@+id/remove_redirect"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="15dp"
@@ -51,8 +50,7 @@
                 android:contentDescription="@null"
                 android:layout_centerInParent="true"
                 android:scaleType="fitCenter"
-                android:src="@drawable/icon_delete"
-                android:visibility="gone" />
+                android:src="@drawable/icon_delete" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -60,7 +58,7 @@
                 android:id="@+id/textGroup"
                 android:orientation="vertical"
                 android:layout_toEndOf="@id/cardView"
-                android:layout_toStartOf="@id/iconView"
+                android:layout_toStartOf="@id/remove_redirect"
                 android:gravity="center_vertical"
                 android:layout_marginBottom="10dp"
                 android:layout_marginTop="10dp"
@@ -68,7 +66,7 @@
                 android:layout_marginEnd="15dp">
 
                 <TextView
-                    android:id="@+id/titleView"
+                    android:id="@+id/redirect_source"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="2dp"
@@ -78,7 +76,7 @@
                     android:textAppearance="?attr/textAppearanceBodyLarge" />
 
                 <TextView
-                    android:id="@+id/dateView"
+                    android:id="@+id/redirect_target"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:ellipsize="end"

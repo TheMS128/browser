@@ -4,6 +4,9 @@
 - fix: improvements in custom redirects
 - fix: open deepl.com in normal tab
 - fix: lint issues
+- fix: theme issues
+- new: backup on exit
+- new: fast search on websites (long press search icon in toolbar)
 
 
 ### v 12 "Gandhi"
@@ -14,6 +17,7 @@
 - fix: notification permissions
 - fix: infinite loop verification on gitlab.com #1100
 - new: backup on exit (optional)
+- new: fast search on websites (long press search icon in toolbar)
 
 
 ### v 11 "Bertha von Suttner"

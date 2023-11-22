@@ -98,7 +98,6 @@
     <string name="setting_title_profiles_standard">Standard</string>
     <string name="setting_title_profiles_protected">Protejat</string>
     <string name="setting_title_profiles_changed">Personalizat</string>
-    <string name="setting_title_profiles_active">Profil</string>
     <string name="setting_title_profiles_dataUsage">Utilizarea datelor</string>
     <string name="setting_title_profiles_privacy">Confidențialitate</string>
     <string name="setting_title_profiles_Security">Securitate</string>
@@ -113,7 +112,6 @@
     <string name="setting_title_adblockHost">Conținut Blocat</string>
     <string name="setting_title_location">Locație</string>
     <string name="setting_title_history">Istoric</string>
-    <string name="setting_title_autofill">Date formular</string>
     <string name="setting_summary_autofill">Activează salvarea datelor din formular (Android Nougat și mai jos) sau serviciul de completare automată (Android Oreo și versiuni ulterioare).</string>
     <!-- browser clear -->
     <string name="data_summary">Toate fișierele vor fi exportate în dosarul \"Documente/browser_backup/\" de pe cardul SD.</string>
@@ -130,7 +128,6 @@
     <string name="setting_title_data">Copie de rezervă</string>
     <string name="setting_filter">Filtru marcaje</string>
     <string name="setting_title_fav">Favorit</string>
-    <string name="setting_title_reload">Glisează în jos pentru a reîncărca</string>
     <string name="setting_title_searchEngine">Motor de căutare personalizat</string>
     <string name="setting_title_userAgent">Agent utilizator personalizat</string>
     <string name="setting_title_clipboard_record">Înregistrare clipboard</string>
@@ -165,7 +162,6 @@
     <string name="setting_gesture_10">Închide fila</string>
     <string name="setting_gesture_11">Afișează comutarea rapidă</string>
     <!-- Data -->
-    <string name="title_appData">Date aplicație</string>
     <string name="hint_database">Aceasta va șterge datele curente. Continui?</string>
     <string name="settings_data_restore">Restaurare</string>
     <!-- Others setting -->
@@ -186,7 +182,6 @@
     <string name="dialog_postOnWebsiteHint">URL pentru deschidere. Va fi salvat pentru următoarea utilizare.</string>
     <string name="dialog_postOnWebsite">Postează pe site</string>
     <!-- Whitelist -->
-    <string name="whitelist_menu_clear">Șterge</string>
     <string name="whitelist_edit_hint">Domeniu</string>
     <string name="whitelist_add">Adaugă</string>
     <string name="menu_desktopView">Vizualizare desktop</string>

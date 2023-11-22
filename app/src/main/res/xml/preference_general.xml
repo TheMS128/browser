@@ -24,6 +24,10 @@
         android:title="@string/setting_title_search_engine"
         android:icon="@drawable/icon_search">
 
+        <Preference
+            android:key="settings_profile"
+            android:summary="@string/custom_searches_summary" />
+
         <ListPreference
             android:defaultValue="0"
             android:entries="@array/setting_entries_search_engine"
@@ -43,7 +47,7 @@
     <PreferenceCategory
         android:title="@string/menu_more">
 
-        <SwitchPreferenceCompat
+        <CheckBoxPreference
             android:title="@string/setting_title_clipboard_record"
             android:defaultValue="false"
             android:key="sp_clipboard_record" />

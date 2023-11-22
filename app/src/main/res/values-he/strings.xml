@@ -29,7 +29,7 @@
     <string name="color_grey">אפור</string>
     <!-- Menu -->
     <string name="main_menu_new_tab">כרטיסייה חדשה (רקע)</string>
-    <string name="main_menu_new_tabProfile">כרטיסייה חדשה (עם פרופיל...)</string>
+    <string name="main_menu_new_tabProfile">כרטיסייה חדשה (עם פרופיל…)</string>
     <string name="main_menu_new_tabOpen">כרטיסייה חדשה (קדימה)</string>
     <string name="main_omnibox_input_hint">חפש או הקלד כתובת אתר</string>
     <string name="menu_open_with">פתח קישור עם…</string>
@@ -97,7 +97,6 @@
     <string name="setting_title_profiles_standard">תקן</string>
     <string name="setting_title_profiles_protected">מוגן</string>
     <string name="setting_title_profiles_changed">המותאם אישית</string>
-    <string name="setting_title_profiles_active">פרופיל</string>
     <string name="setting_title_profiles_dataUsage">שימוש בנתונים</string>
     <string name="setting_title_profiles_privacy">פרטיות</string>
     <string name="setting_title_profiles_Security">ביטחון</string>
@@ -112,7 +111,6 @@
     <string name="setting_title_adblockHost">תוכן חסום</string>
     <string name="setting_title_location">מקום</string>
     <string name="setting_title_history">היסטוריה</string>
-    <string name="setting_title_autofill">טופס מידע</string>
     <string name="setting_summary_autofill">אפשר שמירת נתוני טפסים (אנדרואיד נוגט ומטה) או שירות מילוי אוטומטי (אנדרואיד אוראו ומעלה).</string>
     <!-- browser clear -->
     <string name="data_summary">כל הקבצים ייוצאו לספריית \"Documents/browser_backup/\" של כרטיס ה-SD שלכם.</string>
@@ -129,7 +127,6 @@
     <string name="setting_title_data">גיבוי</string>
     <string name="setting_filter">מסנן סימניות</string>
     <string name="setting_title_fav">אהוב</string>
-    <string name="setting_title_reload">החלק מטה כדי לטעון מחדש</string>
     <string name="setting_title_searchEngine">מנוע חיפוש מותאם אישית</string>
     <string name="setting_title_userAgent">סוכן משתמש מותאם אישית</string>
     <string name="setting_title_fingerPrint">הגנה על טביעות אצבע</string>
@@ -163,7 +160,6 @@
     <string name="setting_gesture_10">סגור כרטיסייה</string>
     <string name="setting_gesture_11">הצג החלפה מהירה</string>
     <!-- Data -->
-    <string name="title_appData">נתוני אפליקציה</string>
     <string name="hint_database">פעולה זו תמחק את הנתונים הנוכחיים. להמשיך?</string>
     <string name="settings_data_restore">שחזר</string>
     <!-- Others setting -->
@@ -184,7 +180,6 @@
     <string name="dialog_postOnWebsiteHint">כתובת אתר לפתיחה. יישמר לשימוש הבא.</string>
     <string name="dialog_postOnWebsite">פרסם באתר</string>
     <!-- Whitelist -->
-    <string name="whitelist_menu_clear">נקה</string>
     <string name="whitelist_edit_hint">תחום</string>
     <string name="whitelist_add">הוסף</string>
     <string name="menu_desktopView">תצוגת שולחן עבודה</string>

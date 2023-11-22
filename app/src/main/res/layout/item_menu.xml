@@ -4,14 +4,17 @@
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     xmlns:android="http://schemas.android.com/apk/res/android"
-    android:descendantFocusability="blocksDescendants">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:descendantFocusability="blocksDescendants"
+    android:background="?attr/colorSurface">
 
     <com.google.android.material.card.MaterialCardView
         style="@style/Widget.Material3.CardView.Filled"
         android:id="@+id/menuCardView"
         android:layout_width="match_parent"
         android:layout_height="?android:attr/listPreferredItemHeightSmall"
-        android:minHeight="?android:attr/listPreferredItemHeightSmall" >
+        android:minHeight="?android:attr/listPreferredItemHeightSmall"
+        app:cardBackgroundColor="?attr/colorSecondaryContainer" >
 
         <LinearLayout
             android:layout_width="wrap_content"
@@ -43,8 +46,6 @@
                 tools:ignore="RtlCompat" />
 
         </LinearLayout>
-
-
 
     </com.google.android.material.card.MaterialCardView>
 

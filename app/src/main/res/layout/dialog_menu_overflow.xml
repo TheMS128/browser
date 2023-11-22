@@ -6,7 +6,8 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
-    tools:ignore="ContentDescription">
+    tools:ignore="ContentDescription"
+    android:background="?attr/colorSurface">
 
     <RelativeLayout
         style="@style/Widget.Material3.CardView.Filled"
