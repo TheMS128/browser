@@ -98,7 +98,6 @@
     <string name="setting_title_profiles_standard">Padrão</string>
     <string name="setting_title_profiles_protected">Protegido</string>
     <string name="setting_title_profiles_changed">Personalizado</string>
-    <string name="setting_title_profiles_active">Perfil</string>
     <string name="setting_title_profiles_dataUsage">Utilização dos dados</string>
     <string name="setting_title_profiles_privacy">Privacidade</string>
     <string name="setting_title_profiles_Security">Segurança</string>
@@ -112,7 +111,6 @@
     <string name="setting_title_adblockHost">Conteúdo bloqueado</string>
     <string name="setting_title_location">Localização</string>
     <string name="setting_title_history">Histórico</string>
-    <string name="setting_title_autofill">Dados de formulário</string>
     <string name="setting_summary_autofill">Ativar o salvamento de dados de formulário (Android Nougat e abaixo) ou o serviço de autopreenchimento (Android Oreo e superior).</string>
     <!-- browser clear -->
     <string name="data_summary">Todos os arquivos serão exportados para o diretório \"Documents / browser_backup /\" do seu cartão SD.</string>
@@ -129,7 +127,6 @@
     <string name="setting_title_data">Backup</string>
     <string name="setting_filter">Filtro de favoritos</string>
     <string name="setting_title_fav">Favorito</string>
-    <string name="setting_title_reload">Deslize para baixo para fechar</string>
     <string name="setting_title_searchEngine">Mecanismo de pesquisa customizado</string>
     <string name="setting_title_userAgent">User agent personalizado</string>
     <string name="setting_title_clipboard_record">Registros da área de transferência</string>
@@ -164,7 +161,6 @@
     <string name="setting_gesture_10">Fechar aba</string>
     <string name="setting_gesture_11">Mostrar alternância rápida</string>
     <!-- Data -->
-    <string name="title_appData">Dados do aplicativo</string>
     <string name="hint_database">Isto irá apagar os dados atuais. Continuar?</string>
     <string name="settings_data_restore">Restaurar</string>
     <!-- Others setting -->
@@ -185,7 +181,6 @@
     <string name="dialog_postOnWebsiteHint">URL para abrir. Será guardada para o próximo uso.</string>
     <string name="dialog_postOnWebsite">Publicar no site</string>
     <!-- Whitelist -->
-    <string name="whitelist_menu_clear">Limpar</string>
     <string name="whitelist_edit_hint">Domínio</string>
     <string name="whitelist_add">Adicionar</string>
     <string name="menu_desktopView">Visualização para área de trabalho</string>

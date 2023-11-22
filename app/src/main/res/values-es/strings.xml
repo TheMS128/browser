@@ -29,7 +29,7 @@
     <string name="color_grey">Gris</string>
     <!-- Menu -->
     <string name="main_menu_new_tab">Nueva pestaña (de fondo)</string>
-    <string name="main_menu_new_tabProfile">Nueva pestaña (con perfil...)</string>
+    <string name="main_menu_new_tabProfile">Nueva pestaña (con perfil…)</string>
     <string name="main_menu_new_tabOpen">Nueva pestaña (primer plano)</string>
     <string name="main_omnibox_input_hint">Buscar o escribir URL</string>
     <string name="menu_open_with">Abrir enlace con …</string>
@@ -98,7 +98,6 @@
     <string name="setting_title_profiles_standard">Estándar</string>
     <string name="setting_title_profiles_protected">Protegido</string>
     <string name="setting_title_profiles_changed">Personalizado</string>
-    <string name="setting_title_profiles_active">Perfil</string>
     <string name="setting_title_profiles_dataUsage">Uso de datos</string>
     <string name="setting_title_profiles_privacy">Privacidad</string>
     <string name="setting_title_profiles_Security">Seguridad</string>
@@ -112,7 +111,6 @@
     <string name="setting_title_adblockHost">Contenido bloqueado</string>
     <string name="setting_title_location">Ubicación</string>
     <string name="setting_title_history">Historial</string>
-    <string name="setting_title_autofill">Datos de Formulario</string>
     <string name="setting_summary_autofill">Habilitar el guardado de datos de formulario (Android Nougat y más abajo) o servicio de autorelleno (Android Oreo y superior).</string>
     <!-- browser clear -->
     <string name="data_summary">Todos los archivos se exportarán al directorio \"Documentos / browser_backup /\" de su tarjeta SD.</string>
@@ -129,7 +127,6 @@
     <string name="setting_title_data">Respaldos</string>
     <string name="setting_filter">Filtro de marcadores</string>
     <string name="setting_title_fav">Favorito</string>
-    <string name="setting_title_reload">Deslice hacia abajo para refrescar</string>
     <string name="setting_title_searchEngine">Motor de búsqueda personalizado</string>
     <string name="setting_title_userAgent">Agente de usuario personalizado</string>
     <string name="setting_title_clipboard_record">Registro del portapapeles</string>
@@ -164,7 +161,6 @@
     <string name="setting_gesture_10">Cerrar pestaña</string>
     <string name="setting_gesture_11">Mostrar la alternancia rápida</string>
     <!-- Data -->
-    <string name="title_appData">Datos de la aplicación</string>
     <string name="hint_database">Esto eliminará los datos actuales. ¿Proceder?</string>
     <string name="settings_data_restore">Restaurar</string>
     <!-- Others setting -->
@@ -185,7 +181,6 @@
     <string name="dialog_postOnWebsiteHint">URL a abrir. Se guardará para el próximo uso.</string>
     <string name="dialog_postOnWebsite">Ver en el sitio web</string>
     <!-- Whitelist -->
-    <string name="whitelist_menu_clear">Limpiar</string>
     <string name="whitelist_edit_hint">Dominio</string>
     <string name="whitelist_add">Añadir</string>
     <string name="menu_desktopView">Vista escritorio</string>

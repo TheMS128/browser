@@ -29,7 +29,7 @@
     <string name="color_grey">Szürke</string>
     <!-- Menu -->
     <string name="main_menu_new_tab">Új lap (háttérben)</string>
-    <string name="main_menu_new_tabProfile">Új lap (profillal ...)</string>
+    <string name="main_menu_new_tabProfile">Új lap (profillal …)</string>
     <string name="main_menu_new_tabOpen">Új lap (előtérben)</string>
     <string name="main_omnibox_input_hint">Keresés vagy írjon be URL címet</string>
     <string name="menu_open_with">Hivatkozás megnyitása …</string>
@@ -97,7 +97,6 @@
     <string name="setting_title_profiles_standard">Általános</string>
     <string name="setting_title_profiles_protected">Védett</string>
     <string name="setting_title_profiles_changed">Egyéni</string>
-    <string name="setting_title_profiles_active">Profilok</string>
     <string name="setting_title_profiles_dataUsage">Adathasználat</string>
     <string name="setting_title_profiles_privacy">Adatvédelem</string>
     <string name="setting_title_profiles_Security">Biztonság</string>
@@ -112,7 +111,6 @@
     <string name="setting_title_adblockHost">Blokkolt tartalom</string>
     <string name="setting_title_location">Tartózkodási hely</string>
     <string name="setting_title_history">Előzmények</string>
-    <string name="setting_title_autofill">Űrlapadatok</string>
     <string name="setting_summary_autofill">Engedélyezze az űrlapadatok (Android Nougat és újabb) vagy az automatikus kitöltési szolgáltatás (Android Oreo és újabb) mentését.</string>
     <!-- browser clear -->
     <string name="data_summary">Minden fájl exportálódik az SD-kártya \"Documents/browser_backup/\" könyvtárába.</string>
@@ -129,7 +127,6 @@
     <string name="setting_title_data">Biztonsági másolat</string>
     <string name="setting_filter">Könyvjelző szűrő</string>
     <string name="setting_title_fav">Kedvenc</string>
-    <string name="setting_title_reload">Elutasítás lefelé húzással</string>
     <string name="setting_title_searchEngine">Egyedi keresőmotor</string>
     <string name="setting_title_userAgent">Egyedi user agent</string>
     <string name="setting_title_fingerPrint">Ujjlenyomat-védelem</string>
@@ -163,7 +160,6 @@
     <string name="setting_gesture_10">Lap bezárása</string>
     <string name="setting_gesture_11">Gyors kapcsoló megjelenítése</string>
     <!-- Data -->
-    <string name="title_appData">Alkalmazásadatok</string>
     <string name="hint_database">Ezzel törli az aktuális adatokat. Folytatja?</string>
     <string name="settings_data_restore">Visszaállítás</string>
     <!-- Others setting -->
@@ -184,7 +180,6 @@
     <string name="dialog_postOnWebsiteHint">URL megnyitásához. A következő használatra el lesz mentve.</string>
     <string name="dialog_postOnWebsite">Közzététel a weboldalon</string>
     <!-- Whitelist -->
-    <string name="whitelist_menu_clear">Törlés</string>
     <string name="whitelist_edit_hint">Tartomány</string>
     <string name="whitelist_add">Hozzáad</string>
     <string name="menu_desktopView">Asztali nézet</string>

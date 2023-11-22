@@ -98,7 +98,6 @@
     <string name="setting_title_profiles_standard">Standaard</string>
     <string name="setting_title_profiles_protected">Beschermd</string>
     <string name="setting_title_profiles_changed">Aangepast</string>
-    <string name="setting_title_profiles_active">Profiel</string>
     <string name="setting_title_profiles_dataUsage">Gegevensgebruik</string>
     <string name="setting_title_profiles_privacy">Privacy</string>
     <string name="setting_title_profiles_Security">Beveiliging</string>
@@ -113,7 +112,6 @@
     <string name="setting_title_adblockHost">Geblokkeerde inhoud</string>
     <string name="setting_title_location">Locatie</string>
     <string name="setting_title_history">Geschiedenis</string>
-    <string name="setting_title_autofill">Formuliergegevens</string>
     <string name="setting_summary_autofill">Schakel het opslaan van formuliergegevens in (Android Nougat en hieronder) of autofill service (Android Oreo en hoger).</string>
     <!-- browser clear -->
     <string name="data_summary">Alle bestanden worden geëxporteerd naar de map \"Documents/browser_backup/\" van uw SD-card.</string>
@@ -130,7 +128,6 @@
     <string name="setting_title_data">Back-up</string>
     <string name="setting_filter">Bladwijzer filter</string>
     <string name="setting_title_fav">Favoriete</string>
-    <string name="setting_title_reload">Veeg omlaag om te herladen</string>
     <string name="setting_title_searchEngine">Aangepaste zoekmachine</string>
     <string name="setting_title_userAgent">Aangepaste user agent</string>
     <string name="setting_title_clipboard_record">Clipboard bestanden</string>
@@ -165,7 +162,6 @@
     <string name="setting_gesture_10">Tabblad sluiten</string>
     <string name="setting_gesture_11">Snelheidsschakelaar weergeven</string>
     <!-- Data -->
-    <string name="title_appData">App gegevens</string>
     <string name="hint_database">Dit zal huidige data verwijderen. Doorgaan?</string>
     <string name="settings_data_restore">Herstellen</string>
     <!-- Others setting -->
@@ -186,7 +182,6 @@
     <string name="dialog_postOnWebsiteHint">URL om te openen. Zal worden opgeslagen voor volgend gebruik.</string>
     <string name="dialog_postOnWebsite">Post op de website</string>
     <!-- Whitelist -->
-    <string name="whitelist_menu_clear">Wissen</string>
     <string name="whitelist_edit_hint">Domein</string>
     <string name="whitelist_add">Toevoegen</string>
     <string name="menu_desktopView">Bureaublad weergave</string>

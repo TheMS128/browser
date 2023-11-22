@@ -98,7 +98,6 @@
     <string name="setting_title_profiles_standard">Стандартний</string>
     <string name="setting_title_profiles_protected">Захищений</string>
     <string name="setting_title_profiles_changed">Нестандартний</string>
-    <string name="setting_title_profiles_active">Профіль</string>
     <string name="setting_title_profiles_dataUsage">Використання даних</string>
     <string name="setting_title_profiles_privacy">Приватність</string>
     <string name="setting_title_profiles_Security">Безпека</string>
@@ -113,7 +112,6 @@
     <string name="setting_title_adblockHost">Заблокований контент</string>
     <string name="setting_title_location">Місце розташування</string>
     <string name="setting_title_history">Історія</string>
-    <string name="setting_title_autofill">Дані формуляра</string>
     <string name="setting_summary_autofill">Увімкнути збереження даних форм (Android Nougat і нижче) або сервісу автозаповнення (Android Oreo і вище).</string>
     <!-- browser clear -->
     <string name="data_summary">Всі файли буде експортовано до каталогу \"Документи/browser_backup/\" на SD-карту.</string>
@@ -130,7 +128,6 @@
     <string name="setting_title_data">Резервне копіювання</string>
     <string name="setting_filter">Фільтр закладок</string>
     <string name="setting_title_fav">Улюблене</string>
-    <string name="setting_title_reload">Посуньте вниз, щоб оновити</string>
     <string name="setting_title_searchEngine">Нестандартна пошукова система</string>
     <string name="setting_title_userAgent">Нестандартний user agent</string>
     <string name="setting_title_clipboard_record">Буфер обміну</string>
@@ -165,7 +162,6 @@
     <string name="setting_gesture_10">Закрити вкладку</string>
     <string name="setting_gesture_11">Швидкі налаштування</string>
     <!-- Data -->
-    <string name="title_appData">Дані додатка</string>
     <string name="hint_database">Поточні дані будуть видалені. Продовжити?</string>
     <string name="settings_data_restore">Відновити</string>
     <!-- Others setting -->
@@ -186,7 +182,6 @@
     <string name="dialog_postOnWebsiteHint">URL для відкриття. Буде збережено для наступного використання.</string>
     <string name="dialog_postOnWebsite">Публікувати на сайті</string>
     <!-- Whitelist -->
-    <string name="whitelist_menu_clear">Очистити</string>
     <string name="whitelist_edit_hint">Домен</string>
     <string name="whitelist_add">Додати</string>
     <string name="menu_desktopView">Комп\'ютерна версія</string>

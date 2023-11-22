@@ -97,7 +97,6 @@
     <string name="setting_title_profiles_standard">Tiêu chuẩn</string>
     <string name="setting_title_profiles_protected">Được bảo vệ</string>
     <string name="setting_title_profiles_changed">Tuỳ chỉnh</string>
-    <string name="setting_title_profiles_active">Cấu hình</string>
     <string name="setting_title_profiles_dataUsage">Sử dụng dữ liệu</string>
     <string name="setting_title_profiles_privacy">Riêng tư</string>
     <string name="setting_title_profiles_Security">Bảo mật</string>
@@ -112,7 +111,6 @@
     <string name="setting_title_adblockHost">Nội dung đã chặn</string>
     <string name="setting_title_location">Vị trí</string>
     <string name="setting_title_history">Lịch sử</string>
-    <string name="setting_title_autofill">Dữ liệu mẫu</string>
     <string name="setting_summary_autofill">Bật tính năng lưu dữ liệu biểu mẫu (Android Nougat trở xuống) hoặc dịch vụ tự động điền (Android Oreo trở lên).</string>
     <!-- browser clear -->
     <string name="data_summary">Tất cả các tệp sẽ được xuất sang thư mục \"Documents / browser_backup /\" của thẻ SD của bạn.</string>
@@ -129,7 +127,6 @@
     <string name="setting_title_data">Sao lưu</string>
     <string name="setting_filter">Bộ lọc dấu trang</string>
     <string name="setting_title_fav">Yêu thích</string>
-    <string name="setting_title_reload">Vuốt xuống để tải lại</string>
     <string name="setting_title_searchEngine">Công cụ tìm kiếm tuỳ chỉnh</string>
     <string name="setting_title_userAgent">Tác nhân người dùng tuỳ chỉnh</string>
     <string name="setting_title_fingerPrint">Bảo vệ vân tay</string>
@@ -163,7 +160,6 @@
     <string name="setting_gesture_10">Đóng tab</string>
     <string name="setting_gesture_11">Hiện %s nút chuyển đổi</string>
     <!-- Data -->
-    <string name="title_appData">Dữ liệu ứng dụng</string>
     <string name="hint_database">Việc này sẽ xoá dữ liệu hiện tại. Tiếp tục?</string>
     <string name="settings_data_restore">Khôi phục</string>
     <!-- Others setting -->
@@ -184,7 +180,6 @@
     <string name="dialog_postOnWebsiteHint">URL để mở. Sẽ được lưu lại để sử dụng lần sau.</string>
     <string name="dialog_postOnWebsite">Đăng trên trang web</string>
     <!-- Whitelist -->
-    <string name="whitelist_menu_clear">Xoá</string>
     <string name="whitelist_edit_hint">Miền</string>
     <string name="whitelist_add">Thêm</string>
     <string name="menu_desktopView">Xem kiểu Máy tính</string>
