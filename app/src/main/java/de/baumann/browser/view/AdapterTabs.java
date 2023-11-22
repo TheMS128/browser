@@ -65,7 +65,7 @@ class AdapterTabs {
 
     public void activate() {
         TypedValue typedValue = new TypedValue();
-        context.getTheme().resolveAttribute(R.attr.colorPrimaryContainer, typedValue, true);
+        context.getTheme().resolveAttribute(R.attr.colorErrorContainer, typedValue, true);
         int color = typedValue.data;
 
         context.getTheme().resolveAttribute(R.attr.colorError, typedValue, true);
