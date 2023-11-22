@@ -218,27 +218,6 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
         super.onPause();
     }
 
-    @Override
-    public void onSaveInstanceState(@Nullable @org.jetbrains.annotations.Nullable Bundle savedInstanceState) {
-        // Save opened tabs
-        ArrayList<String> openTabs = new ArrayList<>();
-        for (int i = 0; i < BrowserContainer.size(); i++) {
-            if (currentAlbumController == BrowserContainer.get(i))
-                openTabs.add(0, ((NinjaWebView) (BrowserContainer.get(i))).getUrl());
-            else openTabs.add(((NinjaWebView) (BrowserContainer.get(i))).getUrl()); }
-        assert savedInstanceState != null;
-        savedInstanceState.putString("TABS", TextUtils.join("‚‗‚", openTabs));
-        //Save profiles
-        ArrayList<String> openTabsProfile = new ArrayList<>();
-        for (int i = 0; i < BrowserContainer.size(); i++) {
-            if (currentAlbumController == BrowserContainer.get(i))
-                openTabsProfile.add(0, ((NinjaWebView) (BrowserContainer.get(i))).getProfile());
-            else openTabsProfile.add(((NinjaWebView) (BrowserContainer.get(i))).getProfile()); }
-        savedInstanceState.putString("PROFILE", TextUtils.join("‚‗‚", openTabsProfile));
-        // Always call the superclass so it can save the view hierarchy state
-        super.onSaveInstanceState(savedInstanceState);
-    }
-
     @SuppressLint("UnspecifiedRegisterReceiverFlag")
     @Override
     public void onCreate(Bundle savedInstanceState) {

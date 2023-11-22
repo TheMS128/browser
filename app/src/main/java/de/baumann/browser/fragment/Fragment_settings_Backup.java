@@ -150,10 +150,13 @@ public class Fragment_settings_Backup extends BasePreferenceFragment {
     }
 
     public static void backup (Activity activity) {
-        String database_app = "//data//" + "de.baumann.browser" + "//databases//Ninja4.db";
+        File sd = Environment.getExternalStoragePublicDirectory(DIRECTORY_DOCUMENTS);
+        File data = Environment.getDataDirectory();
+        String database_app = "//data//" + activity.getPackageName() + "//databases//Ninja4.db";
         String database_backup = "browser_backup//database.db";
         File sourceDB = new File(data, database_app);
         File backupDB = new File(sd, database_backup);
+
         if (!BackupUnit.checkPermissionStorage(activity)) {
             BackupUnit.requestPermission(activity);
         } else {
