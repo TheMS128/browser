@@ -121,7 +121,7 @@
     <string name="clear_title_history">Geçmişi temizle</string>
     <string name="localData">Cihazda depolanan verileri temizle</string>
     <string name="clear_title_deleteDatabase">Veritabanını sil</string>
-    <string name="clear_summary_deleteDatabase">Başlangıç sayfası, yer işaretleri, geçmiş ve beyaz listeler dahil olmak üzere tüm veritabanı silinecektir.</string>
+    <string name="clear_summary_deleteDatabase">Tüm veritabanını silin (Başlangıç sayfası, yer imleri, geçmiş ve tüm alan listeleri).</string>
     <!-- App setting -->
     <string name="setting_title_app">Uygulama ayarları</string>
     <string name="setting_title_ui">Davranış | Kullanıcı arayüzü</string>
@@ -178,7 +178,7 @@
     <string name="toast_quit_TAB">Sekmeyi kapatmak istiyor musunuz?</string>
     <string name="toast_downloadComplete">İndirme tamamlandı. Dosya yöneticisi açılsın mı?</string>
     <string name="toast_unsecured">Web sitesi güvenli olmayan bir bağlantı (\"http\") kullanıyor. Güvenli bir bağlantı (\"https\") denensin mi?</string>
-    <string name="toast_backup">Veriler yedeklensin mi? Eski yedek varsa üzerine yazılacaktır.</string>
+    <string name="toast_backup">Yedek veri mi\? Bu, mevcut yedeklemenin üzerine yazacaktır.</string>
     <string name="dialog_postOnWebsiteHint">Açılacak URL\'yi seçin. Bir sonraki kullanım için kaydedilecektir.</string>
     <string name="dialog_postOnWebsite">Web sitesinde yayınla</string>
     <!-- Whitelist -->
@@ -204,4 +204,14 @@
     <!-- License changelog -->
     <string name="dialog_translate">DeepL ile çevirin</string>
     <string name="dialog_neverAsk">Dağılın. Bu oturumda asla sormayın.</string>
+    <string name="dialog_translate_hint">Lütfen \"deepl.com\" için javascript ve çerezleri etkinleştirin.</string>
+    <string name="custom_searches_summary">Kendi tanımladığınız web sitelerinden arama sonuçları almak için araç çubuğundaki arama simgesine uzun süre basmanız yeterlidir.</string>
+    <string name="custom_searches_title">Hızlı arama …</string>
+    <string name="app_error_copy">Lütfen metni manuel olarak seçin ve kopyalayın</string>
+    <string name="dialog_backGround">Bağlantıları arka planda aç …</string>
+    <string name="dialog_backGround_always">her zaman bu seansta.</string>
+    <string name="album_title_bookmarks_simple">Yer İmleri (basit)</string>
+    <string name="setting_title_cookie_thirdParty">Üçüncü Taraf Çerezleri</string>
+    <string name="setting_title_backup_exit">Çıkışta veritabanını (Başlangıç sayfası, yer imleri, geçmiş ve tüm etki alanı listeleri) yedekleyin\?</string>
+    <string name="title_appDatabase">Veritabanı</string>
 </resources>

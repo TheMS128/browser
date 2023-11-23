@@ -212,4 +212,6 @@
     <string name="setting_title_cookie_thirdParty">Cookies von Dritten</string>
     <string name="setting_title_backup_exit">Beim Verlassen die Datenbank (Startseite, Lesezeichen, Verlauf und alle Domain-Listen) sichern\?</string>
     <string name="title_appDatabase">Datenbank</string>
+    <string name="custom_searches_summary">Drücken Sie einfach lange auf das Suchsymbol in der Symbolleiste, um Suchergebnisse von selbst definierten Websites zu erhalten.</string>
+    <string name="custom_searches_title">Schnelle Suche auf …</string>
 </resources>

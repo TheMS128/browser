@@ -121,7 +121,7 @@
     <string name="clear_title_history">Εκκαθάριση Ιστορικού</string>
     <string name="localData">Εκκαθάριση αποθηκευμένων δεδομένων συσκευής</string>
     <string name="clear_title_deleteDatabase">Διαγραφή βάσης δεδομένων</string>
-    <string name="clear_summary_deleteDatabase">Διαγραφή ολόκληρης της βάσης δεδομένων (Startpage, σελιδοδείκτες, ιστορικό και όλες οι επιτρεπόμενες λίστες).</string>
+    <string name="clear_summary_deleteDatabase">Διαγράψτε ολόκληρη τη βάση δεδομένων (αρχική σελίδα, σελιδοδείκτες, ιστορικό και όλες τις λίστες τομέων).</string>
     <!-- App setting -->
     <string name="setting_title_app">Ρυθμίσεις Εφαρμογής</string>
     <string name="setting_title_ui">Συμπεριφορά/UI</string>
@@ -178,7 +178,7 @@
     <string name="toast_quit_TAB">Θέλετε να κλείσετε την καρτέλα;</string>
     <string name="toast_downloadComplete">Η λήψη ολοκληρώθηκε. Άνοιγμα διαχειριστή αρχείων;</string>
     <string name="toast_unsecured">Η ιστοσελίδα χρησιμοποιεί μια μη ασφαλή σύνδεση (\"http\"). Δοκιμάστε μια ασφαλή σύνδεση (\"https\");</string>
-    <string name="toast_backup">Αντίγραφο ασφαλείας δεδομένων? Αυτό θα αντικαταστήσει το παλιό αντίγραφο ασφαλείας.</string>
+    <string name="toast_backup">Δημιουργία αντιγράφων ασφαλείας δεδομένων; Αυτό θα αντικαταστήσει το υπάρχον αντίγραφο ασφαλείας.</string>
     <string name="dialog_postOnWebsiteHint">URL για άνοιγμα. Θα αποθηκευτεί για επόμενη χρήση.</string>
     <string name="dialog_postOnWebsite">Δημοσίευση στον ιστότοπο</string>
     <!-- Whitelist -->
@@ -204,4 +204,14 @@
     <string name="whitelist_edit_hint">Τομέας</string>
     <string name="dialog_translate">Μεταφράστε με το DeepL</string>
     <string name="dialog_neverAsk">Απομακρυνθείτε. Ποτέ μην ρωτάτε αυτή τη συνεδρία.</string>
+    <string name="dialog_translate_hint">Παρακαλούμε ενεργοποιήστε το javascript και τα cookies για το \"deepl.com\".</string>
+    <string name="custom_searches_summary">Απλά πατήστε παρατεταμένα το εικονίδιο αναζήτησης στη γραμμή εργαλείων, για να λάβετε αποτελέσματα αναζήτησης από αυτοκαθοριζόμενους ιστότοπους.</string>
+    <string name="custom_searches_title">Γρήγορη αναζήτηση σε …</string>
+    <string name="app_error_copy">Παρακαλούμε επιλέξτε και αντιγράψτε το κείμενο χειροκίνητα</string>
+    <string name="dialog_backGround">Άνοιγμα συνδέσμων στο παρασκήνιο …</string>
+    <string name="dialog_backGround_always">πάντα αυτή τη σύνοδο.</string>
+    <string name="album_title_bookmarks_simple">Σελιδοδείκτες (απλοί)</string>
+    <string name="setting_title_cookie_thirdParty">Cookies τρίτων μερών</string>
+    <string name="setting_title_backup_exit">Δημιουργία αντιγράφων ασφαλείας της βάσης δεδομένων (αρχική σελίδα, σελιδοδείκτες, ιστορικό και όλες οι λίστες τομέων) κατά την έξοδο;</string>
+    <string name="title_appDatabase">Βάση δεδομένων</string>
 </resources>

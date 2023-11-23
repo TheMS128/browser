@@ -121,7 +121,7 @@
     <string name="clear_title_history">Очистить историю</string>
     <string name="localData">Очистить на данных, сохраненных на устройстве</string>
     <string name="clear_title_deleteDatabase">Удалить базу данных</string>
-    <string name="clear_summary_deleteDatabase">Удалить всю базу данных (стартовую страницу, закладки, историю и все белые списки).</string>
+    <string name="clear_summary_deleteDatabase">Удалите всю базу данных (Startpage, закладки, историю и все списки доменов).</string>
     <!-- App setting -->
     <string name="setting_title_app">Настройки</string>
     <string name="setting_title_ui">Поведение и интерфейс</string>
@@ -178,7 +178,7 @@
     <string name="toast_quit_TAB">Вы хотите закрыть ВКЛАДКУ?</string>
     <string name="toast_downloadComplete">Загрузка завершена. Открыть файловый менеджер?</string>
     <string name="toast_unsecured">Сайт использует незащищенное соединение (\"http\"). Попробовать безопасное соединение (\"https\")?</string>
-    <string name="toast_backup">Сохранить данные? Это перезапишет старую резервную копию.</string>
+    <string name="toast_backup">Резервное копирование данных\? Это приведет к перезаписи существующей резервной копии.</string>
     <string name="dialog_postOnWebsiteHint">URL для открытия. Будет сохранен для следующего использования.</string>
     <string name="dialog_postOnWebsite">Разместить на сайте</string>
     <!-- Whitelist -->
@@ -204,4 +204,14 @@
     <!-- License changelog -->
     <string name="dialog_translate">Перевести с помощью DeepL</string>
     <string name="dialog_neverAsk">Отказаться. Никогда не спрашивайте на этой сессии.</string>
+    <string name="dialog_translate_hint">Пожалуйста, включите javascript и cookies для сайта \"deepl.com\".</string>
+    <string name="custom_searches_summary">Для получения результатов поиска по заданным веб-сайтам достаточно нажать на значок поиска на панели инструментов.</string>
+    <string name="custom_searches_title">Быстрый поиск по …</string>
+    <string name="app_error_copy">Выделите и скопируйте текст вручную</string>
+    <string name="dialog_backGround">Открывать ссылки в фоновом режиме …</string>
+    <string name="dialog_backGround_always">всегда на этой сессии.</string>
+    <string name="album_title_bookmarks_simple">Закладки (простые)</string>
+    <string name="setting_title_cookie_thirdParty">Сторонние файлы cookie</string>
+    <string name="setting_title_backup_exit">Резервное копирование базы данных (Startpage, закладки, история и все доменные списки) при выходе\?</string>
+    <string name="title_appDatabase">База данных</string>
 </resources>

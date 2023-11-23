@@ -121,7 +121,7 @@
     <string name="clear_title_history">Geschiedenis wissen</string>
     <string name="localData">Wissen op apparaat opgeslagen gegevens</string>
     <string name="clear_title_deleteDatabase">Databank verwijderen</string>
-    <string name="clear_summary_deleteDatabase">Verwijder de gehele databank (startpagina, bladwijzers, geschiedenis en alle witte lijsten).</string>
+    <string name="clear_summary_deleteDatabase">Verwijder de hele database (Startpagina, bladwijzers, geschiedenis en alle domeinlijsten).</string>
     <!-- App setting -->
     <string name="setting_title_app">App-instellingen</string>
     <string name="setting_title_ui">Gedrag/Uiterlijk</string>
@@ -178,7 +178,7 @@
     <string name="toast_quit_TAB">Wilt u de TAB sluiten?</string>
     <string name="toast_downloadComplete">Downloaden voltooid. Wil je bestandsbeheer openen?</string>
     <string name="toast_unsecured">Deze website gebruikt een onbeveiligde verbinding (\"http\"). Wilt u een beveiligde verbinding (\"https\") proberen?</string>
-    <string name="toast_backup">Wil je de gegevens back-uppen? Dit overschrijft de oude back-up.</string>
+    <string name="toast_backup">Back-up gegevens\? Dit overschrijft de bestaande back-up.</string>
     <string name="dialog_postOnWebsiteHint">URL om te openen. Zal worden opgeslagen voor volgend gebruik.</string>
     <string name="dialog_postOnWebsite">Post op de website</string>
     <!-- Whitelist -->
@@ -204,4 +204,14 @@
     <!-- License changelog -->
     <string name="dialog_translate">Vertaal met DeepL</string>
     <string name="dialog_neverAsk">Ontslag nemen. Vraag deze sessie nooit.</string>
+    <string name="dialog_translate_hint">Schakel javascript en cookies in voor \"deepl.com\".</string>
+    <string name="custom_searches_summary">Druk gewoon lang op het zoekpictogram in de werkbalk om zoekresultaten van zelfgedefinieerde websites te krijgen.</string>
+    <string name="custom_searches_title">Snel zoeken op …</string>
+    <string name="app_error_copy">Selecteer en kopieer tekst handmatig</string>
+    <string name="dialog_backGround">Links openen op achtergrond …</string>
+    <string name="dialog_backGround_always">altijd deze sessie.</string>
+    <string name="album_title_bookmarks_simple">Bladwijzers (eenvoudig)</string>
+    <string name="setting_title_cookie_thirdParty">Cookies van derden</string>
+    <string name="setting_title_backup_exit">Back-up database (Startpagina, bladwijzers, geschiedenis en alle domeinlijsten) bij afsluiten\?</string>
+    <string name="title_appDatabase">Database</string>
 </resources>

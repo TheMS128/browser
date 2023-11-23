@@ -9,8 +9,8 @@
     <string name="app_error">Помилка</string>
     <string name="app_warning">Увага</string>
     <string name="app_permission">Щоб скористатися цією функцією, ви повинні надати дозвіл додатку. Після цього перезапустіть додаток.</string>
-    <string name="list_empty">Нічого не знайдено</string>
-    <string name="album_title_bookmarks">Закладка</string>
+    <string name="list_empty">Список порожній</string>
+    <string name="album_title_bookmarks">Закладки</string>
     <string name="album_title_history">Історія</string>
     <string name="album_title_home">Головна</string>
     <string name="album_title_tab">Відкриті вкладки</string>
@@ -29,12 +29,12 @@
     <string name="color_grey">Сірий</string>
     <!-- Menu -->
     <string name="main_menu_new_tab">Нова вкладка (фон)</string>
-    <string name="main_menu_new_tabProfile">Нова вкладка (з профілем …)</string>
+    <string name="main_menu_new_tabProfile">Нова вкладка (з профілем…)</string>
     <string name="main_menu_new_tabOpen">Нова вкладка</string>
     <string name="main_omnibox_input_hint">Пошук або введення URL-адреси</string>
-    <string name="menu_open_with">Відкрити посилання з …</string>
+    <string name="menu_open_with">Відкрити за допомогою…</string>
     <string name="menu_quit">Вихід</string>
-    <string name="menu_openFav">Відкрити головну</string>
+    <string name="menu_openFav">Відкрити улюблене</string>
     <string name="menu_delete">Видалити</string>
     <string name="menu_edit">Змінити</string>
     <string name="menu_closeTab">Закрити вкладку</string>
@@ -46,7 +46,7 @@
     <string name="menu_share_link">Поділитися посиланням</string>
     <string name="menu_save_home">Зберегти на головній</string>
     <string name="menu_save_bookmark">Зберегти як закладку</string>
-    <string name="menu_save_as">Зберегти як …</string>
+    <string name="menu_save_as">Зберегти як…</string>
     <string name="menu_save_pdf">Зберегти в PDF</string>
     <string name="menu_shareClipboard">Копіювати до буфера обміну</string>
     <string name="menu_other_searchSite">Пошук по сайту</string>
@@ -54,7 +54,7 @@
     <!-- Dialog -->
     <string name="dialog_title_hint">Заголовок:</string>
     <string name="dialog_URL_hint">Адреса URL:</string>
-    <string name="dialog_extension_hint">Розширення (наприклад: \".jpg\"):</string>
+    <string name="dialog_extension_hint">Розширення (наприклад: «.jpg»):</string>
     <string name="dialog_sign_in_username">Ім\'я користувача</string>
     <string name="dialog_sign_in_password">Пароль</string>
     <string name="dialog_title_download">Завантажити файл?</string>
@@ -87,7 +87,7 @@
     <string name="custom_redirects">Нестандартні переадресації</string>
     <string name="source">Джерело</string>
     <string name="target">Ціль</string>
-    <string name="setting_title_save_data">Надсилати запит \"Збереження даних\"</string>
+    <string name="setting_title_save_data">Надсилати запит «Збереження даних»</string>
     <string name="setting_title_profiles">Профілі</string>
     <string name="setting_title_profiles_edit">Редагувати профілі</string>
     <string name="setting_title_profiles_trustedList">Надійні веб-сайти</string>
@@ -114,14 +114,14 @@
     <string name="setting_title_history">Історія</string>
     <string name="setting_summary_autofill">Увімкнути збереження даних форм (Android Nougat і нижче) або сервісу автозаповнення (Android Oreo і вище).</string>
     <!-- browser clear -->
-    <string name="data_summary">Всі файли буде експортовано до каталогу \"Документи/browser_backup/\" на SD-карту.</string>
+    <string name="data_summary">Усі файли буде експортовано до каталогу «Documents/browser_backup/» на SD-карті.</string>
     <string name="clear_title_quit">Очищати при виході з додатку</string>
     <string name="clear_title_cache">Очистити кеш</string>
     <string name="clear_title_cookie">Очистити куки</string>
     <string name="clear_title_history">Очистити історію</string>
     <string name="localData">Очистити на пристрої збережені дані</string>
     <string name="clear_title_deleteDatabase">Видалити базу даних</string>
-    <string name="clear_summary_deleteDatabase">Видалити всю базу даних (стартову сторінку, закладки, історію і всі білі списки).</string>
+    <string name="clear_summary_deleteDatabase">Видалити всю базу даних (стартову сторінку, закладки, історію і всі списки доменів).</string>
     <!-- App setting -->
     <string name="setting_title_app">Налаштування</string>
     <string name="setting_title_ui">Поведінка та інтерфейс</string>
@@ -138,7 +138,7 @@
     <string name="setting_theme_wallpaper">На основі шпалер</string>
     <!-- App behavior -->
     <string name="setting_title_hideToolbar">Приховати Панель інструментів</string>
-    <string name="setting_title_behavior">Поведінка та інтерфейс</string>
+    <string name="setting_title_behavior">Поведінка</string>
     <string name="setting_title_confirm_exit">Підтвердити вихід з браузера</string>
     <string name="setting_title_confirm_tab_close">Підтвердити закриття вкладки</string>
     <string name="setting_overView_onStart_title">Показувати при запуску</string>
@@ -169,16 +169,16 @@
     <string name="toast_add_whitelist_successful">Успішно додано домен</string>
     <string name="toast_copy_successful">Успішно скопійовано</string>
     <string name="toast_delete_successful">Успішно видалено</string>
-    <string name="toast_domain_already_exists">Домен вже існує</string>
+    <string name="toast_domain_already_exists">Домен уже існує</string>
     <string name="toast_input_empty">Нічого не введено.</string>
     <string name="toast_invalid_domain">Невірний домен</string>
     <string name="toast_webview_forward">Не вдається завантажити наступний сайт</string>
-    <string name="toast_restart">Щоб застосувати зміни, необхідно перезапустити \"FOSS Browser\". Закрити зараз?</string>
-    <string name="toast_quit">Хочете вийти з \"FOSS Browser\"?</string>
+    <string name="toast_restart">Щоб застосувати зміни, необхідно перезапустити FOSS Браузер. Закрити зараз\?</string>
+    <string name="toast_quit">Хочете вийти з FOSS Браузера\?</string>
     <string name="toast_quit_TAB">Закрити цю вкладку?</string>
     <string name="toast_downloadComplete">Завантаження завершене. Відкрити файловий менеджер?</string>
-    <string name="toast_unsecured">Цей сайт використовує незахищене з\'єднання (\"http\"). Спробувати захищене з\'єднання (\"https\")?</string>
-    <string name="toast_backup">Зберегти дані? Це перезапише стару резервну копію.</string>
+    <string name="toast_unsecured">Цей сайт використовує незахищене з\'єднання («http»). Спробувати захищене з\'єднання («https»)\?</string>
+    <string name="toast_backup">Зберегти дані\? Це перезапише наявну резервну копію.</string>
     <string name="dialog_postOnWebsiteHint">URL для відкриття. Буде збережено для наступного використання.</string>
     <string name="dialog_postOnWebsite">Публікувати на сайті</string>
     <!-- Whitelist -->
@@ -190,12 +190,12 @@
     <string name="menu_nightView">Нічна тема</string>
     <string name="setting_userScript">Нестандартний JavaScript</string>
     <string name="setting_title_camera">Дозвіл на використання камери</string>
-    <string name="setting_title_microphone">Дозвіл на використання мікрофону</string>
+    <string name="setting_title_microphone">Дозвіл на використання мікрофона</string>
     <string name="setting_title_tabsReload">Оновити вкладки</string>
     <string name="setting_title_tabsRestore">Відновити вкладки</string>
     <string name="setting_title_userInterface">Інтерфейс користувача</string>
-    <string name="setting_summary_tabsReload">Оновити останні відкриті вкладки при запуску FOSS браузера.</string>
-    <string name="setting_summary_tabsRestore">Відновити вкладки у разі збою FOSS Browser.</string>
+    <string name="setting_summary_tabsReload">Оновити останні відкриті вкладки при запуску FOSS Браузера.</string>
+    <string name="setting_summary_tabsRestore">Відновити вкладки у разі збою FOSS Браузера.</string>
     <string name="hint_DRM_Media">Дозволити відтворення медіа, захищених DRM?</string>
     <string name="menu_reload">Оновити</string>
     <string name="menu_restart">Перезавантажити та оновити вкладки</string>
@@ -203,5 +203,15 @@
     <string name="setting_title_audioBackground">Відтворювати аудіо у фоновому режимі</string>
     <!-- License changelog -->
     <string name="dialog_translate">Перекладайте з DeepL</string>
-    <string name="dialog_neverAsk">Відпустіть. Ніколи не питайте про цей сеанс.</string>
+    <string name="dialog_neverAsk">Відхилити. Більше не питати в цьому сеансі.</string>
+    <string name="dialog_translate_hint">Увімкніть javascript і куки для «deepl.com».</string>
+    <string name="custom_searches_summary">Просто натисніть і утримуйте значок пошуку на панелі інструментів, щоб отримати результати пошуку з веб-сайтів, визначених самостійно.</string>
+    <string name="custom_searches_title">Швидкий пошук у …</string>
+    <string name="app_error_copy">Виберіть і скопіюйте текст вручну</string>
+    <string name="dialog_backGround">Відкрити посилання у фоні…</string>
+    <string name="dialog_backGround_always">Завжди в цьому сеансі.</string>
+    <string name="album_title_bookmarks_simple">Закладки (прості)</string>
+    <string name="setting_title_cookie_thirdParty">Сторонні куки</string>
+    <string name="setting_title_backup_exit">Резервувати базу даних (стартову сторінку, закладки, історію і всі списки доменів) при виході\?</string>
+    <string name="title_appDatabase">База даних</string>
 </resources>

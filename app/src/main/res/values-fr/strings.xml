@@ -121,7 +121,7 @@
     <string name="clear_title_history">Effacer l’historique</string>
     <string name="localData">Effacer les données stockées sur l\'appareil</string>
     <string name="clear_title_deleteDatabase">Supprimer la base de données</string>
-    <string name="clear_summary_deleteDatabase">Supprimer toute la base de données (Page d\'accueil, signets, historique et toutes les listes blanches).</string>
+    <string name="clear_summary_deleteDatabase">Supprimer toute la base de données (page d\'accueil, signets, historique et toutes les listes de domaines).</string>
     <!-- App setting -->
     <string name="setting_title_app">Paramètres</string>
     <string name="setting_title_ui">Comportement/UI</string>
@@ -178,7 +178,7 @@
     <string name="toast_quit_TAB">Voulez-vous fermer l\'onglet ?</string>
     <string name="toast_downloadComplete">Téléchargement terminé. Ouvrir le gestionnaire de fichiers ?</string>
     <string name="toast_unsecured">Le site Web utilise une connexion non sécurisée (\"http\"). Essayez une connexion sécurisée (\"https\") ?</string>
-    <string name="toast_backup">Sauvegarder les données ? Ceci écrasera l\'ancienne sauvegarde.</string>
+    <string name="toast_backup">Sauvegarde des données \? Cette opération écrasera la sauvegarde existante.</string>
     <string name="dialog_postOnWebsiteHint">URL à ouvrir. Sera sauvegardé pour la prochaine utilisation.</string>
     <string name="dialog_postOnWebsite">Voir sur le site</string>
     <!-- Whitelist -->
@@ -204,4 +204,14 @@
     <!-- License changelog -->
     <string name="dialog_neverAsk">Ignorer. Ne plus afficher durant cette session.</string>
     <string name="dialog_translate">Traduire avec DeepL</string>
+    <string name="dialog_translate_hint">Veuillez activer javascript et les cookies pour \"deepl.com\".</string>
+    <string name="custom_searches_summary">Il suffit d\'appuyer longuement sur l\'icône de recherche dans la barre d\'outils pour obtenir des résultats de recherche à partir de sites web définis par l\'utilisateur.</string>
+    <string name="custom_searches_title">Recherche rapide sur …</string>
+    <string name="app_error_copy">Veuillez sélectionner et copier le texte manuellement</string>
+    <string name="dialog_backGround">Ouvrir les liens en arrière-plan …</string>
+    <string name="dialog_backGround_always">toujours cette session.</string>
+    <string name="album_title_bookmarks_simple">Signets (simples)</string>
+    <string name="setting_title_cookie_thirdParty">Cookies de tiers</string>
+    <string name="setting_title_backup_exit">Sauvegarde de la base de données (page d\'accueil, signets, historique et toutes les listes de domaines) à la sortie \?</string>
+    <string name="title_appDatabase">Base de données</string>
 </resources>

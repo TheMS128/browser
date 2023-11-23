@@ -6,6 +6,8 @@
 - fix: lint issues
 - fix: theme issues
 - fix: WIKI-links
+- fix: cleanup strings
+- fix: updated translations
 - new: backup on exit
 - new: fast search on websites (long press search icon in toolbar)
 

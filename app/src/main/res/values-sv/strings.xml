@@ -121,7 +121,7 @@
     <string name="clear_title_history">Rensa historik</string>
     <string name="localData">Rensa data lagrad på enheten</string>
     <string name="clear_title_deleteDatabase">Radera databas</string>
-    <string name="clear_summary_deleteDatabase">Ta bort hela databasen (Startsida, bokmärken, historik och alla vitlistor).</string>
+    <string name="clear_summary_deleteDatabase">Radera hela databasen (startsida, bokmärken, historik och alla domänlistor).</string>
     <!-- App setting -->
     <string name="setting_title_app">Appinställningar</string>
     <string name="setting_title_ui">Beteende/UI</string>
@@ -178,7 +178,7 @@
     <string name="toast_quit_TAB">Vill du stänga FLIKEN?</string>
     <string name="toast_downloadComplete">Hämtning slutförd. Öppna filhanterare?</string>
     <string name="toast_unsecured">Webbplatsen använder en osäker anslutning (\"http\"). Vill du prova en säker anslutning (\"https\")?</string>
-    <string name="toast_backup">Säkerhetskopiera data? Detta skriver över den gamla säkerhetskopian.</string>
+    <string name="toast_backup">Säkerhetskopierade data\? Detta kommer att skriva över befintlig säkerhetskopia.</string>
     <string name="dialog_postOnWebsiteHint">URL att öppna. Kommer sparas för nästa användning.</string>
     <string name="dialog_postOnWebsite">Publicera på webbplats</string>
     <!-- Whitelist -->
@@ -204,4 +204,14 @@
     <!-- License changelog -->
     <string name="dialog_translate">Översätt med DeepL</string>
     <string name="dialog_neverAsk">Avfärda. Fråga aldrig under denna session.</string>
+    <string name="dialog_translate_hint">Vänligen aktivera javascript och cookies för \"deepl.com\".</string>
+    <string name="custom_searches_summary">Tryck bara länge på sökikonen i verktygsfältet för att få sökresultat från självdefinierade webbplatser.</string>
+    <string name="custom_searches_title">Snabb sökning på …</string>
+    <string name="app_error_copy">Vänligen välj och kopiera text manuellt</string>
+    <string name="dialog_backGround">Öppna länkar i bakgrunden …</string>
+    <string name="dialog_backGround_always">alltid denna session.</string>
+    <string name="album_title_bookmarks_simple">Bokmärken (enkla)</string>
+    <string name="setting_title_cookie_thirdParty">Cookies från tredje part</string>
+    <string name="setting_title_backup_exit">Backup av databas (Startsida, bokmärken, historik och alla domänlistor) vid avslut\?</string>
+    <string name="title_appDatabase">Databas</string>
 </resources>

@@ -121,7 +121,7 @@
     <string name="clear_title_history">Golire istoric</string>
     <string name="localData">Șterge datele stocate pe dispozitiv</string>
     <string name="clear_title_deleteDatabase">Ștergere bază de date</string>
-    <string name="clear_summary_deleteDatabase">Șterge întreaga bază de date (pagina de pornire, marcaje, istoric și toate listele albe).</string>
+    <string name="clear_summary_deleteDatabase">Ștergeți întreaga bază de date (pagina de start, marcajele, istoricul și toate listele de domenii).</string>
     <!-- App setting -->
     <string name="setting_title_app">Setări aplicație</string>
     <string name="setting_title_ui">Comportament/IU</string>
@@ -178,7 +178,7 @@
     <string name="toast_quit_TAB">Vrei să închizi FILA?</string>
     <string name="toast_downloadComplete">Descărcare finalizată. Deschizi managerul de fișiere?</string>
     <string name="toast_unsecured">Site-ul folosește o conexiune nesecurizată („http”). Încerci o conexiune securizată („https”)?</string>
-    <string name="toast_backup">Backup date? Aceasta va suprascrie vechiul backup.</string>
+    <string name="toast_backup">Date de rezervă\? Aceasta va suprascrie copia de rezervă existentă.</string>
     <string name="dialog_postOnWebsiteHint">URL pentru deschidere. Va fi salvat pentru următoarea utilizare.</string>
     <string name="dialog_postOnWebsite">Postează pe site</string>
     <!-- Whitelist -->
@@ -204,4 +204,14 @@
     <!-- License changelog -->
     <string name="dialog_translate">Tradu cu DeepL</string>
     <string name="dialog_neverAsk">Respingeți. Nu întrebați niciodată în această sesiune.</string>
+    <string name="dialog_translate_hint">Vă rugăm să activați javascript și cookie-urile pentru \"deepl.com\".</string>
+    <string name="custom_searches_summary">Trebuie doar să apăsați lung pe pictograma de căutare din bara de instrumente pentru a obține rezultate de căutare de pe site-urile web definite de dumneavoastră.</string>
+    <string name="custom_searches_title">Căutare rapidă pe …</string>
+    <string name="app_error_copy">Vă rugăm să selectați și să copiați manual textul</string>
+    <string name="dialog_backGround">Deschiderea linkurilor în fundal …</string>
+    <string name="dialog_backGround_always">întotdeauna în această sesiune.</string>
+    <string name="album_title_bookmarks_simple">Semne de carte (simplu)</string>
+    <string name="setting_title_cookie_thirdParty">Cookie-uri terță parte</string>
+    <string name="setting_title_backup_exit">Copie de rezervă a bazei de date (pagina de start, marcajele, istoricul și toate listele de domenii) la ieșire\?</string>
+    <string name="title_appDatabase">Baza de date</string>
 </resources>

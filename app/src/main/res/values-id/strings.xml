@@ -119,7 +119,7 @@
     <string name="clear_title_history">Bersihkan Riwayat</string>
     <string name="localData">Bersihkan data yang disimpan di perangkat</string>
     <string name="clear_title_deleteDatabase">Hapus database</string>
-    <string name="clear_summary_deleteDatabase">Hapus seluruh database (laman awal, penanda, riwayat dan semua whitelist).</string>
+    <string name="clear_summary_deleteDatabase">Menghapus seluruh basis data (Halaman awal, penanda, riwayat, dan semua daftar domain).</string>
     <!-- App setting -->
     <string name="setting_title_app">Pengaturan Aplikasi</string>
     <string name="setting_title_ui">Perilaku/UI</string>
@@ -176,7 +176,7 @@
     <string name="toast_quit_TAB">Apakah Anda ingin menutup TAB?</string>
     <string name="toast_downloadComplete">Unduh selesai. Buka manager file?</string>
     <string name="toast_unsecured">Situs web menggunakan koneksi yang tidak aman (\"http\"). Coba koneksi aman (\"https\")?</string>
-    <string name="toast_backup">Cadangkan data? Ini akan menghapus cadangan lama.</string>
+    <string name="toast_backup">Backup data\? Ini akan menimpa cadangan yang ada.</string>
     <string name="dialog_postOnWebsiteHint">URL untuk membuka. Akan disimpan untuk penggunaan berikutnya.</string>
     <string name="dialog_postOnWebsite">Posting di situs web</string>
     <!-- Whitelist -->
@@ -204,4 +204,14 @@
     <string name="whitelist_edit_hint">ranah (domain)</string>
     <string name="dialog_translate">Terjemahkan dengan DeepL</string>
     <string name="dialog_neverAsk">Bubar. Jangan pernah menanyakan sesi ini.</string>
+    <string name="dialog_translate_hint">Harap aktifkan javascript dan cookie untuk \"deepl.com\".</string>
+    <string name="custom_searches_summary">Cukup tekan lama ikon pencarian di bilah alat, untuk mendapatkan hasil pencarian dari situs web yang ditentukan sendiri.</string>
+    <string name="custom_searches_title">Pencarian cepat di …</string>
+    <string name="app_error_copy">Pilih dan salin teks secara manual</string>
+    <string name="dialog_backGround">Buka tautan di latar belakang …</string>
+    <string name="dialog_backGround_always">selalu sesi ini.</string>
+    <string name="album_title_bookmarks_simple">Penanda (sederhana)</string>
+    <string name="setting_title_cookie_thirdParty">Cookie Pihak Ketiga</string>
+    <string name="setting_title_backup_exit">Mencadangkan basis data (Halaman awal, penanda, riwayat, dan semua daftar domain) saat keluar\?</string>
+    <string name="title_appDatabase">Basis data</string>
 </resources>

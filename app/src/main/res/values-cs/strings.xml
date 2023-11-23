@@ -121,7 +121,7 @@
     <string name="clear_title_history">Vymazat historii</string>
     <string name="localData">Vymazat data uložená v zařízení</string>
     <string name="clear_title_deleteDatabase">Vymazat databázi</string>
-    <string name="clear_summary_deleteDatabase">Vymazat celou databázi (úvodní stránku, záložky, historii a všechny seznamy povolených).</string>
+    <string name="clear_summary_deleteDatabase">Smazat celou databázi (úvodní stránku, záložky, historii a všechny seznamy domén).</string>
     <!-- App setting -->
     <string name="setting_title_app">Nastavení aplikace</string>
     <string name="setting_title_ui">Chování/UI</string>
@@ -178,7 +178,7 @@
     <string name="toast_quit_TAB">Chcete zavřít KARTU?</string>
     <string name="toast_downloadComplete">Stahování dokončeno. Otevřít správce souborů?</string>
     <string name="toast_unsecured">Stránka používá nezabezpečené připojení („http“). Chcete zkusit zabezpečné připojení („https“)?</string>
-    <string name="toast_backup">Zálohovat data? Tato akce přepíše starou zálohu.</string>
+    <string name="toast_backup">Zálohování dat\? Tím se přepíše stávající záloha.</string>
     <string name="dialog_postOnWebsiteHint">URL pro otevření. Uloží se pro další použití.</string>
     <string name="dialog_postOnWebsite">Příspěvek na webových stránkách</string>
     <!-- Whitelist -->
@@ -204,4 +204,14 @@
     <!-- License changelog -->
     <string name="dialog_translate">Přeložte pomocí DeepL</string>
     <string name="dialog_neverAsk">Zavrhnout. Nikdy se na tuto relaci neptejte.</string>
+    <string name="dialog_translate_hint">Povolte prosím javascript a cookies pro \"deepl.com\".</string>
+    <string name="custom_searches_summary">Stačí dlouze stisknout ikonu vyhledávání na panelu nástrojů, abyste získali výsledky vyhledávání z vlastních definovaných webových stránek.</string>
+    <string name="custom_searches_title">Rychlé vyhledávání na …</string>
+    <string name="app_error_copy">Vyberte a zkopírujte text ručně</string>
+    <string name="dialog_backGround">Otevření odkazů na pozadí …</string>
+    <string name="dialog_backGround_always">vždy na tomto zasedání.</string>
+    <string name="album_title_bookmarks_simple">Záložky (jednoduché)</string>
+    <string name="setting_title_cookie_thirdParty">Soubory cookie třetích stran</string>
+    <string name="setting_title_backup_exit">Zálohování databáze (úvodní stránka, záložky, historie a všechny seznamy domén) při ukončení\?</string>
+    <string name="title_appDatabase">Databáze</string>
 </resources>

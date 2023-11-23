@@ -121,7 +121,7 @@
     <string name="clear_title_history">履歴を削除</string>
     <string name="localData">端末に保存されているデータを消去する</string>
     <string name="clear_title_deleteDatabase">データベースを削除</string>
-    <string name="clear_summary_deleteDatabase">データベース全体 (スタートページ、ブックマーク、履歴、ホワイトリスト) を削除します。</string>
+    <string name="clear_summary_deleteDatabase">データベース全体を削除する（スタートページ、ブックマーク、履歴、すべてのドメインリスト）。</string>
     <!-- App setting -->
     <string name="setting_title_app">アプリ設定</string>
     <string name="setting_title_ui">動作/UI</string>
@@ -178,7 +178,7 @@
     <string name="toast_quit_TAB">タブを閉じますか?</string>
     <string name="toast_downloadComplete">ダウンロードが完了しました。ファイルマネージャーを開きますか?</string>
     <string name="toast_unsecured">ウェブサイトは安全でない接続 (\"http\") を使用しています。安全な接続を試してみますか (\"https\")?</string>
-    <string name="toast_backup">データをバックアップしますか? これにより古いバックアップは上書きされます。</string>
+    <string name="toast_backup">データをバックアップしますか？既存のバックアップを上書きします。</string>
     <string name="dialog_postOnWebsiteHint">開くためのURL。次回の使用時に保存されます。</string>
     <string name="dialog_postOnWebsite">ウェブサイトに掲載</string>
     <!-- Whitelist -->
@@ -204,4 +204,14 @@
     <!-- License changelog -->
     <string name="dialog_translate">DeepLで翻訳</string>
     <string name="dialog_neverAsk">解散する。このセッションには決して質問しないでください。</string>
+    <string name="dialog_translate_hint">「deepl.com」のjavascriptとcookieを有効にしてください。</string>
+    <string name="custom_searches_summary">ツールバーの検索アイコンを長押しするだけで、自分で定義したウェブサイトから検索結果を得ることができる。</string>
+    <string name="custom_searches_title">高速検索 …</string>
+    <string name="app_error_copy">手動でテキストを選択してコピーしてください</string>
+    <string name="dialog_backGround">バックグラウンドでリンクを開く …</string>
+    <string name="dialog_backGround_always">このセッションはいつもそうだ。</string>
+    <string name="album_title_bookmarks_simple">ブックマーク（シンプル）</string>
+    <string name="setting_title_cookie_thirdParty">サードパーティークッキー</string>
+    <string name="setting_title_backup_exit">終了時にデータベース（スタートページ、ブックマーク、履歴、すべてのドメインリスト）をバックアップしますか？</string>
+    <string name="title_appDatabase">データベース</string>
 </resources>
