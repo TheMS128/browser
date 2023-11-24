@@ -4,20 +4,25 @@
 
     <item
         android:id="@+id/menu_help"
-        android:title="@string/app_help" />
+        android:title="@string/app_help"
+        android:icon="@drawable/icon_help" />
 
     <item
         android:id="@+id/menu_delete"
-        android:title="@string/menu_delete" />
+        android:title="@string/menu_delete"
+        android:icon="@drawable/icon_delete" />
 
-    <item android:title="@string/menu_sort">
+    <item android:title="@string/menu_sort"
+        android:icon="@drawable/icon_sort">
         <menu>
             <item
                 android:id="@+id/menu_sortName"
-                android:title="@string/dialog_sortName" />
+                android:title="@string/dialog_sortName"
+                android:icon="@drawable/icon_sort_name"/>
             <item
                 android:id="@+id/menu_sortDate"
-                android:title="@string/dialog_sortDate" />
+                android:title="@string/dialog_sortDate"
+                android:icon="@drawable/icon_history" />
         </menu>
     </item>
 

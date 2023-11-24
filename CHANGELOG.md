@@ -8,7 +8,8 @@
 - fix: WIKI-links
 - fix: cleanup strings
 - fix: updated translations
-- new: backup on exit
+- fix: backup on exit
+- new: icons in overview menus
 - new: fast search on websites (long press search icon in toolbar)
 
 

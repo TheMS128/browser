@@ -698,6 +698,7 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
                 }); }
             else if (menuItem.getItemId() == R.id.page_4) {
                 PopupMenu popup = new PopupMenu(this, bottom_navigation.findViewById(R.id.page_2));
+                popup.setForceShowIcon(true);
                 if (bottom_navigation.getSelectedItemId() == R.id.page_1)
                     popup.inflate(R.menu.menu_list_start);
                 else if (bottom_navigation.getSelectedItemId() == R.id.page_2)
@@ -2114,7 +2115,7 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
 
             builder.setTitle(R.string.custom_searches_title);
             builder.setIcon(R.drawable.icon_custom_searches);
-            builder.setNegativeButton(R.string.app_cancel, null);
+            builder.setNegativeButton(R.string.app_ok, null);
             builder.setNeutralButton(R.string.create_new, ((dialogInterface, i) -> {
 
                 MaterialAlertDialogBuilder builderAddCustom = new MaterialAlertDialogBuilder(context);
