@@ -203,6 +203,20 @@
         android:background="?attr/colorSurface"
         android:visibility="gone">
 
+        <TextView
+            android:id="@+id/list_empty"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center|top"
+            android:layout_margin="20dp"
+            android:paddingBottom="75dp"
+            android:gravity="center"
+            android:layout_alignParentBottom="true"
+            android:textAppearance="?attr/textAppearanceBodyLarge"
+            android:text="@string/list_empty"
+            android:textAllCaps="false"
+            android:visibility="gone" />
+
         <ListView
             android:id="@+id/list_overView"
             android:layout_width="match_parent"

@@ -2,6 +2,7 @@
 - switched to Google rounded Material You Icons
 - fix: improvements in backup/restore
 - fix: improvements in custom redirects
+- fix: layout improvements
 - fix: open deepl.com in normal tab
 - fix: lint issues
 - fix: theme issues

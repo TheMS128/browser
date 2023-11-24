@@ -139,6 +139,8 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
     private AdapterRecord adapter;
     private RelativeLayout omniBox;
     private ImageButton omniBox_overview;
+    private ListView listView;
+    private TextView list_empty;
     private int duration;
     private int colorAlert;
 
@@ -598,12 +600,18 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
     @SuppressLint("ClickableViewAccessibility")
     private void initOverview() {
         bottomSheetDialog_OverView = findViewById(R.id.bottomSheetDialog_OverView);
-        ListView listView = bottomSheetDialog_OverView.findViewById(R.id.list_overView);
+        listView = bottomSheetDialog_OverView.findViewById(R.id.list_overView);
         tab_container = bottomSheetDialog_OverView.findViewById(R.id.listOpenedTabs);
+        list_empty = bottomSheetDialog_OverView.findViewById(R.id.list_empty);
 
         AtomicInteger intPage = new AtomicInteger();
 
         NavigationBarView.OnItemSelectedListener navListener = menuItem -> {
+
+            if (listView.getCount() < 1) {
+                listView.setEmptyView(list_empty);
+            }
+
             if (menuItem.getItemId() == R.id.page_1) {
                 tab_container.setVisibility(View.GONE);
                 listView.setVisibility(View.VISIBLE);
