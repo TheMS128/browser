@@ -50,7 +50,7 @@
             android:theme="@style/AppTheme_day">
 
             <intent-filter
-                android:label="@string/search_hint">
+                android:label="@string/main_omnibox_input_hint">
                 <action android:name="android.intent.action.SEND" />
                 <category android:name="android.intent.category.DEFAULT" />
                 <data android:mimeType="text/plain" />
