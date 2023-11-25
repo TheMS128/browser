@@ -214,4 +214,5 @@
     <string name="setting_title_cookie_thirdParty">Cookie di terze parti</string>
     <string name="setting_title_backup_exit">Backup del database (pagina iniziale, segnalibri, cronologia e tutti gli elenchi dei domini) all\'uscita\?</string>
     <string name="title_appDatabase">Database</string>
+    <string name="custom_domains">Domini personalizzati</string>
 </resources>

@@ -214,4 +214,5 @@
     <string name="setting_title_cookie_thirdParty">Сторонні куки</string>
     <string name="setting_title_backup_exit">Резервувати базу даних (стартову сторінку, закладки, історію і всі списки доменів) при виході\?</string>
     <string name="title_appDatabase">База даних</string>
+    <string name="custom_domains">Користувацькі домени</string>
 </resources>

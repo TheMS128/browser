@@ -214,4 +214,5 @@
     <string name="setting_title_cookie_thirdParty">Cookies de terceros</string>
     <string name="setting_title_backup_exit">¿Hacer una copia de seguridad de la base de datos (página de inicio, marcadores, historial y todas las listas de dominios) al salir\?</string>
     <string name="title_appDatabase">Base de datos</string>
+    <string name="custom_domains">Dominios personalizados</string>
 </resources>

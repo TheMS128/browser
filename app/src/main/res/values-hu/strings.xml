@@ -214,4 +214,5 @@
     <string name="setting_title_cookie_thirdParty">Harmadik fél sütik</string>
     <string name="setting_title_backup_exit">Adatbázis biztonsági mentése (kezdőlap, könyvjelzők, előzmények és az összes domain-lista) kilépéskor\?</string>
     <string name="title_appDatabase">Adatbázis</string>
+    <string name="custom_domains">Egyéni domainek</string>
 </resources>

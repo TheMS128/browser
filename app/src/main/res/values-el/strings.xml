@@ -214,4 +214,5 @@
     <string name="setting_title_cookie_thirdParty">Cookies τρίτων μερών</string>
     <string name="setting_title_backup_exit">Δημιουργία αντιγράφων ασφαλείας της βάσης δεδομένων (αρχική σελίδα, σελιδοδείκτες, ιστορικό και όλες οι λίστες τομέων) κατά την έξοδο;</string>
     <string name="title_appDatabase">Βάση δεδομένων</string>
+    <string name="custom_domains">Προσαρμοσμένοι τομείς</string>
 </resources>

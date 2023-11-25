@@ -214,4 +214,5 @@
     <string name="setting_title_cookie_thirdParty">Cookie-uri terță parte</string>
     <string name="setting_title_backup_exit">Copie de rezervă a bazei de date (pagina de start, marcajele, istoricul și toate listele de domenii) la ieșire\?</string>
     <string name="title_appDatabase">Baza de date</string>
+    <string name="custom_domains">Domenii personalizate</string>
 </resources>

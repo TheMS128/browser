@@ -214,4 +214,5 @@
     <string name="setting_title_cookie_thirdParty">Cookie Pihak Ketiga</string>
     <string name="setting_title_backup_exit">Mencadangkan basis data (Halaman awal, penanda, riwayat, dan semua daftar domain) saat keluar\?</string>
     <string name="title_appDatabase">Basis data</string>
+    <string name="custom_domains">Domain khusus</string>
 </resources>

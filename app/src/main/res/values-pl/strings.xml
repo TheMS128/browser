@@ -214,4 +214,5 @@
     <string name="setting_title_cookie_thirdParty">Pliki cookie stron trzecich</string>
     <string name="setting_title_backup_exit">Kopia zapasowa bazy danych (strona startowa, zakładki, historia i wszystkie listy domen) przy wyjściu\?</string>
     <string name="title_appDatabase">Baza danych</string>
+    <string name="custom_domains">Aangepaste domeinen</string>
 </resources>

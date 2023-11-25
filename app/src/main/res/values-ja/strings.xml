@@ -214,4 +214,5 @@
     <string name="setting_title_cookie_thirdParty">サードパーティークッキー</string>
     <string name="setting_title_backup_exit">終了時にデータベース（スタートページ、ブックマーク、履歴、すべてのドメインリスト）をバックアップしますか？</string>
     <string name="title_appDatabase">データベース</string>
+    <string name="custom_domains">カスタムドメイン</string>
 </resources>

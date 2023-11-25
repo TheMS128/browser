@@ -214,4 +214,5 @@
     <string name="setting_title_cookie_thirdParty">Üçüncü Taraf Çerezleri</string>
     <string name="setting_title_backup_exit">Çıkışta veritabanını (Başlangıç sayfası, yer imleri, geçmiş ve tüm etki alanı listeleri) yedekleyin\?</string>
     <string name="title_appDatabase">Veritabanı</string>
+    <string name="custom_domains">Özel alan adları</string>
 </resources>

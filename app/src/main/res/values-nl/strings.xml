@@ -214,4 +214,5 @@
     <string name="setting_title_cookie_thirdParty">Cookies van derden</string>
     <string name="setting_title_backup_exit">Back-up database (Startpagina, bladwijzers, geschiedenis en alle domeinlijsten) bij afsluiten\?</string>
     <string name="title_appDatabase">Database</string>
+    <string name="custom_domains">Aangepaste domeinen</string>
 </resources>

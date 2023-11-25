@@ -214,4 +214,5 @@
     <string name="setting_title_cookie_thirdParty">Soubory cookie třetích stran</string>
     <string name="setting_title_backup_exit">Zálohování databáze (úvodní stránka, záložky, historie a všechny seznamy domén) při ukončení\?</string>
     <string name="title_appDatabase">Databáze</string>
+    <string name="custom_domains">Vlastní domény</string>
 </resources>

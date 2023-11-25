@@ -214,4 +214,5 @@
     <string name="title_appDatabase">Datenbank</string>
     <string name="custom_searches_summary">Drücken Sie einfach lange auf das Suchsymbol in der Symbolleiste, um Suchergebnisse von selbst definierten Websites zu erhalten.</string>
     <string name="custom_searches_title">Schnelle Suche auf …</string>
+    <string name="custom_domains">Eigene Domains</string>
 </resources>

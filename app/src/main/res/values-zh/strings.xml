@@ -214,4 +214,5 @@
     <string name="setting_title_cookie_thirdParty">第三方 Cookies</string>
     <string name="setting_title_backup_exit">退出时备份数据库（起始页、书签、历史记录和所有域列表）？</string>
     <string name="title_appDatabase">数据库</string>
+    <string name="custom_domains">自定义域名</string>
 </resources>

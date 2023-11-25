@@ -214,4 +214,5 @@
     <string name="setting_title_cookie_thirdParty">Cookies från tredje part</string>
     <string name="setting_title_backup_exit">Backup av databas (Startsida, bokmärken, historik och alla domänlistor) vid avslut\?</string>
     <string name="title_appDatabase">Databas</string>
+    <string name="custom_domains">Anpassade domäner</string>
 </resources>

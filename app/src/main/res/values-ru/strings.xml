@@ -214,4 +214,5 @@
     <string name="setting_title_cookie_thirdParty">Сторонние файлы cookie</string>
     <string name="setting_title_backup_exit">Резервное копирование базы данных (Startpage, закладки, история и все доменные списки) при выходе\?</string>
     <string name="title_appDatabase">База данных</string>
+    <string name="custom_domains">Пользовательские домены</string>
 </resources>
