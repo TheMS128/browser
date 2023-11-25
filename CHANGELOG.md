@@ -12,6 +12,7 @@
 - fix: backup on exit
 - new: icons in overview menus
 - new: fast search on websites (long press search icon in toolbar)
+- new: AdBlock -> add custom domains
 
 
 ### v 12 "Gandhi"

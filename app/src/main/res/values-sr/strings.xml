@@ -177,7 +177,7 @@
     <string name="toast_quit_TAB">Да ли желите да затворите КАРТИЦУ?</string>
     <string name="toast_downloadComplete">Скидање је завршено. Отворити менаџер датотека?</string>
     <string name="toast_unsecured">Веб страница користи небезбедну везу („хттп“). Зелите ли покушати са безбедном везом („хттпс“)?</string>
-    <string name="toast_backup">Сигурносно копирајте податке? Ово ће преписати стару резервну копију.</string>
+    <string name="toast_backup">Сигурносно копирајте податке\? Ово ће преписати стару резервну копију.</string>
     <string name="dialog_postOnWebsiteHint">Урл за отварање. Биће сачуван за следећу употребу.</string>
     <string name="dialog_postOnWebsite">Објавите на веб страници</string>
     <!-- Whitelist -->

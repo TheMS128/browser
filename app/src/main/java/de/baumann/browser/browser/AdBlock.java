@@ -9,6 +9,10 @@ import android.util.Log;
 
 import androidx.preference.PreferenceManager;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.io.BufferedInputStream;
 import java.io.BufferedReader;
 import java.io.File;
@@ -23,11 +27,14 @@ import java.net.URISyntaxException;
 import java.net.URL;
 import java.net.URLConnection;
 import java.nio.file.Files;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Locale;
 import java.util.Set;
+
+import de.baumann.browser.objects.CustomRedirect;
 
 @SuppressWarnings("ResultOfMethodCallIgnored")
 public class AdBlock {
@@ -66,7 +73,8 @@ public class AdBlock {
         }
 
         Date lastModified = new Date(file.lastModified());
-        if (lastModified.before(time.getTime()) || getHostsDate(context).equals("")) {  //also download again if something is wrong with the file
+        if (lastModified.before(time.getTime()) || getHostsDate(context).equals("")) {
+            //also download again if something is wrong with the file
             //update if file is older than a day
             downloadHosts(context);
         }
@@ -113,9 +121,22 @@ public class AdBlock {
                     if (line.startsWith("#")) continue;
                     hosts.add(line.toLowerCase(locale));
                 }
+
+                SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(context);
+                String redirectsPref = sp.getString("customHosts", "[]");
+                JSONArray array = new JSONArray(redirectsPref);
+                for (int i = 0; i < array.length(); i++) {
+                    JSONObject redirect = array.getJSONObject(i);
+                    String target = redirect.getString("target");
+                    hosts.add(target);
+                }
+                in.close();
+
                 in.close();
             } catch (IOException i) {
                 Log.w("browser", "Error loading adBlockHosts", i);
+            } catch (JSONException e) {
+                throw new RuntimeException(e);
             }
         });
         thread.start();

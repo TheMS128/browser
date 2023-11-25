@@ -176,7 +176,7 @@
     <string name="toast_quit_TAB">האם אתה רוצה לסגור את ה-TAB?</string>
     <string name="toast_downloadComplete">ההורדה הושלמה. לפתוח את מנהל הקבצים?</string>
     <string name="toast_unsecured">האתר משתמש בחיבור לא מאובטח (\"http\"). האם לנסות חיבור מאובטח (\"https\")?</string>
-    <string name="toast_backup">גיבוי נתונים? פעולה זו תחליף את הגיבוי הישן.</string>
+    <string name="toast_backup">גיבוי נתונים\? פעולה זו תחליף את הגיבוי הישן.</string>
     <string name="dialog_postOnWebsiteHint">כתובת אתר לפתיחה. יישמר לשימוש הבא.</string>
     <string name="dialog_postOnWebsite">פרסם באתר</string>
     <!-- Whitelist -->

@@ -3,7 +3,6 @@
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
-
     <CheckBoxPreference
         android:defaultValue="true"
         android:key="sp_drm"
@@ -57,6 +56,16 @@
             android:entryValues="@array/setting_values_adBlock"
             android:key="ab_hosts"
             android:title="@string/setting_title_adblockHost" />
+
+        <Preference
+            android:key="custom_adblock"
+            android:selectable="true"
+            android:title="@string/custom_domains" />
+
+        <Preference
+            android:key="refreshHosts"
+            android:selectable="true"
+            android:title="@string/menu_reload"/>
 
     </PreferenceCategory>
 

@@ -27,6 +27,7 @@ import de.baumann.browser.R;
 import de.baumann.browser.activity.Settings_ProfileList;
 import de.baumann.browser.activity.Settings_Profile;
 import de.baumann.browser.browser.AdBlock;
+import de.baumann.browser.dialogs.CustomHostsDialog;
 import de.baumann.browser.dialogs.CustomRedirectsDialog;
 import de.baumann.browser.preferences.BasePreferenceFragment;
 import de.baumann.browser.view.GridAdapter;
@@ -126,6 +127,19 @@ public class Fragment_settings_Privacy extends BasePreferenceFragment implements
         custom_redirects.setOnPreferenceClickListener(preference -> {
             CustomRedirectsDialog dialog = new CustomRedirectsDialog();
             dialog.show(getChildFragmentManager(), null);
+            return false;
+        });
+        Preference custom_adblock = findPreference("custom_adblock");
+        assert custom_adblock != null;
+        custom_adblock.setOnPreferenceClickListener(preference -> {
+            CustomHostsDialog dialog = new CustomHostsDialog();
+            dialog.show(getChildFragmentManager(), null);
+            return false;
+        });
+        Preference refreshHosts = findPreference("refreshHosts");
+        assert refreshHosts != null;
+        refreshHosts.setOnPreferenceClickListener(preference -> {
+            AdBlock.downloadHosts(getContext());
             return false;
         });
     }

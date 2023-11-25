@@ -2,7 +2,6 @@ package de.baumann.browser.view;
 
 import android.app.Dialog;
 import android.content.Context;
-import android.provider.ContactsContract;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,16 +18,16 @@ import org.json.JSONException;
 import java.util.ArrayList;
 
 import de.baumann.browser.R;
+import de.baumann.browser.objects.CustomHostsHelper;
 import de.baumann.browser.objects.CustomRedirect;
 import de.baumann.browser.objects.CustomRedirectsHelper;
-import de.baumann.browser.objects.CustomSearchesHelper;
 import de.baumann.browser.unit.HelperUnit;
 
-public class AdapterCustomRedirect extends RecyclerView.Adapter<RedirectsViewHolder> {
+public class AdapterCustomHost extends RecyclerView.Adapter<RedirectsViewHolder> {
     final private ArrayList<CustomRedirect> redirects;
     private final Context context;
 
-    public AdapterCustomRedirect(ArrayList<CustomRedirect> redirects, Context context) {
+    public AdapterCustomHost(ArrayList<CustomRedirect> redirects, Context context) {
         super();
         this.redirects = redirects;
         this.context = context;
@@ -38,7 +37,7 @@ public class AdapterCustomRedirect extends RecyclerView.Adapter<RedirectsViewHol
     @Override
     public RedirectsViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.custom_redirects_row, parent, false);
+                .inflate(R.layout.custom_hosts_row, parent, false);
 
         return new RedirectsViewHolder(view);
 
@@ -47,10 +46,8 @@ public class AdapterCustomRedirect extends RecyclerView.Adapter<RedirectsViewHol
     @Override
     public void onBindViewHolder(@NonNull RedirectsViewHolder holder, int position) {
         CustomRedirect current = redirects.get(position);
-        TextView source = holder.itemView.findViewById(R.id.redirect_source);
         TextView target = holder.itemView.findViewById(R.id.redirect_target);
         ImageView remove = holder.itemView.findViewById(R.id.remove_redirect);
-        source.setText(current.getSource());
         target.setText(current.getTarget());
         remove.setOnClickListener((iV) -> {
             MaterialAlertDialogBuilder builderSubMenu = new MaterialAlertDialogBuilder(context);
@@ -62,7 +59,7 @@ public class AdapterCustomRedirect extends RecyclerView.Adapter<RedirectsViewHol
                 notifyItemRemoved(position);
                 notifyItemRangeChanged(position, getItemCount());
                 try {
-                    CustomRedirectsHelper.saveRedirects(context, redirects);
+                    CustomHostsHelper.saveRedirects(context, redirects);
                 } catch (JSONException e) {
                     throw new RuntimeException(e);
                 }

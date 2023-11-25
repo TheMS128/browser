@@ -297,21 +297,7 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
         initOmniBox();
         initSearchPanel();
         initOverview();
-
         dispatchIntent(getIntent());
-
-        // Check whether we're recreating a previously destroyed instance
-        if (savedInstanceState != null) {
-            ArrayList<String> openTabs;
-            ArrayList<String> openTabsProfile;
-            openTabs = new ArrayList<>(Arrays.asList(TextUtils.split(savedInstanceState.getString("TABS"), "‚‗‚")));
-            openTabsProfile = new ArrayList<>(Arrays.asList(TextUtils.split(savedInstanceState.getString("PROFILE"), "‚‗‚")));
-            if (openTabs.size() > 0) {
-                for (int counter = 0; counter < openTabs.size(); counter++) {
-                    addAlbum(getString(R.string.app_name), openTabs.get(counter), BrowserContainer.size() < 1, false, openTabsProfile.get(counter), null);
-                }
-            }
-        }
 
         //restore open Tabs from shared preferences if app got killed
         if (sp.getBoolean("sp_restoreTabs", false)
