@@ -5,11 +5,12 @@
 - fix: layout improvements
 - fix: open deepl.com in normal tab
 - fix: lint issues
-- fix: theme issues
+- fix: theme issues #1105
 - fix: WIKI-links
 - fix: cleanup strings
 - fix: updated translations
 - fix: backup on exit
+- fix: crashes related to cookie manager #1118
 - new: icons in overview menus
 - new: fast search on websites (long press search icon in toolbar)
 - new: AdBlock -> add custom domains

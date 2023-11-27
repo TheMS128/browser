@@ -229,15 +229,19 @@ public class NinjaWebView extends WebView implements AlbumController {
         saveData = sp.getBoolean(profile + "_saveData", true);
         camera = sp.getBoolean(profile + "_camera", true);
 
-        CookieManager manager = CookieManager.getInstance();
-        if (sp.getBoolean(profile + "_cookies", false)) {
-            manager.setAcceptCookie(true);
-            manager.getCookie(url);
-        } else manager.setAcceptCookie(false);
-        if (sp.getBoolean(profile + "_cookiesThirdParty", false)) {
-            manager.setAcceptThirdPartyCookies(this, true);
-            manager.getCookie(url);
-        } else manager.setAcceptThirdPartyCookies(this, true);
+        try {
+            CookieManager manager = CookieManager.getInstance();
+            if (sp.getBoolean(profile + "_cookies", false)) {
+                manager.setAcceptCookie(true);
+                manager.getCookie(url);
+            } else manager.setAcceptCookie(false);
+            if (sp.getBoolean(profile + "_cookiesThirdParty", false)) {
+                manager.setAcceptThirdPartyCookies(this, true);
+                manager.getCookie(url);
+            } else manager.setAcceptThirdPartyCookies(this, true);
+        } catch (Exception e) {
+            Log.i(TAG, "Error loading cookies:" + e);
+        }
 
         profile = profileOriginal;
     }
