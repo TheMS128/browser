@@ -2,7 +2,6 @@ package de.baumann.browser.view;
 
 import android.app.Dialog;
 import android.content.Context;
-import android.provider.ContactsContract;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -21,7 +20,6 @@ import java.util.ArrayList;
 import de.baumann.browser.R;
 import de.baumann.browser.objects.CustomRedirect;
 import de.baumann.browser.objects.CustomRedirectsHelper;
-import de.baumann.browser.objects.CustomSearchesHelper;
 import de.baumann.browser.unit.HelperUnit;
 
 public class AdapterCustomRedirect extends RecyclerView.Adapter<RedirectsViewHolder> {

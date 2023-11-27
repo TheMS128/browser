@@ -26,7 +26,6 @@ import java.util.Objects;
 import de.baumann.browser.R;
 import de.baumann.browser.objects.CustomRedirect;
 import de.baumann.browser.objects.CustomRedirectsHelper;
-import de.baumann.browser.objects.CustomSearchesHelper;
 import de.baumann.browser.unit.HelperUnit;
 import de.baumann.browser.view.AdapterCustomRedirect;
 

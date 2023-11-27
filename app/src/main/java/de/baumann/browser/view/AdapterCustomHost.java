@@ -20,7 +20,6 @@ import java.util.ArrayList;
 import de.baumann.browser.R;
 import de.baumann.browser.objects.CustomHostsHelper;
 import de.baumann.browser.objects.CustomRedirect;
-import de.baumann.browser.objects.CustomRedirectsHelper;
 import de.baumann.browser.unit.HelperUnit;
 
 public class AdapterCustomHost extends RecyclerView.Adapter<RedirectsViewHolder> {

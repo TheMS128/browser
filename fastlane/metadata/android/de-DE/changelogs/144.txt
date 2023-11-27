@@ -1,0 +1,17 @@
+v 13 "Friedrich Hecker":
+
+- umgestellt auf Google rounded Material You Icons
+- fix: Verbesserungen beim Sichern/Wiederherstellen
+- fix: Verbesserungen bei benutzerdefinierten Weiterleitungen
+- fix: Layout-Verbesserungen
+- fix: deepl.com in normalem Tab öffnen
+- fix: Fusselprobleme
+- behoben: Lint-Probleme #1105
+- behoben: WIKI-Links
+- fix: Strings bereinigt
+- fix: aktualisierte Übersetzungen
+- fix: Backup beim Beenden
+- fix: Abstürze im Zusammenhang mit Cookie-Manager #1118 #1111 #1115
+- neu: Icons in Übersichtsmenüs
+- neu: schnelle Suche auf Webseiten (langes Drücken des Suchsymbols in der Toolbar)
+- neu: AdBlock -> eigene Domains hinzufügen
