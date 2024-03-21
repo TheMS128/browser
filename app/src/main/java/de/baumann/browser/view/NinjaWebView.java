@@ -142,10 +142,6 @@ public class NinjaWebView extends WebView implements AlbumController {
         this.onScrollChangeListener = onScrollChangeListener;
     }
 
-    public void setIsBackPressed(Boolean isBackPressed) {
-        this.isBackPressed = isBackPressed;
-    }
-
     public boolean isForeground() {
         return foreground;
     }

@@ -1,5 +1,6 @@
 ### v 14 "..." (WIP)
 - fix: redirect custom urls
+- fix: Back navigation is flawed #1121
 - updated: translations
 
 ### v 13 "Friedrich Hecker"

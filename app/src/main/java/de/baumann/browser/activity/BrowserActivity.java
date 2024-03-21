@@ -415,10 +415,7 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
                     searchBox.setText("");
                     searchPanel.setVisibility(View.GONE);
                     omniBox.setVisibility(View.VISIBLE); }
-                else if (ninjaWebView.canGoBack()) {
-                    WebBackForwardList mWebBackForwardList = ninjaWebView.copyBackForwardList();
-                    String historyUrl = mWebBackForwardList.getItemAtIndex(mWebBackForwardList.getCurrentIndex() - 1).getUrl();
-                    goBack_skipRedirects(historyUrl); }
+                else if (ninjaWebView.canGoBack()) ninjaWebView.goBack();
                 else removeAlbum(currentAlbumController);
                 return true;
         }
@@ -2196,18 +2193,6 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
             else getWindow().setFlags(WindowManager.LayoutParams.FLAG_FORCE_NOT_FULLSCREEN, WindowManager.LayoutParams.FLAG_FORCE_NOT_FULLSCREEN); }
     }
 
-    public void goBack_skipRedirects(String historyUrl) {
-        if (ninjaWebView.canGoBack()) {
-            ninjaWebView.initPreferences(historyUrl);
-            ninjaWebView.setIsBackPressed(true);
-            if (HelperUnit.domain(ninjaWebView.getUrl()).equals(HelperUnit.domain(historyUrl))) {
-                ninjaWebView.goBack();
-            } else {
-                ninjaWebView.loadUrl(historyUrl);
-            }
-        }
-    }
-
     private void printPDF() {
         String title = HelperUnit.fileName(ninjaWebView.getUrl());
         PrintManager printManager = (PrintManager) getSystemService(Context.PRINT_SERVICE);
@@ -2337,10 +2322,7 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
                 else NinjaToast.show(this, R.string.toast_webview_forward);
                 break;
             case "03":
-                if (ninjaWebView.canGoBack()) {
-                    WebBackForwardList mWebBackForwardList = ninjaWebView.copyBackForwardList();
-                    String historyUrl = mWebBackForwardList.getItemAtIndex(mWebBackForwardList.getCurrentIndex() - 1).getUrl();
-                    goBack_skipRedirects(historyUrl); }
+                if (ninjaWebView.canGoBack()) ninjaWebView.goBack();
                 else removeAlbum(currentAlbumController);
                 break;
             case "04":
