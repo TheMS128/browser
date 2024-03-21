@@ -28,6 +28,7 @@ import de.baumann.browser.objects.CustomRedirect;
 import de.baumann.browser.objects.CustomRedirectsHelper;
 import de.baumann.browser.unit.HelperUnit;
 import de.baumann.browser.view.AdapterCustomRedirect;
+import de.baumann.browser.view.NinjaToast;
 
 public class CustomRedirectsDialog extends DialogFragment {
     AdapterCustomRedirect adapter;
@@ -79,7 +80,10 @@ public class CustomRedirectsDialog extends DialogFragment {
         builder.setPositiveButton(R.string.app_ok, ((dialogInterface, i) -> {
             String sourceText = Objects.requireNonNull(source.getText()).toString();
             String targetText = Objects.requireNonNull(target.getText()).toString();
-            if (targetText.isEmpty() || sourceText.isEmpty()) return;
+            if (targetText.isEmpty() && sourceText.isEmpty()) {
+                NinjaToast.show(requireContext(), R.string.toast_input_empty);
+                return;
+            }
             adapter.addRedirect(new CustomRedirect(sourceText, targetText));
             try {
                 CustomRedirectsHelper.saveRedirects(requireContext(), adapter.getRedirects());

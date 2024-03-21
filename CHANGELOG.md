@@ -1,3 +1,6 @@
+### v 14 "..." (WIP)
+- fix: redirect custom urls
+
 ### v 13 "Friedrich Hecker"
 - switched to Google rounded Material You Icons
 - fix: improvements in backup/restore

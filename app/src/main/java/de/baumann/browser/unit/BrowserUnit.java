@@ -276,7 +276,7 @@ public class BrowserUnit {
 
     public static String redirectURL(WebView ninjaWebView, SharedPreferences sp, String url) {
 
-        String domain = HelperUnit.domain(url);
+        String domain = url;
         boolean redirect = sp.getBoolean("redirect", false);
         if (!redirect) return url;
 
@@ -285,7 +285,7 @@ public class BrowserUnit {
 
             for (int i = 0; i < redirects.size(); i++) {
                 CustomRedirect customRedirect = redirects.get(i);
-                if (domain.contains(customRedirect.getSource())) {
+                if (url.contains(customRedirect.getSource())) {
                     ninjaWebView.stopLoading();
                     url = url.replace(customRedirect.getSource(), customRedirect.getTarget());
                     url = url.replace("www.", "");
