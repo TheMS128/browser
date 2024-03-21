@@ -8,7 +8,7 @@
     <string name="app_done">Fait</string>
     <string name="app_error">Erreur</string>
     <string name="app_warning">Attention</string>
-    <string name="app_permission">Pour utiliser cette fonctionnalité, vous devez accorder la permission. Après cela, redémarrez l\'application.</string>
+    <string name="app_permission">Pour utiliser cette fonctionnalité, vous devez accorder la permission.</string>
     <string name="list_empty">Liste vide</string>
     <string name="album_title_bookmarks">Signets</string>
     <string name="album_title_history">Historique</string>

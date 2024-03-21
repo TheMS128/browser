@@ -1,5 +1,6 @@
 ### v 14 "..." (WIP)
 - fix: redirect custom urls
+- updated: translations
 
 ### v 13 "Friedrich Hecker"
 - switched to Google rounded Material You Icons

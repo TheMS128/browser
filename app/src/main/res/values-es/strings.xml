@@ -8,8 +8,8 @@
     <string name="app_done">Listo</string>
     <string name="app_error">Error</string>
     <string name="app_warning">Advertencia</string>
-    <string name="app_permission">Para utilizar esta función debes conceder el permiso. Después de eso, reinicie la aplicación.</string>
-    <string name="list_empty">La lista está vacía</string>
+    <string name="app_permission">Debe conceder permiso para utilizar esta función.</string>
+    <string name="list_empty">Lista vacía</string>
     <string name="album_title_bookmarks">Marcadores</string>
     <string name="album_title_history">Historial</string>
     <string name="album_title_home">Inicio</string>
@@ -57,8 +57,8 @@
     <string name="dialog_extension_hint">Extensión (por ejemplo: \".jpg\"):</string>
     <string name="dialog_sign_in_username">Nombre de usuario</string>
     <string name="dialog_sign_in_password">Contraseña</string>
-    <string name="dialog_title_download">¿Descargar el archivo?</string>
-    <string name="dialog_content_resubmission">¿Reenviar tus datos?</string>
+    <string name="dialog_title_download">¿Descargar archivo?</string>
+    <string name="dialog_content_resubmission">¿Reenviar los datos?</string>
     <string name="dialog_content_ssl_error">El certificado del sitio no es seguro. ¿Continuar de todos modos?</string>
     <string name="dialog_sortName">Ordenar por nombre</string>
     <string name="dialog_sortIcon">Ordenar por icono</string>
@@ -68,7 +68,7 @@
     <!-- browser setting -->
     <string name="setting_title_browser">Configuración del navegador</string>
     <string name="setting_title_general">General</string>
-    <string name="setting_title_search_engine">Motor de búsqueda</string>
+    <string name="setting_title_search_engine">Buscadores</string>
     <string name="setting_summary_search_engine_google">Google</string>
     <string name="setting_summary_search_engine_duckduckgo">DuckDuckGo</string>
     <string name="setting_summary_search_engine_startpage">Página de Inicio</string>
@@ -87,7 +87,7 @@
     <string name="custom_redirects">Redirecciones personalizadas</string>
     <string name="source">Origen</string>
     <string name="target">Destinatario</string>
-    <string name="setting_title_save_data">Solicitar \"reducir datos\"</string>
+    <string name="setting_title_save_data">Solicitar \"Guardar datos\"</string>
     <string name="setting_title_profiles">Perfiles</string>
     <string name="setting_title_profiles_edit">Editar perfil</string>
     <string name="setting_title_profiles_trustedList">Sitios web de confianza</string>
@@ -104,25 +104,25 @@
     <!-- browser start -->
     <string name="setting_title_images">Imágenes</string>
     <string name="setting_title_cookie">Cookies</string>
-    <string name="setting_summary_cookie_delete">Si está activado, se borrarán todas las cookies. Incluyendo las de sitios web de confianza.</string>
+    <string name="setting_summary_cookie_delete">Si se activa, se eliminarán todas las cookies. Esto incluye las cookies de los sitios web de confianza.</string>
     <string name="setting_title_javascript">JavaScript</string>
     <string name="setting_title_adblock">Bloqueador de anuncios</string>
-    <string name="setting_summary_adblock">Activar para bloquear anuncios molestos. También provocará que los sitios se carguen más rápido.</string>
+    <string name="setting_summary_adblock">Activa AdBlock para bloquear los anuncios. Los sitios web se cargan más rápido cuando está activado.</string>
     <string name="setting_title_adblockHost">Contenido bloqueado</string>
     <string name="setting_title_location">Ubicación</string>
     <string name="setting_title_history">Historial</string>
-    <string name="setting_summary_autofill">Habilitar el guardado de datos de formulario (Android Nougat y más abajo) o servicio de autorelleno (Android Oreo y superior).</string>
+    <string name="setting_summary_autofill">Activa el guardado de datos del formulario (Android Nougat y versiones inferiores) o el servicio de autocompletado (Android Oreo y versiones superiores).</string>
     <!-- browser clear -->
-    <string name="data_summary">Todos los archivos se exportarán al directorio \"Documentos / browser_backup /\" de su tarjeta SD.</string>
-    <string name="clear_title_quit">Borrar al salir de la aplicación</string>
-    <string name="clear_title_cache">Borrar caché</string>
-    <string name="clear_title_cookie">Borrar cookies</string>
+    <string name="data_summary">Todos los archivos se guardarán en el directorio \"Documents/browser_backup/\" de tu tarjeta SD.</string>
+    <string name="clear_title_quit">Borrar al salir</string>
+    <string name="clear_title_cache">Borrar la caché</string>
+    <string name="clear_title_cookie">Borrar las cookies</string>
     <string name="clear_title_history">Borrar el historial</string>
     <string name="localData">Borrar datos almacenados en el dispositivo</string>
     <string name="clear_title_deleteDatabase">Borrar base de datos</string>
-    <string name="clear_summary_deleteDatabase">Borrar toda la base de datos (página de inicio, marcadores, historial y todas las listas de dominios).</string>
+    <string name="clear_summary_deleteDatabase">Borrar la base de datos (página de inicio, favoritos, historial y todas las listas de dominios).</string>
     <!-- App setting -->
-    <string name="setting_title_app">Configuración de la aplicación</string>
+    <string name="setting_title_app">Ajustes de la aplicación</string>
     <string name="setting_title_ui">Comportamiento/IU</string>
     <string name="setting_title_data">Respaldos</string>
     <string name="setting_filter">Filtro de marcadores</string>
@@ -165,18 +165,18 @@
     <string name="settings_data_restore">Restaurar</string>
     <!-- Others setting -->
     <!-- Toast -->
-    <string name="toast_add_whitelist_successful">Dominio agregado con éxito</string>
-    <string name="toast_copy_successful">Copiado con éxito</string>
-    <string name="toast_delete_successful">Eliminado con éxito</string>
+    <string name="toast_add_whitelist_successful">Dominio agregado</string>
+    <string name="toast_copy_successful">Copiado</string>
+    <string name="toast_delete_successful">Eliminado</string>
     <string name="toast_domain_already_exists">El dominio ya existe</string>
-    <string name="toast_input_empty">No has introducido nada.</string>
+    <string name="toast_input_empty">Por favor, introduzca algo.</string>
     <string name="toast_invalid_domain">Dominio no válido</string>
-    <string name="toast_webview_forward">No se puede cargar el sitio</string>
-    <string name="toast_restart">Debe reiniciar \"Navegador FOSS\" para aplicar cambios. ¿Cerrar ahora?</string>
-    <string name="toast_quit">¿Desea salir de \"Navegador FOSS\"?</string>
-    <string name="toast_quit_TAB">¿Desea cerrar la pestaña?</string>
+    <string name="toast_webview_forward">No se puede cargar el siguiente sitio.</string>
+    <string name="toast_restart">¿Reiniciar para aplicar los cambios?</string>
+    <string name="toast_quit">¿Salir del \"Navegador FOSS\"?</string>
+    <string name="toast_quit_TAB">¿Cerrar la pestaña?</string>
     <string name="toast_downloadComplete">Descarga completa. ¿Abrir el gestor de archivos?</string>
-    <string name="toast_unsecured">El sitio web utiliza una conexión no segura (\"http\"). ¿Desea intentar una conexión segura (\"https\")?</string>
+    <string name="toast_unsecured">La página web utiliza una conexión no segura (\"http\"). ¿Prueba con una conexión segura (\"https\")?</string>
     <string name="toast_backup">¿Datos de la copia de seguridad\? Esto sobrescribirá la copia de seguridad existente.</string>
     <string name="dialog_postOnWebsiteHint">URL a abrir. Se guardará para el próximo uso.</string>
     <string name="dialog_postOnWebsite">Ver en el sitio web</string>
@@ -199,17 +199,17 @@
     <string name="menu_reload">Recargar</string>
     <string name="menu_restart">Reiniciar y recargar pestañas</string>
     <string name="setting_title_screenOn">Mantener pantalla encendida</string>
-    <string name="setting_title_audioBackground">Reproducir audio en segundo plano</string>
+    <string name="setting_title_audioBackground">Reproducir el audio en segundo plano</string>
     <!-- License changelog -->
     <string name="setting_title_javascript_popUp">pop-ups</string>
-    <string name="dialog_neverAsk">Retírese. Nunca preguntes en esta sesión.</string>
+    <string name="dialog_neverAsk">Nunca en esta sesión.</string>
     <string name="dialog_translate">Traduzca con DeepL</string>
-    <string name="dialog_translate_hint">Por favor, habilite javascript y cookies para \"deepl.com\".</string>
-    <string name="custom_searches_summary">Basta con pulsar prolongadamente el icono de búsqueda de la barra de herramientas para obtener resultados de búsqueda de sitios web definidos por el usuario.</string>
+    <string name="dialog_translate_hint">Habilitar JavaScript y cookies para \"deepl.com\".</string>
+    <string name="custom_searches_summary">Basta con pulsar prolongadamente el icono de búsqueda de la barra de herramientas para obtener los resultados de páginas web personalizadas.</string>
     <string name="custom_searches_title">Búsqueda rápida en …</string>
     <string name="app_error_copy">Por favor, seleccione y copie el texto manualmente</string>
     <string name="dialog_backGround">Abrir los enlaces en segundo plano …</string>
-    <string name="dialog_backGround_always">siempre en esta sesión.</string>
+    <string name="dialog_backGround_always">Siempre en esta sesión.</string>
     <string name="album_title_bookmarks_simple">Marcadores (sencillos)</string>
     <string name="setting_title_cookie_thirdParty">Cookies de terceros</string>
     <string name="setting_title_backup_exit">¿Hacer una copia de seguridad de la base de datos (página de inicio, marcadores, historial y todas las listas de dominios) al salir\?</string>

@@ -8,8 +8,8 @@
     <string name="app_done">Concluído</string>
     <string name="app_error">Erro</string>
     <string name="app_warning">Atenção</string>
-    <string name="app_permission">Para utilizar este recurso, você deve conceder a permissão. Depois disso, reinicie o aplicativo.</string>
-    <string name="list_empty">A lista está vazia</string>
+    <string name="app_permission">Você deve conceder permissão para utilizar este recurso.</string>
+    <string name="list_empty">Lista vazia</string>
     <string name="album_title_bookmarks">Favoritos</string>
     <string name="album_title_history">Histórico</string>
     <string name="album_title_home">Início</string>
@@ -57,8 +57,8 @@
     <string name="dialog_extension_hint">Extensão (por exemplo: \".jpg\"):</string>
     <string name="dialog_sign_in_username">Usuário</string>
     <string name="dialog_sign_in_password">Senha</string>
-    <string name="dialog_title_download">Baixar o arquivo?</string>
-    <string name="dialog_content_resubmission">Reenviar os seus dados?</string>
+    <string name="dialog_title_download">Baixar arquivo?</string>
+    <string name="dialog_content_resubmission">Reenviar os dados?</string>
     <string name="dialog_content_ssl_error">O certificado do site não é de confiança. Continuar?</string>
     <string name="dialog_sortName">Ordenar por nome</string>
     <string name="dialog_sortIcon">Ordenar por ícone</string>
@@ -87,7 +87,7 @@
     <string name="custom_redirects">Redirecionamentos personalizados</string>
     <string name="source">Origem</string>
     <string name="target">Destino</string>
-    <string name="setting_title_save_data">Solicitar \'Economia de Dados\'</string>
+    <string name="setting_title_save_data">Solicitar \'Dados salvados\'</string>
     <string name="setting_title_profiles">Perfis</string>
     <string name="setting_title_profiles_edit">Editar Perfis</string>
     <string name="setting_title_profiles_trustedList">Sites confiáveis</string>
@@ -104,25 +104,25 @@
     <!-- browser start -->
     <string name="setting_title_images">Imagens</string>
     <string name="setting_title_cookie">Cookies</string>
-    <string name="setting_summary_cookie_delete">Se selecionado, todos os cookies serão apagados. Inclusive os cookies de sites confiáveis.</string>
+    <string name="setting_summary_cookie_delete">Se selecionado, todos os cookies serão removidos. Isto inclui os cookies de sites confiáveis.</string>
     <string name="setting_title_javascript">JavaScript</string>
     <string name="setting_title_adblock">AdBlock</string>
-    <string name="setting_summary_adblock">Habilita o AdBlock para bloquear anúncios irritantes. Sites também carregam mais rápido quando ativado.</string>
+    <string name="setting_summary_adblock">Habilita o AdBlock para bloquear anúncios. Sites carregam mais rápido quando ativado.</string>
     <string name="setting_title_adblockHost">Conteúdo bloqueado</string>
     <string name="setting_title_location">Localização</string>
     <string name="setting_title_history">Histórico</string>
     <string name="setting_summary_autofill">Ativar o salvamento de dados de formulário (Android Nougat e abaixo) ou o serviço de autopreenchimento (Android Oreo e superior).</string>
     <!-- browser clear -->
-    <string name="data_summary">Todos os arquivos serão exportados para o diretório \"Documents / browser_backup /\" do seu cartão SD.</string>
-    <string name="clear_title_quit">Limpar ao sair do aplicativo</string>
-    <string name="clear_title_cache">Limpar o Cache</string>
-    <string name="clear_title_cookie">Limpar Cookies</string>
-    <string name="clear_title_history">Limpar o Histórico</string>
+    <string name="data_summary">Todos os arquivos serão salvos para o diretório \"Documents/browser_backup/\" do seu cartão SD.</string>
+    <string name="clear_title_quit">Limpar ao sair</string>
+    <string name="clear_title_cache">Limpar o cache</string>
+    <string name="clear_title_cookie">Limpar cookies</string>
+    <string name="clear_title_history">Limpar o histórico</string>
     <string name="localData">Limpar dados armazenados no dispositivo</string>
     <string name="clear_title_deleteDatabase">Apagar base de dados</string>
-    <string name="clear_summary_deleteDatabase">Eliminar toda a base de dados (página inicial, favoritos, histórico e todas as listas de domínios).</string>
+    <string name="clear_summary_deleteDatabase">Eliminar base de dados (página inicial, favoritos, histórico e todas as listas de domínios).</string>
     <!-- App setting -->
-    <string name="setting_title_app">Configurações do Aplicativo</string>
+    <string name="setting_title_app">Configurações do aplicativo</string>
     <string name="setting_title_ui">Comportamento/Interface</string>
     <string name="setting_title_data">Backup</string>
     <string name="setting_filter">Filtro de favoritos</string>
@@ -165,16 +165,16 @@
     <string name="settings_data_restore">Restaurar</string>
     <!-- Others setting -->
     <!-- Toast -->
-    <string name="toast_add_whitelist_successful">Domínio adicionado com sucesso</string>
-    <string name="toast_copy_successful">Copiado com sucesso</string>
-    <string name="toast_delete_successful">Apagado com sucesso</string>
+    <string name="toast_add_whitelist_successful">Domínio adicionado</string>
+    <string name="toast_copy_successful">Copiado</string>
+    <string name="toast_delete_successful">Apagado</string>
     <string name="toast_domain_already_exists">Domínio já existe</string>
-    <string name="toast_input_empty">Nada foi digitado.</string>
+    <string name="toast_input_empty">Por favor digite algo.</string>
     <string name="toast_invalid_domain">Domínio inválido</string>
-    <string name="toast_webview_forward">Não foi possível carregar o próximo site</string>
-    <string name="toast_restart">Você deve reiniciar o \"FOSS Browser\" para aplicar as alterações. Fechar agora?</string>
-    <string name="toast_quit">Deseja sair do \"FOSS Browser\"?</string>
-    <string name="toast_quit_TAB">Você quer fechar o TAB?</string>
+    <string name="toast_webview_forward">Não foi possível carregar o próximo site.</string>
+    <string name="toast_restart">Reiniciar para aplicar mudanças?</string>
+    <string name="toast_quit">Sair do \"FOSS Browser\"?</string>
+    <string name="toast_quit_TAB">Fechar separador?</string>
     <string name="toast_downloadComplete">Download finalizado. Abrir gerenciador de arquivos?</string>
     <string name="toast_unsecured">O site usa uma conexão insegura (\"http\"). Tentar uma conexão segura (\"https\")?</string>
     <string name="toast_backup">Dados de cópia de segurança\? Isto irá substituir a cópia de segurança existente.</string>
@@ -199,17 +199,17 @@
     <string name="menu_reload">Recarregar</string>
     <string name="menu_restart">Reiniciar e recarregar abas</string>
     <string name="setting_title_screenOn">Mantenha a tela ligada</string>
-    <string name="setting_title_audioBackground">Reproduzir áudio em segundo plano</string>
+    <string name="setting_title_audioBackground">Reprodução de áudio em segundo plano</string>
     <!-- License changelog -->
     <string name="setting_title_javascript_popUp">pop-ups</string>
     <string name="dialog_translate">Traduzir com DeepL</string>
-    <string name="dialog_neverAsk">Ignorar. Nunca perguntar nesta sessão.</string>
-    <string name="dialog_translate_hint">Active o javascript e os cookies para \"deepl.com\".</string>
-    <string name="custom_searches_summary">Basta premir longamente o ícone de pesquisa na barra de ferramentas para obter resultados de pesquisa de sítios Web definidos pelo utilizador.</string>
+    <string name="dialog_neverAsk">Nunca nesta sessão.</string>
+    <string name="dialog_translate_hint">Ative o javascript e os cookies para \"deepl.com\".</string>
+    <string name="custom_searches_summary">Basta premir longamente o ícone de pesquisa na barra de ferramentas para obter resultados de páginas da Web customizadas.</string>
     <string name="custom_searches_title">Pesquisa rápida em …</string>
     <string name="app_error_copy">Seleccione e copie o texto manualmente</string>
     <string name="dialog_backGround">Abrir ligações em segundo plano …</string>
-    <string name="dialog_backGround_always">sempre nesta sessão.</string>
+    <string name="dialog_backGround_always">Sempre nesta sessão.</string>
     <string name="album_title_bookmarks_simple">Marcadores (simples)</string>
     <string name="setting_title_cookie_thirdParty">Cookies de terceiros</string>
     <string name="setting_title_backup_exit">Fazer uma cópia de segurança da base de dados (página inicial, favoritos, histórico e todas as listas de domínios) ao sair\?</string>

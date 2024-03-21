@@ -115,7 +115,7 @@
     <string name="data_summary">سيتم تصدير جميع الملفات إلى دليل \"Documents / browser_backup /\" لبطاقة SD الخاصة بك.</string>
     <string name="clear_title_quit">امسح عند خروج التطبيق</string>
     <string name="clear_title_cache">امسح التخزين المؤقت</string>
-    <string name="clear_title_cookie">امسح الكعكات</string>
+    <string name="clear_title_cookie">امسح الكوكيز</string>
     <string name="clear_title_history">حذف التأريخ</string>
     <string name="localData">مسح البيانات المخزنة على الجهاز</string>
     <string name="clear_title_deleteDatabase">احذف قاعدة البيانات</string>
@@ -204,4 +204,15 @@
     <string name="link_you_copied">الرابط الذي نسخته</string>
     <string name="dialog_translate">ترجمة مع DeepL</string>
     <string name="create_new">جديد</string>
+    <string name="dialog_translate_hint">قم بتمكين JavaScript وملفات تعريف الارتباط لـ \"deepl.com\".</string>
+    <string name="custom_searches_summary">فقط اضغط مطولاً على أيقونة البحث في شريط الأدوات للحصول على نتائج من صفحات الويب المخصصة.</string>
+    <string name="custom_searches_title">بحث سريع على …</string>
+    <string name="custom_domains">النطاقات المخصصة</string>
+    <string name="app_error_copy">يرجى تحديد النص ونسخه يدوياً</string>
+    <string name="dialog_backGround">فتح الروابط في الخلفية …</string>
+    <string name="dialog_backGround_always">دائماً هذه الجلسة.</string>
+    <string name="album_title_bookmarks_simple">إشارات مرجعية (بسيطة)</string>
+    <string name="setting_title_cookie_thirdParty">ملفات تعريف ارتباط الطرف الثالث</string>
+    <string name="setting_title_backup_exit">قاعدة بيانات النسخ الاحتياطي (صفحة البدء والإشارات المرجعية والمحفوظات وجميع قوائم النطاقات) عند الخروج؟</string>
+    <string name="title_appDatabase">قاعدة البيانات</string>
 </resources>
