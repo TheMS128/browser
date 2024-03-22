@@ -27,6 +27,7 @@ import android.util.TypedValue;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.webkit.CookieManager;
+import android.webkit.WebBackForwardList;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.widget.GridView;
@@ -529,6 +530,16 @@ public class NinjaWebView extends WebView implements AlbumController {
     public synchronized void reloadWithoutInit() {  //needed for camera usage without deactivating "save_data"
         stopped = false;
         super.reload();
+    }
+
+    public synchronized void goBack() {
+        WebBackForwardList mWebBackForwardList = this.copyBackForwardList();
+        if (mWebBackForwardList.getCurrentIndex() > 0) {
+            String historyUrl="";
+            historyUrl = mWebBackForwardList.getItemAtIndex(mWebBackForwardList.getCurrentIndex()-1).getUrl();
+            initPreferences(historyUrl);
+        }
+        super.goBack();
     }
 
     @Override
