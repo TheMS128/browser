@@ -546,13 +546,7 @@ public class NinjaWebView extends WebView implements AlbumController {
     public synchronized void reload() {
         stopped = false;
         this.initPreferences(this.getUrl());
-        try {
-            this.loadUrl(Objects.requireNonNull(this.getUrl()));
-            super.reload();
-        } catch (Exception e) {
-            Log.i(TAG, "shouldOverrideUrlLoading Exception:" + e);
-            NinjaToast.show(context, R.string.app_error);
-        }
+        super.reload();
     }
 
     @Override

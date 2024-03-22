@@ -1,7 +1,5 @@
 package de.baumann.browser.browser;
 
-import static androidx.constraintlayout.motion.utils.Oscillator.TAG;
-
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
@@ -12,7 +10,6 @@ import android.net.http.SslError;
 import android.os.Message;
 import android.text.InputType;
 import android.text.TextUtils;
-import android.util.Log;
 import android.view.View;
 import android.webkit.HttpAuthHandler;
 import android.webkit.SslErrorHandler;
@@ -453,22 +450,10 @@ public class NinjaWebViewClient extends WebViewClient {
                 ninjaWebView.loadUrl(url);
                 return false;
             } else {
-                try {
-                    Intent intent;
-                    if (url.startsWith("intent:")) {
-                        intent = Intent.parseUri(url, Intent.URI_INTENT_SCHEME);
-                        intent.addCategory("android.intent.category.BROWSABLE");
-                        intent.setComponent(null);
-                        intent.setSelector(null);
-                    } else {
-                        intent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
-                    }
-                    view.getContext().startActivity(intent);
-                    return true;
-                } catch (Exception e) {
-                    Log.i(TAG, "shouldOverrideUrlLoading Exception:" + e);
-                    return true;
-                }
+                Intent intent = new Intent(Intent.ACTION_VIEW);
+                intent.setData(Uri.parse(url));
+                context.startActivity(Intent.createChooser(intent, url));
+                return true;
             }
         }
     }
