@@ -1174,7 +1174,7 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
         GridItem item_11 = new GridItem( getString(R.string.menu_share_link), R.drawable.icon_link);
         GridItem item_12 = new GridItem( getString(R.string.dialog_postOnWebsite), R.drawable.icon_post);
         GridItem item_13 = new GridItem( getString(R.string.menu_shareClipboard), R.drawable.icon_clipboard);
-        GridItem item_14 = new GridItem( "Open with ...", R.drawable.icon_clipboard);
+        GridItem item_14 = new GridItem( getString(R.string.menu_shareOpenWith), R.drawable.icon_share_open_with);
 
         final List<GridItem> gridList_share = new LinkedList<>();
         gridList_share.add(gridList_share.size(), item_11);
@@ -1355,7 +1355,7 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
         GridItem item_06 = new GridItem( getString(R.string.menu_save_as), R.drawable.icon_save_as);
         GridItem item_07 = new GridItem( getString(R.string.menu_save_home), R.drawable.icon_web);
         GridItem item_08 = new GridItem( getString(R.string.menu_delete), R.drawable.icon_delete);
-        GridItem item_09 = new GridItem( "Open with ...", R.drawable.icon_delete);
+        GridItem item_09 = new GridItem( getString(R.string.menu_shareOpenWith), R.drawable.icon_share_open_with);
 
         final List<GridItem> gridList = new LinkedList<>();
 

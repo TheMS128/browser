@@ -48,6 +48,7 @@
     <string name="menu_sort">Sort by …</string>
     <string name="menu_filter">Filter by …</string>
     <string name="menu_share_link">Share link</string>
+    <string name="menu_shareOpenWith">Open with …</string>
     <string name="menu_save_home">Save at Home</string>
     <string name="menu_save_bookmark">Save as bookmark</string>
     <string name="menu_save_as">Save as …</string>
