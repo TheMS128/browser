@@ -2,6 +2,7 @@
 - fix: redirect custom urls
 - fix: Back navigation is flawed #1121
 - updated: translations
+- updated: libraries
 
 ### v 13 "Friedrich Hecker"
 - switched to Google rounded Material You Icons
