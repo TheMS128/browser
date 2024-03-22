@@ -8,6 +8,7 @@
     <string name="app_done">Done</string>
     <string name="app_error">Error</string>
     <string name="app_error_copy">Please select and copy text manually</string>
+    <string name="app_error_save">Already saved.</string>
     <string name="app_warning">Warning</string>
     <string name="app_permission">You must grant permission to use this feature.</string>
     <string name="list_empty">Empty List</string>
