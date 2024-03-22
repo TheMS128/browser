@@ -39,7 +39,6 @@ import de.baumann.browser.unit.BackupUnit;
 import de.baumann.browser.unit.HelperUnit;
 import de.baumann.browser.view.GridAdapter;
 import de.baumann.browser.view.GridItem;
-import de.baumann.browser.view.NinjaWebView;
 
 public class NinjaDownloadListener implements DownloadListener {
     private final Context context;
@@ -53,8 +52,6 @@ public class NinjaDownloadListener implements DownloadListener {
 
     @Override
     public void onDownloadStart(final String url, String userAgent, final String contentDisposition, final String mimeType, long contentLength) {
-        BrowserController browserController = NinjaWebView.getBrowserController();
-        browserController.updateProgress(100);
         // Create a background thread that has a Looper
         HandlerThread handlerThread = new HandlerThread("HandlerThread");
         handlerThread.start();
