@@ -85,10 +85,7 @@
                         android:layout_gravity="center"
                         android:indeterminate="true"
                         android:layout_margin="5dp"
-                        app:indicatorColor="?attr/colorAccent"
-                        app:indicatorSize="20dp"
-                        app:trackThickness="10dp"
-                        android:background="@drawable/icon_close_accent"/>
+                        app:indicatorSize="25dp"/>
 
                     <com.google.android.material.floatingactionbutton.FloatingActionButton
                         android:id="@+id/omniBox_tab"

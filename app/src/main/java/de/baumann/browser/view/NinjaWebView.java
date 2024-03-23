@@ -76,7 +76,6 @@ public class NinjaWebView extends WebView implements AlbumController {
     public boolean adBlock;
     public boolean saveData;
     public boolean camera;
-    public boolean isBackPressed;
     private OnScrollChangeListener onScrollChangeListener;
     private Context context;
     private boolean desktopMode;
@@ -113,7 +112,6 @@ public class NinjaWebView extends WebView implements AlbumController {
         this.context = context;
         this.foreground = false;
         this.desktopMode = false;
-        this.isBackPressed = false;
         this.fingerPrintProtection = sp.getBoolean(profile + "_fingerPrintProtection", true);
         this.history = sp.getBoolean(profile + "_history", true);
         this.adBlock = sp.getBoolean(profile + "_adBlock", false);

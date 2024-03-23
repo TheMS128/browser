@@ -60,7 +60,6 @@ public class NinjaWebViewClient extends WebViewClient {
     @Override
     public void onPageFinished(WebView view, String url) {
         super.onPageFinished(view, url);
-        ninjaWebView.isBackPressed = false;
 
         if (ninjaWebView.isForeground()) ninjaWebView.invalidate();
         else ninjaWebView.postInvalidate();
@@ -443,13 +442,10 @@ public class NinjaWebViewClient extends WebViewClient {
         final Uri uri = request.getUrl();
         String url = uri.toString();
 
-        if (ninjaWebView.isBackPressed) return false;
-        else {
-            Intent intent = new Intent(Intent.ACTION_VIEW);
-            intent.setData(Uri.parse(url));
-            context.startActivity(Intent.createChooser(intent, url));
-            return true;
-        }
+        Intent intent = new Intent(Intent.ACTION_VIEW);
+        intent.setData(Uri.parse(url));
+        context.startActivity(Intent.createChooser(intent, url));
+        return true;
     }
 
     @Override
