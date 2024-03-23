@@ -445,16 +445,10 @@ public class NinjaWebViewClient extends WebViewClient {
 
         if (ninjaWebView.isBackPressed) return false;
         else {
-            // handle the url by implementing your logic
-            if (url.startsWith("http://") || url.startsWith("https://")) {
-                ninjaWebView.loadUrl(url);
-                return false;
-            } else {
-                Intent intent = new Intent(Intent.ACTION_VIEW);
-                intent.setData(Uri.parse(url));
-                context.startActivity(Intent.createChooser(intent, url));
-                return true;
-            }
+            Intent intent = new Intent(Intent.ACTION_VIEW);
+            intent.setData(Uri.parse(url));
+            context.startActivity(Intent.createChooser(intent, url));
+            return true;
         }
     }
 

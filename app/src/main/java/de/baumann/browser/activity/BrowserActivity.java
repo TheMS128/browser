@@ -1355,7 +1355,6 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
         GridItem item_06 = new GridItem( getString(R.string.menu_save_as), R.drawable.icon_save_as);
         GridItem item_07 = new GridItem( getString(R.string.menu_save_home), R.drawable.icon_web);
         GridItem item_08 = new GridItem( getString(R.string.menu_delete), R.drawable.icon_delete);
-        GridItem item_09 = new GridItem( getString(R.string.menu_shareOpenWith), R.drawable.icon_share_open_with);
 
         final List<GridItem> gridList = new LinkedList<>();
 
@@ -1366,7 +1365,6 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
         gridList.add(gridList.size(), item_05);
         gridList.add(gridList.size(), item_06);
         gridList.add(gridList.size(), item_07);
-        gridList.add(gridList.size(), item_09);
 
         if (showAll) {
             gridList.add(gridList.size(), item_08);
@@ -1409,12 +1407,6 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
                     dialog.cancel();
                     break;
                 case 7:
-                    dialog.cancel();
-                    Intent intent = new Intent(Intent.ACTION_VIEW);
-                    intent.setData(Uri.parse(url));
-                    context.startActivity(Intent.createChooser(intent, null));
-                    break;
-                case 8:
                     MaterialAlertDialogBuilder builderSubMenu = new MaterialAlertDialogBuilder(context);
                     builderSubMenu.setTitle(R.string.menu_delete);
                     builderSubMenu.setMessage(R.string.hint_database);
