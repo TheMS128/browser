@@ -1355,12 +1355,14 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
         GridItem item_06 = new GridItem( getString(R.string.menu_save_as), R.drawable.icon_save_as);
         GridItem item_07 = new GridItem( getString(R.string.menu_save_home), R.drawable.icon_web);
         GridItem item_08 = new GridItem( getString(R.string.menu_delete), R.drawable.icon_delete);
+        GridItem item_09 = new GridItem( getString(R.string.menu_shareOpenWith), R.drawable.icon_share_open_with);
 
         final List<GridItem> gridList = new LinkedList<>();
 
         gridList.add(gridList.size(), item_01);
         gridList.add(gridList.size(), item_02);
         gridList.add(gridList.size(), item_03);
+        gridList.add(gridList.size(), item_09);
         gridList.add(gridList.size(), item_04);
         gridList.add(gridList.size(), item_05);
         gridList.add(gridList.size(), item_06);
@@ -1389,24 +1391,30 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
                     addAlbum(finalTitle, url, true, true, "", dialog);
                     break;
                 case 3:
-                    shareLink(HelperUnit.domain(url), url);
+                    Intent intent = new Intent(Intent.ACTION_VIEW);
+                    intent.setData(Uri.parse(url));
+                    context.startActivity(Intent.createChooser(intent, null));
                     dialog.cancel();
                     break;
                 case 4:
-                    copyLink(url);
+                    shareLink(HelperUnit.domain(url), url);
                     dialog.cancel();
                     break;
                 case 5:
+                    copyLink(url);
+                    dialog.cancel();
+                    break;
+                case 6:
                     if (url.startsWith("data:")) {
                         DataURIParser dataURIParser = new DataURIParser(url);
                         HelperUnit.saveDataURI(activity, finalTitle, url, dataURIParser, dialog);
                     } else HelperUnit.saveAs(activity, finalTitle,  url, null, dialog);
                     break;
-                case 6:
+                case 7:
                     save_atHome(finalTitle, url);
                     dialog.cancel();
                     break;
-                case 7:
+                case 8:
                     MaterialAlertDialogBuilder builderSubMenu = new MaterialAlertDialogBuilder(context);
                     builderSubMenu.setTitle(R.string.menu_delete);
                     builderSubMenu.setMessage(R.string.hint_database);
