@@ -154,11 +154,10 @@
 
         </RelativeLayout>
 
-
-
         <com.google.android.material.divider.MaterialDivider
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content"
+            app:dividerColor="?attr/colorPrimary"/>
 
         <RelativeLayout
             android:layout_width="wrap_content"

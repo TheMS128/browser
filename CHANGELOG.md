@@ -2,6 +2,7 @@
 - fix: redirect custom urls
 - fix: Back navigation is flawed #1121
 - fix: Open in default app #1134
+- fix: App crashes when opening settings #1128
 - new: simplified receiving text dialog
 - updated: translations
 - updated: libraries

@@ -18,7 +18,9 @@
         <item name="switchPreferenceCompatStyle">@style/MaterialPreferenceSwitch</item>
     </style>
 
-    <style name="AppTheme_OLED" parent="Theme.Material3.Dark">
+    <style name="AppTheme_OLED" parent="Theme.Material3.DynamicColors.Dark">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
         <item name="elevationOverlayColor">#000000</item>
         <item name="colorPrimary">#ffffff</item>
         <item name="colorOnPrimary">#000000</item>
