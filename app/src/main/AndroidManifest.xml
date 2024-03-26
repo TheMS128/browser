@@ -50,7 +50,7 @@
             android:theme="@style/AppTheme_day">
 
             <intent-filter
-                android:label="@string/main_omnibox_input_hint">
+                android:label="@string/menu_share_text">
                 <action android:name="android.intent.action.SEND" />
                 <category android:name="android.intent.category.DEFAULT" />
                 <data android:mimeType="text/plain" />
@@ -81,45 +81,6 @@
                 android:name="android.webkit.WebView.MetricsOptOut"
                 android:value="true" />
 
-        </activity>
-
-        <activity
-            android:name=".activity.ActivityShare"
-            android:label="@string/dialog_postOnWebsite"
-            android:theme="@android:style/Theme.NoDisplay"
-            android:exported="true">
-
-            <intent-filter>
-                <action android:name="android.intent.action.SEND" />
-                <category android:name="android.intent.category.DEFAULT" />
-                <data android:mimeType="text/plain" />
-            </intent-filter>
-        </activity>
-
-        <activity
-            android:name=".activity.ActivityTranslate"
-            android:label="@string/dialog_translate"
-            android:theme="@android:style/Theme.NoDisplay"
-            android:exported="true">
-
-            <intent-filter>
-                <action android:name="android.intent.action.SEND" />
-                <category android:name="android.intent.category.DEFAULT" />
-                <data android:mimeType="text/plain" />
-            </intent-filter>
-        </activity>
-
-        <activity
-            android:name=".activity.ActivityCustomSearches"
-            android:label="@string/custom_searches_title"
-            android:theme="@android:style/Theme.NoDisplay"
-            android:exported="true">
-
-            <intent-filter>
-                <action android:name="android.intent.action.SEND" />
-                <category android:name="android.intent.category.DEFAULT" />
-                <data android:mimeType="text/plain" />
-            </intent-filter>
         </activity>
 
         <!-- Settings -->

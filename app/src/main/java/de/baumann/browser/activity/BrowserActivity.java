@@ -43,6 +43,7 @@ import android.text.method.KeyListener;
 import android.util.Log;
 import android.util.TypedValue;
 import android.view.ContextMenu;
+import android.view.Gravity;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.ViewGroup;
@@ -2445,28 +2446,6 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
             filePathCallback = null;
             getIntent().setAction("");
             return; }
-        else if ("postLink".equals(action)) {
-            getIntent().setAction("");
-            hideOverview();
-            postLink(url, null);
-            return; }
-        else if ("customSearches".equals(action)) {
-            addAlbum(null, "", true, false, "", null);
-            getIntent().setAction("");
-            hideOverview();
-            assert url != null;
-            showDialogCustomSearches(url);
-            return; }
-        else if ("translate".equals(action)) {
-            getIntent().setAction("");
-            hideOverview();
-            assert url != null;
-            String text = url.replace("#", "%23");
-            String text2 = text.replace("/","\\%2F");
-            NinjaToast.show(context, context.getString(R.string.dialog_translate_hint));
-            String translate = "https://www.deepl.com/translator?share=generic#ee/ce/" + text2;
-            addAlbum(null, translate, true, false, "", null);
-            return; }
         else if (intent.getAction() != null && intent.getAction().equals(Intent.ACTION_PROCESS_TEXT)) {
             CharSequence text = getIntent().getCharSequenceExtra(Intent.EXTRA_PROCESS_TEXT);
             assert text != null;
@@ -2476,8 +2455,78 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
         else if (Intent.ACTION_VIEW.equals(action)) {
             data = Objects.requireNonNull(getIntent().getData()).toString(); }
         else if (url != null && Intent.ACTION_SEND.equals(action)) {
-            data = url; }
 
+            getIntent().setAction("");
+
+            GridItem item_01 = new GridItem(context.getString(R.string.main_omnibox_input_hint), R.drawable.icon_search);
+            GridItem item_02 = new GridItem( context.getString(R.string.custom_searches_title), R.drawable.icon_custom_searches);
+            GridItem item_03 = new GridItem( context.getString(R.string.dialog_postOnWebsite), R.drawable.icon_post);
+            GridItem item_04 = new GridItem( context.getString(R.string.dialog_translate), R.drawable.icon_translate);
+
+            View dialogView = View.inflate(context, R.layout.dialog_menu, null);
+
+            MaterialCardView albumCardView = dialogView.findViewById(R.id.albumCardView);
+            albumCardView.setVisibility(View.GONE);
+
+            int stringSize= url.length();
+            String message;
+            if (stringSize > 50) {
+                message = url.substring(0, 50) + " ...";
+            } else {
+                message = url;
+            }
+
+            MaterialAlertDialogBuilder builder = new MaterialAlertDialogBuilder(context);
+            builder.setIcon(R.drawable.icon_menu_share);
+            builder.setTitle(context.getString(R.string.menu_share_text));
+            builder.setMessage(message);
+            builder.setView(dialogView);
+
+            AlertDialog dialogChoose = builder.create();
+            dialogChoose.show();
+
+            Objects.requireNonNull(dialogChoose.getWindow()).setGravity(Gravity.BOTTOM);
+            GridView menu_grid = dialogView.findViewById(R.id.menu_grid);
+
+            final List<GridItem> gridList = new LinkedList<>();
+            gridList.add(gridList.size(), item_01);
+            gridList.add(gridList.size(), item_02);
+            gridList.add(gridList.size(), item_03);
+            gridList.add(gridList.size(), item_04);
+            GridAdapter gridAdapter = new GridAdapter(context, gridList);
+            menu_grid.setAdapter(gridAdapter);
+            gridAdapter.notifyDataSetChanged();
+            menu_grid.setOnItemClickListener((parent, view, position, id) -> {
+                dialogChoose.cancel();
+                switch (position) {
+                    case 0:
+                        addAlbum(null, url, true, false, "", null);
+                        break;
+                    case 1:
+                        addAlbum(null, "", true, false, "", null);
+                        getIntent().setAction("");
+                        hideOverview();
+                        showDialogCustomSearches(url);
+                        break;
+                    case 2:
+                        getIntent().setAction("");
+                        hideOverview();
+                        postLink(url, null);
+                        break;
+                    case 3:
+                        getIntent().setAction("");
+                        hideOverview();
+                        String text = url.replace("#", "%23");
+                        String text2 = text.replace("/","\\%2F");
+                        NinjaToast.show(context, context.getString(R.string.dialog_translate_hint));
+                        String translate = "https://www.deepl.com/translator?share=generic#ee/ce/" + text2;
+                        addAlbum(null, translate, true, false, "", null);
+                        break;
+                }
+            });
+
+            HelperUnit.setupDialog(context, dialogChoose);
+        }
         if (!data.isEmpty()) {
             addAlbum(null, data, true, false, "", null);
             getIntent().setAction("");
