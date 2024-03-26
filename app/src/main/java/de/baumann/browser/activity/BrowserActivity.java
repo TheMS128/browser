@@ -1967,7 +1967,12 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
             if (listTrusted.isWhite(url) || listStandard.isWhite(url) || listProtected.isWhite(url)) {
                 LinearLayout cardView = dialogView.findViewById(R.id.editProfile);
                 cardView.setVisibility(View.GONE);
-                dialog_warning.setTextColor(colorAlert);
+
+                TypedValue typedValue = new TypedValue();
+                context.getTheme().resolveAttribute(R.attr.colorError, typedValue, true);
+                int color = typedValue.data;
+
+                dialog_warning.setTextColor(color);
             }
 
             Chip chip_toggleNightView = dialogView.findViewById(R.id.chip_toggleNightView);

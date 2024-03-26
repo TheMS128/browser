@@ -95,14 +95,14 @@
                     android:id="@+id/dialog_titleDomain"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:layout_centerInParent="true"
                     android:layout_marginStart="10dp"
                     android:layout_marginEnd="5dp"
-                    android:layout_alignParentStart="true"
                     android:layout_toStartOf="@id/albumProfile"
-                    android:layout_centerInParent="true"
-                    android:maxLines="1"
                     android:ellipsize="end"
-                    android:textAppearance="?attr/textAppearanceBodyLarge"/>
+                    android:maxLines="1"
+                    android:textAppearance="?attr/textAppearanceBodyLarge" />
 
                 <LinearLayout
                     android:id="@+id/albumProfile"
