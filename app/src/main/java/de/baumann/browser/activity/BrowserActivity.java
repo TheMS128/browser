@@ -24,7 +24,6 @@ import android.content.IntentFilter;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.content.res.Configuration;
-import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.media.MediaPlayer;
 import android.net.Uri;
@@ -142,7 +141,6 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
     private ListView listView;
     private TextView list_empty;
     private int duration;
-    private int colorAlert;
 
     // Views
     private TextInputEditText omniBox_text;
@@ -230,10 +228,6 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
         sp = PreferenceManager.getDefaultSharedPreferences(context);
         duration = getResources().getInteger(android.R.integer.config_mediumAnimTime);
 
-        TypedValue typedValue = new TypedValue();
-        Resources.Theme theme = context.getTheme();
-        theme.resolveAttribute(R.attr.colorError, typedValue, true);
-        colorAlert = typedValue.data;
         if (getSupportActionBar() != null) getSupportActionBar().hide();
         Window window = this.getWindow();
         window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
@@ -1967,11 +1961,9 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
             if (listTrusted.isWhite(url) || listStandard.isWhite(url) || listProtected.isWhite(url)) {
                 LinearLayout cardView = dialogView.findViewById(R.id.editProfile);
                 cardView.setVisibility(View.GONE);
-
                 TypedValue typedValue = new TypedValue();
                 context.getTheme().resolveAttribute(R.attr.colorError, typedValue, true);
                 int color = typedValue.data;
-
                 dialog_warning.setTextColor(color);
             }
 
