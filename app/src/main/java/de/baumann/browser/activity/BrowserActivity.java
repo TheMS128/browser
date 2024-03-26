@@ -2441,17 +2441,27 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
             filePathCallback = null;
             getIntent().setAction("");
             return; }
+        else if (Intent.ACTION_VIEW.equals(action)) {
+            getIntent().setAction("");
+            addAlbum(null, Objects.requireNonNull(getIntent().getData()).toString(), true, false, "", null);
+            getIntent().setAction("");
+            hideOverview();
+            BrowserUnit.openInBackground(activity, ninjaWebView);
+        }
+
         else if (intent.getAction() != null && intent.getAction().equals(Intent.ACTION_PROCESS_TEXT)) {
             CharSequence text = getIntent().getCharSequenceExtra(Intent.EXTRA_PROCESS_TEXT);
             assert text != null;
             data = text.toString();}
         else if (intent.getAction() != null && intent.getAction().equals(Intent.ACTION_WEB_SEARCH)) {
             data = Objects.requireNonNull(intent.getStringExtra(SearchManager.QUERY)); }
-        else if (Intent.ACTION_VIEW.equals(action)) {
-            data = Objects.requireNonNull(getIntent().getData()).toString(); }
         else if (url != null && Intent.ACTION_SEND.equals(action)) {
+            data = url;}
+
+        if (!data.isEmpty()) {
 
             getIntent().setAction("");
+            String finalData = data;
 
             GridItem item_01 = new GridItem(context.getString(R.string.main_omnibox_input_hint), R.drawable.icon_search);
             GridItem item_02 = new GridItem( context.getString(R.string.custom_searches_title), R.drawable.icon_custom_searches);
@@ -2465,7 +2475,7 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
 
             MaterialAlertDialogBuilder builder = new MaterialAlertDialogBuilder(context);
             builder.setIcon(R.drawable.icon_menu_share);
-            builder.setTitle(url);
+            builder.setTitle(finalData);
             builder.setView(dialogView);
 
             AlertDialog dialogChoose = builder.create();
@@ -2486,23 +2496,17 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
                 dialogChoose.cancel();
                 switch (position) {
                     case 0:
-                        addAlbum(null, url, true, false, "", null);
+                        addAlbum(null, finalData, true, false, "", null);
                         break;
                     case 1:
                         addAlbum(null, "", true, false, "", null);
-                        getIntent().setAction("");
-                        hideOverview();
-                        showDialogCustomSearches(url);
+                        showDialogCustomSearches(finalData);
                         break;
                     case 2:
-                        getIntent().setAction("");
-                        hideOverview();
-                        postLink(url, null);
+                        postLink(finalData, null);
                         break;
                     case 3:
-                        getIntent().setAction("");
-                        hideOverview();
-                        String text = url.replace("#", "%23");
+                        String text = finalData.replace("#", "%23");
                         String text2 = text.replace("/","\\%2F");
                         NinjaToast.show(context, context.getString(R.string.dialog_translate_hint));
                         String translate = "https://www.deepl.com/translator?share=generic#ee/ce/" + text2;
@@ -2512,12 +2516,6 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
             });
 
             HelperUnit.setupDialog(context, dialogChoose);
-        }
-        if (!data.isEmpty()) {
-            addAlbum(null, data, true, false, "", null);
-            getIntent().setAction("");
-            hideOverview();
-            BrowserUnit.openInBackground(activity, ninjaWebView);
         }
     }
 
