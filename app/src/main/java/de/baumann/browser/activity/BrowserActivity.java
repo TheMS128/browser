@@ -2251,7 +2251,6 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
 
     private void postLink(String data, Dialog dialogParent) {
         String urlForPosting = sp.getString("urlForPosting", "");
-        String message = getString(R.string.menu_shareClipboard) + ": " + data;
 
         MaterialAlertDialogBuilder builder = new MaterialAlertDialogBuilder(context);
         View dialogViewSubMenu = View.inflate(context, R.layout.dialog_edit, null);
@@ -2270,8 +2269,7 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
         editTop.setHint(getString(R.string.dialog_URL_hint));
 
         builder.setView(dialogViewSubMenu);
-        builder.setTitle(getString(R.string.dialog_postOnWebsite));
-        builder.setMessage(message);
+        builder.setTitle(data);
         builder.setIcon(R.drawable.icon_post);
 
         Dialog dialog = builder.create();
@@ -2468,18 +2466,9 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
             MaterialCardView albumCardView = dialogView.findViewById(R.id.albumCardView);
             albumCardView.setVisibility(View.GONE);
 
-            int stringSize= url.length();
-            String message;
-            if (stringSize > 50) {
-                message = url.substring(0, 50) + " ...";
-            } else {
-                message = url;
-            }
-
             MaterialAlertDialogBuilder builder = new MaterialAlertDialogBuilder(context);
             builder.setIcon(R.drawable.icon_menu_share);
-            builder.setTitle(context.getString(R.string.menu_share_text));
-            builder.setMessage(message);
+            builder.setTitle(url);
             builder.setView(dialogView);
 
             AlertDialog dialogChoose = builder.create();

@@ -6,8 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
-    tools:ignore="ContentDescription"
-    android:background="?attr/colorSurface">
+    tools:ignore="ContentDescription">
 
     <RelativeLayout
         style="@style/Widget.Material3.CardView.Filled"
@@ -112,6 +111,10 @@
             android:icon="@drawable/icon_dots" />
 
     </com.google.android.material.tabs.TabLayout>
+
+    <com.google.android.material.divider.MaterialDivider
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
 
     <RelativeLayout
         android:layout_width="wrap_content"
