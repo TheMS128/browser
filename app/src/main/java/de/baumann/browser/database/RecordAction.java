@@ -26,9 +26,7 @@ public class RecordAction {
     public static final int HISTORY_ITEM = 0;
     public static final int STARTSITE_ITEM = 1;
     public static final int BOOKMARK_ITEM = 2;
-
     public static final int CLIPBOARD_ITEM = 3;
-
     private final RecordHelper helper;
     private SQLiteDatabase database;
 

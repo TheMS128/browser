@@ -4,6 +4,7 @@
 - fix: Open in default app #1134
 - fix: App crashes when opening settings #1128
 - fix: layout improvements
+- fix: Deleting duplicated bookmark deletes both #1130
 - new: simplified receiving text dialog
 - updated: translations
 - updated: libraries

@@ -49,8 +49,7 @@
             android:launchMode="singleTask"
             android:theme="@style/AppTheme_day">
 
-            <intent-filter
-                android:label="@string/menu_share_text">
+            <intent-filter>
                 <action android:name="android.intent.action.SEND" />
                 <category android:name="android.intent.category.DEFAULT" />
                 <data android:mimeType="text/plain" />

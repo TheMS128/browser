@@ -18,7 +18,6 @@ public class RecordUnit {
     public static final String TABLE_START = "GRID";
     public static final String TABLE_BOOKMARK = "BOOKAMRK";
     public static final String TABLE_HISTORY = "HISTORY";
-
     public static final String TABLE_TRUSTED = "JAVASCRIPT";
     public static final String TABLE_PROTECTED = "COOKIE";
     public static final String TABLE_STANDARD = "REMOTE";

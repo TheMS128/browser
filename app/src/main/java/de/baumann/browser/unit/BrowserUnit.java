@@ -56,7 +56,6 @@ import de.baumann.browser.view.GridItem;
 
 public class BrowserUnit {
 
-    public static final int PROGRESS_MAX = 100;
     public static final int LOADING_STOPPED = 101;  //Must be > PROGRESS_MAX !
     public static final String MIME_TYPE_TEXT_PLAIN = "text/plain";
     public static final String URL_ENCODING = "UTF-8";

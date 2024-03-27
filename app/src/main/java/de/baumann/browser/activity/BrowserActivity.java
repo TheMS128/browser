@@ -473,7 +473,7 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
         if (progress != BrowserUnit.LOADING_STOPPED) {
             updateOmniBox();
         }
-        if (progress < BrowserUnit.PROGRESS_MAX) progressBar.setVisibility(View.VISIBLE);
+        if (progress < 100) progressBar.setVisibility(View.VISIBLE);
     }
 
     @Override
@@ -1625,21 +1625,26 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
                     });
                     Button ib_ok = dialogViewSubMenu.findViewById(R.id.editOK);
                     ib_ok.setOnClickListener(v -> {
+                        String message = context.getString(R.string.app_error) + ": " + context.getString(R.string.app_error_save);
                         if (overViewTab.equals(getString(R.string.album_title_bookmarks))) {
                             RecordAction action = new RecordAction(context);
                             action.open(true);
-                            action.deleteURL(url, RecordUnit.TABLE_BOOKMARK);
-                            action.addBookmark(new Record(editTop.getText().toString(), editBottom.getText().toString(), 0, 0, BOOKMARK_ITEM, chip_desktopMode.isChecked(), false, newIcon));
+                            if (action.checkUrl(editBottom.getText().toString(), RecordUnit.TABLE_BOOKMARK))
+                                NinjaToast.show(this, message);
+                            else {
+                                action.deleteURL(url, RecordUnit.TABLE_BOOKMARK);
+                                action.addBookmark(new Record(editTop.getText().toString(), editBottom.getText().toString(), 0, 0, BOOKMARK_ITEM, chip_desktopMode.isChecked(), false, newIcon));
+                                NinjaToast.show(this, R.string.app_done); }
                             action.close();
-                            bottom_navigation.setSelectedItemId(R.id.page_2); }
+                            bottom_navigation.setSelectedItemId(R.id.page_2);}
                         else {
                             RecordAction action = new RecordAction(context);
-                            action.open(true);
-                            action.deleteURL(url, RecordUnit.TABLE_START);
-                            int counter = sp.getInt("counter", 0);
-                            counter = counter + 1;
-                            sp.edit().putInt("counter", counter).apply();
-                            action.addStartSite(new Record(editTop.getText().toString(), editBottom.getText().toString(), 0, counter, STARTSITE_ITEM, chip_desktopMode.isChecked(), false, 0));
+                            action.open(true);if (action.checkUrl(editBottom.getText().toString(), RecordUnit.TABLE_START))
+                                NinjaToast.show(this, message);
+                            else {
+                                action.deleteURL(url, RecordUnit.TABLE_START);
+                                action.addStartSite(new Record(editTop.getText().toString(), editBottom.getText().toString(), 0, 0, BOOKMARK_ITEM, chip_desktopMode.isChecked(), false, newIcon));
+                                NinjaToast.show(this, R.string.app_done); }
                             action.close();
                             bottom_navigation.setSelectedItemId(R.id.page_1); }
                         HelperUnit.hideSoftKeyboard(editBottom, context);
@@ -2217,10 +2222,11 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
     private void save_atHome(final String title, final String url) {
         FaviconHelper faviconHelper = new FaviconHelper(context);
         faviconHelper.addFavicon(context, ninjaWebView.getUrl(), ninjaWebView.getFavicon());
+        String message = context.getString(R.string.app_error) + ": " + context.getString(R.string.app_error_save);
 
         RecordAction action = new RecordAction(context);
         action.open(true);
-        if (action.checkUrl(url, RecordUnit.TABLE_START)) NinjaToast.show(this, R.string.app_error);
+        if (action.checkUrl(url, RecordUnit.TABLE_START)) NinjaToast.show(this, message);
         else {
             int counter = sp.getInt("counter", 0);
             counter = counter + 1;
@@ -2310,8 +2316,9 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
         faviconHelper.addFavicon(context, ninjaWebView.getUrl(), ninjaWebView.getFavicon());
         RecordAction action = new RecordAction(context);
         action.open(true);
+        String message = context.getString(R.string.app_error) + ": " + context.getString(R.string.app_error_save);
         if (action.checkUrl(ninjaWebView.getUrl(), RecordUnit.TABLE_BOOKMARK))
-            NinjaToast.show(this, R.string.app_error);
+            NinjaToast.show(this, message);
         else {
             long value = 0;  //default red icon
             action.addBookmark(new Record(ninjaWebView.getTitle(), ninjaWebView.getUrl(), 0, 0, 2, ninjaWebView.isDesktopMode(), false, value));
