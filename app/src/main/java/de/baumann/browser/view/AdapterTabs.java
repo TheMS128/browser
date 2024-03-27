@@ -9,6 +9,8 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.google.android.material.card.MaterialCardView;
+
 import de.baumann.browser.R;
 import de.baumann.browser.browser.AlbumController;
 import de.baumann.browser.browser.BrowserContainer;
@@ -18,11 +20,13 @@ class AdapterTabs {
 
     private final Context context;
     private final AlbumController albumController;
-
     private View albumView;
     private TextView albumTitle;
     private TextView albumUrl;
     private BrowserController browserController;
+    private MaterialCardView albumCardView;
+
+    private ImageView albumClose;
 
     AdapterTabs(Context context, AlbumController albumController, BrowserController browserController) {
         this.context = context;
@@ -47,10 +51,12 @@ class AdapterTabs {
     @SuppressLint("InflateParams")
     private void initUI() {
         albumView = LayoutInflater.from(context).inflate(R.layout.item_list, null, false);
+        albumCardView = albumView.findViewById(R.id.albumCardView);
         albumTitle = albumView.findViewById(R.id.titleView);
         albumUrl = albumView.findViewById(R.id.dateView);
+        albumCardView = albumView.findViewById(R.id.albumCardView);
 
-        ImageView albumClose = albumView.findViewById(R.id.iconView);
+        albumClose = albumView.findViewById(R.id.iconView);
         albumClose.setImageResource(R.drawable.icon_tab_remove);
         albumClose.setVisibility(View.VISIBLE);
         albumClose.setOnClickListener(view -> {
@@ -61,21 +67,34 @@ class AdapterTabs {
 
     public void activate() {
         TypedValue typedValue = new TypedValue();
-        context.getTheme().resolveAttribute(R.attr.colorError, typedValue, true);
+        context.getTheme().resolveAttribute(R.attr.colorSecondary, typedValue, true);
         int color = typedValue.data;
+        context.getTheme().resolveAttribute(R.attr.colorSurface, typedValue, true);
+        int color2 = typedValue.data;
+
+        albumCardView.setCardBackgroundColor(color);
+        albumClose.setColorFilter(color2, android.graphics.PorterDuff.Mode.SRC_IN);
         albumTitle.setTypeface(null, Typeface.BOLD);
-        albumTitle.setTextColor(color);
-        albumUrl.setTextColor(color);
-        albumView.setOnClickListener(view -> browserController.hideOverview());
+        albumTitle.setTextColor(color2);
+        albumUrl.setTextColor(color2);
+        albumView.setOnClickListener(view -> {
+            albumCardView.setCardBackgroundColor(color);
+            browserController.hideOverview();
+        });
     }
 
     void deactivate() {
         TypedValue typedValue = new TypedValue();
-        context.getTheme().resolveAttribute(R.attr.colorOnSurfaceVariant, typedValue, true);
+        context.getTheme().resolveAttribute(R.attr.colorSecondaryContainer, typedValue, true);
         int color = typedValue.data;
+        context.getTheme().resolveAttribute(R.attr.colorOnSurfaceVariant, typedValue, true);
+        int color2 = typedValue.data;
+
+        albumCardView.setCardBackgroundColor(color);
+        albumClose.setColorFilter(color2, android.graphics.PorterDuff.Mode.SRC_IN);
         albumTitle.setTypeface(null, Typeface.NORMAL);
-        albumTitle.setTextColor(color);
-        albumUrl.setTextColor(color);
+        albumTitle.setTextColor(color2);
+        albumUrl.setTextColor(color2);
         albumView.setOnClickListener(view -> {
             browserController.showAlbum(albumController);
             browserController.hideOverview();
