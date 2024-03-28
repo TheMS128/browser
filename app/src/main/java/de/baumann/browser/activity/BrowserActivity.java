@@ -1625,7 +1625,6 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
                     });
                     Button ib_ok = dialogViewSubMenu.findViewById(R.id.editOK);
                     ib_ok.setOnClickListener(v -> {
-                        String message = context.getString(R.string.app_error) + ": " + context.getString(R.string.app_error_save);
                         if (overViewTab.equals(getString(R.string.album_title_bookmarks))) {
                             RecordAction action = new RecordAction(context);
                             action.open(true);
