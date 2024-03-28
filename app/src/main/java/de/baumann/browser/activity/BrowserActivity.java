@@ -1629,12 +1629,9 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
                         if (overViewTab.equals(getString(R.string.album_title_bookmarks))) {
                             RecordAction action = new RecordAction(context);
                             action.open(true);
-                            if (action.checkUrl(editBottom.getText().toString(), RecordUnit.TABLE_BOOKMARK))
-                                NinjaToast.show(this, message);
-                            else {
-                                action.deleteURL(url, RecordUnit.TABLE_BOOKMARK);
-                                action.addBookmark(new Record(editTop.getText().toString(), editBottom.getText().toString(), 0, 0, BOOKMARK_ITEM, chip_desktopMode.isChecked(), false, newIcon));
-                                NinjaToast.show(this, R.string.app_done); }
+                            action.deleteURL(url, RecordUnit.TABLE_BOOKMARK);
+                            action.addBookmark(new Record(editTop.getText().toString(), editBottom.getText().toString(), 0, 0, BOOKMARK_ITEM, chip_desktopMode.isChecked(), false, newIcon));
+                            NinjaToast.show(this, R.string.app_done);
                             action.close();
                             bottom_navigation.setSelectedItemId(R.id.page_2);}
                         else {
