@@ -2,6 +2,7 @@ package de.baumann.browser.view;
 
 import android.app.Dialog;
 import android.content.Context;
+import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -35,11 +36,8 @@ public class AdapterCustomRedirect extends RecyclerView.Adapter<RedirectsViewHol
     @NonNull
     @Override
     public RedirectsViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.custom_redirects_row, parent, false);
-
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.custom_redirects_row, parent, false);
         return new RedirectsViewHolder(view);
-
     }
 
     @Override
@@ -50,6 +48,16 @@ public class AdapterCustomRedirect extends RecyclerView.Adapter<RedirectsViewHol
         ImageView remove = holder.itemView.findViewById(R.id.remove_redirect);
         source.setText(current.getSource());
         target.setText(current.getTarget());
+
+        if (current.getSource().contains("youtube.com") || current.getSource().contains("twitter.com")) {
+            remove.setVisibility(View.GONE);
+            TypedValue typedValue = new TypedValue();
+            context.getTheme().resolveAttribute(R.attr.colorOutline, typedValue, true);
+            int color = typedValue.data;
+            source.setTextColor(color);
+            target.setTextColor(color);
+        }
+
         remove.setOnClickListener((iV) -> {
             MaterialAlertDialogBuilder builderSubMenu = new MaterialAlertDialogBuilder(context);
             builderSubMenu.setTitle(R.string.menu_delete);

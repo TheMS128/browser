@@ -19,6 +19,15 @@ public class CustomRedirectsHelper {
         ArrayList<CustomRedirect> redirects = new ArrayList<>();
         String redirectsPref = preferences.getString(CUSTOM_REDIRECTS_KEY, "[]");
 
+        if (preferences.getBoolean("sp_youTube_switch", false)) {
+            redirects.add(new CustomRedirect("m.youtube.com", preferences.getString("sp_youTube_string_domain", "yewtu.be")));
+            redirects.add(new CustomRedirect("youtube.com", preferences.getString("sp_youTube_string_domain", "yewtu.be")));
+        }
+
+        if (preferences.getBoolean("sp_twitter_switch", false)) {
+            redirects.add(new CustomRedirect("twitter.com", preferences.getString("sp_twitter_string_domain", "nitter.net")));
+        }
+
         JSONArray array = new JSONArray(redirectsPref);
         for (int i = 0; i < array.length(); i++) {
             JSONObject redirect = array.getJSONObject(i);
@@ -31,16 +40,16 @@ public class CustomRedirectsHelper {
 
     public static void saveRedirects(Context context, ArrayList<CustomRedirect> redirects) throws JSONException {
         SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(context);
-
         JSONArray array = new JSONArray();
         for (int i = 0; i < redirects.size(); i++) {
             CustomRedirect redirect = redirects.get(i);
-            JSONObject object = new JSONObject();
-            object.put("source", redirect.getSource());
-            object.put("target", redirect.getTarget());
-            array.put(object);
+            if (!redirect.getSource().contains("youtube.com")) {
+                JSONObject object = new JSONObject();
+                object.put("source", redirect.getSource());
+                object.put("target", redirect.getTarget());
+                array.put(object);
+            }
         }
-
         preferences.edit().putString(CUSTOM_REDIRECTS_KEY, array.toString()).apply();
     }
 }

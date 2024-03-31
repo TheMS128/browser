@@ -274,14 +274,10 @@ public class BrowserUnit {
     }
 
     public static String redirectURL(WebView ninjaWebView, SharedPreferences sp, String url) {
-
-        String domain = url;
         boolean redirect = sp.getBoolean("redirect", false);
         if (!redirect) return url;
-
         try {
             List<CustomRedirect> redirects = CustomRedirectsHelper.getRedirects(sp);
-
             for (int i = 0; i < redirects.size(); i++) {
                 CustomRedirect customRedirect = redirects.get(i);
                 if (url.contains(customRedirect.getSource())) {
@@ -293,20 +289,6 @@ public class BrowserUnit {
             }
         } catch (JSONException e) {
             Log.e("Redirect error", e.toString());
-        }
-
-        if (sp.getBoolean("sp_youTube_switch", false) &&
-                domain.equals("youtube.com") || domain.equals("m.youtube.com")) {
-            ninjaWebView.stopLoading();
-            String substring = url.substring(url.indexOf("youtube.com") + 12);
-            url = sp.getString("sp_youTube_string", "https://yewtu.be/") + substring;
-            return url;
-        } else if (sp.getBoolean("sp_twitter_switch", false) &&
-                domain.equals("twitter.com") || domain.equals("m.twitter.com")) {
-            ninjaWebView.stopLoading();
-            String substring = url.substring(url.indexOf("twitter.com") + 12);
-            url = sp.getString("sp_twitter_string", "https://nitter.net/") + substring;
-            return url;
         }
         return url;
     }
