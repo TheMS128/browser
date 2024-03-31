@@ -29,7 +29,7 @@ public class List_protected {
 
     public boolean isWhite(String url) {
         for (String domain : listProtected) {
-            if (url != null && HelperUnit.domain(url).equals(domain)) {
+            if (url != null && HelperUnit.domain(url).contains(domain)) {
                 return true;
             }
         }

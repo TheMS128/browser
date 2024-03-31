@@ -6,6 +6,7 @@
 - fix: layout improvements
 - fix: Deleting duplicated bookmark deletes both #1130
 - fix: v13 system theme - colors [re: 1105; 1119] #1126
+- fix: profiles -> wildcard support #1133
 - new: simplified receiving text dialog
 - updated: translations
 - updated: libraries
