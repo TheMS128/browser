@@ -2098,59 +2098,56 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
     }
 
     private void showDialogCustomSearches(String url) {
-        if (url.equals("") || url.equals(ninjaWebView.getUrl())) {
-            NinjaToast.show(context, getString(R.string.toast_input_empty));
-        } else {
-            MaterialAlertDialogBuilder builder = new MaterialAlertDialogBuilder(context);
-            View dialogView = View.inflate(context, R.layout.custom_redirects_list, null);
-            RecyclerView recyclerView = dialogView.findViewById(R.id.redirects_recycler);
-            recyclerView.setLayoutManager(new LinearLayoutManager(context));
-            SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(context);
-            ArrayList<CustomRedirect> redirects = new ArrayList<>();
-            try {
-                redirects = CustomSearchesHelper.getRedirects(sp);
-            } catch (JSONException e) {
-                Log.e("Searches parsing", e.toString());
-            }
-            AdapterCustomSearches adapter = new AdapterCustomSearches(context, ninjaWebView, url, redirects);
-            recyclerView.setAdapter(adapter);
 
-            builder.setTitle(R.string.custom_searches_title);
-            builder.setIcon(R.drawable.icon_custom_searches);
-            builder.setNegativeButton(R.string.app_ok, null);
-            builder.setNeutralButton(R.string.create_new, ((dialogInterface, i) -> {
+        addAlbum(null, "", true, false, "", null);
 
-                MaterialAlertDialogBuilder builderAddCustom = new MaterialAlertDialogBuilder(context);
-                View dialogViewAddCustom = View.inflate(context, R.layout.create_new_searches, null);
-                TextInputEditText source = dialogViewAddCustom.findViewById(R.id.source);
-                TextInputEditText target = dialogViewAddCustom.findViewById(R.id.target);
-
-                builderAddCustom.setTitle(R.string.custom_searches_title);
-                builderAddCustom.setIcon(R.drawable.icon_custom_searches);
-                builderAddCustom.setNegativeButton(R.string.app_cancel, null);
-                builderAddCustom.setPositiveButton(R.string.app_ok, ((dialogInterface2, i2) -> {
-                    String sourceText = Objects.requireNonNull(source.getText()).toString();
-                    String targetText = Objects.requireNonNull(target.getText()).toString();
-                    if (targetText.isEmpty() || sourceText.isEmpty()) return;
-                    adapter.addRedirect(new CustomRedirect(sourceText, targetText));
-                    try {
-                        CustomSearchesHelper.saveRedirects(context, adapter.getRedirects());
-                    } catch (JSONException e) {
-                        throw new RuntimeException(e);
-                    }
-                }));
-                builderAddCustom.setView(dialogViewAddCustom);
-
-                AlertDialog dialogCustomSearchesNew = builderAddCustom.create();
-                dialogCustomSearchesNew.show();
-                HelperUnit.setupDialog(context, dialogCustomSearchesNew);
-            }));
-            builder.setView(dialogView);
-
-            dialogCustomSearches = builder.create();
-            dialogCustomSearches.show();
-            HelperUnit.setupDialog(context, dialogCustomSearches);
+        MaterialAlertDialogBuilder builder = new MaterialAlertDialogBuilder(context);
+        View dialogView = View.inflate(context, R.layout.custom_redirects_list, null);
+        RecyclerView recyclerView = dialogView.findViewById(R.id.redirects_recycler);
+        recyclerView.setLayoutManager(new LinearLayoutManager(context));
+        SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(context);
+        ArrayList<CustomRedirect> redirects = new ArrayList<>();
+        try {
+            redirects = CustomSearchesHelper.getRedirects(sp);
+        } catch (JSONException e) {
+            Log.e("Searches parsing", e.toString());
         }
+        AdapterCustomSearches adapter = new AdapterCustomSearches(context, ninjaWebView, url, redirects);
+        recyclerView.setAdapter(adapter);
+
+        builder.setTitle(R.string.custom_searches_title);
+        builder.setIcon(R.drawable.icon_custom_searches);
+        builder.setPositiveButton(R.string.app_ok, null);
+        builder.setNegativeButton(R.string.app_cancel, ((dialogInterface, i) -> removeAlbum(currentAlbumController)));
+        builder.setNeutralButton(R.string.create_new, ((dialogInterface, i) -> {
+            MaterialAlertDialogBuilder builderAddCustom = new MaterialAlertDialogBuilder(context);
+            View dialogViewAddCustom = View.inflate(context, R.layout.create_new_searches, null);
+            TextInputEditText source = dialogViewAddCustom.findViewById(R.id.source);
+            TextInputEditText target = dialogViewAddCustom.findViewById(R.id.target);
+            builderAddCustom.setTitle(R.string.custom_searches_title);
+            builderAddCustom.setIcon(R.drawable.icon_custom_searches);
+            builderAddCustom.setNegativeButton(R.string.app_cancel, null);
+            builderAddCustom.setPositiveButton(R.string.app_ok, ((dialogInterface2, i2) -> {
+                String sourceText = Objects.requireNonNull(source.getText()).toString();
+                String targetText = Objects.requireNonNull(target.getText()).toString();
+                if (targetText.isEmpty() || sourceText.isEmpty()) return;
+                adapter.addRedirect(new CustomRedirect(sourceText, targetText));
+                try {
+                    CustomSearchesHelper.saveRedirects(context, adapter.getRedirects());
+                } catch (JSONException e) {
+                    throw new RuntimeException(e);
+                }
+            }));
+            builderAddCustom.setView(dialogViewAddCustom);
+            AlertDialog dialogCustomSearchesNew = builderAddCustom.create();
+            dialogCustomSearchesNew.show();
+            HelperUnit.setupDialog(context, dialogCustomSearchesNew);
+        }));
+        builder.setView(dialogView);
+
+        dialogCustomSearches = builder.create();
+        dialogCustomSearches.show();
+        HelperUnit.setupDialog(context, dialogCustomSearches);
     }
 
     // Voids
@@ -2249,53 +2246,61 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
     private void postLink(String data, Dialog dialogParent) {
         String urlForPosting = sp.getString("urlForPosting", "");
 
-        MaterialAlertDialogBuilder builder = new MaterialAlertDialogBuilder(context);
-        View dialogViewSubMenu = View.inflate(context, R.layout.dialog_edit, null);
-
-        CardView cardView = dialogViewSubMenu.findViewById(R.id.albumCardView);
-        cardView.setVisibility(View.GONE);
-        TextInputLayout editTopLayout = dialogViewSubMenu.findViewById(R.id.editTopLayout);
-        editTopLayout.setVisibility(View.GONE);
-        TextInputLayout editBottomLayout = dialogViewSubMenu.findViewById(R.id.editBottomLayout);
-        editBottomLayout.setHint(getString(R.string.dialog_URL_hint));
-        editBottomLayout.setHelperText(getString(R.string.dialog_postOnWebsiteHint));
-
-        EditText editTop = dialogViewSubMenu.findViewById(R.id.editBottom);
-        if (urlForPosting.isEmpty()) editTop.setText("");
-        else editTop.setText(urlForPosting);
-        editTop.setHint(getString(R.string.dialog_URL_hint));
-
-        builder.setView(dialogViewSubMenu);
-        builder.setTitle(data);
-        builder.setIcon(R.drawable.icon_post);
-
-        Dialog dialog = builder.create();
-        dialog.show();
-        HelperUnit.setupDialog(context, dialog);
-
-        Button ib_cancel = dialogViewSubMenu.findViewById(R.id.editCancel);
-        ib_cancel.setOnClickListener(v -> {
-            HelperUnit.hideSoftKeyboard(editTop, context);
-            dialog.cancel();
-        });
-        Button ib_ok = dialogViewSubMenu.findViewById(R.id.editOK);
-        ib_ok.setOnClickListener(v -> {
-            String shareTop = editTop.getText().toString().trim();
-            sp.edit().putString("urlForPosting", shareTop).apply();
+        if (urlForPosting.length() > 0) {
             ClipboardManager clipboard = (ClipboardManager) getSystemService(Context.CLIPBOARD_SERVICE);
             ClipData clip = ClipData.newPlainText("text", data);
             Objects.requireNonNull(clipboard).setPrimaryClip(clip);
             String text = getString(R.string.toast_copy_successful) + " -  " + data;
             NinjaToast.show(this, text);
-            addAlbum("", shareTop, true, false, "", dialog);
-            HelperUnit.hideSoftKeyboard(editTop, context);
-            dialog.cancel();
-            try {
-                dialogParent.cancel();
-            } catch (Exception e) {
-                Log.i(TAG, "shouldOverrideUrlLoading Exception:" + e);
-            }
-        });
+            addAlbum("", urlForPosting, true, false, "", null);
+        } else {
+            MaterialAlertDialogBuilder builder = new MaterialAlertDialogBuilder(context);
+            View dialogViewSubMenu = View.inflate(context, R.layout.dialog_edit, null);
+
+            CardView cardView = dialogViewSubMenu.findViewById(R.id.albumCardView);
+            cardView.setVisibility(View.GONE);
+            TextInputLayout editTopLayout = dialogViewSubMenu.findViewById(R.id.editTopLayout);
+            editTopLayout.setVisibility(View.GONE);
+            TextInputLayout editBottomLayout = dialogViewSubMenu.findViewById(R.id.editBottomLayout);
+            editBottomLayout.setHint(getString(R.string.dialog_URL_hint));
+            editBottomLayout.setHelperText(getString(R.string.dialog_postOnWebsiteHint));
+
+            EditText editTop = dialogViewSubMenu.findViewById(R.id.editBottom);
+            editTop.setText("");
+            editTop.setHint(getString(R.string.dialog_URL_hint));
+
+            builder.setView(dialogViewSubMenu);
+            builder.setTitle(data);
+            builder.setIcon(R.drawable.icon_post);
+
+            Dialog dialog = builder.create();
+            dialog.show();
+            HelperUnit.setupDialog(context, dialog);
+
+            Button ib_cancel = dialogViewSubMenu.findViewById(R.id.editCancel);
+            ib_cancel.setOnClickListener(v -> {
+                HelperUnit.hideSoftKeyboard(editTop, context);
+                dialog.cancel();
+            });
+            Button ib_ok = dialogViewSubMenu.findViewById(R.id.editOK);
+            ib_ok.setOnClickListener(v -> {
+                String shareTop = editTop.getText().toString().trim();
+                sp.edit().putString("urlForPosting", shareTop).apply();
+                ClipboardManager clipboard = (ClipboardManager) getSystemService(Context.CLIPBOARD_SERVICE);
+                ClipData clip = ClipData.newPlainText("text", data);
+                Objects.requireNonNull(clipboard).setPrimaryClip(clip);
+                String text = getString(R.string.toast_copy_successful) + " -  " + data;
+                NinjaToast.show(this, text);
+                addAlbum("", shareTop, true, false, "", dialog);
+                HelperUnit.hideSoftKeyboard(editTop, context);
+                dialog.cancel();
+                try {
+                    dialogParent.cancel();
+                } catch (Exception e) {
+                    Log.i(TAG, "shouldOverrideUrlLoading Exception:" + e);
+                }
+            });
+        }
     }
 
     private void searchOnSite() {
@@ -2500,7 +2505,6 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
                         addAlbum(null, finalData, true, false, "", null);
                         break;
                     case 1:
-                        addAlbum(null, "", true, false, "", null);
                         showDialogCustomSearches(finalData);
                         break;
                     case 2:

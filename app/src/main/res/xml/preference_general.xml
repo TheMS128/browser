@@ -11,6 +11,15 @@
             android:title="@string/setting_title_fav"
             android:icon="@drawable/icon_fav" />
 
+        <EditTextPreference
+            android:defaultValue="https://codeberg.org/Gaukler_Faun/FOSS_Browser/wiki"
+            android:key="urlForPosting"
+            android:title="@string/dialog_postOnWebsite"
+            android:summary="@string/dialog_postOnWebsiteHint"
+            android:icon="@drawable/icon_post" />
+
+        <Preference android:summary="@string/dialog_postOnWebsiteHint" />
+
         <de.baumann.browser.preferences.EditTextSwitchPreference
             android:key="sp_userAgent"
             android:selectable="true"
@@ -24,9 +33,7 @@
         android:title="@string/setting_title_search_engine"
         android:icon="@drawable/icon_search">
 
-        <Preference
-            android:key="settings_profile"
-            android:summary="@string/custom_searches_summary" />
+        <Preference android:summary="@string/custom_searches_summary" />
 
         <ListPreference
             android:defaultValue="0"
