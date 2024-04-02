@@ -581,7 +581,6 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
         listView = bottomSheetDialog_OverView.findViewById(R.id.list_overView);
         tab_container = bottomSheetDialog_OverView.findViewById(R.id.listOpenedTabs);
         list_empty = bottomSheetDialog_OverView.findViewById(R.id.list_empty);
-
         AtomicInteger intPage = new AtomicInteger();
 
         NavigationBarView.OnItemSelectedListener navListener = menuItem -> {
@@ -621,24 +620,9 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
             else if (menuItem.getItemId() == R.id.page_2) {
                 tab_container.setVisibility(View.GONE);
                 listView.setVisibility(View.VISIBLE);
+                omniBox_overview.setImageResource(R.drawable.icon_bookmark);
                 overViewTab = getString(R.string.album_title_bookmarks);
                 intPage.set(R.id.page_2);
-
-                RecordAction action2 = new RecordAction(context);
-                action2.open(false);
-                try {
-                    if (action2.checkUrl(ninjaWebView.getUrl(), RecordUnit.TABLE_BOOKMARK)) {
-                        omniBox_overview.setImageResource(R.drawable.icon_bookmark_added);
-
-                    } else {
-
-                        omniBox_overview.setImageResource(R.drawable.icon_bookmark);
-                    }
-                }
-                catch (Exception e) {Log.i(TAG, "dialogCustomSearches:" + e);}
-
-                action2.close();
-
                 RecordAction action = new RecordAction(context);
                 action.open(false);
                 final List<Record> list;
@@ -902,13 +886,19 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
             catch (Exception e) {Log.i(TAG, "dialogCustomSearches:" + e);}
         }
 
-
-        RecordAction action = new RecordAction(context);
-        action.open(true);
-        if (action.checkUrl(ninjaWebView.getUrl(), RecordUnit.TABLE_BOOKMARK)) {
-            overViewTab = getString(R.string.album_title_bookmarks);
+        if (overViewTab.equals(getString(R.string.album_title_bookmarks))) {
+            try {
+                RecordAction action = new RecordAction(context);
+                action.open(true);
+                if (action.checkUrl(ninjaWebView.getUrl(), RecordUnit.TABLE_BOOKMARK)) {
+                    omniBox_overview.setImageResource(R.drawable.icon_bookmark_added);
+                } else {
+                    omniBox_overview.setImageResource(R.drawable.icon_bookmark);
+                }
+                action.close();
+            }
+            catch (Exception e) {Log.i(TAG, "dialogCustomSearches:" + e);}
         }
-        setSelectedTab();
 
         badgeDrawable.setVisible(BrowserContainer.size() > 1);
         badgeDrawable.setNumber(BrowserContainer.size());
