@@ -465,6 +465,7 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
                 }
             });
         }
+        updateOmniBox();
     }
 
     @Override
@@ -620,9 +621,23 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
             else if (menuItem.getItemId() == R.id.page_2) {
                 tab_container.setVisibility(View.GONE);
                 listView.setVisibility(View.VISIBLE);
-                omniBox_overview.setImageResource(R.drawable.icon_bookmark);
                 overViewTab = getString(R.string.album_title_bookmarks);
                 intPage.set(R.id.page_2);
+
+                RecordAction action2 = new RecordAction(context);
+                action2.open(false);
+                try {
+                    if (action2.checkUrl(ninjaWebView.getUrl(), RecordUnit.TABLE_BOOKMARK)) {
+                        omniBox_overview.setImageResource(R.drawable.icon_bookmark_added);
+
+                    } else {
+
+                        omniBox_overview.setImageResource(R.drawable.icon_bookmark);
+                    }
+                }
+                catch (Exception e) {Log.i(TAG, "dialogCustomSearches:" + e);}
+
+                action2.close();
 
                 RecordAction action = new RecordAction(context);
                 action.open(false);
@@ -886,6 +901,14 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
             try {dialogCustomSearches.dismiss();}
             catch (Exception e) {Log.i(TAG, "dialogCustomSearches:" + e);}
         }
+
+
+        RecordAction action = new RecordAction(context);
+        action.open(true);
+        if (action.checkUrl(ninjaWebView.getUrl(), RecordUnit.TABLE_BOOKMARK)) {
+            overViewTab = getString(R.string.album_title_bookmarks);
+        }
+        setSelectedTab();
 
         badgeDrawable.setVisible(BrowserContainer.size() > 1);
         badgeDrawable.setNumber(BrowserContainer.size());
@@ -1427,6 +1450,7 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
                         omniBox_text.setText("");
                         omniBox_text.setText(text);
                         dialog.cancel();
+                        updateOmniBox();
                     });
                     builderSubMenu.setNegativeButton(R.string.app_cancel, (dialog2, whichButton) -> builderSubMenu.setCancelable(true));
                     Dialog dialogSubMenu = builderSubMenu.create();
@@ -1527,6 +1551,7 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
                         recordList.remove(location);
                         adapterRecord.notifyDataSetChanged();
                         dialog.cancel();
+                        updateOmniBox();
                     });
                     builderSubMenu.setNegativeButton(R.string.app_cancel, (dialog2, whichButton) -> builderSubMenu.setCancelable(true));
                     dialogSubMenu = builderSubMenu.create();
@@ -1631,6 +1656,7 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
                             action.deleteURL(url, RecordUnit.TABLE_BOOKMARK);
                             action.deleteURL(editBottom.getText().toString(), RecordUnit.TABLE_BOOKMARK);
                             action.addBookmark(new Record(editTop.getText().toString(), editBottom.getText().toString(), 0, 0, BOOKMARK_ITEM, chip_desktopMode.isChecked(), false, newIcon));
+                            updateOmniBox();
                             NinjaToast.show(this, R.string.app_done);
                             action.close();
                             bottom_navigation.setSelectedItemId(R.id.page_2);}
@@ -2323,6 +2349,7 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
         else {
             long value = 0;  //default red icon
             action.addBookmark(new Record(ninjaWebView.getTitle(), ninjaWebView.getUrl(), 0, 0, 2, ninjaWebView.isDesktopMode(), false, value));
+            updateOmniBox();
             NinjaToast.show(this, R.string.app_done); }
         action.close();
     }
