@@ -317,6 +317,13 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
             if (sp.getBoolean("start_tabStart", false)) showOverview();
             addAlbum(getString(R.string.app_name), sp.getString("favoriteURL", "https://codeberg.org/Gaukler_Faun/FOSS_Browser/wiki"), true, false, "", null);
         }
+
+        MaterialAlertDialogBuilder builder = new MaterialAlertDialogBuilder(context);
+        View dialogView = View.inflate(context, R.layout.dialog_intro, null);
+        builder.setView(dialogView);
+        AlertDialog dialog = builder.create();
+        dialog.show();
+        HelperUnit.setupDialog(context, dialog);
     }
 
 

@@ -27,6 +27,7 @@
 - fix: backup on exit
 - fix: crashes related to cookie manager #1118 #1111 #1115
 - fix: tabs gets multiplied #1117
+- fix: Add Initial Setting #1129
 - new: icons in overview menus
 - new: fast search on websites (long press search icon in toolbar)
 - new: AdBlock -> add custom domains

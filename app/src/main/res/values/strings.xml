@@ -217,4 +217,8 @@
     <string name="setting_title_screenOn">Keep screen on</string>
     <string name="setting_title_audioBackground">Background audio playback</string>
     <!-- License changelog -->
+    <string name="app_intro_a">Thanks for using FOSS Browser!</string>
+    <string name="app_intro_b">The currently opened website is the WIKI of FOSS Browser. This site is also saved as your first Bookmark. On the WIKI you can find helpful tipps and links.</string>
+    <string name="app_intro_c">To start browsing just tip on the tollbar. You can search the web for something or enter a url to open.</string>
+    <string name="app_intro_d">You can also open settings and configure FOSS Browser to your needs.</string>
 </resources>
