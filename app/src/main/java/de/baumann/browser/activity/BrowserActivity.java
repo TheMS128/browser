@@ -86,6 +86,7 @@ import com.google.android.material.badge.BadgeDrawable;
 import com.google.android.material.badge.BadgeUtils;
 import com.google.android.material.bottomappbar.BottomAppBar;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.android.material.button.MaterialButton;
 import com.google.android.material.card.MaterialCardView;
 import com.google.android.material.chip.Chip;
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
@@ -317,13 +318,6 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
             if (sp.getBoolean("start_tabStart", false)) showOverview();
             addAlbum(getString(R.string.app_name), sp.getString("favoriteURL", "https://codeberg.org/Gaukler_Faun/FOSS_Browser/wiki"), true, false, "", null);
         }
-
-        MaterialAlertDialogBuilder builder = new MaterialAlertDialogBuilder(context);
-        View dialogView = View.inflate(context, R.layout.dialog_intro, null);
-        builder.setView(dialogView);
-        AlertDialog dialog = builder.create();
-        dialog.show();
-        HelperUnit.setupDialog(context, dialog);
     }
 
 
@@ -2569,6 +2563,26 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
                     .putBoolean("sp_autofill", true)
                     .apply();
             ninjaWebView.setProfileDefaultValues();
+
+            MaterialAlertDialogBuilder builder = new MaterialAlertDialogBuilder(context);
+            View dialogView = View.inflate(context, R.layout.dialog_intro, null);
+            builder.setView(dialogView);
+            AlertDialog dialog = builder.create();
+            dialog.show();
+            HelperUnit.setupDialog(context, dialog);
+
+            MaterialButton startBrowsing = dialogView.findViewById(R.id.startBrowsing);
+            startBrowsing.setOnClickListener(v -> {
+                dialog.cancel();
+                HelperUnit.showSoftKeyboard(omniBox_text, activity);
+            });
+
+            MaterialButton openSettings = dialogView.findViewById(R.id.openSettings);
+            openSettings.setOnClickListener(v -> {
+                Intent settings = new Intent(BrowserActivity.this, Settings_Activity.class);
+                startActivity(settings);
+                dialog.cancel();
+            });
         }
 
         ninjaWebView.setBrowserController(this);

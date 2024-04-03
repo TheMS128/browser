@@ -48,35 +48,35 @@
             android:layout_marginBottom="20dp"
             android:text="@string/app_intro_c"/>
 
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/startBrowsing"
+            style="@style/Widget.Material3.Button.IconButton.Filled"
+            app:icon="@drawable/icon_web"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:text="@string/main_omnibox_input_hint"
+            android:textAllCaps="true" />
+
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:includeFontPadding="false"
             android:textAppearance="?attr/textAppearanceBodyMedium"
             android:layout_marginBottom="20dp"
-            android:text="@string/app_intro_c"/>
+            android:text="@string/app_intro_d"/>
 
         <com.google.android.material.button.MaterialButton
-            android:id="@+id/profileListAdd"
+            android:id="@+id/openSettings"
             style="@style/Widget.Material3.Button.IconButton.Filled"
             app:icon="@drawable/icon_settings"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="20dp"
             android:ellipsize="end"
             android:maxLines="1"
             android:text="@string/setting_label"
-            android:textAllCaps="true" />
-
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/profileListAdd2"
-            style="@style/Widget.Material3.Button.IconButton.Filled"
-            app:icon="@drawable/icon_web"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:ellipsize="end"
-            android:maxLines="1"
-            android:text="@string/main_omnibox_input_hint"
             android:textAllCaps="true" />
 
     </LinearLayout>

@@ -278,6 +278,12 @@ public class NinjaWebView extends WebView implements AlbumController {
     }
 
     public void setProfileDefaultValues() {
+
+        RecordAction action = new RecordAction(context);
+        action.open(true);
+        action.addBookmark(new Record("FOSS Browser - WIKI", "https://codeberg.org/Gaukler_Faun/FOSS_Browser/wiki", 0, 0, 2, false, false, 0));
+        action.close();
+
         sp.edit()
                 .putBoolean("profileTrusted_saveData", true)
                 .putBoolean("profileTrusted_images", true)
