@@ -1203,20 +1203,18 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
         });
 
         menu_grid_share.setOnItemClickListener((parent, view12, position, id) -> {
+            dialog_overflow.cancel();
             if (position == 0) {
                 shareLink(title, url);
-                dialog_overflow.cancel();
             } else if (position == 1) {
                 String text = title + ": " + url;
                 postLink(text, dialog_overflow);
             } else if (position == 2) {
                 copyLink(url);
-                dialog_overflow.cancel();
             } else if (position == 3) {
                 Intent intent = new Intent(Intent.ACTION_VIEW);
                 intent.setData(Uri.parse(url));
                 context.startActivity(Intent.createChooser(intent, null));
-                dialog_overflow.cancel();
             }
         });
 

@@ -157,7 +157,7 @@
         <com.google.android.material.divider.MaterialDivider
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:dividerColor="?attr/colorPrimary"/>
+            app:dividerColor="?attr/colorOutline"/>
 
         <RelativeLayout
             android:layout_width="wrap_content"
@@ -276,7 +276,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:dividerInsetStart="56dp"
-                app:dividerInsetEnd="56dp"/>
+                app:dividerInsetEnd="56dp"
+                app:dividerColor="?attr/colorPrimary"/>
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -450,7 +451,8 @@
         <com.google.android.material.divider.MaterialDivider
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="10dp"/>
+            android:layout_margin="10dp"
+            app:dividerColor="?attr/colorOutline"/>
 
         <LinearLayout
             android:layout_width="match_parent"
