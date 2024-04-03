@@ -8,6 +8,7 @@
 - fix: v13 system theme - colors [re: 1105; 1119] #1126
 - fix: profiles -> wildcard support #1133
 - fix: Suggestion: Long-press on bookmark icon to save #1140
+- fix: Add initial intro #1129
 - new: simplified receiving text dialog
 - updated: translations
 - updated: libraries

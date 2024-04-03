@@ -6,31 +6,15 @@
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:orientation="vertical"
-    tools:ignore="ContentDescription">
+    tools:ignore="ContentDescription"
+    android:paddingTop="10dp">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:padding="20dp" >
-
-        <ImageView
-            android:id="@+id/menu_icon"
-            android:layout_width="match_parent"
-            android:layout_height="150dp"
-            android:scaleType="fitCenter"
-            android:src="@drawable/foss_browser"
-            tools:ignore="ContentDescription"
-            android:layout_marginBottom="20dp"/>
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:includeFontPadding="false"
-            android:textAppearance="?attr/textAppearanceBodyLarge"
-            android:layout_marginBottom="20dp"
-            android:textStyle="bold"
-            android:text="@string/app_intro_a"/>
+        android:paddingStart="25dp"
+        android:paddingEnd="25dp" >
 
         <TextView
             android:layout_width="match_parent"

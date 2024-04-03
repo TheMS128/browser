@@ -54,7 +54,7 @@
             android:summary="@string/setting_title_hideToolbar" />
 
         <CheckBoxPreference
-            android:defaultValue="true"
+            android:defaultValue="false"
             android:key="useDynamicColor"
             android:summary="@string/setting_theme_wallpaper" />
 

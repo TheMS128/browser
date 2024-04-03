@@ -290,7 +290,7 @@ public class HelperUnit {
     public static void initTheme(Activity context) {
         sp = PreferenceManager.getDefaultSharedPreferences(context);
 
-        if (sp.getBoolean("useDynamicColor", true)) {
+        if (sp.getBoolean("useDynamicColor", false)) {
             switch (Objects.requireNonNull(sp.getString("sp_theme", "1"))) {
                 case "2":
                     context.setTheme(R.style.AppTheme_wallpaper_day);

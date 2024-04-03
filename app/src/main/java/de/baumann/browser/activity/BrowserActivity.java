@@ -2567,6 +2567,9 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
             MaterialAlertDialogBuilder builder = new MaterialAlertDialogBuilder(context);
             View dialogView = View.inflate(context, R.layout.dialog_intro, null);
             builder.setView(dialogView);
+            builder.setTitle(R.string.app_intro_a);
+            builder.setIcon(R.drawable.icon_web);
+            builder.setPositiveButton(R.string.app_ok, (dialog, whichButton) -> dialog.cancel());
             AlertDialog dialog = builder.create();
             dialog.show();
             HelperUnit.setupDialog(context, dialog);
