@@ -621,7 +621,17 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
             else if (menuItem.getItemId() == R.id.page_2) {
                 tab_container.setVisibility(View.GONE);
                 listView.setVisibility(View.VISIBLE);
-                omniBox_overview.setImageResource(R.drawable.icon_bookmark);
+                try {
+                    RecordAction action = new RecordAction(context);
+                    action.open(true);
+                    if (action.checkUrl(ninjaWebView.getUrl(), RecordUnit.TABLE_BOOKMARK)) {
+                        omniBox_overview.setImageResource(R.drawable.icon_bookmark_added);
+                    } else {
+                        omniBox_overview.setImageResource(R.drawable.icon_bookmark);
+                    }
+                    action.close();
+                }
+                catch (Exception e) {Log.i(TAG, "dialogCustomSearches:" + e);}
                 overViewTab = getString(R.string.album_title_bookmarks);
                 intPage.set(R.id.page_2);
                 RecordAction action = new RecordAction(context);
@@ -2132,7 +2142,7 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
         AdapterCustomSearches adapter = new AdapterCustomSearches(context, ninjaWebView, url, redirects);
         recyclerView.setAdapter(adapter);
 
-        builder.setTitle(R.string.custom_searches_title);
+        builder.setTitle(url);
         builder.setIcon(R.drawable.icon_custom_searches);
         builder.setPositiveButton(R.string.app_ok, null);
         builder.setNegativeButton(R.string.app_cancel, ((dialogInterface, i) -> removeAlbum(currentAlbumController)));
