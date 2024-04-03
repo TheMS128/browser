@@ -215,4 +215,10 @@
     <string name="setting_title_backup_exit">Back-up database (Startpagina, bladwijzers, geschiedenis en alle domeinlijsten) bij afsluiten\?</string>
     <string name="title_appDatabase">Database</string>
     <string name="custom_domains">Aangepaste domeinen</string>
+    <string name="app_error_save">Al opgeslagen.</string>
+    <string name="menu_shareOpenWith">Open met …</string>
+    <string name="app_intro_a">Bedankt voor het gebruik van FOSS Browser!</string>
+    <string name="app_intro_b">De huidige geopende website is de WIKI van FOSS Browser. Deze site is ook opgeslagen als uw eerste bladwijzer. Op de WIKI kunt u handige tips en links vinden.</string>
+    <string name="app_intro_c">Om te beginnen met browsen hoef je alleen maar op de werkbalk te tikken. Je kunt op het web naar iets zoeken of een url invoeren om te openen.</string>
+    <string name="app_intro_d">U kunt ook de instellingen openen en FOSS Browser naar wens configureren.</string>
 </resources>

@@ -215,4 +215,10 @@
     <string name="setting_title_backup_exit">終了時にデータベース（スタートページ、ブックマーク、履歴、すべてのドメインリスト）をバックアップしますか？</string>
     <string name="title_appDatabase">データベース</string>
     <string name="custom_domains">カスタムドメイン</string>
+    <string name="app_error_save">すでに保存されている。</string>
+    <string name="app_intro_a">FOSS Browserをご利用いただきありがとうございます！</string>
+    <string name="app_intro_b">現在開いているウェブサイトはFOSS BrowserのWIKIです。このサイトは最初のブックマークとしても保存されます。WIKIには役立つヒントやリンクがあります。</string>
+    <string name="app_intro_c">ブラウジングを開始するには、ツールバーを傾けるだけです。何かを検索したり、URLを入力して開くことができます。</string>
+    <string name="app_intro_d">設定を開いてFOSS Browserを設定することもできます。</string>
+    <string name="menu_shareOpenWith">オープン・ウィズ・ …</string>
 </resources>

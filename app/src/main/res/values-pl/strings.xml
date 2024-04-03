@@ -215,4 +215,10 @@
     <string name="setting_title_backup_exit">Kopia zapasowa bazy danych (strona startowa, zakładki, historia i wszystkie listy domen) przy wyjściu\?</string>
     <string name="title_appDatabase">Baza danych</string>
     <string name="custom_domains">Aangepaste domeinen</string>
+    <string name="app_error_save">Już zapisane.</string>
+    <string name="app_intro_a">Dziękujemy za korzystanie z FOSS Browser!</string>
+    <string name="app_intro_b">Aktualnie otwartą stroną jest WIKI przeglądarki FOSS. Strona ta jest również zapisywana jako pierwsza zakładka. Na WIKI można znaleźć pomocne wskazówki i linki.</string>
+    <string name="app_intro_c">Aby rozpocząć przeglądanie, wystarczy nacisnąć przycisk na pasku narzędzi. Możesz wyszukać coś w sieci lub wpisać adres URL do otwarcia.</string>
+    <string name="app_intro_d">Możesz także otworzyć ustawienia i skonfigurować FOSS Browser do swoich potrzeb.</string>
+    <string name="menu_shareOpenWith">Otwórz za pomocą …</string>
 </resources>

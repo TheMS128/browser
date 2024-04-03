@@ -215,4 +215,10 @@
     <string name="setting_title_backup_exit">Резервувати базу даних (стартову сторінку, закладки, історію і всі списки доменів) при виході\?</string>
     <string name="title_appDatabase">База даних</string>
     <string name="custom_domains">Користувацькі домени</string>
+    <string name="app_error_save">Вже врятовано.</string>
+    <string name="app_intro_c">Щоб почати перегляд, просто торкніться панелі інструментів. Ви можете шукати щось в Інтернеті або ввести URL-адресу для відкриття.</string>
+    <string name="app_intro_b">Наразі відкритим сайтом є WIKI про FOSS Browser. Цей сайт також зберігається як ваша перша закладка. У WIKI ви можете знайти корисні поради та посилання.</string>
+    <string name="menu_shareOpenWith">Відкрийте з …</string>
+    <string name="app_intro_d">Ви також можете відкрити налаштування і налаштувати FOSS Browser відповідно до ваших потреб.</string>
+    <string name="app_intro_a">Дякуємо за використання FOSS Browser!</string>
 </resources>

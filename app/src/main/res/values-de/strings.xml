@@ -215,4 +215,10 @@
     <string name="custom_searches_summary">Drücken Sie lange auf das Suchsymbol in der Symbolleiste, um Suchergebnisse von selbst definierten Websites zu erhalten.</string>
     <string name="custom_searches_title">Schnelle Suche auf …</string>
     <string name="custom_domains">Eigene Domains</string>
+    <string name="app_error_save">Schon gespeichert.</string>
+    <string name="menu_shareOpenWith">Öffnen mit …</string>
+    <string name="app_intro_a">Vielen Dank, dass Sie FOSS Browser verwenden!</string>
+    <string name="app_intro_c">Um mit dem Surfen zu beginnen, tippen Sie einfach auf die Symbolleiste. Sie können das Web nach etwas durchsuchen oder eine URL zum Öffnen eingeben.</string>
+    <string name="app_intro_d">Sie können auch die Einstellungen öffnen und den FOSS-Browser nach Ihren Wünschen konfigurieren.</string>
+    <string name="app_intro_b">Die aktuell geöffnete Website ist das WIKI von FOSS Browser. Diese Seite ist auch als Ihr erstes Lesezeichen gespeichert. Im WIKI finden Sie hilfreiche Tipps und Links.</string>
 </resources>

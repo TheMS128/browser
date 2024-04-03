@@ -215,4 +215,10 @@
     <string name="setting_title_backup_exit">Copie de rezervă a bazei de date (pagina de start, marcajele, istoricul și toate listele de domenii) la ieșire\?</string>
     <string name="title_appDatabase">Baza de date</string>
     <string name="custom_domains">Domenii personalizate</string>
+    <string name="app_error_save">Deja salvat.</string>
+    <string name="menu_shareOpenWith">Deschideți cu …</string>
+    <string name="app_intro_c">Pentru a începe să navigați, trebuie doar să apăsați pe bara de instrumente. Puteți căuta ceva pe internet sau puteți introduce o adresă URL pentru a o deschide.</string>
+    <string name="app_intro_d">De asemenea, puteți deschide setările și configura FOSS Browser în funcție de nevoile dumneavoastră.</string>
+    <string name="app_intro_a">Vă mulțumim că folosiți FOSS Browser!</string>
+    <string name="app_intro_b">Site-ul web deschis în prezent este WIKI al FOSS Browser. De asemenea, acest site este salvat ca primul marcaj. Pe WIKI puteți găsi sfaturi și link-uri utile.</string>
 </resources>

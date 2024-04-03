@@ -215,4 +215,10 @@
     <string name="setting_title_backup_exit">Zálohování databáze (úvodní stránka, záložky, historie a všechny seznamy domén) při ukončení\?</string>
     <string name="title_appDatabase">Databáze</string>
     <string name="custom_domains">Vlastní domény</string>
+    <string name="app_error_save">Již uloženo.</string>
+    <string name="menu_shareOpenWith">Otevřete s …</string>
+    <string name="app_intro_a">Děkujeme, že používáte FOSS Browser!</string>
+    <string name="app_intro_b">Aktuálně otevřená webová stránka je WIKI prohlížeče FOSS. Tato stránka je také uložena jako první záložka. Na WIKI najdete užitečné tipy a odkazy.</string>
+    <string name="app_intro_c">Chcete-li začít procházet, stačí dát tip na panelu nástrojů. Na webu můžete něco vyhledat nebo zadat url adresu, kterou chcete otevřít.</string>
+    <string name="app_intro_d">Můžete také otevřít nastavení a nakonfigurovat prohlížeč FOSS podle svých potřeb.</string>
 </resources>

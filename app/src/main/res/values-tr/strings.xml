@@ -215,4 +215,10 @@
     <string name="setting_title_backup_exit">Çıkışta veritabanını (Başlangıç sayfası, yer imleri, geçmiş ve tüm etki alanı listeleri) yedekleyin\?</string>
     <string name="title_appDatabase">Veritabanı</string>
     <string name="custom_domains">Özel alan adları</string>
+    <string name="app_error_save">Çoktan kaydedildi.</string>
+    <string name="menu_shareOpenWith">İle açın …</string>
+    <string name="app_intro_c">Göz atmaya başlamak için araç çubuğuna dokunmanız yeterlidir. Web\'de bir şey arayabilir veya açmak için bir url girebilirsiniz.</string>
+    <string name="app_intro_d">Ayrıca ayarları açabilir ve FOSS Browser\'ı ihtiyaçlarınıza göre yapılandırabilirsiniz.</string>
+    <string name="app_intro_b">Şu anda açık olan web sitesi FOSS Browser\'ın WIKI\'sidir. Bu site aynı zamanda ilk Yer İşaretiniz olarak kaydedilir. WIKI\'de yararlı ipuçları ve bağlantılar bulabilirsiniz.</string>
+    <string name="app_intro_a">FOSS Browser\'ı kullandığınız için teşekkürler!</string>
 </resources>

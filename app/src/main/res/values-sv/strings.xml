@@ -215,4 +215,10 @@
     <string name="setting_title_backup_exit">Backup av databas (Startsida, bokmärken, historik och alla domänlistor) vid avslut\?</string>
     <string name="title_appDatabase">Databas</string>
     <string name="custom_domains">Anpassade domäner</string>
+    <string name="menu_shareOpenWith">Öppna med …</string>
+    <string name="app_intro_c">För att börja surfa pekar du bara på verktygsfältet. Du kan söka efter något på webben eller ange en webbadress som ska öppnas.</string>
+    <string name="app_intro_d">Du kan också öppna inställningar och konfigurera FOSS Browser efter dina behov.</string>
+    <string name="app_intro_b">Den för närvarande öppnade webbplatsen är WIKI för FOSS Browser. Denna webbplats sparas också som ditt första bokmärke. På WIKI kan du hitta användbara tips och länkar.</string>
+    <string name="app_error_save">Redan sparad.</string>
+    <string name="app_intro_a">Tack för att du använder FOSS Browser!</string>
 </resources>

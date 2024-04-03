@@ -215,4 +215,10 @@
     <string name="setting_title_cookie_thirdParty">ملفات تعريف ارتباط الطرف الثالث</string>
     <string name="setting_title_backup_exit">قاعدة بيانات النسخ الاحتياطي (صفحة البدء والإشارات المرجعية والمحفوظات وجميع قوائم النطاقات) عند الخروج؟</string>
     <string name="title_appDatabase">قاعدة البيانات</string>
+    <string name="app_error_save">تم الحفظ بالفعل.</string>
+    <string name="menu_shareOpenWith">افتح مع …</string>
+    <string name="app_intro_a">شكراً لاستخدامك متصفح FOSS!</string>
+    <string name="app_intro_b">الموقع المفتوح حالياً هو WIKI لمتصفح FOSS. يتم حفظ هذا الموقع أيضاً كأول إشارة مرجعية لك. في WIKI يمكنك العثور على نصائح وروابط مفيدة.</string>
+    <string name="app_intro_d">يمكنك أيضًا فتح الإعدادات وتهيئة متصفح FOSS وفقًا لاحتياجاتك.</string>
+    <string name="app_intro_c">لبدء التصفح فقط اضغط على شريط الأدوات. يمكنك البحث في الويب عن شيء ما أو إدخال عنوان url لفتحه.</string>
 </resources>

@@ -215,4 +215,10 @@
     <string name="setting_title_backup_exit">Mencadangkan basis data (Halaman awal, penanda, riwayat, dan semua daftar domain) saat keluar\?</string>
     <string name="title_appDatabase">Basis data</string>
     <string name="custom_domains">Domain khusus</string>
+    <string name="menu_shareOpenWith">Buka dengan …</string>
+    <string name="app_intro_a">Terima kasih telah menggunakan FOSS Browser!</string>
+    <string name="app_intro_b">Situs web yang saat ini dibuka adalah WIKI dari FOSS Browser. Situs ini juga disimpan sebagai Bookmark pertama Anda. Di WIKI Anda dapat menemukan tips dan tautan yang bermanfaat.</string>
+    <string name="app_intro_c">Untuk memulai penjelajahan, cukup klik pada toolbar. Anda dapat mencari sesuatu di web atau memasukkan url untuk dibuka.</string>
+    <string name="app_intro_d">Anda juga dapat membuka pengaturan dan mengonfigurasi FOSS Browser sesuai kebutuhan Anda.</string>
+    <string name="app_error_save">Sudah disimpan.</string>
 </resources>

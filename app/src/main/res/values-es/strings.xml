@@ -215,4 +215,10 @@
     <string name="setting_title_backup_exit">¿Hacer una copia de seguridad de la base de datos (página de inicio, marcadores, historial y todas las listas de dominios) al salir\?</string>
     <string name="title_appDatabase">Base de datos</string>
     <string name="custom_domains">Dominios personalizados</string>
+    <string name="app_error_save">Ya está guardado.</string>
+    <string name="menu_shareOpenWith">Abrir con …</string>
+    <string name="app_intro_c">Para empezar a navegar sólo tienes que pulsar sobre la barra de herramientas. Puedes buscar algo en la web o introducir una url para abrirla.</string>
+    <string name="app_intro_d">También puedes abrir los ajustes y configurar el Navegador FOSS según tus necesidades.</string>
+    <string name="app_intro_a">¡Gracias por usar FOSS Browser!</string>
+    <string name="app_intro_b">El sitio web actualmente abierto es el WIKI de FOSS Browser. Este sitio también se guarda como primer Marcador. En la WIKI puedes encontrar consejos útiles y enlaces.</string>
 </resources>

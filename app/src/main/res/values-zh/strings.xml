@@ -215,4 +215,10 @@
     <string name="setting_title_backup_exit">退出时备份数据库（起始页、书签、历史记录和所有域列表）？</string>
     <string name="title_appDatabase">数据库</string>
     <string name="custom_domains">自定义域名</string>
+    <string name="app_error_save">已经保存。</string>
+    <string name="menu_shareOpenWith">打开 …</string>
+    <string name="app_intro_b">当前打开的网站是 FOSS 浏览器的 WIKI。该网站也被保存为您的第一个书签。在 WIKI 上，您可以找到有用的提示和链接。</string>
+    <string name="app_intro_c">要开始浏览，只需点击工具栏上的提示。您可以在网上搜索或输入网址打开。</string>
+    <string name="app_intro_d">您还可以打开设置，根据自己的需要配置FOSS浏览器。</string>
+    <string name="app_intro_a">感谢您使用 FOSS 浏览器！</string>
 </resources>

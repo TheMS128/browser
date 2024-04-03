@@ -215,4 +215,10 @@
     <string name="setting_title_backup_exit">Sauvegarde de la base de données (page d\'accueil, signets, historique et toutes les listes de domaines) à la sortie \?</string>
     <string name="title_appDatabase">Base de données</string>
     <string name="custom_domains">Domaines personnalisés</string>
+    <string name="app_error_save">Déjà sauvegardé.</string>
+    <string name="app_intro_c">Pour commencer à naviguer, il suffit de cliquer sur la barre d\'outils. Vous pouvez rechercher quelque chose sur le web ou saisir une adresse URL à ouvrir.</string>
+    <string name="app_intro_d">Vous pouvez également ouvrir les paramètres et configurer FOSS Browser selon vos besoins.</string>
+    <string name="menu_shareOpenWith">Ouvrir avec …</string>
+    <string name="app_intro_b">Le site web actuellement ouvert est le WIKI du navigateur FOSS. Ce site est également enregistré comme votre premier signet. Sur le WIKI, vous trouverez des conseils et des liens utiles.</string>
+    <string name="app_intro_a">Merci d\'utiliser FOSS Browser!</string>
 </resources>

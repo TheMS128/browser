@@ -215,4 +215,10 @@
     <string name="setting_title_backup_exit">Backup del database (pagina iniziale, segnalibri, cronologia e tutti gli elenchi dei domini) all\'uscita\?</string>
     <string name="title_appDatabase">Database</string>
     <string name="custom_domains">Domini personalizzati</string>
+    <string name="app_error_save">Già salvato.</string>
+    <string name="menu_shareOpenWith">Aprire con …</string>
+    <string name="app_intro_c">Per iniziare a navigare è sufficiente fare clic sulla barra degli strumenti. È possibile cercare qualcosa sul Web o inserire un url da aprire.</string>
+    <string name="app_intro_d">È inoltre possibile aprire le impostazioni e configurare FOSS Browser in base alle proprie esigenze.</string>
+    <string name="app_intro_a">Grazie per aver utilizzato FOSS Browser!</string>
+    <string name="app_intro_b">Il sito web attualmente aperto è il WIKI di FOSS Browser. Questo sito è anche salvato come primo segnalibro. Nel WIKI si possono trovare consigli e collegamenti utili.</string>
 </resources>
