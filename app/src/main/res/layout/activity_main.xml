@@ -203,7 +203,7 @@
         android:id="@+id/bottomSheetDialog_OverView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="?attr/colorSurfaceContainer"
+        android:background="?attr/colorSurface"
         android:visibility="gone">
 
         <TextView
