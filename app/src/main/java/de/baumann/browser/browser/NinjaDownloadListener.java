@@ -69,7 +69,7 @@ public class NinjaDownloadListener implements DownloadListener {
 
         GridItem item_01 = new GridItem(context.getString(R.string.app_ok), R.drawable.icon_check);
         GridItem item_02 = new GridItem( context.getString(R.string.menu_share_link), R.drawable.icon_link);
-        GridItem item_03 = new GridItem( context.getString(R.string.menu_save_as), R.drawable.icon_save_as);
+        GridItem item_03 = new GridItem( context.getString(R.string.menu_save_as), R.drawable.icon_menu_save);
         GridItem item_04 = new GridItem( context.getString(R.string.app_cancel), R.drawable.icon_close);
 
         View dialogView = View.inflate(context, R.layout.dialog_menu, null);

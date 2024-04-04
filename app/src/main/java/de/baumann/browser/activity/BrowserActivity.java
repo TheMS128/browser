@@ -1132,7 +1132,7 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
         GridItem item_23 = new GridItem( getString(R.string.menu_save_bookmark), R.drawable.icon_bookmark);
         GridItem item_24 = new GridItem( getString(R.string.menu_save_pdf), R.drawable.icon_file);
         GridItem item_25 = new GridItem( getString(R.string.menu_sc), R.drawable.icon_home);
-        GridItem item_26 = new GridItem( getString(R.string.menu_save_as), R.drawable.icon_save_as);
+        GridItem item_26 = new GridItem( getString(R.string.menu_save_as), R.drawable.icon_menu_save);
 
         final List<GridItem> gridList_save = new LinkedList<>();
         gridList_save.add(gridList_save.size(), item_21);
@@ -1369,7 +1369,7 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
         GridItem item_03 = new GridItem( getString(R.string.main_menu_new_tabProfile), R.drawable.icon_profile_trusted);
         GridItem item_04 = new GridItem( getString(R.string.menu_share_link), R.drawable.icon_link);
         GridItem item_05 = new GridItem( getString(R.string.menu_shareClipboard), R.drawable.icon_clipboard);
-        GridItem item_06 = new GridItem( getString(R.string.menu_save_as), R.drawable.icon_save_as);
+        GridItem item_06 = new GridItem( getString(R.string.menu_save_as), R.drawable.icon_menu_save);
         GridItem item_07 = new GridItem( getString(R.string.menu_save_home), R.drawable.icon_web);
         GridItem item_08 = new GridItem( getString(R.string.menu_delete), R.drawable.icon_delete);
         GridItem item_09 = new GridItem( getString(R.string.menu_shareOpenWith), R.drawable.icon_share_open_with);
@@ -2508,7 +2508,7 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
             albumCardView.setVisibility(View.GONE);
 
             MaterialAlertDialogBuilder builder = new MaterialAlertDialogBuilder(context);
-            builder.setIcon(R.drawable.icon_menu_share);
+            builder.setIcon(R.drawable.icon_share);
             builder.setTitle(finalData);
             builder.setView(dialogView);
 
@@ -2576,7 +2576,7 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
             View dialogView = View.inflate(context, R.layout.dialog_intro, null);
             builder.setView(dialogView);
             builder.setTitle(R.string.app_intro_a);
-            builder.setIcon(R.drawable.icon_web);
+            builder.setIcon(R.drawable.icon_alert);
             builder.setPositiveButton(R.string.app_ok, (dialog, whichButton) -> dialog.cancel());
             AlertDialog dialog = builder.create();
             dialog.show();

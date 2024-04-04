@@ -172,7 +172,7 @@ public class HelperUnit {
             });
             TextView menuTitleEdit = dialogView.findViewById(R.id.menuTitleEdit);
             menuTitleEdit.setText(titleMenu);
-            FaviconHelper.setFavicon(activity, dialogView, null, R.id.menu_icon, R.drawable.icon_save_as);
+            FaviconHelper.setFavicon(activity, dialogView, null, R.id.menu_icon, R.drawable.icon_menu_save);
 
             builder.setView(dialogView);
 
@@ -416,7 +416,7 @@ public class HelperUnit {
         });
         TextView menuTitleEdit = dialogView.findViewById(R.id.menuTitleEdit);
         menuTitleEdit.setText(titleMenu);
-        FaviconHelper.setFavicon(activity, dialogView, null, R.id.menu_icon, R.drawable.icon_save_as);
+        FaviconHelper.setFavicon(activity, dialogView, null, R.id.menu_icon, R.drawable.icon_menu_save);
 
         builder.setView(dialogView);
         builder.setTitle(R.string.menu_save_as);

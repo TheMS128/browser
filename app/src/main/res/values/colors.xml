@@ -10,7 +10,7 @@
     <color name="md_theme_light_secondaryContainer">#E2E5C2</color>
     <color name="md_theme_light_onSecondaryContainer">#1A1D08</color>
     <color name="md_theme_light_tertiary">#3B665C</color>
-    <color name="md_theme_light_onTertiary">#FFFFFF</color>
+    <color name="md_theme_light_onTertiary">#f1efdf</color>
     <color name="md_theme_light_tertiaryContainer">#BDECDF</color>
     <color name="md_theme_light_onTertiaryContainer">#00201A</color>
     <color name="md_theme_light_error">#BA1A1A</color>
@@ -41,7 +41,7 @@
     <color name="md_theme_dark_secondaryContainer">#45492F</color>
     <color name="md_theme_dark_onSecondaryContainer">#E2E5C2</color>
     <color name="md_theme_dark_tertiary">#A2D0C3</color>
-    <color name="md_theme_dark_onTertiary">#05372E</color>
+    <color name="md_theme_dark_onTertiary">#292a1d</color>
     <color name="md_theme_dark_tertiaryContainer">#224E45</color>
     <color name="md_theme_dark_onTertiaryContainer">#BDECDF</color>
     <color name="md_theme_dark_error">#FFB4AB</color>

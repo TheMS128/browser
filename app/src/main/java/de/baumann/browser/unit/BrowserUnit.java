@@ -328,7 +328,7 @@ public class BrowserUnit {
 
                 GridItem item_01 = new GridItem(activity.getString(R.string.app_cancel), R.drawable.icon_close);
                 GridItem item_02 = new GridItem(activity.getString(R.string.app_ok), R.drawable.icon_check);
-                GridItem item_03 = new GridItem(activity.getString(R.string.dialog_backGround_always), R.drawable.icon_save_as);
+                GridItem item_03 = new GridItem(activity.getString(R.string.dialog_backGround_always), R.drawable.icon_menu_save);
 
                 View dialogView = View.inflate(activity, R.layout.dialog_menu, null);
                 MaterialAlertDialogBuilder builder = new MaterialAlertDialogBuilder(activity);
