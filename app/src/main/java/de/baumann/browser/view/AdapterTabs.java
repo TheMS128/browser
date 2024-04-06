@@ -2,6 +2,7 @@ package de.baumann.browser.view;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.graphics.Bitmap;
 import android.graphics.Typeface;
 import android.util.TypedValue;
 import android.view.LayoutInflater;
@@ -15,6 +16,7 @@ import de.baumann.browser.R;
 import de.baumann.browser.browser.AlbumController;
 import de.baumann.browser.browser.BrowserContainer;
 import de.baumann.browser.browser.BrowserController;
+import de.baumann.browser.database.FaviconHelper;
 
 class AdapterTabs {
 
@@ -25,8 +27,8 @@ class AdapterTabs {
     private TextView albumUrl;
     private BrowserController browserController;
     private MaterialCardView albumCardView;
-
     private ImageView albumClose;
+    private ImageView faviconView;
 
     AdapterTabs(Context context, AlbumController albumController, BrowserController browserController) {
         this.context = context;
@@ -63,6 +65,7 @@ class AdapterTabs {
             browserController.removeAlbum(albumController);
             if (BrowserContainer.size() < 2) { browserController.hideOverview();}
         });
+        faviconView = albumView.findViewById(R.id.faviconView);
     }
 
     public void activate() {
@@ -74,6 +77,12 @@ class AdapterTabs {
 
         albumCardView.setCardBackgroundColor(color);
         albumClose.setColorFilter(color2, android.graphics.PorterDuff.Mode.SRC_IN);
+        try(FaviconHelper faviconHelper = new FaviconHelper(context)) {
+            Bitmap bitmap = faviconHelper.getFavicon(albumUrl.getText().toString());
+            if (faviconView != null) {
+                if (bitmap == null) faviconView.setColorFilter(color2, android.graphics.PorterDuff.Mode.SRC_IN);
+            }
+        }
         albumTitle.setTypeface(null, Typeface.BOLD);
         albumTitle.setTextColor(color2);
         albumUrl.setTextColor(color2);
@@ -92,6 +101,12 @@ class AdapterTabs {
 
         albumCardView.setCardBackgroundColor(color);
         albumClose.setColorFilter(color2, android.graphics.PorterDuff.Mode.SRC_IN);
+        try(FaviconHelper faviconHelper = new FaviconHelper(context)) {
+            Bitmap bitmap = faviconHelper.getFavicon(albumUrl.getText().toString());
+            if (faviconView != null) {
+                if (bitmap == null) faviconView.setColorFilter(color2, android.graphics.PorterDuff.Mode.SRC_IN);
+            }
+        }
         albumTitle.setTypeface(null, Typeface.NORMAL);
         albumTitle.setTextColor(color2);
         albumUrl.setTextColor(color2);

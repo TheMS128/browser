@@ -2126,55 +2126,58 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
 
     private void showDialogCustomSearches(String url) {
 
-        addAlbum(null, "", true, false, "", null);
+        if (url.length() > 0) {
+            addAlbum(null, "", true, false, "", null);
 
-        MaterialAlertDialogBuilder builder = new MaterialAlertDialogBuilder(context);
-        View dialogView = View.inflate(context, R.layout.custom_redirects_list, null);
-        RecyclerView recyclerView = dialogView.findViewById(R.id.redirects_recycler);
-        recyclerView.setLayoutManager(new LinearLayoutManager(context));
-        SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(context);
-        ArrayList<CustomRedirect> redirects = new ArrayList<>();
-        try {
-            redirects = CustomSearchesHelper.getRedirects(sp);
-        } catch (JSONException e) {
-            Log.e("Searches parsing", e.toString());
-        }
-        AdapterCustomSearches adapter = new AdapterCustomSearches(context, ninjaWebView, url, redirects);
-        recyclerView.setAdapter(adapter);
+            MaterialAlertDialogBuilder builder = new MaterialAlertDialogBuilder(context);
+            View dialogView = View.inflate(context, R.layout.custom_redirects_list, null);
+            RecyclerView recyclerView = dialogView.findViewById(R.id.redirects_recycler);
+            recyclerView.setLayoutManager(new LinearLayoutManager(context));
+            SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(context);
+            ArrayList<CustomRedirect> redirects = new ArrayList<>();
+            try {
+                redirects = CustomSearchesHelper.getRedirects(sp);
+            } catch (JSONException e) {
+                Log.e("Searches parsing", e.toString());
+            }
+            AdapterCustomSearches adapter = new AdapterCustomSearches(context, ninjaWebView, url, redirects);
+            recyclerView.setAdapter(adapter);
 
-        builder.setTitle(url);
-        builder.setIcon(R.drawable.icon_custom_searches);
-        builder.setPositiveButton(R.string.app_ok, null);
-        builder.setNegativeButton(R.string.app_cancel, ((dialogInterface, i) -> removeAlbum(currentAlbumController)));
-        builder.setNeutralButton(R.string.create_new, ((dialogInterface, i) -> {
-            MaterialAlertDialogBuilder builderAddCustom = new MaterialAlertDialogBuilder(context);
-            View dialogViewAddCustom = View.inflate(context, R.layout.create_new_searches, null);
-            TextInputEditText source = dialogViewAddCustom.findViewById(R.id.source);
-            TextInputEditText target = dialogViewAddCustom.findViewById(R.id.target);
-            builderAddCustom.setTitle(R.string.custom_searches_title);
-            builderAddCustom.setIcon(R.drawable.icon_custom_searches);
-            builderAddCustom.setNegativeButton(R.string.app_cancel, null);
-            builderAddCustom.setPositiveButton(R.string.app_ok, ((dialogInterface2, i2) -> {
-                String sourceText = Objects.requireNonNull(source.getText()).toString();
-                String targetText = Objects.requireNonNull(target.getText()).toString();
-                if (targetText.isEmpty() || sourceText.isEmpty()) return;
-                adapter.addRedirect(new CustomRedirect(sourceText, targetText));
-                try {
-                    CustomSearchesHelper.saveRedirects(context, adapter.getRedirects());
-                } catch (JSONException e) {
-                    throw new RuntimeException(e);
-                }
+            builder.setTitle(url);
+            builder.setIcon(R.drawable.icon_custom_searches);
+            builder.setPositiveButton(R.string.app_ok, null);
+            builder.setNegativeButton(R.string.app_cancel, ((dialogInterface, i) -> removeAlbum(currentAlbumController)));
+            builder.setNeutralButton(R.string.create_new, ((dialogInterface, i) -> {
+                MaterialAlertDialogBuilder builderAddCustom = new MaterialAlertDialogBuilder(context);
+                View dialogViewAddCustom = View.inflate(context, R.layout.create_new_searches, null);
+                TextInputEditText source = dialogViewAddCustom.findViewById(R.id.source);
+                TextInputEditText target = dialogViewAddCustom.findViewById(R.id.target);
+                builderAddCustom.setTitle(R.string.custom_searches_title);
+                builderAddCustom.setIcon(R.drawable.icon_custom_searches);
+                builderAddCustom.setNegativeButton(R.string.app_cancel, null);
+                builderAddCustom.setPositiveButton(R.string.app_ok, ((dialogInterface2, i2) -> {
+                    String sourceText = Objects.requireNonNull(source.getText()).toString();
+                    String targetText = Objects.requireNonNull(target.getText()).toString();
+                    if (targetText.isEmpty() || sourceText.isEmpty()) return;
+                    adapter.addRedirect(new CustomRedirect(sourceText, targetText));
+                    try {
+                        CustomSearchesHelper.saveRedirects(context, adapter.getRedirects());
+                    } catch (JSONException e) {
+                        throw new RuntimeException(e);
+                    }
+                }));
+                builderAddCustom.setView(dialogViewAddCustom);
+                AlertDialog dialogCustomSearchesNew = builderAddCustom.create();
+                dialogCustomSearchesNew.show();
+                HelperUnit.setupDialog(context, dialogCustomSearchesNew);
             }));
-            builderAddCustom.setView(dialogViewAddCustom);
-            AlertDialog dialogCustomSearchesNew = builderAddCustom.create();
-            dialogCustomSearchesNew.show();
-            HelperUnit.setupDialog(context, dialogCustomSearchesNew);
-        }));
-        builder.setView(dialogView);
-
-        dialogCustomSearches = builder.create();
-        dialogCustomSearches.show();
-        HelperUnit.setupDialog(context, dialogCustomSearches);
+            builder.setView(dialogView);
+            dialogCustomSearches = builder.create();
+            dialogCustomSearches.show();
+            HelperUnit.setupDialog(context, dialogCustomSearches);
+        } else {
+            NinjaToast.show(this, R.string.toast_input_empty);
+        }
     }
 
     // Voids
