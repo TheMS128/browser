@@ -9,6 +9,7 @@
 - fix: profiles -> wildcard support #1133
 - fix: Suggestion: Long-press on bookmark icon to save #1140
 - fix: Add initial intro #1129
+- fix: Splash screen should adapt to theme #1142
 - new: simplified receiving text dialog
 - updated: translations
 - updated: libraries
