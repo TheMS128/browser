@@ -47,7 +47,7 @@
             android:exported="true"
             android:grantUriPermissions="true"
             android:launchMode="singleTask"
-            android:theme="@style/AppTheme_day">
+            android:theme="@style/LauncherTheme">
 
             <intent-filter>
                 <action android:name="android.intent.action.SEND" />
