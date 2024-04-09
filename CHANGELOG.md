@@ -3,7 +3,7 @@
 - fix: Back navigation is flawed #1121
 - fix: Open in default app #1134
 - fix: App crashes when opening settings #1128
-- fix: layout improvements
+- fix: layout/UI improvements
 - fix: Deleting duplicated bookmark deletes both #1130
 - fix: v13 system theme - colors [re: 1105; 1119] #1126
 - fix: profiles -> wildcard support #1133

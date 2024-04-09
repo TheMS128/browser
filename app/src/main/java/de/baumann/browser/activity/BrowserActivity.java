@@ -1023,7 +1023,6 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
         animation.setDuration(duration);
         animation.start();
         bottomAppBar.setVisibility(View.GONE);
-        ninjaWebView.updateFavicon(ninjaWebView.getUrl());
     }
 
     private void setSelectedTab() {

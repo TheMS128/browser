@@ -20,8 +20,6 @@ import androidx.preference.PreferenceManager;
 
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 
-import java.util.Objects;
-
 import de.baumann.browser.R;
 import de.baumann.browser.unit.BrowserUnit;
 import de.baumann.browser.unit.HelperUnit;
@@ -50,10 +48,12 @@ public class NinjaWebChromeClient extends WebChromeClient {
     @Override
     public void onProgressChanged(WebView view, int progress) {
         super.onProgressChanged(view, progress);
+        String url = ninjaWebView.getUrl();
+        String title = ninjaWebView.getTitle();
         ninjaWebView.updateTitle(progress);
-        ninjaWebView.updateFavicon(view.getUrl());
-        if (Objects.requireNonNull(view.getTitle()).isEmpty()) ninjaWebView.updateTitle(view.getUrl(), view.getUrl());
-        else ninjaWebView.updateTitle(view.getTitle(),view.getUrl());
+        assert title != null;
+        if (title.isEmpty()) ninjaWebView.updateTitle(url, url);
+        else ninjaWebView.updateTitle(title,url);
     }
 
     @Override
@@ -140,6 +140,7 @@ public class NinjaWebChromeClient extends WebChromeClient {
     @Override
     public void onReceivedIcon(WebView view, Bitmap icon) {
         ninjaWebView.setFavicon(icon);
+        ninjaWebView.updateFavicon(ninjaWebView.getUrl());
         super.onReceivedIcon(view, icon);
     }
 

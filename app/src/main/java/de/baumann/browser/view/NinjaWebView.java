@@ -31,7 +31,6 @@ import android.webkit.WebBackForwardList;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.widget.GridView;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -643,7 +642,6 @@ public class NinjaWebView extends WebView implements AlbumController {
 
     public void setAlbumTitle(String title, String url) {
         album.setAlbumTitle(title, url);
-        FaviconHelper.setFavicon(context, getAlbumView(), url, R.id.faviconView, R.drawable.icon_image_broken);
     }
 
     @Override
@@ -663,18 +661,14 @@ public class NinjaWebView extends WebView implements AlbumController {
     public synchronized void updateTitle(int progress) {
         if (foreground && !stopped) browserController.updateProgress(progress);
         else if (foreground) browserController.updateProgress(BrowserUnit.LOADING_STOPPED);
-        ImageView iv = album.getAlbumView().findViewById(R.id.faviconView);
-        FaviconHelper.setFavicon(context, iv, this.getUrl(), R.id.faviconView, R.drawable.icon_image_broken);
     }
 
     public synchronized void updateTitle(String title, String url) {
         album.setAlbumTitle(title, url);
-        ImageView iv = album.getAlbumView().findViewById(R.id.faviconView);
-        FaviconHelper.setFavicon(context, iv, url, R.id.faviconView, R.drawable.icon_image_broken);
     }
 
     public synchronized void updateFavicon(String url) {
-        FaviconHelper.setFavicon(context, getAlbumView(), url, R.id.faviconView, R.drawable.icon_image_broken);
+        FaviconHelper.setFavicon(context, album.getAlbumView(), url, R.id.faviconView, R.drawable.icon_image_broken);
     }
 
     @Override
