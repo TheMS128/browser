@@ -1,4 +1,4 @@
-### v 14 "Katjuscha" (Protagonistin in Leo Tolstois Auferstehung) (WIP)
+### v 14 "Katjuscha" (Protagonistin in Leo Tolstois Auferstehung)
 - fix: redirect custom urls
 - fix: Back navigation is flawed #1121
 - fix: Open in default app #1134
