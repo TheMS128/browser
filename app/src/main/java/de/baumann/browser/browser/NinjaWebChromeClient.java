@@ -14,6 +14,7 @@ import android.webkit.WebChromeClient;
 import android.webkit.WebResourceRequest;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
+import android.widget.ImageView;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.preference.PreferenceManager;
@@ -139,13 +140,34 @@ public class NinjaWebChromeClient extends WebChromeClient {
 
     @Override
     public void onReceivedIcon(WebView view, Bitmap icon) {
-        ninjaWebView.setFavicon(icon);
-        ninjaWebView.updateFavicon(ninjaWebView.getUrl());
+        String url = ninjaWebView.getUrl();
+        ImageView iv = ninjaWebView.getAlbumView().findViewById(R.id.faviconView);
+        if (url == null) {
+            iv.setImageResource(R.drawable.icon_image_broken);
+        } else if (url.equals("about:blank")) {
+            iv.setImageResource(R.drawable.icon_image_broken);
+        } else if (BrowserUnit.isURL(url)) {
+            ninjaWebView.setFavicon(icon);
+            ninjaWebView.updateFavicon(ninjaWebView.getUrl());
+        } else {
+            iv.setImageResource(R.drawable.icon_image_broken);
+        }
         super.onReceivedIcon(view, icon);
     }
 
     @Override
     public void onReceivedTitle(WebView view, String sTitle) {
         super.onReceivedTitle(view, sTitle);
+        String url = ninjaWebView.getUrl();
+        ImageView iv = ninjaWebView.getAlbumView().findViewById(R.id.faviconView);
+        if (url == null) {
+            iv.setImageResource(R.drawable.icon_image_broken);
+        } else if (url.equals("about:blank")) {
+            iv.setImageResource(R.drawable.icon_image_broken);
+        } else if (BrowserUnit.isURL(url)) {
+            ninjaWebView.updateFavicon(ninjaWebView.getUrl());
+        } else {
+            iv.setImageResource(R.drawable.icon_image_broken);
+        }
     }
 }

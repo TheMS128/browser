@@ -26,6 +26,7 @@ class AdapterTabs {
     private BrowserController browserController;
     private MaterialCardView albumCardView;
     private ImageView albumClose;
+    private ImageView albumFavicon;
 
     AdapterTabs(Context context, AlbumController albumController, BrowserController browserController) {
         this.context = context;
@@ -55,6 +56,7 @@ class AdapterTabs {
         albumUrl = albumView.findViewById(R.id.dateView);
         albumCardView = albumView.findViewById(R.id.albumCardView);
 
+        albumFavicon = albumView.findViewById(R.id.faviconView);
         albumClose = albumView.findViewById(R.id.iconView);
         albumClose.setImageResource(R.drawable.icon_tab_remove);
         albumClose.setVisibility(View.VISIBLE);
@@ -73,6 +75,7 @@ class AdapterTabs {
 
         albumCardView.setCardBackgroundColor(color);
         albumClose.setColorFilter(color2, android.graphics.PorterDuff.Mode.SRC_IN);
+        albumFavicon.setColorFilter(color2, android.graphics.PorterDuff.Mode.SRC_IN);
         albumTitle.setTypeface(null, Typeface.BOLD);
         albumTitle.setTextColor(color2);
         albumUrl.setTextColor(color2);
@@ -91,6 +94,7 @@ class AdapterTabs {
 
         albumCardView.setCardBackgroundColor(color);
         albumClose.setColorFilter(color2, android.graphics.PorterDuff.Mode.SRC_IN);
+        albumFavicon.setColorFilter(color2, android.graphics.PorterDuff.Mode.SRC_IN);
         albumTitle.setTypeface(null, Typeface.NORMAL);
         albumTitle.setTextColor(color2);
         albumUrl.setTextColor(color2);
