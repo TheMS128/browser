@@ -9,6 +9,8 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import androidx.core.content.ContextCompat;
+
 import com.google.android.material.card.MaterialCardView;
 
 import de.baumann.browser.R;
@@ -72,10 +74,12 @@ class AdapterTabs {
         int color = typedValue.data;
         context.getTheme().resolveAttribute(R.attr.colorSurface, typedValue, true);
         int color2 = typedValue.data;
+        if (albumFavicon.getDrawable() == ContextCompat.getDrawable(context, R.drawable.icon_image_broken)) {
+            albumFavicon.setColorFilter(color2, android.graphics.PorterDuff.Mode.SRC_IN);
+        }
 
         albumCardView.setCardBackgroundColor(color);
         albumClose.setColorFilter(color2, android.graphics.PorterDuff.Mode.SRC_IN);
-        albumFavicon.setColorFilter(color2, android.graphics.PorterDuff.Mode.SRC_IN);
         albumTitle.setTypeface(null, Typeface.BOLD);
         albumTitle.setTextColor(color2);
         albumUrl.setTextColor(color2);
@@ -91,10 +95,12 @@ class AdapterTabs {
         int color = typedValue.data;
         context.getTheme().resolveAttribute(R.attr.colorOnSurfaceVariant, typedValue, true);
         int color2 = typedValue.data;
+        if (albumFavicon.getDrawable() == ContextCompat.getDrawable(context, R.drawable.icon_image_broken)) {
+            albumFavicon.setColorFilter(color2, android.graphics.PorterDuff.Mode.SRC_IN);
+        }
 
         albumCardView.setCardBackgroundColor(color);
         albumClose.setColorFilter(color2, android.graphics.PorterDuff.Mode.SRC_IN);
-        albumFavicon.setColorFilter(color2, android.graphics.PorterDuff.Mode.SRC_IN);
         albumTitle.setTypeface(null, Typeface.NORMAL);
         albumTitle.setTextColor(color2);
         albumUrl.setTextColor(color2);
