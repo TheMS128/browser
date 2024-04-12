@@ -19,7 +19,6 @@
 
 package de.baumann.browser.unit;
 
-import static android.content.Context.DOWNLOAD_SERVICE;
 import static android.graphics.drawable.Icon.createWithBitmap;
 
 import android.Manifest;
@@ -40,6 +39,9 @@ import android.net.Uri;
 import android.os.Build;
 import android.os.Environment;
 import android.os.Handler;
+import android.print.PrintAttributes;
+import android.print.PrintDocumentAdapter;
+import android.print.PrintManager;
 import android.text.TextUtils;
 import android.util.DisplayMetrics;
 import android.util.Log;
@@ -49,6 +51,7 @@ import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.webkit.CookieManager;
 import android.webkit.URLUtil;
+import android.webkit.WebView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -57,6 +60,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AlertDialog;
+import androidx.cardview.widget.CardView;
 import androidx.core.content.res.ResourcesCompat;
 import androidx.preference.PreferenceManager;
 
@@ -76,6 +80,7 @@ import de.baumann.browser.R;
 import de.baumann.browser.activity.BrowserActivity;
 import de.baumann.browser.browser.BrowserController;
 import de.baumann.browser.browser.DataURIParser;
+import de.baumann.browser.browser.JavaScriptInterface;
 import de.baumann.browser.database.FaviconHelper;
 import de.baumann.browser.view.GridItem;
 import de.baumann.browser.view.NinjaToast;
@@ -133,15 +138,15 @@ public class HelperUnit {
         }
     }
 
-    public static void saveAs(final Activity activity, String titleMenu, final String url, final String name, Dialog dialogParent) {
+    public static void saveAs(final Activity activity, final String url, final String name, Dialog dialogParent, WebView webView) {
 
         try {
             MaterialAlertDialogBuilder builder = new MaterialAlertDialogBuilder(activity);
 
             View dialogView = View.inflate(activity, R.layout.dialog_edit, null);
 
-            TextInputLayout editTopLayout = dialogView.findViewById(R.id.editTopLayout);
-            editTopLayout.setHint(activity.getString(R.string.dialog_title_hint));
+            CardView albumCardView = dialogView.findViewById(R.id.albumCardView);
+            albumCardView.setVisibility(View.GONE);
             TextInputLayout editBottomLayout = dialogView.findViewById(R.id.editBottomLayout);
             editBottomLayout.setHint(activity.getString(R.string.dialog_extension_hint));
 
@@ -157,23 +162,10 @@ public class HelperUnit {
             editTop.setText(prefix);
             if (extension.length() <= 8) editBottom.setText(extension);
 
-            LinearLayout textGroupEdit = dialogView.findViewById(R.id.textGroupEdit);
-            TextView menuURLEdit = dialogView.findViewById(R.id.menuURLEdit);
-            menuURLEdit.setText(url);
-            menuURLEdit.setEllipsize(TextUtils.TruncateAt.MARQUEE);
-            menuURLEdit.setSingleLine(true);
-            menuURLEdit.setMarqueeRepeatLimit(1);
-            menuURLEdit.setSelected(true);
-            textGroupEdit.setOnClickListener(v -> {
-                menuURLEdit.setEllipsize(TextUtils.TruncateAt.MARQUEE);
-                menuURLEdit.setSingleLine(true);
-                menuURLEdit.setMarqueeRepeatLimit(1);
-                menuURLEdit.setSelected(true);
-            });
-            TextView menuTitleEdit = dialogView.findViewById(R.id.menuTitleEdit);
-            menuTitleEdit.setText(titleMenu);
-            FaviconHelper.setFavicon(activity, dialogView, null, R.id.menu_icon, R.drawable.icon_menu_save);
 
+
+            builder.setTitle(R.string.menu_save_as);
+            builder.setIcon(R.drawable.icon_menu_save);
             builder.setView(dialogView);
 
             AlertDialog dialog = builder.create();
@@ -190,25 +182,49 @@ public class HelperUnit {
 
                 String title = editTop.getText().toString().trim();
                 String extension1 = editBottom.getText().toString().trim();
-                String filename1 = title + extension1;
+                String finalFileName = title + extension1;
 
                 if (title.isEmpty() || !extension1.startsWith(".")) {
                     NinjaToast.show(activity, activity.getString(R.string.toast_input_empty));
                 } else {
+
+
                     if (BackupUnit.checkPermissionStorage(activity)) {
                         try {
-                            Uri source = Uri.parse(url);
-                            DownloadManager.Request request = new DownloadManager.Request(source);
-                            String cookies = CookieManager.getInstance().getCookie(url);
-                            request.addRequestHeader("cookie", cookies);
-                            request.addRequestHeader("Accept", "text/html, application/xhtml+xml, *" + "/" + "*");
-                            request.addRequestHeader("Accept-Language", "en-US,en;q=0.7,he;q=0.3");
-                            request.addRequestHeader("Referer", url);
-                            request.setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE_NOTIFY_COMPLETED); //Notify client once download is completed!
-                            request.setDestinationInExternalPublicDir(Environment.DIRECTORY_DOWNLOADS, filename1);
-                            DownloadManager dm = (DownloadManager) activity.getSystemService(DOWNLOAD_SERVICE);
-                            assert dm != null;
-                            dm.enqueue(request);
+                            if (url.startsWith("blob:")) {
+                                if (BackupUnit.checkPermissionStorage(activity.getApplicationContext())) {
+                                    webView.evaluateJavascript(JavaScriptInterface.getBase64StringFromBlobUrl(url, finalFileName, "*/*"), null);
+                                } else BackupUnit.requestPermission(activity);
+                            } else if (url.startsWith("data:")) {
+                                DataURIParser dataURIParser = new DataURIParser(url);
+                                if (BackupUnit.checkPermissionStorage(activity.getApplicationContext())) {
+                                    File file = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS), finalFileName);
+                                    FileOutputStream fos = new FileOutputStream(file);
+                                    fos.write(dataURIParser.getImagedata());
+                                    fos.flush();
+                                    fos.close();
+                                    HelperUnit.openDialogDownloads(activity.getApplicationContext());
+                                } else BackupUnit.requestPermission(activity);
+                            } else {
+                                DownloadManager.Request request = new DownloadManager.Request(Uri.parse(url));
+                                CookieManager cookieManager = CookieManager.getInstance();
+                                String cookie = cookieManager.getCookie(url);
+                                request.addRequestHeader("Cookie", cookie);
+                                request.addRequestHeader("Accept", "text/html, application/xhtml+xml, *" + "/" + "*");
+                                request.addRequestHeader("Accept-Language", "en-US,en;q=0.7,he;q=0.3");
+                                request.addRequestHeader("Referer", url);
+                                request.setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE_NOTIFY_COMPLETED);
+                                request.setTitle(finalFileName);
+                                request.setMimeType(finalFileName);
+                                request.setDestinationInExternalPublicDir(Environment.DIRECTORY_DOWNLOADS, finalFileName);
+                                DownloadManager manager = (DownloadManager) activity.getSystemService(Context.DOWNLOAD_SERVICE);
+                                assert manager != null;
+                                if (BackupUnit.checkPermissionStorage(activity)) {
+                                    manager.enqueue(request);
+                                } else {
+                                    BackupUnit.requestPermission(activity);
+                                }
+                            }
                         } catch (Exception e) {
                             System.out.println("Error Downloading File: " + e);
                             Toast.makeText(activity, activity.getString(R.string.app_error) + e.toString().substring(e.toString().indexOf(":")), Toast.LENGTH_LONG).show();
@@ -523,5 +539,28 @@ public class HelperUnit {
      */
     public static int convertDpToPixel(float dp, Context context){
         return Math.round(dp * ((float) context.getResources().getDisplayMetrics().densityDpi / DisplayMetrics.DENSITY_DEFAULT));
+    }
+
+
+
+    public static void openDialogDownloads(Context context) {
+        ((Activity) context).runOnUiThread(() -> {
+            MaterialAlertDialogBuilder builder = new MaterialAlertDialogBuilder(context);
+            builder.setMessage(R.string.toast_downloadComplete);
+            builder.setPositiveButton(R.string.app_ok, (dialog, whichButton) -> context.startActivity(new Intent(DownloadManager.ACTION_VIEW_DOWNLOADS)));
+            builder.setNegativeButton(R.string.app_cancel, (dialog, whichButton) -> dialog.cancel());
+            Dialog dialog = builder.create();
+            dialog.show();
+            Objects.requireNonNull(dialog.getWindow()).setGravity(Gravity.BOTTOM);
+        });
+    }
+
+    public static void print(Context context, NinjaWebView ninjaWebView) {
+        ((Activity) context).runOnUiThread(() -> {
+            String title = HelperUnit.fileName(ninjaWebView.getUrl());
+            PrintManager printManager = (PrintManager) context.getSystemService(Context.PRINT_SERVICE);
+            PrintDocumentAdapter printAdapter = ninjaWebView.createPrintDocumentAdapter(title);
+            Objects.requireNonNull(printManager).print(title, printAdapter, new PrintAttributes.Builder().build());
+        });
     }
 }

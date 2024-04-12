@@ -57,6 +57,7 @@ import de.baumann.browser.R;
 import de.baumann.browser.activity.BrowserActivity;
 import de.baumann.browser.browser.AlbumController;
 import de.baumann.browser.browser.BrowserController;
+import de.baumann.browser.browser.JavaScriptInterface;
 import de.baumann.browser.browser.List_protected;
 import de.baumann.browser.browser.List_standard;
 import de.baumann.browser.browser.List_trusted;
@@ -168,6 +169,10 @@ public class NinjaWebView extends WebView implements AlbumController {
         profile = sp.getString("profile", "profileStandard");
         String profileOriginal = profile;
         WebSettings webSettings = getSettings();
+
+
+
+        addJavascriptInterface(new JavaScriptInterface(context, this), "NinjaWebViewJS");
 
         int nightModeFlags = getResources().getConfiguration().uiMode & Configuration.UI_MODE_NIGHT_MASK;
         if ((nightModeFlags == Configuration.UI_MODE_NIGHT_YES) || sp.getString("sp_theme", "1").equals("3")) {

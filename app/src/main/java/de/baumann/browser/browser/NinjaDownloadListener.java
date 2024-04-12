@@ -1,20 +1,14 @@
 package de.baumann.browser.browser;
 
-import static android.content.Context.DOWNLOAD_SERVICE;
-
 import android.app.Activity;
-import android.app.DownloadManager;
 import android.content.Context;
 import android.content.Intent;
-import android.net.Uri;
-import android.os.Environment;
 import android.os.Handler;
 import android.os.HandlerThread;
 import android.os.Message;
 import android.text.TextUtils;
 import android.view.Gravity;
 import android.view.View;
-import android.webkit.CookieManager;
 import android.webkit.DownloadListener;
 import android.webkit.URLUtil;
 import android.webkit.WebView;
@@ -27,15 +21,13 @@ import androidx.appcompat.app.AlertDialog;
 
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 
-import java.io.File;
-import java.io.FileOutputStream;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Objects;
 
 import de.baumann.browser.R;
 import de.baumann.browser.database.FaviconHelper;
-import de.baumann.browser.unit.BackupUnit;
+import de.baumann.browser.unit.BrowserUnit;
 import de.baumann.browser.unit.HelperUnit;
 import de.baumann.browser.view.GridAdapter;
 import de.baumann.browser.view.GridItem;
@@ -50,8 +42,11 @@ public class NinjaDownloadListener implements DownloadListener {
         this.webView = webView;
     }
 
+
+
     @Override
     public void onDownloadStart(final String url, String userAgent, final String contentDisposition, final String mimeType, long contentLength) {
+
         // Create a background thread that has a Looper
         HandlerThread handlerThread = new HandlerThread("HandlerThread");
         handlerThread.start();
@@ -64,7 +59,7 @@ public class NinjaDownloadListener implements DownloadListener {
             msgString[0] = url;
         }
 
-        String filename = URLUtil.guessFileName(msgString[0], null, null);
+        String filename = URLUtil.guessFileName(url, contentDisposition, mimeType);
         String text = context.getString(R.string.dialog_title_download) + " - " + filename;
 
         GridItem item_01 = new GridItem(context.getString(R.string.app_ok), R.drawable.icon_check);
@@ -76,6 +71,8 @@ public class NinjaDownloadListener implements DownloadListener {
         MaterialAlertDialogBuilder builder = new MaterialAlertDialogBuilder(context);
 
         LinearLayout textGroup = dialogView.findViewById(R.id.textGroup);
+        TextView menuTitle = dialogView.findViewById(R.id.menuTitle);
+        menuTitle.setText(filename);
         TextView menuURL = dialogView.findViewById(R.id.menuURL);
         menuURL.setText(url);
         menuURL.setEllipsize(TextUtils.TruncateAt.MARQUEE);
@@ -88,12 +85,10 @@ public class NinjaDownloadListener implements DownloadListener {
             menuURL.setMarqueeRepeatLimit(1);
             menuURL.setSelected(true);
         });
-        TextView menuTitle = dialogView.findViewById(R.id.menuTitle);
-        menuTitle.setText(HelperUnit.domain(url));
         TextView message = dialogView.findViewById(R.id.message);
         message.setVisibility(View.VISIBLE);
         message.setText(text);
-        FaviconHelper.setFavicon(context, dialogView, null, R.id.menu_icon, R.drawable.icon_download);
+        FaviconHelper.setFavicon(context, dialogView, url, R.id.menu_icon, R.drawable.icon_download);
         builder.setView(dialogView);
 
         AlertDialog dialog = builder.create();
@@ -115,41 +110,7 @@ public class NinjaDownloadListener implements DownloadListener {
             switch (position) {
                 case 0:
                     dialog.cancel();
-                    try {
-                        if (msgString[0].startsWith("data:")) {
-                            DataURIParser dataURIParser = new DataURIParser(msgString[0]);
-                            if (BackupUnit.checkPermissionStorage(context)) {
-                                File file = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS), filename);
-                                try(FileOutputStream fos = new FileOutputStream(file)) {
-                                    fos.write(dataURIParser.getImagedata());
-                                }
-                            } else BackupUnit.requestPermission(activity); }
-                        else {
-                            try {
-                                Uri source = Uri.parse(url);
-                                DownloadManager.Request request = new DownloadManager.Request(source);
-                                String cookies = CookieManager.getInstance().getCookie(url);
-                                request.addRequestHeader("cookie", cookies);
-                                request.addRequestHeader("Accept", "text/html, application/xhtml+xml, *" + "/" + "*");
-                                request.addRequestHeader("Accept-Language", "en-US,en;q=0.7,he;q=0.3");
-                                request.addRequestHeader("Referer", url);
-                                request.setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE_NOTIFY_COMPLETED); //Notify client once download is completed!
-                                request.setDestinationInExternalPublicDir(Environment.DIRECTORY_DOWNLOADS, filename);
-                                DownloadManager dm = (DownloadManager) activity.getSystemService(DOWNLOAD_SERVICE);
-                                assert dm != null;
-                                if (BackupUnit.checkPermissionStorage(context)) dm.enqueue(request);
-                                else BackupUnit.requestPermission(activity);
-                            } catch (Exception e) {
-                                System.out.println("Error Downloading File: " + e);
-                                Toast.makeText(activity, activity.getString(R.string.app_error) + e.toString().substring(e.toString().indexOf(":")), Toast.LENGTH_LONG).show();
-                                e.printStackTrace();
-                            }
-                        }
-                    }
-                    catch (Exception e) {
-                        System.out.println("Error Downloading File: " + e);
-                        Toast.makeText(context, context.getString(R.string.app_error) + e.toString().substring(e.toString().indexOf(":")), Toast.LENGTH_LONG).show();
-                        e.printStackTrace();}
+                    BrowserUnit.download(context, webView, url, filename, mimeType);
                     break;
                 case 1:
                     dialog.cancel();
@@ -164,7 +125,7 @@ public class NinjaDownloadListener implements DownloadListener {
                         e.printStackTrace();}
                     break;
                 case 2:
-                    HelperUnit.saveAs(activity, HelperUnit.domain(url), msgString[0], filename, dialog);
+                    HelperUnit.saveAs(activity, msgString[0], filename, dialog, webView);
                     break;
                 case 3:
                     dialog.cancel();

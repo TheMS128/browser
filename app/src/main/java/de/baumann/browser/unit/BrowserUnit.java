@@ -5,6 +5,7 @@ import static android.content.Context.NOTIFICATION_SERVICE;
 
 import android.Manifest;
 import android.app.Activity;
+import android.app.DownloadManager;
 import android.app.Notification;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
@@ -27,6 +28,7 @@ import android.webkit.WebView;
 import android.widget.GridView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.core.app.ActivityCompat;
@@ -39,6 +41,7 @@ import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 import org.json.JSONException;
 
 import java.io.File;
+import java.io.FileOutputStream;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Locale;
@@ -47,6 +50,8 @@ import java.util.regex.Pattern;
 
 import de.baumann.browser.R;
 import de.baumann.browser.activity.BrowserActivity;
+import de.baumann.browser.browser.DataURIParser;
+import de.baumann.browser.browser.JavaScriptInterface;
 import de.baumann.browser.database.FaviconHelper;
 import de.baumann.browser.database.RecordAction;
 import de.baumann.browser.objects.CustomRedirect;
@@ -163,6 +168,51 @@ public class BrowserUnit {
                         return SEARCH_ENGINE_STARTPAGE + query;
                 }
             }
+        }
+    }
+
+    public static void download(final Context context, final WebView webview, final String url, final String fileName, final String mimeType) {
+
+        try {
+            Activity activity = (Activity) context;
+            if (url.startsWith("blob:")) {
+                if (BackupUnit.checkPermissionStorage(context)) {
+                    webview.evaluateJavascript(JavaScriptInterface.getBase64StringFromBlobUrl(url, fileName, mimeType), null);
+                } else BackupUnit.requestPermission(activity);
+            } else if (url.startsWith("data:")) {
+                DataURIParser dataURIParser = new DataURIParser(url);
+                if (BackupUnit.checkPermissionStorage(context)) {
+                    File file = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS), fileName);
+                    FileOutputStream fos = new FileOutputStream(file);
+                    fos.write(dataURIParser.getImagedata());
+                    fos.flush();
+                    fos.close();
+                    HelperUnit.openDialogDownloads(context);
+                } else BackupUnit.requestPermission(activity);
+            } else {
+                DownloadManager.Request request = new DownloadManager.Request(Uri.parse(url));
+                CookieManager cookieManager = CookieManager.getInstance();
+                String cookie = cookieManager.getCookie(url);
+                request.addRequestHeader("Cookie", cookie);
+                request.addRequestHeader("Accept", "text/html, application/xhtml+xml, *" + "/" + "*");
+                request.addRequestHeader("Accept-Language", "en-US,en;q=0.7,he;q=0.3");
+                request.addRequestHeader("Referer", url);
+                request.setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE_NOTIFY_COMPLETED);
+                request.setTitle(fileName);
+                request.setMimeType(mimeType);
+                request.setDestinationInExternalPublicDir(Environment.DIRECTORY_DOWNLOADS, fileName);
+                DownloadManager manager = (DownloadManager) context.getSystemService(Context.DOWNLOAD_SERVICE);
+                assert manager != null;
+                if (BackupUnit.checkPermissionStorage(context)) {
+                    manager.enqueue(request);
+                } else {
+                    BackupUnit.requestPermission(activity);
+                }
+            }
+        } catch (Exception e) {
+            System.out.println("Error Downloading File: " + e);
+            Toast.makeText(context, context.getString(R.string.app_error) + e.toString().substring(e.toString().indexOf(":")), Toast.LENGTH_LONG).show();
+            e.printStackTrace();
         }
     }
 

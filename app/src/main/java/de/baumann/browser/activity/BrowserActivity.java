@@ -1188,7 +1188,7 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
                 if (url.startsWith("data:")) {
                     DataURIParser dataURIParser = new DataURIParser(url);
                     HelperUnit.saveDataURI(activity, title, url, dataURIParser, dialog_overflow);
-                } else HelperUnit.saveAs(activity, title, url, null, dialog_overflow);
+                } else HelperUnit.saveAs(activity, url, null, dialog_overflow, ninjaWebView);
             }
         });
 
@@ -1425,10 +1425,7 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
                     dialog.cancel();
                     break;
                 case 6:
-                    if (url.startsWith("data:")) {
-                        DataURIParser dataURIParser = new DataURIParser(url);
-                        HelperUnit.saveDataURI(activity, finalTitle, url, dataURIParser, dialog);
-                    } else HelperUnit.saveAs(activity, finalTitle,  url, null, dialog);
+                    HelperUnit.saveAs(activity,  url, null, dialog, ninjaWebView);
                     break;
                 case 7:
                     save_atHome(finalTitle, url);
