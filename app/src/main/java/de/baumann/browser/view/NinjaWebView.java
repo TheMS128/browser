@@ -169,9 +169,6 @@ public class NinjaWebView extends WebView implements AlbumController {
         profile = sp.getString("profile", "profileStandard");
         String profileOriginal = profile;
         WebSettings webSettings = getSettings();
-
-
-
         addJavascriptInterface(new JavaScriptInterface(context, this), "NinjaWebViewJS");
 
         int nightModeFlags = getResources().getConfiguration().uiMode & Configuration.UI_MODE_NIGHT_MASK;
@@ -472,7 +469,7 @@ public class NinjaWebView extends WebView implements AlbumController {
         //  Server-side detection for GlobalPrivacyControl
         requestHeaders.put("Sec-GPC", "1");
         requestHeaders.put("X-Requested-With", "com.duckduckgo.mobile.android");
-
+        requestHeaders.put("Referer", this.getUrl());
         profile = sp.getString("profile", "profileStandard");
         if (sp.getBoolean(profile + "_saveData", false)) requestHeaders.put("Save-Data", "on");
         return requestHeaders;

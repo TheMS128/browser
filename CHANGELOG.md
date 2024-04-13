@@ -1,3 +1,7 @@
+### v 15 ... (WIP)
+- fix: error downloading blob-files
+
+
 ### v 14 "Katjuscha" (Protagonistin in Leo Tolstois Auferstehung)
 - fix: redirect custom urls
 - fix: Back navigation is flawed #1121

@@ -6,18 +6,15 @@ import android.content.Intent;
 import android.os.Handler;
 import android.os.HandlerThread;
 import android.os.Message;
-import android.text.TextUtils;
 import android.view.Gravity;
 import android.view.View;
 import android.webkit.DownloadListener;
 import android.webkit.URLUtil;
 import android.webkit.WebView;
 import android.widget.GridView;
-import android.widget.LinearLayout;
-import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.appcompat.app.AlertDialog;
+import androidx.cardview.widget.CardView;
 
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 
@@ -26,7 +23,6 @@ import java.util.List;
 import java.util.Objects;
 
 import de.baumann.browser.R;
-import de.baumann.browser.database.FaviconHelper;
 import de.baumann.browser.unit.BrowserUnit;
 import de.baumann.browser.unit.HelperUnit;
 import de.baumann.browser.view.GridAdapter;
@@ -35,14 +31,11 @@ import de.baumann.browser.view.GridItem;
 public class NinjaDownloadListener implements DownloadListener {
     private final Context context;
     private final WebView webView;
-
     public NinjaDownloadListener(Context context, WebView webView) {
         super();
         this.context = context;
         this.webView = webView;
     }
-
-
 
     @Override
     public void onDownloadStart(final String url, String userAgent, final String contentDisposition, final String mimeType, long contentLength) {
@@ -60,36 +53,21 @@ public class NinjaDownloadListener implements DownloadListener {
         }
 
         String filename = URLUtil.guessFileName(url, contentDisposition, mimeType);
-        String text = context.getString(R.string.dialog_title_download) + " - " + filename;
-
         GridItem item_01 = new GridItem(context.getString(R.string.app_ok), R.drawable.icon_check);
         GridItem item_02 = new GridItem( context.getString(R.string.menu_share_link), R.drawable.icon_link);
         GridItem item_03 = new GridItem( context.getString(R.string.menu_save_as), R.drawable.icon_menu_save);
-        GridItem item_04 = new GridItem( context.getString(R.string.app_cancel), R.drawable.icon_close);
 
         View dialogView = View.inflate(context, R.layout.dialog_menu, null);
         MaterialAlertDialogBuilder builder = new MaterialAlertDialogBuilder(context);
 
-        LinearLayout textGroup = dialogView.findViewById(R.id.textGroup);
-        TextView menuTitle = dialogView.findViewById(R.id.menuTitle);
-        menuTitle.setText(filename);
-        TextView menuURL = dialogView.findViewById(R.id.menuURL);
-        menuURL.setText(url);
-        menuURL.setEllipsize(TextUtils.TruncateAt.MARQUEE);
-        menuURL.setSingleLine(true);
-        menuURL.setMarqueeRepeatLimit(1);
-        menuURL.setSelected(true);
-        textGroup.setOnClickListener(v -> {
-            menuURL.setEllipsize(TextUtils.TruncateAt.MARQUEE);
-            menuURL.setSingleLine(true);
-            menuURL.setMarqueeRepeatLimit(1);
-            menuURL.setSelected(true);
-        });
-        TextView message = dialogView.findViewById(R.id.message);
-        message.setVisibility(View.VISIBLE);
-        message.setText(text);
-        FaviconHelper.setFavicon(context, dialogView, url, R.id.menu_icon, R.drawable.icon_download);
+        CardView albumCardView = dialogView.findViewById(R.id.albumCardView);
+        albumCardView.setVisibility(View.GONE);
+
+        builder.setIcon(R.drawable.icon_download);
+        builder.setTitle(R.string.dialog_title_download);
+        builder.setMessage(filename);
         builder.setView(dialogView);
+        builder.setNegativeButton(R.string.app_cancel, (dialog, whichButton) -> dialog.cancel());
 
         AlertDialog dialog = builder.create();
         dialog.show();
@@ -101,7 +79,6 @@ public class NinjaDownloadListener implements DownloadListener {
         gridList.add(gridList.size(), item_01);
         gridList.add(gridList.size(), item_02);
         gridList.add(gridList.size(), item_03);
-        gridList.add(gridList.size(), item_04);
         GridAdapter gridAdapter = new GridAdapter(context, gridList);
         menu_grid.setAdapter(gridAdapter);
         gridAdapter.notifyDataSetChanged();
@@ -110,25 +87,17 @@ public class NinjaDownloadListener implements DownloadListener {
             switch (position) {
                 case 0:
                     dialog.cancel();
-                    BrowserUnit.download(context, webView, url, filename, mimeType);
+                    BrowserUnit.download(context, webView, msgString[0], filename, mimeType);
                     break;
                 case 1:
                     dialog.cancel();
-                    try {
-                        Intent sharingIntent = new Intent(Intent.ACTION_SEND);
-                        sharingIntent.setType("text/plain");
-                        sharingIntent.putExtra(Intent.EXTRA_TEXT, msgString[0]);
-                        context.startActivity(Intent.createChooser(sharingIntent, (context.getString(R.string.menu_share_link)))); }
-                    catch (Exception e) {
-                        System.out.println("Error Downloading File: " + e);
-                        Toast.makeText(context, context.getString(R.string.app_error) + e.toString().substring(e.toString().indexOf(":")), Toast.LENGTH_LONG).show();
-                        e.printStackTrace();}
+                    Intent sharingIntent = new Intent(Intent.ACTION_SEND);
+                    sharingIntent.setType("text/plain");
+                    sharingIntent.putExtra(Intent.EXTRA_TEXT, msgString[0]);
+                    context.startActivity(Intent.createChooser(sharingIntent, (context.getString(R.string.menu_share_link))));
                     break;
                 case 2:
                     HelperUnit.saveAs(activity, msgString[0], filename, dialog, webView);
-                    break;
-                case 3:
-                    dialog.cancel();
                     break;
             }
         });
