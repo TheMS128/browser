@@ -23,4 +23,11 @@
         android:minHeight="?android:attr/listPreferredItemHeightSmall"
         android:text="@string/setting_title_cookie_thirdParty"/>
 
+    <CheckBox
+        android:id="@+id/checkbox_deny_cookie_banners"
+        android:layout_width="match_parent"
+        android:layout_height="?android:attr/listPreferredItemHeightSmall"
+        android:minHeight="?android:attr/listPreferredItemHeightSmall"
+        android:text="@string/setting_title_deny_cookie_banners"/>
+
 </LinearLayout>

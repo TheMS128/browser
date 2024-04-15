@@ -1,5 +1,7 @@
 ### v 15 ... (WIP)
-- fix: error downloading blob-files
+- new: auto deny cookie-banners (@https://github.com/woheller69/browser)
+- fix: Error downloading blob-files (@https://github.com/woheller69/browser)
+- fix: Downloading files that requires Referer header #950
 
 
 ### v 14 "Katjuscha" (Protagonistin in Leo Tolstois Auferstehung)

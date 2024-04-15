@@ -228,10 +228,8 @@ public class BrowserUnit {
         action.open(true);
         action.clearTable(RecordUnit.TABLE_BOOKMARK);
         action.close();
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N_MR1) {
-            ShortcutManager shortcutManager = context.getSystemService(ShortcutManager.class);
-            Objects.requireNonNull(shortcutManager).removeAllDynamicShortcuts();
-        }
+        ShortcutManager shortcutManager = context.getSystemService(ShortcutManager.class);
+        Objects.requireNonNull(shortcutManager).removeAllDynamicShortcuts();
     }
 
     public static void clearHistory(Context context) {
@@ -239,10 +237,8 @@ public class BrowserUnit {
         action.open(true);
         action.clearTable(RecordUnit.TABLE_HISTORY);
         action.close();
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N_MR1) {
-            ShortcutManager shortcutManager = context.getSystemService(ShortcutManager.class);
-            Objects.requireNonNull(shortcutManager).removeAllDynamicShortcuts();
-        }
+        ShortcutManager shortcutManager = context.getSystemService(ShortcutManager.class);
+        Objects.requireNonNull(shortcutManager).removeAllDynamicShortcuts();
     }
 
     public static void  clearBrowserData(Context context) {
@@ -354,17 +350,16 @@ public class BrowserUnit {
             Intent intentP = new Intent(activity, BrowserActivity.class);
             PendingIntent pendingIntent = PendingIntent.getActivity(activity, 0, intentP, FLAG_IMMUTABLE);
 
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-                String name = "Links background";
-                String description = "Open links in background -> click to open";
-                int importance = NotificationManager.IMPORTANCE_LOW; //Important for heads-up notification
-                NotificationChannel channel = new NotificationChannel("1", name, importance);
-                channel.setDescription(description);
-                channel.setShowBadge(true);
-                channel.setLockscreenVisibility(Notification.VISIBILITY_PUBLIC);
-                NotificationManager notificationManager = activity.getSystemService(NotificationManager.class);
-                notificationManager.createNotificationChannel(channel);
-            }
+            String name = "Links background";
+            String description = "Open links in background -> click to open";
+            int importance = NotificationManager.IMPORTANCE_LOW;
+            //Important for heads-up notification
+            NotificationChannel channel = new NotificationChannel("1", name, importance);
+            channel.setDescription(description);
+            channel.setShowBadge(true);
+            channel.setLockscreenVisibility(Notification.VISIBILITY_PUBLIC);
+            NotificationManager notificationManager = activity.getSystemService(NotificationManager.class);
+            notificationManager.createNotificationChannel(channel);
 
             NotificationCompat.Builder mBuilder = new NotificationCompat.Builder(activity, "1")
                     .setSmallIcon(R.drawable.icon_web)

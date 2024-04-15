@@ -48,7 +48,6 @@ public class NinjaWebViewClient extends WebViewClient {
     private final SharedPreferences sp;
     private final AdBlock adBlock;
 
-
     public NinjaWebViewClient(NinjaWebView ninjaWebView) {
         super();
         this.ninjaWebView = ninjaWebView;
@@ -77,6 +76,15 @@ public class NinjaWebViewClient extends WebViewClient {
             action.addHistory(new Record(ninjaWebView.getTitle(), ninjaWebView.getUrl(), System.currentTimeMillis(), 0, 0, ninjaWebView.isDesktopMode(), false, 0));
             action.close();
         }
+
+        String profile = NinjaWebView.getProfile();
+        if (sp.getBoolean(profile + "_deny_cookie_banners",false)){
+            //click opt-out if possible
+            String bannerBlockScript = BannerBlock.getBannerBlockScriptPageFinished();
+            if (bannerBlockScript != null) view.evaluateJavascript(bannerBlockScript,null);
+        }
+        //inject printing support via JavaScriptInterface
+        view.evaluateJavascript(JavaScriptInterface.injectPrintSupport(), null);
     }
 
     @Override
@@ -89,6 +97,13 @@ public class NinjaWebViewClient extends WebViewClient {
 
         if (sp.getBoolean("onPageStarted", false))
             view.evaluateJavascript(Objects.requireNonNull(sp.getString("sp_onPageStarted", "")), null);
+
+        String profile = NinjaWebView.getProfile();
+        if (sp.getBoolean(profile + "_deny_cookie_banners",false)){
+            //click opt-out if possible
+            String bannerBlockScript = BannerBlock.getBannerBlockScriptPageStarted();
+            if (bannerBlockScript != null) view.evaluateJavascript(bannerBlockScript,null);
+        }
 
         if (ninjaWebView.isFingerPrintProtection()) {
             //Block WebRTC requests which can reveal local IP address

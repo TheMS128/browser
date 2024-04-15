@@ -6,7 +6,6 @@ import static android.content.Context.NOTIFICATION_SERVICE;
 
 import android.Manifest;
 import android.annotation.SuppressLint;
-import android.annotation.TargetApi;
 import android.app.Activity;
 import android.app.Notification;
 import android.app.NotificationChannel;
@@ -86,7 +85,7 @@ public class NinjaWebView extends WebView implements AlbumController {
     private NinjaWebViewClient webViewClient;
     private NinjaWebChromeClient webChromeClient;
     private NinjaDownloadListener downloadListener;
-    private String profile;
+    private static String profile;
     private List_trusted listTrusted;
     private List_standard listStandard;
     private List_protected listProtected;
@@ -162,7 +161,6 @@ public class NinjaWebView extends WebView implements AlbumController {
     }
 
     @SuppressLint({"SetJavaScriptEnabled", "JavascriptInterface"})
-    @TargetApi(Build.VERSION_CODES.O)
     public synchronized void initPreferences(String url) {
 
         sp = PreferenceManager.getDefaultSharedPreferences(context);
@@ -187,7 +185,7 @@ public class NinjaWebView extends WebView implements AlbumController {
 
         String userAgent = getUserAgent(desktopMode);
         webSettings.setUserAgentString(userAgent);
-        if (android.os.Build.VERSION.SDK_INT >= 26) webSettings.setSafeBrowsingEnabled(true);
+        webSettings.setSafeBrowsingEnabled(true);
         webSettings.setSupportZoom(true);
         webSettings.setBuiltInZoomControls(true);
         webSettings.setDisplayZoomControls(false);
@@ -195,13 +193,9 @@ public class NinjaWebView extends WebView implements AlbumController {
         webSettings.setTextZoom(Integer.parseInt(Objects.requireNonNull(sp.getString("sp_fontSize", "100"))));
 
         if (sp.getBoolean("sp_autofill", true)) {
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O)
-                this.setImportantForAutofill(View.IMPORTANT_FOR_AUTOFILL_YES);
-            else webSettings.setSaveFormData(true);
+            this.setImportantForAutofill(View.IMPORTANT_FOR_AUTOFILL_YES);
         } else {
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O)
-                this.setImportantForAutofill(View.IMPORTANT_FOR_AUTOFILL_NO);
-            else webSettings.setSaveFormData(false);
+            this.setImportantForAutofill(View.IMPORTANT_FOR_AUTOFILL_NO);
         }
 
         if (listTrusted.isWhite(url)) profile = "profileTrusted";
@@ -239,7 +233,6 @@ public class NinjaWebView extends WebView implements AlbumController {
         } catch (Exception e) {
             Log.i(TAG, "Error loading cookies:" + e);
         }
-
         profile = profileOriginal;
     }
 
@@ -294,6 +287,7 @@ public class NinjaWebView extends WebView implements AlbumController {
                 .putBoolean("profileTrusted_fingerPrintProtection", false)
                 .putBoolean("profileTrusted_cookies", true)
                 .putBoolean("profileTrusted_cookiesThirdParty", true)
+                .putBoolean("profileTrusted_deny_cookie_banners", false)
                 .putBoolean("profileTrusted_javascript", true)
                 .putBoolean("profileTrusted_javascriptPopUp", true)
                 .putBoolean("profileTrusted_saveHistory", true)
@@ -308,6 +302,7 @@ public class NinjaWebView extends WebView implements AlbumController {
                 .putBoolean("profileStandard_fingerPrintProtection", true)
                 .putBoolean("profileStandard_cookies", false)
                 .putBoolean("profileStandard_cookiesThirdParty", false)
+                .putBoolean("profileStandard_deny_cookie_banners", false)
                 .putBoolean("profileStandard_javascript", true)
                 .putBoolean("profileStandard_javascriptPopUp", false)
                 .putBoolean("profileStandard_saveHistory", true)
@@ -322,6 +317,7 @@ public class NinjaWebView extends WebView implements AlbumController {
                 .putBoolean("profileProtected_fingerPrintProtection", true)
                 .putBoolean("profileProtected_cookies", false)
                 .putBoolean("profileProtected_cookiesThirdParty", false)
+                .putBoolean("profileProtected_deny_cookie_banners", false)
                 .putBoolean("profileProtected_javascript", false)
                 .putBoolean("profileProtected_javascriptPopUp", false)
                 .putBoolean("profileProtected_saveHistory", true)
@@ -338,6 +334,7 @@ public class NinjaWebView extends WebView implements AlbumController {
                 .putBoolean("profileChanged_fingerPrintProtection", sp.getBoolean(profile + "_fingerPrintProtection", true))
                 .putBoolean("profileChanged_cookies", sp.getBoolean(profile + "_cookies", false))
                 .putBoolean("profileChanged_cookiesThirdParty", sp.getBoolean(profile + "_cookiesThirdParty", false))
+                .putBoolean("profileChanged_deny_cookie_banners", sp.getBoolean(profile + "_deny_cookie_banners", false))
                 .putBoolean("profileChanged_javascript", sp.getBoolean(profile + "_javascript", true))
                 .putBoolean("profileChanged_javascriptPopUp", sp.getBoolean(profile + "_javascriptPopUp", false))
                 .putBoolean("profileChanged_saveHistory", sp.getBoolean(profile + "_saveHistory", true))
@@ -364,6 +361,9 @@ public class NinjaWebView extends WebView implements AlbumController {
                 break;
             case "_cookiesThirdParty":
                 sp.edit().putBoolean("profileChanged_cookiesThirdParty", !sp.getBoolean("profileChanged_cookiesThirdParty", false)).apply();
+                break;
+            case "_deny_cookie_banners":
+                sp.edit().putBoolean("profileChanged_deny_cookie_banners", !sp.getBoolean("profileChanged_deny_cookie_banners", false)).apply();
                 break;
             case "_fingerPrintProtection":
                 sp.edit().putBoolean("profileChanged_fingerPrintProtection", !sp.getBoolean("profileChanged_fingerPrintProtection", true)).apply();
@@ -438,6 +438,8 @@ public class NinjaWebView extends WebView implements AlbumController {
                 return sp.getBoolean(profile + "_cookies", false);
             case "_cookiesThirdParty":
                 return sp.getBoolean(profile + "_cookiesThirdParty", false);
+            case "_deny_cookie_banners":
+                return sp.getBoolean(profile + "_deny_cookie_banners", false);
             case "_fingerPrintProtection":
                 return sp.getBoolean(profile + "_fingerPrintProtection", true);
             case "_adBlock":
@@ -486,17 +488,15 @@ public class NinjaWebView extends WebView implements AlbumController {
                 Intent intentP = new Intent(this.context, BrowserActivity.class);
                 PendingIntent pendingIntent = PendingIntent.getActivity(this.context, 0, intentP, FLAG_IMMUTABLE);
 
-                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-                    String name = "Audio background";
-                    String description = "Play audio on background -> click to open";
-                    int importance = NotificationManager.IMPORTANCE_LOW; //Important for heads-up notification
-                    NotificationChannel channel = new NotificationChannel("2", name, importance);
-                    channel.setDescription(description);
-                    channel.setShowBadge(true);
-                    channel.setLockscreenVisibility(Notification.VISIBILITY_PUBLIC);
-                    NotificationManager notificationManager = this.context.getSystemService(NotificationManager.class);
-                    notificationManager.createNotificationChannel(channel);
-                }
+                String name = "Audio background";
+                String description = "Play audio on background -> click to open";
+                int importance = NotificationManager.IMPORTANCE_LOW; //Important for heads-up notification
+                NotificationChannel channel = new NotificationChannel("2", name, importance);
+                channel.setDescription(description);
+                channel.setShowBadge(true);
+                channel.setLockscreenVisibility(Notification.VISIBILITY_PUBLIC);
+                NotificationManager notificationManager = this.context.getSystemService(NotificationManager.class);
+                notificationManager.createNotificationChannel(channel);
 
                 NotificationCompat.Builder mBuilder = new NotificationCompat.Builder(this.context, "2")
                         .setSmallIcon(R.drawable.icon_web)
@@ -793,7 +793,7 @@ public class NinjaWebView extends WebView implements AlbumController {
         this.stopped = stopped;
     }
 
-    public String getProfile() {
+    public static String getProfile() {
         return profile;
     }
 

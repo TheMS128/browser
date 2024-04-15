@@ -36,7 +36,6 @@ import android.content.res.Configuration;
 import android.graphics.PorterDuff;
 import android.graphics.drawable.Icon;
 import android.net.Uri;
-import android.os.Build;
 import android.os.Environment;
 import android.os.Handler;
 import android.print.PrintAttributes;
@@ -259,27 +258,18 @@ public class HelperUnit {
             i.setAction(Intent.ACTION_VIEW);
             i.setData(Uri.parse(url));
             i.setPackage("de.baumann.browser");
-            if (Build.VERSION.SDK_INT < Build.VERSION_CODES.O) {
-                // code for adding shortcut on pre oreo device
-                Intent installer = new Intent();
-                installer.putExtra("android.intent.extra.shortcut.INTENT", i);
-                installer.putExtra("android.intent.extra.shortcut.NAME", title);
-                installer.putExtra(Intent.EXTRA_SHORTCUT_ICON_RESOURCE, Intent.ShortcutIconResource.fromContext(context.getApplicationContext(), R.drawable.icon_bookmark));
-                installer.setAction("com.android.launcher.action.INSTALL_SHORTCUT");
-                context.sendBroadcast(installer); }
-            else {
-                ShortcutManager shortcutManager = context.getSystemService(ShortcutManager.class);
-                assert shortcutManager != null;
-                if (shortcutManager.isRequestPinShortcutSupported()) {
-                    ShortcutInfo pinShortcutInfo =
-                            new ShortcutInfo.Builder(context, url)
-                                    .setShortLabel(title)
-                                    .setLongLabel(title)
-                                    .setIcon(icon)
-                                    .setIntent(new Intent(context, BrowserActivity.class).setAction(Intent.ACTION_VIEW).setData(Uri.parse(url)))
-                                    .build();
-                    shortcutManager.requestPinShortcut(pinShortcutInfo, null); }
-                else { System.out.println("failed_to_add"); }}
+            ShortcutManager shortcutManager = context.getSystemService(ShortcutManager.class);
+            assert shortcutManager != null;
+            if (shortcutManager.isRequestPinShortcutSupported()) {
+                ShortcutInfo pinShortcutInfo =
+                        new ShortcutInfo.Builder(context, url)
+                                .setShortLabel(title)
+                                .setLongLabel(title)
+                                .setIcon(icon)
+                                .setIntent(new Intent(context, BrowserActivity.class).setAction(Intent.ACTION_VIEW).setData(Uri.parse(url)))
+                                .build();
+                shortcutManager.requestPinShortcut(pinShortcutInfo, null);
+            } else System.out.println("failed_to_add");
         } catch (Exception e) {
             System.out.println("failed_to_add");
         }

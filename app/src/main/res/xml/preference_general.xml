@@ -12,7 +12,7 @@
             android:icon="@drawable/icon_fav" />
 
         <EditTextPreference
-            android:defaultValue="https://codeberg.org/Gaukler_Faun/FOSS_Browser/wiki"
+            android:defaultValue=""
             android:key="urlForPosting"
             android:title="@string/dialog_postOnWebsite"
             android:summary="@string/dialog_postOnWebsiteHint"

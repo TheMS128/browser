@@ -57,6 +57,13 @@
             android:summary="@string/setting_title_cookie_thirdParty" />
 
         <CheckBoxPreference
+            android:key="profileTrusted_deny_cookie_banners"
+            android:icon="@drawable/icon_cookie"
+            android:title="@string/setting_title_deny_cookie_banners"
+            android:summary="@string/summary_deny_cookie_banners"
+            android:defaultValue="false" />
+
+        <CheckBoxPreference
             android:defaultValue="true"
             android:icon="@drawable/icon_dom"
             android:key="profileTrusted_dom"

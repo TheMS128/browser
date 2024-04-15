@@ -109,6 +109,7 @@ import java.util.concurrent.atomic.AtomicInteger;
 
 import de.baumann.browser.R;
 import de.baumann.browser.browser.AlbumController;
+import de.baumann.browser.browser.BannerBlock;
 import de.baumann.browser.browser.BrowserContainer;
 import de.baumann.browser.browser.BrowserController;
 import de.baumann.browser.browser.DataURIParser;
@@ -231,6 +232,7 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
         context = BrowserActivity.this;
         sp = PreferenceManager.getDefaultSharedPreferences(context);
         duration = getResources().getInteger(android.R.integer.config_mediumAnimTime);
+        new BannerBlock(context);
 
         if (getSupportActionBar() != null) getSupportActionBar().hide();
         Window window = this.getWindow();
@@ -285,10 +287,8 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
                 }
             }};
 
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
-                registerReceiver(downloadReceiver, new IntentFilter(DownloadManager.ACTION_DOWNLOAD_COMPLETE), RECEIVER_EXPORTED);
-            }
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+            registerReceiver(downloadReceiver, new IntentFilter(DownloadManager.ACTION_DOWNLOAD_COMPLETE), RECEIVER_EXPORTED);
         } else {
             registerReceiver(downloadReceiver, new IntentFilter(DownloadManager.ACTION_DOWNLOAD_COMPLETE));
         }
@@ -1891,6 +1891,13 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
                     ninjaWebView.putProfileBoolean("_cookiesThirdParty", dialog_titleProfile, chip_profile_trusted, chip_profile_standard, chip_profile_protected, chip_profile_changed);
                 });
 
+                CheckBox checkbox_deny_cookie_banners = dialogView2.findViewById(R.id.checkbox_deny_cookie_banners);
+                checkbox_deny_cookie_banners.setChecked(ninjaWebView.getBoolean("_deny_cookie_banners"));
+                checkbox_deny_cookie_banners.setOnCheckedChangeListener((buttonView, isChecked) -> {
+                    ninjaWebView.setProfileChanged();
+                    ninjaWebView.putProfileBoolean("_deny_cookie_banners", dialog_titleProfile, chip_profile_trusted, chip_profile_standard, chip_profile_protected, chip_profile_changed);
+                });
+
                 dialog2.show();
                 HelperUnit.setupDialog(context, dialog2);
                 dialog2.setOnCancelListener(dialog1 -> chip_cookie.setChecked(ninjaWebView.getBoolean("_cookies") || ninjaWebView.getBoolean("_cookiesThirdParty")));
@@ -2207,8 +2214,8 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
         ArrayList<String> openTabsProfile = new ArrayList<>();
         for (int i = 0; i < BrowserContainer.size(); i++) {
             if (currentAlbumController == BrowserContainer.get(i))
-                openTabsProfile.add(0, ((NinjaWebView) (BrowserContainer.get(i))).getProfile());
-            else openTabsProfile.add(((NinjaWebView) (BrowserContainer.get(i))).getProfile()); }
+                openTabsProfile.add(0, NinjaWebView.getProfile());
+            else openTabsProfile.add(NinjaWebView.getProfile()); }
         sp.edit().putString("openTabsProfile", TextUtils.join("‚‗‚", openTabsProfile)).apply();
     }
 

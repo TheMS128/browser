@@ -4,7 +4,6 @@ import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.res.AssetManager;
-import android.os.Build;
 import android.util.Log;
 
 import androidx.preference.PreferenceManager;
@@ -48,12 +47,7 @@ public class AdBlock {
             Log.d("Hosts file", "does not exist");
             try {
                 AssetManager manager = context.getAssets();
-                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-                    copyFile(manager.open(FILE), Files.newOutputStream(file.toPath()));
-                } else {
-                    //noinspection IOStreamConstructor
-                    copyFile(manager.open(FILE), new FileOutputStream(file));
-                }
+                copyFile(manager.open(FILE), Files.newOutputStream(file.toPath()));
                 downloadHosts(context);  //try to update hosts.txt from internet
             } catch (IOException e) {
                 Log.e("browser", "Failed to copy asset file", e);
