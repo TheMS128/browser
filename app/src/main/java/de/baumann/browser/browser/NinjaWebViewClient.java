@@ -9,7 +9,6 @@ import android.net.Uri;
 import android.net.http.SslError;
 import android.os.Message;
 import android.text.InputType;
-import android.text.TextUtils;
 import android.view.View;
 import android.webkit.HttpAuthHandler;
 import android.webkit.SslErrorHandler;
@@ -18,8 +17,6 @@ import android.webkit.WebResourceResponse;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.Button;
-import android.widget.LinearLayout;
-import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
@@ -33,7 +30,6 @@ import java.io.ByteArrayInputStream;
 import java.util.Objects;
 
 import de.baumann.browser.R;
-import de.baumann.browser.database.FaviconHelper;
 import de.baumann.browser.database.Record;
 import de.baumann.browser.database.RecordAction;
 import de.baumann.browser.unit.BrowserUnit;
@@ -463,6 +459,7 @@ public class NinjaWebViewClient extends WebViewClient {
             Intent intent = new Intent(Intent.ACTION_VIEW);
             intent.setData(Uri.parse(url));
             context.startActivity(Intent.createChooser(intent, url));
+            return true;
         }
         return false;
     }
@@ -480,29 +477,11 @@ public class NinjaWebViewClient extends WebViewClient {
 
     @Override
     public void onFormResubmission(WebView view, @NonNull final Message doNotResend, final Message resend) {
-
         View dialogView = View.inflate(context, R.layout.dialog_menu, null);
         MaterialAlertDialogBuilder builder = new MaterialAlertDialogBuilder(context);
-
-        LinearLayout textGroup = dialogView.findViewById(R.id.textGroup);
-        TextView menuURL = dialogView.findViewById(R.id.menuURL);
-        menuURL.setText(view.getUrl());
-        menuURL.setEllipsize(TextUtils.TruncateAt.MARQUEE);
-        menuURL.setSingleLine(true);
-        menuURL.setMarqueeRepeatLimit(1);
-        menuURL.setSelected(true);
-        textGroup.setOnClickListener(v -> {
-            menuURL.setEllipsize(TextUtils.TruncateAt.MARQUEE);
-            menuURL.setSingleLine(true);
-            menuURL.setMarqueeRepeatLimit(1);
-            menuURL.setSelected(true);
-        });
-        TextView menuTitle = dialogView.findViewById(R.id.menuTitle);
-        menuTitle.setText(HelperUnit.domain(view.getUrl()));
-        TextView messageView = dialogView.findViewById(R.id.message);
-        messageView.setVisibility(View.VISIBLE);
-        messageView.setText(R.string.dialog_content_resubmission);
-        FaviconHelper.setFavicon(context, dialogView, null, R.id.menu_icon, R.drawable.icon_alert);
+        builder.setTitle(HelperUnit.domain(view.getUrl()));
+        builder.setIcon(R.drawable.icon_alert);
+        builder.setMessage(R.string.dialog_content_resubmission);
         builder.setView(dialogView);
         builder.setPositiveButton(R.string.app_ok, (dialog, whichButton) -> resend.sendToTarget());
         builder.setNegativeButton(R.string.app_cancel, (dialog, whichButton) -> doNotResend.sendToTarget());
@@ -538,29 +517,10 @@ public class NinjaWebViewClient extends WebViewClient {
         }
         String text = message + " - " + context.getString(R.string.dialog_content_ssl_error);
 
-        View dialogView = View.inflate(context, R.layout.dialog_menu, null);
         MaterialAlertDialogBuilder builder = new MaterialAlertDialogBuilder(context);
-
-        LinearLayout textGroup = dialogView.findViewById(R.id.textGroup);
-        TextView menuURL = dialogView.findViewById(R.id.menuURL);
-        menuURL.setText(view.getUrl());
-        menuURL.setEllipsize(TextUtils.TruncateAt.MARQUEE);
-        menuURL.setSingleLine(true);
-        menuURL.setMarqueeRepeatLimit(1);
-        menuURL.setSelected(true);
-        textGroup.setOnClickListener(v -> {
-            menuURL.setEllipsize(TextUtils.TruncateAt.MARQUEE);
-            menuURL.setSingleLine(true);
-            menuURL.setMarqueeRepeatLimit(1);
-            menuURL.setSelected(true);
-        });
-        TextView menuTitle = dialogView.findViewById(R.id.menuTitle);
-        menuTitle.setText(HelperUnit.domain(view.getUrl()));
-        TextView messageView = dialogView.findViewById(R.id.message);
-        messageView.setVisibility(View.VISIBLE);
-        messageView.setText(text);
-        FaviconHelper.setFavicon(context, dialogView, null, R.id.menu_icon, R.drawable.icon_alert);
-        builder.setView(dialogView);
+        builder.setTitle(HelperUnit.domain(view.getUrl()));
+        builder.setIcon(R.drawable.icon_alert);
+        builder.setMessage(text);
         builder.setPositiveButton(R.string.app_ok, (dialog, whichButton) -> handler.proceed());
         builder.setNegativeButton(R.string.app_cancel, (dialog, whichButton) -> handler.cancel());
         AlertDialog dialog = builder.create();

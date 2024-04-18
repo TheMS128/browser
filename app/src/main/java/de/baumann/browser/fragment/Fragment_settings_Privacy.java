@@ -7,9 +7,9 @@ import android.os.Bundle;
 import android.view.Gravity;
 import android.view.View;
 import android.widget.GridView;
-import android.widget.TextView;
 
 import androidx.appcompat.app.AlertDialog;
+import androidx.cardview.widget.CardView;
 import androidx.preference.EditTextPreference;
 import androidx.preference.ListPreference;
 import androidx.preference.Preference;
@@ -57,14 +57,13 @@ public class Fragment_settings_Privacy extends BasePreferenceFragment implements
 
             MaterialAlertDialogBuilder builder = new MaterialAlertDialogBuilder(context);
             View dialogView = View.inflate(context, R.layout.dialog_menu, null);
+            CardView cardView = dialogView.findViewById(R.id.albumCardView);
+            cardView.setVisibility(View.GONE);
             builder.setTitle(R.string.setting_title_profiles_edit);
             builder.setIcon(R.drawable.icon_edit);
             builder.setView(dialogView);
             AlertDialog dialog = builder.create();
             dialog.show();
-
-            TextView menuTitle = dialogView.findViewById(R.id.menuTitle);
-            menuTitle.setText(getString(R.string.setting_title_profiles_edit));
 
             Objects.requireNonNull(dialog.getWindow()).setGravity(Gravity.BOTTOM);
             GridView menu_grid = dialogView.findViewById(R.id.menu_grid);
