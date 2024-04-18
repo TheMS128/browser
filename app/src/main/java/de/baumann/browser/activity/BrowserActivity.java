@@ -2309,8 +2309,6 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
             MaterialAlertDialogBuilder builder = new MaterialAlertDialogBuilder(context);
             View dialogViewSubMenu = View.inflate(context, R.layout.dialog_edit, null);
 
-            CardView cardView = dialogViewSubMenu.findViewById(R.id.albumCardView);
-            cardView.setVisibility(View.GONE);
             TextInputLayout editTopLayout = dialogViewSubMenu.findViewById(R.id.editTopLayout);
             editTopLayout.setVisibility(View.GONE);
             TextInputLayout editBottomLayout = dialogViewSubMenu.findViewById(R.id.editBottomLayout);
