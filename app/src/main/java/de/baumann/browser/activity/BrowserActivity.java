@@ -236,8 +236,6 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
 
         if (getSupportActionBar() != null) getSupportActionBar().hide();
         Window window = this.getWindow();
-        //window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
-        //window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
         window.setStatusBarColor(ContextCompat.getColor(this, R.color.statusBar));
         if (sp.getBoolean("sp_screenOn", false)) getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
 
@@ -1072,12 +1070,6 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
         MaterialAlertDialogBuilder builder = new MaterialAlertDialogBuilder(context);
         View dialogView = View.inflate(context, R.layout.dialog_menu_overflow, null);
 
-        builder.setView(dialogView);
-        AlertDialog dialog_overflow = builder.create();
-        dialog_overflow.show();
-        HelperUnit.setupDialog(context, dialog_overflow);
-        FaviconHelper.setFavicon(context, dialogView, url, R.id.menu_icon, R.drawable.icon_image_broken);
-
         LinearLayout textGroup = dialogView.findViewById(R.id.textGroup);
         TextView overflowURL = dialogView.findViewById(R.id.overflowURL);
         overflowURL.setText(url);
@@ -1091,8 +1083,14 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
             overflowURL.setMarqueeRepeatLimit(1);
             overflowURL.setSelected(true);
         });
-        TextView overflowTitle = dialogView.findViewById(R.id.overflowTitle);
-        overflowTitle.setText(title);
+        TextView menuTitle = dialogView.findViewById(R.id.overflowTitle);
+        menuTitle.setText(title);
+
+        builder.setView(dialogView);
+        AlertDialog dialog_overflow = builder.create();
+        dialog_overflow.show();
+        HelperUnit.setupDialog(context, dialog_overflow);
+        FaviconHelper.setFavicon(context, dialogView, url, R.id.menu_icon, R.drawable.icon_image_broken);
 
         final GridView menu_grid_tab = dialogView.findViewById(R.id.overflow_tab);
         final GridView menu_grid_share = dialogView.findViewById(R.id.overflow_share);
