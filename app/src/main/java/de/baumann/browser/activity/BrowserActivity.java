@@ -2529,6 +2529,9 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
 
             View dialogView = View.inflate(context, R.layout.dialog_menu, null);
 
+            MaterialCardView albumCardView = dialogView.findViewById(R.id.albumCardView);
+            albumCardView.setVisibility(View.GONE);
+
             MaterialAlertDialogBuilder builder = new MaterialAlertDialogBuilder(context);
             builder.setIcon(R.drawable.icon_share);
             builder.setTitle(finalData);
