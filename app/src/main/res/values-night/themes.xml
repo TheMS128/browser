@@ -1,33 +1,5 @@
 <resources>
-
-    <style name="LauncherTheme" parent="AppTheme_wallpaper">
-        <!-- Set the splash screen background, animated icon, and animation duration. -->
-        <item name="windowSplashScreenBackground">@color/design_default_color_surface</item>
-        <!-- Use windowSplashScreenAnimatedIcon to add a drawable or an animated drawable. One of these is required. -->
-        <item name="windowSplashScreenAnimatedIcon">@drawable/icon_settings</item>
-        <!-- Set the theme of the Activity that directly follows your splash screen. This is required. -->
-        <item name="postSplashScreenTheme">@style/AppTheme_wallpaper</item>
-    </style>
-
-    <style name="AppTheme_wallpaper" parent="Theme.Material3.DynamicColors.DayNight">
-        <item name="windowActionBar">false</item>
-        <item name="windowNoTitle">true</item>
-        <item name="switchPreferenceCompatStyle">@style/MaterialPreferenceSwitch</item>
-    </style>
-
-    <style name="AppTheme_wallpaper_day" parent="Theme.Material3.DynamicColors.Light">
-        <item name="windowActionBar">false</item>
-        <item name="windowNoTitle">true</item>
-        <item name="switchPreferenceCompatStyle">@style/MaterialPreferenceSwitch</item>
-    </style>
-
-    <style name="AppTheme_wallpaper_night" parent="Theme.Material3.DynamicColors.Dark">
-        <item name="windowActionBar">false</item>
-        <item name="windowNoTitle">true</item>
-        <item name="switchPreferenceCompatStyle">@style/MaterialPreferenceSwitch</item>
-    </style>
-
-    <style name="AppTheme_day" parent="Theme.Material3.Light.NoActionBar">
+    <style name="AppTheme_night" parent="Theme.Material3.Dark.NoActionBar">
         <item name="colorPrimary">@color/md_theme_primary</item>
         <item name="colorOnPrimary">@color/md_theme_onPrimary</item>
         <item name="colorPrimaryContainer">@color/md_theme_primaryContainer</item>
@@ -76,8 +48,41 @@
         <item name="colorSurfaceContainerHighest">@color/md_theme_surfaceContainerHighest</item>
     </style>
 
-    <style name="MaterialPreferenceSwitch" parent="@style/Preference.SwitchPreferenceCompat.Material">
-        <item name="widgetLayout">@layout/view_preference_switch</item>
+
+
+    <style name="AppTheme_OLED" parent="Theme.Material3.DynamicColors.Dark">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+        <item name="elevationOverlayColor">#000000</item>
+        <item name="colorPrimary">#ffffff</item>
+        <item name="colorOnPrimary">#000000</item>
+        <item name="colorPrimaryContainer">#000000</item>
+        <item name="colorOnPrimaryContainer">#ffffff</item>
+        <item name="colorSecondary">#ffffff</item>
+        <item name="colorOnSecondary">#000000</item>
+        <item name="colorSecondaryContainer">#000000</item>
+        <item name="colorOnSecondaryContainer">#ffffff</item>
+        <item name="colorTertiary">#ffffff</item>
+        <item name="colorOnTertiary">#000000</item>
+        <item name="colorTertiaryContainer">#000000</item>
+        <item name="colorOnTertiaryContainer">#ffffff</item>
+        <item name="colorError">@color/md_theme_error</item>
+        <item name="colorErrorContainer">@color/md_theme_errorContainer</item>
+        <item name="colorOnError">@color/md_theme_onError</item>
+        <item name="colorOnErrorContainer">@color/md_theme_onErrorContainer</item>
+        <item name="android:colorBackground">#000000</item>
+        <item name="colorOnBackground">#ffffff</item>
+        <item name="colorSurface">#000000</item>
+        <item name="colorOnSurface">#ffffff</item>
+        <item name="colorSurfaceVariant">#000000</item>
+        <item name="colorOnSurfaceVariant">#ffffff</item>
+        <item name="colorOutline">#ffffff</item>
+        <item name="colorOnSurfaceInverse">#000000</item>
+        <item name="colorSurfaceInverse">#ffffff</item>
+        <item name="colorPrimaryInverse">#ffffff</item>
+        <item name="colorSurfaceContainerHigh">@color/md_theme_surface</item>
+        <item name="colorSurfaceContainer">@color/md_theme_surface</item>
+        <item name="switchPreferenceCompatStyle">@style/MaterialPreferenceSwitch</item>
     </style>
 
 </resources>

@@ -105,6 +105,9 @@ public class RecordAction {
         if (!sortBy.equals("ordinal")) {
             Collections.reverse(list);
         }
+        if (sp.getBoolean("sort_startSiteDomain", false)) {
+            list.sort(Comparator.comparing(Record::getDomain));
+        }
         return list;
     }
 
@@ -171,9 +174,13 @@ public class RecordAction {
         }
         cursor.close();
 
-        if (sortBy.equals("time")) {  //ignore desktop mode, JavaScript, and remote content when sorting colors
+        if (sortBy.equals("time")) {
+            //ignore desktop mode, JavaScript, and remote content when sorting colors
             list.sort(Comparator.comparing(Record::getTitle));
             list.sort(Comparator.comparingLong(Record::getIconColor));
+        }
+        if (sp.getBoolean("sort_bookmarkDomain", false)) {
+            list.sort(Comparator.comparing(Record::getDomain));
         }
         Collections.reverse(list);
         return list;
@@ -199,7 +206,7 @@ public class RecordAction {
         database.insert(RecordUnit.TABLE_HISTORY, null, values);
     }
 
-    public List<Record> listHistory() {
+    public List<Record> listHistory(Context context) {
         List<Record> list = new ArrayList<>();
         Cursor cursor;
         cursor = database.query(
@@ -222,6 +229,10 @@ public class RecordAction {
             cursor.moveToNext();
         }
         cursor.close();
+        SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(context);
+        if (sp.getBoolean("sort_historyDomain", false)) {
+            list.sort(Comparator.comparing(Record::getDomain));
+        }
         return list;
     }
 
@@ -361,7 +372,7 @@ public class RecordAction {
         action.open(false);
         list.addAll(action.listBookmark(activity, false, 0)); //move bookmarks to top of list
         list.addAll(action.listStartSite(activity));
-        list.addAll(action.listHistory());
+        list.addAll(action.listHistory(activity.getApplicationContext()));
         // add the latest copied item from the clipboard if it's a valid URL
         Record clipboard = action.getClipboard(activity);
         if (clipboard != null) list.add(clipboard);

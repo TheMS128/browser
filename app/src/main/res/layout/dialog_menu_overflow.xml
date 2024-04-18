@@ -13,7 +13,7 @@
         android:id="@+id/albumCardView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="?attr/colorSecondaryContainer"
+        android:background="?attr/colorSurfaceDim"
         android:paddingStart="15dp"
         android:paddingEnd="15dp"
         android:paddingTop="15dp" >
@@ -85,9 +85,8 @@
         android:id="@+id/tabLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="?attr/colorSecondaryContainer"
         app:tabMode="fixed"
-        app:tabBackground="?attr/colorSecondaryContainer">
+        app:tabBackground="?attr/colorSurfaceDim">
 
         <com.google.android.material.tabs.TabItem
             android:layout_width="wrap_content"

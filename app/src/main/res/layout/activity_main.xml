@@ -88,28 +88,24 @@
                         app:indicatorSize="25dp"/>
 
                     <com.google.android.material.floatingactionbutton.FloatingActionButton
+                        style="@style/Widget.Material3.FloatingActionButton.Secondary"
                         android:id="@+id/omniBox_tab"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
-                        android:layout_marginEnd="10dp"
+                        android:layout_marginEnd="5dp"
                         android:layout_marginStart="5dp"
-
-                        style="@style/Widget.Material3.Button.IconButton.Outlined"
                         app:fabCustomSize="45dp"
-                        app:elevation="0dp"
-                        app:backgroundTint="?attr/colorSecondaryContainer" />
+                        app:elevation="0dp" />
 
                     <com.google.android.material.floatingactionbutton.FloatingActionButton
+                        style="@style/Widget.Material3.FloatingActionButton.Secondary"
                         android:id="@+id/omnibox_overview"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
-
-                        style="@style/Widget.Material3.Button.IconButton.Outlined"
                         app:fabCustomSize="45dp"
-                        app:elevation="0dp"
-                        app:backgroundTint="?attr/colorSecondaryContainer" />
+                        app:elevation="0dp" />
 
                     <Button
                         android:id="@+id/omnibox_overflow"
@@ -203,7 +199,7 @@
         android:id="@+id/bottomSheetDialog_OverView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="?attr/colorOnTertiary"
+        android:background="?attr/colorSurfaceContainer"
         android:visibility="gone">
 
         <TextView

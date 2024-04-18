@@ -12,4 +12,19 @@
         android:title="@string/menu_delete"
         android:icon="@drawable/icon_delete" />
 
+
+    <item android:title="@string/menu_sort"
+        android:icon="@drawable/icon_sort">
+        <menu>
+            <item
+                android:id="@+id/menu_sortDate"
+                android:title="@string/dialog_sortDate"
+                android:icon="@drawable/icon_history" />
+            <item
+                android:id="@+id/menu_sortDomain"
+                android:title="@string/dialog_sortDomain"
+                android:icon="@drawable/icon_link" />
+        </menu>
+    </item>
+
 </menu>

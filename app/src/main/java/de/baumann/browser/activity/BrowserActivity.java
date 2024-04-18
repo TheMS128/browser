@@ -238,7 +238,7 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
         Window window = this.getWindow();
         window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
         window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
-        window.setStatusBarColor(ContextCompat.getColor(this, R.color.md_theme_light_onBackground));
+        window.setStatusBarColor(ContextCompat.getColor(this, R.color.md_theme_onBackground));
         if (sp.getBoolean("sp_screenOn", false)) getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
 
         HelperUnit.initTheme(activity);
@@ -667,7 +667,7 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
                 RecordAction action = new RecordAction(context);
                 action.open(false);
                 final List<Record> list;
-                list = action.listHistory();
+                list = action.listHistory(context);
                 action.close();
                 //noinspection NullableProblems
                 adapter = new AdapterRecord(context, list) {
@@ -729,16 +729,44 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
                     } else if (item.getItemId() == R.id.menu_sortName) {
                         if (overViewTab.equals(getString(R.string.album_title_bookmarks))) {
                             sp.edit().putString("sort_bookmark", "title").apply();
+                            sp.edit().putBoolean("sort_bookmarkDomain", false).apply();
                             bottom_navigation.setSelectedItemId(R.id.page_2); }
                         else if (overViewTab.equals(getString(R.string.album_title_home))) {
                             sp.edit().putString("sort_startSite", "title").apply();
+                            sp.edit().putBoolean("sort_startSiteDomain", false).apply();
                             bottom_navigation.setSelectedItemId(R.id.page_1); }}
                     else if (item.getItemId() == R.id.menu_sortIcon) {
                         sp.edit().putString("sort_bookmark", "time").apply();
+                        sp.edit().putBoolean("sort_bookmarkDomain", false).apply();
                         bottom_navigation.setSelectedItemId(R.id.page_2); }
                     else if (item.getItemId() == R.id.menu_sortDate) {
-                        sp.edit().putString("sort_startSite", "ordinal").apply();
-                        bottom_navigation.setSelectedItemId(R.id.page_1); }
+
+
+                        if (overViewTab.equals(getString(R.string.album_title_history))) {
+                            sp.edit().putBoolean("sort_historyDomain", false).apply();
+                            bottom_navigation.setSelectedItemId(R.id.page_3);
+                        }
+                        else if (overViewTab.equals(getString(R.string.album_title_home))) {
+                            sp.edit().putString("sort_startSite", "ordinal").apply();
+                            sp.edit().putBoolean("sort_startSiteDomain", false).apply();
+                            bottom_navigation.setSelectedItemId(R.id.page_1);
+                        }
+                    }
+                    else if (item.getItemId() == R.id.menu_sortDomain) {
+                        if (overViewTab.equals(getString(R.string.album_title_bookmarks))) {
+                            sp.edit().putBoolean("sort_bookmarkDomain", true).apply();
+                            bottom_navigation.setSelectedItemId(R.id.page_2); }
+                        else if (overViewTab.equals(getString(R.string.album_title_home))) {
+                            sp.edit().putBoolean("sort_startSiteDomain", true).apply();
+                            bottom_navigation.setSelectedItemId(R.id.page_1);
+                        }
+                        else if (overViewTab.equals(getString(R.string.album_title_history))) {
+                            sp.edit().putBoolean("sort_historyDomain", true).apply();
+                            bottom_navigation.setSelectedItemId(R.id.page_3);
+                        }
+                    }
+
+
                     else if (item.getItemId() == R.id.menu_filter) {
                         showDialogFilter(); }
                     else if (item.getItemId() == R.id.menu_help) {
@@ -1602,6 +1630,8 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
                         MaterialAlertDialogBuilder builderFilter = new MaterialAlertDialogBuilder(context);
                         View dialogViewFilter = View.inflate(context, R.layout.dialog_menu, null);
                         builderFilter.setView(dialogViewFilter);
+                        builderFilter.setTitle(R.string.setting_filter);
+                        builderFilter.setIcon(R.drawable.icon_sort_icon);
                         AlertDialog dialogFilter = builderFilter.create();
                         dialogFilter.show();
                         HelperUnit.setupDialog(context, dialogFilter);
@@ -2097,6 +2127,8 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
     private void showDialogFilter() {
         MaterialAlertDialogBuilder builder = new MaterialAlertDialogBuilder(context);
         View dialogView = View.inflate(context, R.layout.dialog_menu, null);
+        builder.setTitle(R.string.setting_filter);
+        builder.setIcon(R.drawable.icon_sort_icon);
         builder.setView(dialogView);
         AlertDialog dialog = builder.create();
         dialog.show();
@@ -2152,7 +2184,6 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
 
             builder.setTitle(url);
             builder.setIcon(R.drawable.icon_custom_searches);
-            builder.setPositiveButton(R.string.app_ok, null);
             builder.setNegativeButton(R.string.app_cancel, ((dialogInterface, i) -> removeAlbum(currentAlbumController)));
             builder.setNeutralButton(R.string.create_new, ((dialogInterface, i) -> {
                 MaterialAlertDialogBuilder builderAddCustom = new MaterialAlertDialogBuilder(context);

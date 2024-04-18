@@ -1,5 +1,7 @@
 package de.baumann.browser.database;
 
+import de.baumann.browser.unit.HelperUnit;
+
 public class Record {
 
     private final int ordinal;
@@ -66,6 +68,10 @@ public class Record {
 
     public String getURL() {
         return url;
+    }
+
+    public String getDomain() {
+        return HelperUnit.domain(url);
     }
 
     public void setURL(String url) {

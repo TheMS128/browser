@@ -18,7 +18,7 @@
             android:id="@+id/albumCardView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="?attr/colorSecondaryContainer"
+            android:background="?attr/colorSurfaceDim"
             android:paddingStart="15dp"
             android:paddingEnd="15dp"
             android:paddingTop="15dp"
@@ -276,8 +276,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:dividerInsetStart="56dp"
-                app:dividerInsetEnd="56dp"
-                app:dividerColor="?attr/colorOutline"/>
+                app:dividerInsetEnd="56dp"/>
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -451,8 +450,7 @@
         <com.google.android.material.divider.MaterialDivider
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="10dp"
-            app:dividerColor="?attr/colorOutline"/>
+            android:layout_margin="10dp"/>
 
         <LinearLayout
             android:layout_width="match_parent"
