@@ -4,6 +4,7 @@
 - fix: layout and colors
 - fix: Error downloading blob-files (@https://github.com/woheller69/browser)
 - fix: Downloading files that requires Referer header #950
+- fix: Display errors in dark theme? #1143
 
 
 ### v 14 "Katjuscha" (Protagonistin in Leo Tolstois Auferstehung)

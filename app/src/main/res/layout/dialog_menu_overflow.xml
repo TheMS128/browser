@@ -8,15 +8,16 @@
     android:orientation="vertical"
     tools:ignore="ContentDescription">
 
-    <RelativeLayout
+    <com.google.android.material.card.MaterialCardView
         style="@style/Widget.Material3.CardView.Filled"
         android:id="@+id/albumCardView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="?attr/colorSurfaceDim"
-        android:paddingStart="15dp"
-        android:paddingEnd="15dp"
-        android:paddingTop="15dp" >
+        android:backgroundTint="?attr/colorSurfaceDim"
+        android:layout_marginStart="15dp"
+        android:layout_marginEnd="15dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginBottom="5dp" >
 
         <RelativeLayout
             android:layout_width="wrap_content"
@@ -79,20 +80,18 @@
 
         </RelativeLayout>
 
-    </RelativeLayout>
+    </com.google.android.material.card.MaterialCardView>
 
     <com.google.android.material.tabs.TabLayout
         android:id="@+id/tabLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:tabMode="fixed"
-        app:tabBackground="?attr/colorSurfaceDim">
+        app:tabBackground="?attr/colorSurfaceContainerHigh">
 
         <com.google.android.material.tabs.TabItem
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:icon="@drawable/icon_tab"
-            />
+            android:icon="@drawable/icon_tab" />
 
         <com.google.android.material.tabs.TabItem
             android:layout_width="wrap_content"
