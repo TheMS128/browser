@@ -14,7 +14,6 @@ import android.webkit.WebView;
 import android.widget.GridView;
 
 import androidx.appcompat.app.AlertDialog;
-import androidx.cardview.widget.CardView;
 
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 
@@ -59,9 +58,6 @@ public class NinjaDownloadListener implements DownloadListener {
 
         View dialogView = View.inflate(context, R.layout.dialog_menu, null);
         MaterialAlertDialogBuilder builder = new MaterialAlertDialogBuilder(context);
-
-        CardView albumCardView = dialogView.findViewById(R.id.albumCardView);
-        albumCardView.setVisibility(View.GONE);
 
         builder.setIcon(R.drawable.icon_download);
         builder.setTitle(R.string.dialog_title_download);

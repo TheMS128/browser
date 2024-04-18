@@ -587,24 +587,9 @@ public class NinjaWebViewClient extends WebViewClient {
         editBottom.setText("");
         editBottom.setHint(this.context.getString(R.string.dialog_sign_in_password));
 
+        builder.setTitle(view.getTitle());
+        builder.setIcon(R.drawable.icon_alert);
         builder.setView(dialogView);
-
-        LinearLayout textGroupEdit = dialogView.findViewById(R.id.textGroupEdit);
-        TextView menuURLEdit = dialogView.findViewById(R.id.menuURLEdit);
-        menuURLEdit.setText(view.getUrl());
-        menuURLEdit.setEllipsize(TextUtils.TruncateAt.MARQUEE);
-        menuURLEdit.setSingleLine(true);
-        menuURLEdit.setMarqueeRepeatLimit(1);
-        menuURLEdit.setSelected(true);
-        textGroupEdit.setOnClickListener(v -> {
-            menuURLEdit.setEllipsize(TextUtils.TruncateAt.MARQUEE);
-            menuURLEdit.setSingleLine(true);
-            menuURLEdit.setMarqueeRepeatLimit(1);
-            menuURLEdit.setSelected(true);
-        });
-        TextView menuTitleEdit = dialogView.findViewById(R.id.menuTitleEdit);
-        menuTitleEdit.setText(view.getTitle());
-        FaviconHelper.setFavicon(context, dialogView, null, R.id.menu_icon, R.drawable.icon_alert);
 
         AlertDialog dialog = builder.create();
         dialog.show();

@@ -10,7 +10,6 @@ import android.widget.GridView;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AlertDialog;
-import androidx.cardview.widget.CardView;
 import androidx.preference.EditTextPreference;
 import androidx.preference.ListPreference;
 import androidx.preference.Preference;
@@ -63,9 +62,6 @@ public class Fragment_settings_Privacy extends BasePreferenceFragment implements
             builder.setView(dialogView);
             AlertDialog dialog = builder.create();
             dialog.show();
-
-            CardView cardView = dialogView.findViewById(R.id.albumCardView);
-            cardView.setVisibility(View.GONE);
 
             TextView menuTitle = dialogView.findViewById(R.id.menuTitle);
             menuTitle.setText(getString(R.string.setting_title_profiles_edit));

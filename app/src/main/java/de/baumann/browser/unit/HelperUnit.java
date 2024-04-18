@@ -41,7 +41,6 @@ import android.os.Handler;
 import android.print.PrintAttributes;
 import android.print.PrintDocumentAdapter;
 import android.print.PrintManager;
-import android.text.TextUtils;
 import android.util.DisplayMetrics;
 import android.util.Log;
 import android.util.TypedValue;
@@ -54,12 +53,9 @@ import android.webkit.WebView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AlertDialog;
-import androidx.cardview.widget.CardView;
 import androidx.core.content.res.ResourcesCompat;
 import androidx.preference.PreferenceManager;
 
@@ -80,7 +76,6 @@ import de.baumann.browser.activity.BrowserActivity;
 import de.baumann.browser.browser.BrowserController;
 import de.baumann.browser.browser.DataURIParser;
 import de.baumann.browser.browser.JavaScriptInterface;
-import de.baumann.browser.database.FaviconHelper;
 import de.baumann.browser.view.GridItem;
 import de.baumann.browser.view.NinjaToast;
 import de.baumann.browser.view.NinjaWebView;
@@ -143,9 +138,6 @@ public class HelperUnit {
             MaterialAlertDialogBuilder builder = new MaterialAlertDialogBuilder(activity);
 
             View dialogView = View.inflate(activity, R.layout.dialog_edit, null);
-
-            CardView albumCardView = dialogView.findViewById(R.id.albumCardView);
-            albumCardView.setVisibility(View.GONE);
             TextInputLayout editBottomLayout = dialogView.findViewById(R.id.editBottomLayout);
             editBottomLayout.setHint(activity.getString(R.string.dialog_extension_hint));
 
@@ -160,8 +152,6 @@ public class HelperUnit {
 
             editTop.setText(prefix);
             if (extension.length() <= 8) editBottom.setText(extension);
-
-
 
             builder.setTitle(R.string.menu_save_as);
             builder.setIcon(R.drawable.icon_menu_save);
@@ -387,7 +377,7 @@ public class HelperUnit {
         }
     }
 
-    public static void saveDataURI(Activity activity, String titleMenu, String url, DataURIParser dataUriParser, Dialog dialogParent) {
+    public static void saveDataURI(Activity activity, DataURIParser dataUriParser, Dialog dialogParent) {
 
         byte[] imagedata = dataUriParser.getImagedata();
         String filename = dataUriParser.getFilename();
@@ -407,25 +397,9 @@ public class HelperUnit {
             editBottom.setText(extension);
         }
 
-        LinearLayout textGroupEdit = dialogView.findViewById(R.id.textGroupEdit);
-        TextView menuURLEdit = dialogView.findViewById(R.id.menuURLEdit);
-        menuURLEdit.setText(url);
-        menuURLEdit.setEllipsize(TextUtils.TruncateAt.MARQUEE);
-        menuURLEdit.setSingleLine(true);
-        menuURLEdit.setMarqueeRepeatLimit(1);
-        menuURLEdit.setSelected(true);
-        textGroupEdit.setOnClickListener(v -> {
-            menuURLEdit.setEllipsize(TextUtils.TruncateAt.MARQUEE);
-            menuURLEdit.setSingleLine(true);
-            menuURLEdit.setMarqueeRepeatLimit(1);
-            menuURLEdit.setSelected(true);
-        });
-        TextView menuTitleEdit = dialogView.findViewById(R.id.menuTitleEdit);
-        menuTitleEdit.setText(titleMenu);
-        FaviconHelper.setFavicon(activity, dialogView, null, R.id.menu_icon, R.drawable.icon_menu_save);
-
         builder.setView(dialogView);
         builder.setTitle(R.string.menu_save_as);
+        builder.setIcon(R.drawable.icon_menu_save);
 
         AlertDialog dialog = builder.create();
         dialog.show();
