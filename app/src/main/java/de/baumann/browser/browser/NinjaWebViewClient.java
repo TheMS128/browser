@@ -477,12 +477,10 @@ public class NinjaWebViewClient extends WebViewClient {
 
     @Override
     public void onFormResubmission(WebView view, @NonNull final Message doNotResend, final Message resend) {
-        View dialogView = View.inflate(context, R.layout.dialog_menu, null);
         MaterialAlertDialogBuilder builder = new MaterialAlertDialogBuilder(context);
         builder.setTitle(HelperUnit.domain(view.getUrl()));
         builder.setIcon(R.drawable.icon_alert);
         builder.setMessage(R.string.dialog_content_resubmission);
-        builder.setView(dialogView);
         builder.setPositiveButton(R.string.app_ok, (dialog, whichButton) -> resend.sendToTarget());
         builder.setNegativeButton(R.string.app_cancel, (dialog, whichButton) -> doNotResend.sendToTarget());
         AlertDialog dialog = builder.create();

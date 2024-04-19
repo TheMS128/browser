@@ -22,6 +22,7 @@ import java.util.Locale;
 import de.baumann.browser.R;
 import de.baumann.browser.database.FaviconHelper;
 import de.baumann.browser.database.Record;
+import de.baumann.browser.unit.HelperUnit;
 
 public class AdapterRecord extends ArrayAdapter<Record> {
     private final Context context;
@@ -98,7 +99,7 @@ public class AdapterRecord extends ArrayAdapter<Record> {
             holder.cardView.setCardBackgroundColor(ResourcesCompat.getColor(context.getResources(), R.color.grey, null));
         } else {
             TypedValue typedValue = new TypedValue();
-            context.getTheme().resolveAttribute(R.attr.colorSurfaceDim, typedValue, true);
+            context.getTheme().resolveAttribute(R.attr.colorSecondaryContainer, typedValue, true);
             int color = typedValue.data;
             holder.cardView.setCardBackgroundColor(color);
         }
@@ -111,6 +112,8 @@ public class AdapterRecord extends ArrayAdapter<Record> {
                 holder.favicon.setImageResource(R.drawable.icon_image_broken);
             }
         }
+
+        HelperUnit.setHighLightedText(context, holder.time, record.getURL(), HelperUnit.domain(record.getURL()));
         return view;
     }
 }

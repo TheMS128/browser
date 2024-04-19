@@ -798,6 +798,10 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
         });
 
         badgeTab = bottom_navigation.getOrCreateBadge(R.id.page_0);
+        TypedValue typedValue = new TypedValue();
+        context.getTheme().resolveAttribute(R.attr.colorTertiary, typedValue, true);
+        int color = typedValue.data;
+        badgeTab.setBackgroundColor(color);
         badgeTab.setHorizontalOffset(10);
         badgeTab.setVerticalOffset(10);
         setSelectedTab();
@@ -855,6 +859,11 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
         bottomAppBar = findViewById(R.id.bottomAppBar);
         badgeDrawable = BadgeDrawable.create(context);
 
+        TypedValue typedValue = new TypedValue();
+        context.getTheme().resolveAttribute(R.attr.colorTertiary, typedValue, true);
+        int color = typedValue.data;
+        badgeDrawable.setBackgroundColor(color);
+
         Button omnibox_overflow = findViewById(R.id.omnibox_overflow);
         omnibox_overflow.setOnClickListener(v -> showOverflow());
 
@@ -890,6 +899,7 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
                 omniBox_tab.setVisibility(View.GONE);
                 String url = ninjaWebView.getUrl();
                 ninjaWebView.stopLoading();
+                ninjaWebView.scrollBy(0, -5);
                 omniBox_text.setKeyListener(listener);
                 if (url == null || url.isEmpty()) omniBox_text.setText("");
                 else omniBox_text.setText(url);
@@ -950,11 +960,8 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
         ninjaWebView.initPreferences(url);
 
         if (url != null) {
-
             progressBar.setVisibility(View.GONE);
-            listTrusted = new List_trusted(context);
             ninjaWebView.setProfileIcon(omniBox_tab);
-
             if (Objects.requireNonNull(ninjaWebView.getTitle()).isEmpty())
                 omniBox_text.setText(url);
             else omniBox_text.setText(ninjaWebView.getTitle());
@@ -1021,6 +1028,7 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
             public void onTextChanged(CharSequence s, int start, int before, int count) {
                 adapterSearch.getFilter().filter(s);
+                sp.edit().putString("searchInput", s.toString()).apply();
             }
         });
     }
@@ -1073,6 +1081,7 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
         LinearLayout textGroup = dialogView.findViewById(R.id.textGroup);
         TextView overflowURL = dialogView.findViewById(R.id.overflowURL);
         overflowURL.setText(url);
+        HelperUnit.setHighLightedText(context, overflowURL, url, HelperUnit.domain(url));
         overflowURL.setEllipsize(TextUtils.TruncateAt.MARQUEE);
         overflowURL.setSingleLine(true);
         overflowURL.setMarqueeRepeatLimit(1);
@@ -1364,6 +1373,7 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
         LinearLayout textGroup = dialogView.findViewById(R.id.textGroup);
         TextView menuURL = dialogView.findViewById(R.id.menuURL);
         menuURL.setText(url);
+        HelperUnit.setHighLightedText(context, menuURL, url, HelperUnit.domain(url));
         menuURL.setEllipsize(TextUtils.TruncateAt.MARQUEE);
         menuURL.setSingleLine(true);
         menuURL.setMarqueeRepeatLimit(1);
@@ -1494,6 +1504,7 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
         LinearLayout textGroup = dialogView.findViewById(R.id.textGroup);
         TextView menuURL = dialogView.findViewById(R.id.menuURL);
         menuURL.setText(url);
+        HelperUnit.setHighLightedText(context, menuURL, url, HelperUnit.domain(url));
         menuURL.setEllipsize(TextUtils.TruncateAt.MARQUEE);
         menuURL.setSingleLine(true);
         menuURL.setMarqueeRepeatLimit(1);
@@ -1705,14 +1716,23 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
             View dialogView = View.inflate(context, R.layout.dialog_toggle, null);
             builder.setView(dialogView);
 
+            LinearLayout albumProfile = dialogView.findViewById(R.id.albumProfile);
+            albumProfile.setVisibility(View.GONE);
+
+            FloatingActionButton buttonProfile = dialogView.findViewById(R.id.buttonProfile);
+            ninjaWebView.setProfileIcon(buttonProfile);
+            buttonProfile.setOnClickListener(v -> {
+                if (albumProfile.getVisibility() == View.VISIBLE) {
+                    albumProfile.setVisibility(View.GONE);
+                } else {
+                    albumProfile.setVisibility(View.VISIBLE);
+                }
+            });
+
             Chip chip_profile_standard = dialogView.findViewById(R.id.chip_profile_standard);
             Chip chip_profile_trusted = dialogView.findViewById(R.id.chip_profile_trusted);
             Chip chip_profile_changed = dialogView.findViewById(R.id.chip_profile_changed);
             Chip chip_profile_protected = dialogView.findViewById(R.id.chip_profile_protected);
-
-            TextView dialog_warning = dialogView.findViewById(R.id.dialog_titleDomain);
-            dialog_warning.setText(HelperUnit.domain(url));
-            dialog_warning.setEllipsize(TextUtils.TruncateAt.END);
 
             TextView dialog_titleProfile = dialogView.findViewById(R.id.dialog_titleProfile);
             ninjaWebView.putProfileBoolean("", dialog_titleProfile, chip_profile_trusted, chip_profile_standard, chip_profile_protected, chip_profile_changed);
@@ -1722,6 +1742,7 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
             LinearLayout textGroup = dialogView.findViewById(R.id.textGroup);
             TextView overflowURL = dialogView.findViewById(R.id.overflowURL);
             overflowURL.setText(url);
+            HelperUnit.setHighLightedText(context, overflowURL, url, HelperUnit.domain(url));
             overflowURL.setEllipsize(TextUtils.TruncateAt.MARQUEE);
             overflowURL.setSingleLine(true);
             overflowURL.setMarqueeRepeatLimit(1);
@@ -2006,10 +2027,6 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
             if (listTrusted.isWhite(url) || listStandard.isWhite(url) || listProtected.isWhite(url)) {
                 LinearLayout cardView = dialogView.findViewById(R.id.editProfile);
                 cardView.setVisibility(View.GONE);
-                TypedValue typedValue = new TypedValue();
-                context.getTheme().resolveAttribute(R.attr.colorError, typedValue, true);
-                int color = typedValue.data;
-                dialog_warning.setTextColor(color);
             }
 
             Chip chip_toggleNightView = dialogView.findViewById(R.id.chip_toggleNightView);
@@ -2690,6 +2707,7 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
             LinearLayout textGroup = dialogView.findViewById(R.id.textGroup);
             TextView menuURL = dialogView.findViewById(R.id.menuURL);
             menuURL.setText(urlDialog);
+            HelperUnit.setHighLightedText(context, menuURL, url, HelperUnit.domain(url));
             menuURL.setEllipsize(TextUtils.TruncateAt.MARQUEE);
             menuURL.setSingleLine(true);
             menuURL.setMarqueeRepeatLimit(1);
@@ -2760,6 +2778,7 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
             LinearLayout textGroup = dialogView.findViewById(R.id.textGroup);
             TextView menuURL = dialogView.findViewById(R.id.menuURL);
             menuURL.setText(url);
+            HelperUnit.setHighLightedText(context, menuURL, url, HelperUnit.domain(url));
             menuURL.setEllipsize(TextUtils.TruncateAt.MARQUEE);
             menuURL.setSingleLine(true);
             menuURL.setMarqueeRepeatLimit(1);

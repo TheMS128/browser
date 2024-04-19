@@ -45,9 +45,7 @@ public class AdapterCustomSearches extends RecyclerView.Adapter<RedirectsViewHol
     public RedirectsViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.custom_searches_row, parent, false);
-
         return new RedirectsViewHolder(view);
-
     }
 
     @Override

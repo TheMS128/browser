@@ -15,6 +15,7 @@ import de.baumann.browser.R;
 import de.baumann.browser.browser.AlbumController;
 import de.baumann.browser.browser.BrowserContainer;
 import de.baumann.browser.browser.BrowserController;
+import de.baumann.browser.unit.HelperUnit;
 
 class AdapterTabs {
 
@@ -40,6 +41,7 @@ class AdapterTabs {
     void setAlbumTitle(String title, String url) {
         albumTitle.setText(title);
         albumUrl.setText(url);
+        HelperUnit.setHighLightedText(context, albumUrl, url, HelperUnit.domain(url));
     }
 
     void setBrowserController(BrowserController browserController) {
@@ -61,6 +63,8 @@ class AdapterTabs {
             browserController.removeAlbum(albumController);
             if (BrowserContainer.size() < 2) { browserController.hideOverview();}
         });
+
+
     }
 
     public void activate() {
@@ -80,7 +84,6 @@ class AdapterTabs {
         TypedValue typedValue = new TypedValue();
         context.getTheme().resolveAttribute(R.attr.colorSurfaceDim, typedValue, true);
         int color = typedValue.data;
-        context.getTheme().resolveAttribute(R.attr.colorOnSurfaceVariant, typedValue, true);
         albumCardView.setCardBackgroundColor(color);
         albumTitle.setTypeface(null, Typeface.NORMAL);
         albumView.setOnClickListener(view -> {

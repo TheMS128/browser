@@ -6,6 +6,7 @@ import static de.baumann.browser.database.RecordAction.HISTORY_ITEM;
 import static de.baumann.browser.database.RecordAction.STARTSITE_ITEM;
 
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -16,6 +17,8 @@ import android.widget.Filterable;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import androidx.preference.PreferenceManager;
+
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.HashSet;
@@ -25,6 +28,7 @@ import java.util.Set;
 import de.baumann.browser.R;
 import de.baumann.browser.database.FaviconHelper;
 import de.baumann.browser.database.Record;
+import de.baumann.browser.unit.HelperUnit;
 
 
 public class AdapterSearch extends BaseAdapter implements Filterable {
@@ -121,6 +125,12 @@ public class AdapterSearch extends BaseAdapter implements Filterable {
             } else {
                 holder.favicon.setImageResource(R.drawable.icon_image_broken);
             }
+        }
+        SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(context);
+        String s = sp.getString("searchInput", "");
+        if (s.length() > 0) {
+            HelperUnit.setHighLightedTextSearch(context, holder.urlView, s);
+            HelperUnit.setHighLightedTextSearch(context, holder.titleView, s);
         }
         return view;
     }

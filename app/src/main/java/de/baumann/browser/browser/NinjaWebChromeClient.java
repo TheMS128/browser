@@ -108,7 +108,7 @@ public class NinjaWebChromeClient extends WebChromeClient {
         String[] resources = request.getResources();
         for (String resource : resources) {
             if (PermissionRequest.RESOURCE_VIDEO_CAPTURE.equals(resource)) {
-                if (sp.getBoolean(ninjaWebView.getProfile() + "_camera", false)){
+                if (sp.getBoolean(NinjaWebView.getProfile() + "_camera", false)){
                     HelperUnit.grantPermissionsCamera(activity);
                     if (ninjaWebView.getSettings().getMediaPlaybackRequiresUserGesture())
                         ninjaWebView.getSettings().setMediaPlaybackRequiresUserGesture(false);
@@ -117,7 +117,7 @@ public class NinjaWebChromeClient extends WebChromeClient {
                     request.grant(request.getResources());
                 }
             } else if (PermissionRequest.RESOURCE_AUDIO_CAPTURE.equals(resource)) {
-                if (sp.getBoolean(ninjaWebView.getProfile() + "_microphone", false)){
+                if (sp.getBoolean(NinjaWebView.getProfile() + "_microphone", false)){
                     HelperUnit.grantPermissionsMic(activity);
                     request.grant(request.getResources());
                 }

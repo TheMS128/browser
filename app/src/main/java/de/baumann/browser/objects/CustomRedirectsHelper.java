@@ -43,12 +43,10 @@ public class CustomRedirectsHelper {
         JSONArray array = new JSONArray();
         for (int i = 0; i < redirects.size(); i++) {
             CustomRedirect redirect = redirects.get(i);
-            if (!redirect.getSource().contains("youtube.com")) {
-                JSONObject object = new JSONObject();
-                object.put("source", redirect.getSource());
-                object.put("target", redirect.getTarget());
-                array.put(object);
-            }
+            JSONObject object = new JSONObject();
+            object.put("source", redirect.getSource());
+            object.put("target", redirect.getTarget());
+            array.put(object);
         }
         preferences.edit().putString(CUSTOM_REDIRECTS_KEY, array.toString()).apply();
     }

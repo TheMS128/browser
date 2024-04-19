@@ -1,6 +1,8 @@
 ### v 15 ... (WIP)
 - new: auto deny cookie-banners (@https://github.com/woheller69/browser)
 - new: sort startsite and history by domain
+- new: highlight domains in lists and menus
+- new: highlight search term
 - fix: layout and colors
 - fix: Error downloading blob-files (@https://github.com/woheller69/browser)
 - fix: Downloading files that requires Referer header #950

@@ -19,6 +19,7 @@
 
 package de.baumann.browser.unit;
 
+import static android.content.ContentValues.TAG;
 import static android.graphics.drawable.Icon.createWithBitmap;
 
 import android.Manifest;
@@ -41,6 +42,10 @@ import android.os.Handler;
 import android.print.PrintAttributes;
 import android.print.PrintDocumentAdapter;
 import android.print.PrintManager;
+import android.text.Spannable;
+import android.text.SpannableString;
+import android.text.TextUtils;
+import android.text.style.ForegroundColorSpan;
 import android.util.DisplayMetrics;
 import android.util.Log;
 import android.util.TypedValue;
@@ -53,6 +58,7 @@ import android.webkit.WebView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AlertDialog;
@@ -76,6 +82,9 @@ import de.baumann.browser.activity.BrowserActivity;
 import de.baumann.browser.browser.BrowserController;
 import de.baumann.browser.browser.DataURIParser;
 import de.baumann.browser.browser.JavaScriptInterface;
+import de.baumann.browser.browser.List_protected;
+import de.baumann.browser.browser.List_standard;
+import de.baumann.browser.browser.List_trusted;
 import de.baumann.browser.view.GridItem;
 import de.baumann.browser.view.NinjaToast;
 import de.baumann.browser.view.NinjaWebView;
@@ -526,5 +535,66 @@ public class HelperUnit {
             PrintDocumentAdapter printAdapter = ninjaWebView.createPrintDocumentAdapter(title);
             Objects.requireNonNull(printManager).print(title, printAdapter, new PrintAttributes.Builder().build());
         });
+    }
+
+    public static void setHighLightedText(Context context, TextView tv, String url, String textToHighlight) {
+
+        String tvt = tv.getText().toString().toLowerCase();
+        int ofe = tvt.indexOf(textToHighlight.toLowerCase());
+        Spannable wordToSpan = new SpannableString(tv.getText());
+
+        List_trusted listTrusted = new List_trusted(context);
+        List_standard listStandard = new List_standard(context);
+        List_protected listProtected = new List_protected(context);
+
+        for (int ofs = 0; ofs < tvt.length() && ofe != -1; ofs = ofe + 1) {
+            ofe = tvt.indexOf(textToHighlight, ofs);
+            if (ofe == -1)
+                break;
+            else {
+                TypedValue typedValue = new TypedValue();
+                context.getTheme().resolveAttribute(R.attr.colorTertiary, typedValue, true);
+                int color = typedValue.data;
+                TypedValue typedValue2 = new TypedValue();
+                context.getTheme().resolveAttribute(R.attr.colorOnSurface, typedValue2, true);
+                int color2 = typedValue2.data;
+                // set color here
+                wordToSpan.setSpan(new ForegroundColorSpan(color2), ofe, ofe + textToHighlight.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+                tv.setText(wordToSpan, TextView.BufferType.SPANNABLE);
+                try {
+                    if (listTrusted.isWhite(url) || listStandard.isWhite(url) || listProtected.isWhite(url)) {
+                        wordToSpan.setSpan(new ForegroundColorSpan(color), ofe, ofe + textToHighlight.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+                        tv.setText(wordToSpan, TextView.BufferType.SPANNABLE);
+                    }
+                } catch (Exception e) {
+                    Log.i(TAG, "Error loading lists:" + e);
+                }
+            }
+        }
+        tv.setEllipsize(TextUtils.TruncateAt.END);
+        tv.setSingleLine(true);
+    }
+
+    public static void setHighLightedTextSearch (Context context, TextView tv, String textToHighlight) {
+
+        String tvt = tv.getText().toString().toLowerCase();
+        int ofe = tvt.indexOf(textToHighlight.toLowerCase());
+        Spannable wordToSpan = new SpannableString(tv.getText());
+
+        for (int ofs = 0; ofs < tvt.length() && ofe != -1; ofs = ofe + 1) {
+            ofe = tvt.indexOf(textToHighlight, ofs);
+            if (ofe == -1)
+                break;
+            else {
+                TypedValue typedValue = new TypedValue();
+                context.getTheme().resolveAttribute(R.attr.colorTertiary, typedValue, true);
+                int color = typedValue.data;
+                // set color here
+                wordToSpan.setSpan(new ForegroundColorSpan(color), ofe, ofe + textToHighlight.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+                tv.setText(wordToSpan, TextView.BufferType.SPANNABLE);
+            }
+        }
+        tv.setEllipsize(TextUtils.TruncateAt.END);
+        tv.setSingleLine(true);
     }
 }

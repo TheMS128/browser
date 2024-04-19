@@ -11,7 +11,7 @@
     android:paddingEnd="10dp">
 
     <com.google.android.material.card.MaterialCardView
-        style="@style/Widget.Material3.CardView.Outlined"
+        style="@style/Widget.Material3.CardView.Filled"
         android:id="@+id/albumCardView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
@@ -82,7 +82,8 @@
                     android:ellipsize="end"
                     android:includeFontPadding="false"
                     android:maxLines="1"
-                    android:textAppearance="?attr/textAppearanceBodySmall" />
+                    android:textAppearance="?attr/textAppearanceBodySmall"
+                    android:textColor="?attr/colorOutline" />
 
             </LinearLayout>
 
