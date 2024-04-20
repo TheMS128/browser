@@ -69,7 +69,7 @@ class AdapterTabs {
 
     public void activate() {
         TypedValue typedValue = new TypedValue();
-        context.getTheme().resolveAttribute(R.attr.colorSecondaryContainer, typedValue, true);
+        context.getTheme().resolveAttribute(R.attr.colorTertiaryContainer, typedValue, true);
         int color = typedValue.data;
         context.getTheme().resolveAttribute(R.attr.colorSurface, typedValue, true);
         albumCardView.setCardBackgroundColor(color);

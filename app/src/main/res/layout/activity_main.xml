@@ -17,7 +17,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginBottom="?attr/actionBarSize"
-        android:background="?attr/colorSurfaceContainer"
+        android:background="?attr/colorSurfaceContainerHigh"
         android:divider="@null"
         android:fastScrollEnabled="true"
         android:paddingTop="5dp"
@@ -88,24 +88,24 @@
                         app:indicatorSize="25dp"/>
 
                     <com.google.android.material.floatingactionbutton.FloatingActionButton
-                        style="@style/Widget.Material3.FloatingActionButton.Secondary"
+                        style="@style/Widget.Material3.FloatingActionButton.Surface"
                         android:id="@+id/omniBox_tab"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
-                        app:backgroundTint="?attr/colorSecondaryContainer"
                         android:layout_marginEnd="5dp"
                         android:layout_marginStart="5dp"
+                        android:backgroundTint="?attr/colorSurfaceDim"
                         app:fabCustomSize="45dp"
                         app:elevation="0dp" />
 
                     <com.google.android.material.floatingactionbutton.FloatingActionButton
-                        style="@style/Widget.Material3.FloatingActionButton.Secondary"
+                        style="@style/Widget.Material3.FloatingActionButton.Surface"
                         android:id="@+id/omnibox_overview"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
-                        app:backgroundTint="?attr/colorSecondaryContainer"
+                        android:backgroundTint="?attr/colorSurfaceDim"
                         app:fabCustomSize="45dp"
                         app:elevation="0dp" />
 

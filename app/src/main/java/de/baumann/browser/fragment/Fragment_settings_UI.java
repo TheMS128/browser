@@ -8,6 +8,7 @@ import androidx.preference.EditTextPreference;
 import androidx.preference.ListPreference;
 import androidx.preference.Preference;
 import androidx.preference.PreferenceGroup;
+import androidx.preference.PreferenceManager;
 
 import java.util.Objects;
 
@@ -37,6 +38,17 @@ public class Fragment_settings_UI extends BasePreferenceFragment implements Shar
     }
 
     private void updatePrefSummary(Preference p) {
+
+        Context context = getContext();
+        assert context != null;
+
+        SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(context);
+        boolean useDynamicColor = sp.getBoolean("useDynamicColor", false);
+        ListPreference theme;
+        theme = findPreference("sp_theme");
+        assert theme != null;
+        theme.setEnabled(useDynamicColor);
+
         if (p instanceof ListPreference) {
             ListPreference listPref = (ListPreference) p;
             if (p.getSummaryProvider() == null) p.setSummary(listPref.getEntry());

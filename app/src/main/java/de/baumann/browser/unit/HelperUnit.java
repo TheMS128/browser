@@ -33,7 +33,6 @@ import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.content.pm.ShortcutInfo;
 import android.content.pm.ShortcutManager;
-import android.content.res.Configuration;
 import android.graphics.PorterDuff;
 import android.graphics.drawable.Icon;
 import android.net.Uri;
@@ -311,29 +310,7 @@ public class HelperUnit {
                     break;
             }
         } else {
-            switch (Objects.requireNonNull(sp.getString("sp_theme", "1"))) {
-                case "2":
-                    context.setTheme(R.style.AppTheme_day);
-                    break;
-                case "3":
-                    context.setTheme(R.style.AppTheme_night);
-                    break;
-                case "5":
-                    context.setTheme(R.style.AppTheme_OLED);
-                    break;
-                default:
-                    int nightModeFlags = context.getResources().getConfiguration().uiMode & Configuration.UI_MODE_NIGHT_MASK;
-
-                    switch (nightModeFlags) {
-                        case Configuration.UI_MODE_NIGHT_YES:
-                            context.setTheme(R.style.AppTheme_night);
-                            break;
-                        case Configuration.UI_MODE_NIGHT_NO:
-                        case Configuration.UI_MODE_NIGHT_UNDEFINED:
-                            context.setTheme(R.style.AppTheme_day);
-                            break;
-                    }
-            }
+            context.setTheme(R.style.AppTheme_day);
         }
     }
 

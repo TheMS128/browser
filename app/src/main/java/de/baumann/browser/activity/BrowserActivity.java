@@ -233,13 +233,12 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
         sp = PreferenceManager.getDefaultSharedPreferences(context);
         duration = getResources().getInteger(android.R.integer.config_mediumAnimTime);
         new BannerBlock(context);
+        HelperUnit.initTheme(activity);
 
         if (getSupportActionBar() != null) getSupportActionBar().hide();
         Window window = this.getWindow();
         window.setStatusBarColor(ContextCompat.getColor(this, R.color.statusBar));
         if (sp.getBoolean("sp_screenOn", false)) getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
-
-        HelperUnit.initTheme(activity);
 
         sp.edit()
                 .putInt("restart_changed", 0)
@@ -320,7 +319,6 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
             addAlbum(getString(R.string.app_name), sp.getString("favoriteURL", "https://codeberg.org/Gaukler_Faun/FOSS_Browser/wiki"), true, false, "", null);
         }
     }
-
 
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {

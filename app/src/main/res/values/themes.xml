@@ -1,12 +1,12 @@
 <resources>
 
-    <style name="LauncherTheme" parent="AppTheme_wallpaper">
+    <style name="LauncherTheme" parent="AppTheme_day">
         <!-- Set the splash screen background, animated icon, and animation duration. -->
         <item name="windowSplashScreenBackground">@color/design_default_color_surface</item>
         <!-- Use windowSplashScreenAnimatedIcon to add a drawable or an animated drawable. One of these is required. -->
         <item name="windowSplashScreenAnimatedIcon">@drawable/icon_settings</item>
         <!-- Set the theme of the Activity that directly follows your splash screen. This is required. -->
-        <item name="postSplashScreenTheme">@style/AppTheme_wallpaper</item>
+        <item name="postSplashScreenTheme">@style/AppTheme_day</item>
     </style>
 
     <style name="AppTheme_wallpaper" parent="Theme.Material3.DynamicColors.DayNight">
@@ -27,7 +27,7 @@
         <item name="switchPreferenceCompatStyle">@style/MaterialPreferenceSwitch</item>
     </style>
 
-    <style name="AppTheme_day" parent="Theme.Material3.Light.NoActionBar">
+    <style name="AppTheme_day" parent="Theme.Material3.DayNight.NoActionBar">
         <item name="colorPrimary">@color/md_theme_primary</item>
         <item name="colorOnPrimary">@color/md_theme_onPrimary</item>
         <item name="colorPrimaryContainer">@color/md_theme_primaryContainer</item>
