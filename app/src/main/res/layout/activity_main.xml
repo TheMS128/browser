@@ -17,7 +17,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginBottom="?attr/actionBarSize"
-        android:background="?attr/colorSurfaceContainerHigh"
+        android:background="?attr/colorSurfaceContainer"
         android:divider="@null"
         android:fastScrollEnabled="true"
         android:paddingTop="5dp"

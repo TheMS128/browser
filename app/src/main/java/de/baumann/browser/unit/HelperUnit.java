@@ -528,7 +528,7 @@ public class HelperUnit {
                 break;
             else {
                 TypedValue typedValue = new TypedValue();
-                context.getTheme().resolveAttribute(R.attr.colorTertiary, typedValue, true);
+                context.getTheme().resolveAttribute(R.attr.colorError, typedValue, true);
                 int color = typedValue.data;
                 TypedValue typedValue2 = new TypedValue();
                 context.getTheme().resolveAttribute(R.attr.colorOnSurface, typedValue2, true);
@@ -562,7 +562,7 @@ public class HelperUnit {
                 break;
             else {
                 TypedValue typedValue = new TypedValue();
-                context.getTheme().resolveAttribute(R.attr.colorTertiary, typedValue, true);
+                context.getTheme().resolveAttribute(R.attr.colorError, typedValue, true);
                 int color = typedValue.data;
                 // set color here
                 wordToSpan.setSpan(new ForegroundColorSpan(color), ofe, ofe + textToHighlight.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
