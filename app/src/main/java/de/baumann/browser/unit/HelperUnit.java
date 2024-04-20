@@ -293,8 +293,9 @@ public class HelperUnit {
 
     public static void initTheme(Activity context) {
         sp = PreferenceManager.getDefaultSharedPreferences(context);
-
-        if (sp.getBoolean("useDynamicColor", false)) {
+        if (sp.getBoolean("useOLED", false)) {
+            context.setTheme(R.style.AppTheme_OLED);
+        } else if (sp.getBoolean("useDynamicColor", false)) {
             switch (Objects.requireNonNull(sp.getString("sp_theme", "1"))) {
                 case "2":
                     context.setTheme(R.style.AppTheme_wallpaper_day);
@@ -302,15 +303,12 @@ public class HelperUnit {
                 case "3":
                     context.setTheme(R.style.AppTheme_wallpaper_night);
                     break;
-                case "5":
-                    context.setTheme(R.style.AppTheme_OLED);
-                    break;
                 default:
                     context.setTheme(R.style.AppTheme_wallpaper);
                     break;
             }
         } else {
-            context.setTheme(R.style.AppTheme_day);
+            context.setTheme(R.style.AppTheme);
         }
     }
 

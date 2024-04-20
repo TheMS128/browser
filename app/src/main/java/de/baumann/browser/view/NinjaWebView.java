@@ -257,7 +257,7 @@ public class NinjaWebView extends WebView implements AlbumController {
 
         TypedValue typedValue = new TypedValue();
         Resources.Theme theme = context.getTheme();
-        theme.resolveAttribute(R.attr.colorTertiary, typedValue, true);
+        theme.resolveAttribute(R.attr.colorError, typedValue, true);
         int color = typedValue.data;
 
         if (listTrusted.isWhite(url)) {

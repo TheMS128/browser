@@ -1,5 +1,5 @@
 <resources>
-    <style name="AppTheme_night" parent="Theme.Material3.Dark.NoActionBar">
+    <style name="AppTheme" parent="Theme.Material3.Dark.NoActionBar">
         <item name="colorPrimary">@color/md_theme_primary</item>
         <item name="colorOnPrimary">@color/md_theme_onPrimary</item>
         <item name="colorPrimaryContainer">@color/md_theme_primaryContainer</item>
@@ -48,9 +48,7 @@
         <item name="colorSurfaceContainerHighest">@color/md_theme_surfaceContainerHighest</item>
     </style>
 
-
-
-    <style name="AppTheme_OLED" parent="Theme.Material3.DynamicColors.Dark">
+    <style name="AppTheme_OLED" parent="Theme.Material3.Dark.NoActionBar">
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
         <item name="elevationOverlayColor">#000000</item>

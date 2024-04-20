@@ -797,7 +797,7 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
 
         badgeTab = bottom_navigation.getOrCreateBadge(R.id.page_0);
         TypedValue typedValue = new TypedValue();
-        context.getTheme().resolveAttribute(R.attr.colorTertiary, typedValue, true);
+        context.getTheme().resolveAttribute(R.attr.colorAccent, typedValue, true);
         int color = typedValue.data;
         badgeTab.setBackgroundColor(color);
         badgeTab.setHorizontalOffset(10);
@@ -858,7 +858,7 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
         badgeDrawable = BadgeDrawable.create(context);
 
         TypedValue typedValue = new TypedValue();
-        context.getTheme().resolveAttribute(R.attr.colorTertiary, typedValue, true);
+        context.getTheme().resolveAttribute(R.attr.colorAccent, typedValue, true);
         int color = typedValue.data;
         badgeDrawable.setBackgroundColor(color);
 

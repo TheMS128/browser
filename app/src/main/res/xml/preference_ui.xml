@@ -49,14 +49,33 @@
     <PreferenceCategory android:title="@string/setting_title_userInterface">
 
         <CheckBoxPreference
+            android:defaultValue="false"
+            android:key="useDynamicColor"
+            android:summary="@string/setting_theme_wallpaper" />
+
+        <CheckBoxPreference
+            android:defaultValue="false"
+            android:key="useOLED"
+            android:summary="@string/setting_theme_OLED" />
+
+        <ListPreference
+            android:defaultValue="1"
+            android:entries="@array/setting_entries_theme"
+            android:entryValues="@array/setting_values_theme"
+            android:key="sp_theme"
+            android:title="@string/setting_theme" />
+
+        <CheckBoxPreference
             android:defaultValue="true"
             android:key="hideToolbar"
             android:summary="@string/setting_title_hideToolbar" />
 
-        <CheckBoxPreference
-            android:defaultValue="false"
-            android:key="useDynamicColor"
-            android:summary="@string/setting_theme_wallpaper" />
+        <ListPreference
+            android:defaultValue="100"
+            android:entries="@array/setting_entries_font"
+            android:entryValues="@array/setting_values_font"
+            android:key="sp_fontSize"
+            android:title="@string/setting_title_font" />
 
         <de.baumann.browser.preferences.ListSwitchPreference
             android:defaultValue="3"
@@ -68,20 +87,6 @@
             app:listSwitchKey="start_tabStart"
             app:listSwitchKeyDefaultValue="false"
             app:useSimpleSummaryProvider="true" />
-
-        <ListPreference
-            android:defaultValue="1"
-            android:entries="@array/setting_entries_theme"
-            android:entryValues="@array/setting_values_theme"
-            android:key="sp_theme"
-            android:title="@string/setting_theme" />
-
-        <ListPreference
-            android:defaultValue="100"
-            android:entries="@array/setting_entries_font"
-            android:entryValues="@array/setting_values_font"
-            android:key="sp_fontSize"
-            android:title="@string/setting_title_font" />
 
     </PreferenceCategory>
 
