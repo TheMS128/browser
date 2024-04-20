@@ -797,9 +797,13 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
 
         badgeTab = bottom_navigation.getOrCreateBadge(R.id.page_0);
         TypedValue typedValue = new TypedValue();
-        context.getTheme().resolveAttribute(R.attr.colorAccent, typedValue, true);
+        context.getTheme().resolveAttribute(R.attr.colorPrimaryInverse, typedValue, true);
         int color = typedValue.data;
+        TypedValue typedValue2 = new TypedValue();
+        context.getTheme().resolveAttribute(R.attr.colorOnSurface, typedValue2, true);
+        int color2 = typedValue2.data;
         badgeTab.setBackgroundColor(color);
+        badgeTab.setBadgeTextColor(color2);
         badgeTab.setHorizontalOffset(10);
         badgeTab.setVerticalOffset(10);
         setSelectedTab();
@@ -858,9 +862,13 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
         badgeDrawable = BadgeDrawable.create(context);
 
         TypedValue typedValue = new TypedValue();
-        context.getTheme().resolveAttribute(R.attr.colorAccent, typedValue, true);
+        context.getTheme().resolveAttribute(R.attr.colorPrimaryInverse, typedValue, true);
         int color = typedValue.data;
+        TypedValue typedValue2 = new TypedValue();
+        context.getTheme().resolveAttribute(R.attr.colorOnSurface, typedValue2, true);
+        int color2 = typedValue2.data;
         badgeDrawable.setBackgroundColor(color);
+        badgeDrawable.setBadgeTextColor(color2);
 
         Button omnibox_overflow = findViewById(R.id.omnibox_overflow);
         omnibox_overflow.setOnClickListener(v -> showOverflow());
