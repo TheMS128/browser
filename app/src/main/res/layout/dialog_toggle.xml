@@ -17,7 +17,7 @@
             android:id="@+id/albumCardView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:backgroundTint="?attr/colorSurfaceDim"
+            android:backgroundTint="?attr/colorSurfaceContainerLow"
             android:paddingStart="15dp"
             android:paddingEnd="15dp"
             android:paddingTop="15dp"
@@ -28,7 +28,7 @@
                 android:id="@+id/header"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:backgroundTint="?attr/colorSurfaceContainerLow"  >
+                android:backgroundTint="?attr/colorSurfaceDim"  >
 
                 <RelativeLayout
                     android:layout_width="wrap_content"
@@ -124,9 +124,9 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         app:chipBackgroundColor="@drawable/bg_chip_state_list_domain"
+                        app:chipIconTint="@drawable/bg_chip_icon_state"
                         app:chipIcon="@drawable/icon_profile_trusted"
                         app:chipIconEnabled="true"
-                        app:chipIconTint="@drawable/bg_chip_icon_state"
                         app:textEndPadding="0dp"
                         app:textStartPadding="0dp" />
 
@@ -136,9 +136,9 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         app:chipBackgroundColor="@drawable/bg_chip_state_list_domain"
+                        app:chipIconTint="@drawable/bg_chip_icon_state"
                         app:chipIcon="@drawable/icon_profile_standard"
                         app:chipIconEnabled="true"
-                        app:chipIconTint="@drawable/bg_chip_icon_state"
                         app:textEndPadding="0dp"
                         app:textStartPadding="0dp" />
 
@@ -148,9 +148,9 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         app:chipBackgroundColor="@drawable/bg_chip_state_list_domain"
+                        app:chipIconTint="@drawable/bg_chip_icon_state"
                         app:chipIcon="@drawable/icon_profile_protected"
                         app:chipIconEnabled="true"
-                        app:chipIconTint="@drawable/bg_chip_icon_state"
                         app:textEndPadding="0dp"
                         app:textStartPadding="0dp" />
 
@@ -369,8 +369,7 @@
                     app:textEndPadding="0dp"
                     app:textStartPadding="0dp"
                     android:layout_height="wrap_content"
-                    app:chipBackgroundColor="@drawable/bg_chip_state_list"
-                    app:chipIconTint="@drawable/bg_chip_icon_state" />
+                    app:chipBackgroundColor="@drawable/bg_chip_state_list" />
 
                 <com.google.android.material.chip.Chip
                     android:id="@+id/chip_history"
