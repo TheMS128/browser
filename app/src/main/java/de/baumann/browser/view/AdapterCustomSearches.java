@@ -2,11 +2,12 @@ package de.baumann.browser.view;
 
 import android.app.Dialog;
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
+import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.webkit.WebView;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -24,19 +25,18 @@ import de.baumann.browser.R;
 import de.baumann.browser.database.FaviconHelper;
 import de.baumann.browser.objects.CustomRedirect;
 import de.baumann.browser.objects.CustomSearchesHelper;
+import de.baumann.browser.unit.BrowserUnit;
 import de.baumann.browser.unit.HelperUnit;
 
 public class AdapterCustomSearches extends RecyclerView.Adapter<RedirectsViewHolder> {
     final private ArrayList<CustomRedirect> redirects;
     private final Context context;
-    private final WebView webView;
     private final String url;
 
-    public AdapterCustomSearches(Context context, WebView webView, String url, ArrayList<CustomRedirect> redirects) {
+    public AdapterCustomSearches(Context context, String url, ArrayList<CustomRedirect> redirects) {
         super();
         this.redirects = redirects;
         this.context = context;
-        this.webView = webView;
         this.url = url;
     }
 
@@ -80,7 +80,15 @@ public class AdapterCustomSearches extends RecyclerView.Adapter<RedirectsViewHol
         holder.itemView.setOnClickListener(v -> {
             SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(context);
             sp.edit().putString("sp_search_customSearches", current.getTarget()).apply();
-            webView.loadUrl(url);
+
+            String t = BrowserUnit.queryWrapper(context, url);
+            Intent i = new Intent(Intent.ACTION_VIEW);
+            i.setData(Uri.parse(t));
+            context.startActivity(i);
+            //BrowserUnit.intentURL(context, webpage);
+
+
+            //webView.loadUrl(url);
             sp.edit().putString("sp_search_customSearches", "").apply();
         });
 

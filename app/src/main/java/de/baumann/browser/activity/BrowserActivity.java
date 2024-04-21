@@ -872,7 +872,6 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
 
         Button omnibox_overflow = findViewById(R.id.omnibox_overflow);
         omnibox_overflow.setOnClickListener(v -> showOverflow());
-
         omniBox_overview.setOnTouchListener(new SwipeTouchListener(context) {
             public void onSwipeTop() { performGesture("setting_gesture_tb_up"); }
             public void onSwipeBottom() { performGesture("setting_gesture_tb_down"); }
@@ -2171,8 +2170,7 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
     private void showDialogCustomSearches(String url) {
 
         if (url.length() > 0) {
-            addAlbum(null, "", true, false, "", null);
-
+            ninjaWebView.stopLoading();
             MaterialAlertDialogBuilder builder = new MaterialAlertDialogBuilder(context);
             View dialogView = View.inflate(context, R.layout.custom_redirects_list, null);
             RecyclerView recyclerView = dialogView.findViewById(R.id.redirects_recycler);
@@ -2184,7 +2182,7 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
             } catch (JSONException e) {
                 Log.e("Searches parsing", e.toString());
             }
-            AdapterCustomSearches adapter = new AdapterCustomSearches(context, ninjaWebView, url, redirects);
+            AdapterCustomSearches adapter = new AdapterCustomSearches(context, url, redirects);
             recyclerView.setAdapter(adapter);
 
             builder.setTitle(url);
