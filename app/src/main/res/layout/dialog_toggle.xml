@@ -369,7 +369,8 @@
                     app:textEndPadding="0dp"
                     app:textStartPadding="0dp"
                     android:layout_height="wrap_content"
-                    app:chipBackgroundColor="@drawable/bg_chip_state_list" />
+                    app:chipBackgroundColor="@drawable/bg_chip_state_list"
+                    app:chipIconTint="@drawable/bg_chip_icon_state" />
 
                 <com.google.android.material.chip.Chip
                     android:id="@+id/chip_history"
