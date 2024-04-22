@@ -76,7 +76,6 @@ import androidx.appcompat.widget.PopupMenu;
 import androidx.cardview.widget.CardView;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
-import androidx.core.splashscreen.SplashScreen;
 import androidx.preference.PreferenceManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -225,7 +224,6 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
     @Override
     public void onCreate(Bundle savedInstanceState) {
 
-        SplashScreen.installSplashScreen(this);
         super.onCreate(savedInstanceState);
 
         activity = BrowserActivity.this;
