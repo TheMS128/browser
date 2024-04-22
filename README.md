@@ -1,5 +1,5 @@
 <p align="center">
-<img src="https://codeberg.org/Gaukler_Faun/FOSS_Browser/raw/branch/master/graphics/featuresGrafic.png" alt="Settings Backup" width="600"/>
+<img src="https://codeberg.org/Gaukler_Faun/FOSS_Browser/raw/branch/master/graphics/featuresGraphic.png" alt="Settings Backup" width="600"/>
 </p>
 
 <p align="center">
