@@ -344,7 +344,7 @@ public class NinjaWebView extends WebView implements AlbumController {
                 .putString("profile", "profileChanged").apply();
     }
 
-    public void putProfileBoolean(String string, TextView dialog_titleProfile, Chip chip_profile_trusted,
+    public void putProfileBoolean(String string, Chip chip_profile_trusted,
                                   Chip chip_profile_standard, Chip chip_profile_protected, Chip chip_profile_changed) {
         switch (string) {
             case "_images":
@@ -392,38 +392,32 @@ public class NinjaWebView extends WebView implements AlbumController {
         }
         this.initPreferences("");
 
-        String textTitle;
         switch (Objects.requireNonNull(profile)) {
             case "profileTrusted":
                 chip_profile_trusted.setChecked(true);
                 chip_profile_standard.setChecked(false);
                 chip_profile_protected.setChecked(false);
                 chip_profile_changed.setChecked(false);
-                textTitle = this.context.getString(R.string.setting_title_profiles_trusted);
                 break;
             case "profileStandard":
                 chip_profile_trusted.setChecked(false);
                 chip_profile_standard.setChecked(true);
                 chip_profile_protected.setChecked(false);
                 chip_profile_changed.setChecked(false);
-                textTitle = this.context.getString(R.string.setting_title_profiles_standard);
                 break;
             case "profileProtected":
                 chip_profile_trusted.setChecked(false);
                 chip_profile_standard.setChecked(false);
                 chip_profile_protected.setChecked(true);
                 chip_profile_changed.setChecked(false);
-                textTitle = this.context.getString(R.string.setting_title_profiles_protected);
                 break;
             default:
                 chip_profile_trusted.setChecked(false);
                 chip_profile_standard.setChecked(false);
                 chip_profile_protected.setChecked(false);
                 chip_profile_changed.setChecked(true);
-                textTitle = this.context.getString(R.string.setting_title_profiles_changed);
                 break;
         }
-        dialog_titleProfile.setText(textTitle);
     }
 
     public boolean getBoolean(String string) {

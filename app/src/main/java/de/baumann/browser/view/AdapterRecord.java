@@ -2,7 +2,6 @@ package de.baumann.browser.view;
 
 import android.content.Context;
 import android.graphics.Bitmap;
-import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -97,11 +96,6 @@ public class AdapterRecord extends ArrayAdapter<Record> {
             holder.cardView.setCardBackgroundColor(ResourcesCompat.getColor(context.getResources(), R.color.brown, null));
         } else if (filter == 1) {
             holder.cardView.setCardBackgroundColor(ResourcesCompat.getColor(context.getResources(), R.color.grey, null));
-        } else {
-            TypedValue typedValue = new TypedValue();
-            context.getTheme().resolveAttribute(R.attr.colorSurfaceDim, typedValue, true);
-            int color = typedValue.data;
-            holder.cardView.setCardBackgroundColor(color);
         }
 
         try(FaviconHelper faviconHelper = new FaviconHelper(context)) {

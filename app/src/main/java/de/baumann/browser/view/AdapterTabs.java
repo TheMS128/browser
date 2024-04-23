@@ -82,7 +82,7 @@ class AdapterTabs {
 
     void deactivate() {
         TypedValue typedValue = new TypedValue();
-        context.getTheme().resolveAttribute(R.attr.colorSurfaceDim, typedValue, true);
+        context.getTheme().resolveAttribute(R.attr.colorSurfaceContainerHighest, typedValue, true);
         int color = typedValue.data;
         albumCardView.setCardBackgroundColor(color);
         albumTitle.setTypeface(null, Typeface.NORMAL);

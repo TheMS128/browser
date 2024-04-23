@@ -27,8 +27,7 @@
                 style="@style/Widget.Material3.CardView.Filled"
                 android:id="@+id/header"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:backgroundTint="?attr/colorSurfaceDim"  >
+                android:layout_height="wrap_content"  >
 
                 <RelativeLayout
                     android:layout_width="wrap_content"
@@ -161,59 +160,10 @@
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="5dp"
                     android:layout_marginTop="5dp"
-                    android:layout_marginStart="20dp"
-                    android:layout_marginEnd="20dp"/>
+                    android:layout_marginStart="35dp"
+                    android:layout_marginEnd="35dp"/>
 
             </LinearLayout>
-
-        </RelativeLayout>
-
-        <RelativeLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:paddingStart="15dp"
-            android:paddingEnd="15dp">
-
-            <Button
-                android:id="@+id/button_help"
-                style="@style/Widget.Material3.Button.IconButton"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentEnd="true"
-                android:gravity="center_vertical"
-                app:icon="@drawable/icon_help"/>
-
-            <Button
-                android:id="@+id/ib_settings"
-                style="@style/Widget.Material3.Button.IconButton"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_toStartOf="@id/button_help"
-                android:gravity="center_vertical"
-                app:icon="@drawable/icon_settings"/>
-
-            <Button
-                android:id="@+id/ib_reload"
-                style="@style/Widget.Material3.Button.IconButton"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_toStartOf="@id/ib_settings"
-                android:gravity="center_vertical"
-                app:icon="@drawable/icon_refresh" />
-
-            <TextView
-                android:id="@+id/dialog_titleProfile"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_alignParentStart="true"
-                android:layout_centerInParent="true"
-                android:layout_marginStart="10dp"
-                android:layout_marginEnd="5dp"
-                android:layout_toStartOf="@id/ib_reload"
-                android:ellipsize="end"
-                android:maxLines="1"
-                android:textAppearance="?attr/textAppearanceBodyLarge"
-                android:textStyle="bold" />
 
         </RelativeLayout>
 
@@ -284,8 +234,8 @@
             <com.google.android.material.divider.MaterialDivider
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:dividerInsetStart="56dp"
-                app:dividerInsetEnd="56dp"/>
+                app:dividerInsetStart="50dp"
+                app:dividerInsetEnd="50dp"/>
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -465,12 +415,54 @@
             android:layout_marginEnd="20dp"/>
 
         <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginBottom="5dp">
+
+            <Button
+                android:id="@+id/button_help"
+                style="@style/Widget.Material3.Button.IconButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                app:icon="@drawable/icon_help"/>
+
+            <Button
+                android:id="@+id/ib_reload"
+                style="@style/Widget.Material3.Button.IconButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                app:icon="@drawable/icon_refresh" />
+
+            <Button
+                android:id="@+id/ib_settings"
+                style="@style/Widget.Material3.Button.IconButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                app:icon="@drawable/icon_settings"/>
+
+            <Button
+                android:id="@+id/ib_more"
+                style="@style/Widget.Material3.Button.IconButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                app:icon="@drawable/icon_dots"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/layout_more"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
             android:orientation="horizontal"
-            android:layout_marginTop="5dp"
-            android:layout_marginBottom="10dp">
+            android:layout_marginBottom="10dp"
+            android:visibility="gone">
 
             <com.google.android.material.chip.Chip
                 android:id="@+id/chip_toggleNightView"
