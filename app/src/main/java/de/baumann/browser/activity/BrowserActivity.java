@@ -1821,8 +1821,11 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
             chip_profile_trusted.setChecked(Objects.equals(sp.getString("profile", "profileTrusted"), "profileTrusted"));
             chip_profile_trusted.setOnClickListener(v -> {
                 sp.edit().putString("profile", "profileTrusted").apply();
-                ninjaWebView.reload();
-                dialog.cancel();
+                if (listTrusted.isWhite(url) || listStandard.isWhite(url) || listProtected.isWhite(url)) dialog.cancel();
+                else {
+                    ninjaWebView.reload();
+                    dialog.cancel();
+                }
             });
             chip_profile_trusted.setOnLongClickListener(view -> {
                 Toast.makeText(context, getString(R.string.setting_title_profiles_trusted), Toast.LENGTH_SHORT).show();
@@ -1832,8 +1835,11 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
             chip_profile_standard.setChecked(Objects.equals(sp.getString("profile", "profileTrusted"), "profileStandard"));
             chip_profile_standard.setOnClickListener(v -> {
                 sp.edit().putString("profile", "profileStandard").apply();
-                ninjaWebView.reload();
-                dialog.cancel();
+                if (listTrusted.isWhite(url) || listStandard.isWhite(url) || listProtected.isWhite(url)) dialog.cancel();
+                else {
+                    ninjaWebView.reload();
+                    dialog.cancel();
+                }
             });
             chip_profile_standard.setOnLongClickListener(view -> {
                 Toast.makeText(context, getString(R.string.setting_title_profiles_standard), Toast.LENGTH_SHORT).show();
@@ -1843,8 +1849,11 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
             chip_profile_protected.setChecked(Objects.equals(sp.getString("profile", "profileTrusted"), "profileProtected"));
             chip_profile_protected.setOnClickListener(v -> {
                 sp.edit().putString("profile", "profileProtected").apply();
-                ninjaWebView.reload();
-                dialog.cancel();
+                if (listTrusted.isWhite(url) || listStandard.isWhite(url) || listProtected.isWhite(url)) dialog.cancel();
+                else {
+                    ninjaWebView.reload();
+                    dialog.cancel();
+                }
             });
             chip_profile_protected.setOnLongClickListener(view -> {
                 Toast.makeText(context, getString(R.string.setting_title_profiles_protected), Toast.LENGTH_SHORT).show();
@@ -2025,11 +2034,6 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
                 ninjaWebView.setProfileChanged();
                 ninjaWebView.putProfileBoolean("_dom", chip_profile_trusted, chip_profile_standard, chip_profile_protected, chip_profile_changed);
             });
-
-            if (listTrusted.isWhite(url) || listStandard.isWhite(url) || listProtected.isWhite(url)) {
-                LinearLayout cardView = dialogView.findViewById(R.id.editProfile);
-                cardView.setVisibility(View.GONE);
-            }
 
             Chip chip_toggleNightView = dialogView.findViewById(R.id.chip_toggleNightView);
             int nightModeFlags = getResources().getConfiguration().uiMode & Configuration.UI_MODE_NIGHT_MASK;

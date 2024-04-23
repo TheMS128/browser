@@ -10,6 +10,7 @@
 
     <com.google.android.material.card.MaterialCardView
         style="@style/Widget.Material3.CardView.Filled"
+        android:backgroundTint="?attr/colorSurfaceContainerHighest"
         android:id="@+id/albumCardView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

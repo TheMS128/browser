@@ -25,6 +25,7 @@
 
             <com.google.android.material.card.MaterialCardView
                 style="@style/Widget.Material3.CardView.Filled"
+                android:backgroundTint="?attr/colorSurfaceContainerHighest"
                 android:id="@+id/header"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"  >
@@ -225,7 +226,6 @@
         </LinearLayout>
 
         <LinearLayout
-            android:id="@+id/editProfile"
             android:orientation="vertical"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

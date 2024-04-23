@@ -63,8 +63,6 @@ class AdapterTabs {
             browserController.removeAlbum(albumController);
             if (BrowserContainer.size() < 2) { browserController.hideOverview();}
         });
-
-
     }
 
     public void activate() {
