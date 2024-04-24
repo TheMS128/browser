@@ -452,7 +452,6 @@ public class NinjaWebViewClient extends WebViewClient {
     public boolean shouldOverrideUrlLoading(WebView view, WebResourceRequest request) {
         final Uri uri = request.getUrl();
         String url = uri.toString();
-
         if (url.startsWith("http:") || url.startsWith("https:")) {
             ninjaWebView.loadUrl(url);
         } else  {

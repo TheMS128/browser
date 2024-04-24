@@ -1085,9 +1085,8 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
         TextView overflowURL = dialogView.findViewById(R.id.overflowURL);
         overflowURL.setText(url);
         HelperUnit.setHighLightedText(context, overflowURL, url, HelperUnit.domain(url));
-        overflowURL.setEllipsize(TextUtils.TruncateAt.MARQUEE);
+        overflowURL.setEllipsize(TextUtils.TruncateAt.END);
         overflowURL.setSingleLine(true);
-        overflowURL.setMarqueeRepeatLimit(1);
         overflowURL.setSelected(true);
         textGroup.setOnClickListener(v -> {
             overflowURL.setEllipsize(TextUtils.TruncateAt.MARQUEE);
@@ -1380,9 +1379,8 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
         TextView menuURL = dialogView.findViewById(R.id.menuURL);
         menuURL.setText(url);
         HelperUnit.setHighLightedText(context, menuURL, url, HelperUnit.domain(url));
-        menuURL.setEllipsize(TextUtils.TruncateAt.MARQUEE);
+        menuURL.setEllipsize(TextUtils.TruncateAt.END);
         menuURL.setSingleLine(true);
-        menuURL.setMarqueeRepeatLimit(1);
         menuURL.setSelected(true);
         textGroup.setOnClickListener(v -> {
             menuURL.setEllipsize(TextUtils.TruncateAt.MARQUEE);
@@ -1510,9 +1508,8 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
         TextView menuURL = dialogView.findViewById(R.id.menuURL);
         menuURL.setText(url);
         HelperUnit.setHighLightedText(context, menuURL, url, HelperUnit.domain(url));
-        menuURL.setEllipsize(TextUtils.TruncateAt.MARQUEE);
+        menuURL.setEllipsize(TextUtils.TruncateAt.END);
         menuURL.setSingleLine(true);
-        menuURL.setMarqueeRepeatLimit(1);
         menuURL.setSelected(true);
         textGroup.setOnClickListener(v -> {
             menuURL.setEllipsize(TextUtils.TruncateAt.MARQUEE);
@@ -1746,9 +1743,8 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
             TextView overflowURL = dialogView.findViewById(R.id.overflowURL);
             overflowURL.setText(url);
             HelperUnit.setHighLightedText(context, overflowURL, url, HelperUnit.domain(url));
-            overflowURL.setEllipsize(TextUtils.TruncateAt.MARQUEE);
+            overflowURL.setEllipsize(TextUtils.TruncateAt.END);
             overflowURL.setSingleLine(true);
-            overflowURL.setMarqueeRepeatLimit(1);
             overflowURL.setSelected(true);
             textGroup.setOnClickListener(v -> {
                 overflowURL.setEllipsize(TextUtils.TruncateAt.MARQUEE);
@@ -2725,9 +2721,8 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
             TextView menuURL = dialogView.findViewById(R.id.menuURL);
             menuURL.setText(urlDialog);
             HelperUnit.setHighLightedText(context, menuURL, url, HelperUnit.domain(url));
-            menuURL.setEllipsize(TextUtils.TruncateAt.MARQUEE);
+            menuURL.setEllipsize(TextUtils.TruncateAt.END);
             menuURL.setSingleLine(true);
-            menuURL.setMarqueeRepeatLimit(1);
             menuURL.setSelected(true);
             textGroup.setOnClickListener(v2 -> {
                 menuURL.setEllipsize(TextUtils.TruncateAt.MARQUEE);
@@ -2800,9 +2795,8 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
             TextView menuURL = dialogView.findViewById(R.id.menuURL);
             menuURL.setText(url);
             HelperUnit.setHighLightedText(context, menuURL, url, HelperUnit.domain(url));
-            menuURL.setEllipsize(TextUtils.TruncateAt.MARQUEE);
+            menuURL.setEllipsize(TextUtils.TruncateAt.END);
             menuURL.setSingleLine(true);
-            menuURL.setMarqueeRepeatLimit(1);
             menuURL.setSelected(true);
             textGroup.setOnClickListener(v -> {
                 menuURL.setEllipsize(TextUtils.TruncateAt.MARQUEE);

@@ -19,7 +19,6 @@ import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.os.Build;
-import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.util.TypedValue;
@@ -30,12 +29,11 @@ import android.webkit.WebBackForwardList;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.widget.GridView;
-import android.widget.LinearLayout;
-import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
+import androidx.cardview.widget.CardView;
 import androidx.core.app.ActivityCompat;
 import androidx.core.app.NotificationCompat;
 import androidx.core.content.ContextCompat;
@@ -564,28 +562,17 @@ public class NinjaWebView extends WebView implements AlbumController {
             View dialogView = View.inflate(context, R.layout.dialog_menu, null);
             MaterialAlertDialogBuilder builder = new MaterialAlertDialogBuilder(context);
 
-            LinearLayout textGroup = dialogView.findViewById(R.id.textGroup);
-            TextView menuURL = dialogView.findViewById(R.id.menuURL);
-            menuURL.setText(url);
-            menuURL.setEllipsize(TextUtils.TruncateAt.MARQUEE);
-            menuURL.setSingleLine(true);
-            menuURL.setMarqueeRepeatLimit(1);
-            menuURL.setSelected(true);
-            textGroup.setOnClickListener(v -> {
-                menuURL.setEllipsize(TextUtils.TruncateAt.MARQUEE);
-                menuURL.setSingleLine(true);
-                menuURL.setMarqueeRepeatLimit(1);
-                menuURL.setSelected(true);
-            });
-            TextView menuTitle = dialogView.findViewById(R.id.menuTitle);
-            menuTitle.setText(HelperUnit.domain(url));
-            TextView message = dialogView.findViewById(R.id.message);
-            message.setVisibility(View.VISIBLE);
-            message.setText(R.string.toast_unsecured);
-            FaviconHelper.setFavicon(context, dialogView, null, R.id.menu_icon, R.drawable.icon_alert);
+            CardView albumCardView = dialogView.findViewById(R.id.albumCardView);
+            albumCardView.setVisibility(GONE);
+
+            builder.setTitle(HelperUnit.domain(url));
+            builder.setIcon(R.drawable.icon_alert);
+            builder.setMessage(R.string.toast_unsecured);
             builder.setPositiveButton(R.string.dialog_neverAsk, (dialog2, whichButton) -> {
                 sp.edit().putString("dialog_neverAsk", "yes").apply();
-                loadUrl(url);
+                sp.edit().putString("urlToLoad", url).apply();
+                initPreferences(BrowserUnit.queryWrapper(context, url));
+                super.loadUrl(BrowserUnit.queryWrapper(context, url), getRequestHeaders());
             });
             builder.setView(dialogView);
 

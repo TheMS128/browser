@@ -1,10 +1,14 @@
 package de.baumann.browser.browser;
 
+import static android.content.ContentValues.TAG;
+
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.net.Uri;
+import android.util.Log;
 import android.view.View;
 import android.webkit.ConsoleMessage;
 import android.webkit.GeolocationPermissions;
@@ -68,7 +72,15 @@ public class NinjaWebChromeClient extends WebChromeClient {
         newWebView.setWebViewClient(new WebViewClient() {
             @Override
             public boolean shouldOverrideUrlLoading(WebView view, WebResourceRequest request) {
-                BrowserUnit.intentURL(context, request.getUrl());
+                //newWebView.loadUrl(request.getUrl().toString());
+                try {
+                    BrowserUnit.intentURL(context, request.getUrl());
+                } catch (Exception e) {
+                    Log.i(TAG, "shouldOverrideUrlLoading Exception:" + e);
+                    Intent intent = new Intent(Intent.ACTION_VIEW);
+                    intent.setData(Uri.parse(request.getUrl().toString()));
+                    context.startActivity(Intent.createChooser(intent, request.getUrl().toString()));
+                }
                 return true;
             }
         });
