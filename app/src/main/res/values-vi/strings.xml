@@ -96,7 +96,6 @@
     <string name="setting_title_profiles_trusted">Đã tin cậy</string>
     <string name="setting_title_profiles_standard">Tiêu chuẩn</string>
     <string name="setting_title_profiles_protected">Được bảo vệ</string>
-    <string name="setting_title_profiles_changed">Tuỳ chỉnh</string>
     <string name="setting_title_profiles_dataUsage">Sử dụng dữ liệu</string>
     <string name="setting_title_profiles_privacy">Riêng tư</string>
     <string name="setting_title_profiles_Security">Bảo mật</string>

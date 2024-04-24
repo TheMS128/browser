@@ -95,7 +95,6 @@
     <string name="setting_title_profiles_trusted">Terpercaya</string>
     <string name="setting_title_profiles_standard">Standar</string>
     <string name="setting_title_profiles_protected">Terlindungi</string>
-    <string name="setting_title_profiles_changed">Kustom</string>
     <string name="setting_title_profiles_dataUsage">Penggunaan data</string>
     <string name="setting_title_profiles_privacy">Privasi</string>
     <string name="setting_title_profiles_Security">Keamanan</string>

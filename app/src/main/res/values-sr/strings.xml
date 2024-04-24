@@ -97,7 +97,6 @@
     <string name="setting_title_profiles_trusted">Поуздани</string>
     <string name="setting_title_profiles_standard">Стандардни</string>
     <string name="setting_title_profiles_protected">Заштићени</string>
-    <string name="setting_title_profiles_changed">Прилагођено</string>
     <string name="setting_title_profiles_dataUsage">Потрошња података</string>
     <string name="setting_title_profiles_privacy">Приватност</string>
     <string name="setting_title_profiles_Security">Безбедност</string>

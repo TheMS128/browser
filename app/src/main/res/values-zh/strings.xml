@@ -97,7 +97,6 @@
     <string name="setting_title_profiles_trusted">受信任</string>
     <string name="setting_title_profiles_standard">标准</string>
     <string name="setting_title_profiles_protected">受保护</string>
-    <string name="setting_title_profiles_changed">自定义</string>
     <string name="setting_title_profiles_dataUsage">数据使用量</string>
     <string name="setting_title_profiles_privacy">隐私</string>
     <string name="setting_title_profiles_Security">安全性</string>

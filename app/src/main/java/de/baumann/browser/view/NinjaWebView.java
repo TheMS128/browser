@@ -236,8 +236,7 @@ public class NinjaWebView extends WebView implements AlbumController {
         profile = profileOriginal;
     }
 
-    public void setProfileIcon(FloatingActionButton omniBox_tab) {
-        String url = this.getUrl();
+    public void setProfileIcon(FloatingActionButton omniBox_tab, String url) {
         String profile = sp.getString("profile", "profileStandard");
         assert url != null;
         switch (profile) {

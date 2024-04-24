@@ -96,7 +96,6 @@
     <string name="setting_title_profiles_trusted">Megbízható</string>
     <string name="setting_title_profiles_standard">Általános</string>
     <string name="setting_title_profiles_protected">Védett</string>
-    <string name="setting_title_profiles_changed">Egyéni</string>
     <string name="setting_title_profiles_dataUsage">Adathasználat</string>
     <string name="setting_title_profiles_privacy">Adatvédelem</string>
     <string name="setting_title_profiles_Security">Biztonság</string>

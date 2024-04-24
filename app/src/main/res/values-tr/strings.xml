@@ -97,7 +97,6 @@
     <string name="setting_title_profiles_trusted">Güvenilir</string>
     <string name="setting_title_profiles_standard">Standart</string>
     <string name="setting_title_profiles_protected">Korunulan</string>
-    <string name="setting_title_profiles_changed">Özel</string>
     <string name="setting_title_profiles_dataUsage">Veri kullanımı</string>
     <string name="setting_title_profiles_privacy">Gizlilik</string>
     <string name="setting_title_profiles_Security">Güvenlik</string>

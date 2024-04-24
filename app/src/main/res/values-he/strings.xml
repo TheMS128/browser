@@ -96,7 +96,6 @@
     <string name="setting_title_profiles_trusted">מהימן</string>
     <string name="setting_title_profiles_standard">תקן</string>
     <string name="setting_title_profiles_protected">מוגן</string>
-    <string name="setting_title_profiles_changed">המותאם אישית</string>
     <string name="setting_title_profiles_dataUsage">שימוש בנתונים</string>
     <string name="setting_title_profiles_privacy">פרטיות</string>
     <string name="setting_title_profiles_Security">ביטחון</string>

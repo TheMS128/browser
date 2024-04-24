@@ -56,7 +56,7 @@
                 android:layout_marginTop="10dp"
                 android:layout_marginStart="15dp"
                 android:layout_marginEnd="10dp"
-                android:layout_alignParentEnd="true"
+                android:layout_toStartOf="@+id/buttonProfile"
                 android:layout_toEndOf="@id/cardView">
 
                 <TextView
@@ -81,6 +81,19 @@
                     android:textColor="?attr/colorOutline"/>
 
             </LinearLayout>
+
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/buttonProfile"
+                style="@style/Widget.Material3.Button.IconButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:layout_marginEnd="3dp"
+                app:icon="@drawable/icon_profile_standard"
+                app:fabCustomSize="40dp"
+                app:elevation="0dp"
+                android:backgroundTint="?attr/colorSurfaceDim"
+                android:layout_alignParentEnd="true" />
 
         </RelativeLayout>
 

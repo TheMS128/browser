@@ -97,7 +97,6 @@
     <string name="setting_title_profiles_trusted">De încredere</string>
     <string name="setting_title_profiles_standard">Standard</string>
     <string name="setting_title_profiles_protected">Protejat</string>
-    <string name="setting_title_profiles_changed">Personalizat</string>
     <string name="setting_title_profiles_dataUsage">Utilizarea datelor</string>
     <string name="setting_title_profiles_privacy">Confidențialitate</string>
     <string name="setting_title_profiles_Security">Securitate</string>

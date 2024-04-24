@@ -964,7 +964,7 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
 
         if (url != null) {
             progressBar.setVisibility(View.GONE);
-            ninjaWebView.setProfileIcon(omniBox_tab);
+            ninjaWebView.setProfileIcon(omniBox_tab, url);
             if (Objects.requireNonNull(ninjaWebView.getTitle()).isEmpty())
                 omniBox_text.setText(url);
             else omniBox_text.setText(ninjaWebView.getTitle());
@@ -1100,6 +1100,11 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
 
         builder.setView(dialogView);
         AlertDialog dialog_overflow = builder.create();
+
+        FloatingActionButton buttonProfile = dialogView.findViewById(R.id.buttonProfile);
+        ninjaWebView.setProfileIcon(buttonProfile, url);
+        buttonProfile.setOnClickListener(v -> addAlbum(title, url, true, true, "", dialog_overflow));
+
         dialog_overflow.show();
         HelperUnit.setupDialog(context, dialog_overflow);
         FaviconHelper.setFavicon(context, dialogView, url, R.id.menu_icon, R.drawable.icon_image_broken);
@@ -1116,33 +1121,30 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
 
         // Tab
 
-        GridItem item_01 = new GridItem( getString(R.string.menu_openFav), R.drawable.icon_fav);
-        GridItem item_02 = new GridItem( getString(R.string.main_menu_new_tabOpen), R.drawable.icon_tab_plus);
-        GridItem item_03 = new GridItem( getString(R.string.main_menu_new_tabProfile), R.drawable.icon_profile_trusted);
-        GridItem item_04 = new GridItem( getString(R.string.menu_reload), R.drawable.icon_refresh);
-        GridItem item_05 = new GridItem( getString(R.string.menu_closeTab), R.drawable.icon_tab_remove);
-        GridItem item_06 = new GridItem( getString(R.string.menu_quit), R.drawable.icon_close);
+        GridItem openFav = new GridItem( getString(R.string.menu_openFav), R.drawable.icon_fav);
+        GridItem openTab = new GridItem( getString(R.string.main_menu_new_tabOpen), R.drawable.icon_tab_plus);
+        GridItem reload = new GridItem( getString(R.string.menu_reload), R.drawable.icon_refresh);
+        GridItem close = new GridItem( getString(R.string.menu_closeTab), R.drawable.icon_tab_remove);
+        GridItem exit = new GridItem( getString(R.string.menu_quit), R.drawable.icon_close);
 
         final List<GridItem> gridList_tab = new LinkedList<>();
 
-        gridList_tab.add(gridList_tab.size(), item_01);
-        gridList_tab.add(gridList_tab.size(), item_02);
-        gridList_tab.add(gridList_tab.size(), item_05);
-        gridList_tab.add(gridList_tab.size(), item_03);
-        gridList_tab.add(gridList_tab.size(), item_04);
-        gridList_tab.add(gridList_tab.size(), item_06);
+        gridList_tab.add(gridList_tab.size(), openFav);
+        gridList_tab.add(gridList_tab.size(), openTab);
+        gridList_tab.add(gridList_tab.size(), close);
+        gridList_tab.add(gridList_tab.size(), reload);
+        gridList_tab.add(gridList_tab.size(), exit);
 
         GridAdapter gridAdapter_tab = new GridAdapter(context, gridList_tab);
         menu_grid_tab.setAdapter(gridAdapter_tab);
         gridAdapter_tab.notifyDataSetChanged();
 
         menu_grid_tab.setOnItemLongClickListener((arg0, arg1, position, arg3) -> {
-            if (position == 0) NinjaToast.show(context, item_01.getTitle());
-            else if (position == 1) NinjaToast.show(context, item_02.getTitle());
-            else if (position == 2) NinjaToast.show(context, item_05.getTitle());
-            else if (position == 3) NinjaToast.show(context, item_03.getTitle());
-            else if (position == 4) NinjaToast.show(context, item_04.getTitle());
-            else if (position == 5) NinjaToast.show(context, item_06.getTitle());
+            if (position == 0) NinjaToast.show(context, openFav.getTitle());
+            else if (position == 1) NinjaToast.show(context, openTab.getTitle());
+            else if (position == 2) NinjaToast.show(context, close.getTitle());
+            else if (position == 3) NinjaToast.show(context, reload.getTitle());
+            else if (position == 4) NinjaToast.show(context, exit.getTitle());
             return true;
         });
 
@@ -1154,102 +1156,97 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
             }  else if (position == 1) {
                 addAlbum(getString(R.string.app_name), favURL, true, false, "", dialog_overflow);
                 dialog_overflow.cancel();
-            } else if (position == 3) {
-                addAlbum(HelperUnit.domain(favURL), favURL, true, true, "", dialog_overflow);
-            } else if (position == 4) {
-                ninjaWebView.reload();
-                dialog_overflow.cancel();
             } else if (position == 2) {
                 removeAlbum(currentAlbumController);
                 dialog_overflow.cancel();
-            } else if (position == 5) {
+            } else if (position == 3) {
+                ninjaWebView.reload();
+                dialog_overflow.cancel();
+            } else if (position == 4) {
                 doubleTapsQuit();
                 dialog_overflow.cancel();
             } });
 
         // Save
-        GridItem item_21 = new GridItem( getString(R.string.menu_fav), R.drawable.icon_fav);
-        GridItem item_22 = new GridItem( getString(R.string.menu_save_home), R.drawable.icon_web);
-        GridItem item_23 = new GridItem( getString(R.string.menu_save_bookmark), R.drawable.icon_bookmark);
-        GridItem item_24 = new GridItem( getString(R.string.menu_save_pdf), R.drawable.icon_file);
-        GridItem item_25 = new GridItem( getString(R.string.menu_sc), R.drawable.icon_home);
-        GridItem item_26 = new GridItem( getString(R.string.menu_save_as), R.drawable.icon_menu_save);
+        GridItem saveHome = new GridItem( getString(R.string.menu_save_home), R.drawable.icon_web);
+        GridItem saveBookmark = new GridItem( getString(R.string.menu_save_bookmark), R.drawable.icon_bookmark);
+        GridItem savePDF = new GridItem( getString(R.string.menu_save_pdf), R.drawable.icon_file);
+        GridItem saveAs = new GridItem( getString(R.string.menu_save_as), R.drawable.icon_menu_save);
+        GridItem saveFav = new GridItem( getString(R.string.menu_fav), R.drawable.icon_fav);
 
         final List<GridItem> gridList_save = new LinkedList<>();
-        gridList_save.add(gridList_save.size(), item_21);
-        gridList_save.add(gridList_save.size(), item_22);
-        gridList_save.add(gridList_save.size(), item_23);
-        gridList_save.add(gridList_save.size(), item_24);
-        gridList_save.add(gridList_save.size(), item_25);
-        gridList_save.add(gridList_save.size(), item_26);
+        gridList_save.add(gridList_save.size(), saveHome);
+        gridList_save.add(gridList_save.size(), saveBookmark);
+        gridList_save.add(gridList_save.size(), savePDF);
+        gridList_save.add(gridList_save.size(), saveAs);
+        gridList_save.add(gridList_save.size(), saveFav);
 
         GridAdapter gridAdapter_save = new GridAdapter(context, gridList_save);
         menu_grid_save.setAdapter(gridAdapter_save);
         gridAdapter_save.notifyDataSetChanged();
 
         menu_grid_save.setOnItemLongClickListener((arg0, arg1, position, arg3) -> {
-            if (position == 0) NinjaToast.show(context, item_21.getTitle());
-            else if (position == 1) NinjaToast.show(context, item_22.getTitle());
-            else if (position == 2) NinjaToast.show(context, item_23.getTitle());
-            else if (position == 3) NinjaToast.show(context, item_24.getTitle());
-            else if (position == 4) NinjaToast.show(context, item_25.getTitle());
-            else if (position == 5) NinjaToast.show(context, item_26.getTitle());
+            if (position == 0) NinjaToast.show(context, saveHome.getTitle());
+            else if (position == 1) NinjaToast.show(context, saveBookmark.getTitle());
+            else if (position == 2) NinjaToast.show(context, saveBookmark.getTitle());
+            else if (position == 3) NinjaToast.show(context, savePDF.getTitle());
+            else if (position == 4) NinjaToast.show(context, saveAs.getTitle());
             return true;
         });
 
         menu_grid_save.setOnItemClickListener((parent, view13, position, id) -> {
             RecordAction action = new RecordAction(context);
             if (position == 0) {
-                sp.edit().putString("favoriteURL", url).apply();
-                NinjaToast.show(this, R.string.app_done);
-                dialog_overflow.cancel();
-            }
-            else if (position == 1) {
                 save_atHome(title, url);
                 dialog_overflow.cancel();
             }
-            else if (position == 2) {
+            else if (position == 1) {
                 saveBookmark();
                 action.close();
                 dialog_overflow.cancel();
             }
-            else if (position == 3) {
+            else if (position == 2) {
                 printPDF();
-                dialog_overflow.cancel();
             }
-            else if (position == 4) {
-                HelperUnit.createShortcut(context, ninjaWebView.getTitle(), ninjaWebView.getOriginalUrl());
-                dialog_overflow.cancel();
-            }
-            else if (position == 5) {
+            else if (position == 3) {
                 assert url != null;
                 if (url.startsWith("data:")) {
                     DataURIParser dataURIParser = new DataURIParser(url);
                     HelperUnit.saveDataURI(activity, dataURIParser, dialog_overflow);
                 } else HelperUnit.saveAs(activity, url, null, dialog_overflow, ninjaWebView);
+                dialog_overflow.cancel();
+            }
+            else if (position == 4) {
+                sp.edit().putString("favoriteURL", url).apply();
+                NinjaToast.show(this, R.string.app_done);
+                dialog_overflow.cancel();
             }
         });
 
         // Share
-        GridItem item_11 = new GridItem( getString(R.string.menu_share_link), R.drawable.icon_link);
-        GridItem item_12 = new GridItem( getString(R.string.dialog_postOnWebsite), R.drawable.icon_post);
-        GridItem item_13 = new GridItem( getString(R.string.menu_shareClipboard), R.drawable.icon_clipboard);
-        GridItem item_14 = new GridItem( getString(R.string.menu_shareOpenWith), R.drawable.icon_share_open_with);
+        GridItem shareLink = new GridItem( getString(R.string.menu_share_link), R.drawable.icon_link);
+        GridItem post = new GridItem( getString(R.string.dialog_postOnWebsite), R.drawable.icon_post);
+        GridItem shareClipboard = new GridItem( getString(R.string.menu_shareClipboard), R.drawable.icon_clipboard);
+        GridItem openWith = new GridItem( getString(R.string.menu_shareOpenWith), R.drawable.icon_share_open_with);
+        GridItem shortcut = new GridItem( getString(R.string.menu_sc), R.drawable.icon_home);
 
         final List<GridItem> gridList_share = new LinkedList<>();
-        gridList_share.add(gridList_share.size(), item_11);
-        gridList_share.add(gridList_share.size(), item_12);
-        gridList_share.add(gridList_share.size(), item_13);
-        gridList_share.add(gridList_share.size(), item_14);
+        gridList_share.add(gridList_share.size(), shareLink);
+        gridList_share.add(gridList_share.size(), shareClipboard);
+        gridList_share.add(gridList_share.size(), openWith);
+        gridList_share.add(gridList_share.size(), post);
+        gridList_share.add(gridList_share.size(), shortcut);
 
         GridAdapter gridAdapter_share = new GridAdapter(context, gridList_share);
         menu_grid_share.setAdapter(gridAdapter_share);
         gridAdapter_share.notifyDataSetChanged();
 
         menu_grid_share.setOnItemLongClickListener((arg0, arg1, position, arg3) -> {
-            if (position == 0) NinjaToast.show(context, item_11.getTitle());
-            else if (position == 1) NinjaToast.show(context, item_12.getTitle());
-            else if (position == 2) NinjaToast.show(context, item_13.getTitle());
+            if (position == 0) NinjaToast.show(context, shareLink.getTitle());
+            else if (position == 1) NinjaToast.show(context, shareClipboard.getTitle());
+            else if (position == 2) NinjaToast.show(context, openWith.getTitle());
+            else if (position == 3) NinjaToast.show(context, post.getTitle());
+            else if (position == 4) NinjaToast.show(context, shortcut.getTitle());
             return true;
         });
 
@@ -1258,41 +1255,45 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
             if (position == 0) {
                 shareLink(title, url);
             } else if (position == 1) {
-                String text = title + ": " + url;
-                postLink(text, dialog_overflow);
-            } else if (position == 2) {
                 copyLink(url);
-            } else if (position == 3) {
+            } else if (position == 2) {
                 Intent intent = new Intent(Intent.ACTION_VIEW);
                 intent.setData(Uri.parse(url));
                 context.startActivity(Intent.createChooser(intent, null));
+            } else if (position == 3) {
+                String text = title + ": " + url;
+                postLink(text, dialog_overflow);
+            }
+            else if (position == 4) {
+                HelperUnit.createShortcut(context, ninjaWebView.getTitle(), ninjaWebView.getOriginalUrl());
+                dialog_overflow.cancel();
             }
         });
 
         // Other
-        GridItem item_31 = new GridItem( getString(R.string.menu_other_searchSite), R.drawable.icon_search_site);
-        GridItem item_32 = new GridItem( getString(R.string.menu_download), R.drawable.icon_download);
-        GridItem item_33 = new GridItem( getString(R.string.setting_label), R.drawable.icon_settings);
-        GridItem item_36 = new GridItem( getString(R.string.menu_restart), R.drawable.icon_refresh);
-        GridItem item_34 = new GridItem( getString((R.string.app_help)), R.drawable.icon_help);
+        GridItem searchSite = new GridItem( getString(R.string.menu_other_searchSite), R.drawable.icon_search_site);
+        GridItem openDownload = new GridItem( getString(R.string.menu_download), R.drawable.icon_download);
+        GridItem openSettings = new GridItem( getString(R.string.setting_label), R.drawable.icon_settings);
+        GridItem restartAndReload = new GridItem( getString(R.string.menu_restart), R.drawable.icon_refresh);
+        GridItem help = new GridItem( getString((R.string.app_help)), R.drawable.icon_help);
 
         final List<GridItem> gridList_other = new LinkedList<>();
-        gridList_other.add(gridList_other.size(), item_31);
-        gridList_other.add(gridList_other.size(), item_34);
-        gridList_other.add(gridList_other.size(), item_32);
-        gridList_other.add(gridList_other.size(), item_33);
-        gridList_other.add(gridList_other.size(), item_36);
+        gridList_other.add(gridList_other.size(), searchSite);
+        gridList_other.add(gridList_other.size(), openDownload);
+        gridList_other.add(gridList_other.size(), openSettings);
+        gridList_other.add(gridList_other.size(), restartAndReload);
+        gridList_other.add(gridList_other.size(), help);
 
         GridAdapter gridAdapter_other = new GridAdapter(context, gridList_other);
         menu_grid_other.setAdapter(gridAdapter_other);
         gridAdapter_other.notifyDataSetChanged();
 
         menu_grid_other.setOnItemLongClickListener((arg0, arg1, position, arg3) -> {
-            if (position == 0) NinjaToast.show(context, item_31.getTitle());
-            else if (position == 1) NinjaToast.show(context, item_34.getTitle());
-            else if (position == 2) NinjaToast.show(context, item_32.getTitle());
-            else if (position == 3) NinjaToast.show(context, item_33.getTitle());
-            else if (position == 4) NinjaToast.show(context, item_36.getTitle());
+            if (position == 0) NinjaToast.show(context, searchSite.getTitle());
+            else if (position == 1) NinjaToast.show(context, openDownload.getTitle());
+            else if (position == 2) NinjaToast.show(context, openSettings.getTitle());
+            else if (position == 3) NinjaToast.show(context, restartAndReload.getTitle());
+            else if (position == 4) NinjaToast.show(context, help.getTitle());
             return true;
         });
 
@@ -1301,19 +1302,20 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
                 searchOnSite();
                 dialog_overflow.cancel();
             } else if (position == 1) {
-                Uri webpage = Uri.parse("https://codeberg.org/Gaukler_Faun/FOSS_Browser/wiki");
-                BrowserUnit.intentURL(this, webpage);
-                dialog_overflow.cancel();
-            } else if (position == 2) {
                 startActivity(Intent.createChooser(new Intent(DownloadManager.ACTION_VIEW_DOWNLOADS), null));
                 dialog_overflow.cancel();
-            } else if (position == 3) {
+            } else if (position == 2) {
                 Intent settings = new Intent(BrowserActivity.this, Settings_Activity.class);
                 startActivity(settings);
                 dialog_overflow.cancel();
-            } else if (position == 4) {
+            } else if (position == 3) {
                 saveOpenedTabs();
-                HelperUnit.triggerRebirth(context);}
+                HelperUnit.triggerRebirth(context);
+            } else if (position == 4) {
+                Uri webpage = Uri.parse("https://codeberg.org/Gaukler_Faun/FOSS_Browser/wiki");
+                BrowserUnit.intentURL(this, webpage);
+                dialog_overflow.cancel();
+            }
         });
 
         TabLayout tabLayout = dialogView.findViewById(R.id.tabLayout);
@@ -1373,6 +1375,7 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
         if (title.isEmpty()) {
             title = HelperUnit.domain(url);
         }
+        String finalTitle = title;
         LinearLayout textGroup = dialogView.findViewById(R.id.textGroup);
         TextView menuURL = dialogView.findViewById(R.id.menuURL);
         menuURL.setText(url);
@@ -1388,7 +1391,7 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
             menuURL.setSelected(true);
         });
         TextView menuTitle = dialogView.findViewById(R.id.menuTitle);
-        menuTitle.setText(title);
+        menuTitle.setText(finalTitle);
         ImageView menu_icon = dialogView.findViewById(R.id.menu_icon);
 
         if (type == SRC_ANCHOR_TYPE) {
@@ -1403,39 +1406,41 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
 
         builder.setView(dialogView);
         AlertDialog dialog = builder.create();
+
+        FloatingActionButton buttonProfile = dialogView.findViewById(R.id.buttonProfile);
+        ninjaWebView.setProfileIcon(buttonProfile, url);
+        buttonProfile.setOnClickListener(v -> addAlbum(finalTitle, url, true, true, "", dialog));
+
         dialog.show();
         HelperUnit.setupDialog(context, dialog);
 
-        GridItem item_01 = new GridItem( getString(R.string.main_menu_new_tabOpen), R.drawable.icon_tab_plus);
-        GridItem item_02 = new GridItem( getString(R.string.main_menu_new_tab), R.drawable.icon_tab_background);
-        GridItem item_03 = new GridItem( getString(R.string.main_menu_new_tabProfile), R.drawable.icon_profile_trusted);
-        GridItem item_04 = new GridItem( getString(R.string.menu_share_link), R.drawable.icon_link);
-        GridItem item_05 = new GridItem( getString(R.string.menu_shareClipboard), R.drawable.icon_clipboard);
-        GridItem item_06 = new GridItem( getString(R.string.menu_save_as), R.drawable.icon_menu_save);
-        GridItem item_07 = new GridItem( getString(R.string.menu_save_home), R.drawable.icon_web);
-        GridItem item_08 = new GridItem( getString(R.string.menu_delete), R.drawable.icon_delete);
-        GridItem item_09 = new GridItem( getString(R.string.menu_shareOpenWith), R.drawable.icon_share_open_with);
+        GridItem tabOpen = new GridItem( getString(R.string.main_menu_new_tabOpen), R.drawable.icon_tab_plus);
+        GridItem tabOpenBack = new GridItem( getString(R.string.main_menu_new_tab), R.drawable.icon_tab_background);
+        GridItem shareLink = new GridItem( getString(R.string.menu_share_link), R.drawable.icon_link);
+        GridItem shareClipboard = new GridItem( getString(R.string.menu_shareClipboard), R.drawable.icon_clipboard);
+        GridItem saveAs = new GridItem( getString(R.string.menu_save_as), R.drawable.icon_menu_save);
+        GridItem saveHome = new GridItem( getString(R.string.menu_save_home), R.drawable.icon_web);
+        GridItem openWith = new GridItem( getString(R.string.menu_shareOpenWith), R.drawable.icon_share_open_with);
+        GridItem delete = new GridItem( getString(R.string.menu_delete), R.drawable.icon_delete);
 
         final List<GridItem> gridList = new LinkedList<>();
 
-        gridList.add(gridList.size(), item_01);
-        gridList.add(gridList.size(), item_02);
-        gridList.add(gridList.size(), item_03);
-        gridList.add(gridList.size(), item_09);
-        gridList.add(gridList.size(), item_04);
-        gridList.add(gridList.size(), item_05);
-        gridList.add(gridList.size(), item_06);
-        gridList.add(gridList.size(), item_07);
+        gridList.add(gridList.size(), tabOpen);
+        gridList.add(gridList.size(), tabOpenBack);
+        gridList.add(gridList.size(), openWith);
+        gridList.add(gridList.size(), shareLink);
+        gridList.add(gridList.size(), shareClipboard);
+        gridList.add(gridList.size(), saveAs);
+        gridList.add(gridList.size(), saveHome);
 
         if (showAll) {
-            gridList.add(gridList.size(), item_08);
+            gridList.add(gridList.size(), delete);
         }
 
         GridView menu_grid = dialogView.findViewById(R.id.menu_grid);
         GridAdapter gridAdapter = new GridAdapter(context, gridList);
         menu_grid.setAdapter(gridAdapter);
         gridAdapter.notifyDataSetChanged();
-        String finalTitle = title;
         menu_grid.setOnItemClickListener((parent, view, position, id) -> {
             switch (position) {
                 case 0:
@@ -1447,30 +1452,27 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
                     dialog.cancel();
                     break;
                 case 2:
-                    addAlbum(finalTitle, url, true, true, "", dialog);
-                    break;
-                case 3:
                     Intent intent = new Intent(Intent.ACTION_VIEW);
                     intent.setData(Uri.parse(url));
                     context.startActivity(Intent.createChooser(intent, null));
                     dialog.cancel();
                     break;
-                case 4:
+                case 3:
                     shareLink(HelperUnit.domain(url), url);
                     dialog.cancel();
                     break;
-                case 5:
+                case 4:
                     copyLink(url);
                     dialog.cancel();
                     break;
-                case 6:
+                case 5:
                     HelperUnit.saveAs(activity,  url, null, dialog, ninjaWebView);
                     break;
-                case 7:
+                case 6:
                     save_atHome(finalTitle, url);
                     dialog.cancel();
                     break;
-                case 8:
+                case 7:
                     MaterialAlertDialogBuilder builderSubMenu = new MaterialAlertDialogBuilder(context);
                     builderSubMenu.setTitle(R.string.menu_delete);
                     builderSubMenu.setMessage(R.string.hint_database);
@@ -1524,31 +1526,33 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
         FaviconHelper.setFavicon(context, dialogView, url, R.id.menu_icon, R.drawable.icon_image_broken);
         builder.setView(dialogView);
         AlertDialog dialog = builder.create();
+
+        FloatingActionButton buttonProfile = dialogView.findViewById(R.id.buttonProfile);
+        ninjaWebView.setProfileIcon(buttonProfile, url);
+        buttonProfile.setOnClickListener(v -> addAlbum(title, url, true, true, "", dialog));
+
         dialog.show();
         HelperUnit.setupDialog(context, dialog);
 
-        GridItem item_01 = new GridItem( getString(R.string.main_menu_new_tabOpen), R.drawable.icon_tab_plus);
-        GridItem item_02 = new GridItem( getString(R.string.main_menu_new_tab), R.drawable.icon_tab_background);
-        GridItem item_03 = new GridItem( getString(R.string.main_menu_new_tabProfile), R.drawable.icon_profile_trusted);
-        GridItem item_04 = new GridItem( getString(R.string.menu_share_link), R.drawable.icon_link);
-        GridItem item_05 = new GridItem( getString(R.string.menu_delete), R.drawable.icon_delete);
-        GridItem item_06 = new GridItem( getString(R.string.menu_edit), R.drawable.icon_edit);
+        GridItem tabOpen = new GridItem( getString(R.string.main_menu_new_tabOpen), R.drawable.icon_tab_plus);
+        GridItem tabOpenBack = new GridItem( getString(R.string.main_menu_new_tab), R.drawable.icon_tab_background);
+        GridItem shareLink = new GridItem( getString(R.string.menu_share_link), R.drawable.icon_link);
+        GridItem delete = new GridItem( getString(R.string.menu_delete), R.drawable.icon_delete);
+        GridItem edit = new GridItem( getString(R.string.menu_edit), R.drawable.icon_edit);
 
         final List<GridItem> gridList = new LinkedList<>();
 
         if (overViewTab.equals(getString(R.string.album_title_bookmarks)) || overViewTab.equals(getString(R.string.album_title_home))) {
-            gridList.add(gridList.size(), item_01);
-            gridList.add(gridList.size(), item_02);
-            gridList.add(gridList.size(), item_03);
-            gridList.add(gridList.size(), item_04);
-            gridList.add(gridList.size(), item_05);
-            gridList.add(gridList.size(), item_06); }
+            gridList.add(gridList.size(), tabOpen);
+            gridList.add(gridList.size(), tabOpenBack);
+            gridList.add(gridList.size(), shareLink);
+            gridList.add(gridList.size(), delete);
+            gridList.add(gridList.size(), edit); }
         else {
-            gridList.add(gridList.size(), item_01);
-            gridList.add(gridList.size(), item_02);
-            gridList.add(gridList.size(), item_03);
-            gridList.add(gridList.size(), item_04);
-            gridList.add(gridList.size(), item_05); }
+            gridList.add(gridList.size(), tabOpen);
+            gridList.add(gridList.size(), tabOpenBack);
+            gridList.add(gridList.size(), shareLink);
+            gridList.add(gridList.size(), delete); }
 
         GridView menu_grid = dialogView.findViewById(R.id.menu_grid);
         GridAdapter gridAdapter = new GridAdapter(context, gridList);
@@ -1568,13 +1572,10 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
                     dialog.cancel();
                     break;
                 case 2:
-                    addAlbum(title, url, true, true, "", dialog);
-                    break;
-                case 3:
                     shareLink(title, url);
                     dialog.cancel();
                     break;
-                case 4:
+                case 3:
                     builderSubMenu = new MaterialAlertDialogBuilder(context);
                     builderSubMenu.setTitle(R.string.menu_delete);
                     builderSubMenu.setIcon(R.drawable.icon_delete);
@@ -1597,7 +1598,7 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
                     dialogSubMenu.show();
                     HelperUnit.setupDialog(context, dialogSubMenu);
                     break;
-                case 5:
+                case 4:
                     builderSubMenu = new MaterialAlertDialogBuilder(context);
 
                     View dialogViewSubMenu = View.inflate(context, R.layout.dialog_edit, null);
@@ -1723,7 +1724,7 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
             albumProfile.setVisibility(View.GONE);
 
             FloatingActionButton buttonProfile = dialogView.findViewById(R.id.buttonProfile);
-            ninjaWebView.setProfileIcon(buttonProfile);
+            ninjaWebView.setProfileIcon(buttonProfile, url);
             buttonProfile.setOnClickListener(v -> {
                 if (albumProfile.getVisibility() == View.VISIBLE) {
                     albumProfile.setVisibility(View.GONE);
@@ -1867,7 +1868,7 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
                 dialog.cancel();
             });
             chip_profile_changed.setOnLongClickListener(view -> {
-                Toast.makeText(context, getString(R.string.setting_title_profiles_changed), Toast.LENGTH_SHORT).show();
+                Toast.makeText(context, getString(R.string.setting_title_profiles_without), Toast.LENGTH_SHORT).show();
                 return true;
             });
             // CheckBox
@@ -2783,11 +2784,15 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
             GridItem item_01 = new GridItem(getString(R.string.setting_title_profiles_trusted), R.drawable.icon_profile_trusted);
             GridItem item_02 = new GridItem(getString(R.string.setting_title_profiles_standard), R.drawable.icon_profile_standard);
             GridItem item_03 = new GridItem(getString(R.string.setting_title_profiles_protected), R.drawable.icon_profile_protected);
-            GridItem item_04 = new GridItem(getString(R.string.setting_title_profiles_changed), R.drawable.icon_profile_changed);
+            GridItem item_04 = new GridItem(getString(R.string.setting_title_profiles_without), R.drawable.icon_profile_changed);
 
             MaterialAlertDialogBuilder builder = new MaterialAlertDialogBuilder(context);
             View dialogView = View.inflate(context, R.layout.dialog_menu, null);
             builder.setView(dialogView);
+
+            FloatingActionButton buttonProfile = dialogView.findViewById(R.id.buttonProfile);
+            ninjaWebView.setProfileIcon(buttonProfile, url);
+
             AlertDialog dialog = builder.create();
             FaviconHelper.setFavicon(context, dialogView, url, R.id.menu_icon, R.drawable.icon_link);
 

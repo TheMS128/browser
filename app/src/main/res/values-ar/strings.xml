@@ -95,7 +95,6 @@
     <string name="setting_title_profiles_trusted">موثوق</string>
     <string name="setting_title_profiles_standard">قياسي</string>
     <string name="setting_title_profiles_protected">محمي</string>
-    <string name="setting_title_profiles_changed">مخصص</string>
     <string name="setting_title_profiles_dataUsage">استخدام البيانات</string>
     <string name="setting_title_profiles_privacy">الخصوصية</string>
     <string name="setting_title_profiles_Security">الأمان</string>

@@ -97,7 +97,6 @@
     <string name="setting_title_profiles_trusted">Проверенный</string>
     <string name="setting_title_profiles_standard">Стандарт</string>
     <string name="setting_title_profiles_protected">Защищенный</string>
-    <string name="setting_title_profiles_changed">Пользовательский</string>
     <string name="setting_title_profiles_dataUsage">Использование данных</string>
     <string name="setting_title_profiles_privacy">Конфиденциальность</string>
     <string name="setting_title_profiles_Security">Безопасность</string>

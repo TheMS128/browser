@@ -93,9 +93,13 @@
                         android:id="@+id/buttonProfile"
                         style="@style/Widget.Material3.Button.IconButton"
                         android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:gravity="center_vertical"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"
+                        android:layout_marginEnd="3dp"
                         app:icon="@drawable/icon_profile_standard"
+                        app:fabCustomSize="40dp"
+                        app:elevation="0dp"
+                        android:backgroundTint="?attr/colorSurfaceDim"
                         android:layout_alignParentEnd="true" />
 
                 </RelativeLayout>

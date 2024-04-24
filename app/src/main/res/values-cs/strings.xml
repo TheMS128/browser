@@ -97,7 +97,6 @@
     <string name="setting_title_profiles_trusted">Důvěryhodný</string>
     <string name="setting_title_profiles_standard">Standardní</string>
     <string name="setting_title_profiles_protected">Chráněný</string>
-    <string name="setting_title_profiles_changed">Vlastní</string>
     <string name="setting_title_profiles_dataUsage">Využití dat</string>
     <string name="setting_title_profiles_privacy">Soukromí</string>
     <string name="setting_title_profiles_Security">Zabezpečení</string>

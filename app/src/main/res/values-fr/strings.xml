@@ -97,7 +97,6 @@
     <string name="setting_title_profiles_trusted">Approuvé</string>
     <string name="setting_title_profiles_standard">Standard</string>
     <string name="setting_title_profiles_protected">Protégé</string>
-    <string name="setting_title_profiles_changed">Personnalisé</string>
     <string name="setting_title_profiles_dataUsage">Utilisation des données</string>
     <string name="setting_title_profiles_privacy">Vie privée</string>
     <string name="setting_title_profiles_Security">Sécurité</string>

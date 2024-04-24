@@ -97,7 +97,6 @@
     <string name="setting_title_profiles_trusted">Betrodd</string>
     <string name="setting_title_profiles_standard">Standard</string>
     <string name="setting_title_profiles_protected">Skyddad</string>
-    <string name="setting_title_profiles_changed">Anpassad</string>
     <string name="setting_title_profiles_dataUsage">Dataanvändning</string>
     <string name="setting_title_profiles_privacy">Sekretess</string>
     <string name="setting_title_profiles_Security">Säkerhet</string>

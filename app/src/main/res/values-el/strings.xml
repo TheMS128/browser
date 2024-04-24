@@ -97,7 +97,6 @@
     <string name="setting_title_profiles_trusted">Αξιόπιστο</string>
     <string name="setting_title_profiles_standard">Κανονικό</string>
     <string name="setting_title_profiles_protected">Προστατευμένο</string>
-    <string name="setting_title_profiles_changed">Προσαρμοσμένο</string>
     <string name="setting_title_profiles_dataUsage">Χρήση δεδομένων</string>
     <string name="setting_title_profiles_privacy">Απόρρητο</string>
     <string name="setting_title_profiles_Security">Ασφάλεια</string>

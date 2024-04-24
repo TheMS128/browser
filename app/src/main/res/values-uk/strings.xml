@@ -97,7 +97,6 @@
     <string name="setting_title_profiles_trusted">Надійний</string>
     <string name="setting_title_profiles_standard">Стандартний</string>
     <string name="setting_title_profiles_protected">Захищений</string>
-    <string name="setting_title_profiles_changed">Нестандартний</string>
     <string name="setting_title_profiles_dataUsage">Використання даних</string>
     <string name="setting_title_profiles_privacy">Приватність</string>
     <string name="setting_title_profiles_Security">Безпека</string>

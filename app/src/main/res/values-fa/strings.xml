@@ -97,7 +97,6 @@
     <string name="setting_title_profiles_trusted">مورد اعتماد</string>
     <string name="setting_title_profiles_standard">استاندارد</string>
     <string name="setting_title_profiles_protected">حفاظت شده</string>
-    <string name="setting_title_profiles_changed">سفارشی</string>
     <string name="setting_title_profiles_dataUsage">مصرف داده</string>
     <string name="setting_title_profiles_privacy">خصوصی</string>
     <string name="setting_title_profiles_Security">امنیت</string>

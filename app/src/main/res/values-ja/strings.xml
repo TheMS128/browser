@@ -97,7 +97,6 @@
     <string name="setting_title_profiles_trusted">信頼済み</string>
     <string name="setting_title_profiles_standard">標準</string>
     <string name="setting_title_profiles_protected">保護済み</string>
-    <string name="setting_title_profiles_changed">カスタム</string>
     <string name="setting_title_profiles_dataUsage">データ使用量</string>
     <string name="setting_title_profiles_privacy">プライバシー</string>
     <string name="setting_title_profiles_Security">セキュリティ</string>

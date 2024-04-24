@@ -97,7 +97,6 @@
     <string name="setting_title_profiles_trusted">Zaufany</string>
     <string name="setting_title_profiles_standard">Standard</string>
     <string name="setting_title_profiles_protected">Chroniony</string>
-    <string name="setting_title_profiles_changed">Własna</string>
     <string name="setting_title_profiles_dataUsage">Wykorzystanie danych</string>
     <string name="setting_title_profiles_privacy">Prywatność</string>
     <string name="setting_title_profiles_Security">Bezpieczeństwo</string>
