@@ -1,4 +1,4 @@
-### v 15 ... (WIP)
+### v 15 "Kabale und Liebe"
 - new: auto deny cookie-banners (@https://github.com/woheller69/browser)
 - new: sort startsite and history by domain
 - new: highlight domains in lists and menus
