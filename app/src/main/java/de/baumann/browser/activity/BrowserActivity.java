@@ -2736,6 +2736,11 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
             FaviconHelper.setFavicon(context, dialogView, urlDialog, R.id.menu_icon, R.drawable.icon_image_broken);
             builder.setView(dialogView);
             AlertDialog dialog = builder.create();
+
+            FloatingActionButton buttonProfile = dialogView.findViewById(R.id.buttonProfile);
+            ninjaWebView.setProfileIcon(buttonProfile, url);
+            buttonProfile.setOnClickListener(v2 -> addAlbum(title, url, true, true, "", dialog));
+
             dialog.show();
             HelperUnit.setupDialog(context, dialog);
 
