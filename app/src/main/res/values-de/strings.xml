@@ -223,4 +223,5 @@
     <string name="summary_deny_cookie_banners">Versuchen Sie, Cookie-Banner mit den Cookie-Banner-Regeln von Mozilla automatisch abzulehnen</string>
     <string name="setting_title_deny_cookie_banners">Cookie-Banner-Blocker</string>
     <string name="dialog_sortDomain">Nach Domain sortieren</string>
+    <string name="setting_title_profiles_without">kein Profil</string>
 </resources>

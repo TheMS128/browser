@@ -220,4 +220,8 @@
     <string name="app_intro_b">De huidige geopende website is de WIKI van FOSS Browser. Deze site is ook opgeslagen als uw eerste bladwijzer. Op de WIKI kunt u handige tips en links vinden.</string>
     <string name="app_intro_c">Om te beginnen met browsen hoef je alleen maar op de werkbalk te tikken. Je kunt op het web naar iets zoeken of een url invoeren om te openen.</string>
     <string name="app_intro_d">U kunt ook de instellingen openen en FOSS Browser naar wens configureren.</string>
+    <string name="dialog_sortDomain">Sorteren op domein</string>
+    <string name="summary_deny_cookie_banners">Probeer cookiebanners automatisch te weigeren met Mozilla\'s Cookie Banner Regels</string>
+    <string name="setting_title_deny_cookie_banners">Cookie Banner Blokkering</string>
+    <string name="setting_title_profiles_without">Profielen uitschakelen</string>
 </resources>

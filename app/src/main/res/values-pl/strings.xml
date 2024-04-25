@@ -220,4 +220,8 @@
     <string name="app_intro_c">Aby rozpocząć przeglądanie, wystarczy nacisnąć przycisk na pasku narzędzi. Możesz wyszukać coś w sieci lub wpisać adres URL do otwarcia.</string>
     <string name="app_intro_d">Możesz także otworzyć ustawienia i skonfigurować FOSS Browser do swoich potrzeb.</string>
     <string name="menu_shareOpenWith">Otwórz za pomocą …</string>
+    <string name="dialog_sortDomain">Sortuj według domeny</string>
+    <string name="summary_deny_cookie_banners">Spróbuj automatycznie odrzucać banery plików cookie za pomocą reguł banerów plików cookie Mozilli.</string>
+    <string name="setting_title_deny_cookie_banners">Cookie Banner Blocker</string>
+    <string name="setting_title_profiles_without">Wyłączanie profili</string>
 </resources>

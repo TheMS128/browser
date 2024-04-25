@@ -220,4 +220,8 @@
     <string name="app_intro_b">Den för närvarande öppnade webbplatsen är WIKI för FOSS Browser. Denna webbplats sparas också som ditt första bokmärke. På WIKI kan du hitta användbara tips och länkar.</string>
     <string name="app_error_save">Redan sparad.</string>
     <string name="app_intro_a">Tack för att du använder FOSS Browser!</string>
+    <string name="dialog_sortDomain">Sortera efter domän</string>
+    <string name="setting_title_deny_cookie_banners">Blockering av cookie-banners</string>
+    <string name="setting_title_profiles_without">Inaktivera profiler</string>
+    <string name="summary_deny_cookie_banners">Försök att automatiskt neka cookie-banners med hjälp av Mozillas regler för cookie-banners</string>
 </resources>

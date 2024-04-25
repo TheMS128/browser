@@ -223,4 +223,5 @@
     <string name="dialog_sortDomain">فرز حسب المجال</string>
     <string name="summary_deny_cookie_banners">حاول رفض لافتات ملفات تعريف الارتباط تلقائيًا باستخدام قواعد ملفات تعريف الارتباط الخاصة بملفات تعريف الارتباط في</string>
     <string name="setting_title_deny_cookie_banners">مانع شعارات ملفات تعريف الارتباط</string>
+    <string name="setting_title_profiles_without">تعطيل الملفات الشخصية</string>
 </resources>

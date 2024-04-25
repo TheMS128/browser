@@ -220,4 +220,8 @@
     <string name="app_intro_c">ブラウジングを開始するには、ツールバーを傾けるだけです。何かを検索したり、URLを入力して開くことができます。</string>
     <string name="app_intro_d">設定を開いてFOSS Browserを設定することもできます。</string>
     <string name="menu_shareOpenWith">オープン・ウィズ・ …</string>
+    <string name="dialog_sortDomain">ドメイン順</string>
+    <string name="setting_title_deny_cookie_banners">クッキーバナーブロッカー</string>
+    <string name="setting_title_profiles_without">プロファイルを無効にする</string>
+    <string name="summary_deny_cookie_banners">Mozillaのクッキー・バナー・ルールを使って、クッキー・バナーを自動的に拒否してみてください。</string>
 </resources>

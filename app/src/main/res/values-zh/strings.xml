@@ -220,4 +220,8 @@
     <string name="app_intro_c">要开始浏览，只需点击工具栏上的提示。您可以在网上搜索或输入网址打开。</string>
     <string name="app_intro_d">您还可以打开设置，根据自己的需要配置FOSS浏览器。</string>
     <string name="app_intro_a">感谢您使用 FOSS 浏览器！</string>
+    <string name="setting_title_deny_cookie_banners">Cookie 横幅广告拦截器</string>
+    <string name="setting_title_profiles_without">禁用预案</string>
+    <string name="dialog_sortDomain">按领域排序</string>
+    <string name="summary_deny_cookie_banners">尝试使用 Mozilla 的 Cookie 横幅规则自动拒绝 Cookie 横幅广告</string>
 </resources>

@@ -220,4 +220,8 @@
     <string name="app_intro_d">De asemenea, puteți deschide setările și configura FOSS Browser în funcție de nevoile dumneavoastră.</string>
     <string name="app_intro_a">Vă mulțumim că folosiți FOSS Browser!</string>
     <string name="app_intro_b">Site-ul web deschis în prezent este WIKI al FOSS Browser. De asemenea, acest site este salvat ca primul marcaj. Pe WIKI puteți găsi sfaturi și link-uri utile.</string>
+    <string name="setting_title_deny_cookie_banners">Cookie Banner Blocker</string>
+    <string name="setting_title_profiles_without">Dezactivați profilurile</string>
+    <string name="dialog_sortDomain">Sortează după domeniu</string>
+    <string name="summary_deny_cookie_banners">Încercați să refuzați automat bannerele cu cookie-uri utilizând Reguli pentru bannere cu cookie-uri de la Mozilla</string>
 </resources>

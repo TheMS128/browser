@@ -220,4 +220,8 @@
     <string name="menu_shareOpenWith">Відкрийте з …</string>
     <string name="app_intro_d">Ви також можете відкрити налаштування і налаштувати FOSS Browser відповідно до ваших потреб.</string>
     <string name="app_intro_a">Дякуємо за використання FOSS Browser!</string>
+    <string name="setting_title_deny_cookie_banners">Блокувальник банерів з файлами cookie</string>
+    <string name="summary_deny_cookie_banners">Спробуйте автоматично заборонити банери з файлами cookie за допомогою Правил банерів з файлами cookie від Mozilla</string>
+    <string name="dialog_sortDomain">Сортувати за доменом</string>
+    <string name="setting_title_profiles_without">Вимкнути профілі</string>
 </resources>
