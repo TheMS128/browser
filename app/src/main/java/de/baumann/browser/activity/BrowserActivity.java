@@ -435,6 +435,8 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
             boolean allowed = sp.getBoolean("setAlgorithmicDarkeningAllowed", true);
             WebSettingsCompat.setAlgorithmicDarkeningAllowed(s, allowed);
         }
+        ninjaWebView.scrollBy(0,5);
+        ninjaWebView.scrollBy(0,-5);
     }
 
     @Override

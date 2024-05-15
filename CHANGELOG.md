@@ -1,5 +1,6 @@
 ### v 16 "..." (WIP)
 - fix: context menu in tab overview
+- fix: onRenderProcessGone
 - updated: translations
 
 

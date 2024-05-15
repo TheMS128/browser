@@ -11,6 +11,7 @@ import android.os.Message;
 import android.text.InputType;
 import android.view.View;
 import android.webkit.HttpAuthHandler;
+import android.webkit.RenderProcessGoneDetail;
 import android.webkit.SslErrorHandler;
 import android.webkit.WebResourceRequest;
 import android.webkit.WebResourceResponse;
@@ -35,6 +36,7 @@ import de.baumann.browser.database.RecordAction;
 import de.baumann.browser.unit.BrowserUnit;
 import de.baumann.browser.unit.HelperUnit;
 import de.baumann.browser.unit.RecordUnit;
+import de.baumann.browser.view.NinjaToast;
 import de.baumann.browser.view.NinjaWebView;
 
 public class NinjaWebViewClient extends WebViewClient {
@@ -50,6 +52,14 @@ public class NinjaWebViewClient extends WebViewClient {
         this.context = ninjaWebView.getContext();
         this.sp = PreferenceManager.getDefaultSharedPreferences(context);
         this.adBlock = new AdBlock(this.context);
+    }
+
+    @Override
+    public boolean onRenderProcessGone (WebView view, RenderProcessGoneDetail detail){
+        String text = context.getString(R.string.app_error) + ": " + detail.toString();
+        NinjaToast.show(context, text);
+        view.reload();
+        return true;
     }
 
     @Override
