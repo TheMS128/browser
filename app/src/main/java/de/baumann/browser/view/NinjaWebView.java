@@ -706,25 +706,25 @@ public class NinjaWebView extends WebView implements AlbumController {
             try {
                 newUserAgent = newUserAgent.replace(prefix, desktopPrefix);
             } catch (Exception e) {
-                e.printStackTrace();
+                Log.v(TAG, "Failed: UserAgent");
             }
         } else {
             try {
                 newUserAgent = newUserAgent.replace(prefix, mobilePrefix);
             } catch (Exception e) {
-                e.printStackTrace();
+                Log.v(TAG, "Failed: UserAgent");
             }
         }
 
         //Override UserAgent if own UserAgent is defined
         if (!sp.contains("userAgentSwitch")) {  //if new switch_text_preference has never been used initialize the switch
-            if (Objects.requireNonNull(sp.getString("sp_userAgent", "")).equals("")) {
+            if (Objects.requireNonNull(sp.getString("sp_userAgent", "")).isEmpty()) {
                 sp.edit().putBoolean("userAgentSwitch", false).apply();
             } else sp.edit().putBoolean("userAgentSwitch", true).apply();
         }
 
         String ownUserAgent = sp.getString("sp_userAgent", "");
-        if (!ownUserAgent.equals("") && (sp.getBoolean("userAgentSwitch", false)))
+        if (!ownUserAgent.isEmpty() && (sp.getBoolean("userAgentSwitch", false)))
             newUserAgent = ownUserAgent;
         return newUserAgent;
     }
