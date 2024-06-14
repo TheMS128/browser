@@ -553,6 +553,12 @@ public class NinjaWebView extends WebView implements AlbumController {
         favicon = null;
         stopped = false;
 
+
+        String tracking = url.substring(url.lastIndexOf("/"));
+        if (tracking.contains("utm_") || tracking.contains("?url=")) {
+            url = url.replace(tracking, "");
+        }
+
         if (url.startsWith("http://") && sp.getString("dialog_neverAsk", "no").equals("no")) {
 
             GridItem item_01 = new GridItem("https://", R.drawable.icon_profile_trusted);
@@ -565,14 +571,17 @@ public class NinjaWebView extends WebView implements AlbumController {
             CardView albumCardView = dialogView.findViewById(R.id.albumCardView);
             albumCardView.setVisibility(GONE);
 
+            String urlHTTPS = url.replace("http://", "https://");
+            String urlHTTP = url;
+
             builder.setTitle(HelperUnit.domain(url));
             builder.setIcon(R.drawable.icon_alert);
             builder.setMessage(R.string.toast_unsecured);
             builder.setPositiveButton(R.string.dialog_neverAsk, (dialog2, whichButton) -> {
                 sp.edit().putString("dialog_neverAsk", "yes").apply();
-                sp.edit().putString("urlToLoad", url).apply();
-                initPreferences(BrowserUnit.queryWrapper(context, url));
-                super.loadUrl(BrowserUnit.queryWrapper(context, url), getRequestHeaders());
+                sp.edit().putString("urlToLoad", urlHTTPS).apply();
+                initPreferences(BrowserUnit.queryWrapper(context, urlHTTPS));
+                super.loadUrl(BrowserUnit.queryWrapper(context, urlHTTPS), getRequestHeaders());
             });
             builder.setView(dialogView);
 
@@ -592,16 +601,15 @@ public class NinjaWebView extends WebView implements AlbumController {
                 switch (position) {
                     case 0:
                         dialog.cancel();
-                        String finalURL = url.replace("http://", "https://");
-                        sp.edit().putString("urlToLoad", finalURL).apply();
-                        initPreferences(BrowserUnit.queryWrapper(context, finalURL));
-                        super.loadUrl(BrowserUnit.queryWrapper(context, finalURL), getRequestHeaders());
+                        sp.edit().putString("urlToLoad", urlHTTPS).apply();
+                        initPreferences(BrowserUnit.queryWrapper(context, urlHTTPS));
+                        super.loadUrl(BrowserUnit.queryWrapper(context, urlHTTPS), getRequestHeaders());
                         break;
                     case 1:
                         dialog.cancel();
-                        sp.edit().putString("urlToLoad", url).apply();
-                        initPreferences(BrowserUnit.queryWrapper(context, url));
-                        super.loadUrl(BrowserUnit.queryWrapper(context, url), getRequestHeaders());
+                        sp.edit().putString("urlToLoad", urlHTTP).apply();
+                        initPreferences(BrowserUnit.queryWrapper(context, urlHTTP));
+                        super.loadUrl(BrowserUnit.queryWrapper(context, urlHTTP), getRequestHeaders());
                         break;
                     case 2:
                         dialog.cancel();

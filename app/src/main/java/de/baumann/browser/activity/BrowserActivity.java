@@ -302,7 +302,7 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
             ArrayList<String> openTabsProfile;
             openTabs = new ArrayList<>(Arrays.asList(TextUtils.split(sp.getString("openTabs", ""), "‚‗‚")));
             openTabsProfile = new ArrayList<>(Arrays.asList(TextUtils.split(sp.getString("openTabsProfile", ""), "‚‗‚")));
-            if (openTabs.size() > 0) {
+            if (!openTabs.isEmpty()) {
                 for (int counter = 0; counter < openTabs.size(); counter++) {
                     addAlbum(getString(R.string.app_name), openTabs.get(counter), BrowserContainer.size() < 1, false, openTabsProfile.get(counter), null);
                 }
@@ -840,11 +840,11 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
         });
         omnibox_customSearch.setOnClickListener(view -> {
             String query = Objects.requireNonNull(omniBox_text.getText()).toString().trim();
-            if (query.equals("") || query.equals(ninjaWebView.getUrl())) {
+            if (query.isEmpty() || query.equals(ninjaWebView.getUrl())) {
                 NinjaToast.show(context, getString(R.string.toast_input_empty));
             } else {ninjaWebView.loadUrl(omniBox_text.getText().toString());
                 String customSearches = sp.getString("sp_search_customSearches", "");
-                try {if (customSearches.equals("")) {
+                try {if (customSearches.isEmpty()) {
                         dialogCustomSearches.dismiss();
                     }
                 } catch (Exception e) {
@@ -885,7 +885,7 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
 
         omniBox_text.setOnEditorActionListener((v, actionId, event) -> {
             String query = Objects.requireNonNull(omniBox_text.getText()).toString().trim();
-            if (omniBox_text.getText().toString().equals("") || omniBox_text.getText().toString().equals(ninjaWebView.getUrl())) {
+            if (omniBox_text.getText().toString().isEmpty() || omniBox_text.getText().toString().equals(ninjaWebView.getUrl())) {
                 NinjaToast.show(context, getString(R.string.toast_input_empty));
             } else {
                 ninjaWebView.loadUrl(query);
@@ -936,7 +936,7 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
         String customSearches = sp.getString("sp_search_customSearches", "");
         if (Objects.equals(ninjaWebView.getUrl(), "about:blank")) {
             ninjaWebView.stopLoading();
-        } else if (customSearches.equals("")) {
+        } else if (customSearches.isEmpty()) {
             try {dialogCustomSearches.dismiss();}
             catch (Exception e) {Log.i(TAG, "dialogCustomSearches:" + e);}
         }
@@ -2180,7 +2180,7 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
 
     private void showDialogCustomSearches(String url) {
 
-        if (url.length() > 0) {
+        if (!url.isEmpty()) {
             ninjaWebView.stopLoading();
             MaterialAlertDialogBuilder builder = new MaterialAlertDialogBuilder(context);
             View dialogView = View.inflate(context, R.layout.custom_redirects_list, null);
@@ -2328,7 +2328,7 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
     private void postLink(String data, Dialog dialogParent) {
         String urlForPosting = sp.getString("urlForPosting", "");
 
-        if (urlForPosting.length() > 0) {
+        if (!urlForPosting.isEmpty()) {
             ClipboardManager clipboard = (ClipboardManager) getSystemService(Context.CLIPBOARD_SERVICE);
             ClipData clip = ClipData.newPlainText("text", data);
             Objects.requireNonNull(clipboard).setPrimaryClip(clip);
@@ -2781,7 +2781,7 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
     private synchronized void addAlbum(String title, final String url, final boolean foreground, final boolean profileDialog, String profile, Dialog dialogParent) {
 
         //restoreProfile from shared preferences if app got killed
-        if (!profile.equals("")) sp.edit().putString("profile", profile).apply();
+        if (!profile.isEmpty()) sp.edit().putString("profile", profile).apply();
         if (profileDialog) {
             GridItem item_01 = new GridItem(getString(R.string.setting_title_profiles_trusted), R.drawable.icon_profile_trusted);
             GridItem item_02 = new GridItem(getString(R.string.setting_title_profiles_standard), R.drawable.icon_profile_standard);
