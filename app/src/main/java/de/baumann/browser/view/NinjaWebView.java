@@ -548,18 +548,52 @@ public class NinjaWebView extends WebView implements AlbumController {
 
     @Override
     public synchronized void loadUrl(@NonNull String url) {
+
         InputMethodManager imm = (InputMethodManager) this.context.getSystemService(Context.INPUT_METHOD_SERVICE);
         imm.hideSoftInputFromWindow(this.getWindowToken(), 0);
+
+        String urlToLoad = BrowserUnit.redirectURL(context, this, sp, url);
+
         favicon = null;
         stopped = false;
 
+        listTrusted = new List_trusted(context);
+        listStandard = new List_standard(context);
+        listProtected = new List_protected(context);
 
-        String tracking = url.substring(url.lastIndexOf("/"));
-        if (tracking.contains("utm_") || tracking.contains("?url=")) {
-            url = url.replace(tracking, "");
-        }
+        profile = sp.getString("profile", "profileStandard");
+        if (listTrusted.isWhite(url)) profile = "profileTrusted";
+        else if (listStandard.isWhite(url)) profile = "profileStandard";
+        else if (listProtected.isWhite(url)) profile = "profileProtected";
 
-        if (url.startsWith("http://") && sp.getString("dialog_neverAsk", "no").equals("no")) {
+        boolean removeTracking = sp.getBoolean(profile + "_trackingULS", true);
+
+        if (removeTracking && urlToLoad.contains("?") && urlToLoad.contains("/")) {
+
+            String lastIndex = urlToLoad.substring(urlToLoad.lastIndexOf("/"));
+            String tracking = urlToLoad.substring(urlToLoad.lastIndexOf("?"));
+            String urlClean = urlToLoad.replace(tracking, "");
+            if (lastIndex.contains(tracking) && !tracking.contains("search") && !tracking.contains("query") && !tracking.contains("watch")) {
+
+                String m = context.getString(R.string.dialog_tracking) + " \"" + tracking + "\"" + " ?";
+                MaterialAlertDialogBuilder builderTrack = new MaterialAlertDialogBuilder(context);
+                builderTrack.setTitle(urlToLoad);
+                builderTrack.setIcon(R.drawable.icon_alert);
+                builderTrack.setMessage(m);
+                builderTrack.setPositiveButton(R.string.app_ok, (dialog2, whichButton) -> {
+                    initPreferences(BrowserUnit.queryWrapper(context, urlClean));
+                    super.loadUrl(BrowserUnit.queryWrapper(context, urlClean), getRequestHeaders());
+                });
+                builderTrack.setNegativeButton(R.string.app_cancel, (dialog2, whichButton) -> {
+                    initPreferences(BrowserUnit.queryWrapper(context, urlClean));
+                    super.loadUrl(BrowserUnit.queryWrapper(context, urlToLoad), getRequestHeaders());
+                });
+                AlertDialog dialogTrack = builderTrack.create();
+                dialogTrack.show();
+                HelperUnit.setupDialog(context, dialogTrack);
+            }
+
+        } else if (url.startsWith("http://") && sp.getString("dialog_neverAsk", "no").equals("no")) {
 
             GridItem item_01 = new GridItem("https://", R.drawable.icon_profile_trusted);
             GridItem item_02 = new GridItem( "http://", R.drawable.icon_profile_changed);
@@ -571,17 +605,15 @@ public class NinjaWebView extends WebView implements AlbumController {
             CardView albumCardView = dialogView.findViewById(R.id.albumCardView);
             albumCardView.setVisibility(GONE);
 
-            String urlHTTPS = url.replace("http://", "https://");
-            String urlHTTP = url;
+            String secure = url.replace("http://", "https://");
 
             builder.setTitle(HelperUnit.domain(url));
             builder.setIcon(R.drawable.icon_alert);
             builder.setMessage(R.string.toast_unsecured);
             builder.setPositiveButton(R.string.dialog_neverAsk, (dialog2, whichButton) -> {
                 sp.edit().putString("dialog_neverAsk", "yes").apply();
-                sp.edit().putString("urlToLoad", urlHTTPS).apply();
-                initPreferences(BrowserUnit.queryWrapper(context, urlHTTPS));
-                super.loadUrl(BrowserUnit.queryWrapper(context, urlHTTPS), getRequestHeaders());
+                initPreferences(BrowserUnit.queryWrapper(context, url));
+                super.loadUrl(BrowserUnit.queryWrapper(context, url), getRequestHeaders());
             });
             builder.setView(dialogView);
 
@@ -601,15 +633,13 @@ public class NinjaWebView extends WebView implements AlbumController {
                 switch (position) {
                     case 0:
                         dialog.cancel();
-                        sp.edit().putString("urlToLoad", urlHTTPS).apply();
-                        initPreferences(BrowserUnit.queryWrapper(context, urlHTTPS));
-                        super.loadUrl(BrowserUnit.queryWrapper(context, urlHTTPS), getRequestHeaders());
+                        initPreferences(BrowserUnit.queryWrapper(context, secure));
+                        super.loadUrl(BrowserUnit.queryWrapper(context, secure), getRequestHeaders());
                         break;
                     case 1:
                         dialog.cancel();
-                        sp.edit().putString("urlToLoad", urlHTTP).apply();
-                        initPreferences(BrowserUnit.queryWrapper(context, urlHTTP));
-                        super.loadUrl(BrowserUnit.queryWrapper(context, urlHTTP), getRequestHeaders());
+                        initPreferences(BrowserUnit.queryWrapper(context, url));
+                        super.loadUrl(BrowserUnit.queryWrapper(context, url), getRequestHeaders());
                         break;
                     case 2:
                         dialog.cancel();
@@ -618,8 +648,6 @@ public class NinjaWebView extends WebView implements AlbumController {
                 }
             });
         } else {
-            String urlToLoad = BrowserUnit.redirectURL(this, sp, url);
-            sp.edit().putString("urlToLoad", urlToLoad).apply();
             initPreferences(BrowserUnit.queryWrapper(context, urlToLoad));
             super.loadUrl(BrowserUnit.queryWrapper(context, urlToLoad), getRequestHeaders());
         }

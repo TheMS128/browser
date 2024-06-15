@@ -73,6 +73,7 @@
     <string name="dialog_neverAsk">Never this session.</string>
     <string name="dialog_backGround_always">Always this session.</string>
     <string name="dialog_backGround">Open links in background …</string>
+    <string name="dialog_tracking">Possible tracking URL. Remove tracking part:</string>
     <!-- Settings -->
     <string name="setting_label">Settings</string>
     <!-- browser setting -->

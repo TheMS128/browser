@@ -86,7 +86,6 @@
 
     <PreferenceCategory android:title="@string/setting_title_profiles_Security">
 
-
         <CheckBoxPreference
             android:defaultValue="true"
             android:icon="@drawable/icon_adblock"
@@ -99,6 +98,11 @@
             android:key="profileProtected_fingerPrintProtection"
             android:summary="@string/setting_title_fingerPrint" />
 
+        <CheckBoxPreference
+            android:defaultValue="true"
+            android:icon="@drawable/icon_adblock"
+            android:key="profileProtected_trackingULS"
+            android:summary="tracking URL popup" />
 
     </PreferenceCategory>
 

@@ -1254,6 +1254,7 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
         menu_grid_share.setOnItemClickListener((parent, view12, position, id) -> {
             dialog_overflow.cancel();
             if (position == 0) {
+                assert url != null;
                 shareLink(title, url);
             } else if (position == 1) {
                 copyLink(url);
@@ -2318,11 +2319,38 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
     }
 
     public void shareLink(String title, String url) {
-        Intent sharingIntent = new Intent(Intent.ACTION_SEND);
-        sharingIntent.setType("text/plain");
-        sharingIntent.putExtra(Intent.EXTRA_SUBJECT, title);
-        sharingIntent.putExtra(Intent.EXTRA_TEXT, url);
-        context.startActivity(Intent.createChooser(sharingIntent, (context.getString(R.string.menu_share_link))));
+
+        if (url.contains("?") && url.contains("/")) {
+
+            String lastIndex = url.substring(url.lastIndexOf("/"));
+            String tracking = url.substring(url.lastIndexOf("?"));
+            String urlClean = url.replace(tracking, "");
+            if (lastIndex.contains(tracking) && !tracking.contains("search") && !tracking.contains("query") && !tracking.contains("watch")) {
+
+                String m = getString(R.string.dialog_tracking) + " \"" + tracking + "\"" + " ?";
+                MaterialAlertDialogBuilder builderTrack = new MaterialAlertDialogBuilder(context);
+                builderTrack.setTitle(url);
+                builderTrack.setIcon(R.drawable.icon_alert);
+                builderTrack.setMessage(m);
+                builderTrack.setPositiveButton(R.string.app_ok, (dialog2, whichButton) -> {
+                    Intent sharingIntent = new Intent(Intent.ACTION_SEND);
+                    sharingIntent.setType("text/plain");
+                    sharingIntent.putExtra(Intent.EXTRA_SUBJECT, title);
+                    sharingIntent.putExtra(Intent.EXTRA_TEXT, urlClean);
+                    context.startActivity(Intent.createChooser(sharingIntent, (context.getString(R.string.menu_share_link))));
+                });
+                builderTrack.setNegativeButton(R.string.app_cancel, (dialog2, whichButton) -> {
+                    Intent sharingIntent = new Intent(Intent.ACTION_SEND);
+                    sharingIntent.setType("text/plain");
+                    sharingIntent.putExtra(Intent.EXTRA_SUBJECT, title);
+                    sharingIntent.putExtra(Intent.EXTRA_TEXT, url);
+                    context.startActivity(Intent.createChooser(sharingIntent, (context.getString(R.string.menu_share_link))));
+                });
+                AlertDialog dialogTrack = builderTrack.create();
+                dialogTrack.show();
+                HelperUnit.setupDialog(context, dialogTrack);
+            }
+        }
     }
 
     private void postLink(String data, Dialog dialogParent) {
@@ -2448,7 +2476,7 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
                 showTabView();
                 break;
             case "12":
-                shareLink(ninjaWebView.getTitle(), ninjaWebView.getUrl());
+                shareLink(ninjaWebView.getTitle(), Objects.requireNonNull(ninjaWebView.getUrl()));
                 break;
             case "13":
                 searchOnSite();

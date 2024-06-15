@@ -1,6 +1,7 @@
 package de.baumann.browser.unit;
 
 import static android.app.PendingIntent.FLAG_IMMUTABLE;
+import static android.content.ContentValues.TAG;
 import static android.content.Context.NOTIFICATION_SERVICE;
 
 import android.Manifest;
@@ -31,6 +32,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AlertDialog;
+import androidx.cardview.widget.CardView;
 import androidx.core.app.ActivityCompat;
 import androidx.core.app.NotificationCompat;
 import androidx.core.content.ContextCompat;
@@ -52,6 +54,9 @@ import de.baumann.browser.R;
 import de.baumann.browser.activity.BrowserActivity;
 import de.baumann.browser.browser.DataURIParser;
 import de.baumann.browser.browser.JavaScriptInterface;
+import de.baumann.browser.browser.List_protected;
+import de.baumann.browser.browser.List_standard;
+import de.baumann.browser.browser.List_trusted;
 import de.baumann.browser.database.FaviconHelper;
 import de.baumann.browser.database.RecordAction;
 import de.baumann.browser.objects.CustomRedirect;
@@ -317,7 +322,7 @@ public class BrowserUnit {
         context.startActivity(browserIntent);
     }
 
-    public static String redirectURL(WebView ninjaWebView, SharedPreferences sp, String url) {
+    public static String redirectURL(Context context, WebView ninjaWebView, SharedPreferences sp, String url) {
         boolean redirect = sp.getBoolean("redirect", false);
         if (!redirect) return url;
         try {
