@@ -280,6 +280,7 @@ public class NinjaWebView extends WebView implements AlbumController {
                 .putBoolean("profileTrusted_saveData", true)
                 .putBoolean("profileTrusted_images", true)
                 .putBoolean("profileTrusted_adBlock", true)
+                .putBoolean("profileTrusted_trackingULS", true)
                 .putBoolean("profileTrusted_location", false)
                 .putBoolean("profileTrusted_fingerPrintProtection", false)
                 .putBoolean("profileTrusted_cookies", true)
@@ -295,6 +296,7 @@ public class NinjaWebView extends WebView implements AlbumController {
                 .putBoolean("profileStandard_saveData", true)
                 .putBoolean("profileStandard_images", true)
                 .putBoolean("profileStandard_adBlock", true)
+                .putBoolean("profileStandard_trackingULS", true)
                 .putBoolean("profileStandard_location", false)
                 .putBoolean("profileStandard_fingerPrintProtection", true)
                 .putBoolean("profileStandard_cookies", false)
@@ -310,6 +312,7 @@ public class NinjaWebView extends WebView implements AlbumController {
                 .putBoolean("profileProtected_saveData", true)
                 .putBoolean("profileProtected_images", true)
                 .putBoolean("profileProtected_adBlock", true)
+                .putBoolean("profileProtected_trackingULS", true)
                 .putBoolean("profileProtected_location", false)
                 .putBoolean("profileProtected_fingerPrintProtection", true)
                 .putBoolean("profileProtected_cookies", false)
@@ -327,6 +330,7 @@ public class NinjaWebView extends WebView implements AlbumController {
         sp.edit().putBoolean("profileChanged_saveData", sp.getBoolean(profile + "_saveData", true))
                 .putBoolean("profileChanged_images", sp.getBoolean(profile + "_images", true))
                 .putBoolean("profileChanged_adBlock", sp.getBoolean(profile + "_adBlock", true))
+                .putBoolean("profileChanged_trackingULS", sp.getBoolean(profile + "_trackingULS", true))
                 .putBoolean("profileChanged_location", sp.getBoolean(profile + "_location", false))
                 .putBoolean("profileChanged_fingerPrintProtection", sp.getBoolean(profile + "_fingerPrintProtection", true))
                 .putBoolean("profileChanged_cookies", sp.getBoolean(profile + "_cookies", false))
@@ -367,6 +371,9 @@ public class NinjaWebView extends WebView implements AlbumController {
                 break;
             case "_adBlock":
                 sp.edit().putBoolean("profileChanged_adBlock", !sp.getBoolean("profileChanged_adBlock", true)).apply();
+                break;
+            case "_trackingULS":
+                sp.edit().putBoolean("profileChanged_trackingULS", !sp.getBoolean("profileChanged_trackingULS", true)).apply();
                 break;
             case "_saveData":
                 sp.edit().putBoolean("profileChanged_saveData", !sp.getBoolean("profileChanged_saveData", true)).apply();
@@ -435,6 +442,8 @@ public class NinjaWebView extends WebView implements AlbumController {
                 return sp.getBoolean(profile + "_fingerPrintProtection", true);
             case "_adBlock":
                 return sp.getBoolean(profile + "_adBlock", true);
+            case "_trackingULS":
+                return sp.getBoolean(profile + "_trackingULS", true);
             case "_saveData":
                 return sp.getBoolean(profile + "_saveData", true);
             case "_saveHistory":
@@ -573,7 +582,8 @@ public class NinjaWebView extends WebView implements AlbumController {
             String lastIndex = urlToLoad.substring(urlToLoad.lastIndexOf("/"));
             String tracking = urlToLoad.substring(urlToLoad.lastIndexOf("?"));
             String urlClean = urlToLoad.replace(tracking, "");
-            if (lastIndex.contains(tracking) && !tracking.contains("search") && !tracking.contains("query") && !tracking.contains("watch")) {
+            if (lastIndex.contains(tracking)
+                    && !tracking.contains("search") && !tracking.contains("query") && !tracking.contains("watch")) {
 
                 String m = context.getString(R.string.dialog_tracking) + " \"" + tracking + "\"" + " ?";
                 MaterialAlertDialogBuilder builderTrack = new MaterialAlertDialogBuilder(context);
@@ -584,10 +594,11 @@ public class NinjaWebView extends WebView implements AlbumController {
                     initPreferences(BrowserUnit.queryWrapper(context, urlClean));
                     super.loadUrl(BrowserUnit.queryWrapper(context, urlClean), getRequestHeaders());
                 });
-                builderTrack.setNegativeButton(R.string.app_cancel, (dialog2, whichButton) -> {
+                builderTrack.setNegativeButton(R.string.app_no, (dialog2, whichButton) -> {
                     initPreferences(BrowserUnit.queryWrapper(context, urlClean));
                     super.loadUrl(BrowserUnit.queryWrapper(context, urlToLoad), getRequestHeaders());
                 });
+                builderTrack.setNeutralButton(R.string.app_close, (dialog2, whichButton) -> dialog2.cancel());
                 AlertDialog dialogTrack = builderTrack.create();
                 dialogTrack.show();
                 HelperUnit.setupDialog(context, dialogTrack);

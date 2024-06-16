@@ -1959,14 +1959,38 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
             });
 
             Chip chip_adBlock = dialogView.findViewById(R.id.chip_adBlock);
-            chip_adBlock.setChecked(ninjaWebView.getBoolean("_adBlock"));
+            chip_adBlock.setChecked(ninjaWebView.getBoolean("_adBlock") || ninjaWebView.getBoolean("_trackingULS"));
             chip_adBlock.setOnLongClickListener(view -> {
                 Toast.makeText(context, getString(R.string.setting_title_adblock), Toast.LENGTH_SHORT).show();
                 return true;
             });
             chip_adBlock.setOnClickListener(v -> {
-                ninjaWebView.setProfileChanged();
-                ninjaWebView.putProfileBoolean("_adBlock", chip_profile_trusted, chip_profile_standard, chip_profile_protected, chip_profile_changed);
+
+                MaterialAlertDialogBuilder builder2 = new MaterialAlertDialogBuilder(context);
+                View dialogView2 = View.inflate(context, R.layout.dialog_adblock, null);
+                builder2.setView(dialogView2);
+                builder2.setTitle(getString(R.string.setting_title_adblock));
+                builder2.setIcon(R.drawable.icon_adblock);
+                builder2.setNegativeButton(R.string.app_ok, (dialog2, whichButton) -> dialog2.cancel());
+                AlertDialog dialog2 = builder2.create();
+
+                CheckBox checkbox_adblock = dialogView2.findViewById(R.id.checkbox_adblock);
+                checkbox_adblock.setChecked(ninjaWebView.getBoolean("_adBlock"));
+                checkbox_adblock.setOnCheckedChangeListener((buttonView, isChecked) -> {
+                    ninjaWebView.setProfileChanged();
+                    ninjaWebView.putProfileBoolean("_adBlock", chip_profile_trusted, chip_profile_standard, chip_profile_protected, chip_profile_changed);
+                });
+
+                CheckBox checkbox_trackingURL = dialogView2.findViewById(R.id.checkbox_trackingURL);
+                checkbox_trackingURL.setChecked(ninjaWebView.getBoolean("_trackingULS"));
+                checkbox_trackingURL.setOnCheckedChangeListener((buttonView, isChecked) -> {
+                    ninjaWebView.setProfileChanged();
+                    ninjaWebView.putProfileBoolean("_trackingULS", chip_profile_trusted, chip_profile_standard, chip_profile_protected, chip_profile_changed);
+                });
+
+                dialog2.show();
+                HelperUnit.setupDialog(context, dialog2);
+                dialog2.setOnCancelListener(dialog1 -> chip_adBlock.setChecked(ninjaWebView.getBoolean("_adBlock") || ninjaWebView.getBoolean("_trackingULS")));
             });
 
             Chip chip_saveData = dialogView.findViewById(R.id.chip_saveData);
@@ -2350,6 +2374,12 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
                 dialogTrack.show();
                 HelperUnit.setupDialog(context, dialogTrack);
             }
+        } else {
+            Intent sharingIntent = new Intent(Intent.ACTION_SEND);
+            sharingIntent.setType("text/plain");
+            sharingIntent.putExtra(Intent.EXTRA_SUBJECT, title);
+            sharingIntent.putExtra(Intent.EXTRA_TEXT, url);
+            context.startActivity(Intent.createChooser(sharingIntent, (context.getString(R.string.menu_share_link))));
         }
     }
 

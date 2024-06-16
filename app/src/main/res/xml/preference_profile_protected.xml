@@ -102,7 +102,7 @@
             android:defaultValue="true"
             android:icon="@drawable/icon_adblock"
             android:key="profileProtected_trackingULS"
-            android:summary="tracking URL popup" />
+            android:summary="@string/setting_title_trackingURL" />
 
     </PreferenceCategory>
 
