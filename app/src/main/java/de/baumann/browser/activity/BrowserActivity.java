@@ -2349,7 +2349,7 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
             String lastIndex = url.substring(url.lastIndexOf("/"));
             String tracking = url.substring(url.lastIndexOf("?"));
             String urlClean = url.replace(tracking, "");
-            if (lastIndex.contains(tracking) && !tracking.contains("search") && !tracking.contains("query") && !tracking.contains("watch")) {
+            if (lastIndex.contains(tracking) && !tracking.contains("search") && !tracking.contains("query") && !tracking.contains("watch") && !tracking.contains("?v=")) {
 
                 String m = getString(R.string.dialog_tracking) + " \"" + tracking + "\"" + " ?";
                 MaterialAlertDialogBuilder builderTrack = new MaterialAlertDialogBuilder(context);
