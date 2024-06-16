@@ -98,7 +98,7 @@
             android:summary="@string/setting_title_fingerPrint" />
 
         <CheckBoxPreference
-            android:defaultValue="true"
+            android:defaultValue="false"
             android:icon="@drawable/icon_adblock"
             android:key="profileStandard_trackingULS"
             android:summary="@string/setting_title_trackingURL" />

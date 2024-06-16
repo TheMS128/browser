@@ -280,7 +280,7 @@ public class NinjaWebView extends WebView implements AlbumController {
                 .putBoolean("profileTrusted_saveData", true)
                 .putBoolean("profileTrusted_images", true)
                 .putBoolean("profileTrusted_adBlock", true)
-                .putBoolean("profileTrusted_trackingULS", true)
+                .putBoolean("profileTrusted_trackingULS", false)
                 .putBoolean("profileTrusted_location", false)
                 .putBoolean("profileTrusted_fingerPrintProtection", false)
                 .putBoolean("profileTrusted_cookies", true)
@@ -296,7 +296,7 @@ public class NinjaWebView extends WebView implements AlbumController {
                 .putBoolean("profileStandard_saveData", true)
                 .putBoolean("profileStandard_images", true)
                 .putBoolean("profileStandard_adBlock", true)
-                .putBoolean("profileStandard_trackingULS", true)
+                .putBoolean("profileStandard_trackingULS", false)
                 .putBoolean("profileStandard_location", false)
                 .putBoolean("profileStandard_fingerPrintProtection", true)
                 .putBoolean("profileStandard_cookies", false)
@@ -576,7 +576,6 @@ public class NinjaWebView extends WebView implements AlbumController {
         else if (listProtected.isWhite(url)) profile = "profileProtected";
 
         boolean removeTracking = sp.getBoolean(profile + "_trackingULS", true);
-
         if (removeTracking && urlToLoad.contains("?") && urlToLoad.contains("/")) {
 
             String lastIndex = urlToLoad.substring(urlToLoad.lastIndexOf("/"));
