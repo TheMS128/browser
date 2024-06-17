@@ -577,12 +577,12 @@ public class NinjaWebView extends WebView implements AlbumController {
 
         boolean removeTracking = sp.getBoolean(profile + "_trackingULS", true);
         if (removeTracking && urlToLoad.contains("?") && urlToLoad.contains("/")) {
-
+            stopLoading();
             String lastIndex = urlToLoad.substring(urlToLoad.lastIndexOf("/"));
             String tracking = urlToLoad.substring(urlToLoad.lastIndexOf("?"));
             String urlClean = urlToLoad.replace(tracking, "");
             if (lastIndex.contains(tracking)
-                    && !tracking.contains("search") && !tracking.contains("query") && !tracking.contains("watch") && !tracking.contains("?v=")) {
+                    && !tracking.contains("search") && !tracking.contains("query")) {
 
                 String m = context.getString(R.string.dialog_tracking) + " \"" + tracking + "\"" + " ?";
                 MaterialAlertDialogBuilder builderTrack = new MaterialAlertDialogBuilder(context);
