@@ -224,4 +224,8 @@
     <string name="setting_title_profiles_without">Désactiver les profils</string>
     <string name="summary_deny_cookie_banners">Essayez de refuser automatiquement les bannières de cookies en utilisant les règles de Mozilla relatives aux bannières de cookies.</string>
     <string name="dialog_sortDomain">Trier par domaine</string>
+    <string name="dialog_tracking">URL de suivi possible. Supprimer la partie \"tracking\" :</string>
+    <string name="app_close">Fermer</string>
+    <string name="setting_title_trackingURL">Fenêtre contextuelle de suivi de l\'URL</string>
+    <string name="app_no">Non</string>
 </resources>

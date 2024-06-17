@@ -224,4 +224,8 @@
     <string name="setting_title_profiles_without">Dezactivați profilurile</string>
     <string name="dialog_sortDomain">Sortează după domeniu</string>
     <string name="summary_deny_cookie_banners">Încercați să refuzați automat bannerele cu cookie-uri utilizând Reguli pentru bannere cu cookie-uri de la Mozilla</string>
+    <string name="dialog_tracking">Posibil URL de urmărire. Eliminați partea de urmărire:</string>
+    <string name="app_no">Nu</string>
+    <string name="app_close">Închideți</string>
+    <string name="setting_title_trackingURL">Urmărire-URL popup</string>
 </resources>

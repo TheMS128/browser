@@ -224,4 +224,8 @@
     <string name="setting_title_profiles_without">Zakázat profily</string>
     <string name="dialog_sortDomain">Třídit podle domény</string>
     <string name="summary_deny_cookie_banners">Zkuste automaticky odmítnout bannery se soubory cookie pomocí pravidel pro bannery se soubory cookie společnosti Mozilla.</string>
+    <string name="dialog_tracking">Možná adresa URL pro sledování. Odstranění sledovací části:</string>
+    <string name="app_close">Zavřít</string>
+    <string name="app_no">Ne</string>
+    <string name="setting_title_trackingURL">Vyskakovací okno Tracking-URL</string>
 </resources>

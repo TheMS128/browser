@@ -224,4 +224,8 @@
     <string name="setting_title_profiles_without">Profilok letiltása</string>
     <string name="summary_deny_cookie_banners">Próbálja meg automatikusan letiltani a cookie bannereket a Mozilla Cookie Banner Rules használatával</string>
     <string name="dialog_sortDomain">Rendezés domain szerint</string>
+    <string name="dialog_tracking">Lehetséges követési URL. Távolítsa el a nyomkövető részt:</string>
+    <string name="app_close">Bezár</string>
+    <string name="setting_title_trackingURL">Tracking-URL felugró ablak</string>
+    <string name="app_no">Nem</string>
 </resources>

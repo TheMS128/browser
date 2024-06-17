@@ -224,4 +224,8 @@
     <string name="setting_title_profiles_without">禁用预案</string>
     <string name="dialog_sortDomain">按领域排序</string>
     <string name="summary_deny_cookie_banners">尝试使用 Mozilla 的 Cookie 横幅规则自动拒绝 Cookie 横幅广告</string>
+    <string name="app_close">关闭</string>
+    <string name="dialog_tracking">可能的跟踪 URL。删除跟踪部分：</string>
+    <string name="setting_title_trackingURL">跟踪 URL 弹出窗口</string>
+    <string name="app_no">没有</string>
 </resources>

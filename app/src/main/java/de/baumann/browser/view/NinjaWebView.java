@@ -587,7 +587,7 @@ public class NinjaWebView extends WebView implements AlbumController {
                 String m = context.getString(R.string.dialog_tracking) + " \"" + tracking + "\"" + " ?";
                 MaterialAlertDialogBuilder builderTrack = new MaterialAlertDialogBuilder(context);
                 builderTrack.setTitle(urlToLoad);
-                builderTrack.setIcon(R.drawable.icon_alert);
+                builderTrack.setIcon(R.drawable.icon_tracking);
                 builderTrack.setMessage(m);
                 builderTrack.setPositiveButton(R.string.app_ok, (dialog2, whichButton) -> {
                     initPreferences(BrowserUnit.queryWrapper(context, urlClean));

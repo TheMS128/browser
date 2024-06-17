@@ -224,4 +224,8 @@
     <string name="setting_title_profiles_without">Menonaktifkan Profil</string>
     <string name="setting_title_deny_cookie_banners">Pemblokir Spanduk Cookie</string>
     <string name="dialog_sortDomain">Urutkan berdasarkan domain</string>
+    <string name="dialog_tracking">Kemungkinan URL pelacakan. Menghapus bagian pelacakan:</string>
+    <string name="app_close">Tutup</string>
+    <string name="setting_title_trackingURL">Munculan URL pelacakan</string>
+    <string name="app_no">Tidak.</string>
 </resources>

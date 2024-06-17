@@ -224,4 +224,8 @@
     <string name="summary_deny_cookie_banners">Probeer cookiebanners automatisch te weigeren met Mozilla\'s Cookie Banner Regels</string>
     <string name="setting_title_deny_cookie_banners">Cookie Banner Blokkering</string>
     <string name="setting_title_profiles_without">Profielen uitschakelen</string>
+    <string name="dialog_tracking">Mogelijke traceer-URL. Verwijder het traceergedeelte:</string>
+    <string name="app_no">Geen</string>
+    <string name="app_close">Sluit</string>
+    <string name="setting_title_trackingURL">Volg-URL popup</string>
 </resources>

@@ -224,4 +224,8 @@
     <string name="setting_title_profiles_without">Desativar perfis</string>
     <string name="dialog_sortDomain">Ordenar por domínio</string>
     <string name="summary_deny_cookie_banners">Tente negar automaticamente os banners de cookies utilizando as Regras de banners de cookies do Mozilla</string>
+    <string name="app_no">Não</string>
+    <string name="app_close">Fechar</string>
+    <string name="dialog_tracking">Possível URL de rastreio. Remover a parte de rastreio:</string>
+    <string name="setting_title_trackingURL">Popup de rastreio-URL</string>
 </resources>

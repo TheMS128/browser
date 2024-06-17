@@ -99,7 +99,7 @@
 
         <CheckBoxPreference
             android:defaultValue="false"
-            android:icon="@drawable/icon_adblock"
+            android:icon="@drawable/icon_tracking"
             android:key="profileStandard_trackingULS"
             android:summary="@string/setting_title_trackingURL" />
 

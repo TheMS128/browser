@@ -224,4 +224,8 @@
     <string name="setting_title_deny_cookie_banners">Cookie-Banner-Blocker</string>
     <string name="dialog_sortDomain">Nach Domain sortieren</string>
     <string name="setting_title_profiles_without">kein Profil</string>
+    <string name="dialog_tracking">Möglicher Tracking-Link. Trackingteil entfernen:</string>
+    <string name="app_no">Nein</string>
+    <string name="app_close">Schließen</string>
+    <string name="setting_title_trackingURL">Tracking-URL Dialog</string>
 </resources>

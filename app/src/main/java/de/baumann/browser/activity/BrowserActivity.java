@@ -2344,7 +2344,18 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
 
     public void shareLink(String title, String url) {
 
-        if (url.contains("?") && url.contains("/")) {
+        List_trusted listTrusted = new List_trusted(context);
+        List_standard listStandard = new List_standard(context);
+        List_protected listProtected = new List_protected(context);
+
+        String profile = sp.getString("profile", "profileStandard");
+        if (listTrusted.isWhite(url)) profile = "profileTrusted";
+        else if (listStandard.isWhite(url)) profile = "profileStandard";
+        else if (listProtected.isWhite(url)) profile = "profileProtected";
+
+        boolean removeTracking = sp.getBoolean(profile + "_trackingULS", true);
+
+        if (removeTracking && url.contains("?") && url.contains("/")) {
 
             String lastIndex = url.substring(url.lastIndexOf("/"));
             String tracking = url.substring(url.lastIndexOf("?"));
@@ -2354,7 +2365,7 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
                 String m = getString(R.string.dialog_tracking) + " \"" + tracking + "\"" + " ?";
                 MaterialAlertDialogBuilder builderTrack = new MaterialAlertDialogBuilder(context);
                 builderTrack.setTitle(url);
-                builderTrack.setIcon(R.drawable.icon_alert);
+                builderTrack.setIcon(R.drawable.icon_tracking);
                 builderTrack.setMessage(m);
                 builderTrack.setPositiveButton(R.string.app_ok, (dialog2, whichButton) -> {
                     Intent sharingIntent = new Intent(Intent.ACTION_SEND);
@@ -2363,13 +2374,14 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
                     sharingIntent.putExtra(Intent.EXTRA_TEXT, urlClean);
                     context.startActivity(Intent.createChooser(sharingIntent, (context.getString(R.string.menu_share_link))));
                 });
-                builderTrack.setNegativeButton(R.string.app_cancel, (dialog2, whichButton) -> {
+                builderTrack.setNegativeButton(R.string.app_no, (dialog2, whichButton) -> {
                     Intent sharingIntent = new Intent(Intent.ACTION_SEND);
                     sharingIntent.setType("text/plain");
                     sharingIntent.putExtra(Intent.EXTRA_SUBJECT, title);
                     sharingIntent.putExtra(Intent.EXTRA_TEXT, url);
                     context.startActivity(Intent.createChooser(sharingIntent, (context.getString(R.string.menu_share_link))));
                 });
+                builderTrack.setNeutralButton(R.string.app_close, (dialog2, whichButton) -> dialog2.cancel());
                 AlertDialog dialogTrack = builderTrack.create();
                 dialogTrack.show();
                 HelperUnit.setupDialog(context, dialogTrack);

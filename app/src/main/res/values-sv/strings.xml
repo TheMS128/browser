@@ -224,4 +224,8 @@
     <string name="setting_title_deny_cookie_banners">Blockering av cookie-banners</string>
     <string name="setting_title_profiles_without">Inaktivera profiler</string>
     <string name="summary_deny_cookie_banners">Försök att automatiskt neka cookie-banners med hjälp av Mozillas regler för cookie-banners</string>
+    <string name="app_no">Nej</string>
+    <string name="app_close">Nära</string>
+    <string name="dialog_tracking">Möjlig URL för spårning. Ta bort spårningsdelen:</string>
+    <string name="setting_title_trackingURL">Popup-fönster för spårnings-URL</string>
 </resources>

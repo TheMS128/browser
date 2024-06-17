@@ -224,4 +224,8 @@
     <string name="summary_deny_cookie_banners">حاول رفض لافتات ملفات تعريف الارتباط تلقائيًا باستخدام قواعد ملفات تعريف الارتباط الخاصة بملفات تعريف الارتباط في</string>
     <string name="setting_title_deny_cookie_banners">مانع شعارات ملفات تعريف الارتباط</string>
     <string name="setting_title_profiles_without">تعطيل الملفات الشخصية</string>
+    <string name="dialog_tracking">عنوان URL التتبع المحتمل. إزالة جزء التتبع:</string>
+    <string name="app_close">إغلاق</string>
+    <string name="setting_title_trackingURL">تتبع-URL المنبثق</string>
+    <string name="app_no">لا يوجد</string>
 </resources>

@@ -224,4 +224,8 @@
     <string name="setting_title_deny_cookie_banners">Αποκλεισμός banner cookie</string>
     <string name="setting_title_profiles_without">Απενεργοποίηση προφίλ</string>
     <string name="dialog_sortDomain">Ταξινόμηση ανά τομέα</string>
+    <string name="dialog_tracking">Πιθανή διεύθυνση URL παρακολούθησης. Αφαιρέστε το τμήμα παρακολούθησης:</string>
+    <string name="app_close">Κλείσιμο</string>
+    <string name="setting_title_trackingURL">Αναδυόμενο παράθυρο παρακολούθησης-URL</string>
+    <string name="app_no">Όχι</string>
 </resources>
