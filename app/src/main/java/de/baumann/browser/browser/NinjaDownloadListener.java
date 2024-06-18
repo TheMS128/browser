@@ -53,6 +53,7 @@ public class NinjaDownloadListener implements DownloadListener {
         }
 
         String filename = URLUtil.guessFileName(url, contentDisposition, mimeType);
+
         GridItem item_01 = new GridItem(context.getString(R.string.app_ok), R.drawable.icon_check);
         GridItem item_02 = new GridItem( context.getString(R.string.menu_share_link), R.drawable.icon_link);
         GridItem item_03 = new GridItem( context.getString(R.string.menu_save_as), R.drawable.icon_menu_save);
@@ -64,7 +65,15 @@ public class NinjaDownloadListener implements DownloadListener {
 
         builder.setIcon(R.drawable.icon_download);
         builder.setTitle(R.string.dialog_title_download);
-        builder.setMessage(filename);
+
+        String filenameShort;
+        if (filename.length() > 100) {
+            filenameShort = filename.substring(0, 100) + "...";
+            builder.setMessage(filenameShort);
+        } else {
+            builder.setMessage(filename);
+        }
+
         builder.setView(dialogView);
         builder.setNegativeButton(R.string.app_cancel, (dialog, whichButton) -> dialog.cancel());
 

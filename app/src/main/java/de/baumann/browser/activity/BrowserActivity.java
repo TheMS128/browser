@@ -2360,31 +2360,85 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
             String lastIndex = url.substring(url.lastIndexOf("/"));
             String tracking = url.substring(url.lastIndexOf("?"));
             String urlClean = url.replace(tracking, "");
-            if (lastIndex.contains(tracking) && !tracking.contains("search") && !tracking.contains("query") && !tracking.contains("watch") && !tracking.contains("?v=")) {
 
-                String m = getString(R.string.dialog_tracking) + " \"" + tracking + "\"" + " ?";
+            if (lastIndex.contains(tracking)) {
+
+                String m = context.getString(R.string.dialog_tracking) + " \"" + tracking + "\"" + "?";
+                GridItem item_01 = new GridItem(context.getString(R.string.app_ok), R.drawable.icon_check);
+                GridItem item_02 = new GridItem( context.getString(R.string.app_no), R.drawable.icon_close);
+                GridItem item_03 = new GridItem( context.getString(R.string.menu_edit), R.drawable.icon_edit);
+
+                View dialogView = View.inflate(context, R.layout.dialog_menu, null);
                 MaterialAlertDialogBuilder builderTrack = new MaterialAlertDialogBuilder(context);
+
+                CardView albumCardView = dialogView.findViewById(R.id.albumCardView);
+                albumCardView.setVisibility(View.GONE);
                 builderTrack.setTitle(url);
                 builderTrack.setIcon(R.drawable.icon_tracking);
                 builderTrack.setMessage(m);
-                builderTrack.setPositiveButton(R.string.app_ok, (dialog2, whichButton) -> {
-                    Intent sharingIntent = new Intent(Intent.ACTION_SEND);
-                    sharingIntent.setType("text/plain");
-                    sharingIntent.putExtra(Intent.EXTRA_SUBJECT, title);
-                    sharingIntent.putExtra(Intent.EXTRA_TEXT, urlClean);
-                    context.startActivity(Intent.createChooser(sharingIntent, (context.getString(R.string.menu_share_link))));
-                });
-                builderTrack.setNegativeButton(R.string.app_no, (dialog2, whichButton) -> {
-                    Intent sharingIntent = new Intent(Intent.ACTION_SEND);
-                    sharingIntent.setType("text/plain");
-                    sharingIntent.putExtra(Intent.EXTRA_SUBJECT, title);
-                    sharingIntent.putExtra(Intent.EXTRA_TEXT, url);
-                    context.startActivity(Intent.createChooser(sharingIntent, (context.getString(R.string.menu_share_link))));
-                });
-                builderTrack.setNeutralButton(R.string.app_close, (dialog2, whichButton) -> dialog2.cancel());
+                builderTrack.setPositiveButton(R.string.app_close, (dialog2, whichButton) -> dialog2.cancel());
+                builderTrack.setView(dialogView);
                 AlertDialog dialogTrack = builderTrack.create();
                 dialogTrack.show();
                 HelperUnit.setupDialog(context, dialogTrack);
+
+                GridView menu_grid = dialogView.findViewById(R.id.menu_grid);
+                final List<GridItem> gridList = new LinkedList<>();
+                gridList.add(gridList.size(), item_01);
+                gridList.add(gridList.size(), item_02);
+                gridList.add(gridList.size(), item_03);
+                GridAdapter gridAdapter = new GridAdapter(context, gridList);
+                menu_grid.setAdapter(gridAdapter);
+                gridAdapter.notifyDataSetChanged();
+                menu_grid.setOnItemClickListener((parent, view, position, id) -> {
+                    switch (position) {
+
+                        case 0:
+                            dialogTrack.cancel();
+                            Intent sharingIntentClean;
+                            sharingIntentClean = new Intent(Intent.ACTION_SEND);
+                            sharingIntentClean.setType("text/plain");
+                            sharingIntentClean.putExtra(Intent.EXTRA_SUBJECT, title);
+                            sharingIntentClean.putExtra(Intent.EXTRA_TEXT, urlClean);
+                            context.startActivity(Intent.createChooser(sharingIntentClean, (context.getString(R.string.menu_share_link))));
+                            break;
+                        case 1:
+                            dialogTrack.cancel();
+                            Intent sharingIntent;
+                            sharingIntent = new Intent(Intent.ACTION_SEND);
+                            sharingIntent.setType("text/plain");
+                            sharingIntent.putExtra(Intent.EXTRA_SUBJECT, title);
+                            sharingIntent.putExtra(Intent.EXTRA_TEXT, url);
+                            context.startActivity(Intent.createChooser(sharingIntent, (context.getString(R.string.menu_share_link))));
+                            break;
+                        case 2:
+                            dialogTrack.cancel();
+                            View dialogEdit = View.inflate(context, R.layout.dialog_edit_text, null);
+                            TextInputEditText input = dialogEdit.findViewById(R.id.textInput);
+                            input.setText(url);
+                            HelperUnit.showSoftKeyboard(input);
+
+                            MaterialAlertDialogBuilder builder = new MaterialAlertDialogBuilder(context);
+                            builder.setTitle(context.getString(R.string.menu_edit));
+                            builder.setIcon(R.drawable.icon_tracking);
+                            builder.setNegativeButton(R.string.app_cancel, null);
+                            builder.setPositiveButton(R.string.app_ok, (dialog, i) -> {
+                                dialog.dismiss();
+                                String newValue = Objects.requireNonNull(input.getText()).toString();
+                                Intent sharingIntentEdit;
+                                sharingIntentEdit = new Intent(Intent.ACTION_SEND);
+                                sharingIntentEdit.setType("text/plain");
+                                sharingIntentEdit.putExtra(Intent.EXTRA_SUBJECT, title);
+                                sharingIntentEdit.putExtra(Intent.EXTRA_TEXT, newValue);
+                                context.startActivity(Intent.createChooser(sharingIntentEdit, (context.getString(R.string.menu_share_link))));
+                            });
+                            builder.setView(dialogEdit);
+                            Dialog dialog = builder.create();
+                            dialog.show();
+                            HelperUnit.setupDialog(context, dialog);
+                            break;
+                    }
+                });
             }
         } else {
             Intent sharingIntent = new Intent(Intent.ACTION_SEND);
@@ -2457,7 +2511,7 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
         searchOnSite = true;
         omniBox.setVisibility(View.GONE);
         searchPanel.setVisibility(View.VISIBLE);
-        HelperUnit.showSoftKeyboard(searchBox, activity);
+        HelperUnit.showSoftKeyboard(searchBox);
     }
 
     private void saveBookmark() {
@@ -2708,7 +2762,7 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
             MaterialButton startBrowsing = dialogView.findViewById(R.id.startBrowsing);
             startBrowsing.setOnClickListener(v -> {
                 dialog.cancel();
-                HelperUnit.showSoftKeyboard(omniBox_text, activity);
+                HelperUnit.showSoftKeyboard(omniBox_text);
             });
 
             MaterialButton openSettings = dialogView.findViewById(R.id.openSettings);

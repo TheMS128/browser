@@ -502,6 +502,7 @@ public class NinjaWebViewClient extends WebViewClient {
     @Override
     public void onReceivedSslError(WebView view, final SslErrorHandler handler, SslError error) {
         String message;
+        view.stopLoading();
         switch (error.getPrimaryError()) {
             case SslError.SSL_UNTRUSTED:
                 message = "\"Certificate authority is not trusted.\"";
@@ -523,7 +524,6 @@ public class NinjaWebViewClient extends WebViewClient {
                 break;
         }
         String text = message + " - " + context.getString(R.string.dialog_content_ssl_error);
-
         MaterialAlertDialogBuilder builder = new MaterialAlertDialogBuilder(context);
         builder.setTitle(HelperUnit.domain(view.getUrl()));
         builder.setIcon(R.drawable.icon_alert);
@@ -539,6 +539,7 @@ public class NinjaWebViewClient extends WebViewClient {
     @Override
     public void onReceivedHttpAuthRequest(WebView view, @NonNull final HttpAuthHandler handler, String host, String realm) {
 
+        view.stopLoading();
         MaterialAlertDialogBuilder builder = new MaterialAlertDialogBuilder(context);
         View dialogView = View.inflate(context, R.layout.dialog_edit, null);
 

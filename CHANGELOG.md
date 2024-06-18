@@ -2,6 +2,8 @@
 - new: tracking-URL-popup
 - fix: context menu in tab overview
 - fix: onRenderProcessGone
+- fix: http-dialog
+- fix: Download-dialog with too long file names
 - updated: translations
 
 

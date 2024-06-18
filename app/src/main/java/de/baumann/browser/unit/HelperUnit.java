@@ -38,6 +38,7 @@ import android.graphics.drawable.Icon;
 import android.net.Uri;
 import android.os.Environment;
 import android.os.Handler;
+import android.os.SystemClock;
 import android.print.PrintAttributes;
 import android.print.PrintDocumentAdapter;
 import android.print.PrintManager;
@@ -49,6 +50,7 @@ import android.util.DisplayMetrics;
 import android.util.Log;
 import android.util.TypedValue;
 import android.view.Gravity;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.webkit.CookieManager;
@@ -225,7 +227,7 @@ public class HelperUnit {
                         } catch (Exception e) {
                             System.out.println("Error Downloading File: " + e);
                             Toast.makeText(activity, activity.getString(R.string.app_error) + e.toString().substring(e.toString().indexOf(":")), Toast.LENGTH_LONG).show();
-                            e.printStackTrace();
+                            Log.i(TAG, "shouldOverrideUrlLoading Exception:" + e);
                         }
 
                     } else {
@@ -235,13 +237,13 @@ public class HelperUnit {
                     try {
                         dialog.cancel();
                     } catch (Exception e) {
-                        Log.i("FOSS Browser", "shouldOverrideUrlLoading Exception:" + e);
+                        Log.i("FOSS Browser", "SaveAs:" + e);
                     }
                     dialogParent.cancel();
                 }
             });
         } catch (Exception e) {
-            e.printStackTrace();
+            Log.i(TAG, "SaveAs:" + e);
         }
     }
 
@@ -411,8 +413,7 @@ public class HelperUnit {
                             fos.write(imagedata);
                         }
                     } catch (Exception e) {
-                        System.out.println("Error Downloading File: " + e);
-                        e.printStackTrace();
+                        Log.i(TAG, "Error Downloading File:" + e);
                     }
                 } else {
                     BackupUnit.requestPermission(activity);
@@ -424,15 +425,13 @@ public class HelperUnit {
         });
     }
 
-    public static void showSoftKeyboard(View view, Activity context) {
-        assert view != null;
-        final Handler handler = new Handler();
-        handler.postDelayed(() -> {
-            if (view.requestFocus()) {
-                InputMethodManager imm = (InputMethodManager) context.getSystemService(Context.INPUT_METHOD_SERVICE);
-                imm.showSoftInput(view, InputMethodManager.SHOW_IMPLICIT);
-            }
-        }, 50);
+    public static void showSoftKeyboard(EditText editText) {
+        editText.requestFocus();
+        new Handler().postDelayed(() -> {
+            editText.dispatchTouchEvent(MotionEvent.obtain(SystemClock.uptimeMillis(), SystemClock.uptimeMillis(), MotionEvent.ACTION_DOWN, 0f, 0f, 0));
+            editText.dispatchTouchEvent(MotionEvent.obtain(SystemClock.uptimeMillis(), SystemClock.uptimeMillis(), MotionEvent.ACTION_UP, 0f, 0f, 0));
+            editText.setSelection(Objects.requireNonNull(editText.getText()).length());
+        }, 200);
     }
 
     public static void hideSoftKeyboard(View view, Context context) {

@@ -7,6 +7,7 @@ import static android.content.Context.NOTIFICATION_SERVICE;
 import android.Manifest;
 import android.annotation.SuppressLint;
 import android.app.Activity;
+import android.app.Dialog;
 import android.app.Notification;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
@@ -44,6 +45,7 @@ import androidx.webkit.WebViewFeature;
 import com.google.android.material.chip.Chip;
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.android.material.textfield.TextInputEditText;
 
 import java.util.HashMap;
 import java.util.LinkedList;
@@ -581,30 +583,76 @@ public class NinjaWebView extends WebView implements AlbumController {
             String lastIndex = urlToLoad.substring(urlToLoad.lastIndexOf("/"));
             String tracking = urlToLoad.substring(urlToLoad.lastIndexOf("?"));
             String urlClean = urlToLoad.replace(tracking, "");
-            if (lastIndex.contains(tracking)
-                    && !tracking.contains("search") && !tracking.contains("query")) {
+            if (lastIndex.contains(tracking)) {
 
-                String m = context.getString(R.string.dialog_tracking) + " \"" + tracking + "\"" + " ?";
+                String m = context.getString(R.string.dialog_tracking) + " \"" + tracking + "\"" + "?";
+                GridItem item_01 = new GridItem(context.getString(R.string.app_ok), R.drawable.icon_check);
+                GridItem item_02 = new GridItem( context.getString(R.string.app_no), R.drawable.icon_close);
+                GridItem item_03 = new GridItem( context.getString(R.string.menu_edit), R.drawable.icon_edit);
+
+                View dialogView = View.inflate(context, R.layout.dialog_menu, null);
                 MaterialAlertDialogBuilder builderTrack = new MaterialAlertDialogBuilder(context);
+
+                CardView albumCardView = dialogView.findViewById(R.id.albumCardView);
+                albumCardView.setVisibility(GONE);
                 builderTrack.setTitle(urlToLoad);
                 builderTrack.setIcon(R.drawable.icon_tracking);
                 builderTrack.setMessage(m);
-                builderTrack.setPositiveButton(R.string.app_ok, (dialog2, whichButton) -> {
-                    initPreferences(BrowserUnit.queryWrapper(context, urlClean));
-                    super.loadUrl(BrowserUnit.queryWrapper(context, urlClean), getRequestHeaders());
-                });
-                builderTrack.setNegativeButton(R.string.app_no, (dialog2, whichButton) -> {
-                    initPreferences(BrowserUnit.queryWrapper(context, urlClean));
-                    super.loadUrl(BrowserUnit.queryWrapper(context, urlToLoad), getRequestHeaders());
-                });
-                builderTrack.setNeutralButton(R.string.app_close, (dialog2, whichButton) -> dialog2.cancel());
+                builderTrack.setPositiveButton(R.string.app_close, (dialog2, whichButton) -> dialog2.cancel());
+                builderTrack.setView(dialogView);
                 AlertDialog dialogTrack = builderTrack.create();
                 dialogTrack.show();
                 HelperUnit.setupDialog(context, dialogTrack);
+
+                GridView menu_grid = dialogView.findViewById(R.id.menu_grid);
+                final List<GridItem> gridList = new LinkedList<>();
+                gridList.add(gridList.size(), item_01);
+                gridList.add(gridList.size(), item_02);
+                gridList.add(gridList.size(), item_03);
+                GridAdapter gridAdapter = new GridAdapter(context, gridList);
+                menu_grid.setAdapter(gridAdapter);
+                gridAdapter.notifyDataSetChanged();
+                menu_grid.setOnItemClickListener((parent, view, position, id) -> {
+                    switch (position) {
+                        case 0:
+                            dialogTrack.cancel();
+                            initPreferences(BrowserUnit.queryWrapper(context, urlClean));
+                            super.loadUrl(BrowserUnit.queryWrapper(context, urlClean), getRequestHeaders());
+                            break;
+                        case 1:
+                            dialogTrack.cancel();
+                            initPreferences(BrowserUnit.queryWrapper(context, urlClean));
+                            super.loadUrl(BrowserUnit.queryWrapper(context, urlToLoad), getRequestHeaders());
+                            break;
+                        case 2:
+                            dialogTrack.cancel();
+                            View dialogEdit = View.inflate(getContext(), R.layout.dialog_edit_text, null);
+                            TextInputEditText input = dialogEdit.findViewById(R.id.textInput);
+                            input.setText(urlToLoad);
+                            HelperUnit.showSoftKeyboard(input);
+
+                            MaterialAlertDialogBuilder builder = new MaterialAlertDialogBuilder(context);
+                            builder.setTitle(context.getString(R.string.menu_edit));
+                            builder.setIcon(R.drawable.icon_tracking);
+                            builder.setNegativeButton(R.string.app_cancel, null);
+                            builder.setPositiveButton(R.string.app_ok, (dialog, i) -> {
+                                dialog.dismiss();
+                                String newValue = Objects.requireNonNull(input.getText()).toString();
+                                initPreferences(BrowserUnit.queryWrapper(context, newValue));
+                                super.loadUrl(BrowserUnit.queryWrapper(context, newValue), getRequestHeaders());
+                            });
+                            builder.setView(dialogEdit);
+                            Dialog dialog = builder.create();
+                            dialog.show();
+                            HelperUnit.setupDialog(context, dialog);
+                            break;
+                    }
+                });
             }
 
         } else if (url.startsWith("http://") && sp.getString("dialog_neverAsk", "no").equals("no")) {
 
+            stopLoading();
             GridItem item_01 = new GridItem("https://", R.drawable.icon_profile_trusted);
             GridItem item_02 = new GridItem( "http://", R.drawable.icon_profile_changed);
             GridItem item_03 = new GridItem( context.getString(R.string.app_cancel), R.drawable.icon_close);
