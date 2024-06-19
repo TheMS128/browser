@@ -133,6 +133,7 @@ import de.baumann.browser.view.NinjaWebView;
 import de.baumann.browser.view.AdapterRecord;
 import de.baumann.browser.view.SwipeTouchListener;
 
+/** @noinspection ExtractMethodRecommender*/
 public class BrowserActivity extends AppCompatActivity implements BrowserController {
 
     // Menus
@@ -230,6 +231,7 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
         context = BrowserActivity.this;
         sp = PreferenceManager.getDefaultSharedPreferences(context);
         duration = getResources().getInteger(android.R.integer.config_mediumAnimTime);
+        //noinspection InstantiationOfUtilityClass
         new BannerBlock(context);
         HelperUnit.initTheme(activity);
 

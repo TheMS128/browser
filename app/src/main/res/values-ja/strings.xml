@@ -29,10 +29,8 @@
     <string name="color_grey">グレー</string>
     <!-- Menu -->
     <string name="main_menu_new_tab">新規タブ (バックグラウンド)</string>
-    <string name="main_menu_new_tabProfile">新規タブ (プロファイル …)</string>
     <string name="main_menu_new_tabOpen">新規タブ (フォアグラウンド)</string>
     <string name="main_omnibox_input_hint">検索または URL を入力</string>
-    <string name="menu_open_with">リンクを開く…</string>
     <string name="menu_quit">終了</string>
     <string name="menu_openFav">スタートページを開く</string>
     <string name="menu_delete">削除</string>
@@ -227,5 +225,4 @@
     <string name="dialog_tracking">追跡可能なURL 追跡部分を削除する：</string>
     <string name="setting_title_trackingURL">トラッキングURLポップアップ</string>
     <string name="app_no">いいえ</string>
-    <string name="app_close">閉じる</string>
 </resources>

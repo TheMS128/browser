@@ -49,7 +49,7 @@ public class Fragment_settings_General extends BasePreferenceFragment  implement
 
         if(customSE) {
             searchEngines.setEnabled(false);
-            if (customSearchEngine.equals("")) {
+            if (customSearchEngine.isEmpty()) {
                 NinjaToast.show(context, text);
             }
         } else {

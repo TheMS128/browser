@@ -29,10 +29,8 @@
     <string name="color_grey">Gri</string>
     <!-- Menu -->
     <string name="main_menu_new_tab">Yeni sekme (arka plan)</string>
-    <string name="main_menu_new_tabProfile">Yeni sekme (… profil)</string>
     <string name="main_menu_new_tabOpen">Yeni sekme (ön plan)</string>
     <string name="main_omnibox_input_hint">Arayın veya URL girin</string>
-    <string name="menu_open_with">Birlikte aç …</string>
     <string name="menu_quit">Çıkış yap</string>
     <string name="menu_openFav">Başlangıç sayfasını aç</string>
     <string name="menu_delete">Sil</string>
@@ -225,7 +223,6 @@
     <string name="setting_title_deny_cookie_banners">Çerez Banner Engelleyici</string>
     <string name="setting_title_profiles_without">Profilleri Devre Dışı Bırak</string>
     <string name="app_no">Hayır</string>
-    <string name="app_close">Kapat</string>
     <string name="dialog_tracking">Olası izleme URL\'si. İzleme kısmını kaldırın:</string>
     <string name="setting_title_trackingURL">İzleme-URL açılır penceresi</string>
 </resources>

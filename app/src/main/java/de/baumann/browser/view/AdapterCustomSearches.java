@@ -80,15 +80,10 @@ public class AdapterCustomSearches extends RecyclerView.Adapter<RedirectsViewHol
         holder.itemView.setOnClickListener(v -> {
             SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(context);
             sp.edit().putString("sp_search_customSearches", current.getTarget()).apply();
-
             String t = BrowserUnit.queryWrapper(context, url);
             Intent i = new Intent(Intent.ACTION_VIEW);
             i.setData(Uri.parse(t));
             context.startActivity(i);
-            //BrowserUnit.intentURL(context, webpage);
-
-
-            //webView.loadUrl(url);
             sp.edit().putString("sp_search_customSearches", "").apply();
         });
 

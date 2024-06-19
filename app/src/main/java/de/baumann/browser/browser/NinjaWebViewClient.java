@@ -397,6 +397,7 @@ public class NinjaWebViewClient extends WebViewClient {
 
             //Spoof screen resolution, color depth: set values like in Tor browser, random values for device memory, hardwareConcurrency, remove battery, network connection, keyboard, media devices info, prevent sendBeacon
 
+            //noinspection ConcatenationWithEmptyString
             view.evaluateJavascript("" +
                     "Object.defineProperty(window, 'devicePixelRatio',{value:1});" +
                     "Object.defineProperty(window.screen, 'width',{value:1000});" +
@@ -416,6 +417,7 @@ public class NinjaWebViewClient extends WebViewClient {
                     "Object.defineProperty(navigator, 'sendBeacon',{value:null});", null);
 
             if (!ninjaWebView.isCamera())
+                //noinspection ConcatenationWithEmptyString
                 view.evaluateJavascript("" + "Object.defineProperty(navigator, 'mediaDevices',{value:null});", null);
         }
     }

@@ -74,7 +74,7 @@ public class SwipeTouchListener implements OnTouchListener {
                             }
                         }
                     } catch (Exception exception) {
-                        exception.printStackTrace();
+                        Log.i("FOSS Browser", "onFling:" + exception);
                     }
                 }
             } catch (Exception e) {

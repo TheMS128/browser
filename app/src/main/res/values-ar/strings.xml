@@ -28,10 +28,8 @@
     <string name="color_grey">رمادي</string>
     <!-- Menu -->
     <string name="main_menu_new_tab">علامة تبويب جديدة (الخلفية)</string>
-    <string name="main_menu_new_tabProfile">علامة تبويب جديدة (مع الملف الشخصي …)</string>
     <string name="main_menu_new_tabOpen">علامة تبويب جديدة (الواجهة)</string>
     <string name="main_omnibox_input_hint">ابحث أو أدخل رابطا</string>
-    <string name="menu_open_with">افتح الرابط بواسطة…</string>
     <string name="menu_quit">خروج</string>
     <string name="menu_openFav">فتح المفضلة</string>
     <string name="menu_delete">حذف</string>
@@ -225,7 +223,6 @@
     <string name="setting_title_deny_cookie_banners">مانع شعارات ملفات تعريف الارتباط</string>
     <string name="setting_title_profiles_without">تعطيل الملفات الشخصية</string>
     <string name="dialog_tracking">عنوان URL التتبع المحتمل. إزالة جزء التتبع:</string>
-    <string name="app_close">إغلاق</string>
     <string name="setting_title_trackingURL">تتبع-URL المنبثق</string>
     <string name="app_no">لا يوجد</string>
 </resources>

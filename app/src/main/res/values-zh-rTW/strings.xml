@@ -24,8 +24,6 @@
     <string name="color_grey">灰</string>
     <!-- Menu -->
     <string name="main_menu_new_tab">新增背景分頁</string>
-    <string name="main_menu_new_tabProfile">新标签（含个人资料......）。</string>
-    <string name="menu_open_with">Open link with …</string>
     <string name="menu_openFav">開啟首頁</string>
     <string name="menu_delete">Delete</string>
     <string name="menu_closeTab">關閉分頁</string>

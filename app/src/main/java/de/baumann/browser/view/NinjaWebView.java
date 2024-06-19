@@ -563,7 +563,7 @@ public class NinjaWebView extends WebView implements AlbumController {
         InputMethodManager imm = (InputMethodManager) this.context.getSystemService(Context.INPUT_METHOD_SERVICE);
         imm.hideSoftInputFromWindow(this.getWindowToken(), 0);
 
-        String urlToLoad = BrowserUnit.redirectURL(context, this, sp, url);
+        String urlToLoad = BrowserUnit.redirectURL( this, sp, url);
 
         favicon = null;
         stopped = false;
@@ -673,9 +673,7 @@ public class NinjaWebView extends WebView implements AlbumController {
             builder.setTitle(HelperUnit.domain(url));
             builder.setIcon(R.drawable.icon_unsecure);
             builder.setMessage(R.string.toast_unsecured);
-            builder.setPositiveButton(R.string.app_cancel, (dialog2, whichButton) -> {
-                dialog2.cancel();
-            });
+            builder.setPositiveButton(R.string.app_cancel, (dialog2, whichButton) -> dialog2.cancel());
             builder.setView(dialogView);
 
             AlertDialog dialog = builder.create();

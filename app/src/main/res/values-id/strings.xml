@@ -28,10 +28,8 @@
     <string name="color_grey">Abu-abu</string>
     <!-- Menu -->
     <string name="main_menu_new_tab">Tab baru (di latar belakang)</string>
-    <string name="main_menu_new_tabProfile">Tab baru (dengan profil …)</string>
     <string name="main_menu_new_tabOpen">Tab baru (di latar belakang)</string>
     <string name="main_omnibox_input_hint">Cari atau ketik URL</string>
-    <string name="menu_open_with">Buka tautan dengan …</string>
     <string name="menu_quit">Keluar</string>
     <string name="menu_openFav">Buka Favorit</string>
     <string name="menu_delete">Hapus</string>
@@ -225,7 +223,6 @@
     <string name="setting_title_deny_cookie_banners">Pemblokir Spanduk Cookie</string>
     <string name="dialog_sortDomain">Urutkan berdasarkan domain</string>
     <string name="dialog_tracking">Kemungkinan URL pelacakan. Menghapus bagian pelacakan:</string>
-    <string name="app_close">Tutup</string>
     <string name="setting_title_trackingURL">Munculan URL pelacakan</string>
     <string name="app_no">Tidak.</string>
 </resources>

@@ -28,6 +28,7 @@ import de.baumann.browser.unit.HelperUnit;
 import de.baumann.browser.view.GridAdapter;
 import de.baumann.browser.view.GridItem;
 
+/** @noinspection ExtractMethodRecommender*/
 public class NinjaDownloadListener implements DownloadListener {
     private final Context context;
     private final WebView webView;

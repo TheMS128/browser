@@ -29,10 +29,8 @@
     <string name="color_grey">Szary</string>
     <!-- Menu -->
     <string name="main_menu_new_tab">Nowa karta w tle</string>
-    <string name="main_menu_new_tabProfile">Nowa karta (z profilem …)</string>
     <string name="main_menu_new_tabOpen">Nowa karta priorytetowa</string>
     <string name="main_omnibox_input_hint">Wyszukaj lub wpisz adres</string>
-    <string name="menu_open_with">Otwórz odnośnik w …</string>
     <string name="menu_quit">Wyjdź</string>
     <string name="menu_openFav">Otwórz ulubione</string>
     <string name="menu_delete">Usuń</string>
@@ -226,6 +224,5 @@
     <string name="setting_title_profiles_without">Wyłączanie profili</string>
     <string name="dialog_tracking">Możliwy adres URL śledzenia. Usuń część śledzącą:</string>
     <string name="app_no">Nie</string>
-    <string name="app_close">Zamknij</string>
     <string name="setting_title_trackingURL">Wyskakujące okienko śledzenia adresu URL</string>
 </resources>

@@ -29,10 +29,8 @@
     <string name="color_grey">Šedá</string>
     <!-- Menu -->
     <string name="main_menu_new_tab">Nová karta (na pozadí)</string>
-    <string name="main_menu_new_tabProfile">Nová karta (s profilem …)</string>
     <string name="main_menu_new_tabOpen">Nová karta (na popředí)</string>
     <string name="main_omnibox_input_hint">Vyhledávejte nebo zadejte adresu URL</string>
-    <string name="menu_open_with">Otevřít odkaz pomocí …</string>
     <string name="menu_quit">Ukončit</string>
     <string name="menu_openFav">Otevřít oblíbené</string>
     <string name="menu_delete">Smazat</string>
@@ -225,7 +223,6 @@
     <string name="dialog_sortDomain">Třídit podle domény</string>
     <string name="summary_deny_cookie_banners">Zkuste automaticky odmítnout bannery se soubory cookie pomocí pravidel pro bannery se soubory cookie společnosti Mozilla.</string>
     <string name="dialog_tracking">Možná adresa URL pro sledování. Odstranění sledovací části:</string>
-    <string name="app_close">Zavřít</string>
     <string name="app_no">Ne</string>
     <string name="setting_title_trackingURL">Vyskakovací okno Tracking-URL</string>
 </resources>

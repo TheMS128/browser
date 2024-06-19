@@ -32,7 +32,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AlertDialog;
-import androidx.cardview.widget.CardView;
 import androidx.core.app.ActivityCompat;
 import androidx.core.app.NotificationCompat;
 import androidx.core.content.ContextCompat;
@@ -54,9 +53,6 @@ import de.baumann.browser.R;
 import de.baumann.browser.activity.BrowserActivity;
 import de.baumann.browser.browser.DataURIParser;
 import de.baumann.browser.browser.JavaScriptInterface;
-import de.baumann.browser.browser.List_protected;
-import de.baumann.browser.browser.List_standard;
-import de.baumann.browser.browser.List_trusted;
 import de.baumann.browser.database.FaviconHelper;
 import de.baumann.browser.database.RecordAction;
 import de.baumann.browser.objects.CustomRedirect;
@@ -119,7 +115,7 @@ public class BrowserUnit {
 
     public static String queryWrapper(Context context, String query) {
 
-        if (isURL(query) || query.equals("")) {
+        if (isURL(query) || query.isEmpty()) {
             if (query.startsWith(URL_SCHEME_ABOUT) || query.startsWith(URL_SCHEME_MAIL_TO)) {
                 return query;
             }
@@ -136,14 +132,14 @@ public class BrowserUnit {
             //Override UserAgent if own UserAgent is defined
             if (!sp.contains("searchEngineSwitch")) {
                 //if new switch_text_preference has never been used initialize the switch
-                if (customSearchEngine.equals("")) {
+                if (customSearchEngine.isEmpty()) {
                     sp.edit().putBoolean("searchEngineSwitch", false).apply();
                 } else {
                     sp.edit().putBoolean("searchEngineSwitch", true).apply();
                 }
             }
 
-            if (!customSearches.equals("")) {
+            if (!customSearches.isEmpty()) {
                 return customSearches + query;
             } else if (sp.getBoolean("searchEngineSwitch", false)) {
                 //if new switch_text_preference has never been used initialize the switch
@@ -215,9 +211,8 @@ public class BrowserUnit {
                 }
             }
         } catch (Exception e) {
-            System.out.println("Error Downloading File: " + e);
             Toast.makeText(context, context.getString(R.string.app_error) + e.toString().substring(e.toString().indexOf(":")), Toast.LENGTH_LONG).show();
-            e.printStackTrace();
+            Log.i(TAG, "FOSS Browser: Error Downloading File:" + e);
         }
     }
 
@@ -322,7 +317,7 @@ public class BrowserUnit {
         context.startActivity(browserIntent);
     }
 
-    public static String redirectURL(Context context, WebView ninjaWebView, SharedPreferences sp, String url) {
+    public static String redirectURL(WebView ninjaWebView, SharedPreferences sp, String url) {
         boolean redirect = sp.getBoolean("redirect", false);
         if (!redirect) return url;
         try {

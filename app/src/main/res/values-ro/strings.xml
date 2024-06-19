@@ -29,10 +29,8 @@
     <string name="color_grey">Gri</string>
     <!-- Menu -->
     <string name="main_menu_new_tab">Filă nouă (în fundal)</string>
-    <string name="main_menu_new_tabProfile">Filă nouă (cu profil …)</string>
     <string name="main_menu_new_tabOpen">Fereastră nouă (vizualizare)</string>
     <string name="main_omnibox_input_hint">Căutaţi sau introduceţi URL-ul</string>
-    <string name="menu_open_with">Deschideți linkul cu …</string>
     <string name="menu_quit">Închide</string>
     <string name="menu_openFav">Deschide favorit</string>
     <string name="menu_delete">Șterge</string>
@@ -226,6 +224,5 @@
     <string name="summary_deny_cookie_banners">Încercați să refuzați automat bannerele cu cookie-uri utilizând Reguli pentru bannere cu cookie-uri de la Mozilla</string>
     <string name="dialog_tracking">Posibil URL de urmărire. Eliminați partea de urmărire:</string>
     <string name="app_no">Nu</string>
-    <string name="app_close">Închideți</string>
     <string name="setting_title_trackingURL">Urmărire-URL popup</string>
 </resources>

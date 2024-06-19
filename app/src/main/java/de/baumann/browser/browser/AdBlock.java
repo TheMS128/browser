@@ -64,7 +64,7 @@ public class AdBlock {
         }
 
         Date lastModified = new Date(file.lastModified());
-        if (lastModified.before(time.getTime()) || getHostsDate(context).equals("")) {
+        if (lastModified.before(time.getTime()) || getHostsDate(context).isEmpty()) {
             //also download again if something is wrong with the file
             //update if file is older than a day
             downloadHosts(context);

@@ -7,6 +7,7 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Environment;
+import android.util.Log;
 import android.widget.Button;
 
 import androidx.appcompat.app.AlertDialog;
@@ -191,7 +192,7 @@ public class Fragment_settings_Backup extends BasePreferenceFragment {
                 NinjaToast.show(activity, activity.getString(R.string.app_done));
             }
         } catch (IOException e) {
-            e.printStackTrace();
+            Log.i("FOSS Browser", "copyDirectory:" + e);
         }
     }
 
@@ -227,7 +228,7 @@ public class Fragment_settings_Backup extends BasePreferenceFragment {
             editor.apply();
             NinjaToast.show(context, context.getString(R.string.app_done));
         } catch (IOException | SAXException | ParserConfigurationException e) {
-            e.printStackTrace();
+            Log.i("FOSS Browser", "restoreUserPrefs:" + e);
             NinjaToast.show(context, context.getString(R.string.app_error));
         }
     }

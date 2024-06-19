@@ -29,10 +29,8 @@
     <string name="color_grey">Grå</string>
     <!-- Menu -->
     <string name="main_menu_new_tab">Ny flik (bakgrund)</string>
-    <string name="main_menu_new_tabProfile">Ny flik (med profil …)</string>
     <string name="main_menu_new_tabOpen">Ny flik (förgrund)</string>
     <string name="main_omnibox_input_hint">Sök eller skriv URL</string>
-    <string name="menu_open_with">Öppna länk med …</string>
     <string name="menu_quit">Avsluta</string>
     <string name="menu_openFav">Öppna favorit</string>
     <string name="menu_delete">Radera</string>
@@ -225,7 +223,6 @@
     <string name="setting_title_profiles_without">Inaktivera profiler</string>
     <string name="summary_deny_cookie_banners">Försök att automatiskt neka cookie-banners med hjälp av Mozillas regler för cookie-banners</string>
     <string name="app_no">Nej</string>
-    <string name="app_close">Nära</string>
     <string name="dialog_tracking">Möjlig URL för spårning. Ta bort spårningsdelen:</string>
     <string name="setting_title_trackingURL">Popup-fönster för spårnings-URL</string>
 </resources>

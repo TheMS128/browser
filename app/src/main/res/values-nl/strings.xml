@@ -29,10 +29,8 @@
     <string name="color_grey">Grijs</string>
     <!-- Menu -->
     <string name="main_menu_new_tab">Nieuw tabblad (achtergrond)</string>
-    <string name="main_menu_new_tabProfile">Nieuw tabblad (met profiel …)</string>
     <string name="main_menu_new_tabOpen">Nieuw tabblad (voorgrond)</string>
     <string name="main_omnibox_input_hint">Zoek, of typ een URL</string>
-    <string name="menu_open_with">Link openen met…</string>
     <string name="menu_quit">Afsluiten</string>
     <string name="menu_openFav">Favoriet openen</string>
     <string name="menu_delete">Verwijderen</string>
@@ -226,6 +224,5 @@
     <string name="setting_title_profiles_without">Profielen uitschakelen</string>
     <string name="dialog_tracking">Mogelijke traceer-URL. Verwijder het traceergedeelte:</string>
     <string name="app_no">Geen</string>
-    <string name="app_close">Sluit</string>
     <string name="setting_title_trackingURL">Volg-URL popup</string>
 </resources>

@@ -22,6 +22,7 @@ import de.baumann.browser.R;
 import de.baumann.browser.unit.ClipboardUnit;
 import de.baumann.browser.unit.RecordUnit;
 
+/** @noinspection ExtractMethodRecommender*/
 public class RecordAction {
     public static final int HISTORY_ITEM = 0;
     public static final int STARTSITE_ITEM = 1;

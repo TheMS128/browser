@@ -29,10 +29,8 @@
     <string name="color_grey">Γκρι</string>
     <!-- Menu -->
     <string name="main_menu_new_tab">Νέα καρτέλα (παρασκήνιο)</string>
-    <string name="main_menu_new_tabProfile">Νέα καρτέλα (με προφίλ …)</string>
     <string name="main_menu_new_tabOpen">Νέα καρτέλα (προσκήνιο)</string>
     <string name="main_omnibox_input_hint">Αναζήτηση ή πληκτρολογήστε URL</string>
-    <string name="menu_open_with">Άνοιγμα συνδέσμου με …</string>
     <string name="menu_quit">Έξοδος</string>
     <string name="menu_openFav">Άνοιγμα Αγαπημένου</string>
     <string name="menu_delete">Διαγραφή</string>
@@ -225,7 +223,6 @@
     <string name="setting_title_profiles_without">Απενεργοποίηση προφίλ</string>
     <string name="dialog_sortDomain">Ταξινόμηση ανά τομέα</string>
     <string name="dialog_tracking">Πιθανή διεύθυνση URL παρακολούθησης. Αφαιρέστε το τμήμα παρακολούθησης:</string>
-    <string name="app_close">Κλείσιμο</string>
     <string name="setting_title_trackingURL">Αναδυόμενο παράθυρο παρακολούθησης-URL</string>
     <string name="app_no">Όχι</string>
 </resources>

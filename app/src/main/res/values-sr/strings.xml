@@ -29,10 +29,8 @@
     <string name="color_grey">Сива</string>
     <!-- Menu -->
     <string name="main_menu_new_tab">Нови језичак (у позадини)</string>
-    <string name="main_menu_new_tabProfile">Нова карта (са профилом …)</string>
     <string name="main_menu_new_tabOpen">Нови језичак (у предњем плану)</string>
     <string name="main_omnibox_input_hint">Претражите или унесите адресу</string>
-    <string name="menu_open_with">Отвори везу помоћу…</string>
     <string name="menu_quit">Изађи</string>
     <string name="menu_openFav">Отвори почетну</string>
     <string name="menu_delete">Избриши</string>

@@ -128,7 +128,7 @@ public class AdapterSearch extends BaseAdapter implements Filterable {
         }
         SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(context);
         String s = sp.getString("searchInput", "");
-        if (s.length() > 0) {
+        if (!s.isEmpty()) {
             HelperUnit.setHighLightedTextSearch(context, holder.urlView, s);
             HelperUnit.setHighLightedTextSearch(context, holder.titleView, s);
         }

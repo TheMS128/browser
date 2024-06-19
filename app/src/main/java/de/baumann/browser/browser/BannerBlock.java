@@ -1,5 +1,7 @@
 package de.baumann.browser.browser;
 
+import static android.content.ContentValues.TAG;
+
 import android.app.Activity;
 import android.content.Context;
 import android.content.SharedPreferences;
@@ -39,7 +41,7 @@ public class BannerBlock {
             JSONArray data = jsonData.getJSONArray("data");
             configString = data.toString().replaceAll("\\\\\"", "\\\\\\\\\"");
         } catch (IOException e) {
-            e.printStackTrace();
+            Log.i(TAG, "FOSS Browser: loadHosts:" + e);
         } catch (JSONException e) {
             throw new RuntimeException(e);
         }
@@ -114,7 +116,7 @@ public class BannerBlock {
     }
 
     public static String getBannerBlockScriptPageStarted() {
-        if (configString.equals("")) return null;
+        if (configString.isEmpty()) return null;
         else {
             String bannerBlockScript = "var configString = '" + configString + "';\n";
             bannerBlockScript = bannerBlockScript +
@@ -144,7 +146,7 @@ public class BannerBlock {
     }
 
     public static String getBannerBlockScriptPageFinished() {
-        if (configString.equals("")) return null;
+        if (configString.isEmpty()) return null;
         else {
             String bannerBlockScript = "var configString = '" + configString + "';\n";
             bannerBlockScript = bannerBlockScript +

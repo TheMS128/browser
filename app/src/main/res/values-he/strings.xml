@@ -29,10 +29,8 @@
     <string name="color_grey">אפור</string>
     <!-- Menu -->
     <string name="main_menu_new_tab">כרטיסייה חדשה (רקע)</string>
-    <string name="main_menu_new_tabProfile">כרטיסייה חדשה (עם פרופיל…)</string>
     <string name="main_menu_new_tabOpen">כרטיסייה חדשה (קדימה)</string>
     <string name="main_omnibox_input_hint">חפש או הקלד כתובת אתר</string>
-    <string name="menu_open_with">פתח קישור עם…</string>
     <string name="menu_quit">הפסק</string>
     <string name="menu_openFav">פתח את המועדף</string>
     <string name="menu_delete">מחק</string>

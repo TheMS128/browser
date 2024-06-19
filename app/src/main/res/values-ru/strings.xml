@@ -29,10 +29,8 @@
     <string name="color_grey">Серый</string>
     <!-- Menu -->
     <string name="main_menu_new_tab">Новая вкладка (фон)</string>
-    <string name="main_menu_new_tabProfile">Новая вкладка (с профилем …)</string>
     <string name="main_menu_new_tabOpen">Новая вкладка</string>
     <string name="main_omnibox_input_hint">Поиск или ввод URL-адреса</string>
-    <string name="menu_open_with">Открыть ссылку с …</string>
     <string name="menu_quit">Выход</string>
     <string name="menu_openFav">Открыть главную</string>
     <string name="menu_delete">Удалить</string>
@@ -226,6 +224,5 @@
     <string name="summary_deny_cookie_banners">Попробуйте автоматически запретить баннеры с куки-файлами, используя правила Mozilla для баннеров с куки-файлами.</string>
     <string name="dialog_tracking">Возможный URL для отслеживания. Удалите отслеживающую часть:</string>
     <string name="app_no">Нет</string>
-    <string name="app_close">Закрыть</string>
     <string name="setting_title_trackingURL">Всплывающее окно с отслеживанием URL</string>
 </resources>

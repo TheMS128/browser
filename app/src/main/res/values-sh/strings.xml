@@ -28,10 +28,8 @@
     <string name="color_grey">Siva</string>
     <!-- Menu -->
     <string name="main_menu_new_tab">Nova kartica (u pozadini)</string>
-    <string name="main_menu_new_tabProfile">Nova kartica (sa profilom …)</string>
     <string name="main_menu_new_tabOpen">Nova kartica (u prednjici)</string>
     <string name="main_omnibox_input_hint">Tražite ili unesite adresu</string>
-    <string name="menu_open_with">Otvorite vezu pomoću …</string>
     <string name="menu_quit">Izađi</string>
     <string name="menu_openFav">Otvori Omiljenu</string>
     <string name="menu_delete">Izbriši</string>

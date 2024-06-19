@@ -4,7 +4,6 @@
     <string name="app_name">FOSS Browser</string>
     <string name="app_ok">OK</string>
     <string name="app_no">No</string>
-    <string name="app_close">Close</string>
     <string name="app_help">Help</string>
     <string name="app_cancel">Cancel</string>
     <string name="app_done">Done</string>
@@ -36,10 +35,8 @@
     <string name="color_grey">Grey</string>
     <!-- Menu -->
     <string name="main_menu_new_tab">New tab (background)</string>
-    <string name="main_menu_new_tabProfile">New tab (with profile …)</string>
     <string name="main_menu_new_tabOpen">New tab (foreground)</string>
     <string name="main_omnibox_input_hint">Search or type URL</string>
-    <string name="menu_open_with">Open link with …</string>
     <string name="menu_quit">Quit</string>
     <string name="menu_openFav">Open Favorite</string>
     <string name="menu_delete">Delete</string>

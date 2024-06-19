@@ -29,10 +29,8 @@
     <string name="color_grey">خاکستری</string>
     <!-- Menu -->
     <string name="main_menu_new_tab">زبانه جدید (پیش زمینه)</string>
-    <string name="main_menu_new_tabProfile">برگه جدید (با نمایه…)</string>
     <string name="main_menu_new_tabOpen">زبانه جدید (پس زمینه)</string>
     <string name="main_omnibox_input_hint">جستجو یا آدرس را وارد نمایید</string>
-    <string name="menu_open_with">باز کردن لینک با…</string>
     <string name="menu_quit">خروج</string>
     <string name="menu_openFav">صفحه مورد علاقه</string>
     <string name="menu_delete">پاکسازی</string>

@@ -29,10 +29,8 @@
     <string name="color_grey">Cinza</string>
     <!-- Menu -->
     <string name="main_menu_new_tab">Nova aba (segundo plano)</string>
-    <string name="main_menu_new_tabProfile">Nova aba (com perfil …)</string>
     <string name="main_menu_new_tabOpen">Nova aba (primeiro plano)</string>
     <string name="main_omnibox_input_hint">Pesquisar ou digitar URL</string>
-    <string name="menu_open_with">Abrir link com…</string>
     <string name="menu_quit">Sair</string>
     <string name="menu_openFav">Abrir Favorito</string>
     <string name="menu_delete">Apagar</string>
@@ -225,7 +223,6 @@
     <string name="dialog_sortDomain">Ordenar por domínio</string>
     <string name="summary_deny_cookie_banners">Tente negar automaticamente os banners de cookies utilizando as Regras de banners de cookies do Mozilla</string>
     <string name="app_no">Não</string>
-    <string name="app_close">Fechar</string>
     <string name="dialog_tracking">Possível URL de rastreio. Remover a parte de rastreio:</string>
     <string name="setting_title_trackingURL">Popup de rastreio-URL</string>
 </resources>

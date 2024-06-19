@@ -29,10 +29,8 @@
     <string name="color_grey">Сірий</string>
     <!-- Menu -->
     <string name="main_menu_new_tab">Нова вкладка (фон)</string>
-    <string name="main_menu_new_tabProfile">Нова вкладка (з профілем…)</string>
     <string name="main_menu_new_tabOpen">Нова вкладка</string>
     <string name="main_omnibox_input_hint">Пошук або введення URL-адреси</string>
-    <string name="menu_open_with">Відкрити за допомогою…</string>
     <string name="menu_quit">Вихід</string>
     <string name="menu_openFav">Відкрити улюблене</string>
     <string name="menu_delete">Видалити</string>
@@ -225,7 +223,6 @@
     <string name="dialog_sortDomain">Сортувати за доменом</string>
     <string name="setting_title_profiles_without">Вимкнути профілі</string>
     <string name="app_no">Ні</string>
-    <string name="app_close">Закрити</string>
     <string name="setting_title_trackingURL">Дії щодо URL-адрес з відстеженням</string>
     <string name="dialog_tracking">Можливо це URL-адреса з відстеженням. Видалити частину відстеження:</string>
 </resources>

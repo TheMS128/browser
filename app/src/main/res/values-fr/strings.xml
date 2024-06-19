@@ -29,10 +29,8 @@
     <string name="color_grey">Gris</string>
     <!-- Menu -->
     <string name="main_menu_new_tab">Nouvel onglet (arrière-plan)</string>
-    <string name="main_menu_new_tabProfile">Nouvel onglet (avec profil …)</string>
     <string name="main_menu_new_tabOpen">Nouvel onglet (premier plan)</string>
     <string name="main_omnibox_input_hint">Rechercher ou saisir une URL</string>
-    <string name="menu_open_with">Ouvrir le lien avec …</string>
     <string name="menu_quit">Quitter</string>
     <string name="menu_openFav">Ouvrir l\'Accueil</string>
     <string name="menu_delete">Effacer</string>
@@ -225,7 +223,6 @@
     <string name="summary_deny_cookie_banners">Essayez de refuser automatiquement les bannières de cookies en utilisant les règles de Mozilla relatives aux bannières de cookies.</string>
     <string name="dialog_sortDomain">Trier par domaine</string>
     <string name="dialog_tracking">URL de suivi possible. Supprimer la partie \"tracking\" :</string>
-    <string name="app_close">Fermer</string>
     <string name="setting_title_trackingURL">Fenêtre contextuelle de suivi de l\'URL</string>
     <string name="app_no">Non</string>
 </resources>
