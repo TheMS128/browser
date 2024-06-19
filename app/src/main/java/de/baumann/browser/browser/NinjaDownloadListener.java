@@ -67,8 +67,8 @@ public class NinjaDownloadListener implements DownloadListener {
         builder.setTitle(R.string.dialog_title_download);
 
         String filenameShort;
-        if (filename.length() > 100) {
-            filenameShort = filename.substring(0, 100) + "...";
+        if (filename.length() > 150) {
+            filenameShort = filename.substring(0, 150) + " [...]?\"";
             builder.setMessage(filenameShort);
         } else {
             builder.setMessage(filename);

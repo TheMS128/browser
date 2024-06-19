@@ -4,6 +4,7 @@
 - fix: onRenderProcessGone
 - fix: http-dialog
 - fix: Download-dialog with too long file names
+- fix:tab-layout in overflow menu
 - updated: translations
 
 

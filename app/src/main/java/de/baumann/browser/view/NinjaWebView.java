@@ -586,6 +586,11 @@ public class NinjaWebView extends WebView implements AlbumController {
             if (lastIndex.contains(tracking)) {
 
                 String m = context.getString(R.string.dialog_tracking) + " \"" + tracking + "\"" + "?";
+
+                if (m.length() > 150) {
+                    m = m.substring(0, 150) + " [...]?\"";
+                }
+
                 GridItem item_01 = new GridItem(context.getString(R.string.app_ok), R.drawable.icon_check);
                 GridItem item_02 = new GridItem( context.getString(R.string.app_no), R.drawable.icon_close);
                 GridItem item_03 = new GridItem( context.getString(R.string.menu_edit), R.drawable.icon_edit);
@@ -598,7 +603,7 @@ public class NinjaWebView extends WebView implements AlbumController {
                 builderTrack.setTitle(urlToLoad);
                 builderTrack.setIcon(R.drawable.icon_tracking);
                 builderTrack.setMessage(m);
-                builderTrack.setPositiveButton(R.string.app_close, (dialog2, whichButton) -> dialog2.cancel());
+                builderTrack.setPositiveButton(R.string.app_cancel, (dialog2, whichButton) -> dialog2.cancel());
                 builderTrack.setView(dialogView);
                 AlertDialog dialogTrack = builderTrack.create();
                 dialogTrack.show();
@@ -653,9 +658,9 @@ public class NinjaWebView extends WebView implements AlbumController {
         } else if (url.startsWith("http://") && sp.getString("dialog_neverAsk", "no").equals("no")) {
 
             stopLoading();
-            GridItem item_01 = new GridItem("https://", R.drawable.icon_profile_trusted);
-            GridItem item_02 = new GridItem( "http://", R.drawable.icon_profile_changed);
-            GridItem item_03 = new GridItem( context.getString(R.string.app_cancel), R.drawable.icon_close);
+            GridItem item_01 = new GridItem("https://", R.drawable.icon_secure);
+            GridItem item_02 = new GridItem( "http://", R.drawable.icon_unsecure);
+            GridItem item_03 = new GridItem( context.getString(R.string.dialog_neverAsk), R.drawable.icon_close);
 
             View dialogView = View.inflate(context, R.layout.dialog_menu, null);
             MaterialAlertDialogBuilder builder = new MaterialAlertDialogBuilder(context);
@@ -666,12 +671,10 @@ public class NinjaWebView extends WebView implements AlbumController {
             String secure = url.replace("http://", "https://");
 
             builder.setTitle(HelperUnit.domain(url));
-            builder.setIcon(R.drawable.icon_alert);
+            builder.setIcon(R.drawable.icon_unsecure);
             builder.setMessage(R.string.toast_unsecured);
-            builder.setPositiveButton(R.string.dialog_neverAsk, (dialog2, whichButton) -> {
-                sp.edit().putString("dialog_neverAsk", "yes").apply();
-                initPreferences(BrowserUnit.queryWrapper(context, url));
-                super.loadUrl(BrowserUnit.queryWrapper(context, url), getRequestHeaders());
+            builder.setPositiveButton(R.string.app_cancel, (dialog2, whichButton) -> {
+                dialog2.cancel();
             });
             builder.setView(dialogView);
 
@@ -700,8 +703,9 @@ public class NinjaWebView extends WebView implements AlbumController {
                         super.loadUrl(BrowserUnit.queryWrapper(context, url), getRequestHeaders());
                         break;
                     case 2:
-                        dialog.cancel();
-                        super.loadUrl(BrowserUnit.queryWrapper(context, "about:blank"), getRequestHeaders());
+                        sp.edit().putString("dialog_neverAsk", "yes").apply();
+                        initPreferences(BrowserUnit.queryWrapper(context, url));
+                        super.loadUrl(BrowserUnit.queryWrapper(context, url), getRequestHeaders());
                         break;
                 }
             });

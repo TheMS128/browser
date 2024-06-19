@@ -2364,6 +2364,11 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
             if (lastIndex.contains(tracking)) {
 
                 String m = context.getString(R.string.dialog_tracking) + " \"" + tracking + "\"" + "?";
+
+                if (m.length() > 150) {
+                    m = m.substring(0, 150) + " [...]?\"";
+                }
+
                 GridItem item_01 = new GridItem(context.getString(R.string.app_ok), R.drawable.icon_check);
                 GridItem item_02 = new GridItem( context.getString(R.string.app_no), R.drawable.icon_close);
                 GridItem item_03 = new GridItem( context.getString(R.string.menu_edit), R.drawable.icon_edit);
@@ -2376,7 +2381,7 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
                 builderTrack.setTitle(url);
                 builderTrack.setIcon(R.drawable.icon_tracking);
                 builderTrack.setMessage(m);
-                builderTrack.setPositiveButton(R.string.app_close, (dialog2, whichButton) -> dialog2.cancel());
+                builderTrack.setPositiveButton(R.string.app_cancel, (dialog2, whichButton) -> dialog2.cancel());
                 builderTrack.setView(dialogView);
                 AlertDialog dialogTrack = builderTrack.create();
                 dialogTrack.show();
