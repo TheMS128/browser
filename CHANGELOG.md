@@ -1,10 +1,10 @@
-### v 16 "..." (WIP)
+### v 16 "Alexander Berkmann" (WIP)
 - new: tracking-URL-popup
 - fix: context menu in tab overview
 - fix: onRenderProcessGone
 - fix: http-dialog
-- fix: Download-dialog with too long file names
-- fix:tab-layout in overflow menu
+- fix: dialogs with long file names
+- fix: tab-layout in overflow menu
 - updated: translations
 
 

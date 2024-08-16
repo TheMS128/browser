@@ -50,6 +50,7 @@ import android.view.Window;
 import android.view.WindowInsets;
 import android.view.WindowInsetsController;
 import android.view.WindowManager;
+import android.webkit.CookieManager;
 import android.webkit.ValueCallback;
 import android.webkit.WebBackForwardList;
 import android.webkit.WebChromeClient;
