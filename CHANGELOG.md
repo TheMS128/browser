@@ -1,4 +1,4 @@
-### v 16 "Alexander Berkmann" (WIP)
+### v 16 "Alexander Berkmann"
 - new: tracking-URL-popup
 - fix: context menu in tab overview
 - fix: onRenderProcessGone
