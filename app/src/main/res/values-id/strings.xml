@@ -64,7 +64,6 @@
     <string name="setting_label">Pengaturan</string>
     <!-- browser setting -->
     <string name="setting_title_browser">Pengaturan peramban</string>
-    <string name="setting_title_general">Umum</string>
     <string name="setting_title_search_engine">Mesin Pencari</string>
     <string name="setting_summary_search_engine_google">Google</string>
     <string name="setting_summary_search_engine_duckduckgo">DuckDuckGo</string>
@@ -79,8 +78,6 @@
     <string name="setting_title_font">Ukuran font</string>
     <string name="setting_title_dom">Penyimpanan DOM</string>
     <string name="privacy_redirect">Pengalihan</string>
-    <string name="privacy_redirect_twitter">Twitter</string>
-    <string name="privacy_redirect_youTube">Youtube</string>
     <string name="custom_redirects">Pengalihan kustom</string>
     <string name="source">Sumber</string>
     <string name="target">Sasaran</string>
@@ -118,7 +115,6 @@
     <string name="clear_title_deleteDatabase">Hapus database</string>
     <string name="clear_summary_deleteDatabase">Menghapus seluruh basis data (Halaman awal, penanda, riwayat, dan semua daftar domain).</string>
     <!-- App setting -->
-    <string name="setting_title_app">Pengaturan Aplikasi</string>
     <string name="setting_title_ui">Perilaku/UI</string>
     <string name="setting_title_data">Pencadangan</string>
     <string name="setting_filter">Filter penanda</string>
@@ -133,7 +129,6 @@
     <string name="setting_theme_wallpaper">Berdasarkan wallpaper</string>
     <!-- App behavior -->
     <string name="setting_title_hideToolbar">Sembunyikan toolbar</string>
-    <string name="setting_title_behavior">Perilaku</string>
     <string name="setting_title_confirm_exit">Konfirmasi penutupan browser</string>
     <string name="setting_title_confirm_tab_close">Konfirmasi penutupan tab</string>
     <string name="setting_overView_onStart_title">Tampilkan saat mulai</string>
@@ -180,14 +175,12 @@
     <string name="whitelist_add">Tambah</string>
     <string name="menu_desktopView">Tampilan desktop</string>
     <string name="menu_dayView">Tampilan terang</string>
-    <string name="menu_more">Lebih</string>
     <string name="menu_nightView">Tampilan malam</string>
     <string name="setting_userScript">Kode JavaScript Kustom</string>
     <string name="setting_title_camera">Izinkan penggunaan kamera</string>
     <string name="setting_title_microphone">Izinkan penggunaan mikrofon</string>
     <string name="setting_title_tabsReload">Muat ulang tab</string>
     <string name="setting_title_tabsRestore">Pulihkan tab</string>
-    <string name="setting_title_userInterface">Antarmuka pengguna</string>
     <string name="setting_summary_tabsReload">Muat ulang tab yang dibuka terakhir, saat memulai FOSS Browser.</string>
     <string name="setting_summary_tabsRestore">Pulihkan tab, saat FOSS Browser dihentikan oleh sistem.</string>
     <string name="hint_DRM_Media">Izinkan pemutaran media yang dilindungi DRM?</string>
@@ -199,14 +192,10 @@
     <string name="color_teal">pirus</string>
     <string name="setting_title_profiles">profil</string>
     <string name="whitelist_edit_hint">ranah (domain)</string>
-    <string name="dialog_translate">Terjemahkan dengan DeepL</string>
-    <string name="dialog_neverAsk">Bubar. Jangan pernah menanyakan sesi ini.</string>
-    <string name="dialog_translate_hint">Harap aktifkan javascript dan cookie untuk \"deepl.com\".</string>
     <string name="custom_searches_summary">Cukup tekan lama ikon pencarian di bilah alat, untuk mendapatkan hasil pencarian dari situs web yang ditentukan sendiri.</string>
     <string name="custom_searches_title">Pencarian cepat di …</string>
     <string name="app_error_copy">Pilih dan salin teks secara manual</string>
     <string name="dialog_backGround">Buka tautan di latar belakang …</string>
-    <string name="dialog_backGround_always">selalu sesi ini.</string>
     <string name="album_title_bookmarks_simple">Penanda (sederhana)</string>
     <string name="setting_title_cookie_thirdParty">Cookie Pihak Ketiga</string>
     <string name="setting_title_backup_exit">Mencadangkan basis data (Halaman awal, penanda, riwayat, dan semua daftar domain) saat keluar\?</string>

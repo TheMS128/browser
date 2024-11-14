@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!-- App -->
+    <string name="app_never">Never</string>
+    <string name="app_always">Always</string>
+    <string name="app_session">… in current session?</string>
+
     <string name="app_name">FOSS Browser</string>
     <string name="app_ok">OK</string>
     <string name="app_no">No</string>
@@ -69,8 +73,6 @@
     <string name="dialog_sortIcon">Sort by icon</string>
     <string name="dialog_sortDate">Sort by date</string>
     <string name="dialog_sortDomain">Sort by domain</string>
-    <string name="dialog_neverAsk">Never this session.</string>
-    <string name="dialog_backGround_always">Always this session.</string>
     <string name="dialog_backGround">Open links in background …</string>
     <string name="dialog_tracking">Possible tracking URL. Remove tracking part:</string>
     <!-- Settings -->
@@ -79,7 +81,6 @@
     <string name="summary_deny_cookie_banners">Try to automatically deny cookie banners using Mozilla\'s Cookie Banner Rules</string>
     <string name="setting_title_deny_cookie_banners">Cookie Banner Blocker</string>
     <string name="setting_title_browser">Browser Settings</string>
-    <string name="setting_title_general">General</string>
     <string name="setting_title_search_engine">Search engine</string>
     <string name="setting_title_trackingURL">Tracking-URL popup</string>
     <string name="setting_summary_search_engine_google">Google</string>
@@ -95,8 +96,6 @@
     <string name="setting_title_font">Font size</string>
     <string name="setting_title_dom">DOM Storage</string>
     <string name="privacy_redirect">Redirect</string>
-    <string name="privacy_redirect_twitter">Twitter</string>
-    <string name="privacy_redirect_youTube">YouTube</string>
     <string name="custom_redirects">Custom redirects</string>
     <string name="custom_domains">Custom domains</string>
     <string name="source">Source</string>
@@ -138,7 +137,6 @@
     <string name="clear_title_deleteDatabase">Delete database</string>
     <string name="clear_summary_deleteDatabase">Delete database (Startpage, bookmarks, history and all domain-lists).</string>
     <!-- App setting -->
-    <string name="setting_title_app">App settings</string>
     <string name="setting_title_ui">Behavior/UI</string>
     <string name="setting_title_data">Backup</string>
     <string name="setting_title_backup_exit">Backup database (Startpage, bookmarks, history and all domain-lists) on exit?</string>
@@ -154,7 +152,6 @@
     <string name="setting_theme_wallpaper">Wallpaper based</string>
     <!-- App behavior -->
     <string name="setting_title_hideToolbar">Hide toolbar</string>
-    <string name="setting_title_behavior">Behavior</string>
     <string name="setting_title_confirm_exit">Confirm browser exit</string>
     <string name="setting_title_confirm_tab_close">Confirm tab close</string>
     <string name="setting_overView_onStart_title">Show on start</string>
@@ -198,21 +195,17 @@
     <string name="toast_backup">Backup data? This will overwrite existing backup.</string>
     <string name="dialog_postOnWebsiteHint">URL to open. Will be saved for next use.</string>
     <string name="dialog_postOnWebsite">Post on website</string>
-    <string name="dialog_translate">Translate with DeepL</string>
-    <string name="dialog_translate_hint">Enable JavaScript and cookies for \"deepl.com\".</string>
     <!-- Whitelist -->
     <string name="whitelist_edit_hint">Domain</string>
     <string name="whitelist_add">Add</string>
     <string name="menu_desktopView">Desktop view</string>
     <string name="menu_dayView">Day view</string>
-    <string name="menu_more">More</string>
     <string name="menu_nightView">Night view</string>
     <string name="setting_userScript">Custom JavaScript code</string>
     <string name="setting_title_camera">Allow camera usage</string>
     <string name="setting_title_microphone">Allow microphone usage</string>
     <string name="setting_title_tabsReload">Reload tabs</string>
     <string name="setting_title_tabsRestore">Restore tabs</string>
-    <string name="setting_title_userInterface">User interface</string>
     <string name="setting_summary_tabsReload">Reload last opened tabs, when starting FOSS Browser.</string>
     <string name="setting_summary_tabsRestore">Restore tabs, when FOSS Browser gets killed by the system.</string>
     <string name="hint_DRM_Media">Allow DRM protected media playback?</string>

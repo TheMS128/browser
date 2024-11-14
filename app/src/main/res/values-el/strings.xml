@@ -65,7 +65,6 @@
     <string name="setting_label">Ρυθμίσεις</string>
     <!-- browser setting -->
     <string name="setting_title_browser">Ρυθμίσεις Περιηγητή</string>
-    <string name="setting_title_general">Γενικά</string>
     <string name="setting_title_search_engine">Μηχανή Αναζήτησης</string>
     <string name="setting_summary_search_engine_google">Google</string>
     <string name="setting_summary_search_engine_duckduckgo">DuckDuckGo</string>
@@ -80,8 +79,6 @@
     <string name="setting_title_font">Μέγεθος γραμματοσειράς</string>
     <string name="setting_title_dom">Αποθήκευση DOM</string>
     <string name="privacy_redirect">Ανακατεύθυνση</string>
-    <string name="privacy_redirect_twitter">Twitter</string>
-    <string name="privacy_redirect_youTube">YouTube</string>
     <string name="custom_redirects">Προσαρμοσμένες ανακατευθύνσεις</string>
     <string name="source">Πηγή</string>
     <string name="target">Προορισμός</string>
@@ -120,7 +117,6 @@
     <string name="clear_title_deleteDatabase">Διαγραφή βάσης δεδομένων</string>
     <string name="clear_summary_deleteDatabase">Διαγράψτε ολόκληρη τη βάση δεδομένων (αρχική σελίδα, σελιδοδείκτες, ιστορικό και όλες τις λίστες τομέων).</string>
     <!-- App setting -->
-    <string name="setting_title_app">Ρυθμίσεις Εφαρμογής</string>
     <string name="setting_title_ui">Συμπεριφορά/UI</string>
     <string name="setting_title_data">Αντίγραφα ασφαλείας</string>
     <string name="setting_filter">Φίλτρο σελιδοδεικτών</string>
@@ -135,7 +131,6 @@
     <string name="setting_theme_wallpaper">Βασισμένο στην Ταπετσαρία</string>
     <!-- App behavior -->
     <string name="setting_title_hideToolbar">Απόκρυψη γραμμής εργαλείων</string>
-    <string name="setting_title_behavior">Συμπεριφορά</string>
     <string name="setting_title_confirm_exit">Επιβεβαίωση εξόδου προγράμματος περιήγησης</string>
     <string name="setting_title_confirm_tab_close">Επιβεβαίωση κλεισίματος καρτέλας</string>
     <string name="setting_overView_onStart_title">Εμφάνιση κατά την έναρξη</string>
@@ -182,14 +177,12 @@
     <string name="whitelist_add">Προσθήκη</string>
     <string name="menu_desktopView">Προβολή για υπολογιστή</string>
     <string name="menu_dayView">Προβολή ημέρας</string>
-    <string name="menu_more">Περισσότερα</string>
     <string name="menu_nightView">Νυχτερινή προβολή</string>
     <string name="setting_userScript">Προσαρμοσμένος κώδικας JavaScript</string>
     <string name="setting_title_camera">Να επιτρέπεται η χρήση κάμερας</string>
     <string name="setting_title_microphone">Επιτρέψτε τη χρήση μικροφώνου</string>
     <string name="setting_title_tabsReload">Επαναφόρτωση καρτελών</string>
     <string name="setting_title_tabsRestore">Επαναφορά καρτελών</string>
-    <string name="setting_title_userInterface">Διεπαφή χρήστη</string>
     <string name="setting_summary_tabsReload">Επαναφόρτωση των τελευταίων ανοιχτών καρτελών, κατά την εκκίνηση του FOSS Browser.</string>
     <string name="setting_summary_tabsRestore">Επαναφορά καρτελών, όταν το FOSS Browser τερματιστεί από το σύστημα.</string>
     <string name="hint_DRM_Media">Να επιτρέπεται η προστατευμένη αναπαραγωγή πολυμέσων DRM;</string>
@@ -199,14 +192,10 @@
     <string name="setting_title_audioBackground">Αναπαραγωγή ήχου στο φόντο</string>
     <!-- License changelog -->
     <string name="whitelist_edit_hint">Τομέας</string>
-    <string name="dialog_translate">Μεταφράστε με το DeepL</string>
-    <string name="dialog_neverAsk">Απομακρυνθείτε. Ποτέ μην ρωτάτε αυτή τη συνεδρία.</string>
-    <string name="dialog_translate_hint">Παρακαλούμε ενεργοποιήστε το javascript και τα cookies για το \"deepl.com\".</string>
     <string name="custom_searches_summary">Απλά πατήστε παρατεταμένα το εικονίδιο αναζήτησης στη γραμμή εργαλείων, για να λάβετε αποτελέσματα αναζήτησης από αυτοκαθοριζόμενους ιστότοπους.</string>
     <string name="custom_searches_title">Γρήγορη αναζήτηση σε …</string>
     <string name="app_error_copy">Παρακαλούμε επιλέξτε και αντιγράψτε το κείμενο χειροκίνητα</string>
     <string name="dialog_backGround">Άνοιγμα συνδέσμων στο παρασκήνιο …</string>
-    <string name="dialog_backGround_always">πάντα αυτή τη σύνοδο.</string>
     <string name="album_title_bookmarks_simple">Σελιδοδείκτες (απλοί)</string>
     <string name="setting_title_cookie_thirdParty">Cookies τρίτων μερών</string>
     <string name="setting_title_backup_exit">Δημιουργία αντιγράφων ασφαλείας της βάσης δεδομένων (αρχική σελίδα, σελιδοδείκτες, ιστορικό και όλες οι λίστες τομέων) κατά την έξοδο;</string>

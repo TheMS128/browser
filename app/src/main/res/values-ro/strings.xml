@@ -65,7 +65,6 @@
     <string name="setting_label">Setări</string>
     <!-- browser setting -->
     <string name="setting_title_browser">Setări browser</string>
-    <string name="setting_title_general">General</string>
     <string name="setting_title_search_engine">Motor de căutare</string>
     <string name="setting_summary_search_engine_google">Google</string>
     <string name="setting_summary_search_engine_duckduckgo">DuckDuckGo</string>
@@ -80,8 +79,6 @@
     <string name="setting_title_font">Dimensiune font</string>
     <string name="setting_title_dom">Stocare DOM</string>
     <string name="privacy_redirect">Redirecționare</string>
-    <string name="privacy_redirect_twitter">Twitter</string>
-    <string name="privacy_redirect_youTube">YouTube</string>
     <string name="custom_redirects">Redirecționări personalizate</string>
     <string name="source">Sursă</string>
     <string name="target">Destinație</string>
@@ -120,7 +117,6 @@
     <string name="clear_title_deleteDatabase">Ștergere bază de date</string>
     <string name="clear_summary_deleteDatabase">Ștergeți întreaga bază de date (pagina de start, marcajele, istoricul și toate listele de domenii).</string>
     <!-- App setting -->
-    <string name="setting_title_app">Setări aplicație</string>
     <string name="setting_title_ui">Comportament/IU</string>
     <string name="setting_title_data">Copie de rezervă</string>
     <string name="setting_filter">Filtru marcaje</string>
@@ -135,7 +131,6 @@
     <string name="setting_theme_wallpaper">Bazat pe imaginea de fundal</string>
     <!-- App behavior -->
     <string name="setting_title_hideToolbar">Ascunde bara de instrumente</string>
-    <string name="setting_title_behavior">Comportament</string>
     <string name="setting_title_confirm_exit">Confirmă ieșirea din browser</string>
     <string name="setting_title_confirm_tab_close">Confirmă închiderea filei</string>
     <string name="setting_overView_onStart_title">Arată la pornire</string>
@@ -183,14 +178,12 @@
     <string name="whitelist_add">Adaugă</string>
     <string name="menu_desktopView">Vizualizare desktop</string>
     <string name="menu_dayView">Vizualizare zi</string>
-    <string name="menu_more">Mai multe</string>
     <string name="menu_nightView">Vizualizare nocturnă</string>
     <string name="setting_userScript">Cod JavaScript personalizat</string>
     <string name="setting_title_camera">Permite utilizarea camerei</string>
     <string name="setting_title_microphone">Permite utilizarea microfonului</string>
     <string name="setting_title_tabsReload">Reîncarcă filele</string>
     <string name="setting_title_tabsRestore">Restaurează filele</string>
-    <string name="setting_title_userInterface">Interfață utilizator</string>
     <string name="setting_summary_tabsReload">Reîncarcă ultimele file deschise, la pornirea browser-ului FOSS.</string>
     <string name="setting_summary_tabsRestore">Restaurează filele, când browser-ul FOSS este oprit de sistem.</string>
     <string name="hint_DRM_Media">Permiți redarea conținutului media protejat DRM?</string>
@@ -199,14 +192,10 @@
     <string name="setting_title_screenOn">Păstrează ecranul pornit</string>
     <string name="setting_title_audioBackground">Redă sunetul în fundal</string>
     <!-- License changelog -->
-    <string name="dialog_translate">Tradu cu DeepL</string>
-    <string name="dialog_neverAsk">Respingeți. Nu întrebați niciodată în această sesiune.</string>
-    <string name="dialog_translate_hint">Vă rugăm să activați javascript și cookie-urile pentru \"deepl.com\".</string>
     <string name="custom_searches_summary">Trebuie doar să apăsați lung pe pictograma de căutare din bara de instrumente pentru a obține rezultate de căutare de pe site-urile web definite de dumneavoastră.</string>
     <string name="custom_searches_title">Căutare rapidă pe …</string>
     <string name="app_error_copy">Vă rugăm să selectați și să copiați manual textul</string>
     <string name="dialog_backGround">Deschiderea linkurilor în fundal …</string>
-    <string name="dialog_backGround_always">întotdeauna în această sesiune.</string>
     <string name="album_title_bookmarks_simple">Semne de carte (simplu)</string>
     <string name="setting_title_cookie_thirdParty">Cookie-uri terță parte</string>
     <string name="setting_title_backup_exit">Copie de rezervă a bazei de date (pagina de start, marcajele, istoricul și toate listele de domenii) la ieșire\?</string>

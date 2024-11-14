@@ -65,7 +65,6 @@
     <string name="setting_label">Налаштування</string>
     <!-- browser setting -->
     <string name="setting_title_browser">Налаштування браузера</string>
-    <string name="setting_title_general">Загальне</string>
     <string name="setting_title_search_engine">Пошукова система</string>
     <string name="setting_summary_search_engine_google">Google</string>
     <string name="setting_summary_search_engine_duckduckgo">DuckDuckGo</string>
@@ -80,8 +79,6 @@
     <string name="setting_title_font">Розмір шрифту</string>
     <string name="setting_title_dom">DOM сховище</string>
     <string name="privacy_redirect">Переадресація</string>
-    <string name="privacy_redirect_twitter">Twitter</string>
-    <string name="privacy_redirect_youTube">YouTube</string>
     <string name="custom_redirects">Нестандартні переадресації</string>
     <string name="source">Джерело</string>
     <string name="target">Ціль</string>
@@ -120,7 +117,6 @@
     <string name="clear_title_deleteDatabase">Видалити базу даних</string>
     <string name="clear_summary_deleteDatabase">Видалити базу даних (стартову сторінку, закладки, історію і всі списки доменів).</string>
     <!-- App setting -->
-    <string name="setting_title_app">Налаштування</string>
     <string name="setting_title_ui">Поведінка та інтерфейс</string>
     <string name="setting_title_data">Резервне копіювання</string>
     <string name="setting_filter">Фільтр закладок</string>
@@ -135,7 +131,6 @@
     <string name="setting_theme_wallpaper">На основі шпалер</string>
     <!-- App behavior -->
     <string name="setting_title_hideToolbar">Приховати Панель інструментів</string>
-    <string name="setting_title_behavior">Поведінка</string>
     <string name="setting_title_confirm_exit">Підтвердити вихід з браузера</string>
     <string name="setting_title_confirm_tab_close">Підтвердити закриття вкладки</string>
     <string name="setting_overView_onStart_title">Показувати при запуску</string>
@@ -183,14 +178,12 @@
     <string name="whitelist_add">Додати</string>
     <string name="menu_desktopView">Комп\'ютерна версія</string>
     <string name="menu_dayView">Світла тема</string>
-    <string name="menu_more">Додатково</string>
     <string name="menu_nightView">Нічна тема</string>
     <string name="setting_userScript">Нестандартний JavaScript</string>
     <string name="setting_title_camera">Дозвіл на використання камери</string>
     <string name="setting_title_microphone">Дозвіл на використання мікрофона</string>
     <string name="setting_title_tabsReload">Оновити вкладки</string>
     <string name="setting_title_tabsRestore">Відновити вкладки</string>
-    <string name="setting_title_userInterface">Інтерфейс користувача</string>
     <string name="setting_summary_tabsReload">Оновити останні відкриті вкладки при запуску FOSS Браузера.</string>
     <string name="setting_summary_tabsRestore">Відновити вкладки у разі збою FOSS Браузера.</string>
     <string name="hint_DRM_Media">Дозволити відтворення медіа, захищених DRM?</string>
@@ -199,14 +192,10 @@
     <string name="setting_title_screenOn">Не вимикати екран</string>
     <string name="setting_title_audioBackground">Відтворювати аудіо у фоновому режимі</string>
     <!-- License changelog -->
-    <string name="dialog_translate">Перекладайте з DeepL</string>
-    <string name="dialog_neverAsk">Ніколи в цьому сеансі.</string>
-    <string name="dialog_translate_hint">Увімкніть JavaScript і куки для «deepl.com».</string>
     <string name="custom_searches_summary">Просто натисніть і утримуйте значок пошуку на панелі інструментів, щоб отримати результати з вказаних веб-сторінок.</string>
     <string name="custom_searches_title">Швидкий пошук у …</string>
     <string name="app_error_copy">Виберіть і скопіюйте текст вручну</string>
     <string name="dialog_backGround">Відкривати посилання у фоні…</string>
-    <string name="dialog_backGround_always">Завжди в цьому сеансі.</string>
     <string name="album_title_bookmarks_simple">Закладки (прості)</string>
     <string name="setting_title_cookie_thirdParty">Сторонні куки</string>
     <string name="setting_title_backup_exit">Резервувати базу даних (стартову сторінку, закладки, історію і всі списки доменів) при виході\?</string>

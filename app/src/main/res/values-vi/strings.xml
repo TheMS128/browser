@@ -65,7 +65,6 @@
     <string name="setting_label">Cài đặt</string>
     <!-- browser setting -->
     <string name="setting_title_browser">Cài đặt trình duyệt</string>
-    <string name="setting_title_general">Tổng thể</string>
     <string name="setting_title_search_engine">Công cụ tìm kiếm</string>
     <string name="setting_summary_search_engine_google">Google</string>
     <string name="setting_summary_search_engine_duckduckgo">DuckDuckGo</string>
@@ -80,8 +79,6 @@
     <string name="setting_title_font">Cỡ chữ</string>
     <string name="setting_title_dom">Bộ nhớ DOM</string>
     <string name="privacy_redirect">Chuyển hướng</string>
-    <string name="privacy_redirect_twitter">Twitter</string>
-    <string name="privacy_redirect_youTube">YouTube</string>
     <string name="custom_redirects">Tuỳ chỉnh chuyễn hướng</string>
     <string name="source">Source</string>
     <string name="setting_title_save_data">Yêu cầu \'Tiết kiệm dữ liệu\'</string>
@@ -119,7 +116,6 @@
     <string name="clear_title_deleteDatabase">Xoá cơ sở dữ liệu</string>
     <string name="clear_summary_deleteDatabase">Xoá toàn bộ cơ sở dữ liệu (Trang bắt đầu, dấu trang, lịch sử và tất cả danh sách trắng).</string>
     <!-- App setting -->
-    <string name="setting_title_app">Cài đặt ứng dụng</string>
     <string name="setting_title_ui">Hành vi/Giao diện</string>
     <string name="setting_title_data">Sao lưu</string>
     <string name="setting_filter">Bộ lọc dấu trang</string>
@@ -133,7 +129,6 @@
     <string name="setting_theme_wallpaper">Dựa trên hình nền</string>
     <!-- App behavior -->
     <string name="setting_title_hideToolbar">Ẩn thanh công cụ</string>
-    <string name="setting_title_behavior">Hành vi</string>
     <string name="setting_title_confirm_exit">Xác nhận thoát trình duyệt</string>
     <string name="setting_title_confirm_tab_close">Xác nhận đóng tab</string>
     <string name="setting_overView_onStart_title">Hiện khi khởi động</string>
@@ -181,14 +176,12 @@
     <string name="whitelist_add">Thêm</string>
     <string name="menu_desktopView">Xem kiểu Máy tính</string>
     <string name="menu_dayView">Dạng hiển thị theo Ngày</string>
-    <string name="menu_more">Hơn</string>
     <string name="menu_nightView">viễn cảnh buổi đêm</string>
     <string name="setting_userScript">Mã JavaScript tuỳ chỉnh</string>
     <string name="setting_title_camera">Cho phép sử dụng máy ảnh</string>
     <string name="setting_title_microphone">Cho phép sử dụng micro</string>
     <string name="setting_title_tabsReload">Tải lại các tab</string>
     <string name="setting_title_tabsRestore">Khôi phục các tab</string>
-    <string name="setting_title_userInterface">Giao diện người dùng</string>
     <string name="setting_summary_tabsReload">Tải lại các tab đã mở lần cuối, khi khởi động Trình duyệt FOSS.</string>
     <string name="setting_summary_tabsRestore">Khôi phục các tab, khi Trình duyệt FOSS bị hệ thống dừng.</string>
     <string name="hint_DRM_Media">Cho phép phát phương tiện có DRM bảo vệ?</string>
@@ -198,7 +191,5 @@
     <string name="setting_title_audioBackground">Phát âm thanh trong nền</string>
     <!-- License changelog -->
     <string name="setting_title_clipboard_record">Bản ghi bảng nhớ tạm</string>
-    <string name="dialog_translate">Dịch bằng DeepL</string>
-    <string name="dialog_neverAsk">Miễn nhiệm. Đừng bao giờ hỏi phiên này.</string>
     <string name="target">mục tiêu</string>
 </resources>

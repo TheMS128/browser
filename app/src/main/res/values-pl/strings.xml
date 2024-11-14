@@ -65,7 +65,6 @@
     <string name="setting_label">Ustawienia</string>
     <!-- browser setting -->
     <string name="setting_title_browser">Ustawienia przeglądarki</string>
-    <string name="setting_title_general">Ogólne</string>
     <string name="setting_title_search_engine">Wyszukiwarka</string>
     <string name="setting_summary_search_engine_google">Google</string>
     <string name="setting_summary_search_engine_duckduckgo">DuckDuckGo</string>
@@ -80,8 +79,6 @@
     <string name="setting_title_font">Rozmiar czcionki</string>
     <string name="setting_title_dom">Pamięć DOM</string>
     <string name="privacy_redirect">Przekierowanie</string>
-    <string name="privacy_redirect_twitter">Twitter</string>
-    <string name="privacy_redirect_youTube">YouTube</string>
     <string name="custom_redirects">Niestandardowe przekierowania</string>
     <string name="source">Źródło</string>
     <string name="target">Cel</string>
@@ -120,7 +117,6 @@
     <string name="clear_title_deleteDatabase">Wymaż bazę danych</string>
     <string name="clear_summary_deleteDatabase">Usuń całą bazę danych (stronę startową, zakładki, historię i wszystkie listy domen).</string>
     <!-- App setting -->
-    <string name="setting_title_app">Preferencje aplikacji</string>
     <string name="setting_title_ui">Zachowanie i wygląd</string>
     <string name="setting_title_data">Kopia zapasowa</string>
     <string name="setting_filter">Filtr zakładek</string>
@@ -135,7 +131,6 @@
     <string name="setting_theme_wallpaper">Na podstawie tapety</string>
     <!-- App behavior -->
     <string name="setting_title_hideToolbar">Ukryj dolny panel</string>
-    <string name="setting_title_behavior">Zachowanie</string>
     <string name="setting_title_confirm_exit">Potwierdzaj zamknięcie przeglądarki</string>
     <string name="setting_title_confirm_tab_close">Potwierdzaj zamknięcie karty</string>
     <string name="setting_overView_onStart_title">Wysuwaj na starcie</string>
@@ -183,14 +178,12 @@
     <string name="whitelist_add">Dodaj</string>
     <string name="menu_desktopView">Widok pulpitu</string>
     <string name="menu_dayView">Widok Dnia</string>
-    <string name="menu_more">Więcej</string>
     <string name="menu_nightView">Widok nocny</string>
     <string name="setting_userScript">Własny kod JavaScript</string>
     <string name="setting_title_camera">Zezwolenie na użycie kamery</string>
     <string name="setting_title_microphone">Zezwalaj na używanie mikrofonu</string>
     <string name="setting_title_tabsReload">Przeładuj karty</string>
     <string name="setting_title_tabsRestore">Przywracanie zakładek</string>
-    <string name="setting_title_userInterface">Interfejs użytkownika</string>
     <string name="setting_summary_tabsReload">Przeładuj ostatnio otwarte karty, podczas uruchamiania FOSS Browser.</string>
     <string name="setting_summary_tabsRestore">Przywracanie zakładek, gdy FOSS Browser zostanie zabity przez system.</string>
     <string name="hint_DRM_Media">Zezwolić na odtwarzanie mediów chronionych DRM?</string>
@@ -199,14 +192,10 @@
     <string name="setting_title_audioBackground">Odtwarzanie dźwięku w tle</string>
     <!-- License changelog -->
     <string name="menu_reload">przeładowanie</string>
-    <string name="dialog_translate">Tłumacz z DeepL</string>
-    <string name="dialog_neverAsk">Odrzuć. Nigdy nie pytaj o tę sesję.</string>
-    <string name="dialog_translate_hint">Włącz obsługę javascript i cookies dla \"deepl.com\".</string>
     <string name="custom_searches_summary">Wystarczy długo nacisnąć ikonę wyszukiwania na pasku narzędzi, aby uzyskać wyniki wyszukiwania z samodzielnie zdefiniowanych stron internetowych.</string>
     <string name="custom_searches_title">Szybkie wyszukiwanie na …</string>
     <string name="app_error_copy">Wybierz i skopiuj tekst ręcznie</string>
     <string name="dialog_backGround">Otwieranie linków w tle …</string>
-    <string name="dialog_backGround_always">zawsze w tej sesji.</string>
     <string name="album_title_bookmarks_simple">Zakładki (proste)</string>
     <string name="setting_title_cookie_thirdParty">Pliki cookie stron trzecich</string>
     <string name="setting_title_backup_exit">Kopia zapasowa bazy danych (strona startowa, zakładki, historia i wszystkie listy domen) przy wyjściu\?</string>

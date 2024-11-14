@@ -65,7 +65,6 @@
     <string name="setting_label">Instellingen</string>
     <!-- browser setting -->
     <string name="setting_title_browser">Browserinstellingen</string>
-    <string name="setting_title_general">Algemeen</string>
     <string name="setting_title_search_engine">Zoekmachine</string>
     <string name="setting_summary_search_engine_google">Google</string>
     <string name="setting_summary_search_engine_duckduckgo">DuckDuckGo</string>
@@ -80,8 +79,6 @@
     <string name="setting_title_font">Lettertypegrootte</string>
     <string name="setting_title_dom">DOM Opslag</string>
     <string name="privacy_redirect">Doorverwijzen</string>
-    <string name="privacy_redirect_twitter">Twitter</string>
-    <string name="privacy_redirect_youTube">YouTube</string>
     <string name="custom_redirects">Aangepaste Redirects</string>
     <string name="source">Bron</string>
     <string name="target">Doel</string>
@@ -120,7 +117,6 @@
     <string name="clear_title_deleteDatabase">Databank verwijderen</string>
     <string name="clear_summary_deleteDatabase">Verwijder de hele database (Startpagina, bladwijzers, geschiedenis en alle domeinlijsten).</string>
     <!-- App setting -->
-    <string name="setting_title_app">App-instellingen</string>
     <string name="setting_title_ui">Gedrag/Uiterlijk</string>
     <string name="setting_title_data">Back-up</string>
     <string name="setting_filter">Bladwijzer filter</string>
@@ -135,7 +131,6 @@
     <string name="setting_theme_wallpaper">Aangepast aan achtergrond</string>
     <!-- App behavior -->
     <string name="setting_title_hideToolbar">Werkbalk verbergen</string>
-    <string name="setting_title_behavior">Gedrag</string>
     <string name="setting_title_confirm_exit">Afsluiten bevestigen</string>
     <string name="setting_title_confirm_tab_close">Tabblad sluiten bevestigen</string>
     <string name="setting_overView_onStart_title">Toon bij start</string>
@@ -183,14 +178,12 @@
     <string name="whitelist_add">Toevoegen</string>
     <string name="menu_desktopView">Bureaublad weergave</string>
     <string name="menu_dayView">Dag-weergave</string>
-    <string name="menu_more">Meer</string>
     <string name="menu_nightView">Nacht-weergave</string>
     <string name="setting_userScript">Aangepaste JavaScript-code</string>
     <string name="setting_title_camera">Camera-gebruik toestaan</string>
     <string name="setting_title_microphone">Microfoon-gebruik toestaan</string>
     <string name="setting_title_tabsReload">Tabbladen vernieuwen</string>
     <string name="setting_title_tabsRestore">Tabbladen herstellen</string>
-    <string name="setting_title_userInterface">Gebruikers-interface</string>
     <string name="setting_summary_tabsReload">Herlaad laatst geopende tabbladen, bij het starten van de FOSS-browser.</string>
     <string name="setting_summary_tabsRestore">Tabbladen herstellen wanneer de FOSS Browser wordt gedood door het systeem.</string>
     <string name="hint_DRM_Media">DRM-beschermde media weergeven?</string>
@@ -199,14 +192,10 @@
     <string name="setting_title_screenOn">Scherm aanlaten</string>
     <string name="setting_title_audioBackground">Audio op achtergrond afspelen</string>
     <!-- License changelog -->
-    <string name="dialog_translate">Vertaal met DeepL</string>
-    <string name="dialog_neverAsk">Ontslag nemen. Vraag deze sessie nooit.</string>
-    <string name="dialog_translate_hint">Schakel javascript en cookies in voor \"deepl.com\".</string>
     <string name="custom_searches_summary">Druk gewoon lang op het zoekpictogram in de werkbalk om zoekresultaten van zelfgedefinieerde websites te krijgen.</string>
     <string name="custom_searches_title">Snel zoeken op …</string>
     <string name="app_error_copy">Selecteer en kopieer tekst handmatig</string>
     <string name="dialog_backGround">Links openen op achtergrond …</string>
-    <string name="dialog_backGround_always">altijd deze sessie.</string>
     <string name="album_title_bookmarks_simple">Bladwijzers (eenvoudig)</string>
     <string name="setting_title_cookie_thirdParty">Cookies van derden</string>
     <string name="setting_title_backup_exit">Back-up database (Startpagina, bladwijzers, geschiedenis en alle domeinlijsten) bij afsluiten\?</string>

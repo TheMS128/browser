@@ -65,7 +65,6 @@
     <string name="setting_label">تنظیمات</string>
     <!-- browser setting -->
     <string name="setting_title_browser">تنظیمات مرورگر</string>
-    <string name="setting_title_general">عمومي</string>
     <string name="setting_title_search_engine">موتور جستجو</string>
     <string name="setting_summary_search_engine_google">گوگل</string>
     <string name="setting_summary_search_engine_duckduckgo">DuckDuckGo</string>
@@ -80,8 +79,6 @@
     <string name="setting_title_font">اندازه قلم</string>
     <string name="setting_title_dom">محل ذخیره DOM</string>
     <string name="privacy_redirect">هدایت</string>
-    <string name="privacy_redirect_twitter">توییتر</string>
-    <string name="privacy_redirect_youTube">یوتیوب</string>
     <string name="custom_redirects">تغییرمسیرهای سفارشی</string>
     <string name="source">منبع</string>
     <string name="target">هدف</string>
@@ -120,7 +117,6 @@
     <string name="clear_title_deleteDatabase">حذف دیتابیس</string>
     <string name="clear_summary_deleteDatabase">حذف کل دیتابیس (صفحه آغازین، نشانک ها، تاریخچه و تمام فهرست های سفید).</string>
     <!-- App setting -->
-    <string name="setting_title_app">تنظیمات برنامه</string>
     <string name="setting_title_ui">رفتار/محیط کاربری</string>
     <string name="setting_title_data">پشتیبان گیری</string>
     <string name="setting_filter">جداسازی نشانک ها</string>
@@ -135,7 +131,6 @@
     <string name="setting_theme_wallpaper">مبتنی بر تصویر زمینه</string>
     <!-- App behavior -->
     <string name="setting_title_hideToolbar">پنهان سازی نوارابزار</string>
-    <string name="setting_title_behavior">رفتار</string>
     <string name="setting_title_confirm_exit">تاییدیه خروج از مرورگر</string>
     <string name="setting_title_confirm_tab_close">تاییدیه بستن برگه</string>
     <string name="setting_overView_onStart_title">نمایش در آغاز</string>
@@ -183,14 +178,12 @@
     <string name="whitelist_add">افزودن</string>
     <string name="menu_desktopView">DesktopPC نماي</string>
     <string name="menu_dayView">روز</string>
-    <string name="menu_more">بیشتر</string>
     <string name="menu_nightView">دید شب</string>
     <string name="setting_userScript">فایل‌های جاوا اسکریپت سفارشی</string>
     <string name="setting_title_camera">اجازه استفاده دوربین</string>
     <string name="setting_title_microphone">اجازه استفاده میکروفون</string>
     <string name="setting_title_tabsReload">بازخوانی برگه ها</string>
     <string name="setting_title_tabsRestore">بازگردانی برگه ها</string>
-    <string name="setting_title_userInterface">رابط کاربری</string>
     <string name="setting_summary_tabsReload">بازخوانی آخرین برگه های باز شده هنگام آغاز برنامه.</string>
     <string name="setting_summary_tabsRestore">بازگردانی برگه ها، هنگام بسته شدن برنامه توسط دستگاه.</string>
     <string name="hint_DRM_Media">اجازه پخش رسانه محافظت شده DRM؟ </string>
@@ -199,6 +192,4 @@
     <string name="setting_title_screenOn">روشن نگه داشتن صفحه نمایش</string>
     <string name="setting_title_audioBackground">پخش صدا در پس زمینه</string>
     <!-- License changelog -->
-    <string name="dialog_translate">با DeepL ترجمه کنید</string>
-    <string name="dialog_neverAsk">رد. هرگز این جلسه را نپرسید.</string>
 </resources>

@@ -50,7 +50,6 @@ import android.view.Window;
 import android.view.WindowInsets;
 import android.view.WindowInsetsController;
 import android.view.WindowManager;
-import android.webkit.CookieManager;
 import android.webkit.ValueCallback;
 import android.webkit.WebBackForwardList;
 import android.webkit.WebChromeClient;
@@ -174,7 +173,7 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
     private BottomAppBar bottomAppBar;
     private String overViewTab;
     private Activity activity;
-    private Context context;
+    private static Context context;
     private SharedPreferences sp;
     private List_trusted listTrusted;
     private List_standard listStandard;
@@ -190,6 +189,10 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
     private ValueCallback<Uri[]> mFilePathCallback;
 
     public Bitmap favicon () { return ninjaWebView.getFavicon(); }
+
+    public static Context getAppContext() {
+        return context;
+    }
 
     private AlbumController nextAlbumController(boolean next) {
         if (BrowserContainer.size() <= 1) return currentAlbumController;
@@ -243,9 +246,10 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
 
         sp.edit()
                 .putInt("restart_changed", 0)
-                .putBoolean("pdf_create", false).putBoolean("redirect", sp.getBoolean("sp_youTube_switch", false) || sp.getBoolean("sp_twitter_switch", false) || sp.getBoolean("sp_instagram_switch", false))
+                .putBoolean("pdf_create", false)
                 .putString("profile", sp.getString("profile_toStart", "profileStandard"))
-                .putString("dialog_neverAsk", "no").putString("dialog_neverAskBackGround", "no").apply();
+                .putString("openBackground_dialog", "show").apply();
+
 
         switch (Objects.requireNonNull(sp.getString("start_tab", "3"))) {
             case "3":
@@ -2192,7 +2196,7 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
 
         if (menu_grid.getLayoutParams() instanceof ViewGroup.MarginLayoutParams) {
             ViewGroup.MarginLayoutParams p = (ViewGroup.MarginLayoutParams) menu_grid.getLayoutParams();
-            p.setMargins(56, 20, 56, 20);
+            p.setMargins(56, 56, 56, 56);
             menu_grid.requestLayout();
         }
 
@@ -2226,8 +2230,7 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
 
             builder.setTitle(url);
             builder.setIcon(R.drawable.icon_custom_searches);
-            builder.setNegativeButton(R.string.app_cancel, ((dialogInterface, i) -> dialogCustomSearches.cancel()));
-            builder.setNeutralButton(R.string.create_new, ((dialogInterface, i) -> {
+            builder.setPositiveButton(R.string.create_new, ((dialogInterface, i) -> {
                 MaterialAlertDialogBuilder builderAddCustom = new MaterialAlertDialogBuilder(context);
                 View dialogViewAddCustom = View.inflate(context, R.layout.create_new_searches, null);
                 TextInputEditText source = dialogViewAddCustom.findViewById(R.id.source);
@@ -2241,7 +2244,7 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
                     if (targetText.isEmpty() || sourceText.isEmpty()) return;
                     adapter.addRedirect(new CustomRedirect(sourceText, targetText));
                     try {
-                        CustomSearchesHelper.saveRedirects(context, adapter.getRedirects());
+                        CustomSearchesHelper.saveRedirects(adapter.getRedirects());
                     } catch (JSONException e) {
                         throw new RuntimeException(e);
                     }
@@ -2685,7 +2688,6 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
             GridItem item_01 = new GridItem(context.getString(R.string.main_omnibox_input_hint), R.drawable.icon_search);
             GridItem item_02 = new GridItem( context.getString(R.string.custom_searches_title), R.drawable.icon_custom_searches);
             GridItem item_03 = new GridItem( context.getString(R.string.dialog_postOnWebsite), R.drawable.icon_post);
-            GridItem item_04 = new GridItem( context.getString(R.string.dialog_translate), R.drawable.icon_translate);
 
             View dialogView = View.inflate(context, R.layout.dialog_menu, null);
 
@@ -2707,7 +2709,6 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
             gridList.add(gridList.size(), item_01);
             gridList.add(gridList.size(), item_02);
             gridList.add(gridList.size(), item_03);
-            gridList.add(gridList.size(), item_04);
             GridAdapter gridAdapter = new GridAdapter(context, gridList);
             menu_grid.setAdapter(gridAdapter);
             gridAdapter.notifyDataSetChanged();
@@ -2722,13 +2723,6 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
                         break;
                     case 2:
                         postLink(finalData, null);
-                        break;
-                    case 3:
-                        String text = finalData.replace("#", "%23");
-                        String text2 = text.replace("/","\\%2F");
-                        NinjaToast.show(context, context.getString(R.string.dialog_translate_hint));
-                        String translate = "https://www.deepl.com/translator?share=generic#ee/ce/" + text2;
-                        addAlbum(null, translate, true, false, "", null);
                         break;
                 }
             });

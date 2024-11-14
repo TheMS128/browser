@@ -6,6 +6,7 @@ import static android.content.Context.NOTIFICATION_SERVICE;
 
 import android.Manifest;
 import android.app.Activity;
+import android.app.Dialog;
 import android.app.DownloadManager;
 import android.app.Notification;
 import android.app.NotificationChannel;
@@ -19,19 +20,12 @@ import android.content.pm.ShortcutManager;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Environment;
-import android.text.TextUtils;
 import android.util.Log;
-import android.view.Gravity;
-import android.view.View;
 import android.webkit.CookieManager;
 import android.webkit.WebStorage;
 import android.webkit.WebView;
-import android.widget.GridView;
-import android.widget.LinearLayout;
-import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.appcompat.app.AlertDialog;
 import androidx.core.app.ActivityCompat;
 import androidx.core.app.NotificationCompat;
 import androidx.core.content.ContextCompat;
@@ -43,7 +37,6 @@ import org.json.JSONException;
 
 import java.io.File;
 import java.io.FileOutputStream;
-import java.util.LinkedList;
 import java.util.List;
 import java.util.Locale;
 import java.util.Objects;
@@ -53,12 +46,9 @@ import de.baumann.browser.R;
 import de.baumann.browser.activity.BrowserActivity;
 import de.baumann.browser.browser.DataURIParser;
 import de.baumann.browser.browser.JavaScriptInterface;
-import de.baumann.browser.database.FaviconHelper;
 import de.baumann.browser.database.RecordAction;
 import de.baumann.browser.objects.CustomRedirect;
 import de.baumann.browser.objects.CustomRedirectsHelper;
-import de.baumann.browser.view.GridAdapter;
-import de.baumann.browser.view.GridItem;
 
 public class BrowserUnit {
 
@@ -327,7 +317,6 @@ public class BrowserUnit {
                 if (url.contains(customRedirect.getSource())) {
                     ninjaWebView.stopLoading();
                     url = url.replace(customRedirect.getSource(), customRedirect.getTarget());
-                    url = url.replace("www.", "");
                     return url;
                 }
             }
@@ -367,68 +356,23 @@ public class BrowserUnit {
                     .setContentIntent(pendingIntent);
             Notification buildNotification = mBuilder.build();
 
-            if (sp.getString("dialog_neverAskBackGround", "no").equals("no")) {
-
-                GridItem item_01 = new GridItem(activity.getString(R.string.app_cancel), R.drawable.icon_close);
-                GridItem item_02 = new GridItem(activity.getString(R.string.app_ok), R.drawable.icon_check);
-                GridItem item_03 = new GridItem(activity.getString(R.string.dialog_backGround_always), R.drawable.icon_menu_save);
-
-                View dialogView = View.inflate(activity, R.layout.dialog_menu, null);
-                MaterialAlertDialogBuilder builder = new MaterialAlertDialogBuilder(activity);
-
-                LinearLayout textGroup = dialogView.findViewById(R.id.textGroup);
-                TextView menuURL = dialogView.findViewById(R.id.menuURL);
-                menuURL.setText(webView.getUrl());
-                menuURL.setEllipsize(TextUtils.TruncateAt.MARQUEE);
-                menuURL.setSingleLine(true);
-                menuURL.setMarqueeRepeatLimit(1);
-                menuURL.setSelected(true);
-                textGroup.setOnClickListener(v -> {
-                    menuURL.setEllipsize(TextUtils.TruncateAt.MARQUEE);
-                    menuURL.setSingleLine(true);
-                    menuURL.setMarqueeRepeatLimit(1);
-                    menuURL.setSelected(true);
+            if (sp.getString("openBackground_dialog", "show").equals("show")) {
+                MaterialAlertDialogBuilder builderSubMenu = new MaterialAlertDialogBuilder(activity);
+                builderSubMenu.setTitle(R.string.dialog_backGround);
+                builderSubMenu.setMessage(R.string.app_session);
+                builderSubMenu.setIcon(R.drawable.icon_alert);
+                builderSubMenu.setPositiveButton(R.string.app_always, (dialog2, whichButton) -> {
+                    sp.edit().putString("openBackground_dialog", "always").apply();
+                    displayNotification ( activity,  mNotifyMgr,  buildNotification);
                 });
-                TextView menuTitle = dialogView.findViewById(R.id.menuTitle);
-                menuTitle.setText(HelperUnit.domain(url));
-                FaviconHelper.setFavicon(activity, dialogView, url, R.id.menu_icon, R.drawable.icon_download);
-                builder.setView(dialogView);
-
-                AlertDialog dialog = builder.create();
-                dialog.show();
-                HelperUnit.setupDialog(activity, dialog);
-
-                Objects.requireNonNull(dialog.getWindow()).setGravity(Gravity.BOTTOM);
-                GridView menu_grid = dialogView.findViewById(R.id.menu_grid);
-                final List<GridItem> gridList = new LinkedList<>();
-                gridList.add(gridList.size(), item_03);
-                gridList.add(gridList.size(), item_02);
-                gridList.add(gridList.size(), item_01);
-                GridAdapter gridAdapter = new GridAdapter(activity, gridList);
-                menu_grid.setAdapter(gridAdapter);
-                gridAdapter.notifyDataSetChanged();
-                menu_grid.setOnItemClickListener((parent, view, position, id) -> {
-                    switch (position) {
-                        case 0:
-                            dialog.cancel();
-                            sp.edit().putString("dialog_neverAskBackGround", "yes").apply();
-                            displayNotification ( activity,  mNotifyMgr,  buildNotification);
-                            break;
-                        case 1:
-                            dialog.cancel();
-                            displayNotification ( activity,  mNotifyMgr,  buildNotification);
-                            break;
-                        case 2:
-                            dialog.cancel();
-                            break;
-                    }
-                });
-
-                TextView message = dialogView.findViewById(R.id.message);
-                message.setVisibility(View.VISIBLE);
-                message.setText(R.string.dialog_backGround);
+                builderSubMenu.setNegativeButton(R.string.app_never, (dialog2, whichButton) -> sp.edit().putString("openBackground_dialog", "never").apply());
+                Dialog dialogSubMenu = builderSubMenu.create();
+                dialogSubMenu.show();
+                HelperUnit.setupDialog(activity, dialogSubMenu);
             } else  {
-                displayNotification ( activity,  mNotifyMgr,  buildNotification);
+                if (!sp.getString("openBackground_dialog", "no").equals("never")) {
+                    displayNotification ( activity,  mNotifyMgr,  buildNotification);
+                }
             }
         }
     }

@@ -2,7 +2,6 @@ package de.baumann.browser.view;
 
 import android.app.Dialog;
 import android.content.Context;
-import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -49,15 +48,6 @@ public class AdapterCustomRedirect extends RecyclerView.Adapter<RedirectsViewHol
         source.setText(current.getSource());
         target.setText(current.getTarget());
 
-        if (current.getSource().contains("youtube.com") || current.getSource().contains("twitter.com")) {
-            remove.setVisibility(View.GONE);
-            TypedValue typedValue = new TypedValue();
-            context.getTheme().resolveAttribute(R.attr.colorOutline, typedValue, true);
-            int color = typedValue.data;
-            source.setTextColor(color);
-            target.setTextColor(color);
-        }
-
         remove.setOnClickListener((iV) -> {
             MaterialAlertDialogBuilder builderSubMenu = new MaterialAlertDialogBuilder(context);
             builderSubMenu.setTitle(R.string.menu_delete);
@@ -68,7 +58,7 @@ public class AdapterCustomRedirect extends RecyclerView.Adapter<RedirectsViewHol
                 notifyItemRemoved(position);
                 notifyItemRangeChanged(position, getItemCount());
                 try {
-                    CustomRedirectsHelper.saveRedirects(context, redirects);
+                    CustomRedirectsHelper.saveRedirects(redirects);
                 } catch (JSONException e) {
                     throw new RuntimeException(e);
                 }

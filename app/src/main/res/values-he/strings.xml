@@ -64,7 +64,6 @@
     <string name="setting_label">הגדרות</string>
     <!-- browser setting -->
     <string name="setting_title_browser">הגדרות דפדפן</string>
-    <string name="setting_title_general">הגדרות כלליות</string>
     <string name="setting_title_search_engine">מנוע חיפוש</string>
     <string name="setting_summary_search_engine_google">גוגל</string>
     <string name="setting_summary_search_engine_duckduckgo">DuckDuckGo</string>
@@ -79,8 +78,6 @@
     <string name="setting_title_font">גודל גופן</string>
     <string name="setting_title_dom">אחסון DOM</string>
     <string name="privacy_redirect">הפניה מחדש</string>
-    <string name="privacy_redirect_twitter">טוויטר</string>
-    <string name="privacy_redirect_youTube">יוטיוב</string>
     <string name="custom_redirects">הפניות מותאמות</string>
     <string name="source">מקור</string>
     <string name="target">מטרה</string>
@@ -119,7 +116,6 @@
     <string name="clear_title_deleteDatabase">מחק מסד נתונים</string>
     <string name="clear_summary_deleteDatabase">מחק את כל מסד הנתונים (דף פתיחה, סימניות, היסטוריה וכל הרשימות הלבנות).</string>
     <!-- App setting -->
-    <string name="setting_title_app">הגדרות אפליקציה</string>
     <string name="setting_title_ui">התנהגות/ממשק משתמש</string>
     <string name="setting_title_data">גיבוי</string>
     <string name="setting_filter">מסנן סימניות</string>
@@ -133,7 +129,6 @@
     <string name="setting_theme_wallpaper">מבוסס טפטים</string>
     <!-- App behavior -->
     <string name="setting_title_hideToolbar">הסתר את סרגל הכלים</string>
-    <string name="setting_title_behavior">התנהגות</string>
     <string name="setting_title_confirm_exit">אשר את יציאת הדפדפן</string>
     <string name="setting_title_confirm_tab_close">אשר את סגירת הכרטיסייה</string>
     <string name="setting_overView_onStart_title">הצג בהתחלה</string>
@@ -181,14 +176,12 @@
     <string name="whitelist_add">הוסף</string>
     <string name="menu_desktopView">תצוגת שולחן עבודה</string>
     <string name="menu_dayView">תצוגת יום</string>
-    <string name="menu_more">יותר</string>
     <string name="menu_nightView">תצוגת לילה</string>
     <string name="setting_userScript">קוד JavaScript מותאם אישית</string>
     <string name="setting_title_camera">אפשר שימוש במצלמה</string>
     <string name="setting_title_microphone">אפשר שימוש במיקרופון</string>
     <string name="setting_title_tabsReload">טען מחדש כרטיסיות</string>
     <string name="setting_title_tabsRestore">שחזר כרטיסיות</string>
-    <string name="setting_title_userInterface">ממשק משתמש</string>
     <string name="setting_summary_tabsReload">טען מחדש את הכרטיסיות שנפתחו לאחרונה, בעת הפעלת דפדפן FOSS.</string>
     <string name="setting_summary_tabsRestore">שחזר כרטיסיות, כאשר דפדפן FOSS נהרג על ידי המערכת.</string>
     <string name="hint_DRM_Media">האם לאפשר השמעת מדיה מוגנת ב-DRM?</string>
@@ -199,6 +192,4 @@
     <!-- License changelog -->
     <string name="setting_title_clipboard_record">שיא הלוח</string>
     <string name="link_you_copied">קישור שהעתקת</string>
-    <string name="dialog_translate">תרגם עם DeepL</string>
-    <string name="dialog_neverAsk">לשחרר. לעולם אל תשאל את הפגישה הזו.</string>
 </resources>

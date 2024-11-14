@@ -65,7 +65,6 @@
     <string name="setting_label">Настройки</string>
     <!-- browser setting -->
     <string name="setting_title_browser">Настройки браузера</string>
-    <string name="setting_title_general">Общее</string>
     <string name="setting_title_search_engine">Поисковая система</string>
     <string name="setting_summary_search_engine_google">Google</string>
     <string name="setting_summary_search_engine_duckduckgo">DuckDuckGo</string>
@@ -80,8 +79,6 @@
     <string name="setting_title_font">Размер шрифта</string>
     <string name="setting_title_dom">Хранилище DOM</string>
     <string name="privacy_redirect">Перенаправить</string>
-    <string name="privacy_redirect_twitter">Twitter</string>
-    <string name="privacy_redirect_youTube">YouTube</string>
     <string name="custom_redirects">Пользовательские редиректы</string>
     <string name="source">Источник</string>
     <string name="target">Цель</string>
@@ -120,7 +117,6 @@
     <string name="clear_title_deleteDatabase">Удалить базу данных</string>
     <string name="clear_summary_deleteDatabase">Удалите всю базу данных (Начальную страницу, закладки, историю и все списки доменов).</string>
     <!-- App setting -->
-    <string name="setting_title_app">Настройки FOSS Browser</string>
     <string name="setting_title_ui">Поведение и интерфейс</string>
     <string name="setting_title_data">Резервное копирование</string>
     <string name="setting_filter">Фильтр закладок</string>
@@ -135,7 +131,6 @@
     <string name="setting_theme_wallpaper">На основе обоев</string>
     <!-- App behavior -->
     <string name="setting_title_hideToolbar">Скрываемая панель инструментов</string>
-    <string name="setting_title_behavior">Поведение</string>
     <string name="setting_title_confirm_exit">Подтвердить выход из браузера</string>
     <string name="setting_title_confirm_tab_close">Подтвердить закрытие вкладки</string>
     <string name="setting_overView_onStart_title">Показывать при запуске</string>
@@ -183,14 +178,12 @@
     <string name="whitelist_add">Добавить</string>
     <string name="menu_desktopView">Десктопный вид</string>
     <string name="menu_dayView">Дневной режим</string>
-    <string name="menu_more">Подробнее</string>
     <string name="menu_nightView">Тёмный режим</string>
     <string name="setting_userScript">Пользовательский JavaScript</string>
     <string name="setting_title_camera">Разрешить использование камеры</string>
     <string name="setting_title_microphone">Разрешить использование микрофона</string>
     <string name="setting_title_tabsReload">Перезагрузка вкладок</string>
     <string name="setting_title_tabsRestore">Восстановить вкладки</string>
-    <string name="setting_title_userInterface">Пользовательский интерфейс</string>
     <string name="setting_summary_tabsReload">Перезагрузка последних открытых вкладок при запуске FOSS Browser.</string>
     <string name="setting_summary_tabsRestore">Восстановить вкладки при завершении FOSS Browser системой.</string>
     <string name="hint_DRM_Media">Разрешить воспроизведение медиафайлов, защищенных DRM?</string>
@@ -199,14 +192,10 @@
     <string name="setting_title_screenOn">Не отключать экран</string>
     <string name="setting_title_audioBackground">Воспроизведение аудио в фоне</string>
     <!-- License changelog -->
-    <string name="dialog_translate">Перевести с помощью DeepL</string>
-    <string name="dialog_neverAsk">Никогда в этой сессии.</string>
-    <string name="dialog_translate_hint">Включите JavaScript и файлы куки для сайта \"deepl.com\".</string>
     <string name="custom_searches_summary">Просто подержите палец на значке поиска в панели инструментов, чтобы получить результаты из пользовательских веб страниц.</string>
     <string name="custom_searches_title">Быстрый поиск по …</string>
     <string name="app_error_copy">Выделите и скопируйте текст вручную</string>
     <string name="dialog_backGround">Открывать ссылки в фоновом режиме …</string>
-    <string name="dialog_backGround_always">Всегда в этой сессии.</string>
     <string name="album_title_bookmarks_simple">Закладки (простые)</string>
     <string name="setting_title_cookie_thirdParty">Сторонние файлы cookie</string>
     <string name="setting_title_backup_exit">Резервное копирование базы данных (Startpage, закладки, история и все доменные списки) при выходе\?</string>
@@ -221,7 +210,7 @@
     <string name="setting_title_profiles_without">Отключить профили</string>
     <string name="setting_title_deny_cookie_banners">Блокировщик баннеров Cookie</string>
     <string name="dialog_sortDomain">Сортировать по домену</string>
-    <string name="summary_deny_cookie_banners">Попробуйте автоматически запретить баннеры с куки-файлами, используя правила Mozilla для баннеров с куки-файлами.</string>
+    <string name="summary_deny_cookie_banners">Попробуйте автоматически запретить баннеры с куки-файлами, используя правила Mozilla для баннеров с куки-файлами</string>
     <string name="dialog_tracking">Возможный URL для отслеживания. Удалите отслеживающую часть:</string>
     <string name="app_no">Нет</string>
     <string name="setting_title_trackingURL">Всплывающее окно с отслеживанием URL</string>

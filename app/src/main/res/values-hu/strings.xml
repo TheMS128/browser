@@ -65,7 +65,6 @@
     <string name="setting_label">Beállítások</string>
     <!-- browser setting -->
     <string name="setting_title_browser">Böngésző beállításai</string>
-    <string name="setting_title_general">Általános</string>
     <string name="setting_title_search_engine">Keresőmotor</string>
     <string name="setting_summary_search_engine_google">Google</string>
     <string name="setting_summary_search_engine_duckduckgo">DuckDuckGo</string>
@@ -79,8 +78,6 @@
     <string name="setting_summary_search_engine_metager">Metager</string>
     <string name="setting_title_font">Betűméret</string>
     <string name="privacy_redirect">Átirányítás</string>
-    <string name="privacy_redirect_twitter">Twitter</string>
-    <string name="privacy_redirect_youTube">YouTube</string>
     <string name="custom_redirects">Saját Átirányítások</string>
     <string name="source">Forrás</string>
     <string name="target">Célpont</string>
@@ -119,7 +116,6 @@
     <string name="clear_title_deleteDatabase">Adatbázis törlése</string>
     <string name="clear_summary_deleteDatabase">Törölje a teljes adatbázist (kezdőlap, könyvjelzők, előzmények és az összes domain-lista).</string>
     <!-- App setting -->
-    <string name="setting_title_app">Alkalmazás beállításai</string>
     <string name="setting_title_ui">Viselkedés/felhasználói felület</string>
     <string name="setting_title_data">Biztonsági másolat</string>
     <string name="setting_filter">Könyvjelző szűrő</string>
@@ -133,7 +129,6 @@
     <string name="setting_theme_wallpaper">Háttérkép alapú</string>
     <!-- App behavior -->
     <string name="setting_title_hideToolbar">Eszköztár elrejtése</string>
-    <string name="setting_title_behavior">Viselkedés</string>
     <string name="setting_title_confirm_exit">Böngésző bezárásának megerősítése</string>
     <string name="setting_title_confirm_tab_close">Lap bezárásának megerősítése</string>
     <string name="setting_overView_onStart_title">Mutassa indításkor</string>
@@ -181,14 +176,12 @@
     <string name="whitelist_add">Hozzáad</string>
     <string name="menu_desktopView">Asztali nézet</string>
     <string name="menu_dayView">Napi nézet</string>
-    <string name="menu_more">További</string>
     <string name="menu_nightView">Éjszakai nézet</string>
     <string name="setting_userScript">Egyéni JavaScript kód</string>
     <string name="setting_title_camera">Kamera használatának engedélyezése</string>
     <string name="setting_title_microphone">Mikrofonhasználat engedélyezése</string>
     <string name="setting_title_tabsReload">Lapok újratöltése</string>
     <string name="setting_title_tabsRestore">Lapok visszaállítása</string>
-    <string name="setting_title_userInterface">Felhasználói felület</string>
     <string name="setting_summary_tabsReload">Utoljára megnyitott lapok újratöltése a FOSS Browser indításakor.</string>
     <string name="setting_summary_tabsRestore">A lapok visszaállítása, ha a FOSS Browser-t megöli a rendszer.</string>
     <string name="hint_DRM_Media">DRM-védett média lejátszásának engedélyezése?</string>
@@ -199,14 +192,10 @@
     <!-- License changelog -->
     <string name="setting_title_dom">dom tárolás</string>
     <string name="setting_title_clipboard_record">Vágólap rekord</string>
-    <string name="dialog_translate">Fordítás a DeepL segítségével</string>
-    <string name="dialog_neverAsk">Elvetés. Soha ne kérdezd ezt az ülést.</string>
-    <string name="dialog_translate_hint">Kérjük, engedélyezze a javascriptet és a sütiket a \"deepl.com\" számára.</string>
     <string name="custom_searches_summary">Csak nyomja meg hosszan a keresés ikonját az eszköztáron, hogy keresési eredményeket kapjon a saját maga által meghatározott weboldalakról.</string>
     <string name="custom_searches_title">Gyors keresés a …</string>
     <string name="app_error_copy">Kérjük, válassza ki és másolja ki a szöveget kézzel</string>
     <string name="dialog_backGround">Linkek megnyitása a háttérben …</string>
-    <string name="dialog_backGround_always">mindig ezen az ülésen.</string>
     <string name="album_title_bookmarks_simple">Könyvjelzők (egyszerű)</string>
     <string name="setting_title_cookie_thirdParty">Harmadik fél sütik</string>
     <string name="setting_title_backup_exit">Adatbázis biztonsági mentése (kezdőlap, könyvjelzők, előzmények és az összes domain-lista) kilépéskor\?</string>

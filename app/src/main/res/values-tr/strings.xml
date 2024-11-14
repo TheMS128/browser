@@ -65,7 +65,6 @@
     <string name="setting_label">Ayarlar</string>
     <!-- browser setting -->
     <string name="setting_title_browser">Tarayıcı ayarları</string>
-    <string name="setting_title_general">Genel</string>
     <string name="setting_title_search_engine">Arama motoru</string>
     <string name="setting_summary_search_engine_google">Google</string>
     <string name="setting_summary_search_engine_duckduckgo">DuckDuckGo</string>
@@ -80,8 +79,6 @@
     <string name="setting_title_font">Yazı boyutu</string>
     <string name="setting_title_dom">DOM depolama</string>
     <string name="privacy_redirect">Yönlendir</string>
-    <string name="privacy_redirect_twitter">Twitter</string>
-    <string name="privacy_redirect_youTube">YouTube</string>
     <string name="custom_redirects">Özel Yönlendirmeler</string>
     <string name="source">Kaynak</string>
     <string name="target">Hedef</string>
@@ -120,7 +117,6 @@
     <string name="clear_title_deleteDatabase">Veritabanını sil</string>
     <string name="clear_summary_deleteDatabase">Tüm veritabanını silin (Başlangıç sayfası, yer imleri, geçmiş ve tüm alan listeleri).</string>
     <!-- App setting -->
-    <string name="setting_title_app">Uygulama ayarları</string>
     <string name="setting_title_ui">Davranış | Kullanıcı arayüzü</string>
     <string name="setting_title_data">Yedekle</string>
     <string name="setting_filter">Yer işareti filtresi</string>
@@ -135,7 +131,6 @@
     <string name="setting_theme_wallpaper">Duvar kağıdı tabanlı görünüm</string>
     <!-- App behavior -->
     <string name="setting_title_hideToolbar">Araç çubuğunu gizle</string>
-    <string name="setting_title_behavior">Davranış</string>
     <string name="setting_title_confirm_exit">Tarayıcıdan çıkarken onayla</string>
     <string name="setting_title_confirm_tab_close">Sekmeyi kapatırken onayla</string>
     <string name="setting_overView_onStart_title">Başlangıçta göster</string>
@@ -183,14 +178,12 @@
     <string name="whitelist_add">Ekle</string>
     <string name="menu_desktopView">Masaüstü görünümü</string>
     <string name="menu_dayView">Gündüz görünümü</string>
-    <string name="menu_more">Daha Fazla</string>
     <string name="menu_nightView">Gece görünümü</string>
     <string name="setting_userScript">Özel JavaScript kodu</string>
     <string name="setting_title_camera">Kamera</string>
     <string name="setting_title_microphone">Mikrofon</string>
     <string name="setting_title_tabsReload">Sekmeleri yenile</string>
     <string name="setting_title_tabsRestore">Sekmeleri geri yükle</string>
-    <string name="setting_title_userInterface">Kullanıcı arayüzü</string>
     <string name="setting_summary_tabsReload">FOSS Tarayıcısı açılırken son açılan sekmeleri yeniler.</string>
     <string name="setting_summary_tabsRestore">FOSS Tarayıcısı sistem tarafından durdurulduğunda sekmeleri geri yükler.</string>
     <string name="hint_DRM_Media">DRM korumalı medya oynatmaya izin verilsin mi?</string>
@@ -199,14 +192,10 @@
     <string name="setting_title_screenOn">Ekranı açık tut</string>
     <string name="setting_title_audioBackground">Sesi arka planda oynat</string>
     <!-- License changelog -->
-    <string name="dialog_translate">DeepL ile çevirin</string>
-    <string name="dialog_neverAsk">Dağılın. Bu oturumda asla sormayın.</string>
-    <string name="dialog_translate_hint">Lütfen \"deepl.com\" için javascript ve çerezleri etkinleştirin.</string>
     <string name="custom_searches_summary">Kendi tanımladığınız web sitelerinden arama sonuçları almak için araç çubuğundaki arama simgesine uzun süre basmanız yeterlidir.</string>
     <string name="custom_searches_title">Hızlı arama …</string>
     <string name="app_error_copy">Lütfen metni manuel olarak seçin ve kopyalayın</string>
     <string name="dialog_backGround">Bağlantıları arka planda aç …</string>
-    <string name="dialog_backGround_always">her zaman bu seansta.</string>
     <string name="album_title_bookmarks_simple">Yer İmleri (basit)</string>
     <string name="setting_title_cookie_thirdParty">Üçüncü Taraf Çerezleri</string>
     <string name="setting_title_backup_exit">Çıkışta veritabanını (Başlangıç sayfası, yer imleri, geçmiş ve tüm etki alanı listeleri) yedekleyin\?</string>

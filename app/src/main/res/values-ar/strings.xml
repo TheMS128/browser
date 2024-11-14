@@ -63,7 +63,6 @@
     <string name="setting_label">الاعدادات</string>
     <!-- browser setting -->
     <string name="setting_title_browser">إعدادات المتصفح</string>
-    <string name="setting_title_general">General</string>
     <string name="setting_title_search_engine">محرك البحث</string>
     <string name="setting_summary_search_engine_google">غوغل</string>
     <string name="setting_summary_search_engine_duckduckgo">محرك DuckDuckGo</string>
@@ -78,8 +77,6 @@
     <string name="setting_title_font">حجم الخط</string>
     <string name="setting_title_dom">تخزين DOM</string>
     <string name="privacy_redirect">أعدْ التوجيه</string>
-    <string name="privacy_redirect_twitter">تويتر</string>
-    <string name="privacy_redirect_youTube">يوتيوب</string>
     <string name="custom_redirects">عمليات إعادة التوجيه المخصصة</string>
     <string name="source">Source</string>
     <string name="target">هدف</string>
@@ -118,7 +115,6 @@
     <string name="clear_title_deleteDatabase">احذف قاعدة البيانات</string>
     <string name="clear_summary_deleteDatabase">احذف قاعدة البيانات بأكملها (صفحة البدء، العلامات، التأريخ وجميع القوائم البيضاء).</string>
     <!-- App setting -->
-    <string name="setting_title_app">إعدادات التطبيق</string>
     <string name="setting_title_ui">السلوك/واجهة المستخدم</string>
     <string name="setting_title_data">النسخ الاحتياطي</string>
     <string name="setting_filter">مرشح العلامات</string>
@@ -133,7 +129,6 @@
     <string name="setting_theme_wallpaper">يستند إلى ورق الجدران</string>
     <!-- App behavior -->
     <string name="setting_title_hideToolbar">أخفِ شريط الأدوات</string>
-    <string name="setting_title_behavior">السلوك</string>
     <string name="setting_title_confirm_exit">تأكيد خروج المتصفح</string>
     <string name="setting_title_confirm_tab_close">أكّد خروج التبويب</string>
     <string name="setting_overView_onStart_title">أَظهر عند البداية</string>
@@ -181,14 +176,12 @@
     <string name="whitelist_add">أضف</string>
     <string name="menu_desktopView">عرض سطح المكتب</string>
     <string name="menu_dayView">عرض يومي</string>
-    <string name="menu_more">المزيد</string>
     <string name="menu_nightView">عرض ليلي</string>
     <string name="setting_userScript">شفرة جافاسكريت مخصصة</string>
     <string name="setting_title_camera">السماح باستخدام الكاميرا</string>
     <string name="setting_title_microphone">السماح باستخدام لاقط الصوت</string>
     <string name="setting_title_tabsReload">أعد تحميل التبويبات</string>
     <string name="setting_title_tabsRestore">استعد التبويبات</string>
-    <string name="setting_title_userInterface">واجهة المستخدم</string>
     <string name="setting_summary_tabsReload">إعادة تحميل آخر علامات التبويب المفتوحة، عند بدء المتصفح الحر FOSS Browser.</string>
     <string name="setting_summary_tabsRestore">استعادة علامات التبويب عندما يقتل المتصفح الحر FOSS Browser بواسطة النظام.</string>
     <string name="hint_DRM_Media">السماح بتشغيل الوسائط محمية الحقوق الرقمية DRM؟</string>
@@ -197,17 +190,13 @@
     <string name="setting_title_screenOn">إبقاء الشاشة مشتغلة</string>
     <string name="setting_title_audioBackground">شغل الصوت في الخلفية</string>
     <!-- License changelog -->
-    <string name="dialog_neverAsk">رفض. لا تسأل هذه الجلسة أبدًا.</string>
     <string name="link_you_copied">الرابط الذي نسخته</string>
-    <string name="dialog_translate">ترجمة مع DeepL</string>
     <string name="create_new">جديد</string>
-    <string name="dialog_translate_hint">قم بتمكين JavaScript وملفات تعريف الارتباط لـ \"deepl.com\".</string>
     <string name="custom_searches_summary">فقط اضغط مطولاً على أيقونة البحث في شريط الأدوات للحصول على نتائج من صفحات الويب المخصصة.</string>
     <string name="custom_searches_title">بحث سريع على …</string>
     <string name="custom_domains">النطاقات المخصصة</string>
     <string name="app_error_copy">يرجى تحديد النص ونسخه يدوياً</string>
     <string name="dialog_backGround">فتح الروابط في الخلفية …</string>
-    <string name="dialog_backGround_always">دائماً هذه الجلسة.</string>
     <string name="album_title_bookmarks_simple">إشارات مرجعية (بسيطة)</string>
     <string name="setting_title_cookie_thirdParty">ملفات تعريف ارتباط الطرف الثالث</string>
     <string name="setting_title_backup_exit">قاعدة بيانات النسخ الاحتياطي (صفحة البدء والإشارات المرجعية والمحفوظات وجميع قوائم النطاقات) عند الخروج؟</string>

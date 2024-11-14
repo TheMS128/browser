@@ -65,7 +65,6 @@
     <string name="setting_label">Подешавања</string>
     <!-- browser setting -->
     <string name="setting_title_browser">Подешавања прегледача</string>
-    <string name="setting_title_general">Опште</string>
     <string name="setting_title_search_engine">Претраживач</string>
     <string name="setting_summary_search_engine_google">Гугл</string>
     <string name="setting_summary_search_engine_duckduckgo">Дакдакго</string>
@@ -80,8 +79,6 @@
     <string name="setting_title_font">Величина слова</string>
     <string name="setting_title_dom">ДОМ складиште</string>
     <string name="privacy_redirect">Преусмерите</string>
-    <string name="privacy_redirect_twitter">Твитер</string>
-    <string name="privacy_redirect_youTube">YouTube</string>
     <string name="custom_redirects">Прилагођена преусмеравања</string>
     <string name="source">Извор</string>
     <string name="target">Циљ</string>
@@ -120,7 +117,6 @@
     <string name="clear_title_deleteDatabase">Обриши базу података</string>
     <string name="clear_summary_deleteDatabase">Обриши целу базу података (почетну страницу, забелешке, историјат и све беле листе)</string>
     <!-- App setting -->
-    <string name="setting_title_app">Подешавања апликације</string>
     <string name="setting_title_ui">Понашање/сучеље</string>
     <string name="setting_title_data">Резерва</string>
     <string name="setting_filter">Филтер забелешки</string>
@@ -134,7 +130,6 @@
     <string name="setting_theme_wallpaper">На основу тапета</string>
     <!-- App behavior -->
     <string name="setting_title_hideToolbar">Сакриј траку са алаткама</string>
-    <string name="setting_title_behavior">Понашање</string>
     <string name="setting_title_confirm_exit">Потврдите излаз из претраживача</string>
     <string name="setting_title_confirm_tab_close">Потврдите затварање картице</string>
     <string name="setting_overView_onStart_title">Прикажи на почетку</string>
@@ -182,14 +177,12 @@
     <string name="whitelist_add">Додати</string>
     <string name="menu_desktopView">Велики приказ</string>
     <string name="menu_dayView">Дански приказ</string>
-    <string name="menu_more">Више</string>
     <string name="menu_nightView">Ноћни приказ</string>
     <string name="setting_userScript">Прилагођени ЈаваСцрипт код</string>
     <string name="setting_title_camera">Дозволите коришћење камере</string>
     <string name="setting_title_microphone">Дозволите коришћење микрофона</string>
     <string name="setting_title_tabsReload">Поново учитај картице</string>
     <string name="setting_title_tabsRestore">Врати картице</string>
-    <string name="setting_title_userInterface">Корисничко сучеље</string>
     <string name="setting_summary_tabsReload">Поново учитајте последње отворене картице, када покренете ФОСС претраживач.</string>
     <string name="setting_summary_tabsRestore">Обновите картице, када систем присилно спречи ФОСС претраживач.</string>
     <string name="hint_DRM_Media">Дозволити репродукцију медија заштићених ДРМ-ом?</string>
@@ -198,7 +191,5 @@
     <string name="setting_title_screenOn">Држите екран укључен</string>
     <string name="setting_title_audioBackground">Пустите аудио у позадини</string>
     <!-- License changelog -->
-    <string name="dialog_neverAsk">Одбаци. Никада не питајте ову сесију.</string>
     <string name="setting_title_clipboard_record">запис у међуспремнику</string>
-    <string name="dialog_translate">Преводи са ДеепЛ</string>
 </resources>

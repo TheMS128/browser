@@ -1,3 +1,11 @@
+### v 17 WIP
+- upgrade: Android target SDK
+- upgrade: dependencies
+- fix: redirecting urls
+- fix: minor layout issues
+- fix: open links in background
+- new: switched from deepl to fairtranslate
+
 ### v 16 "Alexander Berkmann"
 - new: tracking-URL-popup
 - fix: context menu in tab overview
@@ -6,7 +14,6 @@
 - fix: dialogs with long file names
 - fix: tab-layout in overflow menu
 - updated: translations
-
 
 ### v 15 "Kabale und Liebe"
 - new: auto deny cookie-banners (@https://github.com/woheller69/browser)

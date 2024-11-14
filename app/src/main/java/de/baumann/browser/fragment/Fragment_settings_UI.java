@@ -66,7 +66,7 @@ public class Fragment_settings_UI extends BasePreferenceFragment implements Shar
     @Override
     public void onSharedPreferenceChanged(final SharedPreferences sp, String key) {
         assert key != null;
-        if (key.equals("sp_exit") || key.equals("sp_toggle") || key.equals("sp_add") || key.equals("sp_theme")
+        if (key.equals("sp_exit") || key.equals("sp_toggle") || key.equals("sp_add") || key.equals("sp_theme") || key.equals("useOLED")
                 || key.equals("nav_position") || key.equals("sp_hideOmni") || key.equals("start_tab") || key.equals("sp_hideSB")
                 || key.equals("overView_place") || key.equals("overView_hide") || key.equals("hideToolbar") || key.equals("useDynamicColor")) {
             sp.edit().putInt("restart_changed", 1).apply();

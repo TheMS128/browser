@@ -63,7 +63,6 @@
     <string name="setting_label">Postavke</string>
     <!-- browser setting -->
     <string name="setting_title_browser">Postavke preglednika</string>
-    <string name="setting_title_general">General</string>
     <string name="setting_title_search_engine">Jezgro Preglednika</string>
     <string name="setting_summary_search_engine_google">Google</string>
     <string name="setting_summary_search_engine_duckduckgo">DuckDuckGo</string>
@@ -78,8 +77,6 @@
     <string name="setting_title_font">Veličina slova</string>
     <string name="setting_title_dom">DOM skladište</string>
     <string name="privacy_redirect">Preusmjeriti</string>
-    <string name="privacy_redirect_twitter">Twitter</string>
-    <string name="privacy_redirect_youTube">YouTube</string>
     <string name="source">Izvor</string>
     <string name="setting_title_save_data">Zahtjevnite \'Spašavanje Podataka\'</string>
     <string name="setting_title_profiles">Profili</string>
@@ -116,7 +113,6 @@
     <string name="clear_title_deleteDatabase">Izbrišite bazu podataka</string>
     <string name="clear_summary_deleteDatabase">Izbrišite cijelu bazu podataka (početnu stranicu, obilježivače, povijest i sve bijele liste).</string>
     <!-- App setting -->
-    <string name="setting_title_app">Postavke Aplikacije</string>
     <string name="setting_title_ui">Ponašanje/UI</string>
     <string name="setting_title_data">Sigurnosna kopija</string>
     <string name="setting_filter">Filter za bilješke</string>
@@ -130,7 +126,6 @@
     <string name="setting_theme_wallpaper">Na osnovu tapeta</string>
     <!-- App behavior -->
     <string name="setting_title_hideToolbar">Sakrij alatnu traku</string>
-    <string name="setting_title_behavior">Ponašanje</string>
     <string name="setting_title_confirm_exit">Potvrdite izlaz iz pretražnika</string>
     <string name="setting_title_confirm_tab_close">Potvrdite zatvaranje kartice</string>
     <string name="setting_overView_onStart_title">Prikaži pri početku</string>
@@ -178,14 +173,12 @@
     <string name="whitelist_add">Dodati</string>
     <string name="menu_desktopView">Veliki prikaz</string>
     <string name="menu_dayView">Danski prikaz</string>
-    <string name="menu_more">Više</string>
     <string name="menu_nightView">Noćni prikaz</string>
     <string name="setting_userScript">Prilagođeni JavaScript kod</string>
     <string name="setting_title_camera">Dozvolite korištenje kamere</string>
     <string name="setting_title_microphone">Dozvolite korištenje mikrofona</string>
     <string name="setting_title_tabsReload">Osvježite kartice</string>
     <string name="setting_title_tabsRestore">Obnovi kartice</string>
-    <string name="setting_title_userInterface">Korisničko sučelje</string>
     <string name="setting_summary_tabsReload">Ponovo učitajte posljednje otvorene kartice, kada pokrenete FOSS Preglednik.</string>
     <string name="setting_summary_tabsRestore">Obnovite kartice, kada sistem prisilno zaustavi FOSS Preglednik.</string>
     <string name="hint_DRM_Media">Dozvoliti DRM zaštićenu reprodukciju medija?</string>

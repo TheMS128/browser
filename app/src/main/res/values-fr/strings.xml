@@ -65,7 +65,6 @@
     <string name="setting_label">Paramètres</string>
     <!-- browser setting -->
     <string name="setting_title_browser">Paramètres du navigateur</string>
-    <string name="setting_title_general">Général</string>
     <string name="setting_title_search_engine">Moteur de recherche</string>
     <string name="setting_summary_search_engine_google">Google</string>
     <string name="setting_summary_search_engine_duckduckgo">DuckDuckGo</string>
@@ -80,8 +79,6 @@
     <string name="setting_title_font">Taille de police</string>
     <string name="setting_title_dom">Stockage DOM</string>
     <string name="privacy_redirect">Redirection</string>
-    <string name="privacy_redirect_twitter">Twitter</string>
-    <string name="privacy_redirect_youTube">YouTube</string>
     <string name="custom_redirects">Redirections personnalisées</string>
     <string name="source">Source</string>
     <string name="target">Cible</string>
@@ -120,7 +117,6 @@
     <string name="clear_title_deleteDatabase">Supprimer la base de données</string>
     <string name="clear_summary_deleteDatabase">Supprimer toute la base de données (page d\'accueil, signets, historique et toutes les listes de domaines).</string>
     <!-- App setting -->
-    <string name="setting_title_app">Paramètres</string>
     <string name="setting_title_ui">Comportement/UI</string>
     <string name="setting_title_data">Sauvegarde</string>
     <string name="setting_filter">Filtre de signet</string>
@@ -135,7 +131,6 @@
     <string name="setting_theme_wallpaper">Basé sur le fond d\'écran</string>
     <!-- App behavior -->
     <string name="setting_title_hideToolbar">Cacher la barre d\'outils</string>
-    <string name="setting_title_behavior">Comportement</string>
     <string name="setting_title_confirm_exit">Confirmer pour quitter</string>
     <string name="setting_title_confirm_tab_close">Confirmer la fermeture de l\'onglet</string>
     <string name="setting_overView_onStart_title">Montrer au démarrage</string>
@@ -183,14 +178,12 @@
     <string name="whitelist_add">Ajouter</string>
     <string name="menu_desktopView">Vue bureau</string>
     <string name="menu_dayView">Vue Jour</string>
-    <string name="menu_more">Plus</string>
     <string name="menu_nightView">Vue nocturne</string>
     <string name="setting_userScript">Scripts JavaScript personnalisés</string>
     <string name="setting_title_camera">Autoriser l\'utilisation de la caméra</string>
     <string name="setting_title_microphone">Autoriser l\'utilisation du microphone</string>
     <string name="setting_title_tabsReload">Recharger les onglets</string>
     <string name="setting_title_tabsRestore">Restaurer les onglets</string>
-    <string name="setting_title_userInterface">Interface utilisateur</string>
     <string name="setting_summary_tabsReload">Recharger les derniers onglets ouverts lors du démarrage de FOSS Browser.</string>
     <string name="setting_summary_tabsRestore">Restaurer les onglets quand FOSS Browser est tué par le système.</string>
     <string name="hint_DRM_Media">Autoriser la lecture des médias protégés par le DRM ?</string>
@@ -199,14 +192,10 @@
     <string name="setting_title_screenOn">Garder l\'écran allumé</string>
     <string name="setting_title_audioBackground">Jouer l\'audio en arrière-plan</string>
     <!-- License changelog -->
-    <string name="dialog_neverAsk">Ignorer. Ne plus afficher durant cette session.</string>
-    <string name="dialog_translate">Traduire avec DeepL</string>
-    <string name="dialog_translate_hint">Veuillez activer javascript et les cookies pour \"deepl.com\".</string>
     <string name="custom_searches_summary">Il suffit d\'appuyer longuement sur l\'icône de recherche dans la barre d\'outils pour obtenir des résultats de recherche à partir de sites web définis par l\'utilisateur.</string>
     <string name="custom_searches_title">Recherche rapide sur …</string>
     <string name="app_error_copy">Veuillez sélectionner et copier le texte manuellement</string>
     <string name="dialog_backGround">Ouvrir les liens en arrière-plan …</string>
-    <string name="dialog_backGround_always">toujours cette session.</string>
     <string name="album_title_bookmarks_simple">Signets (simples)</string>
     <string name="setting_title_cookie_thirdParty">Cookies de tiers</string>
     <string name="setting_title_backup_exit">Sauvegarde de la base de données (page d\'accueil, signets, historique et toutes les listes de domaines) à la sortie \?</string>
