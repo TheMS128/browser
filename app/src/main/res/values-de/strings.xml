@@ -214,4 +214,7 @@
     <string name="dialog_tracking">Möglicher Tracking-Link. Trackingteil entfernen:</string>
     <string name="app_no">Nein</string>
     <string name="setting_title_trackingURL">Tracking-URL Dialog</string>
+    <string name="app_never">Nie</string>
+    <string name="app_always">Immer</string>
+    <string name="app_session">… in dieser Sitzung?</string>
 </resources>

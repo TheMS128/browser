@@ -1113,10 +1113,6 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
         ninjaWebView.setProfileIcon(buttonProfile, url);
         buttonProfile.setOnClickListener(v -> addAlbum(title, url, true, true, "", dialog_overflow));
 
-        dialog_overflow.show();
-        HelperUnit.setupDialog(context, dialog_overflow);
-        FaviconHelper.setFavicon(context, dialogView, url, R.id.menu_icon, R.drawable.icon_image_broken);
-
         final GridView menu_grid_tab = dialogView.findViewById(R.id.overflow_tab);
         final GridView menu_grid_share = dialogView.findViewById(R.id.overflow_share);
         final GridView menu_grid_save = dialogView.findViewById(R.id.overflow_save);
@@ -1126,6 +1122,15 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
         menu_grid_share.setVisibility(View.GONE);
         menu_grid_save.setVisibility(View.GONE);
         menu_grid_other.setVisibility(View.GONE);
+
+        int orientation = getResources().getConfiguration().orientation;
+        if (orientation == Configuration.ORIENTATION_LANDSCAPE) {
+            // In landscape
+            menu_grid_tab.setNumColumns(2);
+            menu_grid_share.setNumColumns(2);
+            menu_grid_save.setNumColumns(2);
+            menu_grid_other.setNumColumns(2);
+        }
 
         // Tab
 
@@ -1372,6 +1377,8 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
             public void onSwipeLeft() { Objects.requireNonNull(tabLayout.getTabAt(0)).select();}});
 
         HelperUnit.setupDialog(context, dialog_overflow);
+        FaviconHelper.setFavicon(context, dialogView, url, R.id.menu_icon, R.drawable.icon_image_broken);
+        dialog_overflow.show();
     }
 
     // Menus
@@ -1447,6 +1454,11 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
 
         GridView menu_grid = dialogView.findViewById(R.id.menu_grid);
         GridAdapter gridAdapter = new GridAdapter(context, gridList);
+        int orientation = getResources().getConfiguration().orientation;
+        if (orientation == Configuration.ORIENTATION_LANDSCAPE) {
+            // In landscape
+            menu_grid.setNumColumns(2);
+        }
         menu_grid.setAdapter(gridAdapter);
         gridAdapter.notifyDataSetChanged();
         menu_grid.setOnItemClickListener((parent, view, position, id) -> {
@@ -1563,6 +1575,11 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
 
         GridView menu_grid = dialogView.findViewById(R.id.menu_grid);
         GridAdapter gridAdapter = new GridAdapter(context, gridList);
+        int orientation = getResources().getConfiguration().orientation;
+        if (orientation == Configuration.ORIENTATION_LANDSCAPE) {
+            // In landscape
+            menu_grid.setNumColumns(2);
+        }
         menu_grid.setAdapter(gridAdapter);
         gridAdapter.notifyDataSetChanged();
         menu_grid.setOnItemClickListener((parent, view, position, id) -> {
@@ -2880,6 +2897,11 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
             gridList.add(gridList.size(), item_01);
 
             GridView menu_grid = dialogView.findViewById(R.id.menu_grid);
+            int orientation = getResources().getConfiguration().orientation;
+            if (orientation == Configuration.ORIENTATION_LANDSCAPE) {
+                // In landscape
+                menu_grid.setNumColumns(2);
+            }
             GridAdapter gridAdapter = new GridAdapter(context, gridList);
             menu_grid.setAdapter(gridAdapter);
             gridAdapter.notifyDataSetChanged();
