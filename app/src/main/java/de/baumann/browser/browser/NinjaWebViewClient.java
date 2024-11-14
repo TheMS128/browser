@@ -13,6 +13,7 @@ import android.view.View;
 import android.webkit.HttpAuthHandler;
 import android.webkit.RenderProcessGoneDetail;
 import android.webkit.SslErrorHandler;
+import android.webkit.WebBackForwardList;
 import android.webkit.WebResourceRequest;
 import android.webkit.WebResourceResponse;
 import android.webkit.WebView;
@@ -65,6 +66,15 @@ public class NinjaWebViewClient extends WebViewClient {
     @Override
     public void onPageFinished(WebView view, String url) {
         super.onPageFinished(view, url);
+
+        WebBackForwardList mWebBackForwardList = view.copyBackForwardList();
+        if (mWebBackForwardList.getCurrentIndex() > 0) {
+            String historyUrl;
+            historyUrl = mWebBackForwardList.getItemAtIndex(mWebBackForwardList.getCurrentIndex()-1).getUrl();
+            if (!HelperUnit.domain(historyUrl).equals(HelperUnit.domain(url))) {
+                view.loadUrl(url);
+            }
+        }
 
         if (ninjaWebView.isForeground()) ninjaWebView.invalidate();
         else ninjaWebView.postInvalidate();
