@@ -209,7 +209,6 @@
     <string name="menu_shareOpenWith">オープン・ウィズ・ …</string>
     <string name="dialog_sortDomain">ドメイン順</string>
     <string name="setting_title_deny_cookie_banners">クッキーバナーブロッカー</string>
-    <string name="setting_title_profiles_without">プロファイルを無効にする</string>
     <string name="summary_deny_cookie_banners">Mozillaのクッキー・バナー・ルールを使って、クッキー・バナーを自動的に拒否してみてください。</string>
     <string name="dialog_tracking">追跡可能なURL 追跡部分を削除する：</string>
     <string name="setting_title_trackingURL">トラッキングURLポップアップ</string>

@@ -209,7 +209,6 @@
     <string name="app_intro_c">Για να ξεκινήσετε την περιήγηση, απλώς συμβουλέψτε τη γραμμή εργαλείων. Μπορείτε να αναζητήσετε κάτι στο διαδίκτυο ή να εισαγάγετε ένα url για να το ανοίξετε.</string>
     <string name="summary_deny_cookie_banners">Προσπαθήστε να αρνηθείτε αυτόματα τα cookie banners χρησιμοποιώντας τους Κανόνες Cookie Banner του Mozilla</string>
     <string name="setting_title_deny_cookie_banners">Αποκλεισμός banner cookie</string>
-    <string name="setting_title_profiles_without">Απενεργοποίηση προφίλ</string>
     <string name="dialog_sortDomain">Ταξινόμηση ανά τομέα</string>
     <string name="dialog_tracking">Πιθανή διεύθυνση URL παρακολούθησης. Αφαιρέστε το τμήμα παρακολούθησης:</string>
     <string name="setting_title_trackingURL">Αναδυόμενο παράθυρο παρακολούθησης-URL</string>

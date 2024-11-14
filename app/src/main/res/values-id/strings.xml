@@ -208,7 +208,6 @@
     <string name="app_intro_d">Anda juga dapat membuka pengaturan dan mengonfigurasi FOSS Browser sesuai kebutuhan Anda.</string>
     <string name="app_error_save">Sudah disimpan.</string>
     <string name="summary_deny_cookie_banners">Coba tolak spanduk cookie secara otomatis menggunakan Aturan Spanduk Cookie Mozilla</string>
-    <string name="setting_title_profiles_without">Menonaktifkan Profil</string>
     <string name="setting_title_deny_cookie_banners">Pemblokir Spanduk Cookie</string>
     <string name="dialog_sortDomain">Urutkan berdasarkan domain</string>
     <string name="dialog_tracking">Kemungkinan URL pelacakan. Menghapus bagian pelacakan:</string>

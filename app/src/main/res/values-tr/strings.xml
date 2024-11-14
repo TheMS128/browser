@@ -210,7 +210,6 @@
     <string name="dialog_sortDomain">Etki alanına göre sırala</string>
     <string name="summary_deny_cookie_banners">Mozilla\'nın Çerez Banner Kurallarını kullanarak çerez bannerlarını otomatik olarak reddetmeyi deneyin</string>
     <string name="setting_title_deny_cookie_banners">Çerez Banner Engelleyici</string>
-    <string name="setting_title_profiles_without">Profilleri Devre Dışı Bırak</string>
     <string name="app_no">Hayır</string>
     <string name="dialog_tracking">Olası izleme URL\'si. İzleme kısmını kaldırın:</string>
     <string name="setting_title_trackingURL">İzleme-URL açılır penceresi</string>

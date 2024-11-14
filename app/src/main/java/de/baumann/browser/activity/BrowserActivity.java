@@ -1891,7 +1891,7 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
                 dialog.cancel();
             });
             chip_profile_changed.setOnLongClickListener(view -> {
-                Toast.makeText(context, getString(R.string.setting_title_profiles_without), Toast.LENGTH_SHORT).show();
+                Toast.makeText(context, getString(R.string.setting_title_profiles_custom), Toast.LENGTH_SHORT).show();
                 return true;
             });
             // CheckBox
@@ -2934,7 +2934,7 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
             GridItem item_01 = new GridItem(getString(R.string.setting_title_profiles_trusted), R.drawable.icon_profile_trusted);
             GridItem item_02 = new GridItem(getString(R.string.setting_title_profiles_standard), R.drawable.icon_profile_standard);
             GridItem item_03 = new GridItem(getString(R.string.setting_title_profiles_protected), R.drawable.icon_profile_protected);
-            GridItem item_04 = new GridItem(getString(R.string.setting_title_profiles_without), R.drawable.icon_profile_changed);
+            GridItem item_04 = new GridItem(getString(R.string.setting_title_profiles_custom), R.drawable.icon_profile_changed);
 
             MaterialAlertDialogBuilder builder = new MaterialAlertDialogBuilder(context);
             View dialogView = View.inflate(context, R.layout.dialog_menu, null);

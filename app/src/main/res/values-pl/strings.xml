@@ -210,7 +210,6 @@
     <string name="dialog_sortDomain">Sortuj według domeny</string>
     <string name="summary_deny_cookie_banners">Spróbuj automatycznie odrzucać banery plików cookie za pomocą reguł banerów plików cookie Mozilli.</string>
     <string name="setting_title_deny_cookie_banners">Cookie Banner Blocker</string>
-    <string name="setting_title_profiles_without">Wyłączanie profili</string>
     <string name="dialog_tracking">Możliwy adres URL śledzenia. Usuń część śledzącą:</string>
     <string name="app_no">Nie</string>
     <string name="setting_title_trackingURL">Wyskakujące okienko śledzenia adresu URL</string>

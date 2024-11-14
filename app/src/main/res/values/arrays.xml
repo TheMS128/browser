@@ -184,7 +184,7 @@
         <item>@string/setting_title_profiles_trusted</item>
         <item>@string/setting_title_profiles_standard</item>
         <item>@string/setting_title_profiles_protected</item>
-        <item>@string/setting_title_profiles_without</item>
+        <item>@string/setting_title_profiles_custom</item>
     </string-array>
 
     <string-array name="profileToStart_values">

@@ -6,6 +6,7 @@
 - fix: open links in background #1184
 - fix: link on readme.md (thanks to @[Artemka](https://codeberg.org/Artem13327))
 - fix: wrong menu contents in landscape orientation #1186
+- fix: rename Disable Profiles -> Custom #1178
 - new: switched from deepl to fairtranslate
 
 ### v 16 "Alexander Berkmann"

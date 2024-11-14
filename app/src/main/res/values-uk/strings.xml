@@ -210,7 +210,6 @@
     <string name="setting_title_deny_cookie_banners">Відхиляти банери про cookie</string>
     <string name="summary_deny_cookie_banners">Намагатися автоматично відхиляти банери про cookie за допомогою правил від Mozilla</string>
     <string name="dialog_sortDomain">Сортувати за доменом</string>
-    <string name="setting_title_profiles_without">Вимкнути профілі</string>
     <string name="app_no">Ні</string>
     <string name="setting_title_trackingURL">Дії щодо URL-адрес з відстеженням</string>
     <string name="dialog_tracking">Можливо це URL-адреса з відстеженням. Видалити частину відстеження:</string>
