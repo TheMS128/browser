@@ -42,7 +42,6 @@ import android.text.method.KeyListener;
 import android.util.Log;
 import android.util.TypedValue;
 import android.view.ContextMenu;
-import android.view.Gravity;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.ViewGroup;
@@ -2671,80 +2670,42 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
 
         String action = intent.getAction();
         String url = intent.getStringExtra(Intent.EXTRA_TEXT);
-        String data = "";
+        String data;
 
         if ("".equals(action)) {
             Log.i(TAG, "resumed FOSS browser");
-            return; }
-        else if (filePathCallback != null) {
+        } else if (filePathCallback != null) {
             filePathCallback = null;
             getIntent().setAction("");
-            return; }
-        else if (Intent.ACTION_VIEW.equals(action)) {
+        } else if (Intent.ACTION_VIEW.equals(action)) {
             getIntent().setAction("");
             addAlbum(null, Objects.requireNonNull(getIntent().getData()).toString(), true, false, "", null);
             getIntent().setAction("");
             hideOverview();
             BrowserUnit.openInBackground(activity, ninjaWebView);
-        }
-
-        else if (intent.getAction() != null && intent.getAction().equals(Intent.ACTION_PROCESS_TEXT)) {
+        } else if ("postLink".equals(action)) {
+            getIntent().setAction("");
+            hideOverview();
+            postLink(url, null);
+        } else if ("customSearches".equals(action)) {
+            getIntent().setAction("");
+            addAlbum(null, "", true, false, "", null);
+            hideOverview();
+            assert url != null;
+            showDialogCustomSearches(url);
+        } else if (intent.getAction() != null && intent.getAction().equals(Intent.ACTION_PROCESS_TEXT)) {
+            getIntent().setAction("");
             CharSequence text = getIntent().getCharSequenceExtra(Intent.EXTRA_PROCESS_TEXT);
             assert text != null;
-            data = text.toString();}
-        else if (intent.getAction() != null && intent.getAction().equals(Intent.ACTION_WEB_SEARCH)) {
-            data = Objects.requireNonNull(intent.getStringExtra(SearchManager.QUERY)); }
-        else if (url != null && Intent.ACTION_SEND.equals(action)) {
-            data = url;}
-
-        if (!data.isEmpty()) {
-
+            data = text.toString();
+            addAlbum(null, data, true, false, "", null);
+        } else if (intent.getAction() != null && intent.getAction().equals(Intent.ACTION_WEB_SEARCH)) {
             getIntent().setAction("");
-            String finalData = data;
-
-            GridItem item_01 = new GridItem(context.getString(R.string.main_omnibox_input_hint), R.drawable.icon_search);
-            GridItem item_02 = new GridItem( context.getString(R.string.custom_searches_title), R.drawable.icon_custom_searches);
-            GridItem item_03 = new GridItem( context.getString(R.string.dialog_postOnWebsite), R.drawable.icon_post);
-
-            View dialogView = View.inflate(context, R.layout.dialog_menu, null);
-
-            MaterialCardView albumCardView = dialogView.findViewById(R.id.albumCardView);
-            albumCardView.setVisibility(View.GONE);
-
-            MaterialAlertDialogBuilder builder = new MaterialAlertDialogBuilder(context);
-            builder.setIcon(R.drawable.icon_share);
-            builder.setTitle(finalData);
-            builder.setView(dialogView);
-
-            AlertDialog dialogChoose = builder.create();
-            dialogChoose.show();
-
-            Objects.requireNonNull(dialogChoose.getWindow()).setGravity(Gravity.BOTTOM);
-            GridView menu_grid = dialogView.findViewById(R.id.menu_grid);
-
-            final List<GridItem> gridList = new LinkedList<>();
-            gridList.add(gridList.size(), item_01);
-            gridList.add(gridList.size(), item_02);
-            gridList.add(gridList.size(), item_03);
-            GridAdapter gridAdapter = new GridAdapter(context, gridList);
-            menu_grid.setAdapter(gridAdapter);
-            gridAdapter.notifyDataSetChanged();
-            menu_grid.setOnItemClickListener((parent, view, position, id) -> {
-                dialogChoose.cancel();
-                switch (position) {
-                    case 0:
-                        addAlbum(null, finalData, true, false, "", null);
-                        break;
-                    case 1:
-                        showDialogCustomSearches(finalData);
-                        break;
-                    case 2:
-                        postLink(finalData, null);
-                        break;
-                }
-            });
-
-            HelperUnit.setupDialog(context, dialogChoose);
+            data = Objects.requireNonNull(intent.getStringExtra(SearchManager.QUERY));
+            addAlbum(null, data, true, false, "", null);
+        } else if (url != null && Intent.ACTION_SEND.equals(action)) {
+            getIntent().setAction("");
+            addAlbum(null, url, true, false, "", null);
         }
     }
 

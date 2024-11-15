@@ -82,6 +82,33 @@
 
         </activity>
 
+        <activity
+            android:name=".activity.ActivityShare"
+            android:label="@string/dialog_postOnWebsite"
+            android:theme="@android:style/Theme.NoDisplay"
+            android:exported="true">
+
+            <intent-filter>
+                <action android:name="android.intent.action.SEND" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <data android:mimeType="text/plain" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".activity.ActivityCustomSearches"
+            android:label="@string/custom_searches_title"
+            android:theme="@android:style/Theme.NoDisplay"
+            android:exported="true">
+
+            <intent-filter>
+                <action android:name="android.intent.action.SEND" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <data android:mimeType="text/plain" />
+            </intent-filter>
+        </activity>
+
+
         <!-- Settings -->
         <activity
             android:name="de.baumann.browser.activity.Settings_Activity"

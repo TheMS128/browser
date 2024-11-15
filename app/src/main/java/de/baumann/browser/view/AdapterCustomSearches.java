@@ -23,6 +23,8 @@ import java.util.ArrayList;
 
 import de.baumann.browser.R;
 import de.baumann.browser.activity.BrowserActivity;
+import de.baumann.browser.browser.AlbumController;
+import de.baumann.browser.browser.BrowserController;
 import de.baumann.browser.database.FaviconHelper;
 import de.baumann.browser.objects.CustomRedirect;
 import de.baumann.browser.objects.CustomSearchesHelper;
@@ -84,10 +86,7 @@ public class AdapterCustomSearches extends RecyclerView.Adapter<RedirectsViewHol
             String t = BrowserUnit.queryWrapper(context, url);
 
             if (BrowserUnit.isURL(t)) {
-                Intent i = new Intent(Intent.ACTION_VIEW);
-                i.setPackage("de.baumann.browser");
-                i.setData(Uri.parse(t));
-                context.startActivity(i);
+                BrowserUnit.intentURL(context, Uri.parse(t));
                 sp.edit().putString("sp_search_customSearches", "").apply();
             } else {
                 NinjaToast.show(BrowserActivity.getAppContext(), R.string.app_error);
