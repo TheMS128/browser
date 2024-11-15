@@ -209,12 +209,11 @@
     <string name="app_intro_b">Il sito web attualmente aperto è il WIKI di FOSS Browser. Questo sito è anche salvato come primo segnalibro. Nel WIKI si possono trovare consigli e collegamenti utili.</string>
     <string name="setting_title_deny_cookie_banners">Cookie Banner Blocker</string>
     <string name="dialog_sortDomain">Ordina per dominio</string>
-    <string name="summary_deny_cookie_banners">Provate a negare automaticamente i cookie banner utilizzando le regole per i cookie banner di Mozilla.</string>
     <string name="dialog_tracking">Possibile URL di tracciamento. Rimuovere la parte di tracciamento:</string>
     <string name="setting_title_trackingURL">Popup dell\'URL di tracciamento</string>
     <string name="app_no">No</string>
     <string name="app_always">Sempre</string>
     <string name="setting_title_profiles_custom">Profilo personalizzato</string>
     <string name="app_never">Mai</string>
-    <string name="app_session">... nella sessione in corso?</string>
+    <string name="app_session">… nella sessione in corso?</string>
 </resources>

@@ -196,7 +196,7 @@
     <string name="album_title_bookmarks_simple">書籤（簡單）</string>
     <string name="custom_domains">自訂網域</string>
     <string name="app_always">永遠</string>
-    <string name="app_session">...在當前會話中？</string>
+    <string name="app_session">…在當前會話中？</string>
     <string name="app_error_save">已經儲存。</string>
     <string name="custom_searches_title">快速搜尋 …</string>
     <string name="menu_shareOpenWith">開啟 …</string>
@@ -214,7 +214,6 @@
     <string name="custom_searches_summary">只需長按工具列上的搜尋圖示，即可從自訂網頁取得結果。</string>
     <string name="setting_title_deny_cookie_banners">Cookie 橫幅封鎖程式</string>
     <string name="dialog_sortDomain">依網域排序</string>
-    <string name="summary_deny_cookie_banners">嘗試使用 Mozilla 的 Cookie Banner 規則自動拒絕 Cookie 廣告橫幅</string>
     <string name="app_no">沒有</string>
     <string name="setting_title_trackingURL">彈出追蹤 URL</string>
 </resources>

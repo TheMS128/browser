@@ -208,13 +208,12 @@
     <string name="app_intro_d">يمكنك أيضًا فتح الإعدادات وتهيئة متصفح FOSS وفقًا لاحتياجاتك.</string>
     <string name="app_intro_c">لبدء التصفح فقط اضغط على شريط الأدوات. يمكنك البحث في الويب عن شيء ما أو إدخال عنوان url لفتحه.</string>
     <string name="dialog_sortDomain">فرز حسب المجال</string>
-    <string name="summary_deny_cookie_banners">حاول رفض لافتات ملفات تعريف الارتباط تلقائيًا باستخدام قواعد ملفات تعريف الارتباط الخاصة بملفات تعريف الارتباط في</string>
     <string name="setting_title_deny_cookie_banners">مانع شعارات ملفات تعريف الارتباط</string>
     <string name="dialog_tracking">عنوان URL التتبع المحتمل. إزالة جزء التتبع:</string>
     <string name="setting_title_trackingURL">تتبع-URL المنبثق</string>
     <string name="app_no">لا يوجد</string>
     <string name="app_always">دائماً</string>
-    <string name="app_session">... في الدورة الحالية؟</string>
+    <string name="app_session">… في الدورة الحالية؟</string>
     <string name="setting_title_profiles_custom">ملف تعريف مخصص</string>
     <string name="app_never">أبداً</string>
 </resources>

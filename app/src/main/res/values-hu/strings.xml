@@ -208,13 +208,12 @@
     <string name="app_intro_b">A jelenleg megnyitott weboldal a FOSS Browser WIKI-je. Ez a webhely szintén az első könyvjelzőként van elmentve. A WIKI-ben hasznos tippeket és linkeket találhat.</string>
     <string name="menu_shareOpenWith">Nyissa meg …</string>
     <string name="setting_title_deny_cookie_banners">Cookie banner blokkoló</string>
-    <string name="summary_deny_cookie_banners">Próbálja meg automatikusan letiltani a cookie bannereket a Mozilla Cookie Banner Rules használatával</string>
     <string name="dialog_sortDomain">Rendezés domain szerint</string>
     <string name="dialog_tracking">Lehetséges követési URL. Távolítsa el a nyomkövető részt:</string>
     <string name="setting_title_trackingURL">Tracking-URL felugró ablak</string>
     <string name="app_no">Nem</string>
     <string name="app_never">Soha</string>
     <string name="app_always">Mindig</string>
-    <string name="app_session">... az aktuális ülésszakban?</string>
+    <string name="app_session">… az aktuális ülésszakban?</string>
     <string name="setting_title_profiles_custom">Egyéni profil</string>
 </resources>

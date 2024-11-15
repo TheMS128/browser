@@ -207,7 +207,6 @@
     <string name="app_intro_c">Um mit dem Surfen zu beginnen, tippen Sie einfach auf die Symbolleiste. Sie können das Web nach etwas durchsuchen oder eine URL zum Öffnen eingeben.</string>
     <string name="app_intro_d">Sie können auch die Einstellungen öffnen und den FOSS-Browser nach Ihren Wünschen konfigurieren.</string>
     <string name="app_intro_b">Die aktuell geöffnete Website ist das WIKI von FOSS Browser. Diese Seite ist auch als Ihr erstes Lesezeichen gespeichert. Im WIKI finden Sie hilfreiche Tipps und Links.</string>
-    <string name="summary_deny_cookie_banners">Versuchen Sie, Cookie-Banner mit den Cookie-Banner-Regeln von Mozilla automatisch abzulehnen</string>
     <string name="setting_title_deny_cookie_banners">Cookie-Banner-Blocker</string>
     <string name="dialog_sortDomain">Nach Domain sortieren</string>
     <string name="dialog_tracking">Möglicher Tracking-Link. Trackingteil entfernen:</string>

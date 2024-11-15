@@ -208,13 +208,12 @@
     <string name="app_intro_b">Şu anda açık olan web sitesi FOSS Browser\'ın WIKI\'sidir. Bu site aynı zamanda ilk Yer İşaretiniz olarak kaydedilir. WIKI\'de yararlı ipuçları ve bağlantılar bulabilirsiniz.</string>
     <string name="app_intro_a">FOSS Browser\'ı kullandığınız için teşekkürler!</string>
     <string name="dialog_sortDomain">Etki alanına göre sırala</string>
-    <string name="summary_deny_cookie_banners">Mozilla\'nın Çerez Banner Kurallarını kullanarak çerez bannerlarını otomatik olarak reddetmeyi deneyin</string>
     <string name="setting_title_deny_cookie_banners">Çerez Banner Engelleyici</string>
     <string name="app_no">Hayır</string>
     <string name="dialog_tracking">Olası izleme URL\'si. İzleme kısmını kaldırın:</string>
     <string name="setting_title_trackingURL">İzleme-URL açılır penceresi</string>
     <string name="app_never">Asla</string>
-    <string name="app_session">... mevcut oturumda mı?</string>
+    <string name="app_session">… mevcut oturumda mı?</string>
     <string name="setting_title_profiles_custom">Özel profil</string>
     <string name="app_always">Her zaman</string>
 </resources>

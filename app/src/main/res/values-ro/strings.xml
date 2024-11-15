@@ -209,12 +209,11 @@
     <string name="app_intro_b">Site-ul web deschis în prezent este WIKI al FOSS Browser. De asemenea, acest site este salvat ca primul marcaj. Pe WIKI puteți găsi sfaturi și link-uri utile.</string>
     <string name="setting_title_deny_cookie_banners">Cookie Banner Blocker</string>
     <string name="dialog_sortDomain">Sortează după domeniu</string>
-    <string name="summary_deny_cookie_banners">Încercați să refuzați automat bannerele cu cookie-uri utilizând Reguli pentru bannere cu cookie-uri de la Mozilla</string>
     <string name="dialog_tracking">Posibil URL de urmărire. Eliminați partea de urmărire:</string>
     <string name="app_no">Nu</string>
     <string name="setting_title_trackingURL">Urmărire-URL popup</string>
     <string name="app_never">Niciodată</string>
     <string name="app_always">Întotdeauna</string>
-    <string name="app_session">... în sesiunea curentă?</string>
+    <string name="app_session">… în sesiunea curentă?</string>
     <string name="setting_title_profiles_custom">Profil personalizat</string>
 </resources>

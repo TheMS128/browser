@@ -209,12 +209,11 @@
     <string name="app_intro_d">Вы также можете открыть настройки и сконфигурировать FOSS Browser под свои нужды.</string>
     <string name="setting_title_deny_cookie_banners">Блокировщик баннеров Cookie</string>
     <string name="dialog_sortDomain">Сортировать по домену</string>
-    <string name="summary_deny_cookie_banners">Попробуйте автоматически запретить баннеры с куки-файлами, используя правила Mozilla для баннеров с куки-файлами</string>
     <string name="dialog_tracking">Возможный URL для отслеживания. Удалите отслеживающую часть:</string>
     <string name="app_no">Нет</string>
     <string name="setting_title_trackingURL">Всплывающее окно с отслеживанием URL</string>
     <string name="app_never">Никогда</string>
     <string name="app_always">Всегда</string>
-    <string name="app_session">... на текущей сессии?</string>
+    <string name="app_session">… на текущей сессии?</string>
     <string name="setting_title_profiles_custom">Пользовательский профиль</string>
 </resources>

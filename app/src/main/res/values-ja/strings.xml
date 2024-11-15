@@ -209,11 +209,10 @@
     <string name="menu_shareOpenWith">オープン・ウィズ・ …</string>
     <string name="dialog_sortDomain">ドメイン順</string>
     <string name="setting_title_deny_cookie_banners">クッキーバナーブロッカー</string>
-    <string name="summary_deny_cookie_banners">Mozillaのクッキー・バナー・ルールを使って、クッキー・バナーを自動的に拒否してみてください。</string>
     <string name="dialog_tracking">追跡可能なURL 追跡部分を削除する：</string>
     <string name="setting_title_trackingURL">トラッキングURLポップアップ</string>
     <string name="app_no">いいえ</string>
-    <string name="app_session">... 現在のセッションで？</string>
+    <string name="app_session">… 現在のセッションで？</string>
     <string name="app_never">決して</string>
     <string name="app_always">常に</string>
     <string name="setting_title_profiles_custom">カスタムプロファイル</string>
