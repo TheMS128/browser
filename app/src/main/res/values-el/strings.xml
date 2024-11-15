@@ -213,4 +213,8 @@
     <string name="dialog_tracking">Πιθανή διεύθυνση URL παρακολούθησης. Αφαιρέστε το τμήμα παρακολούθησης:</string>
     <string name="setting_title_trackingURL">Αναδυόμενο παράθυρο παρακολούθησης-URL</string>
     <string name="app_no">Όχι</string>
+    <string name="app_never">Ποτέ</string>
+    <string name="app_always">Πάντα</string>
+    <string name="app_session">... στην τρέχουσα σύνοδο;</string>
+    <string name="setting_title_profiles_custom">Προσαρμοσμένο προφίλ</string>
 </resources>

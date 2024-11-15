@@ -213,4 +213,8 @@
     <string name="dialog_tracking">Možná adresa URL pro sledování. Odstranění sledovací části:</string>
     <string name="app_no">Ne</string>
     <string name="setting_title_trackingURL">Vyskakovací okno Tracking-URL</string>
+    <string name="app_never">Nikdy</string>
+    <string name="app_always">Vždy</string>
+    <string name="app_session">... v probíhajícím zasedání?</string>
+    <string name="setting_title_profiles_custom">Vlastní profil</string>
 </resources>

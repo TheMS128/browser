@@ -213,4 +213,8 @@
     <string name="app_no">Nej</string>
     <string name="dialog_tracking">Möjlig URL för spårning. Ta bort spårningsdelen:</string>
     <string name="setting_title_trackingURL">Popup-fönster för spårnings-URL</string>
+    <string name="app_always">Alltid</string>
+    <string name="app_session">... under pågående session?</string>
+    <string name="setting_title_profiles_custom">Anpassad profil</string>
+    <string name="app_never">Aldrig</string>
 </resources>

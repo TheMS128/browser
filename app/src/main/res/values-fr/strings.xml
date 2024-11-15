@@ -213,4 +213,8 @@
     <string name="dialog_tracking">URL de suivi possible. Supprimer la partie \"tracking\" :</string>
     <string name="setting_title_trackingURL">Fenêtre contextuelle de suivi de l\'URL</string>
     <string name="app_no">Non</string>
+    <string name="app_always">Toujours</string>
+    <string name="app_session">... dans la session en cours ?</string>
+    <string name="setting_title_profiles_custom">Profil personnalisé</string>
+    <string name="app_never">Jamais</string>
 </resources>

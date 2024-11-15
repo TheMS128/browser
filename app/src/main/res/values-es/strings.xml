@@ -213,4 +213,8 @@
     <string name="dialog_tracking">Posible URL de seguimiento. Eliminar parte de seguimiento:</string>
     <string name="app_no">No</string>
     <string name="setting_title_trackingURL">Ventana emergente Tracking-URL</string>
+    <string name="app_always">Siempre</string>
+    <string name="app_session">... en la sesión actual?</string>
+    <string name="app_never">Nunca</string>
+    <string name="setting_title_profiles_custom">Perfil personalizado</string>
 </resources>

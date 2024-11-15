@@ -213,4 +213,8 @@
     <string name="dialog_tracking">可能的跟踪 URL。删除跟踪部分：</string>
     <string name="setting_title_trackingURL">跟踪 URL 弹出窗口</string>
     <string name="app_no">没有</string>
+    <string name="app_never">从不</string>
+    <string name="app_always">始终如一</string>
+    <string name="setting_title_profiles_custom">自定义配置文件</string>
+    <string name="app_session">......在本届会议上？</string>
 </resources>

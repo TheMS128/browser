@@ -213,4 +213,8 @@
     <string name="app_no">Ні</string>
     <string name="setting_title_trackingURL">Дії щодо URL-адрес з відстеженням</string>
     <string name="dialog_tracking">Можливо це URL-адреса з відстеженням. Видалити частину відстеження:</string>
+    <string name="app_always">Завжди</string>
+    <string name="app_never">Ніколи.</string>
+    <string name="setting_title_profiles_custom">Спеціальний профіль</string>
+    <string name="app_session">... в поточній сесії?</string>
 </resources>

@@ -213,4 +213,8 @@
     <string name="dialog_tracking">追跡可能なURL 追跡部分を削除する：</string>
     <string name="setting_title_trackingURL">トラッキングURLポップアップ</string>
     <string name="app_no">いいえ</string>
+    <string name="app_session">... 現在のセッションで？</string>
+    <string name="app_never">決して</string>
+    <string name="app_always">常に</string>
+    <string name="setting_title_profiles_custom">カスタムプロファイル</string>
 </resources>

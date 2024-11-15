@@ -213,4 +213,8 @@
     <string name="dialog_tracking">Mogelijke traceer-URL. Verwijder het traceergedeelte:</string>
     <string name="app_no">Geen</string>
     <string name="setting_title_trackingURL">Volg-URL popup</string>
+    <string name="app_never">Nooit</string>
+    <string name="app_always">Altijd</string>
+    <string name="app_session">... in huidige sessie?</string>
+    <string name="setting_title_profiles_custom">Aangepast profiel</string>
 </resources>

@@ -213,4 +213,8 @@
     <string name="dialog_tracking">Possibile URL di tracciamento. Rimuovere la parte di tracciamento:</string>
     <string name="setting_title_trackingURL">Popup dell\'URL di tracciamento</string>
     <string name="app_no">No</string>
+    <string name="app_always">Sempre</string>
+    <string name="setting_title_profiles_custom">Profilo personalizzato</string>
+    <string name="app_never">Mai</string>
+    <string name="app_session">... nella sessione in corso?</string>
 </resources>

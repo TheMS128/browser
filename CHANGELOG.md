@@ -1,6 +1,7 @@
 ### v 17 WIP
 - upgrade: Android target SDK
 - upgrade: dependencies
+- update: translations
 - fix: redirecting urls
 - fix: minor layout issues
 - fix: open links in background #1184

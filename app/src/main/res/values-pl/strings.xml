@@ -213,4 +213,8 @@
     <string name="dialog_tracking">Możliwy adres URL śledzenia. Usuń część śledzącą:</string>
     <string name="app_no">Nie</string>
     <string name="setting_title_trackingURL">Wyskakujące okienko śledzenia adresu URL</string>
+    <string name="app_always">Zawsze</string>
+    <string name="setting_title_profiles_custom">Profil niestandardowy</string>
+    <string name="app_never">Nigdy</string>
+    <string name="app_session">... w bieżącej sesji?</string>
 </resources>

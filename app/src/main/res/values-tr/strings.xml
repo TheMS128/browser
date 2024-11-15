@@ -213,4 +213,8 @@
     <string name="app_no">Hayır</string>
     <string name="dialog_tracking">Olası izleme URL\'si. İzleme kısmını kaldırın:</string>
     <string name="setting_title_trackingURL">İzleme-URL açılır penceresi</string>
+    <string name="app_never">Asla</string>
+    <string name="app_session">... mevcut oturumda mı?</string>
+    <string name="setting_title_profiles_custom">Özel profil</string>
+    <string name="app_always">Her zaman</string>
 </resources>

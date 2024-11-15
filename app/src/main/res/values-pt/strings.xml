@@ -213,4 +213,8 @@
     <string name="app_no">Não</string>
     <string name="dialog_tracking">Possível URL de rastreio. Remover a parte de rastreio:</string>
     <string name="setting_title_trackingURL">Popup de rastreio-URL</string>
+    <string name="app_never">Nunca</string>
+    <string name="app_always">Sempre</string>
+    <string name="app_session">... na sessão atual?</string>
+    <string name="setting_title_profiles_custom">Perfil personalizado</string>
 </resources>

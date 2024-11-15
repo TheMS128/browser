@@ -213,4 +213,8 @@
     <string name="dialog_tracking">عنوان URL التتبع المحتمل. إزالة جزء التتبع:</string>
     <string name="setting_title_trackingURL">تتبع-URL المنبثق</string>
     <string name="app_no">لا يوجد</string>
+    <string name="app_always">دائماً</string>
+    <string name="app_session">... في الدورة الحالية؟</string>
+    <string name="setting_title_profiles_custom">ملف تعريف مخصص</string>
+    <string name="app_never">أبداً</string>
 </resources>

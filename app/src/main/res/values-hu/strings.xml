@@ -213,4 +213,8 @@
     <string name="dialog_tracking">Lehetséges követési URL. Távolítsa el a nyomkövető részt:</string>
     <string name="setting_title_trackingURL">Tracking-URL felugró ablak</string>
     <string name="app_no">Nem</string>
+    <string name="app_never">Soha</string>
+    <string name="app_always">Mindig</string>
+    <string name="app_session">... az aktuális ülésszakban?</string>
+    <string name="setting_title_profiles_custom">Egyéni profil</string>
 </resources>

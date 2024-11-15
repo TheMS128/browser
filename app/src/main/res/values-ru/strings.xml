@@ -213,4 +213,8 @@
     <string name="dialog_tracking">Возможный URL для отслеживания. Удалите отслеживающую часть:</string>
     <string name="app_no">Нет</string>
     <string name="setting_title_trackingURL">Всплывающее окно с отслеживанием URL</string>
+    <string name="app_never">Никогда</string>
+    <string name="app_always">Всегда</string>
+    <string name="app_session">... на текущей сессии?</string>
+    <string name="setting_title_profiles_custom">Пользовательский профиль</string>
 </resources>
