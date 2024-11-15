@@ -2689,7 +2689,9 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
             postLink(url, null);
         } else if ("customSearches".equals(action)) {
             getIntent().setAction("");
-            addAlbum(null, "", true, false, "", null);
+            if (BrowserContainer.size() == 0) {
+                addAlbum(null, "", true, false, "", null);
+            }
             hideOverview();
             assert url != null;
             showDialogCustomSearches(url);
