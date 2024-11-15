@@ -2,7 +2,6 @@ package de.baumann.browser.view;
 
 import android.app.Dialog;
 import android.content.Context;
-import android.content.Intent;
 import android.content.SharedPreferences;
 import android.net.Uri;
 import android.view.LayoutInflater;
@@ -23,8 +22,6 @@ import java.util.ArrayList;
 
 import de.baumann.browser.R;
 import de.baumann.browser.activity.BrowserActivity;
-import de.baumann.browser.browser.AlbumController;
-import de.baumann.browser.browser.BrowserController;
 import de.baumann.browser.database.FaviconHelper;
 import de.baumann.browser.objects.CustomRedirect;
 import de.baumann.browser.objects.CustomSearchesHelper;
