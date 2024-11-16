@@ -22,23 +22,24 @@
             android:title="@string/setting_title_profiles_startApp" />
 
         <Preference
+            android:icon="@drawable/icon_edit"
             android:key="settings_profile"
             android:title="@string/setting_title_profiles_edit" />
 
         <Preference
             android:icon="@drawable/icon_profile_trusted"
             android:key="edit_trusted"
-            android:summary="@string/setting_title_profiles_trustedList" />
+            android:title="@string/setting_title_profiles_trustedList" />
 
         <Preference
             android:icon="@drawable/icon_profile_standard"
             android:key="edit_standard"
-            android:summary="@string/setting_title_profiles_standardList" />
+            android:title="@string/setting_title_profiles_standardList" />
 
         <Preference
             android:icon="@drawable/icon_profile_protected"
             android:key="edit_protected"
-            android:summary="@string/setting_title_profiles_protectedList" />
+            android:title="@string/setting_title_profiles_protectedList" />
 
     </PreferenceCategory>
 
