@@ -1083,6 +1083,10 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
 
         HelperUnit.hideSoftKeyboard(omniBox_text, context);
 
+        if (ninjaWebView.getUrl() == null) {
+            ninjaWebView.loadUrl("about:blank");
+        }
+
         final String url = ninjaWebView.getUrl();
         final String title = ninjaWebView.getTitle();
 
@@ -1109,6 +1113,9 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
         AlertDialog dialog_overflow = builder.create();
 
         FloatingActionButton buttonProfile = dialogView.findViewById(R.id.buttonProfile);
+
+
+
         ninjaWebView.setProfileIcon(buttonProfile, url);
         buttonProfile.setOnClickListener(v -> addAlbum(title, url, true, true, "", dialog_overflow));
 
@@ -2670,7 +2677,6 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
 
         String action = intent.getAction();
         String url = intent.getStringExtra(Intent.EXTRA_TEXT);
-        String data;
 
         if ("".equals(action)) {
             Log.i(TAG, "resumed FOSS browser");
@@ -2680,7 +2686,6 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
         } else if (Intent.ACTION_VIEW.equals(action)) {
             getIntent().setAction("");
             addAlbum(null, Objects.requireNonNull(getIntent().getData()).toString(), true, false, "", null);
-            getIntent().setAction("");
             hideOverview();
             BrowserUnit.openInBackground(activity, ninjaWebView);
         } else if ("postLink".equals(action)) {
@@ -2699,12 +2704,12 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
             getIntent().setAction("");
             CharSequence text = getIntent().getCharSequenceExtra(Intent.EXTRA_PROCESS_TEXT);
             assert text != null;
-            data = text.toString();
-            addAlbum(null, data, true, false, "", null);
+            url = text.toString();
+            addAlbum(null, url, true, false, "", null);
         } else if (intent.getAction() != null && intent.getAction().equals(Intent.ACTION_WEB_SEARCH)) {
             getIntent().setAction("");
-            data = Objects.requireNonNull(intent.getStringExtra(SearchManager.QUERY));
-            addAlbum(null, data, true, false, "", null);
+            url = Objects.requireNonNull(intent.getStringExtra(SearchManager.QUERY));
+            addAlbum(null, url, true, false, "", null);
         } else if (url != null && Intent.ACTION_SEND.equals(action)) {
             getIntent().setAction("");
             addAlbum(null, url, true, false, "", null);

@@ -10,6 +10,7 @@
 - fix: rename Disable Profiles -> Custom #1178
 - fix: Update README #1176
 - fix: “Close Tab” icon too small #1156
+- fix: crash when clicking overflow with empty URL
 - new: switched from deepl to fairtranslate
 - new: edit custom redirects
 
