@@ -386,7 +386,7 @@ public class BrowserUnit {
                 MaterialAlertDialogBuilder builder = new MaterialAlertDialogBuilder(activity);
                 builder.setIcon(R.drawable.icon_alert);
                 builder.setMessage(R.string.app_permission);
-                builder.setTitle(R.string.setting_title_microphone);
+                builder.setTitle(R.string.app_permission_notification);
                 builder.setPositiveButton(R.string.app_ok, (dialog, whichButton) -> activity.requestPermissions(new String[]{Manifest.permission.POST_NOTIFICATIONS}, REQUEST_CODE_ASK_PERMISSIONS_4));
                 builder.setNegativeButton(R.string.app_cancel, (dialog, whichButton) -> dialog.cancel());
                 AlertDialog dialog = builder.create();
