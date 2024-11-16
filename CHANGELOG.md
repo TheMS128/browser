@@ -12,6 +12,7 @@
 - fix: “Close Tab” icon too small #1156
 - fix: crash when clicking overflow with empty URL
 - fix: crash with missing notification permission
+- fix: Themed Icon Missing #1157
 - new: switched from deepl to fairtranslate
 - new: edit custom redirects
 
