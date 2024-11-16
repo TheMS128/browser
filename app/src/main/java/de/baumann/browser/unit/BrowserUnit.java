@@ -3,6 +3,7 @@ package de.baumann.browser.unit;
 import static android.app.PendingIntent.FLAG_IMMUTABLE;
 import static android.content.ContentValues.TAG;
 import static android.content.Context.NOTIFICATION_SERVICE;
+import static android.os.Build.VERSION.SDK_INT;
 
 import android.Manifest;
 import android.app.Activity;
@@ -26,9 +27,8 @@ import android.webkit.WebStorage;
 import android.webkit.WebView;
 import android.widget.Toast;
 
-import androidx.core.app.ActivityCompat;
+import androidx.appcompat.app.AlertDialog;
 import androidx.core.app.NotificationCompat;
-import androidx.core.content.ContextCompat;
 import androidx.preference.PreferenceManager;
 
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
@@ -73,6 +73,8 @@ public class BrowserUnit {
     private static final String URL_SCHEME_HTTP = "http://";
     private static final String URL_SCHEME_FTP = "ftp://";
     private static final String URL_SCHEME_INTENT = "intent://";
+
+    private static final int REQUEST_CODE_ASK_PERMISSIONS_4 = 1234567;
 
     public static boolean isURL(String url) {
 
@@ -378,17 +380,26 @@ public class BrowserUnit {
     }
 
     private static void displayNotification(Activity activity, NotificationManager mNotifyMgr, Notification buildNotification) {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
-            int permissionState = ContextCompat.checkSelfPermission(activity, Manifest.permission.POST_NOTIFICATIONS);
-            if (permissionState == PackageManager.PERMISSION_DENIED) {
-                ActivityCompat.requestPermissions(activity, new String[]{Manifest.permission.POST_NOTIFICATIONS}, 1);
+        if (SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+            int notificationAllowed = activity.checkSelfPermission(Manifest.permission.POST_NOTIFICATIONS);
+            if (notificationAllowed != PackageManager.PERMISSION_GRANTED) {
+                MaterialAlertDialogBuilder builder = new MaterialAlertDialogBuilder(activity);
+                builder.setIcon(R.drawable.icon_alert);
+                builder.setMessage(R.string.app_permission);
+                builder.setTitle(R.string.setting_title_microphone);
+                builder.setPositiveButton(R.string.app_ok, (dialog, whichButton) -> activity.requestPermissions(new String[]{Manifest.permission.POST_NOTIFICATIONS}, REQUEST_CODE_ASK_PERMISSIONS_4));
+                builder.setNegativeButton(R.string.app_cancel, (dialog, whichButton) -> dialog.cancel());
+                AlertDialog dialog = builder.create();
+                dialog.show();
+                HelperUnit.setupDialog(activity, dialog);
             } else {
                 mNotifyMgr.notify(4, buildNotification);
+                activity.moveTaskToBack(true);
             }
         } else {
             mNotifyMgr.notify(4, buildNotification);
+            activity.moveTaskToBack(true);
         }
-        activity.moveTaskToBack(true);
     }
     public static boolean deleteDir(File dir) {
         if (dir != null && dir.isDirectory()) {
