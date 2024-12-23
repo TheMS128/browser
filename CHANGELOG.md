@@ -1,4 +1,4 @@
-### v 17 WIP
+### v 17 "Michail Alexandrowitsch Bakunin"
 - upgrade: Android target SDK
 - upgrade: dependencies
 - update: translations
