@@ -27,7 +27,6 @@ public class CustomRedirectsHelper {
             redirects.add(new CustomRedirect("twitter.com", preferences.getString("sp_twitter_string_domain", "nitter.net")));
             saveRedirects(redirects);
             preferences.edit().putString("saved_redirect_ok", "yes").apply();
-
         }
 
         JSONArray array = new JSONArray(redirectsPref);

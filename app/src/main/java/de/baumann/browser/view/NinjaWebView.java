@@ -560,6 +560,8 @@ public class NinjaWebView extends WebView implements AlbumController {
     @Override
     public synchronized void loadUrl(@NonNull String url) {
 
+        browserController.hideSideSheets();
+
         InputMethodManager imm = (InputMethodManager) this.context.getSystemService(Context.INPUT_METHOD_SERVICE);
         imm.hideSoftInputFromWindow(this.getWindowToken(), 0);
 
