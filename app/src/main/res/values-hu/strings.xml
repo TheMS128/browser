@@ -216,4 +216,5 @@
     <string name="app_always">Mindig</string>
     <string name="app_session">… az aktuális ülésszakban?</string>
     <string name="setting_title_profiles_custom">Egyéni profil</string>
+    <string name="app_permission_notification">Értesítések</string>
 </resources>

@@ -216,4 +216,5 @@
     <string name="app_always">始终如一</string>
     <string name="setting_title_profiles_custom">自定义配置文件</string>
     <string name="app_session">......在本届会议上？</string>
+    <string name="app_permission_notification">通知</string>
 </resources>

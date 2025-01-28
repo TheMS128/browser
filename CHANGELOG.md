@@ -1,7 +1,8 @@
 ### v 18 (WIP)
 
 With the release of Android 15 Google introduced a feature called "window insets". Because of that feature there were many layout issues, mainly concerning the system navigation bar. I had to rewrite some layouts. The list of opened tabs, the overview and the search are moved in sidebars.
-
+- layout changes
+- updated translations
 
 ### v 17 "Michail Alexandrowitsch Bakunin"
 - upgrade: Android target SDK

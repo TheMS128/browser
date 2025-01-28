@@ -216,4 +216,5 @@
     <string name="app_always">Πάντα</string>
     <string name="app_session">… στην τρέχουσα σύνοδο;</string>
     <string name="setting_title_profiles_custom">Προσαρμοσμένο προφίλ</string>
+    <string name="app_permission_notification">Ειδοποιήσεις</string>
 </resources>

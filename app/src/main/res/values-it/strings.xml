@@ -216,4 +216,5 @@
     <string name="setting_title_profiles_custom">Profilo personalizzato</string>
     <string name="app_never">Mai</string>
     <string name="app_session">… nella sessione in corso?</string>
+    <string name="app_permission_notification">Notifiche</string>
 </resources>

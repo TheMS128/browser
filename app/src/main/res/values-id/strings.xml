@@ -216,4 +216,5 @@
     <string name="app_always">Selalu</string>
     <string name="app_session">… dalam sesi saat ini?</string>
     <string name="setting_title_profiles_custom">Profil khusus</string>
+    <string name="app_permission_notification">Pemberitahuan</string>
 </resources>

@@ -216,4 +216,5 @@
     <string name="app_session">… في الدورة الحالية؟</string>
     <string name="setting_title_profiles_custom">ملف تعريف مخصص</string>
     <string name="app_never">أبداً</string>
+    <string name="app_permission_notification">الإشعارات</string>
 </resources>

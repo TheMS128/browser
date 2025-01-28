@@ -216,4 +216,5 @@
     <string name="app_never">決して</string>
     <string name="app_always">常に</string>
     <string name="setting_title_profiles_custom">カスタムプロファイル</string>
+    <string name="app_permission_notification">お知らせ</string>
 </resources>

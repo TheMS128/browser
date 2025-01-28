@@ -216,4 +216,5 @@
     <string name="app_session">… under pågående session?</string>
     <string name="setting_title_profiles_custom">Anpassad profil</string>
     <string name="app_never">Aldrig</string>
+    <string name="app_permission_notification">Meddelanden</string>
 </resources>
