@@ -52,7 +52,6 @@ import android.util.TypedValue;
 import android.view.Gravity;
 import android.view.MotionEvent;
 import android.view.View;
-import android.view.inputmethod.InputMethodManager;
 import android.webkit.CookieManager;
 import android.webkit.URLUtil;
 import android.webkit.WebView;
@@ -172,10 +171,7 @@ public class HelperUnit {
             HelperUnit.setupDialog(activity, dialog);
 
             Button ib_cancel = dialogView.findViewById(R.id.editCancel);
-            ib_cancel.setOnClickListener(view -> {
-                hideSoftKeyboard(editBottom, activity);
-                dialog.cancel();
-            });
+            ib_cancel.setOnClickListener(view -> dialog.cancel());
             Button ib_ok = dialogView.findViewById(R.id.editOK);
             ib_ok.setOnClickListener(view12 -> {
 
@@ -233,7 +229,6 @@ public class HelperUnit {
                     } else {
                         BackupUnit.requestPermission(activity);
                     }
-                    HelperUnit.hideSoftKeyboard(editBottom, activity);
                     try {
                         dialog.cancel();
                     } catch (Exception e) {
@@ -392,10 +387,7 @@ public class HelperUnit {
         HelperUnit.setupDialog(activity, dialog);
 
         Button ib_cancel = dialogView.findViewById(R.id.editCancel);
-        ib_cancel.setOnClickListener(view -> {
-            hideSoftKeyboard(editBottom, activity);
-            dialog.cancel();
-        });
+        ib_cancel.setOnClickListener(view -> dialog.cancel());
         Button ib_ok = dialogView.findViewById(R.id.editOK);
         ib_ok.setOnClickListener(view12 -> {
 
@@ -418,7 +410,6 @@ public class HelperUnit {
                 } else {
                     BackupUnit.requestPermission(activity);
                 }
-                HelperUnit.hideSoftKeyboard(editBottom, activity);
                 dialog.cancel();
                 dialogParent.cancel();
             }
@@ -432,12 +423,6 @@ public class HelperUnit {
             editText.dispatchTouchEvent(MotionEvent.obtain(SystemClock.uptimeMillis(), SystemClock.uptimeMillis(), MotionEvent.ACTION_UP, 0f, 0f, 0));
             editText.setSelection(Objects.requireNonNull(editText.getText()).length());
         }, 200);
-    }
-
-    public static void hideSoftKeyboard(View view, Context context) {
-        assert view != null;
-        InputMethodManager imm = (InputMethodManager) context.getSystemService(Context.INPUT_METHOD_SERVICE);
-        imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
     }
 
     public static void setupDialog(Context context, Dialog dialog) {

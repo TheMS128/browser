@@ -570,13 +570,9 @@ public class NinjaWebViewClient extends WebViewClient {
         });
 
         Button ib_cancel = dialogView.findViewById(R.id.editCancel);
-        ib_cancel.setOnClickListener(v -> {
-            HelperUnit.hideSoftKeyboard(editBottom, context);
-            dialog.cancel();
-        });
+        ib_cancel.setOnClickListener(v -> dialog.cancel());
         Button ib_ok = dialogView.findViewById(R.id.editOK);
         ib_ok.setOnClickListener(v -> {
-            HelperUnit.hideSoftKeyboard(editBottom, context);
             String user = Objects.requireNonNull(editTop.getText()).toString().trim();
             String pass = Objects.requireNonNull(editBottom.getText()).toString().trim();
             handler.proceed(user, pass);

@@ -37,7 +37,7 @@ import android.print.PrintManager;
 import android.text.Editable;
 import android.text.TextUtils;
 import android.text.TextWatcher;
-import android.text.method.KeyListener;
+
 import android.util.Log;
 import android.util.TypedValue;
 import android.view.ContextMenu;
@@ -152,7 +152,6 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
     private View customView;
     private VideoView videoView;
     private FloatingActionButton omniBox_tab;
-    private KeyListener listener;
     private BadgeDrawable badgeDrawable;
     private AdapterSearch adapterSearch;
 
@@ -167,6 +166,7 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
     private BottomNavigationView bottom_navigation;
     private String overViewTab;
     private Activity activity;
+    @SuppressLint("StaticFieldLeak")
     private static Context context;
     private SharedPreferences sp;
     private List_trusted listTrusted;
@@ -783,9 +783,6 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
             HelperUnit.showSoftKeyboard(omniBox_text);
         });
 
-        listener = omniBox_text.getKeyListener(); // Save the default KeyListener!!!
-        omniBox_text.setKeyListener(null); // Disable input
-        omniBox_text.setEllipsize(TextUtils.TruncateAt.END);
         omniBox_tab = findViewById(R.id.omniBox_tab);
         omniBox_tab.setOnClickListener(v -> showTabView());
         omniBox_tab.setOnLongClickListener(view -> {
@@ -866,16 +863,9 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
                 HelperUnit.showSoftKeyboard(omniBox_text);
                 sp.edit().putString("sp_search_customSearches", "").apply();
                 ninjaWebView.stopLoading();
-                ninjaWebView.scrollBy(0, -5);
-                omniBox_text.setKeyListener(listener);
                 initSearch();
-                omniBox_text.selectAll(); }
-            else {
-                HelperUnit.hideSoftKeyboard(omniBox_text, context);
-                omniBox_text.setKeyListener(null);
-                omniBox_text.setEllipsize(TextUtils.TruncateAt.END);
-                omniBox_text.setText(ninjaWebView.getTitle());
-                updateOmniBox(); }
+                omniBox_text.selectAll();
+            }
         });
         omniBox_overview.setOnClickListener(v -> showOverview());
         omniBox_overview.setOnLongClickListener(v -> {
@@ -1020,8 +1010,6 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
     @SuppressLint("ClickableViewAccessibility")
     private void showOverflow() {
 
-        HelperUnit.hideSoftKeyboard(omniBox_text, context);
-
         if (ninjaWebView.getUrl() == null) {
             ninjaWebView.loadUrl("about:blank");
         }
@@ -1036,15 +1024,7 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
         TextView overflowURL = dialogView.findViewById(R.id.overflowURL);
         overflowURL.setText(url);
         HelperUnit.setHighLightedText(context, overflowURL, url, HelperUnit.domain(url));
-        overflowURL.setEllipsize(TextUtils.TruncateAt.END);
-        overflowURL.setSingleLine(true);
-        overflowURL.setSelected(true);
-        textGroup.setOnClickListener(v -> {
-            overflowURL.setEllipsize(TextUtils.TruncateAt.MARQUEE);
-            overflowURL.setSingleLine(true);
-            overflowURL.setMarqueeRepeatLimit(1);
-            overflowURL.setSelected(true);
-        });
+        textGroup.setOnClickListener(v -> NinjaToast.show(context, url));
         TextView menuTitle = dialogView.findViewById(R.id.overflowTitle);
         menuTitle.setText(title);
 
@@ -1341,15 +1321,7 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
         TextView menuURL = dialogView.findViewById(R.id.menuURL);
         menuURL.setText(url);
         HelperUnit.setHighLightedText(context, menuURL, url, HelperUnit.domain(url));
-        menuURL.setEllipsize(TextUtils.TruncateAt.END);
-        menuURL.setSingleLine(true);
-        menuURL.setSelected(true);
-        textGroup.setOnClickListener(v -> {
-            menuURL.setEllipsize(TextUtils.TruncateAt.MARQUEE);
-            menuURL.setSingleLine(true);
-            menuURL.setMarqueeRepeatLimit(1);
-            menuURL.setSelected(true);
-        });
+        textGroup.setOnClickListener(v -> NinjaToast.show(context, url));
         TextView menuTitle = dialogView.findViewById(R.id.menuTitle);
         menuTitle.setText(finalTitle);
         ImageView menu_icon = dialogView.findViewById(R.id.menu_icon);
@@ -1450,12 +1422,8 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
                         action.deleteURL(url, RecordUnit.TABLE_HISTORY);
                         action.close();
                         adapterSearch.notifyDataSetChanged();
-                        String text = Objects.requireNonNull(omniBox_text.getText()).toString();
                         initSearch();
-                        omniBox_text.setText("");
-                        omniBox_text.setText(text);
                         dialog.cancel();
-                        updateOmniBox();
                     });
                     builderSubMenu.setNegativeButton(R.string.app_cancel, (dialog2, whichButton) -> builderSubMenu.setCancelable(true));
                     Dialog dialogSubMenu = builderSubMenu.create();
@@ -1475,15 +1443,7 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
         TextView menuURL = dialogView.findViewById(R.id.menuURL);
         menuURL.setText(url);
         HelperUnit.setHighLightedText(context, menuURL, url, HelperUnit.domain(url));
-        menuURL.setEllipsize(TextUtils.TruncateAt.END);
-        menuURL.setSingleLine(true);
-        menuURL.setSelected(true);
-        textGroup.setOnClickListener(v -> {
-            menuURL.setEllipsize(TextUtils.TruncateAt.MARQUEE);
-            menuURL.setSingleLine(true);
-            menuURL.setMarqueeRepeatLimit(1);
-            menuURL.setSelected(true);
-        });
+        textGroup.setOnClickListener(v -> NinjaToast.show(context, url));
         TextView menuTitle = dialogView.findViewById(R.id.menuTitle);
         menuTitle.setText(title);
 
@@ -1638,10 +1598,7 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
                     HelperUnit.setupDialog(context, dialogSubMenu);
 
                     Button ib_cancel = dialogViewSubMenu.findViewById(R.id.editCancel);
-                    ib_cancel.setOnClickListener(v -> {
-                        HelperUnit.hideSoftKeyboard(editBottom, context);
-                        dialogSubMenu.cancel();
-                    });
+                    ib_cancel.setOnClickListener(v -> dialogSubMenu.cancel());
                     Button ib_ok = dialogViewSubMenu.findViewById(R.id.editOK);
                     ib_ok.setOnClickListener(v -> {
                         if (overViewTab.equals(getString(R.string.album_title_bookmarks))) {
@@ -1663,7 +1620,6 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
                             NinjaToast.show(this, R.string.app_done);
                             action.close();
                             bottom_navigation.setSelectedItemId(R.id.page_1); }
-                        HelperUnit.hideSoftKeyboard(editBottom, context);
                         dialogSubMenu.cancel();
                         dialog.cancel();
                     });
@@ -1714,15 +1670,7 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
             TextView overflowURL = dialogView.findViewById(R.id.overflowURL);
             overflowURL.setText(url);
             HelperUnit.setHighLightedText(context, overflowURL, url, HelperUnit.domain(url));
-            overflowURL.setEllipsize(TextUtils.TruncateAt.END);
-            overflowURL.setSingleLine(true);
-            overflowURL.setSelected(true);
-            textGroup.setOnClickListener(v -> {
-                overflowURL.setEllipsize(TextUtils.TruncateAt.MARQUEE);
-                overflowURL.setSingleLine(true);
-                overflowURL.setMarqueeRepeatLimit(1);
-                overflowURL.setSelected(true);
-            });
+            textGroup.setOnClickListener(v -> NinjaToast.show(context, url));
             TextView overflowTitle = dialogView.findViewById(R.id.overflowTitle);
             overflowTitle.setText(ninjaWebView.getTitle());
 
@@ -2454,10 +2402,7 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
             HelperUnit.setupDialog(context, dialog);
 
             Button ib_cancel = dialogViewSubMenu.findViewById(R.id.editCancel);
-            ib_cancel.setOnClickListener(v -> {
-                HelperUnit.hideSoftKeyboard(editTop, context);
-                dialog.cancel();
-            });
+            ib_cancel.setOnClickListener(v -> dialog.cancel());
             Button ib_ok = dialogViewSubMenu.findViewById(R.id.editOK);
             ib_ok.setOnClickListener(v -> {
                 String shareTop = editTop.getText().toString().trim();
@@ -2468,7 +2413,6 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
                 String text = getString(R.string.toast_copy_successful) + " -  " + data;
                 NinjaToast.show(this, text);
                 addAlbum("", shareTop, true, false, "", dialog);
-                HelperUnit.hideSoftKeyboard(editTop, context);
                 dialog.cancel();
                 try {
                     dialogParent.cancel();
@@ -2743,15 +2687,7 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
             TextView menuURL = dialogView.findViewById(R.id.menuURL);
             menuURL.setText(url);
             HelperUnit.setHighLightedText(context, menuURL, url, HelperUnit.domain(url));
-            menuURL.setEllipsize(TextUtils.TruncateAt.END);
-            menuURL.setSingleLine(true);
-            menuURL.setSelected(true);
-            textGroup.setOnClickListener(v -> {
-                menuURL.setEllipsize(TextUtils.TruncateAt.MARQUEE);
-                menuURL.setSingleLine(true);
-                menuURL.setMarqueeRepeatLimit(1);
-                menuURL.setSelected(true);
-            });
+            textGroup.setOnClickListener(v -> NinjaToast.show(context, url));
             TextView menuTitle = dialogView.findViewById(R.id.menuTitle);
             menuTitle.setText(title);
             dialog.show();
