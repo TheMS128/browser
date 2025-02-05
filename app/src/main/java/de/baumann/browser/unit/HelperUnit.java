@@ -79,7 +79,6 @@ import java.util.Objects;
 
 import de.baumann.browser.R;
 import de.baumann.browser.activity.BrowserActivity;
-import de.baumann.browser.browser.BrowserController;
 import de.baumann.browser.browser.DataURIParser;
 import de.baumann.browser.browser.JavaScriptInterface;
 import de.baumann.browser.browser.List_protected;
@@ -242,11 +241,10 @@ public class HelperUnit {
         }
     }
 
-    public static void createShortcut(Context context, String title, String url) {
+    public static void createShortcut(Context context, NinjaWebView ninjaWebView, String title, String url) {
 
         Icon icon;
-        BrowserController browserController = NinjaWebView.getBrowserController();
-        icon = createWithBitmap(browserController.favicon());
+        icon = createWithBitmap(ninjaWebView.getFavicon());
 
         try {
             Intent i = new Intent();

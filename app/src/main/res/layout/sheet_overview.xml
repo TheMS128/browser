@@ -20,6 +20,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_above="@+id/buttonsLayout"
+        app:labelVisibilityMode="selected"
         app:menu="@menu/menu_bottom_overview"/>
 
     <LinearLayout
@@ -28,6 +29,7 @@
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:layout_above="@+id/bottom"
+        android:layout_marginTop="5dp"
         android:orientation="horizontal">
 
         <Button
@@ -37,6 +39,14 @@
             android:layout_height="wrap_content"
             android:layout_marginEnd="10dp"
             app:icon="@drawable/icon_close" />
+
+        <Button
+            android:id="@+id/overview_refresh"
+            style="@style/Widget.Material3.Button.IconButton.Filled.Tonal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="10dp"
+            app:icon="@drawable/icon_refresh" />
 
         <Button
             android:id="@+id/overview_menu"

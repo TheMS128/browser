@@ -61,7 +61,6 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.VideoView;
@@ -175,12 +174,9 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
     private long newIcon;
     private long filterBy;
     private boolean filter;
-    private AlertDialog dialogCustomSearches;
     private ValueCallback<Uri[]> filePathCallback = null;
     private AlbumController currentAlbumController = null;
     private ValueCallback<Uri[]> mFilePathCallback;
-
-    public Bitmap favicon () { return ninjaWebView.getFavicon(); }
 
     public static Context getAppContext() {
         return context;
@@ -190,6 +186,7 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
     private SideSheetDialog sideSheetDialog_search;
     private SideSheetDialog sideSheetDialog_overview;
     private BottomSheetDialog bottomSheetDialog_searchOnSite;
+    private AlertDialog dialogCustomSearches;
 
     private AlbumController nextAlbumController(boolean next) {
         if (BrowserContainer.size() <= 1) return currentAlbumController;
@@ -430,8 +427,6 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
             boolean allowed = sp.getBoolean("setAlgorithmicDarkeningAllowed", true);
             WebSettingsCompat.setAlgorithmicDarkeningAllowed(s, allowed);
         }
-        ninjaWebView.scrollBy(0,5);
-        ninjaWebView.scrollBy(0,-5);
     }
 
     @Override
@@ -580,6 +575,10 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
         Button overview_close = sideSheetDialog_overview.findViewById(R.id.overview_close);
         assert overview_close != null;
         overview_close.setOnClickListener(view -> sideSheetDialog_overview.cancel());
+
+        Button overview_refresh = sideSheetDialog_overview.findViewById(R.id.overview_refresh);
+        assert overview_refresh != null;
+        overview_refresh.setOnClickListener(view -> initOverview());
 
         Button overview_menu = sideSheetDialog_overview.findViewById(R.id.overview_menu);
         assert overview_menu != null;
@@ -776,8 +775,7 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
 
         omniBox_text = sideSheetDialog_search.findViewById(R.id.omniBox_input);
         omniBox_title = findViewById(R.id.omniBox_title);
-        RelativeLayout bottomBar = findViewById(R.id.bottomBar);
-        bottomBar.setOnClickListener(view -> {
+        omniBox_title.setOnClickListener(view -> {
             omniBox_text.setText(ninjaWebView.getUrl());
             sideSheetDialog_search.show();
             HelperUnit.showSoftKeyboard(omniBox_text);
@@ -876,15 +874,9 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
 
     @SuppressLint({"UnsafeOptInUsageError"})
     private void updateOmniBox() {
-
-        String customSearches = sp.getString("sp_search_customSearches", "");
         if (Objects.equals(ninjaWebView.getUrl(), "about:blank")) {
             ninjaWebView.stopLoading();
-        } else if (customSearches.isEmpty()) {
-            try {dialogCustomSearches.dismiss();}
-            catch (Exception e) {Log.i(TAG, "dialogCustomSearches:" + e);}
         }
-
         if (overViewTab.equals(getString(R.string.album_title_bookmarks))) {
             try {
                 RecordAction action = new RecordAction(context);
@@ -902,7 +894,6 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
         badgeDrawable.setVisible(BrowserContainer.size() > 1);
         badgeDrawable.setNumber(BrowserContainer.size());
         BadgeUtils.attachBadgeDrawable(badgeDrawable, omniBox_tab, findViewById(R.id.layout));
-        omniBox_text.clearFocus();
         ninjaWebView = (NinjaWebView) currentAlbumController;
         String url = ninjaWebView.getUrl();
         ninjaWebView.initPreferences(url);
@@ -993,6 +984,7 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
         sideSheetDialog_overview.cancel();
         sideSheetDialog_tabs.cancel();
         sideSheetDialog_search.cancel();
+        try {dialogCustomSearches.cancel();} catch (Exception e) {Log.i(TAG, "dialogCustomSearches:" + e);}
     }
 
     public void showTabView() {
@@ -1204,7 +1196,7 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
                 postLink(text, dialog_overflow);
             }
             else if (position == 4) {
-                HelperUnit.createShortcut(context, ninjaWebView.getTitle(), ninjaWebView.getOriginalUrl());
+                HelperUnit.createShortcut(context, ninjaWebView, ninjaWebView.getTitle(), ninjaWebView.getOriginalUrl());
                 dialog_overflow.cancel();
             }
         });
