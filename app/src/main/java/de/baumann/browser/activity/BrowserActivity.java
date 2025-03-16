@@ -93,7 +93,6 @@ import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.navigation.NavigationBarView;
 import com.google.android.material.progressindicator.CircularProgressIndicator;
-import com.google.android.material.sidesheet.SideSheetDialog;
 import com.google.android.material.tabs.TabLayout;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
@@ -181,10 +180,10 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
     public static Context getAppContext() {
         return context;
     }
-
-    private SideSheetDialog sideSheetDialog_tabs;
-    private SideSheetDialog sideSheetDialog_search;
-    private SideSheetDialog sideSheetDialog_overview;
+    private AlertDialog dialogTabOverview;
+    private AlertDialog dialogOverview;
+    private AlertDialog dialogSearch;
+    private View dialogViewSearch;
     private BottomSheetDialog bottomSheetDialog_searchOnSite;
     private AlertDialog dialogCustomSearches;
 
@@ -262,12 +261,30 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
 
         contentFrame = findViewById(R.id.main_content);
 
-        sideSheetDialog_tabs = new SideSheetDialog(context);
-        sideSheetDialog_tabs.setContentView(R.layout.sheet_tabs);
-        sideSheetDialog_search = new SideSheetDialog(context);
-        sideSheetDialog_search.setContentView(R.layout.sheet_search);
-        sideSheetDialog_overview = new SideSheetDialog(context);
-        sideSheetDialog_overview.setContentView(R.layout.sheet_overview);
+        MaterialAlertDialogBuilder builder = new MaterialAlertDialogBuilder(context);
+        View dialogView = View.inflate(context, R.layout.sheet_tabs, null);
+        builder.setView(dialogView);
+        dialogTabOverview = builder.create();
+        Button tabs_close = dialogView.findViewById(R.id.tabs_close);
+        assert tabs_close != null;
+        tabs_close.setOnClickListener(view -> dialogTabOverview.cancel());
+        tab_container = dialogView.findViewById(R.id.listTabs);
+        HelperUnit.setupDialog(context, dialogTabOverview);
+
+        MaterialAlertDialogBuilder builderOverview = new MaterialAlertDialogBuilder(context);
+        View dialogViewOverview = View.inflate(context, R.layout.sheet_overview, null);
+        builderOverview.setView(dialogViewOverview);
+        dialogOverview = builderOverview.create();
+        bottom_navigation = dialogViewOverview.findViewById(R.id.bottom_navigation);
+        HelperUnit.setupDialog(context, dialogOverview);
+        dialogOverview.show();
+
+        MaterialAlertDialogBuilder builderSearch = new MaterialAlertDialogBuilder(context);
+        dialogViewSearch = View.inflate(context, R.layout.sheet_search, null);
+        builderSearch.setView(dialogViewSearch);
+        dialogSearch = builderSearch.create();
+        HelperUnit.setupDialog(context, dialogSearch);
+        dialogSearch.show();
 
         BroadcastReceiver downloadReceiver = new BroadcastReceiver() {
             @Override
@@ -404,10 +421,11 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
             case KeyEvent.KEYCODE_MENU:
                 showOverflow();
             case KeyEvent.KEYCODE_BACK:
-                if (fullscreenHolder != null || customView != null || videoView != null)
+                if (fullscreenHolder != null || customView != null || videoView != null) {
                     Log.v(TAG, "FOSS Browser in fullscreen mode");
-                if (ninjaWebView.canGoBack()) ninjaWebView.goBack();
-                else removeAlbum(currentAlbumController);
+                } else if (ninjaWebView.canGoBack()){
+                    ninjaWebView.goBack();
+                } else removeAlbum(currentAlbumController);
                 return true;
         }
         return false;
@@ -568,102 +586,8 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
 
     @SuppressLint("ClickableViewAccessibility")
     private void initOverview() {
-        listView = sideSheetDialog_overview.findViewById(R.id.list_overView);
-        tab_container = sideSheetDialog_tabs.findViewById(R.id.listTabs);
+        listView = dialogOverview.findViewById(R.id.list_overView);
         AtomicInteger intPage = new AtomicInteger();
-
-        Button overview_close = sideSheetDialog_overview.findViewById(R.id.overview_close);
-        assert overview_close != null;
-        overview_close.setOnClickListener(view -> sideSheetDialog_overview.cancel());
-
-        Button overview_refresh = sideSheetDialog_overview.findViewById(R.id.overview_refresh);
-        assert overview_refresh != null;
-        overview_refresh.setOnClickListener(view -> initOverview());
-
-        Button overview_menu = sideSheetDialog_overview.findViewById(R.id.overview_menu);
-        assert overview_menu != null;
-        overview_menu.setOnClickListener(view -> {
-            PopupMenu popup = new PopupMenu(this, bottom_navigation.findViewById(R.id.page_2));
-            popup.setForceShowIcon(true);
-            if (bottom_navigation.getSelectedItemId() == R.id.page_1)
-                popup.inflate(R.menu.menu_list_start);
-            else if (bottom_navigation.getSelectedItemId() == R.id.page_2)
-                popup.inflate(R.menu.menu_list_bookmark);
-            else if (bottom_navigation.getSelectedItemId() == R.id.page_3)
-                popup.inflate(R.menu.menu_list_history);
-            popup.setOnMenuItemClickListener(item -> {
-                if (item.getItemId() == R.id.menu_delete) {
-                    MaterialAlertDialogBuilder builder = new MaterialAlertDialogBuilder(context);
-                    builder.setTitle(R.string.menu_delete);
-                    builder.setMessage(R.string.hint_database);
-                    builder.setIcon(R.drawable.icon_delete);
-                    builder.setPositiveButton(R.string.app_ok, (dialog, whichButton) -> {
-                        if (overViewTab.equals(getString(R.string.album_title_home))) {
-                            BrowserUnit.clearHome(context);
-                            bottom_navigation.setSelectedItemId(R.id.page_1); }
-                        else if (overViewTab.equals(getString(R.string.album_title_bookmarks))) {
-                            BrowserUnit.clearBookmark(context);
-                            bottom_navigation.setSelectedItemId(R.id.page_2); }
-                        else if (overViewTab.equals(getString(R.string.album_title_history))) {
-                            BrowserUnit.clearHistory(context);
-                            bottom_navigation.setSelectedItemId(R.id.page_3); }
-                    });
-                    builder.setNegativeButton(R.string.app_cancel, (dialog, whichButton) -> dialog.cancel());
-                    AlertDialog dialog = builder.create();
-                    dialog.show();
-                    HelperUnit.setupDialog(context, dialog);
-                } else if (item.getItemId() == R.id.menu_sortName) {
-                    if (overViewTab.equals(getString(R.string.album_title_bookmarks))) {
-                        sp.edit().putString("sort_bookmark", "title").apply();
-                        sp.edit().putBoolean("sort_bookmarkDomain", false).apply();
-                        bottom_navigation.setSelectedItemId(R.id.page_2); }
-                    else if (overViewTab.equals(getString(R.string.album_title_home))) {
-                        sp.edit().putString("sort_startSite", "title").apply();
-                        sp.edit().putBoolean("sort_startSiteDomain", false).apply();
-                        bottom_navigation.setSelectedItemId(R.id.page_1); }}
-                else if (item.getItemId() == R.id.menu_sortIcon) {
-                    sp.edit().putString("sort_bookmark", "time").apply();
-                    sp.edit().putBoolean("sort_bookmarkDomain", false).apply();
-                    bottom_navigation.setSelectedItemId(R.id.page_2); }
-                else if (item.getItemId() == R.id.menu_sortDate) {
-                    if (overViewTab.equals(getString(R.string.album_title_history))) {
-                        sp.edit().putBoolean("sort_historyDomain", false).apply();
-                        bottom_navigation.setSelectedItemId(R.id.page_3);
-                    }
-                    else if (overViewTab.equals(getString(R.string.album_title_home))) {
-                        sp.edit().putString("sort_startSite", "ordinal").apply();
-                        sp.edit().putBoolean("sort_startSiteDomain", false).apply();
-                        bottom_navigation.setSelectedItemId(R.id.page_1);
-                    }
-                }
-                else if (item.getItemId() == R.id.menu_sortDomain) {
-                    if (overViewTab.equals(getString(R.string.album_title_bookmarks))) {
-                        sp.edit().putBoolean("sort_bookmarkDomain", true).apply();
-                        bottom_navigation.setSelectedItemId(R.id.page_2); }
-                    else if (overViewTab.equals(getString(R.string.album_title_home))) {
-                        sp.edit().putBoolean("sort_startSiteDomain", true).apply();
-                        bottom_navigation.setSelectedItemId(R.id.page_1);
-                    }
-                    else if (overViewTab.equals(getString(R.string.album_title_history))) {
-                        sp.edit().putBoolean("sort_historyDomain", true).apply();
-                        bottom_navigation.setSelectedItemId(R.id.page_3);
-                    }
-                }
-                else if (item.getItemId() == R.id.menu_filter) {
-                    showDialogFilter(); }
-                else if (item.getItemId() == R.id.menu_help) {
-                    Uri webpage = Uri.parse("https://codeberg.org/Gaukler_Faun/FOSS_Browser/wiki/Overview");
-                    BrowserUnit.intentURL(this, webpage); }
-                return true;
-            });
-            popup.show();
-        });
-
-        Button tabs_close = sideSheetDialog_tabs.findViewById(R.id.tabs_close);
-        assert tabs_close != null;
-        tabs_close.setOnClickListener(view -> sideSheetDialog_tabs.cancel());
-
-
         NavigationBarView.OnItemSelectedListener navListener = menuItem -> {
 
             if (menuItem.getItemId() == R.id.page_1) {
@@ -757,11 +681,86 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
                     showContextMenuList(list.get(position).getTitle(), list.get(position).getURL(), adapter, list, position);
                     return true;
                 }); }
+            else if (menuItem.getItemId() == R.id.page_4) {
+                PopupMenu popup = new PopupMenu(this, bottom_navigation.findViewById(R.id.page_2));
+                popup.setForceShowIcon(true);
+                popup.setOnDismissListener(menu -> setSelectedTab());
+                if (bottom_navigation.getSelectedItemId() == R.id.page_1)
+                    popup.inflate(R.menu.menu_list_start);
+                else if (bottom_navigation.getSelectedItemId() == R.id.page_2)
+                    popup.inflate(R.menu.menu_list_bookmark);
+                else if (bottom_navigation.getSelectedItemId() == R.id.page_3)
+                    popup.inflate(R.menu.menu_list_history);
+                popup.setOnMenuItemClickListener(item -> {
+                    if (item.getItemId() == R.id.menu_delete) {
+                        MaterialAlertDialogBuilder builder = new MaterialAlertDialogBuilder(context);
+                        builder.setTitle(R.string.menu_delete);
+                        builder.setMessage(R.string.hint_database);
+                        builder.setIcon(R.drawable.icon_delete);
+                        builder.setPositiveButton(R.string.app_ok, (dialog, whichButton) -> {
+                            if (overViewTab.equals(getString(R.string.album_title_home))) {
+                                BrowserUnit.clearHome(context);
+                                bottom_navigation.setSelectedItemId(R.id.page_1); }
+                            else if (overViewTab.equals(getString(R.string.album_title_bookmarks))) {
+                                BrowserUnit.clearBookmark(context);
+                                bottom_navigation.setSelectedItemId(R.id.page_2); }
+                            else if (overViewTab.equals(getString(R.string.album_title_history))) {
+                                BrowserUnit.clearHistory(context);
+                                bottom_navigation.setSelectedItemId(R.id.page_3); }
+                        });
+                        builder.setNegativeButton(R.string.app_cancel, (dialog, whichButton) -> dialog.cancel());
+                        AlertDialog dialog = builder.create();
+                        dialog.show();
+                        HelperUnit.setupDialog(context, dialog);
+                    } else if (item.getItemId() == R.id.menu_sortName) {
+                        if (overViewTab.equals(getString(R.string.album_title_bookmarks))) {
+                            sp.edit().putString("sort_bookmark", "title").apply();
+                            sp.edit().putBoolean("sort_bookmarkDomain", false).apply();
+                            bottom_navigation.setSelectedItemId(R.id.page_2); }
+                        else if (overViewTab.equals(getString(R.string.album_title_home))) {
+                            sp.edit().putString("sort_startSite", "title").apply();
+                            sp.edit().putBoolean("sort_startSiteDomain", false).apply();
+                            bottom_navigation.setSelectedItemId(R.id.page_1); }}
+                    else if (item.getItemId() == R.id.menu_sortIcon) {
+                        sp.edit().putString("sort_bookmark", "time").apply();
+                        sp.edit().putBoolean("sort_bookmarkDomain", false).apply();
+                        bottom_navigation.setSelectedItemId(R.id.page_2); }
+                    else if (item.getItemId() == R.id.menu_sortDate) {
+                        if (overViewTab.equals(getString(R.string.album_title_history))) {
+                            sp.edit().putBoolean("sort_historyDomain", false).apply();
+                            bottom_navigation.setSelectedItemId(R.id.page_3);
+                        }
+                        else if (overViewTab.equals(getString(R.string.album_title_home))) {
+                            sp.edit().putString("sort_startSite", "ordinal").apply();
+                            sp.edit().putBoolean("sort_startSiteDomain", false).apply();
+                            bottom_navigation.setSelectedItemId(R.id.page_1);
+                        }
+                    }
+                    else if (item.getItemId() == R.id.menu_sortDomain) {
+                        if (overViewTab.equals(getString(R.string.album_title_bookmarks))) {
+                            sp.edit().putBoolean("sort_bookmarkDomain", true).apply();
+                            bottom_navigation.setSelectedItemId(R.id.page_2); }
+                        else if (overViewTab.equals(getString(R.string.album_title_home))) {
+                            sp.edit().putBoolean("sort_startSiteDomain", true).apply();
+                            bottom_navigation.setSelectedItemId(R.id.page_1);
+                        }
+                        else if (overViewTab.equals(getString(R.string.album_title_history))) {
+                            sp.edit().putBoolean("sort_historyDomain", true).apply();
+                            bottom_navigation.setSelectedItemId(R.id.page_3);
+                        }
+                    }
+                    else if (item.getItemId() == R.id.menu_filter) {
+                        showDialogFilter(); }
+                    else if (item.getItemId() == R.id.menu_help) {
+                        Uri webpage = Uri.parse("https://codeberg.org/Gaukler_Faun/FOSS_Browser/wiki/Overview");
+                        BrowserUnit.intentURL(this, webpage); }
+                    return true;
+                });
+                popup.show();
+            }
 
             return true;
         };
-        bottom_navigation = sideSheetDialog_overview.findViewById(R.id.bottom_navigation);
-        assert bottom_navigation != null;
         bottom_navigation.setOnItemSelectedListener(navListener);
         bottom_navigation.findViewById(R.id.page_2).setOnLongClickListener(v -> {
             showDialogFilter();
@@ -773,11 +772,11 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
     @SuppressLint({"ClickableViewAccessibility", "UnsafeOptInUsageError"})
     private void initOmniBox() {
 
-        omniBox_text = sideSheetDialog_search.findViewById(R.id.omniBox_input);
+        omniBox_text = dialogViewSearch.findViewById(R.id.omniBox_input);
         omniBox_title = findViewById(R.id.omniBox_title);
         omniBox_title.setOnClickListener(view -> {
             omniBox_text.setText(ninjaWebView.getUrl());
-            sideSheetDialog_search.show();
+            dialogSearch.show();
             HelperUnit.showSoftKeyboard(omniBox_text);
         });
 
@@ -789,15 +788,15 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
         });
         omniBox_overview = findViewById(R.id.omnibox_overview);
 
-        list_search = sideSheetDialog_search.findViewById(R.id.list_search);
-        Button omnibox_close = sideSheetDialog_search.findViewById(R.id.omnibox_close);
+        list_search = dialogViewSearch.findViewById(R.id.list_search);
+        Button omnibox_close = dialogViewSearch.findViewById(R.id.omnibox_close);
         assert omnibox_close != null;
         omnibox_close.setOnClickListener(view -> {
             if (Objects.requireNonNull(omniBox_text.getText()).length() > 0)
                 omniBox_text.setText("");
-            else sideSheetDialog_search.cancel();
+            else dialogSearch.cancel();
         });
-        Button omnibox_customSearch = sideSheetDialog_search.findViewById(R.id.omnibox_customSearch);
+        Button omnibox_customSearch = dialogViewSearch.findViewById(R.id.omnibox_customSearch);
         assert omnibox_customSearch != null;
         omnibox_customSearch.setOnClickListener(view -> {
             String query = Objects.requireNonNull(omniBox_text.getText()).toString().trim();
@@ -807,7 +806,7 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
                 showDialogCustomSearches(query);
             }
         });
-        Button omnibox_search = sideSheetDialog_search.findViewById(R.id.omnibox_search);
+        Button omnibox_search = dialogViewSearch.findViewById(R.id.omnibox_search);
         assert omnibox_search != null;
         omnibox_search.setOnClickListener(view -> {
             String query = Objects.requireNonNull(omniBox_text.getText()).toString().trim();
@@ -977,18 +976,18 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
     }
 
     private void showOverview() {
-        sideSheetDialog_overview.show();
+        dialogOverview.show();
     }
 
     public void hideSideSheets() {
-        sideSheetDialog_overview.cancel();
-        sideSheetDialog_tabs.cancel();
-        sideSheetDialog_search.cancel();
+        dialogOverview.cancel();
+        dialogTabOverview.cancel();
+        dialogSearch.cancel();
         try {dialogCustomSearches.cancel();} catch (Exception e) {Log.i(TAG, "dialogCustomSearches:" + e);}
     }
 
     public void showTabView() {
-        sideSheetDialog_tabs.show();
+        dialogTabOverview.show();
     }
 
     private void setSelectedTab() {
