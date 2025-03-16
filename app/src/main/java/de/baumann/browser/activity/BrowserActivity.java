@@ -293,7 +293,7 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
         builder4.setView(dialogView4);
         AlertDialog dialog4 = builder4.create();
         HelperUnit.setupDialog(context, dialog4);
-        dialog4.show();
+        //dialog4.show();
 
         BroadcastReceiver downloadReceiver = new BroadcastReceiver() {
             @Override
