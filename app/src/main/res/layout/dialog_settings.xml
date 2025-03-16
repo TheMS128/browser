@@ -1,0 +1,531 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:ignore="ContentDescription"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <com.google.android.material.card.MaterialCardView
+        style="@style/Widget.Material3.CardView.Filled"
+        android:backgroundTint="?attr/colorSurfaceContainerHighest"
+        android:id="@+id/albumCardView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="15dp"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="15dp">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/cardView"
+                style="@style/Widget.Material3.CardView.Filled"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:layout_alignParentStart="true"
+                android:layout_centerInParent="true"
+                android:layout_marginStart="10dp"
+                android:backgroundTint="@android:color/transparent"
+                app:cardCornerRadius="3dp">
+
+                <ImageView
+                    android:id="@+id/menu_icon"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:scaleType="fitCenter"
+                    tools:ignore="ContentDescription" />
+
+            </com.google.android.material.card.MaterialCardView>
+
+            <LinearLayout
+                android:id="@+id/textGroup"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="5dp"
+                android:layout_marginBottom="10dp"
+                android:layout_toStartOf="@+id/buttonProfile"
+                android:layout_toEndOf="@id/cardView"
+                android:gravity="center_vertical"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/menuTitle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="2dp"
+                    android:ellipsize="end"
+                    android:includeFontPadding="false"
+                    android:maxLines="1"
+                    android:textAppearance="?attr/textAppearanceBodyLarge"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/menuURL"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ellipsize="end"
+                    android:includeFontPadding="false"
+                    android:maxLines="1"
+                    android:textAppearance="?attr/textAppearanceBodySmall"
+                    android:textColor="?attr/colorOutline" />
+
+            </LinearLayout>
+
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/buttonProfile"
+                style="@style/Widget.Material3.Button.IconButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_centerInParent="true"
+                android:layout_marginEnd="3dp"
+                android:backgroundTint="?attr/colorSurfaceDim"
+                app:elevation="0dp"
+                app:fabCustomSize="40dp"
+                app:icon="@drawable/icon_profile_standard" />
+
+        </RelativeLayout>
+
+    </com.google.android.material.card.MaterialCardView>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginEnd="15dp"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="5dp"
+        android:orientation="horizontal">
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/chip_profile_changed"
+            style="@style/Widget.Material3.Chip.Suggestion"
+            android:layout_width="wrap_content"
+            app:chipIcon="@drawable/icon_profile_changed"
+            app:chipIconEnabled="true"
+            app:textEndPadding="0dp"
+            app:textStartPadding="0dp"
+            android:layout_height="wrap_content"
+            app:chipBackgroundColor="@drawable/bg_chip_state_list"
+            app:chipIconTint="@drawable/bg_chip_icon_state" />
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/chip_profile_trusted"
+            style="@style/Widget.Material3.Chip.Suggestion"
+            android:layout_width="wrap_content"
+            app:chipIcon="@drawable/icon_profile_trusted"
+            app:chipIconEnabled="true"
+            app:textEndPadding="0dp"
+            app:textStartPadding="0dp"
+            android:layout_height="wrap_content"
+            app:chipBackgroundColor="@drawable/bg_chip_state_list"
+            app:chipIconTint="@drawable/bg_chip_icon_state" />
+
+    </LinearLayout>
+
+    <ScrollView android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:ignore="ContentDescription">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginBottom="15dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="15dp"
+                android:layout_marginStart="15dp"
+                android:text="@string/setting_title_profiles_dataUsage"
+                android:textAppearance="?attr/textAppearanceBodyLarge"
+                android:textStyle="bold"/>
+
+            <RelativeLayout
+                android:layout_marginStart="15dp"
+                android:layout_width="wrap_content"
+                android:layout_height="?android:attr/listPreferredItemHeightSmall">
+                <ImageView
+                    android:id="@+id/icon_image"
+                    android:layout_width="wrap_content"
+                    android:layout_height="?android:attr/listPreferredItemHeightSmall"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/icon_image"
+                    android:layout_marginEnd="10dp"
+                    android:layout_alignParentStart="true" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="?android:attr/listPreferredItemHeightSmall"
+                    android:gravity="center_vertical"
+                    android:text="@string/setting_title_images"
+                    android:layout_toEndOf="@+id/icon_image"
+                    android:layout_toStartOf="@+id/checkbox_image"/>
+                <CheckBox
+                    android:id="@+id/checkbox_image"
+                    android:layout_width="wrap_content"
+                    android:layout_height="?android:attr/listPreferredItemHeightSmall"
+                    android:layout_alignParentEnd="true"/>
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_marginStart="15dp"
+                android:layout_width="wrap_content"
+                android:layout_height="?android:attr/listPreferredItemHeightSmall">
+                <ImageView
+                    android:id="@+id/icon_saveData"
+                    android:layout_width="wrap_content"
+                    android:layout_height="?android:attr/listPreferredItemHeightSmall"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/icon_savedata"
+                    android:layout_marginEnd="10dp"
+                    android:layout_alignParentStart="true" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="?android:attr/listPreferredItemHeightSmall"
+                    android:gravity="center_vertical"
+                    android:text="@string/setting_title_save_data"
+                    android:layout_toEndOf="@+id/icon_saveData"
+                    android:layout_toStartOf="@+id/checkbox_saveData"/>
+                <CheckBox
+                    android:id="@+id/checkbox_saveData"
+                    android:layout_width="wrap_content"
+                    android:layout_height="?android:attr/listPreferredItemHeightSmall"
+                    android:layout_alignParentEnd="true"/>
+            </RelativeLayout>
+
+            <com.google.android.material.divider.MaterialDivider
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:dividerInsetStart="50dp"
+                app:dividerInsetEnd="50dp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="15dp"
+                android:layout_marginStart="15dp"
+                android:text="@string/setting_title_profiles_privacy"
+                android:textAppearance="?attr/textAppearanceBodyLarge"
+                android:textStyle="bold"/>
+
+            <RelativeLayout
+                android:layout_marginStart="15dp"
+                android:layout_width="wrap_content"
+                android:layout_height="?android:attr/listPreferredItemHeightSmall">
+                <ImageView
+                    android:id="@+id/icon_location"
+                    android:layout_width="wrap_content"
+                    android:layout_height="?android:attr/listPreferredItemHeightSmall"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/icon_location"
+                    android:layout_marginEnd="10dp"
+                    android:layout_alignParentStart="true" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="?android:attr/listPreferredItemHeightSmall"
+                    android:gravity="center_vertical"
+                    android:text="@string/setting_title_location"
+                    android:layout_toEndOf="@+id/icon_location"
+                    android:layout_toStartOf="@+id/checkbox_location"/>
+                <CheckBox
+                    android:id="@+id/checkbox_location"
+                    android:layout_width="wrap_content"
+                    android:layout_height="?android:attr/listPreferredItemHeightSmall"
+                    android:layout_alignParentEnd="true"/>
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_marginStart="15dp"
+                android:layout_width="wrap_content"
+                android:layout_height="?android:attr/listPreferredItemHeightSmall">
+                <ImageView
+                    android:id="@+id/icon_camera"
+                    android:layout_width="wrap_content"
+                    android:layout_height="?android:attr/listPreferredItemHeightSmall"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/icon_camera"
+                    android:layout_marginEnd="10dp"
+                    android:layout_alignParentStart="true" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="?android:attr/listPreferredItemHeightSmall"
+                    android:gravity="center_vertical"
+                    android:text="@string/setting_title_camera"
+                    android:layout_toEndOf="@+id/icon_camera"
+                    android:layout_toStartOf="@+id/checkbox_camera"/>
+                <CheckBox
+                    android:id="@+id/checkbox_camera"
+                    android:layout_width="wrap_content"
+                    android:layout_height="?android:attr/listPreferredItemHeightSmall"
+                    android:layout_alignParentEnd="true"/>
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_marginStart="15dp"
+                android:layout_width="wrap_content"
+                android:layout_height="?android:attr/listPreferredItemHeightSmall">
+                <ImageView
+                    android:id="@+id/icon_history"
+                    android:layout_width="wrap_content"
+                    android:layout_height="?android:attr/listPreferredItemHeightSmall"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/icon_history"
+                    android:layout_marginEnd="10dp"
+                    android:layout_alignParentStart="true" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="?android:attr/listPreferredItemHeightSmall"
+                    android:gravity="center_vertical"
+                    android:text="@string/setting_title_history"
+                    android:layout_toEndOf="@+id/icon_history"
+                    android:layout_toStartOf="@+id/checkbox_history"/>
+                <CheckBox
+                    android:id="@+id/checkbox_history"
+                    android:layout_width="wrap_content"
+                    android:layout_height="?android:attr/listPreferredItemHeightSmall"
+                    android:layout_alignParentEnd="true"/>
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_marginStart="15dp"
+                android:layout_width="wrap_content"
+                android:layout_height="?android:attr/listPreferredItemHeightSmall">
+                <ImageView
+                    android:id="@+id/icon_cookies"
+                    android:layout_width="wrap_content"
+                    android:layout_height="?android:attr/listPreferredItemHeightSmall"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/icon_cookie"
+                    android:layout_marginEnd="10dp"
+                    android:layout_alignParentStart="true" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="?android:attr/listPreferredItemHeightSmall"
+                    android:gravity="center_vertical"
+                    android:text="@string/setting_title_cookie"
+                    android:layout_toEndOf="@+id/icon_cookies"
+                    android:layout_toStartOf="@+id/checkbox_cookies"/>
+                <CheckBox
+                    android:id="@+id/checkbox_cookies"
+                    android:layout_width="wrap_content"
+                    android:layout_height="?android:attr/listPreferredItemHeightSmall"
+                    android:layout_alignParentEnd="true"/>
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_marginStart="15dp"
+                android:layout_width="wrap_content"
+                android:layout_height="?android:attr/listPreferredItemHeightSmall">
+                <ImageView
+                    android:id="@+id/icon_cookiesThirdParty"
+                    android:layout_width="wrap_content"
+                    android:layout_height="?android:attr/listPreferredItemHeightSmall"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/icon_cookie"
+                    android:layout_marginEnd="10dp"
+                    android:layout_alignParentStart="true" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="?android:attr/listPreferredItemHeightSmall"
+                    android:gravity="center_vertical"
+                    android:text="@string/setting_title_cookie_thirdParty"
+                    android:layout_toEndOf="@+id/icon_cookiesThirdParty"
+                    android:layout_toStartOf="@+id/checkbox_cookiesThirdParty"/>
+                <CheckBox
+                    android:id="@+id/checkbox_cookiesThirdParty"
+                    android:layout_width="wrap_content"
+                    android:layout_height="?android:attr/listPreferredItemHeightSmall"
+                    android:layout_alignParentEnd="true"/>
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_marginStart="15dp"
+                android:layout_width="wrap_content"
+                android:layout_height="?android:attr/listPreferredItemHeightSmall">
+                <ImageView
+                    android:id="@+id/icon_cookiesBanner"
+                    android:layout_width="wrap_content"
+                    android:layout_height="?android:attr/listPreferredItemHeightSmall"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/icon_cookie"
+                    android:layout_marginEnd="10dp"
+                    android:layout_alignParentStart="true" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="?android:attr/listPreferredItemHeightSmall"
+                    android:gravity="center_vertical"
+                    android:text="@string/setting_title_deny_cookie_banners"
+                    android:layout_toEndOf="@+id/icon_cookiesBanner"
+                    android:layout_toStartOf="@+id/checkbox_cookiesBanner"/>
+                <CheckBox
+                    android:id="@+id/checkbox_cookiesBanner"
+                    android:layout_width="wrap_content"
+                    android:layout_height="?android:attr/listPreferredItemHeightSmall"
+                    android:layout_alignParentEnd="true"/>
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_marginStart="15dp"
+                android:layout_width="wrap_content"
+                android:layout_height="?android:attr/listPreferredItemHeightSmall">
+                <ImageView
+                    android:id="@+id/icon_dom"
+                    android:layout_width="wrap_content"
+                    android:layout_height="?android:attr/listPreferredItemHeightSmall"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/icon_dom"
+                    android:layout_marginEnd="10dp"
+                    android:layout_alignParentStart="true" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="?android:attr/listPreferredItemHeightSmall"
+                    android:gravity="center_vertical"
+                    android:text="@string/setting_title_dom"
+                    android:layout_toEndOf="@+id/icon_dom"
+                    android:layout_toStartOf="@+id/checkbox_dom"/>
+                <CheckBox
+                    android:id="@+id/checkbox_dom"
+                    android:layout_width="wrap_content"
+                    android:layout_height="?android:attr/listPreferredItemHeightSmall"
+                    android:layout_alignParentEnd="true"/>
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_marginStart="15dp"
+                android:layout_width="wrap_content"
+                android:layout_height="?android:attr/listPreferredItemHeightSmall">
+                <ImageView
+                    android:id="@+id/icon_java"
+                    android:layout_width="wrap_content"
+                    android:layout_height="?android:attr/listPreferredItemHeightSmall"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/icon_java"
+                    android:layout_marginEnd="10dp"
+                    android:layout_alignParentStart="true" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="?android:attr/listPreferredItemHeightSmall"
+                    android:gravity="center_vertical"
+                    android:text="@string/setting_title_javascript"
+                    android:layout_toEndOf="@+id/icon_java"
+                    android:layout_toStartOf="@+id/checkbox_java"/>
+                <CheckBox
+                    android:id="@+id/checkbox_java"
+                    android:layout_width="wrap_content"
+                    android:layout_height="?android:attr/listPreferredItemHeightSmall"
+                    android:layout_alignParentEnd="true"/>
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_marginStart="15dp"
+                android:layout_width="wrap_content"
+                android:layout_height="?android:attr/listPreferredItemHeightSmall">
+                <ImageView
+                    android:id="@+id/icon_javaPopUp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="?android:attr/listPreferredItemHeightSmall"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/icon_popup"
+                    android:layout_marginEnd="10dp"
+                    android:layout_alignParentStart="true" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="?android:attr/listPreferredItemHeightSmall"
+                    android:gravity="center_vertical"
+                    android:text="@string/setting_title_javascript_popUp"
+                    android:layout_toEndOf="@+id/icon_javaPopUp"
+                    android:layout_toStartOf="@+id/checkbox_javaPopUp"/>
+                <CheckBox
+                    android:id="@+id/checkbox_javaPopUp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="?android:attr/listPreferredItemHeightSmall"
+                    android:layout_alignParentEnd="true"/>
+            </RelativeLayout>
+
+            <com.google.android.material.divider.MaterialDivider
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:dividerInsetStart="50dp"
+                app:dividerInsetEnd="50dp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="15dp"
+                android:layout_marginStart="15dp"
+                android:text="@string/setting_title_profiles_Security"
+                android:textAppearance="?attr/textAppearanceBodyLarge"
+                android:textStyle="bold"/>
+
+            <RelativeLayout
+                android:layout_marginStart="15dp"
+                android:layout_width="wrap_content"
+                android:layout_height="?android:attr/listPreferredItemHeightSmall">
+                <ImageView
+                    android:id="@+id/icon_adBlock"
+                    android:layout_width="wrap_content"
+                    android:layout_height="?android:attr/listPreferredItemHeightSmall"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/icon_adblock"
+                    android:layout_marginEnd="10dp"
+                    android:layout_alignParentStart="true" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="?android:attr/listPreferredItemHeightSmall"
+                    android:gravity="center_vertical"
+                    android:text="@string/setting_title_adblock"
+                    android:layout_toEndOf="@+id/icon_adBlock"
+                    android:layout_toStartOf="@+id/checkbox_adBlock"/>
+                <CheckBox
+                    android:id="@+id/checkbox_adBlock"
+                    android:layout_width="wrap_content"
+                    android:layout_height="?android:attr/listPreferredItemHeightSmall"
+                    android:layout_alignParentEnd="true"/>
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_marginStart="15dp"
+                android:layout_width="wrap_content"
+                android:layout_height="?android:attr/listPreferredItemHeightSmall">
+                <ImageView
+                    android:id="@+id/icon_trackingURL"
+                    android:layout_width="wrap_content"
+                    android:layout_height="?android:attr/listPreferredItemHeightSmall"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/icon_tracking"
+                    android:layout_marginEnd="10dp"
+                    android:layout_alignParentStart="true" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="?android:attr/listPreferredItemHeightSmall"
+                    android:gravity="center_vertical"
+                    android:text="@string/setting_title_trackingURL"
+                    android:layout_toEndOf="@+id/icon_trackingURL"
+                    android:layout_toStartOf="@+id/checkbox_trackingURL"/>
+                <CheckBox
+                    android:id="@+id/checkbox_trackingURL"
+                    android:layout_width="wrap_content"
+                    android:layout_height="?android:attr/listPreferredItemHeightSmall"
+                    android:layout_alignParentEnd="true"/>
+            </RelativeLayout>
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</LinearLayout>
