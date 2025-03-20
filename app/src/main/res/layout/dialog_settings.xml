@@ -99,17 +99,59 @@
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:orientation="horizontal"
         android:layout_gravity="center_horizontal"
-        android:layout_marginEnd="15dp"
-        android:layout_marginStart="15dp"
-        android:layout_marginTop="5dp"
-        android:orientation="horizontal">
+        android:layout_marginBottom="5dp">
+
+        <Button
+            android:id="@+id/button_help"
+            style="@style/Widget.Material3.Button.IconButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            app:icon="@drawable/icon_help"/>
+
+        <Button
+            android:id="@+id/ib_reload"
+            style="@style/Widget.Material3.Button.IconButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            app:icon="@drawable/icon_refresh" />
+
+        <Button
+            android:id="@+id/ib_settings"
+            style="@style/Widget.Material3.Button.IconButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            app:icon="@drawable/icon_settings"/>
+
+        <Button
+            android:id="@+id/ib_more"
+            style="@style/Widget.Material3.Button.IconButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            app:icon="@drawable/icon_dots"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/layout_more"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:layout_marginBottom="10dp"
+        android:visibility="gone">
 
         <com.google.android.material.chip.Chip
-            android:id="@+id/chip_profile_changed"
+            android:id="@+id/chip_toggleNightView"
             style="@style/Widget.Material3.Chip.Suggestion"
             android:layout_width="wrap_content"
-            app:chipIcon="@drawable/icon_profile_changed"
+            android:layout_gravity="center"
+            app:chipIcon="@drawable/icon_night"
             app:chipIconEnabled="true"
             app:textEndPadding="0dp"
             app:textStartPadding="0dp"
@@ -118,10 +160,50 @@
             app:chipIconTint="@drawable/bg_chip_icon_state" />
 
         <com.google.android.material.chip.Chip
-            android:id="@+id/chip_profile_trusted"
+            android:id="@+id/chip_toggleDesktop"
             style="@style/Widget.Material3.Chip.Suggestion"
             android:layout_width="wrap_content"
-            app:chipIcon="@drawable/icon_profile_trusted"
+            android:layout_gravity="center"
+            app:chipIcon="@drawable/icon_desktop"
+            app:chipIconEnabled="true"
+            app:textEndPadding="0dp"
+            app:textStartPadding="0dp"
+            android:layout_height="wrap_content"
+            app:chipBackgroundColor="@drawable/bg_chip_state_list"
+            app:chipIconTint="@drawable/bg_chip_icon_state" />
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/chip_toggleScreenOn"
+            style="@style/Widget.Material3.Chip.Suggestion"
+            android:layout_width="wrap_content"
+            android:layout_gravity="center"
+            app:chipIcon="@drawable/icon_screen"
+            app:chipIconEnabled="true"
+            app:textEndPadding="0dp"
+            app:textStartPadding="0dp"
+            android:layout_height="wrap_content"
+            app:chipBackgroundColor="@drawable/bg_chip_state_list"
+            app:chipIconTint="@drawable/bg_chip_icon_state" />
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/chip_toggleAudioBackground"
+            style="@style/Widget.Material3.Chip.Suggestion"
+            android:layout_width="wrap_content"
+            android:layout_gravity="center"
+            app:chipIcon="@drawable/icon_audio"
+            app:chipIconEnabled="true"
+            app:textEndPadding="0dp"
+            app:textStartPadding="0dp"
+            android:layout_height="wrap_content"
+            app:chipBackgroundColor="@drawable/bg_chip_state_list"
+            app:chipIconTint="@drawable/bg_chip_icon_state" />
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/chip_toggleRedirect"
+            style="@style/Widget.Material3.Chip.Suggestion"
+            android:layout_width="wrap_content"
+            android:layout_gravity="center"
+            app:chipIcon="@drawable/icon_redirect"
             app:chipIconEnabled="true"
             app:textEndPadding="0dp"
             app:textStartPadding="0dp"
@@ -131,9 +213,14 @@
 
     </LinearLayout>
 
+    <com.google.android.material.divider.MaterialDivider
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
     <ScrollView android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        tools:ignore="ContentDescription">
+        tools:ignore="ContentDescription"
+        android:paddingBottom="15dp">
 
         <LinearLayout
             android:layout_width="wrap_content"
@@ -203,12 +290,6 @@
                     android:layout_height="?android:attr/listPreferredItemHeightSmall"
                     android:layout_alignParentEnd="true"/>
             </RelativeLayout>
-
-            <com.google.android.material.divider.MaterialDivider
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:dividerInsetStart="50dp"
-                app:dividerInsetEnd="50dp"/>
 
             <TextView
                 android:layout_width="wrap_content"
@@ -455,12 +536,6 @@
                     android:layout_alignParentEnd="true"/>
             </RelativeLayout>
 
-            <com.google.android.material.divider.MaterialDivider
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:dividerInsetStart="50dp"
-                app:dividerInsetEnd="50dp"/>
-
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -519,6 +594,44 @@
                     android:layout_toStartOf="@+id/checkbox_trackingURL"/>
                 <CheckBox
                     android:id="@+id/checkbox_trackingURL"
+                    android:layout_width="wrap_content"
+                    android:layout_height="?android:attr/listPreferredItemHeightSmall"
+                    android:layout_alignParentEnd="true"/>
+            </RelativeLayout>
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="15dp"
+                android:layout_marginStart="15dp"
+                android:text="@string/setting_title_ui"
+                android:textAppearance="?attr/textAppearanceBodyLarge"
+                android:textStyle="bold"/>
+
+            <RelativeLayout
+                android:layout_marginStart="15dp"
+                android:layout_width="wrap_content"
+                android:layout_height="?android:attr/listPreferredItemHeightSmall">
+                <ImageView
+                    android:id="@+id/icon_nightView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="?android:attr/listPreferredItemHeightSmall"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/icon_night"
+                    android:layout_marginEnd="10dp"
+                    android:layout_alignParentStart="true" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="?android:attr/listPreferredItemHeightSmall"
+                    android:gravity="center_vertical"
+                    android:text="@string/menu_nightView"
+                    android:layout_toEndOf="@+id/icon_nightView"
+                    android:layout_toStartOf="@+id/checkbox_nightView"/>
+                <CheckBox
+                    android:id="@+id/checkbox_nightView"
                     android:layout_width="wrap_content"
                     android:layout_height="?android:attr/listPreferredItemHeightSmall"
                     android:layout_alignParentEnd="true"/>

@@ -1,7 +1,6 @@
-### v 19 WIP
+### v 18.2 "Die rote Zora"
 
-- dialogs instead of sidesheets in tab-overview, overview and search
-- fix: leaving fullscreen, when pressing back
+With next release it will be possible to save settings separate for each website. There will be only one standard profile. No more switching between different profiles. If you do not like this, please do not install the next updates. More infos will be released soon on the procect website: https://codeberg.org/Gaukler_Faun/FOSS_Browser.k
 
 
 ### v 18.1 "Die rote Zora"

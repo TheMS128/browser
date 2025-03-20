@@ -1,6 +1,7 @@
 package de.baumann.browser.activity;
 
 import static android.content.ContentValues.TAG;
+import static android.view.View.GONE;
 import static android.webkit.WebView.HitTestResult.IMAGE_TYPE;
 import static android.webkit.WebView.HitTestResult.SRC_ANCHOR_TYPE;
 import static android.webkit.WebView.HitTestResult.SRC_IMAGE_ANCHOR_TYPE;
@@ -286,14 +287,20 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
         HelperUnit.setupDialog(context, dialogSearch);
         dialogSearch.show();
 
-
-
-        MaterialAlertDialogBuilder builder4 = new MaterialAlertDialogBuilder(context);
-        View dialogView4 = View.inflate(context, R.layout.dialog_settings, null);
-        builder4.setView(dialogView4);
-        AlertDialog dialog4 = builder4.create();
-        HelperUnit.setupDialog(context, dialog4);
-        //dialog4.show();
+        if (sp.getString("dialog_warning", "no").equals("no")) {
+            MaterialAlertDialogBuilder builder2 = new MaterialAlertDialogBuilder(context);
+            builder2.setTitle("Warning");
+            builder2.setIcon(R.drawable.icon_alert);
+            builder2.setMessage("With next release it will be possible to save settings separate for each website. There will be only one standard profile. No more switching between different profiles. If you do not like this, please do not install the next updates. More infos will be released soon on the procect website: https://codeberg.org/Gaukler_Faun/FOSS_Browser.");
+            builder2.setPositiveButton(R.string.app_ok, (dialog2, whichButton) -> dialog2.cancel());
+            builder2.setNegativeButton("Never show this warning", (dialog2, whichButton) -> {
+                sp.edit().putString("dialog_warning", "yes").apply();
+                dialog2.cancel();
+            });
+            AlertDialog dialog = builder2.create();
+            dialog.show();
+            HelperUnit.setupDialog(context, dialog);
+        }
 
         BroadcastReceiver downloadReceiver = new BroadcastReceiver() {
             @Override
