@@ -16,7 +16,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
-import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.os.Build;
@@ -42,7 +41,6 @@ import androidx.preference.PreferenceManager;
 import androidx.webkit.WebSettingsCompat;
 import androidx.webkit.WebViewFeature;
 
-import com.google.android.material.chip.Chip;
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.textfield.TextInputEditText;
@@ -57,9 +55,7 @@ import de.baumann.browser.activity.BrowserActivity;
 import de.baumann.browser.browser.AlbumController;
 import de.baumann.browser.browser.BrowserController;
 import de.baumann.browser.browser.JavaScriptInterface;
-import de.baumann.browser.browser.List_protected;
 import de.baumann.browser.browser.List_standard;
-import de.baumann.browser.browser.List_trusted;
 import de.baumann.browser.browser.NinjaDownloadListener;
 import de.baumann.browser.browser.NinjaWebChromeClient;
 import de.baumann.browser.browser.NinjaWebViewClient;
@@ -76,9 +72,7 @@ public class NinjaWebView extends WebView implements AlbumController {
     public boolean adBlock;
     public boolean saveData;
     public boolean camera;
-    private OnScrollChangeListener onScrollChangeListener;
     private Context context;
-    private boolean desktopMode;
     private boolean stopped;
     private AdapterTabs album;
     private AlbumController predecessor = null;
@@ -86,9 +80,7 @@ public class NinjaWebView extends WebView implements AlbumController {
     private NinjaWebChromeClient webChromeClient;
     private NinjaDownloadListener downloadListener;
     private static String profile;
-    private List_trusted listTrusted;
     private List_standard listStandard;
-    private List_protected listProtected;
     private Bitmap favicon;
     private SharedPreferences sp;
     private boolean foreground;
@@ -111,7 +103,6 @@ public class NinjaWebView extends WebView implements AlbumController {
         this.activity = (Activity) context;
         this.context = context;
         this.foreground = false;
-        this.desktopMode = false;
         this.fingerPrintProtection = sp.getBoolean(profile + "_fingerPrintProtection", true);
         this.history = sp.getBoolean(profile + "_history", true);
         this.adBlock = sp.getBoolean(profile + "_adBlock", false);
@@ -119,9 +110,7 @@ public class NinjaWebView extends WebView implements AlbumController {
         this.camera = sp.getBoolean(profile + "_camera", false);
 
         this.stopped = false;
-        this.listTrusted = new List_trusted(this.context);
         this.listStandard = new List_standard(this.context);
-        this.listProtected = new List_protected(this.context);
         this.album = new AdapterTabs(this.context, this, browserController);
         this.webViewClient = new NinjaWebViewClient(this);
         this.webChromeClient = new NinjaWebChromeClient(this);
@@ -129,16 +118,6 @@ public class NinjaWebView extends WebView implements AlbumController {
 
         initWebView();
         initAlbum();
-    }
-
-    @Override
-    public void onScrollChanged(int l, int t, int old_l, int old_t) {
-        super.onScrollChanged(l, t, old_l, old_t);
-        if (onScrollChangeListener != null) onScrollChangeListener.onScrollChange(t, old_t);
-    }
-
-    public void setOnScrollChangeListener(OnScrollChangeListener onScrollChangeListener) {
-        this.onScrollChangeListener = onScrollChangeListener;
     }
 
     public boolean isForeground() {
@@ -169,22 +148,6 @@ public class NinjaWebView extends WebView implements AlbumController {
         WebSettings webSettings = getSettings();
         addJavascriptInterface(new JavaScriptInterface(context, this), "NinjaWebViewJS");
 
-        int nightModeFlags = getResources().getConfiguration().uiMode & Configuration.UI_MODE_NIGHT_MASK;
-        if ((nightModeFlags == Configuration.UI_MODE_NIGHT_YES) || sp.getString("sp_theme", "1").equals("3")) {
-            if (WebViewFeature.isFeatureSupported(WebViewFeature.ALGORITHMIC_DARKENING)) {
-                boolean allowed = sp.getBoolean("setAlgorithmicDarkeningAllowed", true);
-                if (!allowed) {
-                    WebSettingsCompat.setAlgorithmicDarkeningAllowed(webSettings, false);
-                    sp.edit().putBoolean("setAlgorithmicDarkeningAllowed", false).apply();
-                } else {
-                    WebSettingsCompat.setAlgorithmicDarkeningAllowed(webSettings, true);
-                    sp.edit().putBoolean("setAlgorithmicDarkeningAllowed", true).apply();
-                }
-            }
-        }
-
-        String userAgent = getUserAgent(desktopMode);
-        webSettings.setUserAgentString(userAgent);
         webSettings.setSafeBrowsingEnabled(true);
         webSettings.setSupportZoom(true);
         webSettings.setBuiltInZoomControls(true);
@@ -198,9 +161,50 @@ public class NinjaWebView extends WebView implements AlbumController {
             this.setImportantForAutofill(View.IMPORTANT_FOR_AUTOFILL_NO);
         }
 
-        if (listTrusted.isWhite(url)) profile = "profileTrusted";
-        else if (listStandard.isWhite(url)) profile = "profileStandard";
-        else if (listProtected.isWhite(url)) profile = "profileProtected";
+        if (listStandard.isWhite(url)) {
+            profile = HelperUnit.domain(url);
+        }
+
+        if (WebViewFeature.isFeatureSupported(WebViewFeature.ALGORITHMIC_DARKENING)) {
+            WebSettingsCompat.setAlgorithmicDarkeningAllowed(webSettings, sp.getBoolean(profile + "_night", true));
+        }
+
+        String mobilePrefix = "Mozilla/5.0 (Linux; Android " + Build.VERSION.RELEASE + ")";
+        String desktopPrefix = "Mozilla/5.0 (X11; Linux " + System.getProperty("os.arch") + ")";
+        String mobileUserAgent = "Mozilla/5.0 (Linux; Android " + Build.VERSION.RELEASE + ")";
+        String desktopUserAgent = "Mozilla/5.0 (X11; Linux " + System.getProperty("os.arch") + ")";
+
+        String newUserAgent = WebSettings.getDefaultUserAgent(context);
+        String prefix = newUserAgent.substring(0, newUserAgent.indexOf(")") + 1);
+
+        try {
+            desktopUserAgent = newUserAgent.replace(prefix, desktopPrefix);
+            mobileUserAgent = newUserAgent.replace(prefix, mobilePrefix);
+        } catch (Exception e) {
+            Log.v(TAG, "Failed: UserAgent");
+        }
+
+        //Override UserAgent if own UserAgent is defined
+        if (!sp.contains("userAgentSwitch")) {
+            //if new switch_text_preference has never been used initialize the switch
+            if (Objects.requireNonNull(sp.getString("sp_userAgent", "")).isEmpty()) {
+                sp.edit().putBoolean("userAgentSwitch", false).apply();
+            } else sp.edit().putBoolean("userAgentSwitch", true).apply();
+        }
+
+        String ownUserAgent = sp.getString("sp_userAgent", "");
+        if (!ownUserAgent.isEmpty() && (sp.getBoolean("userAgentSwitch", false)))
+            mobileUserAgent = ownUserAgent;
+
+        if (sp.getBoolean(profile + "_desktop", false)) {
+            webSettings.setUserAgentString(desktopUserAgent);
+            getSettings().setUseWideViewPort(true);
+            getSettings().setLoadWithOverviewMode(true);
+        } else {
+            webSettings.setUserAgentString(mobileUserAgent);
+            getSettings().setUseWideViewPort(false);
+            getSettings().setLoadWithOverviewMode(false);
+        }
 
         webSettings.setMixedContentMode(WebSettings.MIXED_CONTENT_COMPATIBILITY_MODE);
         webSettings.setMediaPlaybackRequiresUserGesture(sp.getBoolean(profile + "_saveData", true));
@@ -236,38 +240,26 @@ public class NinjaWebView extends WebView implements AlbumController {
         profile = profileOriginal;
     }
 
-    public void setProfileIcon(FloatingActionButton omniBox_tab, String url) {
+    public void setProfileIcon(FloatingActionButton one, FloatingActionButton two, String url) {
         String profile = sp.getString("profile", "profileStandard");
         assert url != null;
-        switch (profile) {
-            case "profileTrusted":
-                omniBox_tab.setImageResource(R.drawable.icon_profile_trusted);
-                break;
-            case "profileStandard":
-                omniBox_tab.setImageResource(R.drawable.icon_profile_standard);
-                break;
-            case "profileProtected":
-                omniBox_tab.setImageResource(R.drawable.icon_profile_protected);
-                break;
-            default:
-                omniBox_tab.setImageResource(R.drawable.icon_profile_changed);
-                break;
+        if (profile.equals("profileStandard")) {
+            one.setImageResource(R.drawable.icon_profile_standard);
+            two.setImageResource(R.drawable.icon_profile_standard);
+        } else {
+            one.setImageResource(R.drawable.icon_profile_changed);
+            two.setImageResource(R.drawable.icon_profile_changed);
         }
-
+        
         TypedValue typedValue = new TypedValue();
         Resources.Theme theme = context.getTheme();
         theme.resolveAttribute(R.attr.colorError, typedValue, true);
         int color = typedValue.data;
-
-        if (listTrusted.isWhite(url)) {
-            omniBox_tab.setImageResource(R.drawable.icon_profile_trusted);
-            omniBox_tab.getDrawable().mutate().setTint(color);
-        } else if (listStandard.isWhite(url)) {
-            omniBox_tab.setImageResource(R.drawable.icon_profile_standard);
-            omniBox_tab.getDrawable().mutate().setTint(color);
-        } else if (listProtected.isWhite(url)) {
-            omniBox_tab.setImageResource(R.drawable.icon_profile_protected);
-            omniBox_tab.getDrawable().mutate().setTint(color);
+        if (listStandard.isWhite(url)) {
+            one.setImageResource(R.drawable.icon_profile_changed);
+            two.setImageResource(R.drawable.icon_profile_changed);
+            one.getDrawable().mutate().setTint(color);
+            two.getDrawable().mutate().setTint(color);
         }
     }
 
@@ -279,26 +271,10 @@ public class NinjaWebView extends WebView implements AlbumController {
         action.close();
 
         sp.edit()
-                .putBoolean("profileTrusted_saveData", true)
-                .putBoolean("profileTrusted_images", true)
-                .putBoolean("profileTrusted_adBlock", true)
-                .putBoolean("profileTrusted_trackingULS", false)
-                .putBoolean("profileTrusted_location", false)
-                .putBoolean("profileTrusted_fingerPrintProtection", false)
-                .putBoolean("profileTrusted_cookies", true)
-                .putBoolean("profileTrusted_cookiesThirdParty", true)
-                .putBoolean("profileTrusted_deny_cookie_banners", false)
-                .putBoolean("profileTrusted_javascript", true)
-                .putBoolean("profileTrusted_javascriptPopUp", true)
-                .putBoolean("profileTrusted_saveHistory", true)
-                .putBoolean("profileTrusted_camera", false)
-                .putBoolean("profileTrusted_microphone", false)
-                .putBoolean("profileTrusted_dom", true)
-
                 .putBoolean("profileStandard_saveData", true)
                 .putBoolean("profileStandard_images", true)
                 .putBoolean("profileStandard_adBlock", true)
-                .putBoolean("profileStandard_trackingULS", false)
+                .putBoolean("profileStandard_trackingULS", true)
                 .putBoolean("profileStandard_location", false)
                 .putBoolean("profileStandard_fingerPrintProtection", true)
                 .putBoolean("profileStandard_cookies", false)
@@ -310,156 +286,35 @@ public class NinjaWebView extends WebView implements AlbumController {
                 .putBoolean("profileStandard_camera", false)
                 .putBoolean("profileStandard_microphone", false)
                 .putBoolean("profileStandard_dom", false)
-
-                .putBoolean("profileProtected_saveData", true)
-                .putBoolean("profileProtected_images", true)
-                .putBoolean("profileProtected_adBlock", true)
-                .putBoolean("profileProtected_trackingULS", true)
-                .putBoolean("profileProtected_location", false)
-                .putBoolean("profileProtected_fingerPrintProtection", true)
-                .putBoolean("profileProtected_cookies", false)
-                .putBoolean("profileProtected_cookiesThirdParty", false)
-                .putBoolean("profileProtected_deny_cookie_banners", false)
-                .putBoolean("profileProtected_javascript", false)
-                .putBoolean("profileProtected_javascriptPopUp", false)
-                .putBoolean("profileProtected_saveHistory", true)
-                .putBoolean("profileProtected_camera", false)
-                .putBoolean("profileProtected_microphone", false)
-                .putBoolean("profileProtected_dom", false).apply();
+                .putBoolean("profileStandard_night", true)
+                .putBoolean("profileStandard_desktop", false).apply();
     }
 
-    public void setProfileChanged() {
-        sp.edit().putBoolean("profileChanged_saveData", sp.getBoolean(profile + "_saveData", true))
-                .putBoolean("profileChanged_images", sp.getBoolean(profile + "_images", true))
-                .putBoolean("profileChanged_adBlock", sp.getBoolean(profile + "_adBlock", true))
-                .putBoolean("profileChanged_trackingULS", sp.getBoolean(profile + "_trackingULS", true))
-                .putBoolean("profileChanged_location", sp.getBoolean(profile + "_location", false))
-                .putBoolean("profileChanged_fingerPrintProtection", sp.getBoolean(profile + "_fingerPrintProtection", true))
-                .putBoolean("profileChanged_cookies", sp.getBoolean(profile + "_cookies", false))
-                .putBoolean("profileChanged_cookiesThirdParty", sp.getBoolean(profile + "_cookiesThirdParty", false))
-                .putBoolean("profileChanged_deny_cookie_banners", sp.getBoolean(profile + "_deny_cookie_banners", false))
-                .putBoolean("profileChanged_javascript", sp.getBoolean(profile + "_javascript", true))
-                .putBoolean("profileChanged_javascriptPopUp", sp.getBoolean(profile + "_javascriptPopUp", false))
-                .putBoolean("profileChanged_saveHistory", sp.getBoolean(profile + "_saveHistory", true))
-                .putBoolean("profileChanged_camera", sp.getBoolean(profile + "_camera", false))
-                .putBoolean("profileChanged_microphone", sp.getBoolean(profile + "_microphone", false))
-                .putBoolean("profileChanged_dom", sp.getBoolean(profile + "_dom", false))
-                .putString("profile", "profileChanged").apply();
-    }
+    public void setProfileChanged(String url) {
+        List_standard listStandard = new List_standard(context);
 
-    public void putProfileBoolean(String string, Chip chip_profile_trusted,
-                                  Chip chip_profile_standard, Chip chip_profile_protected, Chip chip_profile_changed) {
-        switch (string) {
-            case "_images":
-                sp.edit().putBoolean("profileChanged_images", !sp.getBoolean("profileChanged_images", true)).apply();
-                break;
-            case "_javascript":
-                sp.edit().putBoolean("profileChanged_javascript", !sp.getBoolean("profileChanged_javascript", true)).apply();
-                break;
-            case "_javascriptPopUp":
-                sp.edit().putBoolean("profileChanged_javascriptPopUp", !sp.getBoolean("profileChanged_javascriptPopUp", false)).apply();
-                break;
-            case "_cookies":
-                sp.edit().putBoolean("profileChanged_cookies", !sp.getBoolean("profileChanged_cookies", false)).apply();
-                break;
-            case "_cookiesThirdParty":
-                sp.edit().putBoolean("profileChanged_cookiesThirdParty", !sp.getBoolean("profileChanged_cookiesThirdParty", false)).apply();
-                break;
-            case "_deny_cookie_banners":
-                sp.edit().putBoolean("profileChanged_deny_cookie_banners", !sp.getBoolean("profileChanged_deny_cookie_banners", false)).apply();
-                break;
-            case "_fingerPrintProtection":
-                sp.edit().putBoolean("profileChanged_fingerPrintProtection", !sp.getBoolean("profileChanged_fingerPrintProtection", true)).apply();
-                break;
-            case "_adBlock":
-                sp.edit().putBoolean("profileChanged_adBlock", !sp.getBoolean("profileChanged_adBlock", true)).apply();
-                break;
-            case "_trackingULS":
-                sp.edit().putBoolean("profileChanged_trackingULS", !sp.getBoolean("profileChanged_trackingULS", true)).apply();
-                break;
-            case "_saveData":
-                sp.edit().putBoolean("profileChanged_saveData", !sp.getBoolean("profileChanged_saveData", true)).apply();
-                break;
-            case "_saveHistory":
-                sp.edit().putBoolean("profileChanged_saveHistory", !sp.getBoolean("profileChanged_saveHistory", true)).apply();
-                break;
-            case "_location":
-                sp.edit().putBoolean("profileChanged_location", !sp.getBoolean("profileChanged_location", false)).apply();
-                break;
-            case "_camera":
-                sp.edit().putBoolean("profileChanged_camera", !sp.getBoolean("profileChanged_camera", false)).apply();
-                break;
-            case "_microphone":
-                sp.edit().putBoolean("profileChanged_microphone", !sp.getBoolean("profileChanged_microphone", false)).apply();
-                break;
-            case "_dom":
-                sp.edit().putBoolean("profileChanged_dom", !sp.getBoolean("profileChanged_dom", false)).apply();
-                break;
-        }
-        this.initPreferences("");
-
-        switch (Objects.requireNonNull(profile)) {
-            case "profileTrusted":
-                chip_profile_trusted.setChecked(true);
-                chip_profile_standard.setChecked(false);
-                chip_profile_protected.setChecked(false);
-                chip_profile_changed.setChecked(false);
-                break;
-            case "profileStandard":
-                chip_profile_trusted.setChecked(false);
-                chip_profile_standard.setChecked(true);
-                chip_profile_protected.setChecked(false);
-                chip_profile_changed.setChecked(false);
-                break;
-            case "profileProtected":
-                chip_profile_trusted.setChecked(false);
-                chip_profile_standard.setChecked(false);
-                chip_profile_protected.setChecked(true);
-                chip_profile_changed.setChecked(false);
-                break;
-            default:
-                chip_profile_trusted.setChecked(false);
-                chip_profile_standard.setChecked(false);
-                chip_profile_protected.setChecked(false);
-                chip_profile_changed.setChecked(true);
-                break;
-        }
-    }
-
-    public boolean getBoolean(String string) {
-        switch (string) {
-            case "_images":
-                return sp.getBoolean(profile + "_images", true);
-            case "_javascript":
-                return sp.getBoolean(profile + "_javascript", true);
-            case "_javascriptPopUp":
-                return sp.getBoolean(profile + "_javascriptPopUp", false);
-            case "_cookies":
-                return sp.getBoolean(profile + "_cookies", false);
-            case "_cookiesThirdParty":
-                return sp.getBoolean(profile + "_cookiesThirdParty", false);
-            case "_deny_cookie_banners":
-                return sp.getBoolean(profile + "_deny_cookie_banners", false);
-            case "_fingerPrintProtection":
-                return sp.getBoolean(profile + "_fingerPrintProtection", true);
-            case "_adBlock":
-                return sp.getBoolean(profile + "_adBlock", true);
-            case "_trackingULS":
-                return sp.getBoolean(profile + "_trackingULS", true);
-            case "_saveData":
-                return sp.getBoolean(profile + "_saveData", true);
-            case "_saveHistory":
-                return sp.getBoolean(profile + "_saveHistory", true);
-            case "_location":
-                return sp.getBoolean(profile + "_location", false);
-            case "_camera":
-                return sp.getBoolean(profile + "_camera", false);
-            case "_microphone":
-                return sp.getBoolean(profile + "_microphone", false);
-            case "_dom":
-                return sp.getBoolean(profile + "_dom", false);
-            default:
-                return false;
+        if (listStandard.isWhite(url)) {
+            sp.edit().putString("profile", HelperUnit.domain(url)).apply();
+        } else if (sp.getString("profile", "profileStandard").equals("profileStandard")) {
+            sp.edit()
+                    .putString("profile", "profileChanged")
+                    .putBoolean("profileChanged_saveData", sp.getBoolean( "profileStandard_saveData", true))
+                    .putBoolean("profileChanged_images", sp.getBoolean( "profileStandard_images", true))
+                    .putBoolean("profileChanged_adBlock", sp.getBoolean( "profileStandard_adBlock", true))
+                    .putBoolean("profileChanged_trackingULS", sp.getBoolean( "profileStandard_trackingULS", true))
+                    .putBoolean("profileChanged_location", sp.getBoolean( "profileStandard_location", false))
+                    .putBoolean("profileChanged_fingerPrintProtection", sp.getBoolean( "profileStandard_fingerPrintProtection", true))
+                    .putBoolean("profileChanged_cookies", sp.getBoolean( "_cookies", false))
+                    .putBoolean("profileChanged_cookiesThirdParty", sp.getBoolean( "profileStandard_cookiesThirdParty", false))
+                    .putBoolean("profileChanged_deny_cookie_banners", sp.getBoolean( "profileStandard_deny_cookie_banners", false))
+                    .putBoolean("profileChanged_javascript", sp.getBoolean( "profileStandard_javascript", true))
+                    .putBoolean("profileChanged_javascriptPopUp", sp.getBoolean( "profileStandard_javascriptPopUp", false))
+                    .putBoolean("profileChanged_saveHistory", sp.getBoolean( "profileStandard_saveHistory", true))
+                    .putBoolean("profileChanged_camera", sp.getBoolean( "profileStandard_camera", false))
+                    .putBoolean("profileChanged_microphone", sp.getBoolean( "profileStandard_microphone", false))
+                    .putBoolean("profileChanged_dom", sp.getBoolean( "profileStandard_dom", false))
+                    .putBoolean("profileChanged_night", sp.getBoolean( "profileStandard_night", true))
+                    .putBoolean("profileChanged_desktop", sp.getBoolean( "profileStandard_desktop", false)).apply();
         }
     }
 
@@ -570,14 +425,9 @@ public class NinjaWebView extends WebView implements AlbumController {
         favicon = null;
         stopped = false;
 
-        listTrusted = new List_trusted(context);
         listStandard = new List_standard(context);
-        listProtected = new List_protected(context);
-
         profile = sp.getString("profile", "profileStandard");
-        if (listTrusted.isWhite(url)) profile = "profileTrusted";
-        else if (listStandard.isWhite(url)) profile = "profileStandard";
-        else if (listProtected.isWhite(url)) profile = "profileProtected";
+        if (listStandard.isWhite(url)) profile = HelperUnit.domain(urlToLoad);
 
         boolean removeTracking = sp.getBoolean(profile + "_trackingULS", true);
         if (removeTracking && urlToLoad.contains("?") && urlToLoad.contains("/")) {
@@ -761,10 +611,6 @@ public class NinjaWebView extends WebView implements AlbumController {
         super.destroy();
     }
 
-    public boolean isDesktopMode() {
-        return desktopMode;
-    }
-
     public boolean isFingerPrintProtection() {
         return fingerPrintProtection;
     }
@@ -783,63 +629,6 @@ public class NinjaWebView extends WebView implements AlbumController {
 
     public boolean isCamera() {
         return camera;
-    }
-
-    public String getUserAgent(boolean desktopMode) {
-        String mobilePrefix = "Mozilla/5.0 (Linux; Android " + Build.VERSION.RELEASE + ")";
-        String desktopPrefix = "Mozilla/5.0 (X11; Linux " + System.getProperty("os.arch") + ")";
-
-        String newUserAgent = WebSettings.getDefaultUserAgent(context);
-        String prefix = newUserAgent.substring(0, newUserAgent.indexOf(")") + 1);
-
-        if (desktopMode) {
-            try {
-                newUserAgent = newUserAgent.replace(prefix, desktopPrefix);
-            } catch (Exception e) {
-                Log.v(TAG, "Failed: UserAgent");
-            }
-        } else {
-            try {
-                newUserAgent = newUserAgent.replace(prefix, mobilePrefix);
-            } catch (Exception e) {
-                Log.v(TAG, "Failed: UserAgent");
-            }
-        }
-
-        //Override UserAgent if own UserAgent is defined
-        if (!sp.contains("userAgentSwitch")) {  //if new switch_text_preference has never been used initialize the switch
-            if (Objects.requireNonNull(sp.getString("sp_userAgent", "")).isEmpty()) {
-                sp.edit().putBoolean("userAgentSwitch", false).apply();
-            } else sp.edit().putBoolean("userAgentSwitch", true).apply();
-        }
-
-        String ownUserAgent = sp.getString("sp_userAgent", "");
-        if (!ownUserAgent.isEmpty() && (sp.getBoolean("userAgentSwitch", false)))
-            newUserAgent = ownUserAgent;
-        return newUserAgent;
-    }
-
-    public void toggleDesktopMode(boolean reload) {
-        desktopMode = !desktopMode;
-        String newUserAgent = getUserAgent(desktopMode);
-        getSettings().setUserAgentString(newUserAgent);
-        getSettings().setUseWideViewPort(desktopMode);
-        getSettings().setLoadWithOverviewMode(desktopMode);
-        if (reload) reload();
-    }
-
-    public void toggleNightMode() {
-        if (WebViewFeature.isFeatureSupported(WebViewFeature.ALGORITHMIC_DARKENING)) {
-            WebSettings s = this.getSettings();
-            boolean allowed = sp.getBoolean("setAlgorithmicDarkeningAllowed", true);
-            if (allowed) {
-                WebSettingsCompat.setAlgorithmicDarkeningAllowed(s, false);
-                sp.edit().putBoolean("setAlgorithmicDarkeningAllowed", false).apply();
-            } else {
-                WebSettingsCompat.setAlgorithmicDarkeningAllowed(s, true);
-                sp.edit().putBoolean("setAlgorithmicDarkeningAllowed", true).apply();
-            }
-        }
     }
 
     public void resetFavicon() {
@@ -881,15 +670,5 @@ public class NinjaWebView extends WebView implements AlbumController {
 
     public void setPredecessor(AlbumController predecessor) {
         this.predecessor = predecessor;
-    }
-
-    public interface OnScrollChangeListener {
-        /**
-         * Called when the scroll position of a view changes.
-         *
-         * @param scrollY    Current vertical scroll origin.
-         * @param oldScrollY Previous vertical scroll origin.
-         */
-        void onScrollChange(int scrollY, int oldScrollY);
     }
 }

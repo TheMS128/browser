@@ -379,6 +379,7 @@ public class BrowserUnit {
         }
     }
 
+    /** @noinspection ExtractMethodRecommender*/
     private static void displayNotification(Activity activity, NotificationManager mNotifyMgr, Notification buildNotification) {
         if (SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
             int notificationAllowed = activity.checkSelfPermission(Manifest.permission.POST_NOTIFICATIONS);

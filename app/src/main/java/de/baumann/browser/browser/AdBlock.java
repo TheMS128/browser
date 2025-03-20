@@ -8,10 +8,6 @@ import android.util.Log;
 
 import androidx.preference.PreferenceManager;
 
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-
 import java.io.BufferedInputStream;
 import java.io.BufferedReader;
 import java.io.File;
@@ -112,22 +108,9 @@ public class AdBlock {
                     if (line.startsWith("#")) continue;
                     hosts.add(line.toLowerCase(locale));
                 }
-
-                SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(context);
-                String redirectsPref = sp.getString("customHosts", "[]");
-                JSONArray array = new JSONArray(redirectsPref);
-                for (int i = 0; i < array.length(); i++) {
-                    JSONObject redirect = array.getJSONObject(i);
-                    String target = redirect.getString("target");
-                    hosts.add(target);
-                }
-                in.close();
-
                 in.close();
             } catch (IOException i) {
                 Log.w("browser", "Error loading adBlockHosts", i);
-            } catch (JSONException e) {
-                throw new RuntimeException(e);
             }
         });
         thread.start();

@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <!-- App -->
     <string name="app_name">FOSS Browser</string>
     <string name="app_ok">OK</string>
     <string name="app_help">Aide</string>
@@ -27,7 +26,6 @@
     <string name="color_orange">Orange</string>
     <string name="color_brown">Marron</string>
     <string name="color_grey">Gris</string>
-    <!-- Menu -->
     <string name="main_menu_new_tab">Nouvel onglet (arrière-plan)</string>
     <string name="main_menu_new_tabOpen">Nouvel onglet (premier plan)</string>
     <string name="main_omnibox_input_hint">Rechercher ou saisir une URL</string>
@@ -49,7 +47,6 @@
     <string name="menu_shareClipboard">Copier dans le presse-papiers</string>
     <string name="menu_other_searchSite">Rechercher sur le site</string>
     <string name="link_you_copied">Lien copié</string>
-    <!-- Dialog -->
     <string name="dialog_title_hint">Titre :</string>
     <string name="dialog_URL_hint">URL :</string>
     <string name="dialog_extension_hint">Extension (par exemple : .jpg) :</string>
@@ -61,9 +58,7 @@
     <string name="dialog_sortName">Trier par nom</string>
     <string name="dialog_sortIcon">Trier par icône</string>
     <string name="dialog_sortDate">Trier par date</string>
-    <!-- Settings -->
     <string name="setting_label">Paramètres</string>
-    <!-- browser setting -->
     <string name="setting_title_browser">Paramètres du navigateur</string>
     <string name="setting_title_search_engine">Moteur de recherche</string>
     <string name="setting_summary_search_engine_google">Google</string>
@@ -84,18 +79,11 @@
     <string name="target">Cible</string>
     <string name="setting_title_save_data">Demande \'Enregistrer les données\'</string>
     <string name="setting_title_profiles">Profils</string>
-    <string name="setting_title_profiles_edit">Modifier les Profils</string>
-    <string name="setting_title_profiles_trustedList">Sites Web de confiance</string>
     <string name="setting_title_profiles_standardList">Sites Web standard</string>
-    <string name="setting_title_profiles_protectedList">Sites Web protégés</string>
-    <string name="setting_title_profiles_startApp">Profil au démarrage de l\'application</string>
-    <string name="setting_title_profiles_trusted">Approuvé</string>
     <string name="setting_title_profiles_standard">Standard</string>
-    <string name="setting_title_profiles_protected">Protégé</string>
     <string name="setting_title_profiles_dataUsage">Utilisation des données</string>
     <string name="setting_title_profiles_privacy">Vie privée</string>
     <string name="setting_title_profiles_Security">Sécurité</string>
-    <!-- browser start -->
     <string name="setting_title_images">Images</string>
     <string name="setting_title_cookie">Cookies</string>
     <string name="setting_summary_cookie_delete">Si cette option est activée, tous les cookies seront supprimés, y compris les cookies de sites de confiance.</string>
@@ -107,7 +95,6 @@
     <string name="setting_title_location">Localisation</string>
     <string name="setting_title_history">Historique</string>
     <string name="setting_summary_autofill">Activer l\'enregistrement des données du formulaire (Android Nougat et en-dessous) ou le service de remplissage automatique (Android Oreo et au-dessus).</string>
-    <!-- browser clear -->
     <string name="data_summary">Tous les fichiers seront exportés vers le répertoire \"Documents/browser_backup/\" de votre carte SD.</string>
     <string name="clear_title_quit">Effacer à la fermeture de l\'application</string>
     <string name="clear_title_cache">Vider le cache</string>
@@ -116,7 +103,6 @@
     <string name="localData">Effacer les données stockées sur l\'appareil</string>
     <string name="clear_title_deleteDatabase">Supprimer la base de données</string>
     <string name="clear_summary_deleteDatabase">Supprimer toute la base de données (page d\'accueil, signets, historique et toutes les listes de domaines).</string>
-    <!-- App setting -->
     <string name="setting_title_ui">Comportement/UI</string>
     <string name="setting_title_data">Sauvegarde</string>
     <string name="setting_filter">Filtre de signet</string>
@@ -127,15 +113,10 @@
     <string name="setting_title_fingerPrint">Protection contre l\'empreinte digitale</string>
     <string name="setting_theme">Thème</string>
     <string name="setting_theme_system">Système</string>
-    <string name="setting_theme_OLED">OLED</string>
-    <string name="setting_theme_wallpaper">Basé sur le fond d\'écran</string>
-    <!-- App behavior -->
-    <string name="setting_title_hideToolbar">Cacher la barre d\'outils</string>
     <string name="setting_title_confirm_exit">Confirmer pour quitter</string>
     <string name="setting_title_confirm_tab_close">Confirmer la fermeture de l\'onglet</string>
     <string name="setting_overView_onStart_title">Montrer au démarrage</string>
     <string name="setting_gestures">Gestes</string>
-    <!-- gestures -->
     <string name="setting_title_longPress">Appui prolongé</string>
     <string name="setting_title_overViewButton">Vue d\'ensemble</string>
     <string name="setting_gesture_up">Balayer vers le haut</string>
@@ -153,11 +134,8 @@
     <string name="setting_gesture_09">Ouvrir un nouvel onglet</string>
     <string name="setting_gesture_10">Fermer l’onglet</string>
     <string name="setting_gesture_11">Montrer la bascule rapide</string>
-    <!-- Data -->
     <string name="hint_database">Cela va supprimer les données actuelles. Continuer ?</string>
     <string name="settings_data_restore">Restaurer</string>
-    <!-- Others setting -->
-    <!-- Toast -->
     <string name="toast_add_whitelist_successful">Domaine ajouté avec succès</string>
     <string name="toast_copy_successful">Copié avec succès</string>
     <string name="toast_delete_successful">Supprimé avec succès</string>
@@ -173,7 +151,6 @@
     <string name="toast_backup">Sauvegarde des données \? Cette opération écrasera la sauvegarde existante.</string>
     <string name="dialog_postOnWebsiteHint">URL à ouvrir. Sera sauvegardé pour la prochaine utilisation.</string>
     <string name="dialog_postOnWebsite">Voir sur le site</string>
-    <!-- Whitelist -->
     <string name="whitelist_edit_hint">Domaine</string>
     <string name="whitelist_add">Ajouter</string>
     <string name="menu_desktopView">Vue bureau</string>
@@ -191,8 +168,6 @@
     <string name="menu_restart">Redémarrer et recharger les onglets</string>
     <string name="setting_title_screenOn">Garder l\'écran allumé</string>
     <string name="setting_title_audioBackground">Jouer l\'audio en arrière-plan</string>
-    <!-- License changelog -->
-    <string name="custom_searches_summary">Il suffit d\'appuyer longuement sur l\'icône de recherche dans la barre d\'outils pour obtenir des résultats de recherche à partir de sites web définis par l\'utilisateur.</string>
     <string name="custom_searches_title">Recherche rapide sur …</string>
     <string name="app_error_copy">Veuillez sélectionner et copier le texte manuellement</string>
     <string name="dialog_backGround">Ouvrir les liens en arrière-plan …</string>
@@ -200,7 +175,6 @@
     <string name="setting_title_cookie_thirdParty">Cookies de tiers</string>
     <string name="setting_title_backup_exit">Sauvegarde de la base de données (page d\'accueil, signets, historique et toutes les listes de domaines) à la sortie \?</string>
     <string name="title_appDatabase">Base de données</string>
-    <string name="custom_domains">Domaines personnalisés</string>
     <string name="app_error_save">Déjà sauvegardé.</string>
     <string name="app_intro_c">Pour commencer à naviguer, il suffit de cliquer sur la barre d\'outils. Vous pouvez rechercher quelque chose sur le web ou saisir une adresse URL à ouvrir.</string>
     <string name="app_intro_d">Vous pouvez également ouvrir les paramètres et configurer FOSS Browser selon vos besoins.</string>
@@ -214,7 +188,6 @@
     <string name="app_no">Non</string>
     <string name="app_always">Toujours</string>
     <string name="app_session">… dans la session en cours ?</string>
-    <string name="setting_title_profiles_custom">Profil personnalisé</string>
     <string name="app_never">Jamais</string>
     <string name="app_permission_notification">Notifications</string>
 </resources>

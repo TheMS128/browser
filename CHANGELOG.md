@@ -1,7 +1,6 @@
-### v 18.2 "Die rote Zora"
+### v 19 WIP
 
-With next release it will be possible to save settings separate for each website. There will be only one standard profile. No more switching between different profiles. If you do not like this, please do not install the next updates. More infos will be released soon on the procect website: https://codeberg.org/Gaukler_Faun/FOSS_Browser.k
-
+With this release it will be possible to save settings separate for each website. There will be only one standard profile. No more switching between different profiles. If you do not like this, please do not install the next updates. More infos will be released soon on the procect website: https://codeberg.org/Gaukler_Faun/FOSS_Browser.
 
 ### v 18.1 "Die rote Zora"
 

@@ -12,41 +12,27 @@
     <CheckBoxPreference
         android:defaultValue="true"
         android:key="database"
-        android:summary="@string/title_appDatabase" />
+        android:title="@string/title_appDatabase"
+        android:summary="@string/setting_backup_sumDatabase"
+        android:icon="@drawable/icon_dom" />
 
     <CheckBoxPreference
         android:defaultValue="true"
         android:key="settings"
-        android:summary="@string/setting_label"
+        android:title="@string/setting_label"
+        android:summary="@string/setting_backup_sumSettings"
         android:icon="@drawable/icon_settings" />
 
     <CheckBoxPreference
         android:defaultValue="true"
-        android:key="java"
-        android:summary="@string/setting_title_profiles_trustedList"
-        android:icon="@drawable/icon_profile_trusted" />
-
-    <CheckBoxPreference
-        android:defaultValue="true"
-        android:key="dom"
-        android:summary="@string/setting_title_profiles_standardList"
-        android:icon="@drawable/icon_profile_standard" />
-
-    <CheckBoxPreference
-        android:defaultValue="true"
-        android:key="cookie"
-        android:summary="@string/setting_title_profiles_protectedList"
-        android:icon="@drawable/icon_profile_protected" />
-
-    <CheckBoxPreference
-        android:defaultValue="true"
         android:key="bookmark"
-        android:summary="@string/album_title_bookmarks"
+        android:title="@string/album_title_bookmarks"
         android:icon="@drawable/icon_bookmark" />
 
     <CheckBoxPreference
         android:defaultValue="true"
         android:key="bookmark_simple"
-        android:summary="@string/album_title_bookmarks_simple" />
+        android:title="@string/album_title_bookmarks_simple"
+        android:icon="@drawable/icon_bookmark" />
 
 </PreferenceScreen>

@@ -57,7 +57,7 @@
                 android:orientation="vertical">
 
                 <TextView
-                    android:id="@+id/menuTitle"
+                    android:id="@+id/textGroup_menuTitle"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="2dp"
@@ -68,7 +68,7 @@
                     android:textStyle="bold" />
 
                 <TextView
-                    android:id="@+id/menuURL"
+                    android:id="@+id/textGroup_menuURL"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:ellipsize="end"
@@ -104,12 +104,21 @@
         android:layout_marginBottom="5dp">
 
         <Button
-            android:id="@+id/button_help"
+            android:id="@+id/ib_save"
             style="@style/Widget.Material3.Button.IconButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:gravity="center_vertical"
-            app:icon="@drawable/icon_help"/>
+            app:icon="@drawable/icon_menu_save" />
+
+        <Button
+            android:id="@+id/ib_delete"
+            style="@style/Widget.Material3.Button.IconButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:visibility="gone"
+            app:icon="@drawable/icon_delete" />
 
         <Button
             android:id="@+id/ib_reload"
@@ -145,32 +154,6 @@
         android:orientation="horizontal"
         android:layout_marginBottom="10dp"
         android:visibility="gone">
-
-        <com.google.android.material.chip.Chip
-            android:id="@+id/chip_toggleNightView"
-            style="@style/Widget.Material3.Chip.Suggestion"
-            android:layout_width="wrap_content"
-            android:layout_gravity="center"
-            app:chipIcon="@drawable/icon_night"
-            app:chipIconEnabled="true"
-            app:textEndPadding="0dp"
-            app:textStartPadding="0dp"
-            android:layout_height="wrap_content"
-            app:chipBackgroundColor="@drawable/bg_chip_state_list"
-            app:chipIconTint="@drawable/bg_chip_icon_state" />
-
-        <com.google.android.material.chip.Chip
-            android:id="@+id/chip_toggleDesktop"
-            style="@style/Widget.Material3.Chip.Suggestion"
-            android:layout_width="wrap_content"
-            android:layout_gravity="center"
-            app:chipIcon="@drawable/icon_desktop"
-            app:chipIconEnabled="true"
-            app:textEndPadding="0dp"
-            app:textStartPadding="0dp"
-            android:layout_height="wrap_content"
-            app:chipBackgroundColor="@drawable/bg_chip_state_list"
-            app:chipIconTint="@drawable/bg_chip_icon_state" />
 
         <com.google.android.material.chip.Chip
             android:id="@+id/chip_toggleScreenOn"
@@ -210,6 +193,14 @@
             android:layout_height="wrap_content"
             app:chipBackgroundColor="@drawable/bg_chip_state_list"
             app:chipIconTint="@drawable/bg_chip_icon_state" />
+
+        <Button
+            android:id="@+id/button_help"
+            style="@style/Widget.Material3.Button.IconButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            app:icon="@drawable/icon_help"/>
 
     </LinearLayout>
 
@@ -349,6 +340,32 @@
                     android:layout_toStartOf="@+id/checkbox_camera"/>
                 <CheckBox
                     android:id="@+id/checkbox_camera"
+                    android:layout_width="wrap_content"
+                    android:layout_height="?android:attr/listPreferredItemHeightSmall"
+                    android:layout_alignParentEnd="true"/>
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_marginStart="15dp"
+                android:layout_width="wrap_content"
+                android:layout_height="?android:attr/listPreferredItemHeightSmall">
+                <ImageView
+                    android:id="@+id/icon_mic"
+                    android:layout_width="wrap_content"
+                    android:layout_height="?android:attr/listPreferredItemHeightSmall"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/icon_microphone"
+                    android:layout_marginEnd="10dp"
+                    android:layout_alignParentStart="true" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="?android:attr/listPreferredItemHeightSmall"
+                    android:gravity="center_vertical"
+                    android:text="@string/setting_title_microphone"
+                    android:layout_toEndOf="@+id/icon_mic"
+                    android:layout_toStartOf="@+id/checkbox_mic"/>
+                <CheckBox
+                    android:id="@+id/checkbox_mic"
                     android:layout_width="wrap_content"
                     android:layout_height="?android:attr/listPreferredItemHeightSmall"
                     android:layout_alignParentEnd="true"/>
@@ -536,6 +553,32 @@
                     android:layout_alignParentEnd="true"/>
             </RelativeLayout>
 
+            <RelativeLayout
+                android:layout_marginStart="15dp"
+                android:layout_width="wrap_content"
+                android:layout_height="?android:attr/listPreferredItemHeightSmall">
+                <ImageView
+                    android:id="@+id/icon_fingerPrint"
+                    android:layout_width="wrap_content"
+                    android:layout_height="?android:attr/listPreferredItemHeightSmall"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/icon_fingerprint"
+                    android:layout_marginEnd="10dp"
+                    android:layout_alignParentStart="true" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="?android:attr/listPreferredItemHeightSmall"
+                    android:gravity="center_vertical"
+                    android:text="@string/setting_title_fingerPrint"
+                    android:layout_toEndOf="@+id/icon_fingerPrint"
+                    android:layout_toStartOf="@+id/checkbox_fingerPrint"/>
+                <CheckBox
+                    android:id="@+id/checkbox_fingerPrint"
+                    android:layout_width="wrap_content"
+                    android:layout_height="?android:attr/listPreferredItemHeightSmall"
+                    android:layout_alignParentEnd="true"/>
+            </RelativeLayout>
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -632,6 +675,34 @@
                     android:layout_toStartOf="@+id/checkbox_nightView"/>
                 <CheckBox
                     android:id="@+id/checkbox_nightView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="?android:attr/listPreferredItemHeightSmall"
+                    android:layout_alignParentEnd="true"/>
+            </RelativeLayout>
+
+
+
+            <RelativeLayout
+                android:layout_marginStart="15dp"
+                android:layout_width="wrap_content"
+                android:layout_height="?android:attr/listPreferredItemHeightSmall">
+                <ImageView
+                    android:id="@+id/icon_desktop"
+                    android:layout_width="wrap_content"
+                    android:layout_height="?android:attr/listPreferredItemHeightSmall"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/icon_desktop"
+                    android:layout_marginEnd="10dp"
+                    android:layout_alignParentStart="true" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="?android:attr/listPreferredItemHeightSmall"
+                    android:gravity="center_vertical"
+                    android:text="@string/menu_desktopView"
+                    android:layout_toEndOf="@+id/icon_desktop"
+                    android:layout_toStartOf="@+id/checkbox_desktop"/>
+                <CheckBox
+                    android:id="@+id/checkbox_desktop"
                     android:layout_width="wrap_content"
                     android:layout_height="?android:attr/listPreferredItemHeightSmall"
                     android:layout_alignParentEnd="true"/>

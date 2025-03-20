@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <!-- App -->
     <string name="app_name">FOSS Браузер</string>
     <string name="app_ok">ОК</string>
     <string name="app_help">Допомога</string>
@@ -27,7 +26,6 @@
     <string name="color_orange">Помаранчевий</string>
     <string name="color_brown">Коричневий</string>
     <string name="color_grey">Сірий</string>
-    <!-- Menu -->
     <string name="main_menu_new_tab">Нова вкладка (фон)</string>
     <string name="main_menu_new_tabOpen">Нова вкладка</string>
     <string name="main_omnibox_input_hint">Пошук або введення URL-адреси</string>
@@ -49,7 +47,6 @@
     <string name="menu_shareClipboard">Копіювати до буфера обміну</string>
     <string name="menu_other_searchSite">Пошук по сайту</string>
     <string name="link_you_copied">Скопійоване посилання</string>
-    <!-- Dialog -->
     <string name="dialog_title_hint">Заголовок:</string>
     <string name="dialog_URL_hint">Адреса URL:</string>
     <string name="dialog_extension_hint">Розширення (наприклад: «.jpg»):</string>
@@ -61,9 +58,7 @@
     <string name="dialog_sortName">Сортувати за назвою</string>
     <string name="dialog_sortIcon">Сортувати за значками</string>
     <string name="dialog_sortDate">Сортувати за датою</string>
-    <!-- Settings -->
     <string name="setting_label">Налаштування</string>
-    <!-- browser setting -->
     <string name="setting_title_browser">Налаштування браузера</string>
     <string name="setting_title_search_engine">Пошукова система</string>
     <string name="setting_summary_search_engine_google">Google</string>
@@ -84,18 +79,11 @@
     <string name="target">Ціль</string>
     <string name="setting_title_save_data">Надсилати запит «Збереження даних»</string>
     <string name="setting_title_profiles">Профілі</string>
-    <string name="setting_title_profiles_edit">Редагувати профілі</string>
-    <string name="setting_title_profiles_trustedList">Надійні веб-сайти</string>
     <string name="setting_title_profiles_standardList">Стандартні веб-сайти</string>
-    <string name="setting_title_profiles_protectedList">Захищені веб-сайти</string>
-    <string name="setting_title_profiles_startApp">Профіль при запуску додатка</string>
-    <string name="setting_title_profiles_trusted">Надійний</string>
     <string name="setting_title_profiles_standard">Стандартний</string>
-    <string name="setting_title_profiles_protected">Захищений</string>
     <string name="setting_title_profiles_dataUsage">Використання даних</string>
     <string name="setting_title_profiles_privacy">Приватність</string>
     <string name="setting_title_profiles_Security">Безпека</string>
-    <!-- browser start -->
     <string name="setting_title_images">Зображення</string>
     <string name="setting_title_cookie">Куки</string>
     <string name="setting_summary_cookie_delete">Якщо ввімкнено, всі cookies будуть видалені, включно з файлами cookie з надійних веб-сайтів.</string>
@@ -107,7 +95,6 @@
     <string name="setting_title_location">Місце розташування</string>
     <string name="setting_title_history">Історія</string>
     <string name="setting_summary_autofill">Увімкнути збереження даних форм (Android Nougat і нижче) або сервісу автозаповнення (Android Oreo і вище).</string>
-    <!-- browser clear -->
     <string name="data_summary">Усі файли буде збережено до каталогу «Documents/browser_backup/» на SD-карті.</string>
     <string name="clear_title_quit">Очищати при виході</string>
     <string name="clear_title_cache">Очистити кеш</string>
@@ -116,7 +103,6 @@
     <string name="localData">Очистити на пристрої збережені дані</string>
     <string name="clear_title_deleteDatabase">Видалити базу даних</string>
     <string name="clear_summary_deleteDatabase">Видалити базу даних (стартову сторінку, закладки, історію і всі списки доменів).</string>
-    <!-- App setting -->
     <string name="setting_title_ui">Поведінка та інтерфейс</string>
     <string name="setting_title_data">Резервне копіювання</string>
     <string name="setting_filter">Фільтр закладок</string>
@@ -127,15 +113,10 @@
     <string name="setting_title_fingerPrint">Захист відбитків пальців</string>
     <string name="setting_theme">Тема</string>
     <string name="setting_theme_system">Система</string>
-    <string name="setting_theme_OLED">OLED</string>
-    <string name="setting_theme_wallpaper">На основі шпалер</string>
-    <!-- App behavior -->
-    <string name="setting_title_hideToolbar">Приховати Панель інструментів</string>
     <string name="setting_title_confirm_exit">Підтвердити вихід з браузера</string>
     <string name="setting_title_confirm_tab_close">Підтвердити закриття вкладки</string>
     <string name="setting_overView_onStart_title">Показувати при запуску</string>
     <string name="setting_gestures">Жести</string>
-    <!-- gestures -->
     <string name="setting_title_longPress">Тривале натискання</string>
     <string name="setting_title_overViewButton">Огляд</string>
     <string name="setting_gesture_up">Проведіть вгору</string>
@@ -153,11 +134,8 @@
     <string name="setting_gesture_09">Відкрити нову вкладку</string>
     <string name="setting_gesture_10">Закрити вкладку</string>
     <string name="setting_gesture_11">Швидкі налаштування</string>
-    <!-- Data -->
     <string name="hint_database">Поточні дані будуть видалені. Продовжити?</string>
     <string name="settings_data_restore">Відновити</string>
-    <!-- Others setting -->
-    <!-- Toast -->
     <string name="toast_add_whitelist_successful">Домен додано</string>
     <string name="toast_copy_successful">Скопійовано</string>
     <string name="toast_delete_successful">Видалено</string>
@@ -173,7 +151,6 @@
     <string name="toast_backup">Зберегти дані\? Це перезапише наявну резервну копію.</string>
     <string name="dialog_postOnWebsiteHint">URL для відкриття. Буде збережено для наступного використання.</string>
     <string name="dialog_postOnWebsite">Публікувати на сайті</string>
-    <!-- Whitelist -->
     <string name="whitelist_edit_hint">Домен</string>
     <string name="whitelist_add">Додати</string>
     <string name="menu_desktopView">Комп\'ютерна версія</string>
@@ -191,8 +168,6 @@
     <string name="menu_restart">Перезавантажити та оновити вкладки</string>
     <string name="setting_title_screenOn">Не вимикати екран</string>
     <string name="setting_title_audioBackground">Відтворювати аудіо у фоновому режимі</string>
-    <!-- License changelog -->
-    <string name="custom_searches_summary">Просто натисніть і утримуйте значок пошуку на панелі інструментів, щоб отримати результати з вказаних веб-сторінок.</string>
     <string name="custom_searches_title">Швидкий пошук у …</string>
     <string name="app_error_copy">Виберіть і скопіюйте текст вручну</string>
     <string name="dialog_backGround">Відкривати посилання у фоні…</string>
@@ -200,7 +175,6 @@
     <string name="setting_title_cookie_thirdParty">Сторонні куки</string>
     <string name="setting_title_backup_exit">Резервувати базу даних (стартову сторінку, закладки, історію і всі списки доменів) при виході\?</string>
     <string name="title_appDatabase">База даних</string>
-    <string name="custom_domains">Користувацькі домени</string>
     <string name="app_error_save">Уже збережено.</string>
     <string name="app_intro_c">Щоб почати перегляд, просто торкніться панелі інструментів. Ви можете шукати щось в Інтернеті або ввести URL-адресу для відкриття.</string>
     <string name="app_intro_b">Наразі відкритим сайтом є Wiki про FOSS Браузер. Цей сайт також зберeжено як вашу першу закладку. У Wiki ви можете знайти корисні поради та посилання.</string>
@@ -214,7 +188,6 @@
     <string name="dialog_tracking">Можливо це URL-адреса з відстеженням. Видалити частину відстеження:</string>
     <string name="app_always">Завжди</string>
     <string name="app_never">Ніколи.</string>
-    <string name="setting_title_profiles_custom">Спеціальний профіль</string>
     <string name="app_session">… в поточній сесії?</string>
     <string name="app_permission_notification">Сповіщення</string>
 </resources>

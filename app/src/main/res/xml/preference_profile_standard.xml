@@ -104,4 +104,20 @@
 
     </PreferenceCategory>
 
+    <PreferenceCategory android:title="@string/setting_title_ui">
+
+        <CheckBoxPreference
+            android:defaultValue="true"
+            android:icon="@drawable/icon_night"
+            android:key="profileStandard_night"
+            android:summary="@string/menu_nightView" />
+
+        <CheckBoxPreference
+            android:defaultValue="true"
+            android:icon="@drawable/icon_desktop"
+            android:key="profileStandard_desktop"
+            android:summary="@string/menu_desktopView" />
+
+    </PreferenceCategory>
+
 </PreferenceScreen>

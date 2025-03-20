@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <!-- App -->
     <string name="app_name">FOSS Browser</string>
     <string name="app_ok">OK</string>
     <string name="app_help">Súgó</string>
@@ -27,7 +26,6 @@
     <string name="color_orange">Narancssárga</string>
     <string name="color_brown">Barna</string>
     <string name="color_grey">Szürke</string>
-    <!-- Menu -->
     <string name="main_menu_new_tab">Új lap (háttérben)</string>
     <string name="main_menu_new_tabOpen">Új lap (előtérben)</string>
     <string name="main_omnibox_input_hint">Keresés vagy írjon be URL címet</string>
@@ -49,7 +47,6 @@
     <string name="menu_shareClipboard">Másolás a vágólapra</string>
     <string name="menu_other_searchSite">Keresés az oldalon</string>
     <string name="link_you_copied">Link másolva</string>
-    <!-- Dialog -->
     <string name="dialog_title_hint">Cím:</string>
     <string name="dialog_URL_hint">URL:</string>
     <string name="dialog_extension_hint">Kiterjesztés (például: \".jpg\"):</string>
@@ -61,9 +58,7 @@
     <string name="dialog_sortName">Rendezés név szerint</string>
     <string name="dialog_sortIcon">Rendezés ikon szerint</string>
     <string name="dialog_sortDate">Rendezés dátum szerint</string>
-    <!-- Settings -->
     <string name="setting_label">Beállítások</string>
-    <!-- browser setting -->
     <string name="setting_title_browser">Böngésző beállításai</string>
     <string name="setting_title_search_engine">Keresőmotor</string>
     <string name="setting_summary_search_engine_google">Google</string>
@@ -83,18 +78,11 @@
     <string name="target">Célpont</string>
     <string name="setting_title_save_data">\'Save Data\' kérése</string>
     <string name="setting_title_profiles">Profilok</string>
-    <string name="setting_title_profiles_edit">Profilok szerkesztése</string>
-    <string name="setting_title_profiles_trustedList">Megbízható weboldalak</string>
     <string name="setting_title_profiles_standardList">Szabványos weboldalak</string>
-    <string name="setting_title_profiles_protectedList">Védett weboldalak</string>
-    <string name="setting_title_profiles_startApp">Profil az alkalmazás indításakor</string>
-    <string name="setting_title_profiles_trusted">Megbízható</string>
     <string name="setting_title_profiles_standard">Általános</string>
-    <string name="setting_title_profiles_protected">Védett</string>
     <string name="setting_title_profiles_dataUsage">Adathasználat</string>
     <string name="setting_title_profiles_privacy">Adatvédelem</string>
     <string name="setting_title_profiles_Security">Biztonság</string>
-    <!-- browser start -->
     <string name="setting_title_images">Képek</string>
     <string name="setting_title_cookie">Sütik</string>
     <string name="setting_summary_cookie_delete">Engedélyezve, az összes süti törlésre kerül. A megbízható weboldalakhoz tartozó sütik is.</string>
@@ -106,7 +94,6 @@
     <string name="setting_title_location">Tartózkodási hely</string>
     <string name="setting_title_history">Előzmények</string>
     <string name="setting_summary_autofill">Engedélyezze az űrlapadatok (Android Nougat és újabb) vagy az automatikus kitöltési szolgáltatás (Android Oreo és újabb) mentését.</string>
-    <!-- browser clear -->
     <string name="data_summary">Minden fájl exportálódik az SD-kártya \"Documents/browser_backup/\" könyvtárába.</string>
     <string name="clear_title_quit">Törlés az alkalmazás bezárásakor</string>
     <string name="clear_title_cache">Gyorsítótár törlése</string>
@@ -115,7 +102,6 @@
     <string name="localData">Törölje az eszközön tárolt adatokat</string>
     <string name="clear_title_deleteDatabase">Adatbázis törlése</string>
     <string name="clear_summary_deleteDatabase">Törölje a teljes adatbázist (kezdőlap, könyvjelzők, előzmények és az összes domain-lista).</string>
-    <!-- App setting -->
     <string name="setting_title_ui">Viselkedés/felhasználói felület</string>
     <string name="setting_title_data">Biztonsági másolat</string>
     <string name="setting_filter">Könyvjelző szűrő</string>
@@ -125,15 +111,10 @@
     <string name="setting_title_fingerPrint">Ujjlenyomat-védelem</string>
     <string name="setting_theme">Téma</string>
     <string name="setting_theme_system">Rendszer</string>
-    <string name="setting_theme_OLED">OLED</string>
-    <string name="setting_theme_wallpaper">Háttérkép alapú</string>
-    <!-- App behavior -->
-    <string name="setting_title_hideToolbar">Eszköztár elrejtése</string>
     <string name="setting_title_confirm_exit">Böngésző bezárásának megerősítése</string>
     <string name="setting_title_confirm_tab_close">Lap bezárásának megerősítése</string>
     <string name="setting_overView_onStart_title">Mutassa indításkor</string>
     <string name="setting_gestures">Kézmozdulatok</string>
-    <!-- gestures -->
     <string name="setting_title_longPress">Hosszú érintés</string>
     <string name="setting_title_overViewButton">Áttekintés</string>
     <string name="setting_gesture_up">Csúsztatás felfelé</string>
@@ -151,11 +132,8 @@
     <string name="setting_gesture_09">Új lap megnyitása</string>
     <string name="setting_gesture_10">Lap bezárása</string>
     <string name="setting_gesture_11">Gyors kapcsoló megjelenítése</string>
-    <!-- Data -->
     <string name="hint_database">Ezzel törli az aktuális adatokat. Folytatja?</string>
     <string name="settings_data_restore">Visszaállítás</string>
-    <!-- Others setting -->
-    <!-- Toast -->
     <string name="toast_add_whitelist_successful">A Domain sikeresen hozzáadva</string>
     <string name="toast_copy_successful">Sikeresen másolva</string>
     <string name="toast_delete_successful">Sikeresen törölve</string>
@@ -171,7 +149,6 @@
     <string name="toast_backup">Adatmentés\? Ez felülírja a meglévő biztonsági mentést.</string>
     <string name="dialog_postOnWebsiteHint">URL megnyitásához. A következő használatra el lesz mentve.</string>
     <string name="dialog_postOnWebsite">Közzététel a weboldalon</string>
-    <!-- Whitelist -->
     <string name="whitelist_edit_hint">Tartomány</string>
     <string name="whitelist_add">Hozzáad</string>
     <string name="menu_desktopView">Asztali nézet</string>
@@ -189,10 +166,8 @@
     <string name="menu_restart">Újraindítás és a lapok újratöltése</string>
     <string name="setting_title_screenOn">Kijelző ébrentartása</string>
     <string name="setting_title_audioBackground">Hang lejátszása a háttérben</string>
-    <!-- License changelog -->
     <string name="setting_title_dom">dom tárolás</string>
     <string name="setting_title_clipboard_record">Vágólap rekord</string>
-    <string name="custom_searches_summary">Csak nyomja meg hosszan a keresés ikonját az eszköztáron, hogy keresési eredményeket kapjon a saját maga által meghatározott weboldalakról.</string>
     <string name="custom_searches_title">Gyors keresés a …</string>
     <string name="app_error_copy">Kérjük, válassza ki és másolja ki a szöveget kézzel</string>
     <string name="dialog_backGround">Linkek megnyitása a háttérben …</string>
@@ -200,7 +175,6 @@
     <string name="setting_title_cookie_thirdParty">Harmadik fél sütik</string>
     <string name="setting_title_backup_exit">Adatbázis biztonsági mentése (kezdőlap, könyvjelzők, előzmények és az összes domain-lista) kilépéskor\?</string>
     <string name="title_appDatabase">Adatbázis</string>
-    <string name="custom_domains">Egyéni domainek</string>
     <string name="app_intro_a">Köszönjük, hogy használja a FOSS Browser-t!</string>
     <string name="app_intro_c">A böngészés megkezdéséhez csak tippelj az eszköztárra. Kereshet a weben valamit, vagy megadhat egy url-t a megnyitáshoz.</string>
     <string name="app_intro_d">Megnyithatja a beállításokat is, és beállíthatja a FOSS Browser-t az igényeinek megfelelően.</string>
@@ -215,6 +189,5 @@
     <string name="app_never">Soha</string>
     <string name="app_always">Mindig</string>
     <string name="app_session">… az aktuális ülésszakban?</string>
-    <string name="setting_title_profiles_custom">Egyéni profil</string>
     <string name="app_permission_notification">Értesítések</string>
 </resources>

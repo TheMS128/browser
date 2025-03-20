@@ -118,7 +118,7 @@
 
         <activity
             android:name="de.baumann.browser.activity.Settings_ProfileList"
-            android:label="@string/setting_title_profiles_protectedList"
+            android:label="@string/setting_title_savedWebSites"
             android:theme="@style/AppTheme" />
 
         <activity
@@ -158,7 +158,7 @@
 
         <activity
             android:name="de.baumann.browser.activity.Settings_Profile"
-            android:label="@string/setting_title_profiles_edit"
+            android:label="@string/setting_title_profiles_standard"
             android:theme="@style/AppTheme" />
 
     </application>

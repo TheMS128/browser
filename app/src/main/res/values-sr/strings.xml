@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <!-- App -->
     <string name="app_name">FOSS претраживач</string>
     <string name="app_ok">У реду</string>
     <string name="app_help">Помоћ</string>
@@ -27,7 +26,6 @@
     <string name="color_orange">Наранџаста</string>
     <string name="color_brown">Браон</string>
     <string name="color_grey">Сива</string>
-    <!-- Menu -->
     <string name="main_menu_new_tab">Нови језичак (у позадини)</string>
     <string name="main_menu_new_tabOpen">Нови језичак (у предњем плану)</string>
     <string name="main_omnibox_input_hint">Претражите или унесите адресу</string>
@@ -49,7 +47,6 @@
     <string name="menu_shareClipboard">Копирај</string>
     <string name="menu_other_searchSite">Претражи на страници</string>
     <string name="link_you_copied">Веза коју сте копирали</string>
-    <!-- Dialog -->
     <string name="dialog_title_hint">Наслов:</string>
     <string name="dialog_URL_hint">УРЛ:</string>
     <string name="dialog_extension_hint">Наставак (на пример \".jpg\"):</string>
@@ -61,9 +58,7 @@
     <string name="dialog_sortName">Сортирај по имену</string>
     <string name="dialog_sortIcon">Сортирај по иконици</string>
     <string name="dialog_sortDate">Сортирај по датуму</string>
-    <!-- Settings -->
     <string name="setting_label">Подешавања</string>
-    <!-- browser setting -->
     <string name="setting_title_browser">Подешавања прегледача</string>
     <string name="setting_title_search_engine">Претраживач</string>
     <string name="setting_summary_search_engine_google">Гугл</string>
@@ -84,18 +79,11 @@
     <string name="target">Циљ</string>
     <string name="setting_title_save_data">Захтевај уштеду података</string>
     <string name="setting_title_profiles">Профили</string>
-    <string name="setting_title_profiles_edit">Уредите профиле</string>
-    <string name="setting_title_profiles_trustedList">Поуздани сајтови</string>
     <string name="setting_title_profiles_standardList">Стандардни сајтови</string>
-    <string name="setting_title_profiles_protectedList">Заштићени сајтови</string>
-    <string name="setting_title_profiles_startApp">Подразумевани профил при покретању апликације</string>
-    <string name="setting_title_profiles_trusted">Поуздани</string>
     <string name="setting_title_profiles_standard">Стандардни</string>
-    <string name="setting_title_profiles_protected">Заштићени</string>
     <string name="setting_title_profiles_dataUsage">Потрошња података</string>
     <string name="setting_title_profiles_privacy">Приватност</string>
     <string name="setting_title_profiles_Security">Безбедност</string>
-    <!-- browser start -->
     <string name="setting_title_images">Слике</string>
     <string name="setting_title_cookie">Колачићи</string>
     <string name="setting_summary_cookie_delete">Ако је укључена опција, сви колачићи ће бити избрисани, чак и они са поузданих сајтова.</string>
@@ -107,7 +95,6 @@
     <string name="setting_title_location">Локација</string>
     <string name="setting_title_history">Историјат</string>
     <string name="setting_summary_autofill">Дозволите спашавање формуларских података (Андроид Ноугат и испод) или сервис за аутоматско испуњавање (Андроид Орео и изнад).</string>
-    <!-- browser clear -->
     <string name="data_summary">Све датотеке биће извезене у фасцикли \"Documents/browser_backup/\" на СД картици.</string>
     <string name="clear_title_quit">Бриши при затварању</string>
     <string name="clear_title_cache">Очисти кеш</string>
@@ -116,7 +103,6 @@
     <string name="localData">Обришите податке сачуване на уређају</string>
     <string name="clear_title_deleteDatabase">Обриши базу података</string>
     <string name="clear_summary_deleteDatabase">Обриши целу базу података (почетну страницу, забелешке, историјат и све беле листе)</string>
-    <!-- App setting -->
     <string name="setting_title_ui">Понашање/сучеље</string>
     <string name="setting_title_data">Резерва</string>
     <string name="setting_filter">Филтер забелешки</string>
@@ -126,15 +112,10 @@
     <string name="setting_title_fingerPrint">Заштита отиска прста</string>
     <string name="setting_theme">Тема</string>
     <string name="setting_theme_system">Система</string>
-    <string name="setting_theme_OLED">ОЛЕД</string>
-    <string name="setting_theme_wallpaper">На основу тапета</string>
-    <!-- App behavior -->
-    <string name="setting_title_hideToolbar">Сакриј траку са алаткама</string>
     <string name="setting_title_confirm_exit">Потврдите излаз из претраживача</string>
     <string name="setting_title_confirm_tab_close">Потврдите затварање картице</string>
     <string name="setting_overView_onStart_title">Прикажи на почетку</string>
     <string name="setting_gestures">Гестови</string>
-    <!-- gestures -->
     <string name="setting_title_longPress">Дуги притисак</string>
     <string name="setting_title_overViewButton">Преглед</string>
     <string name="setting_gesture_up">Провучите горе</string>
@@ -152,11 +133,8 @@
     <string name="setting_gesture_09">Отворите нову картицу</string>
     <string name="setting_gesture_10">Затворите картицу</string>
     <string name="setting_gesture_11">Прикажи брзи прекидач</string>
-    <!-- Data -->
     <string name="hint_database">Ово ће избрисати тренутне податке. Наставити?</string>
     <string name="settings_data_restore">Обновити</string>
-    <!-- Others setting -->
-    <!-- Toast -->
     <string name="toast_add_whitelist_successful">Домен је успешно додат</string>
     <string name="toast_copy_successful">Успешно копирано</string>
     <string name="toast_delete_successful">Успешно избрисано</string>
@@ -172,7 +150,6 @@
     <string name="toast_backup">Сигурносно копирајте податке\? Ово ће преписати стару резервну копију.</string>
     <string name="dialog_postOnWebsiteHint">Урл за отварање. Биће сачуван за следећу употребу.</string>
     <string name="dialog_postOnWebsite">Објавите на веб страници</string>
-    <!-- Whitelist -->
     <string name="whitelist_edit_hint">Домен</string>
     <string name="whitelist_add">Додати</string>
     <string name="menu_desktopView">Велики приказ</string>
@@ -190,6 +167,5 @@
     <string name="menu_restart">Поново покрените и учитајте картице</string>
     <string name="setting_title_screenOn">Држите екран укључен</string>
     <string name="setting_title_audioBackground">Пустите аудио у позадини</string>
-    <!-- License changelog -->
     <string name="setting_title_clipboard_record">запис у међуспремнику</string>
 </resources>

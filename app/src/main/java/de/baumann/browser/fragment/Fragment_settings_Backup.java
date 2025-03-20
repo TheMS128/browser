@@ -80,21 +80,13 @@ public class Fragment_settings_Backup extends BasePreferenceFragment {
                         final File prefsFile = new File(activity.getFilesDir(), "../shared_prefs/" + activity.getPackageName() + "_preferences.xml");
                         final File backupFile = new File(sd, "browser_backup/preferenceBackup.xml");
                         copyDirectory(activity, prefsFile, backupFile);
+                        BackupUnit.backupData(activity, 3);
                     }
                     if (sp.getBoolean("bookmark", false)) {
                         BackupUnit.backupData(activity, 4);
                     }
                     if (sp.getBoolean("bookmark_simple", false)) {
                         BackupUnit.backupData(activity, 5);
-                    }
-                    if (sp.getBoolean("java", false)) {
-                        BackupUnit.backupData(activity, 1);
-                    }
-                    if (sp.getBoolean("cookie", false)) {
-                        BackupUnit.backupData(activity, 2);
-                    }
-                    if (sp.getBoolean("dom", false)) {
-                        BackupUnit.backupData(activity, 3);
                     }
                 }
             });
@@ -121,21 +113,13 @@ public class Fragment_settings_Backup extends BasePreferenceFragment {
                     }
                     if (sp.getBoolean("settings", false)) {
                         restoreUserPrefs(context);
+                        BackupUnit.restoreData(getActivity(), 3);
                     }
                     if (sp.getBoolean("bookmark", false)) {
                         BackupUnit.restoreData(getActivity(), 4);
                     }
                     if (sp.getBoolean("bookmark_simple", false)) {
                         BackupUnit.restoreData(getActivity(), 5);
-                    }
-                    if (sp.getBoolean("java", false)) {
-                        BackupUnit.restoreData(getActivity(), 1);
-                    }
-                    if (sp.getBoolean("cookie", false)) {
-                        BackupUnit.restoreData(getActivity(), 2);
-                    }
-                    if (sp.getBoolean("dom", false)) {
-                        BackupUnit.restoreData(getActivity(), 3);
                     }
                     sp.edit().putInt("restart_changed", 1).apply();
                 }

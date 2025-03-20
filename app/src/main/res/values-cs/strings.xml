@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <!-- App -->
     <string name="app_name">FOSS Browser</string>
     <string name="app_ok">OK</string>
     <string name="app_help">Nápověda</string>
@@ -27,7 +26,6 @@
     <string name="color_orange">Oranžová</string>
     <string name="color_brown">Hnědá</string>
     <string name="color_grey">Šedá</string>
-    <!-- Menu -->
     <string name="main_menu_new_tab">Nová karta (na pozadí)</string>
     <string name="main_menu_new_tabOpen">Nová karta (na popředí)</string>
     <string name="main_omnibox_input_hint">Vyhledávejte nebo zadejte adresu URL</string>
@@ -49,7 +47,6 @@
     <string name="menu_shareClipboard">Kopírovat do schránky</string>
     <string name="menu_other_searchSite">Hledat na stránce</string>
     <string name="link_you_copied">Odkaz, který jste zkopírovali</string>
-    <!-- Dialog -->
     <string name="dialog_title_hint">Název:</string>
     <string name="dialog_URL_hint">URL:</string>
     <string name="dialog_extension_hint">Přípona (například: „.jpg“):</string>
@@ -61,9 +58,7 @@
     <string name="dialog_sortName">Řadit podle názvu</string>
     <string name="dialog_sortIcon">Řadit podle ikony</string>
     <string name="dialog_sortDate">Řadit podle data</string>
-    <!-- Settings -->
     <string name="setting_label">Nastavení</string>
-    <!-- browser setting -->
     <string name="setting_title_browser">Nastavení prohlížeče</string>
     <string name="setting_title_search_engine">Vyhledávač</string>
     <string name="setting_summary_search_engine_google">Google</string>
@@ -84,18 +79,11 @@
     <string name="target">Cíl</string>
     <string name="setting_title_save_data">Požadavek „Ušetřit data“</string>
     <string name="setting_title_profiles">Profily</string>
-    <string name="setting_title_profiles_edit">Upravit profily</string>
-    <string name="setting_title_profiles_trustedList">Důvěryhodné weby</string>
     <string name="setting_title_profiles_standardList">Standardní weby</string>
-    <string name="setting_title_profiles_protectedList">Chráněné weby</string>
-    <string name="setting_title_profiles_startApp">Profil při spuštění aplikace</string>
-    <string name="setting_title_profiles_trusted">Důvěryhodný</string>
     <string name="setting_title_profiles_standard">Standardní</string>
-    <string name="setting_title_profiles_protected">Chráněný</string>
     <string name="setting_title_profiles_dataUsage">Využití dat</string>
     <string name="setting_title_profiles_privacy">Soukromí</string>
     <string name="setting_title_profiles_Security">Zabezpečení</string>
-    <!-- browser start -->
     <string name="setting_title_images">Obrázky</string>
     <string name="setting_title_cookie">Cookies</string>
     <string name="setting_summary_cookie_delete">Pokud je povoleno, všechny cookies budou smazány. Včetně cookies důvěryhodných webových stránek.</string>
@@ -107,7 +95,6 @@
     <string name="setting_title_location">Poloha</string>
     <string name="setting_title_history">Historie</string>
     <string name="setting_summary_autofill">Povolte ukládání dat formuláře (Android Nougat a nižší) nebo službu automatického vyplňování (Android Oreo a vyšší).</string>
-    <!-- browser clear -->
     <string name="data_summary">Všechny soubory budou exportovány do adresáře „Documents/browser_backup/“ na vaší SD kartě.</string>
     <string name="clear_title_quit">Vymazat při ukončení aplikace</string>
     <string name="clear_title_cache">Vymazat mezipaměť</string>
@@ -116,7 +103,6 @@
     <string name="localData">Vymazat data uložená v zařízení</string>
     <string name="clear_title_deleteDatabase">Vymazat databázi</string>
     <string name="clear_summary_deleteDatabase">Smazat celou databázi (úvodní stránku, záložky, historii a všechny seznamy domén).</string>
-    <!-- App setting -->
     <string name="setting_title_ui">Chování/UI</string>
     <string name="setting_title_data">Záloha</string>
     <string name="setting_filter">Filtr záložek</string>
@@ -127,15 +113,10 @@
     <string name="setting_title_fingerPrint">Ochrana pomocí otisku prstu</string>
     <string name="setting_theme">Motiv</string>
     <string name="setting_theme_system">Systém</string>
-    <string name="setting_theme_OLED">OLED</string>
-    <string name="setting_theme_wallpaper">Podle tapety</string>
-    <!-- App behavior -->
-    <string name="setting_title_hideToolbar">Skrýt Panel nástrojů</string>
     <string name="setting_title_confirm_exit">Potvrdit ukončení prohlížeče</string>
     <string name="setting_title_confirm_tab_close">Potvrdit zavření karty</string>
     <string name="setting_overView_onStart_title">Zobrazit při spuštění</string>
     <string name="setting_gestures">Gesta</string>
-    <!-- gestures -->
     <string name="setting_title_longPress">Dlouhé stisknutí</string>
     <string name="setting_title_overViewButton">Přehled</string>
     <string name="setting_gesture_up">Přejetí nahoru</string>
@@ -153,11 +134,8 @@
     <string name="setting_gesture_09">Otevřít novou kartu</string>
     <string name="setting_gesture_10">Zavřít kartu</string>
     <string name="setting_gesture_11">Zobrazit rychlé přepínání</string>
-    <!-- Data -->
     <string name="hint_database">Tímto odstraníte aktuální data. Chcete pokračovat?</string>
     <string name="settings_data_restore">Obnovit</string>
-    <!-- Others setting -->
-    <!-- Toast -->
     <string name="toast_add_whitelist_successful">Doména byla úspěšně přidána</string>
     <string name="toast_copy_successful">Úspěšně zkopírováno</string>
     <string name="toast_delete_successful">Úspěšně smazáno</string>
@@ -173,7 +151,6 @@
     <string name="toast_backup">Zálohování dat\? Tím se přepíše stávající záloha.</string>
     <string name="dialog_postOnWebsiteHint">URL pro otevření. Uloží se pro další použití.</string>
     <string name="dialog_postOnWebsite">Příspěvek na webových stránkách</string>
-    <!-- Whitelist -->
     <string name="whitelist_edit_hint">Doména</string>
     <string name="whitelist_add">Přidat</string>
     <string name="menu_desktopView">Zobrazení pro PC</string>
@@ -191,8 +168,6 @@
     <string name="menu_restart">Restartování a opětovné načtení karet</string>
     <string name="setting_title_screenOn">Nechat obrazovku zapnutou</string>
     <string name="setting_title_audioBackground">Přehrát zvuk na pozadí</string>
-    <!-- License changelog -->
-    <string name="custom_searches_summary">Stačí dlouze stisknout ikonu vyhledávání na panelu nástrojů, abyste získali výsledky vyhledávání z vlastních definovaných webových stránek.</string>
     <string name="custom_searches_title">Rychlé vyhledávání na …</string>
     <string name="app_error_copy">Vyberte a zkopírujte text ručně</string>
     <string name="dialog_backGround">Otevření odkazů na pozadí …</string>
@@ -200,7 +175,6 @@
     <string name="setting_title_cookie_thirdParty">Soubory cookie třetích stran</string>
     <string name="setting_title_backup_exit">Zálohování databáze (úvodní stránka, záložky, historie a všechny seznamy domén) při ukončení\?</string>
     <string name="title_appDatabase">Databáze</string>
-    <string name="custom_domains">Vlastní domény</string>
     <string name="app_error_save">Již uloženo.</string>
     <string name="menu_shareOpenWith">Otevřete s …</string>
     <string name="app_intro_a">Děkujeme, že používáte FOSS Browser!</string>
@@ -215,6 +189,5 @@
     <string name="app_never">Nikdy</string>
     <string name="app_always">Vždy</string>
     <string name="app_session">… v probíhajícím zasedání?</string>
-    <string name="setting_title_profiles_custom">Vlastní profil</string>
     <string name="app_permission_notification">Oznámení</string>
 </resources>

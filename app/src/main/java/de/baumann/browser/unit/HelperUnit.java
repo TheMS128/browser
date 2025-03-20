@@ -81,9 +81,7 @@ import de.baumann.browser.R;
 import de.baumann.browser.activity.BrowserActivity;
 import de.baumann.browser.browser.DataURIParser;
 import de.baumann.browser.browser.JavaScriptInterface;
-import de.baumann.browser.browser.List_protected;
 import de.baumann.browser.browser.List_standard;
-import de.baumann.browser.browser.List_trusted;
 import de.baumann.browser.view.GridItem;
 import de.baumann.browser.view.NinjaToast;
 import de.baumann.browser.view.NinjaWebView;
@@ -288,9 +286,7 @@ public class HelperUnit {
 
     public static void initTheme(Activity context) {
         sp = PreferenceManager.getDefaultSharedPreferences(context);
-        if (sp.getBoolean("useOLED", false)) {
-            context.setTheme(R.style.AppTheme_OLED);
-        } else if (sp.getBoolean("useDynamicColor", false)) {
+        if (sp.getBoolean("useDynamicColor", false)) {
             switch (Objects.requireNonNull(sp.getString("sp_theme", "1"))) {
                 case "2":
                     context.setTheme(R.style.AppTheme_wallpaper_day);
@@ -499,10 +495,7 @@ public class HelperUnit {
         String tvt = tv.getText().toString().toLowerCase();
         int ofe = tvt.indexOf(textToHighlight.toLowerCase());
         Spannable wordToSpan = new SpannableString(tv.getText());
-
-        List_trusted listTrusted = new List_trusted(context);
         List_standard listStandard = new List_standard(context);
-        List_protected listProtected = new List_protected(context);
 
         for (int ofs = 0; ofs < tvt.length() && ofe != -1; ofs = ofe + 1) {
             ofe = tvt.indexOf(textToHighlight, ofs);
@@ -519,7 +512,7 @@ public class HelperUnit {
                 wordToSpan.setSpan(new ForegroundColorSpan(color2), ofe, ofe + textToHighlight.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
                 tv.setText(wordToSpan, TextView.BufferType.SPANNABLE);
                 try {
-                    if (listTrusted.isWhite(url) || listStandard.isWhite(url) || listProtected.isWhite(url)) {
+                    if ( listStandard.isWhite(url)) {
                         wordToSpan.setSpan(new ForegroundColorSpan(color), ofe, ofe + textToHighlight.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
                         tv.setText(wordToSpan, TextView.BufferType.SPANNABLE);
                     }

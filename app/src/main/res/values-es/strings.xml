@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <!-- App -->
     <string name="app_name">Navegador FOSS</string>
     <string name="app_ok">Ok</string>
     <string name="app_help">Ayuda</string>
@@ -27,7 +26,6 @@
     <string name="color_orange">Naranja</string>
     <string name="color_brown">Marrón</string>
     <string name="color_grey">Gris</string>
-    <!-- Menu -->
     <string name="main_menu_new_tab">Nueva pestaña (de fondo)</string>
     <string name="main_menu_new_tabOpen">Nueva pestaña (primer plano)</string>
     <string name="main_omnibox_input_hint">Buscar o escribir URL</string>
@@ -49,7 +47,6 @@
     <string name="menu_shareClipboard">Copiar al portapapeles</string>
     <string name="menu_other_searchSite">Buscar en sitio web</string>
     <string name="link_you_copied">Enlace copiado</string>
-    <!-- Dialog -->
     <string name="dialog_title_hint">Título de entrada:</string>
     <string name="dialog_URL_hint">URL:</string>
     <string name="dialog_extension_hint">Extensión (por ejemplo: \".jpg\"):</string>
@@ -61,9 +58,7 @@
     <string name="dialog_sortName">Ordenar por nombre</string>
     <string name="dialog_sortIcon">Ordenar por icono</string>
     <string name="dialog_sortDate">Ordenar por fecha</string>
-    <!-- Settings -->
     <string name="setting_label">Configuración</string>
-    <!-- browser setting -->
     <string name="setting_title_browser">Configuración del navegador</string>
     <string name="setting_title_search_engine">Buscadores</string>
     <string name="setting_summary_search_engine_google">Google</string>
@@ -84,18 +79,11 @@
     <string name="target">Destinatario</string>
     <string name="setting_title_save_data">Solicitar \"Guardar datos\"</string>
     <string name="setting_title_profiles">Perfiles</string>
-    <string name="setting_title_profiles_edit">Editar perfil</string>
-    <string name="setting_title_profiles_trustedList">Sitios web de confianza</string>
     <string name="setting_title_profiles_standardList">Sitios web estándar</string>
-    <string name="setting_title_profiles_protectedList">Sitios web protegidos</string>
-    <string name="setting_title_profiles_startApp">Perfil al iniciar la aplicación</string>
-    <string name="setting_title_profiles_trusted">De confianza</string>
     <string name="setting_title_profiles_standard">Estándar</string>
-    <string name="setting_title_profiles_protected">Protegido</string>
     <string name="setting_title_profiles_dataUsage">Uso de datos</string>
     <string name="setting_title_profiles_privacy">Privacidad</string>
     <string name="setting_title_profiles_Security">Seguridad</string>
-    <!-- browser start -->
     <string name="setting_title_images">Imágenes</string>
     <string name="setting_title_cookie">Cookies</string>
     <string name="setting_summary_cookie_delete">Si se activa, se eliminarán todas las cookies. Esto incluye las cookies de los sitios web de confianza.</string>
@@ -106,7 +94,6 @@
     <string name="setting_title_location">Ubicación</string>
     <string name="setting_title_history">Historial</string>
     <string name="setting_summary_autofill">Activa el guardado de datos del formulario (Android Nougat y versiones inferiores) o el servicio de autocompletado (Android Oreo y versiones superiores).</string>
-    <!-- browser clear -->
     <string name="data_summary">Todos los archivos se guardarán en el directorio \"Documents/browser_backup/\" de tu tarjeta SD.</string>
     <string name="clear_title_quit">Borrar al salir</string>
     <string name="clear_title_cache">Borrar la caché</string>
@@ -115,7 +102,6 @@
     <string name="localData">Borrar datos almacenados en el dispositivo</string>
     <string name="clear_title_deleteDatabase">Borrar base de datos</string>
     <string name="clear_summary_deleteDatabase">Borrar la base de datos (página de inicio, favoritos, historial y todas las listas de dominios).</string>
-    <!-- App setting -->
     <string name="setting_title_ui">Comportamiento/IU</string>
     <string name="setting_title_data">Respaldos</string>
     <string name="setting_filter">Filtro de marcadores</string>
@@ -126,15 +112,10 @@
     <string name="setting_title_fingerPrint">Protección de huella dactilar</string>
     <string name="setting_theme">Tema</string>
     <string name="setting_theme_system">Sistema</string>
-    <string name="setting_theme_OLED">OLED</string>
-    <string name="setting_theme_wallpaper">De acuerdo al fondo de pantalla</string>
-    <!-- App behavior -->
-    <string name="setting_title_hideToolbar">Ocultar barra de herramientas</string>
     <string name="setting_title_confirm_exit">Confirmar salida del navegador</string>
     <string name="setting_title_confirm_tab_close">Confirmar cerrado de pestañas</string>
     <string name="setting_overView_onStart_title">Mostrar al inicio</string>
     <string name="setting_gestures">Gestos</string>
-    <!-- gestures -->
     <string name="setting_title_longPress">Dejar pulsado</string>
     <string name="setting_title_overViewButton">Vista general</string>
     <string name="setting_gesture_up">Deslizar hacia arriba</string>
@@ -152,11 +133,8 @@
     <string name="setting_gesture_09">Abrir nueva pestaña</string>
     <string name="setting_gesture_10">Cerrar pestaña</string>
     <string name="setting_gesture_11">Mostrar la alternancia rápida</string>
-    <!-- Data -->
     <string name="hint_database">Esto eliminará los datos actuales. ¿Proceder?</string>
     <string name="settings_data_restore">Restaurar</string>
-    <!-- Others setting -->
-    <!-- Toast -->
     <string name="toast_add_whitelist_successful">Dominio agregado</string>
     <string name="toast_copy_successful">Copiado</string>
     <string name="toast_delete_successful">Eliminado</string>
@@ -172,7 +150,6 @@
     <string name="toast_backup">¿Datos de la copia de seguridad\? Esto sobrescribirá la copia de seguridad existente.</string>
     <string name="dialog_postOnWebsiteHint">URL a abrir. Se guardará para el próximo uso.</string>
     <string name="dialog_postOnWebsite">Ver en el sitio web</string>
-    <!-- Whitelist -->
     <string name="whitelist_edit_hint">Dominio</string>
     <string name="whitelist_add">Añadir</string>
     <string name="menu_desktopView">Vista escritorio</string>
@@ -190,9 +167,7 @@
     <string name="menu_restart">Reiniciar y recargar pestañas</string>
     <string name="setting_title_screenOn">Mantener pantalla encendida</string>
     <string name="setting_title_audioBackground">Reproducir el audio en segundo plano</string>
-    <!-- License changelog -->
     <string name="setting_title_javascript_popUp">pop-ups</string>
-    <string name="custom_searches_summary">Basta con pulsar prolongadamente el icono de búsqueda de la barra de herramientas para obtener los resultados de páginas web personalizadas.</string>
     <string name="custom_searches_title">Búsqueda rápida en …</string>
     <string name="app_error_copy">Por favor, seleccione y copie el texto manualmente</string>
     <string name="dialog_backGround">Abrir los enlaces en segundo plano …</string>
@@ -200,7 +175,6 @@
     <string name="setting_title_cookie_thirdParty">Cookies de terceros</string>
     <string name="setting_title_backup_exit">¿Hacer una copia de seguridad de la base de datos (página de inicio, marcadores, historial y todas las listas de dominios) al salir\?</string>
     <string name="title_appDatabase">Base de datos</string>
-    <string name="custom_domains">Dominios personalizados</string>
     <string name="app_error_save">Ya está guardado.</string>
     <string name="menu_shareOpenWith">Abrir con …</string>
     <string name="app_intro_c">Para empezar a navegar sólo tienes que pulsar sobre la barra de herramientas. Puedes buscar algo en la web o introducir una url para abrirla.</string>
@@ -215,6 +189,5 @@
     <string name="app_always">Siempre</string>
     <string name="app_session">… en la sesión actual?</string>
     <string name="app_never">Nunca</string>
-    <string name="setting_title_profiles_custom">Perfil personalizado</string>
     <string name="app_permission_notification">Notificaciones</string>
 </resources>

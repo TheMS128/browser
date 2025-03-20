@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <!-- App -->
     <string name="app_name">Browserul FOSS</string>
     <string name="app_ok">Bine</string>
     <string name="app_help">Ajutor</string>
@@ -27,7 +26,6 @@
     <string name="color_orange">Portocaliu</string>
     <string name="color_brown">Maro</string>
     <string name="color_grey">Gri</string>
-    <!-- Menu -->
     <string name="main_menu_new_tab">Filă nouă (în fundal)</string>
     <string name="main_menu_new_tabOpen">Fereastră nouă (vizualizare)</string>
     <string name="main_omnibox_input_hint">Căutaţi sau introduceţi URL-ul</string>
@@ -49,7 +47,6 @@
     <string name="menu_shareClipboard">Copiază în clipboard</string>
     <string name="menu_other_searchSite">Căutare pe site</string>
     <string name="link_you_copied">Link copiat</string>
-    <!-- Dialog -->
     <string name="dialog_title_hint">Titlu:</string>
     <string name="dialog_URL_hint">URL:</string>
     <string name="dialog_extension_hint">Extensie (de exemplu: \".jpg\"):</string>
@@ -61,9 +58,7 @@
     <string name="dialog_sortName">Sortează după nume</string>
     <string name="dialog_sortIcon">Sortează după pictogramă</string>
     <string name="dialog_sortDate">Sortează după dată</string>
-    <!-- Settings -->
     <string name="setting_label">Setări</string>
-    <!-- browser setting -->
     <string name="setting_title_browser">Setări browser</string>
     <string name="setting_title_search_engine">Motor de căutare</string>
     <string name="setting_summary_search_engine_google">Google</string>
@@ -84,18 +79,11 @@
     <string name="target">Destinație</string>
     <string name="setting_title_save_data">Solicită \'Salvare date\'</string>
     <string name="setting_title_profiles">Profiluri</string>
-    <string name="setting_title_profiles_edit">Editează profilurile</string>
-    <string name="setting_title_profiles_trustedList">Site-uri de încredere</string>
     <string name="setting_title_profiles_standardList">Site-uri web standard</string>
-    <string name="setting_title_profiles_protectedList">Site-uri protejate</string>
-    <string name="setting_title_profiles_startApp">Profil la pornirea aplicației</string>
-    <string name="setting_title_profiles_trusted">De încredere</string>
     <string name="setting_title_profiles_standard">Standard</string>
-    <string name="setting_title_profiles_protected">Protejat</string>
     <string name="setting_title_profiles_dataUsage">Utilizarea datelor</string>
     <string name="setting_title_profiles_privacy">Confidențialitate</string>
     <string name="setting_title_profiles_Security">Securitate</string>
-    <!-- browser start -->
     <string name="setting_title_images">Imagini</string>
     <string name="setting_title_cookie">Cookie-uri</string>
     <string name="setting_summary_cookie_delete">Dacă este activat, toate cookie-urile vor fi șterse. De asemenea, cookie-urile site-urilor web de încredere.</string>
@@ -107,7 +95,6 @@
     <string name="setting_title_location">Locație</string>
     <string name="setting_title_history">Istoric</string>
     <string name="setting_summary_autofill">Activează salvarea datelor din formular (Android Nougat și mai jos) sau serviciul de completare automată (Android Oreo și versiuni ulterioare).</string>
-    <!-- browser clear -->
     <string name="data_summary">Toate fișierele vor fi exportate în dosarul \"Documente/browser_backup/\" de pe cardul SD.</string>
     <string name="clear_title_quit">Curățare la ieșirea din aplicație</string>
     <string name="clear_title_cache">Golire memorie cache</string>
@@ -116,7 +103,6 @@
     <string name="localData">Șterge datele stocate pe dispozitiv</string>
     <string name="clear_title_deleteDatabase">Ștergere bază de date</string>
     <string name="clear_summary_deleteDatabase">Ștergeți întreaga bază de date (pagina de start, marcajele, istoricul și toate listele de domenii).</string>
-    <!-- App setting -->
     <string name="setting_title_ui">Comportament/IU</string>
     <string name="setting_title_data">Copie de rezervă</string>
     <string name="setting_filter">Filtru marcaje</string>
@@ -127,15 +113,10 @@
     <string name="setting_title_fingerPrint">Protecție prin amprentă</string>
     <string name="setting_theme">Temă</string>
     <string name="setting_theme_system">Sistem</string>
-    <string name="setting_theme_OLED">OLED</string>
-    <string name="setting_theme_wallpaper">Bazat pe imaginea de fundal</string>
-    <!-- App behavior -->
-    <string name="setting_title_hideToolbar">Ascunde bara de instrumente</string>
     <string name="setting_title_confirm_exit">Confirmă ieșirea din browser</string>
     <string name="setting_title_confirm_tab_close">Confirmă închiderea filei</string>
     <string name="setting_overView_onStart_title">Arată la pornire</string>
     <string name="setting_gestures">Gesturi</string>
-    <!-- gestures -->
     <string name="setting_title_longPress">Apăsare lungă</string>
     <string name="setting_title_overViewButton">Privire de ansamblu</string>
     <string name="setting_gesture_up">Glisare în sus</string>
@@ -153,11 +134,8 @@
     <string name="setting_gesture_09">Deschide o filă nouă</string>
     <string name="setting_gesture_10">Închide fila</string>
     <string name="setting_gesture_11">Afișează comutarea rapidă</string>
-    <!-- Data -->
     <string name="hint_database">Aceasta va șterge datele curente. Continui?</string>
     <string name="settings_data_restore">Restaurare</string>
-    <!-- Others setting -->
-    <!-- Toast -->
     <string name="toast_add_whitelist_successful">Domeniu adăugat cu succes</string>
     <string name="toast_copy_successful">Copiat cu succes</string>
     <string name="toast_delete_successful">Eliminat cu succes</string>
@@ -173,7 +151,6 @@
     <string name="toast_backup">Date de rezervă\? Aceasta va suprascrie copia de rezervă existentă.</string>
     <string name="dialog_postOnWebsiteHint">URL pentru deschidere. Va fi salvat pentru următoarea utilizare.</string>
     <string name="dialog_postOnWebsite">Postează pe site</string>
-    <!-- Whitelist -->
     <string name="whitelist_edit_hint">Domeniu</string>
     <string name="whitelist_add">Adaugă</string>
     <string name="menu_desktopView">Vizualizare desktop</string>
@@ -191,8 +168,6 @@
     <string name="menu_restart">Repornește și reîncarcă filele</string>
     <string name="setting_title_screenOn">Păstrează ecranul pornit</string>
     <string name="setting_title_audioBackground">Redă sunetul în fundal</string>
-    <!-- License changelog -->
-    <string name="custom_searches_summary">Trebuie doar să apăsați lung pe pictograma de căutare din bara de instrumente pentru a obține rezultate de căutare de pe site-urile web definite de dumneavoastră.</string>
     <string name="custom_searches_title">Căutare rapidă pe …</string>
     <string name="app_error_copy">Vă rugăm să selectați și să copiați manual textul</string>
     <string name="dialog_backGround">Deschiderea linkurilor în fundal …</string>
@@ -200,7 +175,6 @@
     <string name="setting_title_cookie_thirdParty">Cookie-uri terță parte</string>
     <string name="setting_title_backup_exit">Copie de rezervă a bazei de date (pagina de start, marcajele, istoricul și toate listele de domenii) la ieșire\?</string>
     <string name="title_appDatabase">Baza de date</string>
-    <string name="custom_domains">Domenii personalizate</string>
     <string name="app_error_save">Deja salvat.</string>
     <string name="menu_shareOpenWith">Deschideți cu …</string>
     <string name="app_intro_c">Pentru a începe să navigați, trebuie doar să apăsați pe bara de instrumente. Puteți căuta ceva pe internet sau puteți introduce o adresă URL pentru a o deschide.</string>
@@ -215,6 +189,5 @@
     <string name="app_never">Niciodată</string>
     <string name="app_always">Întotdeauna</string>
     <string name="app_session">… în sesiunea curentă?</string>
-    <string name="setting_title_profiles_custom">Profil personalizat</string>
     <string name="app_permission_notification">Notificări</string>
 </resources>

@@ -8,18 +8,15 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 
-import android.view.Window;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ListView;
-import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
-import androidx.core.content.ContextCompat;
 import androidx.preference.PreferenceManager;
 
 import com.google.android.material.card.MaterialCardView;
@@ -29,9 +26,7 @@ import java.util.List;
 import java.util.Objects;
 
 import de.baumann.browser.R;
-import de.baumann.browser.browser.List_protected;
 import de.baumann.browser.browser.List_standard;
-import de.baumann.browser.browser.List_trusted;
 import de.baumann.browser.database.RecordAction;
 import de.baumann.browser.unit.BrowserUnit;
 import de.baumann.browser.unit.HelperUnit;
@@ -43,11 +38,7 @@ public class Settings_ProfileList extends AppCompatActivity {
 
     private AdapterProfileList adapter;
     private List<String> list;
-    private List_protected listProtected;
     private List_standard listStandard;
-    private List_trusted listTrusted;
-
-    private String listToLoad;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -55,47 +46,15 @@ public class Settings_ProfileList extends AppCompatActivity {
 
         HelperUnit.initTheme(this);
         if (getSupportActionBar() != null) getSupportActionBar().hide();
-        Window window = this.getWindow();
-        window.setStatusBarColor(ContextCompat.getColor(this, R.color.statusBar));
         setContentView(R.layout.activity_settings_profile_list);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
 
-        SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(this);
-        listToLoad = sp.getString("listToLoad", "standard");
-
-        switch (listToLoad) {
-            case "protected":
-                setTitle(R.string.setting_title_profiles_protectedList);
-                break;
-            case "standard":
-                setTitle(R.string.setting_title_profiles_standardList);
-                break;
-            case "trusted":
-                setTitle(R.string.setting_title_profiles_trustedList);
-                break;
-        }
-
-        listProtected = new List_protected(this);
         listStandard = new List_standard(this);
-        listTrusted = new List_trusted(this);
-
         RecordAction action = new RecordAction(this);
         action.open(false);
-
-        switch (listToLoad) {
-            case "protected":
-                list = action.listDomains(RecordUnit.TABLE_PROTECTED);
-                break;
-            case "standard":
-                list = action.listDomains(RecordUnit.TABLE_STANDARD);
-                break;
-            case "trusted":
-                list = action.listDomains(RecordUnit.TABLE_TRUSTED);
-                break;
-        }
-
+        list = action.listDomains(RecordUnit.TABLE_STANDARD);
         action.close();
 
         ListView listView = findViewById(R.id.whitelist);
@@ -108,8 +67,6 @@ public class Settings_ProfileList extends AppCompatActivity {
                 View v = super.getView(position, convertView, parent);
                 ImageView deleteEntry = v.findViewById(R.id.iconView);
                 deleteEntry.setVisibility(View.VISIBLE);
-                TextView textView = v.findViewById(R.id.dateView);
-                textView.setVisibility(View.GONE);
                 MaterialCardView cardView = v.findViewById(R.id.cardView);
                 cardView.setVisibility(View.GONE);
                 deleteEntry.setOnClickListener(v1 -> {
@@ -118,19 +75,29 @@ public class Settings_ProfileList extends AppCompatActivity {
                     builder.setTitle(R.string.menu_delete);
                     builder.setMessage(R.string.hint_database);
                     builder.setPositiveButton(R.string.app_ok, (dialog, whichButton) -> {
-                        switch (listToLoad) {
-                            case "protected":
-                                listProtected.removeDomain(list.get(position));
-                                break;
-                            case "standard":
-                                listStandard.removeDomain(list.get(position));
-                                break;
-                            case "trusted":
-                                listTrusted.removeDomain(list.get(position));
-                                break;
-                        }
+                        listStandard.removeDomain(list.get(position));
                         list.remove(position);
                         notifyDataSetChanged();
+
+                        SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(this.getContext());
+                        sp.edit()
+                                .remove(list.get(position) + "_saveData")
+                                .remove(list.get(position) + "_images")
+                                .remove(list.get(position) + "_adBlock")
+                                .remove(list.get(position) + "_trackingULS")
+                                .remove(list.get(position) + "_location")
+                                .remove(list.get(position) + "_fingerPrintProtection")
+                                .remove(list.get(position) + "_cookies")
+                                .remove(list.get(position) + "_cookiesThirdParty")
+                                .remove(list.get(position) + "_deny_cookie_banners")
+                                .remove(list.get(position) + "_javascript")
+                                .remove(list.get(position) + "_javascriptPopUp")
+                                .remove(list.get(position) + "_saveHistory")
+                                .remove(list.get(position) + "_camera")
+                                .remove(list.get(position) + "_microphone")
+                                .remove(list.get(position) + "_dom")
+                                .remove(list.get(position) + "_night")
+                                .remove(list.get(position) + "_desktop").apply();
                         NinjaToast.show(Settings_ProfileList.this, R.string.toast_delete_successful);
                     });
                     builder.setNegativeButton(R.string.app_cancel, (dialog, whichButton) -> dialog.cancel());
@@ -158,50 +125,13 @@ public class Settings_ProfileList extends AppCompatActivity {
                 if (action1.checkDomain(domain, RecordUnit.TABLE_PROTECTED)) {
                     NinjaToast.show(Settings_ProfileList.this, R.string.toast_domain_already_exists);
                 } else {
-                    switch (listToLoad) {
-                        case "protected":
-                            listProtected.addDomain(domain.trim());
-                            break;
-                        case "standard":
-                            listStandard.addDomain(domain.trim());
-                            break;
-                        case "trusted":
-                            listTrusted.addDomain(domain.trim());
-                            break;
-                    }
+                    listStandard.addDomain(domain.trim());
                     list.add(0, domain.trim());
                     adapter.notifyDataSetChanged();
                     NinjaToast.show(Settings_ProfileList.this, R.string.toast_add_whitelist_successful);
                 }
                 action1.close();
             }
-        });
-
-        Button profileListDelete = findViewById(R.id.profileListDelete);
-        profileListDelete.setOnClickListener(v -> {
-            MaterialAlertDialogBuilder builder = new MaterialAlertDialogBuilder(this);
-            builder.setIcon(R.drawable.icon_delete);
-            builder.setTitle(R.string.menu_delete);
-            builder.setMessage(R.string.hint_database);
-            builder.setPositiveButton(R.string.app_ok, (dialog, whichButton) -> {
-                switch (listToLoad) {
-                    case "protected":
-                        listProtected.clearDomains();
-                        break;
-                    case "standard":
-                        listStandard.clearDomains();
-                        break;
-                    case "trusted":
-                        listTrusted.clearDomains();
-                        break;
-                }
-                list.clear();
-                adapter.notifyDataSetChanged();
-            });
-            builder.setNegativeButton(R.string.app_cancel, (dialog, whichButton) -> dialog.cancel());
-            AlertDialog dialog = builder.create();
-            dialog.show();
-            HelperUnit.setupDialog(this, dialog);
         });
     }
 

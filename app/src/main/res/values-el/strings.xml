@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <!-- App -->
     <string name="app_name">FOSS Browser</string>
     <string name="app_ok">ΟΚ</string>
     <string name="app_help">Βοήθεια</string>
@@ -27,7 +26,6 @@
     <string name="color_orange">Προτοκαλί</string>
     <string name="color_brown">Καφέ</string>
     <string name="color_grey">Γκρι</string>
-    <!-- Menu -->
     <string name="main_menu_new_tab">Νέα καρτέλα (παρασκήνιο)</string>
     <string name="main_menu_new_tabOpen">Νέα καρτέλα (προσκήνιο)</string>
     <string name="main_omnibox_input_hint">Αναζήτηση ή πληκτρολογήστε URL</string>
@@ -49,7 +47,6 @@
     <string name="menu_shareClipboard">Αντιγραφή στο πρόχειρο</string>
     <string name="menu_other_searchSite">Αναζήτηση στον ιστότοπο</string>
     <string name="link_you_copied">Σύνδεσμος που αντιγράψατε</string>
-    <!-- Dialog -->
     <string name="dialog_title_hint">Τίτλος:</string>
     <string name="dialog_URL_hint">url:</string>
     <string name="dialog_extension_hint">Επέκταση (για παράδειγμα: \".jpg\"):</string>
@@ -61,9 +58,7 @@
     <string name="dialog_sortName">Ταξινόμηση κατά όνομα</string>
     <string name="dialog_sortIcon">Ταξινόμηση κατά εικονίδιο</string>
     <string name="dialog_sortDate">Ταξινόμηση κατά ημερομηνία</string>
-    <!-- Settings -->
     <string name="setting_label">Ρυθμίσεις</string>
-    <!-- browser setting -->
     <string name="setting_title_browser">Ρυθμίσεις Περιηγητή</string>
     <string name="setting_title_search_engine">Μηχανή Αναζήτησης</string>
     <string name="setting_summary_search_engine_google">Google</string>
@@ -84,18 +79,11 @@
     <string name="target">Προορισμός</string>
     <string name="setting_title_save_data">Αίτημα \'Αποθήκευση Δεδομένων\'</string>
     <string name="setting_title_profiles">Προφίλ</string>
-    <string name="setting_title_profiles_edit">Επεξεργασία προφίλ</string>
-    <string name="setting_title_profiles_trustedList">Αξιόπιστες ιστοσελίδες</string>
     <string name="setting_title_profiles_standardList">Τυπικές ιστοσελίδες</string>
-    <string name="setting_title_profiles_protectedList">Προστατευμένες ιστοσελίδες</string>
-    <string name="setting_title_profiles_startApp">Προφίλ κατά την έναρξη της εφαρμογής</string>
-    <string name="setting_title_profiles_trusted">Αξιόπιστο</string>
     <string name="setting_title_profiles_standard">Κανονικό</string>
-    <string name="setting_title_profiles_protected">Προστατευμένο</string>
     <string name="setting_title_profiles_dataUsage">Χρήση δεδομένων</string>
     <string name="setting_title_profiles_privacy">Απόρρητο</string>
     <string name="setting_title_profiles_Security">Ασφάλεια</string>
-    <!-- browser start -->
     <string name="setting_title_images">Εικόνες</string>
     <string name="setting_title_cookie">Cookies</string>
     <string name="setting_summary_cookie_delete">Αν ενεργοποιηθεί, όλα τα cookies θα διαγραφούν. Επίσης τα Cookies των αξιόπιστων ιστοσελίδων.</string>
@@ -107,7 +95,6 @@
     <string name="setting_title_location">Τοποθεσία</string>
     <string name="setting_title_history">Ιστορικό</string>
     <string name="setting_summary_autofill">Ενεργοποιήστε την αποθήκευση δεδομένων φόρμας (Android Nougat και κάτω) ή την υπηρεσία αυτόματης συμπλήρωσης (Android Oreo και παραπάνω).</string>
-    <!-- browser clear -->
     <string name="data_summary">Όλα τα αρχεία θα εξαχθούν στον κατάλογο \"Documents/browser_backup/\" της κάρτας SD σας.</string>
     <string name="clear_title_quit">Διαγραφή κατά την έξοδο της εφαρμογής</string>
     <string name="clear_title_cache">Εκκαθάριση προσωρινής μνήμης</string>
@@ -116,7 +103,6 @@
     <string name="localData">Εκκαθάριση αποθηκευμένων δεδομένων συσκευής</string>
     <string name="clear_title_deleteDatabase">Διαγραφή βάσης δεδομένων</string>
     <string name="clear_summary_deleteDatabase">Διαγράψτε ολόκληρη τη βάση δεδομένων (αρχική σελίδα, σελιδοδείκτες, ιστορικό και όλες τις λίστες τομέων).</string>
-    <!-- App setting -->
     <string name="setting_title_ui">Συμπεριφορά/UI</string>
     <string name="setting_title_data">Αντίγραφα ασφαλείας</string>
     <string name="setting_filter">Φίλτρο σελιδοδεικτών</string>
@@ -127,15 +113,10 @@
     <string name="setting_title_fingerPrint">Προστασία δακτυλικών αποτυπωμάτων</string>
     <string name="setting_theme">Θέμα</string>
     <string name="setting_theme_system">Σύστημα</string>
-    <string name="setting_theme_OLED">OLED</string>
-    <string name="setting_theme_wallpaper">Βασισμένο στην Ταπετσαρία</string>
-    <!-- App behavior -->
-    <string name="setting_title_hideToolbar">Απόκρυψη γραμμής εργαλείων</string>
     <string name="setting_title_confirm_exit">Επιβεβαίωση εξόδου προγράμματος περιήγησης</string>
     <string name="setting_title_confirm_tab_close">Επιβεβαίωση κλεισίματος καρτέλας</string>
     <string name="setting_overView_onStart_title">Εμφάνιση κατά την έναρξη</string>
     <string name="setting_gestures">Χειρονομίες</string>
-    <!-- gestures -->
     <string name="setting_title_longPress">Πιέστε και κρατήστε</string>
     <string name="setting_title_overViewButton">Επισκόπηση</string>
     <string name="setting_gesture_up">Σύρετε προς τα επάνω</string>
@@ -153,11 +134,8 @@
     <string name="setting_gesture_09">Άνοιγμα νέας καρτέλας</string>
     <string name="setting_gesture_10">Κλείσιμο καρτέλας</string>
     <string name="setting_gesture_11">Εμφάνιση γρήγορης εναλλαγής</string>
-    <!-- Data -->
     <string name="hint_database">Αυτό θα διαγράψει τα τρέχοντα δεδομένα. Συνέχεια;</string>
     <string name="settings_data_restore">Επαναφορά</string>
-    <!-- Others setting -->
-    <!-- Toast -->
     <string name="toast_add_whitelist_successful">Ο Domain προστέθηκε με επιτυχία</string>
     <string name="toast_copy_successful">Αντιγράφτηκε με επιτυχία</string>
     <string name="toast_delete_successful">Διαγράφηκε με επιτυχία</string>
@@ -173,7 +151,6 @@
     <string name="toast_backup">Δημιουργία αντιγράφων ασφαλείας δεδομένων; Αυτό θα αντικαταστήσει το υπάρχον αντίγραφο ασφαλείας.</string>
     <string name="dialog_postOnWebsiteHint">URL για άνοιγμα. Θα αποθηκευτεί για επόμενη χρήση.</string>
     <string name="dialog_postOnWebsite">Δημοσίευση στον ιστότοπο</string>
-    <!-- Whitelist -->
     <string name="whitelist_add">Προσθήκη</string>
     <string name="menu_desktopView">Προβολή για υπολογιστή</string>
     <string name="menu_dayView">Προβολή ημέρας</string>
@@ -190,9 +167,7 @@
     <string name="menu_restart">Επανεκκίνηση και επαναφόρτωση καρτελών</string>
     <string name="setting_title_screenOn">Κρατήστε την οθόνη ανοιχτή</string>
     <string name="setting_title_audioBackground">Αναπαραγωγή ήχου στο φόντο</string>
-    <!-- License changelog -->
     <string name="whitelist_edit_hint">Τομέας</string>
-    <string name="custom_searches_summary">Απλά πατήστε παρατεταμένα το εικονίδιο αναζήτησης στη γραμμή εργαλείων, για να λάβετε αποτελέσματα αναζήτησης από αυτοκαθοριζόμενους ιστότοπους.</string>
     <string name="custom_searches_title">Γρήγορη αναζήτηση σε …</string>
     <string name="app_error_copy">Παρακαλούμε επιλέξτε και αντιγράψτε το κείμενο χειροκίνητα</string>
     <string name="dialog_backGround">Άνοιγμα συνδέσμων στο παρασκήνιο …</string>
@@ -200,7 +175,6 @@
     <string name="setting_title_cookie_thirdParty">Cookies τρίτων μερών</string>
     <string name="setting_title_backup_exit">Δημιουργία αντιγράφων ασφαλείας της βάσης δεδομένων (αρχική σελίδα, σελιδοδείκτες, ιστορικό και όλες οι λίστες τομέων) κατά την έξοδο;</string>
     <string name="title_appDatabase">Βάση δεδομένων</string>
-    <string name="custom_domains">Προσαρμοσμένοι τομείς</string>
     <string name="app_error_save">Έχει ήδη αποθηκευτεί.</string>
     <string name="menu_shareOpenWith">Ανοίξτε με …</string>
     <string name="app_intro_d">Μπορείτε επίσης να ανοίξετε τις ρυθμίσεις και να διαμορφώσετε το FOSS Browser σύμφωνα με τις ανάγκες σας.</string>
@@ -215,6 +189,5 @@
     <string name="app_never">Ποτέ</string>
     <string name="app_always">Πάντα</string>
     <string name="app_session">… στην τρέχουσα σύνοδο;</string>
-    <string name="setting_title_profiles_custom">Προσαρμοσμένο προφίλ</string>
     <string name="app_permission_notification">Ειδοποιήσεις</string>
 </resources>

@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <!-- App -->
     <string name="app_name">FOSS浏览器</string>
     <string name="app_ok">确定</string>
     <string name="app_help">帮助</string>
@@ -27,7 +26,6 @@
     <string name="color_orange">橙色</string>
     <string name="color_brown">棕色</string>
     <string name="color_grey">灰色</string>
-    <!-- Menu -->
     <string name="main_menu_new_tab">新标签页(后台)</string>
     <string name="main_menu_new_tabOpen">新标签页(前台)</string>
     <string name="main_omnibox_input_hint">搜索或输入网址</string>
@@ -49,7 +47,6 @@
     <string name="menu_shareClipboard">复制到剪切板</string>
     <string name="menu_other_searchSite">页面内搜索</string>
     <string name="link_you_copied">您复制的链接</string>
-    <!-- Dialog -->
     <string name="dialog_title_hint">标题:</string>
     <string name="dialog_URL_hint">URL：</string>
     <string name="dialog_extension_hint">扩展名 (例如: \".jpg\"):</string>
@@ -61,9 +58,7 @@
     <string name="dialog_sortName">按名称排序</string>
     <string name="dialog_sortIcon">按图标排序</string>
     <string name="dialog_sortDate">按时间排序</string>
-    <!-- Settings -->
     <string name="setting_label">设置</string>
-    <!-- browser setting -->
     <string name="setting_title_browser">浏览器设置</string>
     <string name="setting_title_search_engine">搜索引擎</string>
     <string name="setting_summary_search_engine_google">Google</string>
@@ -84,18 +79,11 @@
     <string name="target">目标</string>
     <string name="setting_title_save_data">请求“保存数据”</string>
     <string name="setting_title_profiles">配置文件</string>
-    <string name="setting_title_profiles_edit">编辑配置文件</string>
-    <string name="setting_title_profiles_trustedList">信任的网站</string>
     <string name="setting_title_profiles_standardList">标准网站</string>
-    <string name="setting_title_profiles_protectedList">受保护的网站</string>
-    <string name="setting_title_profiles_startApp">应用程序启动时的配置文件</string>
-    <string name="setting_title_profiles_trusted">受信任</string>
     <string name="setting_title_profiles_standard">标准</string>
-    <string name="setting_title_profiles_protected">受保护</string>
     <string name="setting_title_profiles_dataUsage">数据使用量</string>
     <string name="setting_title_profiles_privacy">隐私</string>
     <string name="setting_title_profiles_Security">安全性</string>
-    <!-- browser start -->
     <string name="setting_title_images">图像</string>
     <string name="setting_title_cookie">Cookies</string>
     <string name="setting_summary_cookie_delete">如果启用，所有Cookies都将被删除。包括信任的网站。</string>
@@ -107,7 +95,6 @@
     <string name="setting_title_location">地理位置</string>
     <string name="setting_title_history">历史记录</string>
     <string name="setting_summary_autofill">启用表单数据保存（Android 7及以下版本）或自动填充服务（Android 8及以上版本）。</string>
-    <!-- browser clear -->
     <string name="data_summary">所有文件将导出到您SD卡的“Documents/browser_backup/”目录。</string>
     <string name="clear_title_quit">在应用退出时清除</string>
     <string name="clear_title_cache">清除缓存</string>
@@ -116,7 +103,6 @@
     <string name="localData">清除设备上存储的数据</string>
     <string name="clear_title_deleteDatabase">删除数据库</string>
     <string name="clear_summary_deleteDatabase">删除整个数据库（起始页、书签、历史记录和所有白名单）。</string>
-    <!-- App setting -->
     <string name="setting_title_ui">行为/界面</string>
     <string name="setting_title_data">备份</string>
     <string name="setting_filter">书签过滤器</string>
@@ -127,15 +113,10 @@
     <string name="setting_title_fingerPrint">指纹保护</string>
     <string name="setting_theme">主题</string>
     <string name="setting_theme_system">系統</string>
-    <string name="setting_theme_OLED">OLED</string>
-    <string name="setting_theme_wallpaper">基于壁纸</string>
-    <!-- App behavior -->
-    <string name="setting_title_hideToolbar">隐藏工具栏</string>
     <string name="setting_title_confirm_exit">确认退出浏览器</string>
     <string name="setting_title_confirm_tab_close">确认关闭标签页</string>
     <string name="setting_overView_onStart_title">启动时显示</string>
     <string name="setting_gestures">手势</string>
-    <!-- gestures -->
     <string name="setting_title_longPress">长按</string>
     <string name="setting_title_overViewButton">概览</string>
     <string name="setting_gesture_up">向上滑动</string>
@@ -153,11 +134,8 @@
     <string name="setting_gesture_09">打开新标签页</string>
     <string name="setting_gesture_10">关闭标签页</string>
     <string name="setting_gesture_11">显示快速切换</string>
-    <!-- Data -->
     <string name="hint_database">这将删除当前数据。是否继续？</string>
     <string name="settings_data_restore">还原</string>
-    <!-- Others setting -->
-    <!-- Toast -->
     <string name="toast_add_whitelist_successful">添加域名成功</string>
     <string name="toast_copy_successful">复制成功</string>
     <string name="toast_delete_successful">删除成功</string>
@@ -173,7 +151,6 @@
     <string name="toast_backup">备份数据？这将覆盖现有的旧备份。</string>
     <string name="dialog_postOnWebsiteHint">打开的网址。将被保存起来供下次使用。</string>
     <string name="dialog_postOnWebsite">在网站上发布</string>
-    <!-- Whitelist -->
     <string name="whitelist_edit_hint">域名</string>
     <string name="whitelist_add">添加</string>
     <string name="menu_desktopView">桌面端网页</string>
@@ -191,8 +168,6 @@
     <string name="menu_restart">重新启动并重新加载标签</string>
     <string name="setting_title_screenOn">保持屏幕开启</string>
     <string name="setting_title_audioBackground">在后台播放音频</string>
-    <!-- License changelog -->
-    <string name="custom_searches_summary">只需长按工具栏上的搜索图标，就能从自己定义的网站上获得搜索结果。</string>
     <string name="custom_searches_title">快速搜索…</string>
     <string name="app_error_copy">请手动选择并复制文本</string>
     <string name="dialog_backGround">在后台打开链接 …</string>
@@ -200,7 +175,6 @@
     <string name="setting_title_cookie_thirdParty">第三方 Cookies</string>
     <string name="setting_title_backup_exit">退出时备份数据库（起始页、书签、历史记录和所有域列表）？</string>
     <string name="title_appDatabase">数据库</string>
-    <string name="custom_domains">自定义域名</string>
     <string name="app_error_save">已经保存。</string>
     <string name="menu_shareOpenWith">打开 …</string>
     <string name="app_intro_b">当前打开的网站是 FOSS 浏览器的 WIKI。该网站也被保存为您的第一个书签。在 WIKI 上，您可以找到有用的提示和链接。</string>
@@ -214,7 +188,6 @@
     <string name="app_no">没有</string>
     <string name="app_never">从不</string>
     <string name="app_always">始终如一</string>
-    <string name="setting_title_profiles_custom">自定义配置文件</string>
     <string name="app_session">......在本届会议上？</string>
     <string name="app_permission_notification">通知</string>
 </resources>

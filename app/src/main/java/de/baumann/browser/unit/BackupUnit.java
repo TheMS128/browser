@@ -58,9 +58,7 @@ import java.util.concurrent.Executors;
 import java.util.regex.Matcher;
 
 import de.baumann.browser.R;
-import de.baumann.browser.browser.List_protected;
 import de.baumann.browser.browser.List_standard;
-import de.baumann.browser.browser.List_trusted;
 import de.baumann.browser.database.Record;
 import de.baumann.browser.database.RecordAction;
 import de.baumann.browser.view.NinjaToast;
@@ -121,12 +119,6 @@ public class BackupUnit {
         executor.execute(() -> {
             //Background work here
             switch (i) {
-                case 1:
-                    exportList(context, 1);
-                    break;
-                case 3:
-                    exportList(context, 3);
-                    break;
                 case 4:
                     exportBookmarks(context);
                     break;
@@ -134,7 +126,7 @@ public class BackupUnit {
                     exportBookmarksSimple(context);
                     break;
                 default:
-                    exportList(context, 2);
+                    exportList(context);
                     break;
             }
             handler.post(() -> {
@@ -150,12 +142,6 @@ public class BackupUnit {
         executor.execute(() -> {
             //Background work here
             switch (i) {
-                case 1:
-                    importList(context, 1);
-                    break;
-                case 3:
-                    importList(context, 3);
-                    break;
                 case 4:
                     importBookmarks(context);
                     break;
@@ -163,7 +149,7 @@ public class BackupUnit {
                     importBookmarksSimple(context);
                     break;
                 default:
-                    importList(context, 2);
+                    importList(context);
                     break;
             }
             handler.post(() -> {
@@ -173,25 +159,13 @@ public class BackupUnit {
         });
     }
 
-    public static void exportList(Context context, int i) {
+    public static void exportList(Context context) {
         RecordAction action = new RecordAction(context);
         List<String> list;
         String filename;
         action.open(false);
-        switch (i) {
-            case 1:
-                list = action.listDomains(RecordUnit.TABLE_TRUSTED);
-                filename = "list_trusted.txt";
-                break;
-            case 3:
-                list = action.listDomains(RecordUnit.TABLE_STANDARD);
-                filename = "list_standard.txt";
-                break;
-            default:
-                list = action.listDomains(RecordUnit.TABLE_PROTECTED);
-                filename = "list_protected.txt";
-                break;
-        }
+        list = action.listDomains(RecordUnit.TABLE_STANDARD);
+        filename = "list_savedWebSites.txt";
         action.close();
         File file = new File(Environment.getExternalStoragePublicDirectory(DIRECTORY_DOCUMENTS), "browser_backup//" + filename);
         try {
@@ -206,56 +180,21 @@ public class BackupUnit {
         catch (Exception ignored) { }
     }
 
-    public static void importList(Context context, int i) {
+    public static void importList(Context context) {
         try {
             String filename;
-            List_trusted listTrusted = null;
-            List_protected listProtected = null;
-            List_standard listStandard = null;
-            switch (i) {
-                case 1:
-                    listTrusted = new List_trusted(context);
-                    filename = "list_trusted.txt";
-                    break;
-                case 3:
-                    listStandard = new List_standard(context);
-                    filename = "list_standard.txt";
-                    break;
-                default:
-                    listProtected = new List_protected(context);
-                    filename = "list_protected.txt";
-                    break;
-            }
+            List_standard listStandard;
+            listStandard = new List_standard(context);
+            filename = "list_savedWebSites.txt";
             File file = new File(Environment.getExternalStoragePublicDirectory(DIRECTORY_DOCUMENTS), "browser_backup//" + filename);
             RecordAction action = new RecordAction(context);
             action.open(true);
-
-            switch (i) {
-                case 1:
-                    listTrusted.clearDomains();
-                    break;
-                case 3:
-                    listStandard.clearDomains();
-                    break;
-                default:
-                    listProtected.clearDomains();
-                    break;
-            }
+            listStandard.clearDomains();
 
             BufferedReader reader = new BufferedReader(new FileReader(file));
             String line;
             while ((line = reader.readLine()) != null) {
-                switch (i) {
-                    case 1:
-                        if (!action.checkDomain(line, RecordUnit.TABLE_TRUSTED)) listTrusted.addDomain(line);
-                        break;
-                    case 3:
-                        if (!action.checkDomain(line, RecordUnit.TABLE_STANDARD)) listStandard.addDomain(line);
-                        break;
-                    default:
-                        if (!action.checkDomain(line, RecordUnit.TABLE_PROTECTED)) listProtected.addDomain(line);
-                        break;
-                }
+                if (!action.checkDomain(line, RecordUnit.TABLE_STANDARD)) listStandard.addDomain(line);
             }
             reader.close();
             action.close(); }

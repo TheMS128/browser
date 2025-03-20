@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <!-- App -->
     <string name="app_name">FOSS Browser</string>
     <string name="app_ok">OK</string>
     <string name="app_help">Aiuto</string>
@@ -27,7 +26,6 @@
     <string name="color_orange">Arancione</string>
     <string name="color_brown">Marrone</string>
     <string name="color_grey">Grigio</string>
-    <!-- Menu -->
     <string name="main_menu_new_tab">Nuova scheda (secondo piano)</string>
     <string name="main_menu_new_tabOpen">Nuova scheda (primo piano)</string>
     <string name="main_omnibox_input_hint">Cerca o inserisci URL</string>
@@ -49,7 +47,6 @@
     <string name="menu_shareClipboard">Copia negli Appunti</string>
     <string name="menu_other_searchSite">Cerca nel sito</string>
     <string name="link_you_copied">Link copiato</string>
-    <!-- Dialog -->
     <string name="dialog_title_hint">Titolo:</string>
     <string name="dialog_URL_hint">URL:</string>
     <string name="dialog_extension_hint">Estensione (per esempio: \".jpg\"):</string>
@@ -61,9 +58,7 @@
     <string name="dialog_sortName">Ordina per nome</string>
     <string name="dialog_sortIcon">Ordina per icona</string>
     <string name="dialog_sortDate">Ordina per data</string>
-    <!-- Settings -->
     <string name="setting_label">Impostazioni</string>
-    <!-- browser setting -->
     <string name="setting_title_browser">Impostazioni browser</string>
     <string name="setting_title_search_engine">Motore di ricerca</string>
     <string name="setting_summary_search_engine_google">Google</string>
@@ -84,18 +79,11 @@
     <string name="target">Bersaglio</string>
     <string name="setting_title_save_data">Richiedi \'Salva dati\'</string>
     <string name="setting_title_profiles">Profili</string>
-    <string name="setting_title_profiles_edit">Modifica profili</string>
-    <string name="setting_title_profiles_trustedList">Siti web attendibili</string>
     <string name="setting_title_profiles_standardList">Siti web standard</string>
-    <string name="setting_title_profiles_protectedList">Siti web protetti</string>
-    <string name="setting_title_profiles_startApp">Profilo all\'avvio dell\'app</string>
-    <string name="setting_title_profiles_trusted">Affidabile</string>
     <string name="setting_title_profiles_standard">Predefinito</string>
-    <string name="setting_title_profiles_protected">Protetto</string>
     <string name="setting_title_profiles_dataUsage">Utilizzo dati</string>
     <string name="setting_title_profiles_privacy">Privacy</string>
     <string name="setting_title_profiles_Security">Sicurezza</string>
-    <!-- browser start -->
     <string name="setting_title_images">Immagini</string>
     <string name="setting_title_cookie">Cookies</string>
     <string name="setting_summary_cookie_delete">Se attivata, tutti i cookie verranno eliminati. Anche i cookie di siti web di fiducia.</string>
@@ -107,7 +95,6 @@
     <string name="setting_title_location">Posizione</string>
     <string name="setting_title_history">Cronologia</string>
     <string name="setting_summary_autofill">Abilita il salvataggio dei dati del modulo (Android Nougat e sotto) o servizio di riempimento automatico (Android Oreo e oltre).</string>
-    <!-- browser clear -->
     <string name="data_summary">Tutti i file verranno esportati nella directory \"Documents/browser_backup/\" della scheda SD.</string>
     <string name="clear_title_quit">Cancella all\'uscita dell\'applicazione</string>
     <string name="clear_title_cache">Elimina Cache</string>
@@ -116,7 +103,6 @@
     <string name="localData">Cancella i dati memorizzati sul dispositivo</string>
     <string name="clear_title_deleteDatabase">Elimina database</string>
     <string name="clear_summary_deleteDatabase">Cancellare l\'intero database (pagina iniziale, segnalibri, cronologia e tutti gli elenchi dei domini).</string>
-    <!-- App setting -->
     <string name="setting_title_ui">Comportamento/UI</string>
     <string name="setting_title_data">Backup</string>
     <string name="setting_filter">Filtro dei segnalibri</string>
@@ -127,15 +113,10 @@
     <string name="setting_title_fingerPrint">Protezione dalle impronte digitali</string>
     <string name="setting_theme">Tema</string>
     <string name="setting_theme_system">Sistema</string>
-    <string name="setting_theme_OLED">OLED</string>
-    <string name="setting_theme_wallpaper">Basato sullo sfondo</string>
-    <!-- App behavior -->
-    <string name="setting_title_hideToolbar">Nascondi barra degli strumenti</string>
     <string name="setting_title_confirm_exit">Conferma l\'uscita dal browser</string>
     <string name="setting_title_confirm_tab_close">Confermare la chiusura delle schede</string>
     <string name="setting_overView_onStart_title">Mostra all\'avvio</string>
     <string name="setting_gestures">Gesti</string>
-    <!-- gestures -->
     <string name="setting_title_longPress">Premere a lungo</string>
     <string name="setting_title_overViewButton">Panoramica</string>
     <string name="setting_gesture_up">Scorri verso l\'alto</string>
@@ -153,11 +134,8 @@
     <string name="setting_gesture_09">Apri una nuova scheda</string>
     <string name="setting_gesture_10">Chiudi scheda</string>
     <string name="setting_gesture_11">Mostra il toggle veloce</string>
-    <!-- Data -->
     <string name="hint_database">Questo eliminerà i dati correnti. Procedere?</string>
     <string name="settings_data_restore">Ripristina</string>
-    <!-- Others setting -->
-    <!-- Toast -->
     <string name="toast_add_whitelist_successful">Dominio aggiunto con successo</string>
     <string name="toast_copy_successful">Copiato con successo</string>
     <string name="toast_delete_successful">Eliminato con successo</string>
@@ -173,7 +151,6 @@
     <string name="toast_backup">Backup dei dati\? Il backup esistente verrà sovrascritto.</string>
     <string name="dialog_postOnWebsiteHint">URL da aprire. Sarà salvato per il prossimo utilizzo.</string>
     <string name="dialog_postOnWebsite">Pubblica sul sito web</string>
-    <!-- Whitelist -->
     <string name="whitelist_edit_hint">Dominio</string>
     <string name="whitelist_add">Aggiungi</string>
     <string name="menu_desktopView">Vista desktop</string>
@@ -191,8 +168,6 @@
     <string name="menu_restart">Riavvia e ricarica le schede</string>
     <string name="setting_title_screenOn">Mantieni il display acceso</string>
     <string name="setting_title_audioBackground">Riproduci audio in sottofondo</string>
-    <!-- License changelog -->
-    <string name="custom_searches_summary">È sufficiente premere a lungo l\'icona di ricerca nella barra degli strumenti per ottenere risultati di ricerca da siti web definiti autonomamente.</string>
     <string name="custom_searches_title">Ricerca veloce su …</string>
     <string name="app_error_copy">Selezionare e copiare il testo manualmente</string>
     <string name="dialog_backGround">Aprire i link in background …</string>
@@ -200,7 +175,6 @@
     <string name="setting_title_cookie_thirdParty">Cookie di terze parti</string>
     <string name="setting_title_backup_exit">Backup del database (pagina iniziale, segnalibri, cronologia e tutti gli elenchi dei domini) all\'uscita\?</string>
     <string name="title_appDatabase">Database</string>
-    <string name="custom_domains">Domini personalizzati</string>
     <string name="app_error_save">Già salvato.</string>
     <string name="menu_shareOpenWith">Aprire con …</string>
     <string name="app_intro_c">Per iniziare a navigare è sufficiente fare clic sulla barra degli strumenti. È possibile cercare qualcosa sul Web o inserire un url da aprire.</string>
@@ -213,7 +187,6 @@
     <string name="setting_title_trackingURL">Popup dell\'URL di tracciamento</string>
     <string name="app_no">No</string>
     <string name="app_always">Sempre</string>
-    <string name="setting_title_profiles_custom">Profilo personalizzato</string>
     <string name="app_never">Mai</string>
     <string name="app_session">… nella sessione in corso?</string>
     <string name="app_permission_notification">Notifiche</string>
