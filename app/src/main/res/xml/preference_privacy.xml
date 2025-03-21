@@ -6,7 +6,7 @@
         android:key="custom_redirects"
         android:icon="@drawable/icon_redirect"
         android:defaultValue="false"
-        android:title="@string/custom_redirects" />
+        android:title="@string/privacy_redirect" />
 
     <CheckBoxPreference
         android:title="@string/setting_title_clipboard_record"

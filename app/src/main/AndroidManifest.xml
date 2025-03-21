@@ -26,8 +26,6 @@
     <!-- Application -->
     <application
         android:allowBackup="true"
-        android:dataExtractionRules="@xml/data_extraction_rules"
-        android:fullBackupContent="@xml/backup"
         android:hardwareAccelerated="true"
         android:label="@string/app_name"
         android:largeHeap="true"

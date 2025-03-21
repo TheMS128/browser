@@ -74,12 +74,10 @@
     <string name="setting_title_font">フォントサイズ</string>
     <string name="setting_title_dom">ウェブストレージ</string>
     <string name="privacy_redirect">リダイレクト</string>
-    <string name="custom_redirects">カスタムリダイレクト</string>
     <string name="source">ソース</string>
     <string name="target">目標</string>
     <string name="setting_title_save_data">「データを保存」のリクエスト</string>
     <string name="setting_title_profiles">プロファイル</string>
-    <string name="setting_title_profiles_standardList">標準のウェブサイト</string>
     <string name="setting_title_profiles_standard">標準</string>
     <string name="setting_title_profiles_dataUsage">データ使用量</string>
     <string name="setting_title_profiles_privacy">プライバシー</string>
@@ -93,13 +91,11 @@
     <string name="setting_summary_adblock">AdBlock を有効にして迷惑な広告をブロックします。有効にするとサイトの読み込みが速くなります。</string>
     <string name="setting_title_adblockHost">ブロックされた内容</string>
     <string name="setting_title_location">位置情報</string>
-    <string name="setting_title_history">履歴</string>
     <string name="setting_summary_autofill">フォームのデータの保存 (Android 7 以下) または自動入力サービス (Android 8 以上) を有効にします。</string>
     <string name="data_summary">全てのファイルは SD カードの「Documents/browser_backup/」ディレクトリにエクスポートされます。</string>
     <string name="clear_title_quit">アプリ終了時に消去</string>
     <string name="clear_title_cache">キャッシュを削除</string>
     <string name="clear_title_cookie">クッキーを消去</string>
-    <string name="clear_title_history">履歴を削除</string>
     <string name="localData">端末に保存されているデータを消去する</string>
     <string name="clear_title_deleteDatabase">データベースを削除</string>
     <string name="clear_summary_deleteDatabase">データベース全体を削除する（スタートページ、ブックマーク、履歴、すべてのドメインリスト）。</string>
@@ -173,7 +169,6 @@
     <string name="dialog_backGround">バックグラウンドでリンクを開く …</string>
     <string name="album_title_bookmarks_simple">ブックマーク（シンプル）</string>
     <string name="setting_title_cookie_thirdParty">サードパーティークッキー</string>
-    <string name="setting_title_backup_exit">終了時にデータベース（スタートページ、ブックマーク、履歴、すべてのドメインリスト）をバックアップしますか？</string>
     <string name="title_appDatabase">データベース</string>
     <string name="app_error_save">すでに保存されている。</string>
     <string name="app_intro_a">FOSS Browserをご利用いただきありがとうございます！</string>

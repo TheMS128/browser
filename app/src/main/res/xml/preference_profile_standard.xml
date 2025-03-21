@@ -42,7 +42,7 @@
             android:defaultValue="true"
             android:icon="@drawable/icon_history"
             android:key="profileStandard_saveHistory"
-            android:summary="@string/setting_title_history" />
+            android:summary="@string/album_title_history" />
 
         <CheckBoxPreference
             android:defaultValue="false"

@@ -86,7 +86,7 @@ public class AdapterCustomRedirect extends RecyclerView.Adapter<RedirectsViewHol
             source2.setText(source.getText());
             target2.setText(target.getText());
 
-            builder.setTitle(R.string.custom_redirects);
+            builder.setTitle(R.string.privacy_redirect);
             builder.setIcon(R.drawable.icon_redirect);
             builder.setNegativeButton(R.string.app_cancel, null);
             builder.setPositiveButton(R.string.app_ok, ((dialogInterface, i) -> {

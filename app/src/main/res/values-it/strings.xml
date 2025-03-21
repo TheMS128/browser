@@ -74,12 +74,10 @@
     <string name="setting_title_font">Dimensione testo</string>
     <string name="setting_title_dom">Archivio DOM</string>
     <string name="privacy_redirect">Reindirizzamento</string>
-    <string name="custom_redirects">Redirect personalizzati</string>
     <string name="source">Sorgente</string>
     <string name="target">Bersaglio</string>
     <string name="setting_title_save_data">Richiedi \'Salva dati\'</string>
     <string name="setting_title_profiles">Profili</string>
-    <string name="setting_title_profiles_standardList">Siti web standard</string>
     <string name="setting_title_profiles_standard">Predefinito</string>
     <string name="setting_title_profiles_dataUsage">Utilizzo dati</string>
     <string name="setting_title_profiles_privacy">Privacy</string>
@@ -93,13 +91,11 @@
     <string name="setting_summary_adblock">Abilita AdBlock per bloccare gli annunci fastidiosi. I siti si caricano anche più velocemente quando il blocco è abilitato.</string>
     <string name="setting_title_adblockHost">Contenuto bloccato</string>
     <string name="setting_title_location">Posizione</string>
-    <string name="setting_title_history">Cronologia</string>
     <string name="setting_summary_autofill">Abilita il salvataggio dei dati del modulo (Android Nougat e sotto) o servizio di riempimento automatico (Android Oreo e oltre).</string>
     <string name="data_summary">Tutti i file verranno esportati nella directory \"Documents/browser_backup/\" della scheda SD.</string>
     <string name="clear_title_quit">Cancella all\'uscita dell\'applicazione</string>
     <string name="clear_title_cache">Elimina Cache</string>
     <string name="clear_title_cookie">Elimina Cookies</string>
-    <string name="clear_title_history">Elimina Cronologia</string>
     <string name="localData">Cancella i dati memorizzati sul dispositivo</string>
     <string name="clear_title_deleteDatabase">Elimina database</string>
     <string name="clear_summary_deleteDatabase">Cancellare l\'intero database (pagina iniziale, segnalibri, cronologia e tutti gli elenchi dei domini).</string>
@@ -173,7 +169,6 @@
     <string name="dialog_backGround">Aprire i link in background …</string>
     <string name="album_title_bookmarks_simple">Segnalibri (semplici)</string>
     <string name="setting_title_cookie_thirdParty">Cookie di terze parti</string>
-    <string name="setting_title_backup_exit">Backup del database (pagina iniziale, segnalibri, cronologia e tutti gli elenchi dei domini) all\'uscita\?</string>
     <string name="title_appDatabase">Database</string>
     <string name="app_error_save">Già salvato.</string>
     <string name="menu_shareOpenWith">Aprire con …</string>

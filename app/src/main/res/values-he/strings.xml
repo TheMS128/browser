@@ -73,12 +73,10 @@
     <string name="setting_title_font">גודל גופן</string>
     <string name="setting_title_dom">אחסון DOM</string>
     <string name="privacy_redirect">הפניה מחדש</string>
-    <string name="custom_redirects">הפניות מותאמות</string>
     <string name="source">מקור</string>
     <string name="target">מטרה</string>
     <string name="setting_title_save_data">בקש \'שמור נתונים\'</string>
     <string name="setting_title_profiles">פרופילים</string>
-    <string name="setting_title_profiles_standardList">אתרים סטנדרטיים</string>
     <string name="setting_title_profiles_standard">תקן</string>
     <string name="setting_title_profiles_dataUsage">שימוש בנתונים</string>
     <string name="setting_title_profiles_privacy">פרטיות</string>
@@ -92,13 +90,11 @@
     <string name="setting_summary_adblock">אפשר AdBlock כדי לחסום מודעות מעצבנות. אתרים גם נטענים מהר יותר כשהם מופעלים.</string>
     <string name="setting_title_adblockHost">תוכן חסום</string>
     <string name="setting_title_location">מקום</string>
-    <string name="setting_title_history">היסטוריה</string>
     <string name="setting_summary_autofill">אפשר שמירת נתוני טפסים (אנדרואיד נוגט ומטה) או שירות מילוי אוטומטי (אנדרואיד אוראו ומעלה).</string>
     <string name="data_summary">כל הקבצים ייוצאו לספריית \"Documents/browser_backup/\" של כרטיס ה-SD שלכם.</string>
     <string name="clear_title_quit">נקה ביציאה מהאפליקציה</string>
     <string name="clear_title_cache">נקה מטמון</string>
     <string name="clear_title_cookie">נקה קובצי Cookie</string>
-    <string name="clear_title_history">נקה היסטוריה</string>
     <string name="localData">נקה את הנתונים המאוחסנים במכשיר</string>
     <string name="clear_title_deleteDatabase">מחק מסד נתונים</string>
     <string name="clear_summary_deleteDatabase">מחק את כל מסד הנתונים (דף פתיחה, סימניות, היסטוריה וכל הרשימות הלבנות).</string>

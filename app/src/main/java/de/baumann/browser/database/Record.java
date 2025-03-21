@@ -23,14 +23,12 @@ public class Record {
         this.iconColor = 0L;
     }
 
-    public Record(String title, String url, long time, int ordinal, int type, Boolean DesktopMode, Boolean NightMode, long iconColor) {
+    public Record(String title, String url, long time, int ordinal, int type, long iconColor) {
         this.title = title;
         this.url = url;
         this.time = time;
         this.ordinal = ordinal;
         this.type = type;
-        this.isDesktopMode = DesktopMode;
-        this.isNightMode = NightMode;
         this.iconColor = iconColor;
     }
 

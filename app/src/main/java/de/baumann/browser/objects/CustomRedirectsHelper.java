@@ -22,8 +22,8 @@ public class CustomRedirectsHelper {
         String redirectsPref = preferences.getString(CUSTOM_REDIRECTS_KEY, "[]");
 
         if (Objects.requireNonNull(preferences.getString("saved_redirect_ok", "no")).equals("no")) {
-            redirects.add(new CustomRedirect("m.youtube.com", preferences.getString("sp_youTube_string_domain", "yewtu.be")));
-            redirects.add(new CustomRedirect("youtube.com", preferences.getString("sp_youTube_string_domain", "yewtu.be")));
+            redirects.add(new CustomRedirect("m.youtube.com", preferences.getString("sp_youTube_string_domain", "invidious.nerdvpn.de")));
+            redirects.add(new CustomRedirect("youtube.com", preferences.getString("sp_youTube_string_domain", "invidious.nerdvpn.de")));
             redirects.add(new CustomRedirect("twitter.com", preferences.getString("sp_twitter_string_domain", "nitter.net")));
             saveRedirects(redirects);
             preferences.edit().putString("saved_redirect_ok", "yes").apply();

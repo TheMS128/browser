@@ -74,11 +74,9 @@
     <string name="setting_title_font">Cỡ chữ</string>
     <string name="setting_title_dom">Bộ nhớ DOM</string>
     <string name="privacy_redirect">Chuyển hướng</string>
-    <string name="custom_redirects">Tuỳ chỉnh chuyễn hướng</string>
     <string name="source">Source</string>
     <string name="setting_title_save_data">Yêu cầu \'Tiết kiệm dữ liệu\'</string>
     <string name="setting_title_profiles">Cấu hình</string>
-    <string name="setting_title_profiles_standardList">Trang web tiêu chuẩn</string>
     <string name="setting_title_profiles_standard">Tiêu chuẩn</string>
     <string name="setting_title_profiles_dataUsage">Sử dụng dữ liệu</string>
     <string name="setting_title_profiles_privacy">Riêng tư</string>
@@ -92,13 +90,11 @@
     <string name="setting_summary_adblock">Bật Chặn quảng cáo để chặn các quảng cáo gây phiền nhiễu. Các trang web cũng tải nhanh hơn khi được bật.</string>
     <string name="setting_title_adblockHost">Nội dung đã chặn</string>
     <string name="setting_title_location">Vị trí</string>
-    <string name="setting_title_history">Lịch sử</string>
     <string name="setting_summary_autofill">Bật tính năng lưu dữ liệu biểu mẫu (Android Nougat trở xuống) hoặc dịch vụ tự động điền (Android Oreo trở lên).</string>
     <string name="data_summary">Tất cả các tệp sẽ được xuất sang thư mục \"Documents / browser_backup /\" của thẻ SD của bạn.</string>
     <string name="clear_title_quit">Xoá khi thoát ứng dụng</string>
     <string name="clear_title_cache">Xóa bộ nhớ đệm</string>
     <string name="clear_title_cookie">Xóa cookie</string>
-    <string name="clear_title_history">Xóa lịch sử</string>
     <string name="localData">Xóa dữ liệu được lưu trữ trên thiết bị</string>
     <string name="clear_title_deleteDatabase">Xoá cơ sở dữ liệu</string>
     <string name="clear_summary_deleteDatabase">Xoá toàn bộ cơ sở dữ liệu (Trang bắt đầu, dấu trang, lịch sử và tất cả danh sách trắng).</string>

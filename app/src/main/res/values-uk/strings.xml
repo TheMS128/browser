@@ -74,12 +74,10 @@
     <string name="setting_title_font">Розмір шрифту</string>
     <string name="setting_title_dom">DOM сховище</string>
     <string name="privacy_redirect">Переадресація</string>
-    <string name="custom_redirects">Нестандартні переадресації</string>
     <string name="source">Джерело</string>
     <string name="target">Ціль</string>
     <string name="setting_title_save_data">Надсилати запит «Збереження даних»</string>
     <string name="setting_title_profiles">Профілі</string>
-    <string name="setting_title_profiles_standardList">Стандартні веб-сайти</string>
     <string name="setting_title_profiles_standard">Стандартний</string>
     <string name="setting_title_profiles_dataUsage">Використання даних</string>
     <string name="setting_title_profiles_privacy">Приватність</string>
@@ -93,13 +91,11 @@
     <string name="setting_summary_adblock">Увімкніть AdBlock, щоб заблокувати рекламу. Сайти завантажуються швидше при включенні.</string>
     <string name="setting_title_adblockHost">Заблокований контент</string>
     <string name="setting_title_location">Місце розташування</string>
-    <string name="setting_title_history">Історія</string>
     <string name="setting_summary_autofill">Увімкнути збереження даних форм (Android Nougat і нижче) або сервісу автозаповнення (Android Oreo і вище).</string>
     <string name="data_summary">Усі файли буде збережено до каталогу «Documents/browser_backup/» на SD-карті.</string>
     <string name="clear_title_quit">Очищати при виході</string>
     <string name="clear_title_cache">Очистити кеш</string>
     <string name="clear_title_cookie">Очистити куки</string>
-    <string name="clear_title_history">Очистити історію</string>
     <string name="localData">Очистити на пристрої збережені дані</string>
     <string name="clear_title_deleteDatabase">Видалити базу даних</string>
     <string name="clear_summary_deleteDatabase">Видалити базу даних (стартову сторінку, закладки, історію і всі списки доменів).</string>
@@ -173,7 +169,6 @@
     <string name="dialog_backGround">Відкривати посилання у фоні…</string>
     <string name="album_title_bookmarks_simple">Закладки (прості)</string>
     <string name="setting_title_cookie_thirdParty">Сторонні куки</string>
-    <string name="setting_title_backup_exit">Резервувати базу даних (стартову сторінку, закладки, історію і всі списки доменів) при виході\?</string>
     <string name="title_appDatabase">База даних</string>
     <string name="app_error_save">Уже збережено.</string>
     <string name="app_intro_c">Щоб почати перегляд, просто торкніться панелі інструментів. Ви можете шукати щось в Інтернеті або ввести URL-адресу для відкриття.</string>

@@ -73,12 +73,10 @@
     <string name="setting_summary_search_engine_metager">Metager</string>
     <string name="setting_title_font">Betűméret</string>
     <string name="privacy_redirect">Átirányítás</string>
-    <string name="custom_redirects">Saját Átirányítások</string>
     <string name="source">Forrás</string>
     <string name="target">Célpont</string>
     <string name="setting_title_save_data">\'Save Data\' kérése</string>
     <string name="setting_title_profiles">Profilok</string>
-    <string name="setting_title_profiles_standardList">Szabványos weboldalak</string>
     <string name="setting_title_profiles_standard">Általános</string>
     <string name="setting_title_profiles_dataUsage">Adathasználat</string>
     <string name="setting_title_profiles_privacy">Adatvédelem</string>
@@ -92,13 +90,11 @@
     <string name="setting_summary_adblock">AdBlock engedélyezése a bosszantó hirdetések blokkolására. A weboldalak is gyorsabban töltődnek be, ha engedélyezett.</string>
     <string name="setting_title_adblockHost">Blokkolt tartalom</string>
     <string name="setting_title_location">Tartózkodási hely</string>
-    <string name="setting_title_history">Előzmények</string>
     <string name="setting_summary_autofill">Engedélyezze az űrlapadatok (Android Nougat és újabb) vagy az automatikus kitöltési szolgáltatás (Android Oreo és újabb) mentését.</string>
     <string name="data_summary">Minden fájl exportálódik az SD-kártya \"Documents/browser_backup/\" könyvtárába.</string>
     <string name="clear_title_quit">Törlés az alkalmazás bezárásakor</string>
     <string name="clear_title_cache">Gyorsítótár törlése</string>
     <string name="clear_title_cookie">Sütik törlése</string>
-    <string name="clear_title_history">Előzmények törlése</string>
     <string name="localData">Törölje az eszközön tárolt adatokat</string>
     <string name="clear_title_deleteDatabase">Adatbázis törlése</string>
     <string name="clear_summary_deleteDatabase">Törölje a teljes adatbázist (kezdőlap, könyvjelzők, előzmények és az összes domain-lista).</string>
@@ -173,7 +169,6 @@
     <string name="dialog_backGround">Linkek megnyitása a háttérben …</string>
     <string name="album_title_bookmarks_simple">Könyvjelzők (egyszerű)</string>
     <string name="setting_title_cookie_thirdParty">Harmadik fél sütik</string>
-    <string name="setting_title_backup_exit">Adatbázis biztonsági mentése (kezdőlap, könyvjelzők, előzmények és az összes domain-lista) kilépéskor\?</string>
     <string name="title_appDatabase">Adatbázis</string>
     <string name="app_intro_a">Köszönjük, hogy használja a FOSS Browser-t!</string>
     <string name="app_intro_c">A böngészés megkezdéséhez csak tippelj az eszköztárra. Kereshet a weben valamit, vagy megadhat egy url-t a megnyitáshoz.</string>

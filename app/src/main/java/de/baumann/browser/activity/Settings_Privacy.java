@@ -22,7 +22,6 @@ public class Settings_Privacy extends AppCompatActivity {
         super.onCreate(savedInstanceState);
 
         HelperUnit.initTheme(this);
-        if (getSupportActionBar() != null) getSupportActionBar().hide();
         setContentView(R.layout.activity_settings);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);

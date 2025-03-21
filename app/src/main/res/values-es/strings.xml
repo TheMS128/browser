@@ -74,12 +74,10 @@
     <string name="setting_title_font">Tamaño de letra</string>
     <string name="setting_title_dom">Almacenamiento DOM</string>
     <string name="privacy_redirect">Redirigir</string>
-    <string name="custom_redirects">Redirecciones personalizadas</string>
     <string name="source">Origen</string>
     <string name="target">Destinatario</string>
     <string name="setting_title_save_data">Solicitar \"Guardar datos\"</string>
     <string name="setting_title_profiles">Perfiles</string>
-    <string name="setting_title_profiles_standardList">Sitios web estándar</string>
     <string name="setting_title_profiles_standard">Estándar</string>
     <string name="setting_title_profiles_dataUsage">Uso de datos</string>
     <string name="setting_title_profiles_privacy">Privacidad</string>
@@ -92,13 +90,11 @@
     <string name="setting_summary_adblock">Activa AdBlock para bloquear los anuncios. Los sitios web se cargan más rápido cuando está activado.</string>
     <string name="setting_title_adblockHost">Contenido bloqueado</string>
     <string name="setting_title_location">Ubicación</string>
-    <string name="setting_title_history">Historial</string>
     <string name="setting_summary_autofill">Activa el guardado de datos del formulario (Android Nougat y versiones inferiores) o el servicio de autocompletado (Android Oreo y versiones superiores).</string>
     <string name="data_summary">Todos los archivos se guardarán en el directorio \"Documents/browser_backup/\" de tu tarjeta SD.</string>
     <string name="clear_title_quit">Borrar al salir</string>
     <string name="clear_title_cache">Borrar la caché</string>
     <string name="clear_title_cookie">Borrar las cookies</string>
-    <string name="clear_title_history">Borrar el historial</string>
     <string name="localData">Borrar datos almacenados en el dispositivo</string>
     <string name="clear_title_deleteDatabase">Borrar base de datos</string>
     <string name="clear_summary_deleteDatabase">Borrar la base de datos (página de inicio, favoritos, historial y todas las listas de dominios).</string>
@@ -173,7 +169,6 @@
     <string name="dialog_backGround">Abrir los enlaces en segundo plano …</string>
     <string name="album_title_bookmarks_simple">Marcadores (sencillos)</string>
     <string name="setting_title_cookie_thirdParty">Cookies de terceros</string>
-    <string name="setting_title_backup_exit">¿Hacer una copia de seguridad de la base de datos (página de inicio, marcadores, historial y todas las listas de dominios) al salir\?</string>
     <string name="title_appDatabase">Base de datos</string>
     <string name="app_error_save">Ya está guardado.</string>
     <string name="menu_shareOpenWith">Abrir con …</string>

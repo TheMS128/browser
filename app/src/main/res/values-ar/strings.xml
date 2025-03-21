@@ -72,12 +72,10 @@
     <string name="setting_title_font">حجم الخط</string>
     <string name="setting_title_dom">تخزين DOM</string>
     <string name="privacy_redirect">أعدْ التوجيه</string>
-    <string name="custom_redirects">عمليات إعادة التوجيه المخصصة</string>
     <string name="source">Source</string>
     <string name="target">هدف</string>
     <string name="setting_title_save_data">اطلب \'حفظ البيانات\'</string>
     <string name="setting_title_profiles">ملفات شخصية</string>
-    <string name="setting_title_profiles_standardList">المواقع القياسية</string>
     <string name="setting_title_profiles_standard">قياسي</string>
     <string name="setting_title_profiles_dataUsage">استخدام البيانات</string>
     <string name="setting_title_profiles_privacy">الخصوصية</string>
@@ -91,13 +89,11 @@
     <string name="setting_summary_adblock">مكن مانع الاعلانات لمنع الإعلانات المزعجة. تمكينه يسرع تحميل المواقع.</string>
     <string name="setting_title_adblockHost">المحتوى المحظور</string>
     <string name="setting_title_location">الموقع</string>
-    <string name="setting_title_history">التأريخ</string>
     <string name="setting_summary_autofill">تمكين حفظ بيانات النموذج (أندرويد نوجات وما دونها) أو خدمة التعبئة التلقائية (أندرويد أوريو وما فوق).</string>
     <string name="data_summary">سيتم تصدير جميع الملفات إلى دليل \"Documents / browser_backup /\" لبطاقة SD الخاصة بك.</string>
     <string name="clear_title_quit">امسح عند خروج التطبيق</string>
     <string name="clear_title_cache">امسح التخزين المؤقت</string>
     <string name="clear_title_cookie">امسح الكوكيز</string>
-    <string name="clear_title_history">حذف التأريخ</string>
     <string name="localData">مسح البيانات المخزنة على الجهاز</string>
     <string name="clear_title_deleteDatabase">احذف قاعدة البيانات</string>
     <string name="clear_summary_deleteDatabase">احذف قاعدة البيانات بأكملها (صفحة البدء، العلامات، التأريخ وجميع القوائم البيضاء).</string>
@@ -173,7 +169,6 @@
     <string name="dialog_backGround">فتح الروابط في الخلفية …</string>
     <string name="album_title_bookmarks_simple">إشارات مرجعية (بسيطة)</string>
     <string name="setting_title_cookie_thirdParty">ملفات تعريف ارتباط الطرف الثالث</string>
-    <string name="setting_title_backup_exit">قاعدة بيانات النسخ الاحتياطي (صفحة البدء والإشارات المرجعية والمحفوظات وجميع قوائم النطاقات) عند الخروج؟</string>
     <string name="title_appDatabase">قاعدة البيانات</string>
     <string name="app_error_save">تم الحفظ بالفعل.</string>
     <string name="menu_shareOpenWith">افتح مع …</string>

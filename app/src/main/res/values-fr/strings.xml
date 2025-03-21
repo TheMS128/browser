@@ -74,12 +74,10 @@
     <string name="setting_title_font">Taille de police</string>
     <string name="setting_title_dom">Stockage DOM</string>
     <string name="privacy_redirect">Redirection</string>
-    <string name="custom_redirects">Redirections personnalisées</string>
     <string name="source">Source</string>
     <string name="target">Cible</string>
     <string name="setting_title_save_data">Demande \'Enregistrer les données\'</string>
     <string name="setting_title_profiles">Profils</string>
-    <string name="setting_title_profiles_standardList">Sites Web standard</string>
     <string name="setting_title_profiles_standard">Standard</string>
     <string name="setting_title_profiles_dataUsage">Utilisation des données</string>
     <string name="setting_title_profiles_privacy">Vie privée</string>
@@ -93,13 +91,11 @@
     <string name="setting_summary_adblock">Activez AdBlock pour bloquer les publicités embêtantes. Les sites chargent aussi plus rapidement une fois activé.</string>
     <string name="setting_title_adblockHost">Contenu bloqué</string>
     <string name="setting_title_location">Localisation</string>
-    <string name="setting_title_history">Historique</string>
     <string name="setting_summary_autofill">Activer l\'enregistrement des données du formulaire (Android Nougat et en-dessous) ou le service de remplissage automatique (Android Oreo et au-dessus).</string>
     <string name="data_summary">Tous les fichiers seront exportés vers le répertoire \"Documents/browser_backup/\" de votre carte SD.</string>
     <string name="clear_title_quit">Effacer à la fermeture de l\'application</string>
     <string name="clear_title_cache">Vider le cache</string>
     <string name="clear_title_cookie">Effacer les cookies</string>
-    <string name="clear_title_history">Effacer l’historique</string>
     <string name="localData">Effacer les données stockées sur l\'appareil</string>
     <string name="clear_title_deleteDatabase">Supprimer la base de données</string>
     <string name="clear_summary_deleteDatabase">Supprimer toute la base de données (page d\'accueil, signets, historique et toutes les listes de domaines).</string>
@@ -173,7 +169,6 @@
     <string name="dialog_backGround">Ouvrir les liens en arrière-plan …</string>
     <string name="album_title_bookmarks_simple">Signets (simples)</string>
     <string name="setting_title_cookie_thirdParty">Cookies de tiers</string>
-    <string name="setting_title_backup_exit">Sauvegarde de la base de données (page d\'accueil, signets, historique et toutes les listes de domaines) à la sortie \?</string>
     <string name="title_appDatabase">Base de données</string>
     <string name="app_error_save">Déjà sauvegardé.</string>
     <string name="app_intro_c">Pour commencer à naviguer, il suffit de cliquer sur la barre d\'outils. Vous pouvez rechercher quelque chose sur le web ou saisir une adresse URL à ouvrir.</string>

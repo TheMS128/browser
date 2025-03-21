@@ -25,7 +25,6 @@ import android.util.TypedValue;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.webkit.CookieManager;
-import android.webkit.WebBackForwardList;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.widget.GridView;
@@ -267,7 +266,7 @@ public class NinjaWebView extends WebView implements AlbumController {
 
         RecordAction action = new RecordAction(context);
         action.open(true);
-        action.addBookmark(new Record("FOSS Browser - WIKI", "https://codeberg.org/Gaukler_Faun/FOSS_Browser/wiki", 0, 0, 2, false, false, 0));
+        action.addBookmark(new Record("FOSS Browser - WIKI", "https://codeberg.org/Gaukler_Faun/FOSS_Browser/wiki", 0, 0, 2, 0));
         action.close();
 
         sp.edit()
@@ -393,16 +392,6 @@ public class NinjaWebView extends WebView implements AlbumController {
     public synchronized void reloadWithoutInit() {  //needed for camera usage without deactivating "save_data"
         stopped = false;
         super.reload();
-    }
-
-    public synchronized void goBack() {
-        WebBackForwardList mWebBackForwardList = this.copyBackForwardList();
-        if (mWebBackForwardList.getCurrentIndex() > 0) {
-            String historyUrl;
-            historyUrl = mWebBackForwardList.getItemAtIndex(mWebBackForwardList.getCurrentIndex()-1).getUrl();
-            initPreferences(historyUrl);
-        }
-        super.goBack();
     }
 
     @Override

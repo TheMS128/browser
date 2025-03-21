@@ -74,12 +74,10 @@
     <string name="setting_title_font">Μέγεθος γραμματοσειράς</string>
     <string name="setting_title_dom">Αποθήκευση DOM</string>
     <string name="privacy_redirect">Ανακατεύθυνση</string>
-    <string name="custom_redirects">Προσαρμοσμένες ανακατευθύνσεις</string>
     <string name="source">Πηγή</string>
     <string name="target">Προορισμός</string>
     <string name="setting_title_save_data">Αίτημα \'Αποθήκευση Δεδομένων\'</string>
     <string name="setting_title_profiles">Προφίλ</string>
-    <string name="setting_title_profiles_standardList">Τυπικές ιστοσελίδες</string>
     <string name="setting_title_profiles_standard">Κανονικό</string>
     <string name="setting_title_profiles_dataUsage">Χρήση δεδομένων</string>
     <string name="setting_title_profiles_privacy">Απόρρητο</string>
@@ -93,13 +91,11 @@
     <string name="setting_summary_adblock">Ενεργοποιήστε το AdBlock για να αποκλείσετε ενοχλητικές διαφημίσεις. Οι ιστότοποι επίσης φορτώνουν γρηγορότερα όταν είναι ενεργοποιημένο.</string>
     <string name="setting_title_adblockHost">Αποκλεισμένο περιεχόμενο</string>
     <string name="setting_title_location">Τοποθεσία</string>
-    <string name="setting_title_history">Ιστορικό</string>
     <string name="setting_summary_autofill">Ενεργοποιήστε την αποθήκευση δεδομένων φόρμας (Android Nougat και κάτω) ή την υπηρεσία αυτόματης συμπλήρωσης (Android Oreo και παραπάνω).</string>
     <string name="data_summary">Όλα τα αρχεία θα εξαχθούν στον κατάλογο \"Documents/browser_backup/\" της κάρτας SD σας.</string>
     <string name="clear_title_quit">Διαγραφή κατά την έξοδο της εφαρμογής</string>
     <string name="clear_title_cache">Εκκαθάριση προσωρινής μνήμης</string>
     <string name="clear_title_cookie">Εκκαθάριση Cookies</string>
-    <string name="clear_title_history">Εκκαθάριση Ιστορικού</string>
     <string name="localData">Εκκαθάριση αποθηκευμένων δεδομένων συσκευής</string>
     <string name="clear_title_deleteDatabase">Διαγραφή βάσης δεδομένων</string>
     <string name="clear_summary_deleteDatabase">Διαγράψτε ολόκληρη τη βάση δεδομένων (αρχική σελίδα, σελιδοδείκτες, ιστορικό και όλες τις λίστες τομέων).</string>
@@ -173,7 +169,6 @@
     <string name="dialog_backGround">Άνοιγμα συνδέσμων στο παρασκήνιο …</string>
     <string name="album_title_bookmarks_simple">Σελιδοδείκτες (απλοί)</string>
     <string name="setting_title_cookie_thirdParty">Cookies τρίτων μερών</string>
-    <string name="setting_title_backup_exit">Δημιουργία αντιγράφων ασφαλείας της βάσης δεδομένων (αρχική σελίδα, σελιδοδείκτες, ιστορικό και όλες οι λίστες τομέων) κατά την έξοδο;</string>
     <string name="title_appDatabase">Βάση δεδομένων</string>
     <string name="app_error_save">Έχει ήδη αποθηκευτεί.</string>
     <string name="menu_shareOpenWith">Ανοίξτε με …</string>

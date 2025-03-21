@@ -74,12 +74,10 @@
     <string name="setting_title_font">Tamanho de letra</string>
     <string name="setting_title_dom">Armazenamento DOM</string>
     <string name="privacy_redirect">Redirecionar</string>
-    <string name="custom_redirects">Redirecionamentos personalizados</string>
     <string name="source">Origem</string>
     <string name="target">Destino</string>
     <string name="setting_title_save_data">Solicitar \'Dados salvados\'</string>
     <string name="setting_title_profiles">Perfis</string>
-    <string name="setting_title_profiles_standardList">Sites padrão</string>
     <string name="setting_title_profiles_standard">Padrão</string>
     <string name="setting_title_profiles_dataUsage">Utilização dos dados</string>
     <string name="setting_title_profiles_privacy">Privacidade</string>
@@ -92,13 +90,11 @@
     <string name="setting_summary_adblock">Habilita o AdBlock para bloquear anúncios. Sites carregam mais rápido quando ativado.</string>
     <string name="setting_title_adblockHost">Conteúdo bloqueado</string>
     <string name="setting_title_location">Localização</string>
-    <string name="setting_title_history">Histórico</string>
     <string name="setting_summary_autofill">Ativar o salvamento de dados de formulário (Android Nougat e abaixo) ou o serviço de autopreenchimento (Android Oreo e superior).</string>
     <string name="data_summary">Todos os arquivos serão salvos para o diretório \"Documents/browser_backup/\" do seu cartão SD.</string>
     <string name="clear_title_quit">Limpar ao sair</string>
     <string name="clear_title_cache">Limpar o cache</string>
     <string name="clear_title_cookie">Limpar cookies</string>
-    <string name="clear_title_history">Limpar o histórico</string>
     <string name="localData">Limpar dados armazenados no dispositivo</string>
     <string name="clear_title_deleteDatabase">Apagar base de dados</string>
     <string name="clear_summary_deleteDatabase">Eliminar base de dados (página inicial, favoritos, histórico e todas as listas de domínios).</string>
@@ -173,7 +169,6 @@
     <string name="dialog_backGround">Abrir ligações em segundo plano …</string>
     <string name="album_title_bookmarks_simple">Marcadores (simples)</string>
     <string name="setting_title_cookie_thirdParty">Cookies de terceiros</string>
-    <string name="setting_title_backup_exit">Fazer uma cópia de segurança da base de dados (página inicial, favoritos, histórico e todas as listas de domínios) ao sair\?</string>
     <string name="title_appDatabase">Base de dados</string>
     <string name="app_error_save">Já guardado.</string>
     <string name="app_intro_c">Para começar a navegar, basta dar um toque na barra de ferramentas. Pode procurar algo na Web ou introduzir um URL para abrir.</string>

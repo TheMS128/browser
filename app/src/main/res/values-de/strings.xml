@@ -74,12 +74,10 @@
     <string name="setting_title_font">Schriftgröße</string>
     <string name="setting_title_dom">DOM-Speicher</string>
     <string name="privacy_redirect">Umleitung</string>
-    <string name="custom_redirects">Eigene Weiterleitungen</string>
     <string name="source">Quelle</string>
     <string name="target">Ziel</string>
     <string name="setting_title_save_data">\"Daten sparen\" verlangen</string>
     <string name="setting_title_profiles">Profile</string>
-    <string name="setting_title_profiles_standardList">Standard Internetseiten</string>
     <string name="setting_title_profiles_standard">Standard</string>
     <string name="setting_title_profiles_dataUsage">Datennutzung</string>
     <string name="setting_title_profiles_privacy">Privatsphäre</string>
@@ -93,13 +91,11 @@
     <string name="setting_summary_adblock">Aktiviere AdBlock, um Werbung zu blockieren. Websites laden auch schneller.</string>
     <string name="setting_title_adblockHost">Blockierter Inhalt</string>
     <string name="setting_title_location">Standortbestimmung</string>
-    <string name="setting_title_history">Verlauf</string>
     <string name="setting_summary_autofill">Aktiviere das Speichern von Formulardaten (Android Nougat und älter) oder den Autofill-Service (Android Oreo und neuer).</string>
     <string name="data_summary">Alle Dateien werden im Verzeichnis \"Documents/browser_backup/\" Ihrer SD-Karte gespeichert.</string>
     <string name="clear_title_quit">Beim Verlassen löschen</string>
     <string name="clear_title_cache">Cache löschen</string>
     <string name="clear_title_cookie">Cookies löschen</string>
-    <string name="clear_title_history">Verlauf löschen</string>
     <string name="localData">Auf Gerät gespeicherte Daten löschen</string>
     <string name="clear_title_deleteDatabase">Datenbank löschen</string>
     <string name="clear_summary_deleteDatabase">Gesamte Datenbank löschen (Startseite, Lesezeichen, Verlauf und Domain-Listen)</string>
@@ -172,7 +168,6 @@
     <string name="dialog_backGround">Links im Hintergrund öffnen …</string>
     <string name="album_title_bookmarks_simple">Lesezeichen (einfach)</string>
     <string name="setting_title_cookie_thirdParty">Cookies von Dritten</string>
-    <string name="setting_title_backup_exit">Beim Verlassen die Datenbank (Startseite, Lesezeichen, Verlauf und alle Domain-Listen) sichern\?</string>
     <string name="title_appDatabase">Datenbank</string>
     <string name="custom_searches_title">Schnelle Suche auf …</string>
     <string name="app_error_save">Schon gespeichert.</string>

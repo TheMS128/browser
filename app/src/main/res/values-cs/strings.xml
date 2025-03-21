@@ -74,12 +74,10 @@
     <string name="setting_title_font">Velikost písma</string>
     <string name="setting_title_dom">Úložiště DOM</string>
     <string name="privacy_redirect">Přesměrovat</string>
-    <string name="custom_redirects">Vlastní přesměrování</string>
     <string name="source">Zdroj</string>
     <string name="target">Cíl</string>
     <string name="setting_title_save_data">Požadavek „Ušetřit data“</string>
     <string name="setting_title_profiles">Profily</string>
-    <string name="setting_title_profiles_standardList">Standardní weby</string>
     <string name="setting_title_profiles_standard">Standardní</string>
     <string name="setting_title_profiles_dataUsage">Využití dat</string>
     <string name="setting_title_profiles_privacy">Soukromí</string>
@@ -93,13 +91,11 @@
     <string name="setting_summary_adblock">Zapněte AdBlock pro blokování obtěžujících reklam. Stránky se budou načítat rychleji.</string>
     <string name="setting_title_adblockHost">Blokovaný obsah</string>
     <string name="setting_title_location">Poloha</string>
-    <string name="setting_title_history">Historie</string>
     <string name="setting_summary_autofill">Povolte ukládání dat formuláře (Android Nougat a nižší) nebo službu automatického vyplňování (Android Oreo a vyšší).</string>
     <string name="data_summary">Všechny soubory budou exportovány do adresáře „Documents/browser_backup/“ na vaší SD kartě.</string>
     <string name="clear_title_quit">Vymazat při ukončení aplikace</string>
     <string name="clear_title_cache">Vymazat mezipaměť</string>
     <string name="clear_title_cookie">Vymazat soubory cookie</string>
-    <string name="clear_title_history">Vymazat historii</string>
     <string name="localData">Vymazat data uložená v zařízení</string>
     <string name="clear_title_deleteDatabase">Vymazat databázi</string>
     <string name="clear_summary_deleteDatabase">Smazat celou databázi (úvodní stránku, záložky, historii a všechny seznamy domén).</string>
@@ -173,7 +169,6 @@
     <string name="dialog_backGround">Otevření odkazů na pozadí …</string>
     <string name="album_title_bookmarks_simple">Záložky (jednoduché)</string>
     <string name="setting_title_cookie_thirdParty">Soubory cookie třetích stran</string>
-    <string name="setting_title_backup_exit">Zálohování databáze (úvodní stránka, záložky, historie a všechny seznamy domén) při ukončení\?</string>
     <string name="title_appDatabase">Databáze</string>
     <string name="app_error_save">Již uloženo.</string>
     <string name="menu_shareOpenWith">Otevřete s …</string>

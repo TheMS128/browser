@@ -74,12 +74,10 @@
     <string name="setting_title_font">Yazı boyutu</string>
     <string name="setting_title_dom">DOM depolama</string>
     <string name="privacy_redirect">Yönlendir</string>
-    <string name="custom_redirects">Özel Yönlendirmeler</string>
     <string name="source">Kaynak</string>
     <string name="target">Hedef</string>
     <string name="setting_title_save_data">\'Veri kaydetme\' isteği</string>
     <string name="setting_title_profiles">Profiller</string>
-    <string name="setting_title_profiles_standardList">Standart web siteleri</string>
     <string name="setting_title_profiles_standard">Standart</string>
     <string name="setting_title_profiles_dataUsage">Veri kullanımı</string>
     <string name="setting_title_profiles_privacy">Gizlilik</string>
@@ -93,13 +91,11 @@
     <string name="setting_summary_adblock">Can sıkıcı reklamları engellemek için reklam engelleyiciyi etkinleştirebilirsiniz. Bu özellik etkinleştirildiğinde siteler ayrıca daha hızlı yüklenir.</string>
     <string name="setting_title_adblockHost">Engellenen içerik</string>
     <string name="setting_title_location">Konum</string>
-    <string name="setting_title_history">Geçmiş</string>
     <string name="setting_summary_autofill">Android Nougat ve altı sürümler için form verilerinin kaydedilmesini, Android Oreo ve üstü sürümler içinse otomatik doldurma hizmetini etkinleştirir.</string>
     <string name="data_summary">Tüm dosyalar cihazın \"Documents/browser_backup/\" dizinine aktarılacaktır.</string>
     <string name="clear_title_quit">Tarayıcıdan çıkarken temizle</string>
     <string name="clear_title_cache">Önbelleği temizle</string>
     <string name="clear_title_cookie">Çerezleri temizle</string>
-    <string name="clear_title_history">Geçmişi temizle</string>
     <string name="localData">Cihazda depolanan verileri temizle</string>
     <string name="clear_title_deleteDatabase">Veritabanını sil</string>
     <string name="clear_summary_deleteDatabase">Tüm veritabanını silin (Başlangıç sayfası, yer imleri, geçmiş ve tüm alan listeleri).</string>
@@ -173,7 +169,6 @@
     <string name="dialog_backGround">Bağlantıları arka planda aç …</string>
     <string name="album_title_bookmarks_simple">Yer İmleri (basit)</string>
     <string name="setting_title_cookie_thirdParty">Üçüncü Taraf Çerezleri</string>
-    <string name="setting_title_backup_exit">Çıkışta veritabanını (Başlangıç sayfası, yer imleri, geçmiş ve tüm etki alanı listeleri) yedekleyin\?</string>
     <string name="title_appDatabase">Veritabanı</string>
     <string name="app_error_save">Çoktan kaydedildi.</string>
     <string name="menu_shareOpenWith">İle açın …</string>

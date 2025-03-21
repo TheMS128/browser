@@ -75,7 +75,6 @@
     <string name="source">Izvor</string>
     <string name="setting_title_save_data">Zahtjevnite \'Spašavanje Podataka\'</string>
     <string name="setting_title_profiles">Profili</string>
-    <string name="setting_title_profiles_standardList">Standardne stranice</string>
     <string name="setting_title_profiles_standard">Standardni</string>
     <string name="setting_title_profiles_dataUsage">Korištenje dodataka</string>
     <string name="setting_title_profiles_privacy">Privatnost</string>
@@ -89,13 +88,11 @@
     <string name="setting_summary_adblock">Omogućite AdBlock da biste blokirali dosadne reklame. Stranice se isto brže učitavaju kad je omogućen.</string>
     <string name="setting_title_adblockHost">Blokirani sadržaji</string>
     <string name="setting_title_location">Lokacija</string>
-    <string name="setting_title_history">Povijest</string>
     <string name="setting_summary_autofill">Omogućite spašavanje formularskih podataka (Android Nougat i ispod) ili servis za automatsko ispunjavanje (Android Oreo i iznad).</string>
     <string name="data_summary">Sve datoteke će biti izvezene u direktorij \"Documents/browser_backup/\" na vašoj SD kartici.</string>
     <string name="clear_title_quit">Očistite pri izlazku iz aplikacije</string>
     <string name="clear_title_cache">Očisti Skladište</string>
     <string name="clear_title_cookie">Očisti Kekse</string>
-    <string name="clear_title_history">Očisti Povijest</string>
     <string name="localData">Očistite pohranjene podatke na uređaju</string>
     <string name="clear_title_deleteDatabase">Izbrišite bazu podataka</string>
     <string name="clear_summary_deleteDatabase">Izbrišite cijelu bazu podataka (početnu stranicu, obilježivače, povijest i sve bijele liste).</string>

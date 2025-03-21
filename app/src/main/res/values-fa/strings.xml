@@ -74,12 +74,10 @@
     <string name="setting_title_font">اندازه قلم</string>
     <string name="setting_title_dom">محل ذخیره DOM</string>
     <string name="privacy_redirect">هدایت</string>
-    <string name="custom_redirects">تغییرمسیرهای سفارشی</string>
     <string name="source">منبع</string>
     <string name="target">هدف</string>
     <string name="setting_title_save_data">درخواست صرفه جویی داده</string>
     <string name="setting_title_profiles">نمایه‌ ها</string>
-    <string name="setting_title_profiles_standardList">سایت های استاندارد</string>
     <string name="setting_title_profiles_standard">استاندارد</string>
     <string name="setting_title_profiles_dataUsage">مصرف داده</string>
     <string name="setting_title_profiles_privacy">خصوصی</string>
@@ -93,13 +91,11 @@
     <string name="setting_summary_adblock">با فعال سازی این گزینه، مانع نمایش تبلیغات آزار دهنده شوید،همچنین سرعت بارگیری سایت ها را بهبود بخشید.</string>
     <string name="setting_title_adblockHost">محتوای مسدود شده</string>
     <string name="setting_title_location">مکان جاری</string>
-    <string name="setting_title_history">تاریخچه</string>
     <string name="setting_summary_autofill">ذخیره‌سازی محتوای فرم ( اندروید ٧ و پایین‌تر) یا سرویس تکمیل خودکار ( اندروید ۸ و بالاتر) را فعال کنید.</string>
     <string name="data_summary">همه فایلها به پوشه \"Documents/browser_backup/\" کارت حافظه شما صادر می شوند.</string>
     <string name="clear_title_quit">پاک سازی هنگام خروج از برنامه</string>
     <string name="clear_title_cache">پاک‌سازی حافظه پنهان</string>
     <string name="clear_title_cookie">پاک سازی کوکی ها</string>
-    <string name="clear_title_history">پاکسازی تاریخچه</string>
     <string name="localData">داده های ذخیره شده در دستگاه را پاک کنید</string>
     <string name="clear_title_deleteDatabase">حذف دیتابیس</string>
     <string name="clear_summary_deleteDatabase">حذف کل دیتابیس (صفحه آغازین، نشانک ها، تاریخچه و تمام فهرست های سفید).</string>

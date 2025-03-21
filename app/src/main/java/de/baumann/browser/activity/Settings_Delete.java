@@ -26,7 +26,6 @@ public class Settings_Delete extends AppCompatActivity {
         super.onCreate(savedInstanceState);
 
         HelperUnit.initTheme(this);
-        if (getSupportActionBar() != null) getSupportActionBar().hide();
         setContentView(R.layout.activity_settings_delete);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);

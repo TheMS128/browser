@@ -74,12 +74,10 @@
     <string name="setting_title_font">Dimensiune font</string>
     <string name="setting_title_dom">Stocare DOM</string>
     <string name="privacy_redirect">Redirecționare</string>
-    <string name="custom_redirects">Redirecționări personalizate</string>
     <string name="source">Sursă</string>
     <string name="target">Destinație</string>
     <string name="setting_title_save_data">Solicită \'Salvare date\'</string>
     <string name="setting_title_profiles">Profiluri</string>
-    <string name="setting_title_profiles_standardList">Site-uri web standard</string>
     <string name="setting_title_profiles_standard">Standard</string>
     <string name="setting_title_profiles_dataUsage">Utilizarea datelor</string>
     <string name="setting_title_profiles_privacy">Confidențialitate</string>
@@ -93,13 +91,11 @@
     <string name="setting_summary_adblock">Activează AdBlock pentru a bloca reclamele enervante. De asemenea, site-urile se încarcă mai repede când este activat.</string>
     <string name="setting_title_adblockHost">Conținut Blocat</string>
     <string name="setting_title_location">Locație</string>
-    <string name="setting_title_history">Istoric</string>
     <string name="setting_summary_autofill">Activează salvarea datelor din formular (Android Nougat și mai jos) sau serviciul de completare automată (Android Oreo și versiuni ulterioare).</string>
     <string name="data_summary">Toate fișierele vor fi exportate în dosarul \"Documente/browser_backup/\" de pe cardul SD.</string>
     <string name="clear_title_quit">Curățare la ieșirea din aplicație</string>
     <string name="clear_title_cache">Golire memorie cache</string>
     <string name="clear_title_cookie">Golire cookie-uri</string>
-    <string name="clear_title_history">Golire istoric</string>
     <string name="localData">Șterge datele stocate pe dispozitiv</string>
     <string name="clear_title_deleteDatabase">Ștergere bază de date</string>
     <string name="clear_summary_deleteDatabase">Ștergeți întreaga bază de date (pagina de start, marcajele, istoricul și toate listele de domenii).</string>
@@ -173,7 +169,6 @@
     <string name="dialog_backGround">Deschiderea linkurilor în fundal …</string>
     <string name="album_title_bookmarks_simple">Semne de carte (simplu)</string>
     <string name="setting_title_cookie_thirdParty">Cookie-uri terță parte</string>
-    <string name="setting_title_backup_exit">Copie de rezervă a bazei de date (pagina de start, marcajele, istoricul și toate listele de domenii) la ieșire\?</string>
     <string name="title_appDatabase">Baza de date</string>
     <string name="app_error_save">Deja salvat.</string>
     <string name="menu_shareOpenWith">Deschideți cu …</string>

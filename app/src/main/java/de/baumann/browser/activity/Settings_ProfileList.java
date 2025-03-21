@@ -45,7 +45,6 @@ public class Settings_ProfileList extends AppCompatActivity {
         super.onCreate(savedInstanceState);
 
         HelperUnit.initTheme(this);
-        if (getSupportActionBar() != null) getSupportActionBar().hide();
         setContentView(R.layout.activity_settings_profile_list);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);

@@ -74,12 +74,10 @@
     <string name="setting_title_font">Величина слова</string>
     <string name="setting_title_dom">ДОМ складиште</string>
     <string name="privacy_redirect">Преусмерите</string>
-    <string name="custom_redirects">Прилагођена преусмеравања</string>
     <string name="source">Извор</string>
     <string name="target">Циљ</string>
     <string name="setting_title_save_data">Захтевај уштеду података</string>
     <string name="setting_title_profiles">Профили</string>
-    <string name="setting_title_profiles_standardList">Стандардни сајтови</string>
     <string name="setting_title_profiles_standard">Стандардни</string>
     <string name="setting_title_profiles_dataUsage">Потрошња података</string>
     <string name="setting_title_profiles_privacy">Приватност</string>
@@ -93,13 +91,11 @@
     <string name="setting_summary_adblock">Омогиући блокер реклама како би блокирао досадне рекламе. Сајтови се такође брже учитавају кад је омогућен.</string>
     <string name="setting_title_adblockHost">Блокиран садржај</string>
     <string name="setting_title_location">Локација</string>
-    <string name="setting_title_history">Историјат</string>
     <string name="setting_summary_autofill">Дозволите спашавање формуларских података (Андроид Ноугат и испод) или сервис за аутоматско испуњавање (Андроид Орео и изнад).</string>
     <string name="data_summary">Све датотеке биће извезене у фасцикли \"Documents/browser_backup/\" на СД картици.</string>
     <string name="clear_title_quit">Бриши при затварању</string>
     <string name="clear_title_cache">Очисти кеш</string>
     <string name="clear_title_cookie">Избриши колачиће</string>
-    <string name="clear_title_history">Очисти историјат</string>
     <string name="localData">Обришите податке сачуване на уређају</string>
     <string name="clear_title_deleteDatabase">Обриши базу података</string>
     <string name="clear_summary_deleteDatabase">Обриши целу базу података (почетну страницу, забелешке, историјат и све беле листе)</string>

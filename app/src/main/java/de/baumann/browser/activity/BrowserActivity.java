@@ -51,7 +51,6 @@ import android.view.WindowManager;
 import android.webkit.ValueCallback;
 import android.webkit.WebBackForwardList;
 import android.webkit.WebChromeClient;
-import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.widget.Button;
 import android.widget.CheckBox;
@@ -62,6 +61,7 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.VideoView;
@@ -80,7 +80,6 @@ import androidx.core.view.WindowInsetsCompat;
 import androidx.preference.PreferenceManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-import androidx.webkit.WebSettingsCompat;
 import androidx.webkit.WebViewFeature;
 
 import com.google.android.material.badge.BadgeDrawable;
@@ -210,8 +209,6 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
 
     @Override
     public void onPause() {
-        //Save open Tabs in shared preferences
-        saveOpenedTabs();
         super.onPause();
     }
 
@@ -232,7 +229,6 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
         sp.edit()
                 .putInt("restart_changed", 0)
                 .putBoolean("pdf_create", false)
-                .putString("profile", sp.getString("profile_toStart", "profileStandard"))
                 .putString("openBackground_dialog", "show").apply();
 
         switch (Objects.requireNonNull(sp.getString("start_tab", "3"))) {
@@ -262,7 +258,6 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
         builder.setView(dialogView);
         dialogTabOverview = builder.create();
         Button tabs_close = dialogView.findViewById(R.id.tabs_close);
-        assert tabs_close != null;
         tabs_close.setOnClickListener(view -> dialogTabOverview.cancel());
         tab_container = dialogView.findViewById(R.id.listTabs);
         HelperUnit.setupDialog(context, dialogTabOverview);
@@ -362,13 +357,11 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
     @Override
     public void onResume() {
         super.onResume();
-        saveOpenedTabs();
 
         if (sp.getBoolean("sp_camera", false)) {
             if (ContextCompat.checkSelfPermission(this, Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {
                 ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.CAMERA}, 1); }}
         if (sp.getInt("restart_changed", 1) == 1) {
-            saveOpenedTabs();
             HelperUnit.triggerRebirth(context); }
         if (sp.getBoolean("pdf_create", false)) {
             sp.edit().putBoolean("pdf_create", false).apply();
@@ -386,26 +379,19 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
 
     @Override
     public void onDestroy() {
-
-        saveOpenedTabs();
-
         NotificationManager notificationManager = (NotificationManager) getApplicationContext().getSystemService(Context.NOTIFICATION_SERVICE);
         notificationManager.cancel(2);
         notificationManager.cancel(1);
-
         if (sp.getBoolean("sp_clear_quit", true)) {
             BrowserUnit.clearBrowserData(this);
         }
-
         if (sp.getBoolean("sp_backup_quit", false)) {
             Fragment_settings_Backup.backup(activity);
         }
-
         BrowserContainer.clear();
-
         if (!sp.getBoolean("sp_reloadTabs", false) || sp.getInt("restart_changed", 1) == 1) {
-            sp.edit().putString("openTabs", "").apply();   //clear open tabs in preferences
-            sp.edit().putString("openTabsProfile", "").apply(); }
+            sp.edit().putString("openTabs", "").apply();
+        }
         super.onDestroy();
     }
 
@@ -434,11 +420,6 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
         contentFrame.removeAllViews();
         contentFrame.addView(av);
         updateOmniBox();
-        if (WebViewFeature.isFeatureSupported(WebViewFeature.ALGORITHMIC_DARKENING)) {
-            WebSettings s = ninjaWebView.getSettings();
-            boolean allowed = sp.getBoolean("setAlgorithmicDarkeningAllowed", true);
-            WebSettingsCompat.setAlgorithmicDarkeningAllowed(s, allowed);
-        }
     }
 
     @Override
@@ -469,6 +450,7 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
             });
         }
         updateOmniBox();
+        saveOpenedTabs();
     }
 
     @Override
@@ -477,7 +459,10 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
         if (progress != BrowserUnit.LOADING_STOPPED) {
             updateOmniBox();
         }
-        if (progress < 100) progressBar.setVisibility(VISIBLE);
+        if (progress < 100) {
+            progressBar.setVisibility(VISIBLE);
+            saveOpenedTabs();
+        }
     }
 
     @Override
@@ -944,6 +929,7 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
     }
 
     private void showOverview() {
+        initOverview();
         dialogOverview.show();
     }
 
@@ -1206,7 +1192,6 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
                 startActivity(settings);
                 dialog_overflow.cancel();
             } else if (position == 3) {
-                saveOpenedTabs();
                 HelperUnit.triggerRebirth(context);
             } else if (position == 4) {
                 Uri webpage = Uri.parse("https://codeberg.org/Gaukler_Faun/FOSS_Browser/wiki");
@@ -1551,7 +1536,7 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
                             action.open(true);
                             action.deleteURL(url, RecordUnit.TABLE_BOOKMARK);
                             action.deleteURL(editBottom.getText().toString(), RecordUnit.TABLE_BOOKMARK);
-                            action.addBookmark(new Record(editTop.getText().toString(), editBottom.getText().toString(), 0, 0, BOOKMARK_ITEM, false, false, newIcon));
+                            action.addBookmark(new Record(editTop.getText().toString(), editBottom.getText().toString(), 0, 0, BOOKMARK_ITEM, newIcon));
                             updateOmniBox();
                             NinjaToast.show(this, R.string.app_done);
                             action.close();
@@ -1561,7 +1546,7 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
                             action.open(true);
                             action.deleteURL(url, RecordUnit.TABLE_START);
                             action.deleteURL(editBottom.getText().toString(), RecordUnit.TABLE_START);
-                            action.addStartSite(new Record(editTop.getText().toString(), editBottom.getText().toString(), 0, 0, BOOKMARK_ITEM, false, false, newIcon));
+                            action.addStartSite(new Record(editTop.getText().toString(), editBottom.getText().toString(), 0, 0, BOOKMARK_ITEM, newIcon));
                             NinjaToast.show(this, R.string.app_done);
                             action.close();
                             bottom_navigation.setSelectedItemId(R.id.page_1); }
@@ -1761,12 +1746,13 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
                 ninjaWebView.setProfileIcon(buttonProfile, omniBox_tab, url);
             });
 
+            RelativeLayout layout_nightView = dialogViewFastToggle.findViewById(R.id.layout_nightView);
             CheckBox checkbox_nightView = dialogViewFastToggle.findViewById(R.id.checkbox_nightView);
             int nightModeFlags = getResources().getConfiguration().uiMode & Configuration.UI_MODE_NIGHT_MASK;
             if ((nightModeFlags == Configuration.UI_MODE_NIGHT_YES) && !sp.getString("sp_theme", "1").equals("2")) {
-                checkbox_nightView.setVisibility(VISIBLE);
+                layout_nightView.setVisibility(VISIBLE);
             } else  {
-                checkbox_nightView.setVisibility(GONE);
+                layout_nightView.setVisibility(GONE);
             }
             if (WebViewFeature.isFeatureSupported(WebViewFeature.ALGORITHMIC_DARKENING)) {
                 checkbox_nightView.setChecked(sp.getBoolean(profile + "_night", true));
@@ -1795,7 +1781,6 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
             });
             chip_toggleScreenOn.setOnClickListener(v -> {
                 sp.edit().putBoolean("sp_screenOn", !sp.getBoolean("sp_screenOn", false)).apply();
-                saveOpenedTabs();
                 HelperUnit.triggerRebirth(context);
                 dialogFastToggle.cancel();
             });
@@ -2033,13 +2018,6 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
                 openTabs.add(0, ((NinjaWebView) (BrowserContainer.get(i))).getUrl());
             else openTabs.add(((NinjaWebView) (BrowserContainer.get(i))).getUrl()); }
         sp.edit().putString("openTabs", TextUtils.join("‚‗‚", openTabs)).apply();
-        //Save profile of open Tabs in shared preferences
-        ArrayList<String> openTabsProfile = new ArrayList<>();
-        for (int i = 0; i < BrowserContainer.size(); i++) {
-            if (currentAlbumController == BrowserContainer.get(i))
-                openTabsProfile.add(0, NinjaWebView.getProfile());
-            else openTabsProfile.add(NinjaWebView.getProfile()); }
-        sp.edit().putString("openTabsProfile", TextUtils.join("‚‗‚", openTabsProfile)).apply();
     }
 
     private void setCustomFullscreen(boolean fullscreen) {
@@ -2082,7 +2060,7 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
             int counter = sp.getInt("counter", 0);
             counter = counter + 1;
             sp.edit().putInt("counter", counter).apply();
-            if (action.addStartSite(new Record(title, url, 0, counter, 1, false, false, 0))) NinjaToast.show(this, R.string.app_done);
+            if (action.addStartSite(new Record(title, url, 0, counter, 1, 0))) NinjaToast.show(this, R.string.app_done);
             else NinjaToast.show(this, R.string.app_error); }
         action.close();
     }
@@ -2271,7 +2249,7 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
             NinjaToast.show(this, message);
         else {
             long value = 0;  //default red icon
-            action.addBookmark(new Record(ninjaWebView.getTitle(), ninjaWebView.getUrl(), 0, 0, 2, false, false, value));
+            action.addBookmark(new Record(ninjaWebView.getTitle(), ninjaWebView.getUrl(), 0, 0, 2, value));
             updateOmniBox();
             NinjaToast.show(this, R.string.app_done); }
         action.close();
@@ -2287,12 +2265,16 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
                     WebBackForwardList mWebBackForwardList = ninjaWebView.copyBackForwardList();
                     String historyUrl = mWebBackForwardList.getItemAtIndex(mWebBackForwardList.getCurrentIndex() + 1).getUrl();
                     ninjaWebView.initPreferences(historyUrl);
-                    ninjaWebView.goForward(); }
+                    ninjaWebView.goForward();
+                }
                 else NinjaToast.show(this, R.string.toast_webview_forward);
                 break;
             case "03":
-                if (ninjaWebView.canGoBack()) ninjaWebView.goBack();
-                else removeAlbum(currentAlbumController);
+                if (fullscreenHolder != null || customView != null || videoView != null) {
+                    Log.v(TAG, "FOSS Browser in fullscreen mode");
+                } else if (ninjaWebView.canGoBack()){
+                    ninjaWebView.goBack();
+                } else removeAlbum(currentAlbumController);
                 break;
             case "04":
                 ninjaWebView.pageUp(true);
@@ -2346,7 +2328,6 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
                 break;
             case "22":
                 sp.edit().putBoolean("sp_screenOn", !sp.getBoolean("sp_screenOn", false)).apply();
-                saveOpenedTabs();
                 HelperUnit.triggerRebirth(context);
                 break;
             case "23":
@@ -2361,6 +2342,10 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
                 break;
             case "26":
                 doubleTapsQuit();
+                break;
+            case "27":
+                sp.edit().putString("profile", "profileStandard").apply();
+                ninjaWebView.reload();
                 break;
         }
     }
@@ -2491,6 +2476,7 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
     }
 
     private synchronized void addAlbum(String title, final String url, final boolean foreground) {
+        sp.edit().putString("profile", "profileStandard").apply();
         setWebView(title, url, foreground);
     }
 }

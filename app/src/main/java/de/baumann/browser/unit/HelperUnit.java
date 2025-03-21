@@ -179,8 +179,6 @@ public class HelperUnit {
                 if (title.isEmpty() || !extension1.startsWith(".")) {
                     NinjaToast.show(activity, activity.getString(R.string.toast_input_empty));
                 } else {
-
-
                     if (BackupUnit.checkPermissionStorage(activity)) {
                         try {
                             if (url.startsWith("blob:")) {

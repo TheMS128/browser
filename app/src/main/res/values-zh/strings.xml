@@ -74,12 +74,10 @@
     <string name="setting_title_font">字体大小</string>
     <string name="setting_title_dom">DOM 存储</string>
     <string name="privacy_redirect">重定向</string>
-    <string name="custom_redirects">自定义重定向</string>
     <string name="source">源代码</string>
     <string name="target">目标</string>
     <string name="setting_title_save_data">请求“保存数据”</string>
     <string name="setting_title_profiles">配置文件</string>
-    <string name="setting_title_profiles_standardList">标准网站</string>
     <string name="setting_title_profiles_standard">标准</string>
     <string name="setting_title_profiles_dataUsage">数据使用量</string>
     <string name="setting_title_profiles_privacy">隐私</string>
@@ -93,13 +91,11 @@
     <string name="setting_summary_adblock">启用AdBlock可阻止烦人的广告。网站的加载速度也会更快。</string>
     <string name="setting_title_adblockHost">屏蔽的内容</string>
     <string name="setting_title_location">地理位置</string>
-    <string name="setting_title_history">历史记录</string>
     <string name="setting_summary_autofill">启用表单数据保存（Android 7及以下版本）或自动填充服务（Android 8及以上版本）。</string>
     <string name="data_summary">所有文件将导出到您SD卡的“Documents/browser_backup/”目录。</string>
     <string name="clear_title_quit">在应用退出时清除</string>
     <string name="clear_title_cache">清除缓存</string>
     <string name="clear_title_cookie">清除Cookies</string>
-    <string name="clear_title_history">清除历史记录</string>
     <string name="localData">清除设备上存储的数据</string>
     <string name="clear_title_deleteDatabase">删除数据库</string>
     <string name="clear_summary_deleteDatabase">删除整个数据库（起始页、书签、历史记录和所有白名单）。</string>
@@ -173,7 +169,6 @@
     <string name="dialog_backGround">在后台打开链接 …</string>
     <string name="album_title_bookmarks_simple">书签（简单）</string>
     <string name="setting_title_cookie_thirdParty">第三方 Cookies</string>
-    <string name="setting_title_backup_exit">退出时备份数据库（起始页、书签、历史记录和所有域列表）？</string>
     <string name="title_appDatabase">数据库</string>
     <string name="app_error_save">已经保存。</string>
     <string name="menu_shareOpenWith">打开 …</string>
