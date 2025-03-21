@@ -11,24 +11,21 @@ public class Record {
     private String title;
     private String url;
     private long time;
-    private int type;     //0 History, 1 Start site, 2 Bookmark
 
     public Record() {
         this.title = null;
         this.url = null;
         this.time = 0L;
         this.ordinal = -1;
-        this.type = -1;
         this.isDesktopMode = null;
         this.iconColor = 0L;
     }
 
-    public Record(String title, String url, long time, int ordinal, int type, long iconColor) {
+    public Record(String title, String url, long time, int ordinal, long iconColor) {
         this.title = title;
         this.url = url;
         this.time = time;
         this.ordinal = ordinal;
-        this.type = type;
         this.iconColor = iconColor;
     }
 
@@ -86,9 +83,5 @@ public class Record {
 
     int getOrdinal() {
         return ordinal;
-    }
-
-    public void setType(int type) {
-        this.type = type;
     }
 }

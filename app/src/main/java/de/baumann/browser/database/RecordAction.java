@@ -26,7 +26,6 @@ public class RecordAction {
     public static final int HISTORY_ITEM = 0;
     public static final int STARTSITE_ITEM = 1;
     public static final int BOOKMARK_ITEM = 2;
-    public static final int CLIPBOARD_ITEM = 3;
     private final RecordHelper helper;
     private SQLiteDatabase database;
 
@@ -304,7 +303,6 @@ public class RecordAction {
         record.setTitle(cursor.getString(0));
         record.setURL(cursor.getString(1));
         record.setTime(cursor.getLong(2));
-        record.setType(type);
 
         if (type == BOOKMARK_ITEM) {
             record.setIconColor(record.getTime());
@@ -323,7 +321,7 @@ public class RecordAction {
         String clipboardEntry = ClipboardUnit.getPrimary(activity);
         if (clipboardEntry == null || !URLUtil.isValidUrl(clipboardEntry)) return null;
         return new Record(
-                activity.getString(R.string.link_you_copied), clipboardEntry, 0L, -1, CLIPBOARD_ITEM, 0L
+                activity.getString(R.string.link_you_copied), clipboardEntry, 0L, -1, 0L
         );
     }
 

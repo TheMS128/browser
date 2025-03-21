@@ -6,7 +6,6 @@ import static android.view.View.VISIBLE;
 import static android.webkit.WebView.HitTestResult.IMAGE_TYPE;
 import static android.webkit.WebView.HitTestResult.SRC_ANCHOR_TYPE;
 import static android.webkit.WebView.HitTestResult.SRC_IMAGE_ANCHOR_TYPE;
-import static de.baumann.browser.database.RecordAction.BOOKMARK_ITEM;
 
 import android.Manifest;
 import android.annotation.SuppressLint;
@@ -1536,7 +1535,7 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
                             action.open(true);
                             action.deleteURL(url, RecordUnit.TABLE_BOOKMARK);
                             action.deleteURL(editBottom.getText().toString(), RecordUnit.TABLE_BOOKMARK);
-                            action.addBookmark(new Record(editTop.getText().toString(), editBottom.getText().toString(), 0, 0, BOOKMARK_ITEM, newIcon));
+                            action.addBookmark(new Record(editTop.getText().toString(), editBottom.getText().toString(), 0, 0, newIcon));
                             updateOmniBox();
                             NinjaToast.show(this, R.string.app_done);
                             action.close();
@@ -1546,7 +1545,7 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
                             action.open(true);
                             action.deleteURL(url, RecordUnit.TABLE_START);
                             action.deleteURL(editBottom.getText().toString(), RecordUnit.TABLE_START);
-                            action.addStartSite(new Record(editTop.getText().toString(), editBottom.getText().toString(), 0, 0, BOOKMARK_ITEM, newIcon));
+                            action.addStartSite(new Record(editTop.getText().toString(), editBottom.getText().toString(), 0, 0, newIcon));
                             NinjaToast.show(this, R.string.app_done);
                             action.close();
                             bottom_navigation.setSelectedItemId(R.id.page_1); }
@@ -2060,7 +2059,7 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
             int counter = sp.getInt("counter", 0);
             counter = counter + 1;
             sp.edit().putInt("counter", counter).apply();
-            if (action.addStartSite(new Record(title, url, 0, counter, 1, 0))) NinjaToast.show(this, R.string.app_done);
+            if (action.addStartSite(new Record(title, url, 0, counter, 0))) NinjaToast.show(this, R.string.app_done);
             else NinjaToast.show(this, R.string.app_error); }
         action.close();
     }
@@ -2249,7 +2248,7 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
             NinjaToast.show(this, message);
         else {
             long value = 0;  //default red icon
-            action.addBookmark(new Record(ninjaWebView.getTitle(), ninjaWebView.getUrl(), 0, 0, 2, value));
+            action.addBookmark(new Record(ninjaWebView.getTitle(), ninjaWebView.getUrl(), 0, 0, value));
             updateOmniBox();
             NinjaToast.show(this, R.string.app_done); }
         action.close();
