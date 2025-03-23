@@ -183,4 +183,10 @@
     <string name="app_always">Immer</string>
     <string name="app_session">… in dieser Sitzung?</string>
     <string name="app_permission_notification">Benachrichtigungen</string>
+    <string name="setting_title_savedWebSites">Gespeicherte Intenetseiten</string>
+    <string name="setting_backup_ext">Beim Verlassen sichern</string>
+    <string name="setting_backup_sumDatabase">Startseite, Lesezeichen, Verlauf</string>
+    <string name="album_title_bookmarks_html">Lesezeichen (HTML)</string>
+    <string name="setting_backup_sumSettings">Anwendungs- und Internetseiteneinstellungen</string>
+    <string name="setting_title_dynColors">Dynamische Farben</string>
 </resources>

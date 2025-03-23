@@ -183,4 +183,10 @@
     <string name="app_session">… في الدورة الحالية؟</string>
     <string name="app_never">أبداً</string>
     <string name="app_permission_notification">الإشعارات</string>
+    <string name="album_title_bookmarks_html">الإشارات المرجعية (HTML)</string>
+    <string name="setting_title_dynColors">ألوان ديناميكية</string>
+    <string name="setting_backup_ext">النسخ الاحتياطي عند الخروج</string>
+    <string name="setting_backup_sumSettings">إعدادات التطبيق والموقع الإلكتروني</string>
+    <string name="setting_title_savedWebSites">المواقع المحفوظة</string>
+    <string name="setting_backup_sumDatabase">موقع البداية، الإشارات المرجعية، التاريخ</string>
 </resources>
