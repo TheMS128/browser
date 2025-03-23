@@ -17,7 +17,7 @@
     <string name="app_permission_notification">Notifications</string>
     <string name="list_empty">Empty List</string>
     <string name="album_title_bookmarks">Bookmarks</string>
-    <string name="album_title_bookmarks_simple">Bookmarks (simple)</string>
+    <string name="album_title_bookmarks_html">Bookmarks (HTML)</string>
     <string name="album_title_history">History</string>
     <string name="album_title_home">Home</string>
     <string name="album_title_tab">Opened Tabs</string>
@@ -94,7 +94,6 @@
     <string name="source">Source</string>
     <string name="target">Target</string>
     <string name="setting_title_save_data">Request \'Save data\'</string>
-    <string name="setting_title_profiles">Profiles</string>
     <string name="setting_title_profiles_standard">Standard</string>
     <string name="setting_title_profiles_dataUsage">Data usage</string>
     <string name="setting_title_profiles_privacy">Privacy</string>

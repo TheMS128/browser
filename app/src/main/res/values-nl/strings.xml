@@ -77,7 +77,6 @@
     <string name="source">Bron</string>
     <string name="target">Doel</string>
     <string name="setting_title_save_data">Verzoek \'Gegevens opslaan\'</string>
-    <string name="setting_title_profiles">Profielen</string>
     <string name="setting_title_profiles_standard">Standaard</string>
     <string name="setting_title_profiles_dataUsage">Gegevensgebruik</string>
     <string name="setting_title_profiles_privacy">Privacy</string>
@@ -167,7 +166,6 @@
     <string name="custom_searches_title">Snel zoeken op …</string>
     <string name="app_error_copy">Selecteer en kopieer tekst handmatig</string>
     <string name="dialog_backGround">Links openen op achtergrond …</string>
-    <string name="album_title_bookmarks_simple">Bladwijzers (eenvoudig)</string>
     <string name="setting_title_cookie_thirdParty">Cookies van derden</string>
     <string name="title_appDatabase">Database</string>
     <string name="app_error_save">Al opgeslagen.</string>

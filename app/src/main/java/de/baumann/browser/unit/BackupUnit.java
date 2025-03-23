@@ -66,11 +66,9 @@ import de.baumann.browser.view.NinjaToast;
 public class BackupUnit {
 
     public static final int PERMISSION_REQUEST_CODE = 123;
-    private static final String BOOKMARK_TYPE = "<DT><A HREF=\"{url}\" ADD_DATE=\"{time}\">{title}</A>";
     private static final String BOOKMARK_TYPE_SIMPLE = "<DT><A HREF=\"{url}\">{title}</A>";
     private static final String BOOKMARK_TITLE = "{title}";
     private static final String BOOKMARK_URL = "{url}";
-    private static final String BOOKMARK_TIME = "{time}";
 
     public static boolean checkPermissionStorage(Context context) {
         if (SDK_INT >= Build.VERSION_CODES.R) return Environment.isExternalStorageManager();
@@ -118,16 +116,10 @@ public class BackupUnit {
         Handler handler = new Handler(Looper.getMainLooper());
         executor.execute(() -> {
             //Background work here
-            switch (i) {
-                case 4:
-                    exportBookmarks(context);
-                    break;
-                case 5:
-                    exportBookmarksSimple(context);
-                    break;
-                default:
-                    exportList(context);
-                    break;
+            if (i == 5) {
+                exportBookmarksSimple(context);
+            } else {
+                exportList(context);
             }
             handler.post(() -> {
                 //UI Thread work here
@@ -141,16 +133,10 @@ public class BackupUnit {
         Handler handler = new Handler(Looper.getMainLooper());
         executor.execute(() -> {
             //Background work here
-            switch (i) {
-                case 4:
-                    importBookmarks(context);
-                    break;
-                case 5:
-                    importBookmarksSimple(context);
-                    break;
-                default:
-                    importList(context);
-                    break;
+            if (i == 5) {
+                importBookmarksSimple(context);
+            } else {
+                importList(context);
             }
             handler.post(() -> {
                 //UI Thread work here
@@ -203,29 +189,6 @@ public class BackupUnit {
         }
     }
 
-    public static void exportBookmarks(Context context) {
-        RecordAction action = new RecordAction(context);
-        action.open(false);
-        List<Record> list = action.listBookmark(context, false, 0);
-        action.close();
-        File file = new File(Environment.getExternalStoragePublicDirectory(DIRECTORY_DOCUMENTS), "browser_backup//list_bookmarks.html");
-
-        try {
-            BufferedWriter writer = new BufferedWriter(new FileWriter(file, false));
-            for (Record record : list) {
-                String type = BOOKMARK_TYPE;
-                type = type.replace(BOOKMARK_TITLE, record.getTitle());
-                type = type.replace(BOOKMARK_URL, record.getURL());
-                type = type.replace(BOOKMARK_TIME, String.valueOf(record.getIconColor() + (long) (record.getDesktopMode() ? 16 : 0) + (long) (record.getNightMode() ? 32 : 0)));
-                writer.write(type);
-                writer.newLine();
-            }
-            writer.close();
-            String wasSuccessful = file.getAbsolutePath();
-            if (wasSuccessful.isEmpty()) {System.out.println("was not successful.");}
-        } catch (Exception ignored) { }
-    }
-
     public static void exportBookmarksSimple(Context context) {
         RecordAction action = new RecordAction(context);
         action.open(false);
@@ -246,42 +209,6 @@ public class BackupUnit {
             String wasSuccessfulTxt = fileTxt.getAbsolutePath();
             if (wasSuccessfulTxt.isEmpty()) {System.out.println("was not successful."); }
         } catch (Exception ignored) { }
-    }
-
-    public static void importBookmarks(Context context) {
-        File file = new File(Environment.getExternalStoragePublicDirectory(DIRECTORY_DOCUMENTS), "browser_backup//list_bookmarks.html");
-        List<Record> list = new ArrayList<>();
-        try {
-            RecordAction action = new RecordAction(context);
-            action.open(true);
-            BufferedReader reader = new BufferedReader(new FileReader(file));
-            String line;
-            while ((line = reader.readLine()) != null) {
-                line = line.trim();
-                if (!((line.startsWith("<dt><a ") && line.endsWith("</a>")) || (line.startsWith("<DT><A ") && line.endsWith("</A>")))) {
-                    continue; }
-                String title = getBookmarkTitle(line);
-                String url = getBookmarkURL(line);
-                long date = getBookmarkDate(line);
-                if (date > 123)
-                    date = 11;
-                //if no color defined yet set it red (123 is max: 11 for color + 16 for desktop mode + 32 for List_trusted + 64 for List_standard Content
-                if (title.trim().isEmpty() || url.trim().isEmpty()) {
-                    continue; }
-                Record record = new Record();
-                record.setTitle(title);
-                record.setURL(url);
-                record.setIconColor(date & 15);
-                record.setDesktopMode((date & 16) == 16);
-                record.setNightMode(!((date & 32) == 32));
-
-                if (!action.checkUrl(url, RecordUnit.TABLE_BOOKMARK)) list.add(record);}
-            reader.close();
-            list.sort(Comparator.comparing(Record::getTitle));
-            for (Record record : list) {action.addBookmark(record);}
-            action.close();
-        } catch (Exception ignored) { }
-        list.size();
     }
 
     public static void importBookmarksSimple(Context context) {
@@ -316,28 +243,12 @@ public class BackupUnit {
         } catch (Exception ignored) { }
         list.size();
     }
-    private static long getBookmarkDate(String line) {
-        for (String string : line.split(" +")) {
-            if (string.startsWith("ADD_DATE=\"")) {
-                int index = string.indexOf("\">");
-                return Long.parseLong(string.substring(10, index)); }
-        }
-        return 0;
-    }
 
     private static String getBookmarkTitle(String line) {
         // Remove last </a>
         line = line.substring(0, line.length() - 4);
         int index = line.lastIndexOf(">");
         return line.substring(index + 1);
-    }
-
-    private static String getBookmarkURL(String line) {
-        // Remove href=\" and \"
-        for (String string : line.split(" +")) {
-            if (string.startsWith("href=\"") || string.startsWith("HREF=\"")) return string.substring(6, string.length() - 1);
-        }
-        return "";
     }
 
     public static String extractLinks(String text) {

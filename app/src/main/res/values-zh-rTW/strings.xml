@@ -68,7 +68,6 @@
     <string name="source">來源</string>
     <string name="target">目標</string>
     <string name="setting_title_save_data">請求「儲存資料」</string>
-    <string name="setting_title_profiles">剖析</string>
     <string name="setting_title_profiles_standard">标准</string>
     <string name="setting_title_profiles_dataUsage">数据使用情况</string>
     <string name="setting_title_profiles_privacy">隐私</string>
@@ -165,7 +164,6 @@
     <string name="menu_edit">編輯</string>
     <string name="album_title_bookmarks">書籤</string>
     <string name="app_error_copy">請手動選擇並複製文字</string>
-    <string name="album_title_bookmarks_simple">書籤（簡單）</string>
     <string name="app_always">永遠</string>
     <string name="app_session">…在當前會話中？</string>
     <string name="app_error_save">已經儲存。</string>

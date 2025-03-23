@@ -77,7 +77,6 @@
     <string name="source">Джерело</string>
     <string name="target">Ціль</string>
     <string name="setting_title_save_data">Надсилати запит «Збереження даних»</string>
-    <string name="setting_title_profiles">Профілі</string>
     <string name="setting_title_profiles_standard">Стандартний</string>
     <string name="setting_title_profiles_dataUsage">Використання даних</string>
     <string name="setting_title_profiles_privacy">Приватність</string>
@@ -167,7 +166,6 @@
     <string name="custom_searches_title">Швидкий пошук у …</string>
     <string name="app_error_copy">Виберіть і скопіюйте текст вручну</string>
     <string name="dialog_backGround">Відкривати посилання у фоні…</string>
-    <string name="album_title_bookmarks_simple">Закладки (прості)</string>
     <string name="setting_title_cookie_thirdParty">Сторонні куки</string>
     <string name="title_appDatabase">База даних</string>
     <string name="app_error_save">Уже збережено.</string>

@@ -92,9 +92,6 @@ public class Fragment_settings_Backup extends BasePreferenceFragment {
                         restoreUserPrefs(context);
                         BackupUnit.restoreData(getActivity(), 3);
                     }
-                    if (sp.getBoolean("bookmark", false)) {
-                        BackupUnit.restoreData(getActivity(), 4);
-                    }
                     if (sp.getBoolean("bookmark_simple", false)) {
                         BackupUnit.restoreData(getActivity(), 5);
                     }
@@ -128,9 +125,6 @@ public class Fragment_settings_Backup extends BasePreferenceFragment {
                 final File backupFile = new File(sd, "browser_backup/preferenceBackup.xml");
                 copyDirectory(activity, prefsFile, backupFile);
                 BackupUnit.backupData(activity, 3);
-            }
-            if (sp.getBoolean("bookmark", false)) {
-                BackupUnit.backupData(activity, 4);
             }
             if (sp.getBoolean("bookmark_simple", false)) {
                 BackupUnit.backupData(activity, 5);

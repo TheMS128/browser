@@ -77,7 +77,6 @@
     <string name="source">Извор</string>
     <string name="target">Циљ</string>
     <string name="setting_title_save_data">Захтевај уштеду података</string>
-    <string name="setting_title_profiles">Профили</string>
     <string name="setting_title_profiles_standard">Стандардни</string>
     <string name="setting_title_profiles_dataUsage">Потрошња података</string>
     <string name="setting_title_profiles_privacy">Приватност</string>

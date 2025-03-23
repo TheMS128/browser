@@ -25,10 +25,9 @@
         android:summary="@string/dialog_postOnWebsiteHint"
         android:icon="@drawable/icon_post" />
 
-    <Preference android:summary="@string/dialog_postOnWebsiteHint" />
-
     <de.baumann.browser.preferences.EditTextSwitchPreference
         android:key="sp_userAgent"
+        android:icon="@drawable/icon_desktop"
         android:selectable="true"
         android:title="@string/setting_title_userAgent"
         app:editTextSwitchKey="userAgentSwitch"

@@ -77,7 +77,6 @@
     <string name="source">Kaynak</string>
     <string name="target">Hedef</string>
     <string name="setting_title_save_data">\'Veri kaydetme\' isteği</string>
-    <string name="setting_title_profiles">Profiller</string>
     <string name="setting_title_profiles_standard">Standart</string>
     <string name="setting_title_profiles_dataUsage">Veri kullanımı</string>
     <string name="setting_title_profiles_privacy">Gizlilik</string>
@@ -167,7 +166,6 @@
     <string name="custom_searches_title">Hızlı arama …</string>
     <string name="app_error_copy">Lütfen metni manuel olarak seçin ve kopyalayın</string>
     <string name="dialog_backGround">Bağlantıları arka planda aç …</string>
-    <string name="album_title_bookmarks_simple">Yer İmleri (basit)</string>
     <string name="setting_title_cookie_thirdParty">Üçüncü Taraf Çerezleri</string>
     <string name="title_appDatabase">Veritabanı</string>
     <string name="app_error_save">Çoktan kaydedildi.</string>

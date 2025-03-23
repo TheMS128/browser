@@ -77,7 +77,6 @@
     <string name="source">Sursă</string>
     <string name="target">Destinație</string>
     <string name="setting_title_save_data">Solicită \'Salvare date\'</string>
-    <string name="setting_title_profiles">Profiluri</string>
     <string name="setting_title_profiles_standard">Standard</string>
     <string name="setting_title_profiles_dataUsage">Utilizarea datelor</string>
     <string name="setting_title_profiles_privacy">Confidențialitate</string>
@@ -167,7 +166,6 @@
     <string name="custom_searches_title">Căutare rapidă pe …</string>
     <string name="app_error_copy">Vă rugăm să selectați și să copiați manual textul</string>
     <string name="dialog_backGround">Deschiderea linkurilor în fundal …</string>
-    <string name="album_title_bookmarks_simple">Semne de carte (simplu)</string>
     <string name="setting_title_cookie_thirdParty">Cookie-uri terță parte</string>
     <string name="title_appDatabase">Baza de date</string>
     <string name="app_error_save">Deja salvat.</string>

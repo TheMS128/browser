@@ -76,7 +76,6 @@
     <string name="source">מקור</string>
     <string name="target">מטרה</string>
     <string name="setting_title_save_data">בקש \'שמור נתונים\'</string>
-    <string name="setting_title_profiles">פרופילים</string>
     <string name="setting_title_profiles_standard">תקן</string>
     <string name="setting_title_profiles_dataUsage">שימוש בנתונים</string>
     <string name="setting_title_profiles_privacy">פרטיות</string>

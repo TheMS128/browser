@@ -77,7 +77,6 @@
     <string name="source">ソース</string>
     <string name="target">目標</string>
     <string name="setting_title_save_data">「データを保存」のリクエスト</string>
-    <string name="setting_title_profiles">プロファイル</string>
     <string name="setting_title_profiles_standard">標準</string>
     <string name="setting_title_profiles_dataUsage">データ使用量</string>
     <string name="setting_title_profiles_privacy">プライバシー</string>
@@ -167,7 +166,6 @@
     <string name="custom_searches_title">高速検索 …</string>
     <string name="app_error_copy">手動でテキストを選択してコピーしてください</string>
     <string name="dialog_backGround">バックグラウンドでリンクを開く …</string>
-    <string name="album_title_bookmarks_simple">ブックマーク（シンプル）</string>
     <string name="setting_title_cookie_thirdParty">サードパーティークッキー</string>
     <string name="title_appDatabase">データベース</string>
     <string name="app_error_save">すでに保存されている。</string>

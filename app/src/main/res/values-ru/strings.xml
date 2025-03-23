@@ -77,7 +77,6 @@
     <string name="source">Источник</string>
     <string name="target">Цель</string>
     <string name="setting_title_save_data">Запрос \'Экономить данные\'</string>
-    <string name="setting_title_profiles">Профили</string>
     <string name="setting_title_profiles_standard">Стандарт</string>
     <string name="setting_title_profiles_dataUsage">Использование данных</string>
     <string name="setting_title_profiles_privacy">Конфиденциальность</string>
@@ -167,7 +166,6 @@
     <string name="custom_searches_title">Быстрый поиск по …</string>
     <string name="app_error_copy">Выделите и скопируйте текст вручную</string>
     <string name="dialog_backGround">Открывать ссылки в фоновом режиме …</string>
-    <string name="album_title_bookmarks_simple">Закладки (простые)</string>
     <string name="setting_title_cookie_thirdParty">Сторонние файлы cookie</string>
     <string name="title_appDatabase">База данных</string>
     <string name="app_error_save">Уже сохранено.</string>

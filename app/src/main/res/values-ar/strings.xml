@@ -75,7 +75,6 @@
     <string name="source">Source</string>
     <string name="target">هدف</string>
     <string name="setting_title_save_data">اطلب \'حفظ البيانات\'</string>
-    <string name="setting_title_profiles">ملفات شخصية</string>
     <string name="setting_title_profiles_standard">قياسي</string>
     <string name="setting_title_profiles_dataUsage">استخدام البيانات</string>
     <string name="setting_title_profiles_privacy">الخصوصية</string>
@@ -167,7 +166,6 @@
     <string name="custom_searches_title">بحث سريع على …</string>
     <string name="app_error_copy">يرجى تحديد النص ونسخه يدوياً</string>
     <string name="dialog_backGround">فتح الروابط في الخلفية …</string>
-    <string name="album_title_bookmarks_simple">إشارات مرجعية (بسيطة)</string>
     <string name="setting_title_cookie_thirdParty">ملفات تعريف ارتباط الطرف الثالث</string>
     <string name="title_appDatabase">قاعدة البيانات</string>
     <string name="app_error_save">تم الحفظ بالفعل.</string>

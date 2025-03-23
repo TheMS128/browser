@@ -76,7 +76,6 @@
     <string name="source">Forrás</string>
     <string name="target">Célpont</string>
     <string name="setting_title_save_data">\'Save Data\' kérése</string>
-    <string name="setting_title_profiles">Profilok</string>
     <string name="setting_title_profiles_standard">Általános</string>
     <string name="setting_title_profiles_dataUsage">Adathasználat</string>
     <string name="setting_title_profiles_privacy">Adatvédelem</string>
@@ -167,7 +166,6 @@
     <string name="custom_searches_title">Gyors keresés a …</string>
     <string name="app_error_copy">Kérjük, válassza ki és másolja ki a szöveget kézzel</string>
     <string name="dialog_backGround">Linkek megnyitása a háttérben …</string>
-    <string name="album_title_bookmarks_simple">Könyvjelzők (egyszerű)</string>
     <string name="setting_title_cookie_thirdParty">Harmadik fél sütik</string>
     <string name="title_appDatabase">Adatbázis</string>
     <string name="app_intro_a">Köszönjük, hogy használja a FOSS Browser-t!</string>

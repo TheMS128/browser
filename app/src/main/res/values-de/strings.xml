@@ -77,7 +77,6 @@
     <string name="source">Quelle</string>
     <string name="target">Ziel</string>
     <string name="setting_title_save_data">\"Daten sparen\" verlangen</string>
-    <string name="setting_title_profiles">Profile</string>
     <string name="setting_title_profiles_standard">Standard</string>
     <string name="setting_title_profiles_dataUsage">Datennutzung</string>
     <string name="setting_title_profiles_privacy">Privatsphäre</string>
@@ -166,7 +165,6 @@
     <string name="setting_title_audioBackground">Audio im Hintergrund abspielen</string>
     <string name="app_error_copy">Bitte Text von Hand auswählen und kopieren.</string>
     <string name="dialog_backGround">Links im Hintergrund öffnen …</string>
-    <string name="album_title_bookmarks_simple">Lesezeichen (einfach)</string>
     <string name="setting_title_cookie_thirdParty">Cookies von Dritten</string>
     <string name="title_appDatabase">Datenbank</string>
     <string name="custom_searches_title">Schnelle Suche auf …</string>

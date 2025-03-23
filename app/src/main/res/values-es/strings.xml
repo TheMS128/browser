@@ -77,7 +77,6 @@
     <string name="source">Origen</string>
     <string name="target">Destinatario</string>
     <string name="setting_title_save_data">Solicitar \"Guardar datos\"</string>
-    <string name="setting_title_profiles">Perfiles</string>
     <string name="setting_title_profiles_standard">Estándar</string>
     <string name="setting_title_profiles_dataUsage">Uso de datos</string>
     <string name="setting_title_profiles_privacy">Privacidad</string>
@@ -167,7 +166,6 @@
     <string name="custom_searches_title">Búsqueda rápida en …</string>
     <string name="app_error_copy">Por favor, seleccione y copie el texto manualmente</string>
     <string name="dialog_backGround">Abrir los enlaces en segundo plano …</string>
-    <string name="album_title_bookmarks_simple">Marcadores (sencillos)</string>
     <string name="setting_title_cookie_thirdParty">Cookies de terceros</string>
     <string name="title_appDatabase">Base de datos</string>
     <string name="app_error_save">Ya está guardado.</string>

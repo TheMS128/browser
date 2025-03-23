@@ -77,7 +77,6 @@
     <string name="source">Πηγή</string>
     <string name="target">Προορισμός</string>
     <string name="setting_title_save_data">Αίτημα \'Αποθήκευση Δεδομένων\'</string>
-    <string name="setting_title_profiles">Προφίλ</string>
     <string name="setting_title_profiles_standard">Κανονικό</string>
     <string name="setting_title_profiles_dataUsage">Χρήση δεδομένων</string>
     <string name="setting_title_profiles_privacy">Απόρρητο</string>
@@ -167,7 +166,6 @@
     <string name="custom_searches_title">Γρήγορη αναζήτηση σε …</string>
     <string name="app_error_copy">Παρακαλούμε επιλέξτε και αντιγράψτε το κείμενο χειροκίνητα</string>
     <string name="dialog_backGround">Άνοιγμα συνδέσμων στο παρασκήνιο …</string>
-    <string name="album_title_bookmarks_simple">Σελιδοδείκτες (απλοί)</string>
     <string name="setting_title_cookie_thirdParty">Cookies τρίτων μερών</string>
     <string name="title_appDatabase">Βάση δεδομένων</string>
     <string name="app_error_save">Έχει ήδη αποθηκευτεί.</string>

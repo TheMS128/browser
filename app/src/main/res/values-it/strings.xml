@@ -77,7 +77,6 @@
     <string name="source">Sorgente</string>
     <string name="target">Bersaglio</string>
     <string name="setting_title_save_data">Richiedi \'Salva dati\'</string>
-    <string name="setting_title_profiles">Profili</string>
     <string name="setting_title_profiles_standard">Predefinito</string>
     <string name="setting_title_profiles_dataUsage">Utilizzo dati</string>
     <string name="setting_title_profiles_privacy">Privacy</string>
@@ -167,7 +166,6 @@
     <string name="custom_searches_title">Ricerca veloce su …</string>
     <string name="app_error_copy">Selezionare e copiare il testo manualmente</string>
     <string name="dialog_backGround">Aprire i link in background …</string>
-    <string name="album_title_bookmarks_simple">Segnalibri (semplici)</string>
     <string name="setting_title_cookie_thirdParty">Cookie di terze parti</string>
     <string name="title_appDatabase">Database</string>
     <string name="app_error_save">Già salvato.</string>

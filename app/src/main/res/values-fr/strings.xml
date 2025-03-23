@@ -77,7 +77,6 @@
     <string name="source">Source</string>
     <string name="target">Cible</string>
     <string name="setting_title_save_data">Demande \'Enregistrer les données\'</string>
-    <string name="setting_title_profiles">Profils</string>
     <string name="setting_title_profiles_standard">Standard</string>
     <string name="setting_title_profiles_dataUsage">Utilisation des données</string>
     <string name="setting_title_profiles_privacy">Vie privée</string>
@@ -167,7 +166,6 @@
     <string name="custom_searches_title">Recherche rapide sur …</string>
     <string name="app_error_copy">Veuillez sélectionner et copier le texte manuellement</string>
     <string name="dialog_backGround">Ouvrir les liens en arrière-plan …</string>
-    <string name="album_title_bookmarks_simple">Signets (simples)</string>
     <string name="setting_title_cookie_thirdParty">Cookies de tiers</string>
     <string name="title_appDatabase">Base de données</string>
     <string name="app_error_save">Déjà sauvegardé.</string>

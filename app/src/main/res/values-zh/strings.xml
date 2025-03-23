@@ -77,7 +77,6 @@
     <string name="source">源代码</string>
     <string name="target">目标</string>
     <string name="setting_title_save_data">请求“保存数据”</string>
-    <string name="setting_title_profiles">配置文件</string>
     <string name="setting_title_profiles_standard">标准</string>
     <string name="setting_title_profiles_dataUsage">数据使用量</string>
     <string name="setting_title_profiles_privacy">隐私</string>
@@ -167,7 +166,6 @@
     <string name="custom_searches_title">快速搜索…</string>
     <string name="app_error_copy">请手动选择并复制文本</string>
     <string name="dialog_backGround">在后台打开链接 …</string>
-    <string name="album_title_bookmarks_simple">书签（简单）</string>
     <string name="setting_title_cookie_thirdParty">第三方 Cookies</string>
     <string name="title_appDatabase">数据库</string>
     <string name="app_error_save">已经保存。</string>

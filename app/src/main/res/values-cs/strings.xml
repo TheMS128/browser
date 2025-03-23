@@ -77,7 +77,6 @@
     <string name="source">Zdroj</string>
     <string name="target">Cíl</string>
     <string name="setting_title_save_data">Požadavek „Ušetřit data“</string>
-    <string name="setting_title_profiles">Profily</string>
     <string name="setting_title_profiles_standard">Standardní</string>
     <string name="setting_title_profiles_dataUsage">Využití dat</string>
     <string name="setting_title_profiles_privacy">Soukromí</string>
@@ -167,7 +166,6 @@
     <string name="custom_searches_title">Rychlé vyhledávání na …</string>
     <string name="app_error_copy">Vyberte a zkopírujte text ručně</string>
     <string name="dialog_backGround">Otevření odkazů na pozadí …</string>
-    <string name="album_title_bookmarks_simple">Záložky (jednoduché)</string>
     <string name="setting_title_cookie_thirdParty">Soubory cookie třetích stran</string>
     <string name="title_appDatabase">Databáze</string>
     <string name="app_error_save">Již uloženo.</string>
