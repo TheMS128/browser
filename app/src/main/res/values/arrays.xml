@@ -51,7 +51,6 @@
         <item>@string/menu_filter</item>
         <item>@string/setting_gesture_11</item>
         <item>@string/setting_title_screenOn</item>
-        <item>@string/setting_title_audioBackground</item>
         <item>@string/menu_shareClipboard</item>
         <item>@string/setting_label</item>
         <item>@string/menu_quit</item>
@@ -79,7 +78,6 @@
         <item>18</item>
         <item>19</item>
         <item>22</item>
-        <item>23</item>
         <item>24</item>
         <item>25</item>
         <item>26</item>

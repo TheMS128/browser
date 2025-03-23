@@ -1784,17 +1784,6 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
                 dialogFastToggle.cancel();
             });
 
-            Chip chip_toggleAudioBackground = dialogViewFastToggle.findViewById(R.id.chip_toggleAudioBackground);
-            chip_toggleAudioBackground.setChecked(sp.getBoolean("sp_audioBackground", false));
-            chip_toggleAudioBackground.setOnLongClickListener(view -> {
-                Toast.makeText(context, getString(R.string.setting_title_audioBackground), Toast.LENGTH_SHORT).show();
-                return true;
-            });
-            chip_toggleAudioBackground.setOnClickListener(v -> {
-                sp.edit().putBoolean("sp_audioBackground", !sp.getBoolean("sp_audioBackground", false)).apply();
-                dialogFastToggle.cancel();
-            });
-
             Chip chip_toggleRedirect = dialogViewFastToggle.findViewById(R.id.chip_toggleRedirect);
             chip_toggleRedirect.setChecked(sp.getBoolean("redirect", false));
             chip_toggleRedirect.setOnLongClickListener(view -> {
@@ -2328,9 +2317,6 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
             case "22":
                 sp.edit().putBoolean("sp_screenOn", !sp.getBoolean("sp_screenOn", false)).apply();
                 HelperUnit.triggerRebirth(context);
-                break;
-            case "23":
-                sp.edit().putBoolean("sp_audioBackground", !sp.getBoolean("sp_audioBackground", false)).apply();
                 break;
             case "24":
                 copyLink(ninjaWebView.getUrl());

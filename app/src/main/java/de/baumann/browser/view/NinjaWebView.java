@@ -1,21 +1,12 @@
 package de.baumann.browser.view;
 
-import static android.app.PendingIntent.FLAG_IMMUTABLE;
 import static android.content.ContentValues.TAG;
-import static android.content.Context.NOTIFICATION_SERVICE;
 
-import android.Manifest;
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.Dialog;
-import android.app.Notification;
-import android.app.NotificationChannel;
-import android.app.NotificationManager;
-import android.app.PendingIntent;
 import android.content.Context;
-import android.content.Intent;
 import android.content.SharedPreferences;
-import android.content.pm.PackageManager;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.os.Build;
@@ -33,9 +24,6 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.cardview.widget.CardView;
-import androidx.core.app.ActivityCompat;
-import androidx.core.app.NotificationCompat;
-import androidx.core.content.ContextCompat;
 import androidx.preference.PreferenceManager;
 import androidx.webkit.WebSettingsCompat;
 import androidx.webkit.WebViewFeature;
@@ -50,7 +38,6 @@ import java.util.List;
 import java.util.Objects;
 
 import de.baumann.browser.R;
-import de.baumann.browser.activity.BrowserActivity;
 import de.baumann.browser.browser.AlbumController;
 import de.baumann.browser.browser.BrowserController;
 import de.baumann.browser.browser.JavaScriptInterface;
@@ -93,13 +80,10 @@ public class NinjaWebView extends WebView implements AlbumController {
         super(context, attrs, defStyleAttr);
     }
 
-    private Activity activity;
-
     public NinjaWebView(Context context) {
         super(context);
         sp = PreferenceManager.getDefaultSharedPreferences(context);
         String profile = sp.getString("profile", "standard");
-        this.activity = (Activity) context;
         this.context = context;
         this.foreground = false;
         this.fingerPrintProtection = sp.getBoolean(profile + "_fingerPrintProtection", true);
@@ -331,56 +315,6 @@ public class NinjaWebView extends WebView implements AlbumController {
         profile = sp.getString("profile", "profileStandard");
         if (sp.getBoolean(profile + "_saveData", false)) requestHeaders.put("Save-Data", "on");
         return requestHeaders;
-    }
-
-    @Override
-    protected void onWindowVisibilityChanged(int visibility) {
-
-        if (sp.getBoolean("sp_audioBackground", false)) {
-
-            NotificationManager mNotifyMgr = (NotificationManager) this.context.getSystemService(NOTIFICATION_SERVICE);
-            if (visibility == View.GONE) {
-
-                Intent intentP = new Intent(this.context, BrowserActivity.class);
-                PendingIntent pendingIntent = PendingIntent.getActivity(this.context, 0, intentP, FLAG_IMMUTABLE);
-
-                String name = "Audio background";
-                String description = "Play audio on background -> click to open";
-                int importance = NotificationManager.IMPORTANCE_LOW; //Important for heads-up notification
-                NotificationChannel channel = new NotificationChannel("2", name, importance);
-                channel.setDescription(description);
-                channel.setShowBadge(true);
-                channel.setLockscreenVisibility(Notification.VISIBILITY_PUBLIC);
-                NotificationManager notificationManager = this.context.getSystemService(NotificationManager.class);
-                notificationManager.createNotificationChannel(channel);
-
-                NotificationCompat.Builder mBuilder = new NotificationCompat.Builder(this.context, "2")
-                        .setSmallIcon(R.drawable.icon_web)
-                        .setAutoCancel(true)
-                        .setContentTitle(HelperUnit.domain(this.getUrl()))
-                        .setContentText(this.context.getString(R.string.setting_title_audioBackground))
-                        .setContentIntent(pendingIntent); //Set the intent that will fire when the user taps the notification
-                Notification buildNotification = mBuilder.build();
-                mNotifyMgr.notify(2, buildNotification);
-
-                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
-                    int permissionState = ContextCompat.checkSelfPermission(activity, Manifest.permission.POST_NOTIFICATIONS);
-
-                    // If the permission is not granted, request it.
-                    if (permissionState == PackageManager.PERMISSION_DENIED) {
-                        ActivityCompat.requestPermissions(this.activity, new String[]{Manifest.permission.POST_NOTIFICATIONS}, 1);
-                    } else {
-                        // Build the notification and add the action.
-                        mNotifyMgr.notify(2, buildNotification);
-                    }
-                } else {
-                    // Build the notification and add the action.
-                    mNotifyMgr.notify(2, buildNotification);
-                }
-            } else mNotifyMgr.cancel(2);
-            super.onWindowVisibilityChanged(View.VISIBLE);
-        } else
-            super.onWindowVisibilityChanged(visibility);
     }
 
     @Override

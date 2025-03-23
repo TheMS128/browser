@@ -169,19 +169,6 @@
             app:chipIconTint="@drawable/bg_chip_icon_state" />
 
         <com.google.android.material.chip.Chip
-            android:id="@+id/chip_toggleAudioBackground"
-            style="@style/Widget.Material3.Chip.Suggestion"
-            android:layout_width="wrap_content"
-            android:layout_gravity="center"
-            app:chipIcon="@drawable/icon_audio"
-            app:chipIconEnabled="true"
-            app:textEndPadding="0dp"
-            app:textStartPadding="0dp"
-            android:layout_height="wrap_content"
-            app:chipBackgroundColor="@drawable/bg_chip_state_list"
-            app:chipIconTint="@drawable/bg_chip_icon_state" />
-
-        <com.google.android.material.chip.Chip
             android:id="@+id/chip_toggleRedirect"
             style="@style/Widget.Material3.Chip.Suggestion"
             android:layout_width="wrap_content"
@@ -226,7 +213,7 @@
                 android:layout_marginTop="10dp"
                 android:layout_marginEnd="15dp"
                 android:layout_marginStart="15dp"
-                android:text="@string/setting_title_profiles_dataUsage"
+                android:text="@string/setting_title_profiles_Security"
                 android:textAppearance="?attr/textAppearanceBodyLarge"
                 android:textStyle="bold"/>
 
@@ -235,22 +222,22 @@
                 android:layout_width="wrap_content"
                 android:layout_height="?android:attr/listPreferredItemHeightSmall">
                 <ImageView
-                    android:id="@+id/icon_image"
+                    android:id="@+id/icon_java"
                     android:layout_width="wrap_content"
                     android:layout_height="?android:attr/listPreferredItemHeightSmall"
                     android:scaleType="fitCenter"
-                    android:src="@drawable/icon_image"
+                    android:src="@drawable/icon_java"
                     android:layout_marginEnd="10dp"
                     android:layout_alignParentStart="true" />
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="?android:attr/listPreferredItemHeightSmall"
                     android:gravity="center_vertical"
-                    android:text="@string/setting_title_images"
-                    android:layout_toEndOf="@+id/icon_image"
-                    android:layout_toStartOf="@+id/checkbox_image"/>
+                    android:text="@string/setting_title_javascript"
+                    android:layout_toEndOf="@+id/icon_java"
+                    android:layout_toStartOf="@+id/checkbox_java"/>
                 <CheckBox
-                    android:id="@+id/checkbox_image"
+                    android:id="@+id/checkbox_java"
                     android:layout_width="wrap_content"
                     android:layout_height="?android:attr/listPreferredItemHeightSmall"
                     android:layout_alignParentEnd="true"/>
@@ -261,37 +248,26 @@
                 android:layout_width="wrap_content"
                 android:layout_height="?android:attr/listPreferredItemHeightSmall">
                 <ImageView
-                    android:id="@+id/icon_saveData"
+                    android:id="@+id/icon_javaPopUp"
                     android:layout_width="wrap_content"
                     android:layout_height="?android:attr/listPreferredItemHeightSmall"
                     android:scaleType="fitCenter"
-                    android:src="@drawable/icon_savedata"
+                    android:src="@drawable/icon_popup"
                     android:layout_marginEnd="10dp"
                     android:layout_alignParentStart="true" />
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="?android:attr/listPreferredItemHeightSmall"
                     android:gravity="center_vertical"
-                    android:text="@string/setting_title_save_data"
-                    android:layout_toEndOf="@+id/icon_saveData"
-                    android:layout_toStartOf="@+id/checkbox_saveData"/>
+                    android:text="@string/setting_title_javascript_popUp"
+                    android:layout_toEndOf="@+id/icon_javaPopUp"
+                    android:layout_toStartOf="@+id/checkbox_javaPopUp"/>
                 <CheckBox
-                    android:id="@+id/checkbox_saveData"
+                    android:id="@+id/checkbox_javaPopUp"
                     android:layout_width="wrap_content"
                     android:layout_height="?android:attr/listPreferredItemHeightSmall"
                     android:layout_alignParentEnd="true"/>
             </RelativeLayout>
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:gravity="center_vertical"
-                android:layout_marginTop="10dp"
-                android:layout_marginEnd="15dp"
-                android:layout_marginStart="15dp"
-                android:text="@string/setting_title_profiles_privacy"
-                android:textAppearance="?attr/textAppearanceBodyLarge"
-                android:textStyle="bold"/>
 
             <RelativeLayout
                 android:layout_marginStart="15dp"
@@ -370,6 +346,17 @@
                     android:layout_height="?android:attr/listPreferredItemHeightSmall"
                     android:layout_alignParentEnd="true"/>
             </RelativeLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="15dp"
+                android:layout_marginStart="15dp"
+                android:text="@string/setting_title_profiles_privacy"
+                android:textAppearance="?attr/textAppearanceBodyLarge"
+                android:textStyle="bold"/>
 
             <RelativeLayout
                 android:layout_marginStart="15dp"
@@ -506,48 +493,23 @@
                 android:layout_width="wrap_content"
                 android:layout_height="?android:attr/listPreferredItemHeightSmall">
                 <ImageView
-                    android:id="@+id/icon_java"
+                    android:id="@+id/icon_adBlock"
                     android:layout_width="wrap_content"
                     android:layout_height="?android:attr/listPreferredItemHeightSmall"
                     android:scaleType="fitCenter"
-                    android:src="@drawable/icon_java"
+                    android:src="@drawable/icon_adblock"
                     android:layout_marginEnd="10dp"
-                    android:layout_alignParentStart="true" />
+                    android:layout_alignParentStart="true"
+                    tools:ignore="TooManyViews" />
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="?android:attr/listPreferredItemHeightSmall"
                     android:gravity="center_vertical"
-                    android:text="@string/setting_title_javascript"
-                    android:layout_toEndOf="@+id/icon_java"
-                    android:layout_toStartOf="@+id/checkbox_java"/>
+                    android:text="@string/setting_title_adblock"
+                    android:layout_toEndOf="@+id/icon_adBlock"
+                    android:layout_toStartOf="@+id/checkbox_adBlock"/>
                 <CheckBox
-                    android:id="@+id/checkbox_java"
-                    android:layout_width="wrap_content"
-                    android:layout_height="?android:attr/listPreferredItemHeightSmall"
-                    android:layout_alignParentEnd="true"/>
-            </RelativeLayout>
-
-            <RelativeLayout
-                android:layout_marginStart="15dp"
-                android:layout_width="wrap_content"
-                android:layout_height="?android:attr/listPreferredItemHeightSmall">
-                <ImageView
-                    android:id="@+id/icon_javaPopUp"
-                    android:layout_width="wrap_content"
-                    android:layout_height="?android:attr/listPreferredItemHeightSmall"
-                    android:scaleType="fitCenter"
-                    android:src="@drawable/icon_popup"
-                    android:layout_marginEnd="10dp"
-                    android:layout_alignParentStart="true" />
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="?android:attr/listPreferredItemHeightSmall"
-                    android:gravity="center_vertical"
-                    android:text="@string/setting_title_javascript_popUp"
-                    android:layout_toEndOf="@+id/icon_javaPopUp"
-                    android:layout_toStartOf="@+id/checkbox_javaPopUp"/>
-                <CheckBox
-                    android:id="@+id/checkbox_javaPopUp"
+                    android:id="@+id/checkbox_adBlock"
                     android:layout_width="wrap_content"
                     android:layout_height="?android:attr/listPreferredItemHeightSmall"
                     android:layout_alignParentEnd="true"/>
@@ -579,44 +541,6 @@
                     android:layout_alignParentEnd="true"/>
             </RelativeLayout>
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:gravity="center_vertical"
-                android:layout_marginTop="10dp"
-                android:layout_marginEnd="15dp"
-                android:layout_marginStart="15dp"
-                android:text="@string/setting_title_profiles_Security"
-                android:textAppearance="?attr/textAppearanceBodyLarge"
-                android:textStyle="bold"/>
-
-            <RelativeLayout
-                android:layout_marginStart="15dp"
-                android:layout_width="wrap_content"
-                android:layout_height="?android:attr/listPreferredItemHeightSmall">
-                <ImageView
-                    android:id="@+id/icon_adBlock"
-                    android:layout_width="wrap_content"
-                    android:layout_height="?android:attr/listPreferredItemHeightSmall"
-                    android:scaleType="fitCenter"
-                    android:src="@drawable/icon_adblock"
-                    android:layout_marginEnd="10dp"
-                    android:layout_alignParentStart="true"
-                    tools:ignore="TooManyViews" />
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="?android:attr/listPreferredItemHeightSmall"
-                    android:gravity="center_vertical"
-                    android:text="@string/setting_title_adblock"
-                    android:layout_toEndOf="@+id/icon_adBlock"
-                    android:layout_toStartOf="@+id/checkbox_adBlock"/>
-                <CheckBox
-                    android:id="@+id/checkbox_adBlock"
-                    android:layout_width="wrap_content"
-                    android:layout_height="?android:attr/listPreferredItemHeightSmall"
-                    android:layout_alignParentEnd="true"/>
-            </RelativeLayout>
-
             <RelativeLayout
                 android:layout_marginStart="15dp"
                 android:layout_width="wrap_content"
@@ -638,6 +562,69 @@
                     android:layout_toStartOf="@+id/checkbox_trackingURL"/>
                 <CheckBox
                     android:id="@+id/checkbox_trackingURL"
+                    android:layout_width="wrap_content"
+                    android:layout_height="?android:attr/listPreferredItemHeightSmall"
+                    android:layout_alignParentEnd="true"/>
+            </RelativeLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="15dp"
+                android:layout_marginStart="15dp"
+                android:text="@string/setting_title_profiles_dataUsage"
+                android:textAppearance="?attr/textAppearanceBodyLarge"
+                android:textStyle="bold"/>
+
+            <RelativeLayout
+                android:layout_marginStart="15dp"
+                android:layout_width="wrap_content"
+                android:layout_height="?android:attr/listPreferredItemHeightSmall">
+                <ImageView
+                    android:id="@+id/icon_image"
+                    android:layout_width="wrap_content"
+                    android:layout_height="?android:attr/listPreferredItemHeightSmall"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/icon_image"
+                    android:layout_marginEnd="10dp"
+                    android:layout_alignParentStart="true" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="?android:attr/listPreferredItemHeightSmall"
+                    android:gravity="center_vertical"
+                    android:text="@string/setting_title_images"
+                    android:layout_toEndOf="@+id/icon_image"
+                    android:layout_toStartOf="@+id/checkbox_image"/>
+                <CheckBox
+                    android:id="@+id/checkbox_image"
+                    android:layout_width="wrap_content"
+                    android:layout_height="?android:attr/listPreferredItemHeightSmall"
+                    android:layout_alignParentEnd="true"/>
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_marginStart="15dp"
+                android:layout_width="wrap_content"
+                android:layout_height="?android:attr/listPreferredItemHeightSmall">
+                <ImageView
+                    android:id="@+id/icon_saveData"
+                    android:layout_width="wrap_content"
+                    android:layout_height="?android:attr/listPreferredItemHeightSmall"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/icon_savedata"
+                    android:layout_marginEnd="10dp"
+                    android:layout_alignParentStart="true" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="?android:attr/listPreferredItemHeightSmall"
+                    android:gravity="center_vertical"
+                    android:text="@string/setting_title_save_data"
+                    android:layout_toEndOf="@+id/icon_saveData"
+                    android:layout_toStartOf="@+id/checkbox_saveData"/>
+                <CheckBox
+                    android:id="@+id/checkbox_saveData"
                     android:layout_width="wrap_content"
                     android:layout_height="?android:attr/listPreferredItemHeightSmall"
                     android:layout_alignParentEnd="true"/>
