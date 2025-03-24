@@ -12,17 +12,26 @@
         android:key="edit_standard"
         android:title="@string/setting_title_savedWebSites" />
 
-    <Preference
-        android:key="custom_redirects"
-        android:icon="@drawable/icon_redirect"
-        android:defaultValue="false"
-        android:title="@string/privacy_redirect" />
-
     <CheckBoxPreference
         android:title="@string/setting_title_clipboard_record"
         android:icon="@drawable/icon_clipboard"
         android:defaultValue="false"
         android:key="sp_clipboard_record" />
+
+    <PreferenceCategory android:title="@string/privacy_redirect"
+        android:icon="@drawable/icon_redirect">
+
+        <CheckBoxPreference
+            android:title="@string/privacy_redirect_use"
+            android:defaultValue="false"
+            android:key="redirect" />
+
+        <Preference
+            android:key="custom_redirects"
+            android:defaultValue="false"
+            android:title="@string/privacy_redirect_title" />
+
+    </PreferenceCategory>
 
     <PreferenceCategory android:title="@string/setting_title_adblock"
         android:icon="@drawable/icon_adblock">

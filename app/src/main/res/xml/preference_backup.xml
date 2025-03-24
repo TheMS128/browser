@@ -9,7 +9,7 @@
         android:key="database"
         android:title="@string/title_appDatabase"
         android:summary="@string/setting_backup_sumDatabase"
-        android:icon="@drawable/icon_dom" />
+        android:icon="@drawable/icon_database" />
 
     <CheckBoxPreference
         android:defaultValue="true"

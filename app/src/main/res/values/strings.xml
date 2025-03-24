@@ -91,6 +91,8 @@
     <string name="setting_title_dom">DOM Storage</string>
     <string name="setting_title_dynColors">Dynamic colors</string>
     <string name="privacy_redirect">Redirect</string>
+    <string name="privacy_redirect_use">Use redirects</string>
+    <string name="privacy_redirect_title">Redirects</string>
     <string name="source">Source</string>
     <string name="target">Target</string>
     <string name="setting_title_save_data">Request \'Save data\'</string>
@@ -114,8 +116,6 @@
     <string name="clear_title_cache">Clear cache</string>
     <string name="clear_title_cookie">Clear cookies</string>
     <string name="localData">Clear on device stored data</string>
-    <string name="clear_title_deleteDatabase">Delete database</string>
-    <string name="clear_summary_deleteDatabase">Delete database (Startpage, bookmarks, history and all domain-lists).</string>
     <string name="setting_title_ui">Behavior/UI</string>
     <string name="setting_title_data">Backup</string>
     <string name="setting_filter">Bookmark filter</string>

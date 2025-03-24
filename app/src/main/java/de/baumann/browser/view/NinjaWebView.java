@@ -260,7 +260,7 @@ public class NinjaWebView extends WebView implements AlbumController {
                 .putBoolean("profileStandard_trackingULS", true)
                 .putBoolean("profileStandard_location", false)
                 .putBoolean("profileStandard_fingerPrintProtection", true)
-                .putBoolean("profileStandard_cookies", false)
+                .putBoolean("profileStandard_cookies", true)
                 .putBoolean("profileStandard_cookiesThirdParty", false)
                 .putBoolean("profileStandard_deny_cookie_banners", false)
                 .putBoolean("profileStandard_javascript", true)

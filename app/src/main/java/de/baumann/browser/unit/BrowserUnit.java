@@ -46,6 +46,7 @@ import de.baumann.browser.R;
 import de.baumann.browser.activity.BrowserActivity;
 import de.baumann.browser.browser.DataURIParser;
 import de.baumann.browser.browser.JavaScriptInterface;
+import de.baumann.browser.browser.List_standard;
 import de.baumann.browser.database.RecordAction;
 import de.baumann.browser.objects.CustomRedirect;
 import de.baumann.browser.objects.CustomRedirectsHelper;
@@ -240,6 +241,7 @@ public class BrowserUnit {
         boolean clearHistory = sp.getBoolean("sp_clear_history", false);
         boolean clearIndexedDB = sp.getBoolean("sp_clearIndexedDB", false);
         boolean clearDB = sp.getBoolean("sp_deleteDatabase", false);
+        boolean clearSettings = sp.getBoolean("sp_clear_settings", false);
         if (clearHistory) BrowserUnit.clearHistory(context);
         if (clearCache)  {
             try {
@@ -248,6 +250,11 @@ public class BrowserUnit {
             } catch (Exception exception) {
                 Log.w("browser", "Error clearing cache");
             }
+        }
+        if (clearSettings) {
+            sp.edit().clear().apply();
+            List_standard listStandard = new List_standard(context);
+            listStandard.clearDomains();
         }
         if (clearCookie) {
             CookieManager cookieManager = CookieManager.getInstance();
