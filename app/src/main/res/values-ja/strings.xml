@@ -96,8 +96,6 @@
     <string name="clear_title_cache">キャッシュを削除</string>
     <string name="clear_title_cookie">クッキーを消去</string>
     <string name="localData">端末に保存されているデータを消去する</string>
-    <string name="clear_title_deleteDatabase">データベースを削除</string>
-    <string name="clear_summary_deleteDatabase">データベース全体を削除する（スタートページ、ブックマーク、履歴、すべてのドメインリスト）。</string>
     <string name="setting_title_ui">動作/UI</string>
     <string name="setting_title_data">バックアップ</string>
     <string name="setting_filter">ブックマークフィルター</string>

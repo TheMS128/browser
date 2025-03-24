@@ -96,8 +96,6 @@
     <string name="clear_title_cache">Elimina Cache</string>
     <string name="clear_title_cookie">Elimina Cookies</string>
     <string name="localData">Cancella i dati memorizzati sul dispositivo</string>
-    <string name="clear_title_deleteDatabase">Elimina database</string>
-    <string name="clear_summary_deleteDatabase">Cancellare l\'intero database (pagina iniziale, segnalibri, cronologia e tutti gli elenchi dei domini).</string>
     <string name="setting_title_ui">Comportamento/UI</string>
     <string name="setting_title_data">Backup</string>
     <string name="setting_filter">Filtro dei segnalibri</string>

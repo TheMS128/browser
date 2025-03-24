@@ -96,8 +96,6 @@
     <string name="clear_title_cache">Очисти кеш</string>
     <string name="clear_title_cookie">Избриши колачиће</string>
     <string name="localData">Обришите податке сачуване на уређају</string>
-    <string name="clear_title_deleteDatabase">Обриши базу података</string>
-    <string name="clear_summary_deleteDatabase">Обриши целу базу података (почетну страницу, забелешке, историјат и све беле листе)</string>
     <string name="setting_title_ui">Понашање/сучеље</string>
     <string name="setting_title_data">Резерва</string>
     <string name="setting_filter">Филтер забелешки</string>

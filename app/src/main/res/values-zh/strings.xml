@@ -96,8 +96,6 @@
     <string name="clear_title_cache">清除缓存</string>
     <string name="clear_title_cookie">清除Cookies</string>
     <string name="localData">清除设备上存储的数据</string>
-    <string name="clear_title_deleteDatabase">删除数据库</string>
-    <string name="clear_summary_deleteDatabase">删除整个数据库（起始页、书签、历史记录和所有白名单）。</string>
     <string name="setting_title_ui">行为/界面</string>
     <string name="setting_title_data">备份</string>
     <string name="setting_filter">书签过滤器</string>

@@ -96,8 +96,6 @@
     <string name="clear_title_cache">Очистить кэш</string>
     <string name="clear_title_cookie">Очистить куки</string>
     <string name="localData">Очистить на данных, сохраненных на устройстве</string>
-    <string name="clear_title_deleteDatabase">Удалить базу данных</string>
-    <string name="clear_summary_deleteDatabase">Удалите всю базу данных (Начальную страницу, закладки, историю и все списки доменов).</string>
     <string name="setting_title_ui">Поведение и интерфейс</string>
     <string name="setting_title_data">Резервное копирование</string>
     <string name="setting_filter">Фильтр закладок</string>

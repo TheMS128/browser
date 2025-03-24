@@ -96,8 +96,6 @@
     <string name="clear_title_cache">Cache leegmaken</string>
     <string name="clear_title_cookie">Cookies wissen</string>
     <string name="localData">Wissen op apparaat opgeslagen gegevens</string>
-    <string name="clear_title_deleteDatabase">Databank verwijderen</string>
-    <string name="clear_summary_deleteDatabase">Verwijder de hele database (Startpagina, bladwijzers, geschiedenis en alle domeinlijsten).</string>
     <string name="setting_title_ui">Gedrag/Uiterlijk</string>
     <string name="setting_title_data">Back-up</string>
     <string name="setting_filter">Bladwijzer filter</string>

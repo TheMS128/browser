@@ -96,8 +96,6 @@
     <string name="clear_title_cache">Cache löschen</string>
     <string name="clear_title_cookie">Cookies löschen</string>
     <string name="localData">Auf Gerät gespeicherte Daten löschen</string>
-    <string name="clear_title_deleteDatabase">Datenbank löschen</string>
-    <string name="clear_summary_deleteDatabase">Gesamte Datenbank löschen (Startseite, Lesezeichen, Verlauf und Domain-Listen)</string>
     <string name="setting_title_ui">Verhalten/Oberfläche</string>
     <string name="setting_title_data">Sicherung</string>
     <string name="setting_filter">Lesezeichen-Filter</string>

@@ -77,7 +77,6 @@
     <string name="source">Źródło</string>
     <string name="target">Cel</string>
     <string name="setting_title_save_data">Wysyłaj żądanie \'Oszczędzaj dane\'</string>
-    <string name="setting_title_profiles">Profile</string>
     <string name="setting_title_profiles_standard">Standard</string>
     <string name="setting_title_profiles_dataUsage">Wykorzystanie danych</string>
     <string name="setting_title_profiles_privacy">Prywatność</string>
@@ -97,8 +96,6 @@
     <string name="clear_title_cache">Wymaż dane podręczne</string>
     <string name="clear_title_cookie">Wymaż ciasteczka</string>
     <string name="localData">Wyczyść przy przechowywanych danych urządzenia</string>
-    <string name="clear_title_deleteDatabase">Wymaż bazę danych</string>
-    <string name="clear_summary_deleteDatabase">Usuń całą bazę danych (stronę startową, zakładki, historię i wszystkie listy domen).</string>
     <string name="setting_title_ui">Zachowanie i wygląd</string>
     <string name="setting_title_data">Kopia zapasowa</string>
     <string name="setting_filter">Filtr zakładek</string>
@@ -167,7 +164,6 @@
     <string name="custom_searches_title">Szybkie wyszukiwanie na …</string>
     <string name="app_error_copy">Wybierz i skopiuj tekst ręcznie</string>
     <string name="dialog_backGround">Otwieranie linków w tle …</string>
-    <string name="album_title_bookmarks_simple">Zakładki (proste)</string>
     <string name="setting_title_cookie_thirdParty">Pliki cookie stron trzecich</string>
     <string name="title_appDatabase">Baza danych</string>
     <string name="app_error_save">Już zapisane.</string>

@@ -95,8 +95,6 @@
     <string name="clear_title_cache">Xóa bộ nhớ đệm</string>
     <string name="clear_title_cookie">Xóa cookie</string>
     <string name="localData">Xóa dữ liệu được lưu trữ trên thiết bị</string>
-    <string name="clear_title_deleteDatabase">Xoá cơ sở dữ liệu</string>
-    <string name="clear_summary_deleteDatabase">Xoá toàn bộ cơ sở dữ liệu (Trang bắt đầu, dấu trang, lịch sử và tất cả danh sách trắng).</string>
     <string name="setting_title_ui">Hành vi/Giao diện</string>
     <string name="setting_title_data">Sao lưu</string>
     <string name="setting_filter">Bộ lọc dấu trang</string>

@@ -95,8 +95,6 @@
     <string name="clear_title_cache">נקה מטמון</string>
     <string name="clear_title_cookie">נקה קובצי Cookie</string>
     <string name="localData">נקה את הנתונים המאוחסנים במכשיר</string>
-    <string name="clear_title_deleteDatabase">מחק מסד נתונים</string>
-    <string name="clear_summary_deleteDatabase">מחק את כל מסד הנתונים (דף פתיחה, סימניות, היסטוריה וכל הרשימות הלבנות).</string>
     <string name="setting_title_ui">התנהגות/ממשק משתמש</string>
     <string name="setting_title_data">גיבוי</string>
     <string name="setting_filter">מסנן סימניות</string>

@@ -93,8 +93,6 @@
     <string name="clear_title_cache">Očisti Skladište</string>
     <string name="clear_title_cookie">Očisti Kekse</string>
     <string name="localData">Očistite pohranjene podatke na uređaju</string>
-    <string name="clear_title_deleteDatabase">Izbrišite bazu podataka</string>
-    <string name="clear_summary_deleteDatabase">Izbrišite cijelu bazu podataka (početnu stranicu, obilježivače, povijest i sve bijele liste).</string>
     <string name="setting_title_ui">Ponašanje/UI</string>
     <string name="setting_title_data">Sigurnosna kopija</string>
     <string name="setting_filter">Filter za bilješke</string>

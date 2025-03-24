@@ -95,8 +95,6 @@
     <string name="clear_title_cache">Borrar la caché</string>
     <string name="clear_title_cookie">Borrar las cookies</string>
     <string name="localData">Borrar datos almacenados en el dispositivo</string>
-    <string name="clear_title_deleteDatabase">Borrar base de datos</string>
-    <string name="clear_summary_deleteDatabase">Borrar la base de datos (página de inicio, favoritos, historial y todas las listas de dominios).</string>
     <string name="setting_title_ui">Comportamiento/IU</string>
     <string name="setting_title_data">Respaldos</string>
     <string name="setting_filter">Filtro de marcadores</string>

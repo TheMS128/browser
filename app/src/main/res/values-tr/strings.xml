@@ -96,8 +96,6 @@
     <string name="clear_title_cache">Önbelleği temizle</string>
     <string name="clear_title_cookie">Çerezleri temizle</string>
     <string name="localData">Cihazda depolanan verileri temizle</string>
-    <string name="clear_title_deleteDatabase">Veritabanını sil</string>
-    <string name="clear_summary_deleteDatabase">Tüm veritabanını silin (Başlangıç sayfası, yer imleri, geçmiş ve tüm alan listeleri).</string>
     <string name="setting_title_ui">Davranış | Kullanıcı arayüzü</string>
     <string name="setting_title_data">Yedekle</string>
     <string name="setting_filter">Yer işareti filtresi</string>

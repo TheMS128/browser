@@ -95,8 +95,6 @@
     <string name="clear_title_cache">Bersihkan Cache</string>
     <string name="clear_title_cookie">Bersihkan Kuki</string>
     <string name="localData">Bersihkan data yang disimpan di perangkat</string>
-    <string name="clear_title_deleteDatabase">Hapus database</string>
-    <string name="clear_summary_deleteDatabase">Menghapus seluruh basis data (Halaman awal, penanda, riwayat, dan semua daftar domain).</string>
     <string name="setting_title_ui">Perilaku/UI</string>
     <string name="setting_title_data">Pencadangan</string>
     <string name="setting_filter">Filter penanda</string>

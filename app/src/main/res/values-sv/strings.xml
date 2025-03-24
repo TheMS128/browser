@@ -96,8 +96,6 @@
     <string name="clear_title_cache">Rensa cache</string>
     <string name="clear_title_cookie">Rensa cookies</string>
     <string name="localData">Rensa data lagrad på enheten</string>
-    <string name="clear_title_deleteDatabase">Radera databas</string>
-    <string name="clear_summary_deleteDatabase">Radera hela databasen (startsida, bokmärken, historik och alla domänlistor).</string>
     <string name="setting_title_ui">Beteende/UI</string>
     <string name="setting_title_data">Säkerhetskopiering</string>
     <string name="setting_filter">Bokmärkesfilter</string>

@@ -96,8 +96,6 @@
     <string name="clear_title_cache">Golire memorie cache</string>
     <string name="clear_title_cookie">Golire cookie-uri</string>
     <string name="localData">Șterge datele stocate pe dispozitiv</string>
-    <string name="clear_title_deleteDatabase">Ștergere bază de date</string>
-    <string name="clear_summary_deleteDatabase">Ștergeți întreaga bază de date (pagina de start, marcajele, istoricul și toate listele de domenii).</string>
     <string name="setting_title_ui">Comportament/IU</string>
     <string name="setting_title_data">Copie de rezervă</string>
     <string name="setting_filter">Filtru marcaje</string>

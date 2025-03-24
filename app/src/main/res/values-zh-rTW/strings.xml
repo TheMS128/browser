@@ -87,8 +87,6 @@
     <string name="clear_title_cache">清除快取</string>
     <string name="clear_title_cookie">清除 Cookies</string>
     <string name="localData">清除設備上存儲的數據</string>
-    <string name="clear_title_deleteDatabase">刪除資料庫</string>
-    <string name="clear_summary_deleteDatabase">刪除全部資料庫（啟動頁的設定、書籤、歷史和所有白名單）</string>
     <string name="setting_title_ui">行為/介面</string>
     <string name="setting_title_data">備份</string>
     <string name="setting_filter">書籤分類</string>

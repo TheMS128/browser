@@ -94,8 +94,6 @@
     <string name="clear_title_cache">امسح التخزين المؤقت</string>
     <string name="clear_title_cookie">امسح الكوكيز</string>
     <string name="localData">مسح البيانات المخزنة على الجهاز</string>
-    <string name="clear_title_deleteDatabase">احذف قاعدة البيانات</string>
-    <string name="clear_summary_deleteDatabase">احذف قاعدة البيانات بأكملها (صفحة البدء، العلامات، التأريخ وجميع القوائم البيضاء).</string>
     <string name="setting_title_ui">السلوك/واجهة المستخدم</string>
     <string name="setting_title_data">النسخ الاحتياطي</string>
     <string name="setting_filter">مرشح العلامات</string>

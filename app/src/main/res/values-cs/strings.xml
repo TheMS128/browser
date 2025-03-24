@@ -96,8 +96,6 @@
     <string name="clear_title_cache">Vymazat mezipaměť</string>
     <string name="clear_title_cookie">Vymazat soubory cookie</string>
     <string name="localData">Vymazat data uložená v zařízení</string>
-    <string name="clear_title_deleteDatabase">Vymazat databázi</string>
-    <string name="clear_summary_deleteDatabase">Smazat celou databázi (úvodní stránku, záložky, historii a všechny seznamy domén).</string>
     <string name="setting_title_ui">Chování/UI</string>
     <string name="setting_title_data">Záloha</string>
     <string name="setting_filter">Filtr záložek</string>

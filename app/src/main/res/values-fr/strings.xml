@@ -96,8 +96,6 @@
     <string name="clear_title_cache">Vider le cache</string>
     <string name="clear_title_cookie">Effacer les cookies</string>
     <string name="localData">Effacer les données stockées sur l\'appareil</string>
-    <string name="clear_title_deleteDatabase">Supprimer la base de données</string>
-    <string name="clear_summary_deleteDatabase">Supprimer toute la base de données (page d\'accueil, signets, historique et toutes les listes de domaines).</string>
     <string name="setting_title_ui">Comportement/UI</string>
     <string name="setting_title_data">Sauvegarde</string>
     <string name="setting_filter">Filtre de signet</string>

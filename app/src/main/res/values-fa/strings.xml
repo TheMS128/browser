@@ -96,8 +96,6 @@
     <string name="clear_title_cache">پاک‌سازی حافظه پنهان</string>
     <string name="clear_title_cookie">پاک سازی کوکی ها</string>
     <string name="localData">داده های ذخیره شده در دستگاه را پاک کنید</string>
-    <string name="clear_title_deleteDatabase">حذف دیتابیس</string>
-    <string name="clear_summary_deleteDatabase">حذف کل دیتابیس (صفحه آغازین، نشانک ها، تاریخچه و تمام فهرست های سفید).</string>
     <string name="setting_title_ui">رفتار/محیط کاربری</string>
     <string name="setting_title_data">پشتیبان گیری</string>
     <string name="setting_filter">جداسازی نشانک ها</string>
