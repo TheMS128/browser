@@ -183,4 +183,12 @@
     <string name="app_always">Πάντα</string>
     <string name="app_session">… στην τρέχουσα σύνοδο;</string>
     <string name="app_permission_notification">Ειδοποιήσεις</string>
+    <string name="setting_title_savedWebSites">Αποθηκευμένοι ιστότοποι</string>
+    <string name="setting_backup_ext">Δημιουργία αντιγράφων ασφαλείας κατά την έξοδο</string>
+    <string name="setting_backup_sumDatabase">Αρχική σελίδα, Σελιδοδείκτες, ιστορία</string>
+    <string name="setting_backup_sumSettings">Ρυθμίσεις εφαρμογών και ιστότοπων</string>
+    <string name="privacy_redirect_use">Χρήση ανακατευθύνσεων</string>
+    <string name="privacy_redirect_title">Αναδρομολογήσεις</string>
+    <string name="album_title_bookmarks_html">Σελιδοδείκτες (HTML)</string>
+    <string name="setting_title_dynColors">Δυναμικά χρώματα</string>
 </resources>

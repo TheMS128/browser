@@ -183,4 +183,12 @@
     <string name="app_always">Vždy</string>
     <string name="app_session">… v probíhajícím zasedání?</string>
     <string name="app_permission_notification">Oznámení</string>
+    <string name="setting_title_dynColors">Dynamické barvy</string>
+    <string name="setting_backup_ext">Zálohování při ukončení</string>
+    <string name="setting_backup_sumDatabase">Startovní stránka, záložky, historie</string>
+    <string name="privacy_redirect_use">Použití přesměrování</string>
+    <string name="privacy_redirect_title">Přesměrování</string>
+    <string name="album_title_bookmarks_html">Záložky (HTML)</string>
+    <string name="setting_title_savedWebSites">Uložené webové stránky</string>
+    <string name="setting_backup_sumSettings">Nastavení aplikací a webových stránek</string>
 </resources>

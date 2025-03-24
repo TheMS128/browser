@@ -183,4 +183,12 @@
     <string name="app_always">Altijd</string>
     <string name="app_session">… in huidige sessie?</string>
     <string name="app_permission_notification">Meldingen</string>
+    <string name="album_title_bookmarks_html">Bladwijzers (HTML)</string>
+    <string name="setting_title_savedWebSites">Opgeslagen websites</string>
+    <string name="setting_title_dynColors">Dynamische kleuren</string>
+    <string name="setting_backup_ext">Back-up bij afsluiten</string>
+    <string name="setting_backup_sumDatabase">Startpagina, Bladwijzers, geschiedenis</string>
+    <string name="setting_backup_sumSettings">App- en website-instellingen</string>
+    <string name="privacy_redirect_use">Omleidingen gebruiken</string>
+    <string name="privacy_redirect_title">Omleidingen</string>
 </resources>

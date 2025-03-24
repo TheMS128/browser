@@ -183,4 +183,12 @@
     <string name="app_always">Всегда</string>
     <string name="app_session">… на текущей сессии?</string>
     <string name="app_permission_notification">Уведомления</string>
+    <string name="album_title_bookmarks_html">Закладки (HTML)</string>
+    <string name="setting_title_savedWebSites">Сохраненные веб-сайты</string>
+    <string name="setting_title_dynColors">Динамические цвета</string>
+    <string name="setting_backup_ext">Резервное копирование при выходе</string>
+    <string name="setting_backup_sumDatabase">Стартсайт, Закладки, история</string>
+    <string name="setting_backup_sumSettings">Настройки приложений и веб-сайтов</string>
+    <string name="privacy_redirect_use">Используйте перенаправления</string>
+    <string name="privacy_redirect_title">Перенаправления</string>
 </resources>

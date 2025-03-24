@@ -183,4 +183,12 @@
     <string name="app_session">… dans la session en cours ?</string>
     <string name="app_never">Jamais</string>
     <string name="app_permission_notification">Notifications</string>
+    <string name="album_title_bookmarks_html">Signets (HTML)</string>
+    <string name="setting_title_savedWebSites">Sites web enregistrés</string>
+    <string name="setting_title_dynColors">Couleurs dynamiques</string>
+    <string name="setting_backup_ext">Sauvegarde à la sortie</string>
+    <string name="setting_backup_sumDatabase">Startsite, Signets, histoire</string>
+    <string name="setting_backup_sumSettings">Paramètres des applications et des sites web</string>
+    <string name="privacy_redirect_use">Utiliser des redirections</string>
+    <string name="privacy_redirect_title">Redirections</string>
 </resources>

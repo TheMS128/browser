@@ -183,4 +183,12 @@
     <string name="app_always">Selalu</string>
     <string name="app_session">… dalam sesi saat ini?</string>
     <string name="app_permission_notification">Pemberitahuan</string>
+    <string name="album_title_bookmarks_html">Penanda (HTML)</string>
+    <string name="setting_title_savedWebSites">Situs web yang disimpan</string>
+    <string name="setting_title_dynColors">Warna yang dinamis</string>
+    <string name="setting_backup_ext">Pencadangan saat keluar</string>
+    <string name="setting_backup_sumSettings">Pengaturan aplikasi dan situs web</string>
+    <string name="privacy_redirect_use">Gunakan pengalihan</string>
+    <string name="privacy_redirect_title">Pengalihan</string>
+    <string name="setting_backup_sumDatabase">Situs awal, Penanda, riwayat</string>
 </resources>

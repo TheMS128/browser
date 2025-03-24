@@ -180,7 +180,15 @@
     <string name="setting_title_trackingURL">跟踪 URL 弹出窗口</string>
     <string name="app_no">没有</string>
     <string name="app_never">从不</string>
-    <string name="app_always">始终如一</string>
-    <string name="app_session">......在本届会议上？</string>
+    <string name="app_always">始终</string>
+    <string name="app_session">…在当前会话？</string>
     <string name="app_permission_notification">通知</string>
+    <string name="album_title_bookmarks_html">书签（HTML）</string>
+    <string name="setting_title_savedWebSites">已保存的网站</string>
+    <string name="setting_title_dynColors">动态配色</string>
+    <string name="setting_backup_ext">退出时备份</string>
+    <string name="setting_backup_sumDatabase">起始页、书签、历史记录</string>
+    <string name="setting_backup_sumSettings">应用和网站设置</string>
+    <string name="privacy_redirect_use">使用重定向</string>
+    <string name="privacy_redirect_title">重定向</string>
 </resources>

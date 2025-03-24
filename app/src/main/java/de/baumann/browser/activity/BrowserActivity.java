@@ -1772,30 +1772,6 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
                 ninjaWebView.setProfileIcon(buttonProfile, omniBox_tab, url);
             });
 
-            Chip chip_toggleScreenOn = dialogViewFastToggle.findViewById(R.id.chip_toggleScreenOn);
-            chip_toggleScreenOn.setChecked(sp.getBoolean("sp_screenOn", false));
-            chip_toggleScreenOn.setOnLongClickListener(view -> {
-                Toast.makeText(context, getString(R.string.setting_title_screenOn), Toast.LENGTH_SHORT).show();
-                return true;
-            });
-            chip_toggleScreenOn.setOnClickListener(v -> {
-                sp.edit().putBoolean("sp_screenOn", !sp.getBoolean("sp_screenOn", false)).apply();
-                HelperUnit.triggerRebirth(context);
-                dialogFastToggle.cancel();
-            });
-
-            Chip chip_toggleRedirect = dialogViewFastToggle.findViewById(R.id.chip_toggleRedirect);
-            chip_toggleRedirect.setChecked(sp.getBoolean("redirect", false));
-            chip_toggleRedirect.setOnLongClickListener(view -> {
-                Toast.makeText(context, getString(R.string.privacy_redirect), Toast.LENGTH_SHORT).show();
-                return true;
-            });
-            chip_toggleRedirect.setOnClickListener(v -> {
-                if (sp.getBoolean("redirect", false)) sp.edit().putBoolean("redirect", false).apply();
-                else sp.edit().putBoolean("redirect", true).apply();
-                dialogFastToggle.cancel();
-            });
-
             ib_save.setOnClickListener(v -> {
                 listStandard.removeDomain(HelperUnit.domain(url));
                 listStandard.addDomain(HelperUnit.domain(url));
@@ -1873,16 +1849,6 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
                 dialogFastToggle.cancel();
                 Uri webpage = Uri.parse("https://codeberg.org/Gaukler_Faun/FOSS_Browser/wiki/Fast-Toggle-Dialog");
                 BrowserUnit.intentURL(this, webpage);
-            });
-
-            LinearLayout layout_more = dialogViewFastToggle.findViewById(R.id.layout_more);
-            Button ib_more = dialogViewFastToggle.findViewById(R.id.ib_more);
-            ib_more.setOnClickListener(view -> {
-                if (layout_more.getVisibility() == GONE) {
-                    layout_more.setVisibility(VISIBLE);
-                } else {
-                    layout_more.setVisibility(GONE);
-                }
             });
 
             dialogFastToggle.show();

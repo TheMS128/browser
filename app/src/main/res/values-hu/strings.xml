@@ -183,4 +183,12 @@
     <string name="app_always">Mindig</string>
     <string name="app_session">… az aktuális ülésszakban?</string>
     <string name="app_permission_notification">Értesítések</string>
+    <string name="album_title_bookmarks_html">Könyvjelzők (HTML)</string>
+    <string name="setting_title_savedWebSites">Mentett weboldalak</string>
+    <string name="setting_title_dynColors">Dinamikus színek</string>
+    <string name="setting_backup_ext">Biztonsági mentés kilépéskor</string>
+    <string name="setting_backup_sumDatabase">Kezdőoldal, könyvjelzők, előzmények</string>
+    <string name="setting_backup_sumSettings">Alkalmazás- és weboldal-beállítások</string>
+    <string name="privacy_redirect_use">Átirányítások használata</string>
+    <string name="privacy_redirect_title">Átirányítások</string>
 </resources>

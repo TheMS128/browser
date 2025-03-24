@@ -183,4 +183,12 @@
     <string name="app_never">決して</string>
     <string name="app_always">常に</string>
     <string name="app_permission_notification">お知らせ</string>
+    <string name="album_title_bookmarks_html">ブックマーク (HTML)</string>
+    <string name="setting_title_savedWebSites">保存されたウェブサイト</string>
+    <string name="setting_title_dynColors">ダイナミックカラー</string>
+    <string name="setting_backup_ext">終了時のバックアップ</string>
+    <string name="setting_backup_sumDatabase">スタートサイト、ブックマーク、履歴</string>
+    <string name="setting_backup_sumSettings">アプリとウェブサイトの設定</string>
+    <string name="privacy_redirect_title">リダイレクト</string>
+    <string name="privacy_redirect_use">リダイレクトの使用</string>
 </resources>

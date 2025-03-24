@@ -183,4 +183,12 @@
     <string name="app_session">… under pågående session?</string>
     <string name="app_never">Aldrig</string>
     <string name="app_permission_notification">Meddelanden</string>
+    <string name="setting_title_savedWebSites">Sparade webbplatser</string>
+    <string name="setting_title_dynColors">Dynamiska färger</string>
+    <string name="setting_backup_ext">Säkerhetskopiering vid avslutning</string>
+    <string name="setting_backup_sumDatabase">Startsite, Bokmärken, historia</string>
+    <string name="setting_backup_sumSettings">Inställningar för appar och webbplatser</string>
+    <string name="privacy_redirect_use">Använd omdirigeringar</string>
+    <string name="privacy_redirect_title">Omdirigeringar</string>
+    <string name="album_title_bookmarks_html">Bokmärken (HTML)</string>
 </resources>

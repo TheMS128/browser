@@ -58,6 +58,5 @@
     <color name="red">#40f44336</color>
     <color name="teal">#40009688</color>
     <color name="yellow">#40ffc107</color>
-    <color name="statusBar">#111111</color>
-    
+
 </resources>

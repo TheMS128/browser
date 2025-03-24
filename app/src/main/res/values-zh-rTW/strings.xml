@@ -183,4 +183,12 @@
     <string name="app_no">沒有</string>
     <string name="setting_title_trackingURL">彈出追蹤 URL</string>
     <string name="app_permission_notification">通知</string>
+    <string name="setting_title_savedWebSites">儲存的網站</string>
+    <string name="setting_title_dynColors">動態色彩</string>
+    <string name="setting_backup_ext">退出時備份</string>
+    <string name="setting_backup_sumSettings">應用程式與網站設定</string>
+    <string name="album_title_bookmarks_html">書籤 (HTML)</string>
+    <string name="privacy_redirect_use">使用重定向</string>
+    <string name="privacy_redirect_title">重定向</string>
+    <string name="setting_backup_sumDatabase">起始網站、書籤、歷史</string>
 </resources>

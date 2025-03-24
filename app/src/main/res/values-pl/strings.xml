@@ -185,4 +185,12 @@
     <string name="app_never">Nigdy</string>
     <string name="app_session">… w bieżącej sesji?</string>
     <string name="app_permission_notification">Powiadomienia</string>
+    <string name="album_title_bookmarks_html">Zakładki (HTML)</string>
+    <string name="setting_title_dynColors">Dynamiczne kolory</string>
+    <string name="setting_backup_sumDatabase">Strona startowa, zakładki, historia</string>
+    <string name="setting_backup_sumSettings">Ustawienia aplikacji i strony internetowej</string>
+    <string name="privacy_redirect_use">Używanie przekierowań</string>
+    <string name="privacy_redirect_title">Przekierowania</string>
+    <string name="setting_title_savedWebSites">Zapisane strony internetowe</string>
+    <string name="setting_backup_ext">Kopia zapasowa przy wyjściu</string>
 </resources>

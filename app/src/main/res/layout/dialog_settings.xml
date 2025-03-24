@@ -137,51 +137,6 @@
             app:icon="@drawable/icon_settings"/>
 
         <Button
-            android:id="@+id/ib_more"
-            style="@style/Widget.Material3.Button.IconButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:gravity="center_vertical"
-            app:icon="@drawable/icon_dots"/>
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/layout_more"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:orientation="horizontal"
-        android:layout_marginBottom="10dp"
-        android:visibility="gone">
-
-        <com.google.android.material.chip.Chip
-            android:id="@+id/chip_toggleScreenOn"
-            style="@style/Widget.Material3.Chip.Suggestion"
-            android:layout_width="wrap_content"
-            android:layout_gravity="center"
-            app:chipIcon="@drawable/icon_screen"
-            app:chipIconEnabled="true"
-            app:textEndPadding="0dp"
-            app:textStartPadding="0dp"
-            android:layout_height="wrap_content"
-            app:chipBackgroundColor="@drawable/bg_chip_state_list"
-            app:chipIconTint="@drawable/bg_chip_icon_state" />
-
-        <com.google.android.material.chip.Chip
-            android:id="@+id/chip_toggleRedirect"
-            style="@style/Widget.Material3.Chip.Suggestion"
-            android:layout_width="wrap_content"
-            android:layout_gravity="center"
-            app:chipIcon="@drawable/icon_redirect"
-            app:chipIconEnabled="true"
-            app:textEndPadding="0dp"
-            app:textStartPadding="0dp"
-            android:layout_height="wrap_content"
-            app:chipBackgroundColor="@drawable/bg_chip_state_list"
-            app:chipIconTint="@drawable/bg_chip_icon_state" />
-
-        <Button
             android:id="@+id/button_help"
             style="@style/Widget.Material3.Button.IconButton"
             android:layout_width="wrap_content"

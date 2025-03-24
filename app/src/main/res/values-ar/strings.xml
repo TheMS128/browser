@@ -189,4 +189,6 @@
     <string name="setting_backup_sumSettings">إعدادات التطبيق والموقع الإلكتروني</string>
     <string name="setting_title_savedWebSites">المواقع المحفوظة</string>
     <string name="setting_backup_sumDatabase">موقع البداية، الإشارات المرجعية، التاريخ</string>
+    <string name="privacy_redirect_use">استخدام عمليات إعادة التوجيه</string>
+    <string name="privacy_redirect_title">عمليات إعادة التوجيه</string>
 </resources>

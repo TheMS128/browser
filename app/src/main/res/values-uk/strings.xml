@@ -83,7 +83,7 @@
     <string name="setting_title_profiles_Security">Безпека</string>
     <string name="setting_title_images">Зображення</string>
     <string name="setting_title_cookie">Куки</string>
-    <string name="setting_summary_cookie_delete">Якщо ввімкнено, всі cookies будуть видалені, включно з файлами cookie з надійних веб-сайтів.</string>
+    <string name="setting_summary_cookie_delete">Якщо ввімкнено, всі cookies будуть видалені, включно з файлами cookie з надійних вебсайтів.</string>
     <string name="setting_title_javascript_popUp">Спливаюче вікно</string>
     <string name="setting_title_javascript">JavaScript</string>
     <string name="setting_title_adblock">Блокування реклами</string>
@@ -183,4 +183,12 @@
     <string name="app_never">Ніколи.</string>
     <string name="app_session">… в поточній сесії?</string>
     <string name="app_permission_notification">Сповіщення</string>
+    <string name="setting_backup_sumDatabase">Домашня сторінка, закладки, історія</string>
+    <string name="setting_backup_sumSettings">Налаштування додатка і сайтів</string>
+    <string name="setting_title_savedWebSites">Збережені вебсайти</string>
+    <string name="setting_backup_ext">Резервне копіювання при виході</string>
+    <string name="album_title_bookmarks_html">Закладки (HTML)</string>
+    <string name="setting_title_dynColors">Динамічні кольори</string>
+    <string name="privacy_redirect_use">Використовувати перенаправлення</string>
+    <string name="privacy_redirect_title">Перенаправлення</string>
 </resources>
