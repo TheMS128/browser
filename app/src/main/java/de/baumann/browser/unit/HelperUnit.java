@@ -139,62 +139,61 @@ public class HelperUnit {
     }
 
     public static void saveAs(final Activity activity, final String url, final String name, Dialog dialogParent, WebView webView) {
+        if (BackupUnit.checkPermissionStorage(activity)) {
 
-        try {
-            MaterialAlertDialogBuilder builder = new MaterialAlertDialogBuilder(activity);
 
-            View dialogView = View.inflate(activity, R.layout.dialog_edit, null);
-            TextInputLayout editBottomLayout = dialogView.findViewById(R.id.editBottomLayout);
-            editBottomLayout.setHint(activity.getString(R.string.dialog_extension_hint));
 
-            EditText editTop = dialogView.findViewById(R.id.editTop);
-            EditText editBottom = dialogView.findViewById(R.id.editBottom);
-            editTop.setHint(activity.getString(R.string.dialog_title_hint));
-            editBottom.setHint(activity.getString(R.string.dialog_extension_hint));
 
-            String filename = name != null ? name : URLUtil.guessFileName(url, null, null);
-            String extension = filename.substring(filename.lastIndexOf("."));
-            String prefix = filename.substring(0, filename.lastIndexOf("."));
+            try {
+                MaterialAlertDialogBuilder builder = new MaterialAlertDialogBuilder(activity);
 
-            editTop.setText(prefix);
-            if (extension.length() <= 8) editBottom.setText(extension);
+                View dialogView = View.inflate(activity, R.layout.dialog_edit, null);
+                TextInputLayout editBottomLayout = dialogView.findViewById(R.id.editBottomLayout);
+                editBottomLayout.setHint(activity.getString(R.string.dialog_extension_hint));
 
-            builder.setTitle(R.string.menu_save_as);
-            builder.setIcon(R.drawable.icon_menu_save);
-            builder.setView(dialogView);
+                EditText editTop = dialogView.findViewById(R.id.editTop);
+                EditText editBottom = dialogView.findViewById(R.id.editBottom);
+                editTop.setHint(activity.getString(R.string.dialog_title_hint));
+                editBottom.setHint(activity.getString(R.string.dialog_extension_hint));
 
-            AlertDialog dialog = builder.create();
-            dialog.show();
-            HelperUnit.setupDialog(activity, dialog);
+                String filename = name != null ? name : URLUtil.guessFileName(url, null, null);
+                String extension = filename.substring(filename.lastIndexOf("."));
+                String prefix = filename.substring(0, filename.lastIndexOf("."));
 
-            Button ib_cancel = dialogView.findViewById(R.id.editCancel);
-            ib_cancel.setOnClickListener(view -> dialog.cancel());
-            Button ib_ok = dialogView.findViewById(R.id.editOK);
-            ib_ok.setOnClickListener(view12 -> {
+                editTop.setText(prefix);
+                if (extension.length() <= 8) editBottom.setText(extension);
 
-                String title = editTop.getText().toString().trim();
-                String extension1 = editBottom.getText().toString().trim();
-                String finalFileName = title + extension1;
+                builder.setTitle(R.string.menu_save_as);
+                builder.setIcon(R.drawable.icon_menu_save);
+                builder.setView(dialogView);
 
-                if (title.isEmpty() || !extension1.startsWith(".")) {
-                    NinjaToast.show(activity, activity.getString(R.string.toast_input_empty));
-                } else {
-                    if (BackupUnit.checkPermissionStorage(activity)) {
+                AlertDialog dialog = builder.create();
+                dialog.show();
+                HelperUnit.setupDialog(activity, dialog);
+
+                Button ib_cancel = dialogView.findViewById(R.id.editCancel);
+                ib_cancel.setOnClickListener(view -> dialog.cancel());
+                Button ib_ok = dialogView.findViewById(R.id.editOK);
+                ib_ok.setOnClickListener(view12 -> {
+
+                    String title = editTop.getText().toString().trim();
+                    String extension1 = editBottom.getText().toString().trim();
+                    String finalFileName = title + extension1;
+
+                    if (title.isEmpty() || !extension1.startsWith(".")) {
+                        NinjaToast.show(activity, activity.getString(R.string.toast_input_empty));
+                    } else {
                         try {
                             if (url.startsWith("blob:")) {
-                                if (BackupUnit.checkPermissionStorage(activity.getApplicationContext())) {
-                                    webView.evaluateJavascript(JavaScriptInterface.getBase64StringFromBlobUrl(url, finalFileName, "*/*"), null);
-                                } else BackupUnit.requestPermission(activity);
+                                webView.evaluateJavascript(JavaScriptInterface.getBase64StringFromBlobUrl(url, finalFileName, "*/*"), null);
                             } else if (url.startsWith("data:")) {
                                 DataURIParser dataURIParser = new DataURIParser(url);
-                                if (BackupUnit.checkPermissionStorage(activity.getApplicationContext())) {
-                                    File file = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS), finalFileName);
-                                    FileOutputStream fos = new FileOutputStream(file);
-                                    fos.write(dataURIParser.getImagedata());
-                                    fos.flush();
-                                    fos.close();
-                                    HelperUnit.openDialogDownloads(activity.getApplicationContext());
-                                } else BackupUnit.requestPermission(activity);
+                                File file = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS), finalFileName);
+                                FileOutputStream fos = new FileOutputStream(file);
+                                fos.write(dataURIParser.getImagedata());
+                                fos.flush();
+                                fos.close();
+                                HelperUnit.openDialogDownloads(activity.getApplicationContext());
                             } else {
                                 DownloadManager.Request request = new DownloadManager.Request(Uri.parse(url));
                                 CookieManager cookieManager = CookieManager.getInstance();
@@ -203,7 +202,7 @@ public class HelperUnit {
                                 request.addRequestHeader("Accept", "text/html, application/xhtml+xml, *" + "/" + "*");
                                 request.addRequestHeader("Accept-Language", "en-US,en;q=0.7,he;q=0.3");
                                 request.addRequestHeader("Referer", url);
-                                request.setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE_NOTIFY_COMPLETED);
+                                request.setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE);
                                 request.setTitle(finalFileName);
                                 request.setMimeType(finalFileName);
                                 request.setDestinationInExternalPublicDir(Environment.DIRECTORY_DOWNLOADS, finalFileName);
@@ -220,28 +219,23 @@ public class HelperUnit {
                             Toast.makeText(activity, activity.getString(R.string.app_error) + e.toString().substring(e.toString().indexOf(":")), Toast.LENGTH_LONG).show();
                             Log.i(TAG, "shouldOverrideUrlLoading Exception:" + e);
                         }
-
-                    } else {
-                        BackupUnit.requestPermission(activity);
+                        try {
+                            dialog.cancel();
+                        } catch (Exception e) {
+                            Log.i("FOSS Browser", "SaveAs:" + e);
+                        }
+                        dialogParent.cancel();
                     }
-                    try {
-                        dialog.cancel();
-                    } catch (Exception e) {
-                        Log.i("FOSS Browser", "SaveAs:" + e);
-                    }
-                    dialogParent.cancel();
-                }
-            });
-        } catch (Exception e) {
-            Log.i(TAG, "SaveAs:" + e);
-        }
+                });
+            } catch (Exception e) {
+                Log.i(TAG, "SaveAs:" + e);
+            }
+        } else BackupUnit.requestPermission(activity);
     }
 
     public static void createShortcut(Context context, NinjaWebView ninjaWebView, String title, String url) {
-
         Icon icon;
         icon = createWithBitmap(ninjaWebView.getFavicon());
-
         try {
             Intent i = new Intent();
             i.setAction(Intent.ACTION_VIEW);
@@ -424,10 +418,6 @@ public class HelperUnit {
         ImageView imageView = dialog.findViewById(android.R.id.icon);
         if (imageView != null) imageView.setColorFilter(color, PorterDuff.Mode.SRC_IN);
         Objects.requireNonNull(dialog.getWindow()).setGravity(Gravity.BOTTOM);
-        if (sp.getString("sp_theme", "1").equals("5")) {
-            dialog.getWindow().setBackgroundDrawableResource(android.R.color.transparent);
-            dialog.getWindow().setBackgroundDrawableResource(R.drawable.dialog_border);
-        }
     }
 
     public static void triggerRebirth(Context context) {
@@ -464,8 +454,6 @@ public class HelperUnit {
     public static int convertDpToPixel(float dp, Context context){
         return Math.round(dp * ((float) context.getResources().getDisplayMetrics().densityDpi / DisplayMetrics.DENSITY_DEFAULT));
     }
-
-
 
     public static void openDialogDownloads(Context context) {
         ((Activity) context).runOnUiThread(() -> {

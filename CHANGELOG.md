@@ -1,6 +1,15 @@
 ### v 19 WIP
 
-With this release it will be possible to save settings separate for each website. There will be only one standard profile. No more switching between different profiles. If you do not like this, please do not install the next updates. More infos will be released soon on the procect website: https://codeberg.org/Gaukler_Faun/FOSS_Browser.
+With this release is possible to save settings separate for each website. There will be only one standard profile. No more switching between different profiles. If you do not like this, please do not install the next updates. More infos will be released soon on the procect website: https://codeberg.org/Gaukler_Faun/FOSS_Browser.
+
+- new: save settings per website
+- fix: not showing most recent entries in overview in some cases
+- fix: removed a lot of old code
+- updated: layout
+- updated: settings
+- updated: translations
+- updated: build libraries
+- removed: play audio in background, due to Android limitations
 
 ### v 18.1 "Die rote Zora"
 

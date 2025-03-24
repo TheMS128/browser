@@ -31,7 +31,6 @@ import de.baumann.browser.unit.HelperUnit;
 import de.baumann.browser.view.NinjaToast;
 import de.baumann.browser.view.NinjaWebView;
 
-/** @noinspection ExtractMethodRecommender*/
 public class NinjaWebChromeClient extends WebChromeClient {
 
     private final NinjaWebView ninjaWebView;

@@ -17,7 +17,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
-import android.content.pm.ShortcutManager;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Environment;
@@ -78,10 +77,7 @@ public class BrowserUnit {
     private static final int REQUEST_CODE_ASK_PERMISSIONS_4 = 1234567;
 
     public static boolean isURL(String url) {
-
-
         url = url.toLowerCase(Locale.getDefault());
-
         if (url.startsWith(URL_ABOUT_BLANK)
                 || url.startsWith(URL_SCHEME_MAIL_TO)
                 || url.startsWith(URL_SCHEME_FILE)
@@ -121,7 +117,6 @@ public class BrowserUnit {
             String customSearchEngine = sp.getString("sp_search_engine_custom", "");
             String customSearches = sp.getString("sp_search_customSearches", "");
             query = query.replace("&", "%26");
-
             //Override UserAgent if own UserAgent is defined
             if (!sp.contains("searchEngineSwitch")) {
                 //if new switch_text_preference has never been used initialize the switch
@@ -166,46 +161,41 @@ public class BrowserUnit {
     }
 
     public static void download(final Context context, final WebView webview, final String url, final String fileName, final String mimeType) {
-
-        try {
-            Activity activity = (Activity) context;
-            if (url.startsWith("blob:")) {
-                if (BackupUnit.checkPermissionStorage(context)) {
+        Activity activity = (Activity) context;
+        if (BackupUnit.checkPermissionStorage(context)) {
+            try {
+                if (url.startsWith("blob:")) {
                     webview.evaluateJavascript(JavaScriptInterface.getBase64StringFromBlobUrl(url, fileName, mimeType), null);
-                } else BackupUnit.requestPermission(activity);
-            } else if (url.startsWith("data:")) {
-                DataURIParser dataURIParser = new DataURIParser(url);
-                if (BackupUnit.checkPermissionStorage(context)) {
+                } else if (url.startsWith("data:")) {
+                    DataURIParser dataURIParser = new DataURIParser(url);
                     File file = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS), fileName);
                     FileOutputStream fos = new FileOutputStream(file);
                     fos.write(dataURIParser.getImagedata());
                     fos.flush();
                     fos.close();
                     HelperUnit.openDialogDownloads(context);
-                } else BackupUnit.requestPermission(activity);
-            } else {
-                DownloadManager.Request request = new DownloadManager.Request(Uri.parse(url));
-                CookieManager cookieManager = CookieManager.getInstance();
-                String cookie = cookieManager.getCookie(url);
-                request.addRequestHeader("Cookie", cookie);
-                request.addRequestHeader("Accept", "text/html, application/xhtml+xml, *" + "/" + "*");
-                request.addRequestHeader("Accept-Language", "en-US,en;q=0.7,he;q=0.3");
-                request.addRequestHeader("Referer", url);
-                request.setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE_NOTIFY_COMPLETED);
-                request.setTitle(fileName);
-                request.setMimeType(mimeType);
-                request.setDestinationInExternalPublicDir(Environment.DIRECTORY_DOWNLOADS, fileName);
-                DownloadManager manager = (DownloadManager) context.getSystemService(Context.DOWNLOAD_SERVICE);
-                assert manager != null;
-                if (BackupUnit.checkPermissionStorage(context)) {
-                    manager.enqueue(request);
                 } else {
-                    BackupUnit.requestPermission(activity);
+                    DownloadManager.Request request = new DownloadManager.Request(Uri.parse(url));
+                    CookieManager cookieManager = CookieManager.getInstance();
+                    String cookie = cookieManager.getCookie(url);
+                    request.addRequestHeader("Cookie", cookie);
+                    request.addRequestHeader("Accept", "text/html, application/xhtml+xml, *" + "/" + "*");
+                    request.addRequestHeader("Accept-Language", "en-US,en;q=0.7,he;q=0.3");
+                    request.addRequestHeader("Referer", url);
+                    request.setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE);
+                    request.setTitle(fileName);
+                    request.setMimeType(mimeType);
+                    request.setDestinationInExternalPublicDir(Environment.DIRECTORY_DOWNLOADS, fileName);
+                    DownloadManager manager = (DownloadManager) context.getSystemService(Context.DOWNLOAD_SERVICE);
+                    assert manager != null;
+                    manager.enqueue(request);
                 }
+            } catch (Exception e) {
+                Toast.makeText(context, context.getString(R.string.app_error) + e.toString().substring(e.toString().indexOf(":")), Toast.LENGTH_LONG).show();
+                Log.i(TAG, "FOSS Browser: Error Downloading File:" + e);
             }
-        } catch (Exception e) {
-            Toast.makeText(context, context.getString(R.string.app_error) + e.toString().substring(e.toString().indexOf(":")), Toast.LENGTH_LONG).show();
-            Log.i(TAG, "FOSS Browser: Error Downloading File:" + e);
+        } else {
+            BackupUnit.requestPermission(activity);
         }
     }
 
@@ -221,8 +211,6 @@ public class BrowserUnit {
         action.open(true);
         action.clearTable(RecordUnit.TABLE_BOOKMARK);
         action.close();
-        ShortcutManager shortcutManager = context.getSystemService(ShortcutManager.class);
-        Objects.requireNonNull(shortcutManager).removeAllDynamicShortcuts();
     }
 
     public static void clearHistory(Context context) {
@@ -230,8 +218,6 @@ public class BrowserUnit {
         action.open(true);
         action.clearTable(RecordUnit.TABLE_HISTORY);
         action.close();
-        ShortcutManager shortcutManager = context.getSystemService(ShortcutManager.class);
-        Objects.requireNonNull(shortcutManager).removeAllDynamicShortcuts();
     }
 
     public static void  clearBrowserData(Context context) {
@@ -316,7 +302,7 @@ public class BrowserUnit {
         context.startActivity(browserIntent);
     }
 
-    public static String redirectURL(WebView ninjaWebView, SharedPreferences sp, String url) {
+    public static String redirectURL (WebView ninjaWebView, SharedPreferences sp, String url) {
         boolean redirect = sp.getBoolean("redirect", false);
         if (!redirect) return url;
         try {
@@ -386,7 +372,6 @@ public class BrowserUnit {
         }
     }
 
-    /** @noinspection ExtractMethodRecommender*/
     private static void displayNotification(Activity activity, NotificationManager mNotifyMgr, Notification buildNotification) {
         if (SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
             int notificationAllowed = activity.checkSelfPermission(Manifest.permission.POST_NOTIFICATIONS);

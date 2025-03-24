@@ -379,7 +379,6 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
     @Override
     public void onDestroy() {
         NotificationManager notificationManager = (NotificationManager) getApplicationContext().getSystemService(Context.NOTIFICATION_SERVICE);
-        notificationManager.cancel(2);
         notificationManager.cancel(1);
         if (sp.getBoolean("sp_clear_quit", true)) {
             BrowserUnit.clearBrowserData(this);
