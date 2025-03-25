@@ -10,6 +10,7 @@ With this release is possible to save settings separate for each website. There 
 - updated: translations
 - updated: build libraries
 - removed: play audio in background, due to Android limitations
+- removed: OLED-theme
 
 ### v 18.1 "Die rote Zora"
 
