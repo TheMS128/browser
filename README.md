@@ -11,18 +11,7 @@
 __[README](https://codeberg.org/Gaukler_Faun/FOSS_Browser/src/branch/master/README.md)__ | __[WIKI](https://codeberg.org/Gaukler_Faun/FOSS_Browser/wiki)__ | __[FAQs](https://codeberg.org/Gaukler_Faun/FOSS_Browser/src/branch/master/FAQs.md)__ | __[Releases](https://codeberg.org/Gaukler_Faun/FOSS_Browser/releases)__ | __[Changelog](https://codeberg.org/Gaukler_Faun/FOSS_Browser/src/branch/master/CHANGELOG.md)__ | __[ISSUES](https://codeberg.org/Gaukler_Faun/FOSS_Browser/issues)__ | __[Privacy](https://codeberg.org/Gaukler_Faun/FOSS_Browser/src/branch/master/PRIVACY.md)__ | __[License](https://codeberg.org/Gaukler_Faun/FOSS_Browser/src/branch/master/LICENSE.md)__ | __[Code of conduct](https://codeberg.org/Gaukler_Faun/FOSS_Browser/src/branch/master/CODE_OF_CONDUCT.md)__ | __[Help translating](https://translate.codeberg.org/projects/foss-browser/)__
 
 ----
-### UI/Handling
 
-FOSS Browser uses the latest Material You design libraries. Following system day/night mode and a wallpaper based theme are just two features of this new library. The UI is optimized for one-hand-use. All UI-elements are at the bottom of the screen.
-
-
-_More features:_
-
-- Keep screen on.
-- Open links in background.
-- Restore tabs on restart.
-
-----
 ### Privacy
 
 FOSS Browser can save settings fot each domain to protect your privacy. For each domain you can enable or disable: AdBlock, JavaScript, cookies, fingerprint protection and much more. For non saved domains you can edit a standard profile to your needs.
@@ -36,6 +25,19 @@ _More privacy features:_
 - Delete browser data (on app exit).
 - Choose between different search engines (or set a custom one).
 - FOSS Browser itself doesn't collect any data: [Privacy policy](https://codeberg.org/Gaukler_Faun/FOSS_Browser/src/branch/master/PRIVACY.md)
+
+
+----
+### UI/Handling
+
+FOSS Browser uses the latest Material You design libraries. Following system day/night mode and a wallpaper based theme are just two features of this new library. The UI is optimized for one-hand-use. All UI-elements are at the bottom of the screen.
+
+
+_More features:_
+
+- Keep screen on.
+- Open links in background.
+- Restore tabs on restart.
 
 ----
 ### Bookmarks filter
