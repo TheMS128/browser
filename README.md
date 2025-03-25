@@ -7,7 +7,8 @@
 <img src="https://translate.codeberg.org/widgets/foss-browser/-/strings/287x66-white.png" alt="Übersetzungsstatus" />
 </a></p>
 
-__[README](https://codeberg.org/Gaukler_Faun/FOSS_Browser/src/branch/master/README.md)__ | __[WIKI](https://codeberg.org/Gaukler_Faun/FOSS_Browser/wiki)__ | __[FAQs](https://codeberg.org/Gaukler_Faun/FOSS_Browser/src/branch/master/FAQs.md)__ | __[Releases](https://codeberg.org/Gaukler_Faun/FOSS_Browser/releases)__ | __[Changelog](https://codeberg.org/Gaukler_Faun/FOSS_Browser/src/branch/master/CHANGELOG.md)__ | __[ISSUES](https://codeberg.org/Gaukler_Faun/FOSS_Browser/issues)__ | __[Privacy](https://codeberg.org/Gaukler_Faun/FOSS_Browser/src/branch/master/PRIVACY.md)__ | __[License](https://codeberg.org/Gaukler_Faun/FOSS_Browser/src/branch/master/LICENSE.md)__ | __[Code of conduct](https://codeberg.org/Gaukler_Faun/FOSS_Browser/src/branch/master/CODE_OF_CONDUCT.md)__ | __[Contributing](https://codeberg.org/Gaukler_Faun/FOSS_Browser/src/branch/master/CONTRIBUTING.md)__ | __[Help translating](https://translate.codeberg.org/projects/foss-browser/)__ | __[Screenshots](https://codeberg.org/Gaukler_Faun/FOSS_Browser/src/branch/master/SCREENSHOTS.md)__
+
+__[README](https://codeberg.org/Gaukler_Faun/FOSS_Browser/src/branch/master/README.md)__ | __[WIKI](https://codeberg.org/Gaukler_Faun/FOSS_Browser/wiki)__ | __[FAQs](https://codeberg.org/Gaukler_Faun/FOSS_Browser/src/branch/master/FAQs.md)__ | __[Releases](https://codeberg.org/Gaukler_Faun/FOSS_Browser/releases)__ | __[Changelog](https://codeberg.org/Gaukler_Faun/FOSS_Browser/src/branch/master/CHANGELOG.md)__ | __[ISSUES](https://codeberg.org/Gaukler_Faun/FOSS_Browser/issues)__ | __[Privacy](https://codeberg.org/Gaukler_Faun/FOSS_Browser/src/branch/master/PRIVACY.md)__ | __[License](https://codeberg.org/Gaukler_Faun/FOSS_Browser/src/branch/master/LICENSE.md)__ | __[Code of conduct](https://codeberg.org/Gaukler_Faun/FOSS_Browser/src/branch/master/CODE_OF_CONDUCT.md)__ | __[Help translating](https://translate.codeberg.org/projects/foss-browser/)__
 
 ----
 ### UI/Handling
@@ -24,7 +25,7 @@ _More features:_
 ----
 ### Privacy
 
-FOSS Browser uses profiles to protect your privacy. For each profile you can enable or disable: AdBlock, JavaScript, cookies, fingerprint protection and much more. Profiles can also be saved for domains ("github.com" ⇒ Trusted website). These saved domains always overwrite the currently used profile. So, for example, "github.com" will always open with the trusted profile, even if you are browsing in the protected mode.
+FOSS Browser can save settings fot each domain to protect your privacy. For each domain you can enable or disable: AdBlock, JavaScript, cookies, fingerprint protection and much more. For non saved domains you can edit a standard profile to your needs.
 
 _More privacy features:_
 
@@ -49,7 +50,7 @@ You can assign nearly twenty different gestures to the toolbar and the toolbar b
 ----
 ### Backups
 
-Backup all your important data (bookmarks, history, trusted websites and so on) on your SD-card. You can also back up FOSS Browser settings. Backups can even be restored on a fresh install or another device (if you copy the backup files to the new device).
+Backup all your important data and settings (bookmarks, history, websites-settings and so on) on your SD-card. You can also back up FOSS Browser settings. Backups can even be restored on a fresh install or another device (if you copy the backup files to the new device).
 
 ----
 
