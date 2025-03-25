@@ -5,6 +5,7 @@ With this release is possible to save settings separate for each website. There 
 - new: save settings per website
 - fix: not showing most recent entries in overview in some cases
 - fix: removed a lot of old code
+- fix: Sequences of Java Session Id's appears in URL #1187
 - updated: WIKI
 - updated: layout
 - updated: settings
