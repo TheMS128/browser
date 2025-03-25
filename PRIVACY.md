@@ -52,11 +52,10 @@ Some features of FOSS browser include;
 - search on site
 - open links in the background
 - Web search (from marked text context menu)
-- screenshots of the whole website
 - open links in other apps (for example YouTube)
 
 Please spread the word and share this app with anyone you think could benefit from it.  <hr>
 
 ## Contact 
 
-FOSS Browser would certainly improve with contributions from the open source community. Feel free to make contributions and suggestions to this project either by opening an issue or implementing opening pull requests of those suggestions and improvements. For further inquiry regarding this privacy policy or any other issue relating to the development or within the circumference of FOSS browser, please contact the developer directly via email or by opening an [issue](https://github.com/scoute-dich/browser/issues/new) on the app's official repository here on Github. Please also check if the issue you want to open hasn't been previously open.
+FOSS Browser would certainly improve with contributions from the open source community. Feel free to make contributions and suggestions to this project either by opening an issue or implementing opening pull requests of those suggestions and improvements. For further inquiry regarding this privacy policy or any other issue relating to the development or within the circumference of FOSS browser, please contact the developer directly via email or by opening an [issue](https://codeberg.org/Gaukler_Faun/FOSS_Browser/issues) on the app's official repository here on Codeberg. Please also check if the issue you want to open hasn't been previously open.
