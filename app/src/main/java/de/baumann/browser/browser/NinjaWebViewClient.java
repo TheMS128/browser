@@ -89,8 +89,6 @@ public class NinjaWebViewClient extends WebViewClient {
             String bannerBlockScript = BannerBlock.getBannerBlockScriptPageFinished();
             if (bannerBlockScript != null) view.evaluateJavascript(bannerBlockScript,null);
         }
-        //inject printing support via JavaScriptInterface
-        view.evaluateJavascript(JavaScriptInterface.injectPrintSupport(), null);
     }
 
     @Override

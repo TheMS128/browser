@@ -141,9 +141,6 @@ public class HelperUnit {
     public static void saveAs(final Activity activity, final String url, final String name, Dialog dialogParent, WebView webView) {
         if (BackupUnit.checkPermissionStorage(activity)) {
 
-
-
-
             try {
                 MaterialAlertDialogBuilder builder = new MaterialAlertDialogBuilder(activity);
 
@@ -184,9 +181,7 @@ public class HelperUnit {
                         NinjaToast.show(activity, activity.getString(R.string.toast_input_empty));
                     } else {
                         try {
-                            if (url.startsWith("blob:")) {
-                                webView.evaluateJavascript(JavaScriptInterface.getBase64StringFromBlobUrl(url, finalFileName, "*/*"), null);
-                            } else if (url.startsWith("data:")) {
+                            if (url.startsWith("data:")) {
                                 DataURIParser dataURIParser = new DataURIParser(url);
                                 File file = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS), finalFileName);
                                 FileOutputStream fos = new FileOutputStream(file);

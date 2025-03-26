@@ -3,6 +3,7 @@
 With this release is possible to save settings separate for each website. There will be only one standard profile. No more switching between different profiles. If you do not like this, please do not install the next updates. More infos will be released soon on the procect website: https://codeberg.org/Gaukler_Faun/FOSS_Browser.
 
 - new: save settings per website
+- new: Error-dialog, when downloading Blob-files
 - fix: not showing most recent entries in overview in some cases
 - fix: removed a lot of old code
 - fix: Sequences of Java Session Id's appears in URL #1187

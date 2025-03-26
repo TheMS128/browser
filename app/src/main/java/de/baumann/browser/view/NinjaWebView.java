@@ -40,7 +40,6 @@ import java.util.Objects;
 import de.baumann.browser.R;
 import de.baumann.browser.browser.AlbumController;
 import de.baumann.browser.browser.BrowserController;
-import de.baumann.browser.browser.JavaScriptInterface;
 import de.baumann.browser.browser.List_standard;
 import de.baumann.browser.browser.NinjaDownloadListener;
 import de.baumann.browser.browser.NinjaWebChromeClient;
@@ -129,8 +128,8 @@ public class NinjaWebView extends WebView implements AlbumController {
         profile = sp.getString("profile", "profileStandard");
         String profileOriginal = profile;
         WebSettings webSettings = getSettings();
-        addJavascriptInterface(new JavaScriptInterface(context, this), "NinjaWebViewJS");
 
+        webSettings.setDefaultTextEncodingName("utf-8");
         webSettings.setSafeBrowsingEnabled(true);
         webSettings.setSupportZoom(true);
         webSettings.setBuiltInZoomControls(true);

@@ -164,9 +164,7 @@ public class BrowserUnit {
         Activity activity = (Activity) context;
         if (BackupUnit.checkPermissionStorage(context)) {
             try {
-                if (url.startsWith("blob:")) {
-                    webview.evaluateJavascript(JavaScriptInterface.getBase64StringFromBlobUrl(url, fileName, mimeType), null);
-                } else if (url.startsWith("data:")) {
+                if (url.startsWith("data:")) {
                     DataURIParser dataURIParser = new DataURIParser(url);
                     File file = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS), fileName);
                     FileOutputStream fos = new FileOutputStream(file);

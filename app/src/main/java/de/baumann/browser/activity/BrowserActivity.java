@@ -285,6 +285,8 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
         BroadcastReceiver downloadReceiver = new BroadcastReceiver() {
             @Override
             public void onReceive(Context context, Intent intent) {
+
+                NinjaToast.show(context, getString(R.string.toast_downloadComplete));
                 try {
                     MaterialAlertDialogBuilder builder = new MaterialAlertDialogBuilder(context);
                     builder.setTitle(R.string.menu_download);
@@ -293,7 +295,7 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
                     builder.setPositiveButton(R.string.app_ok, (dialog, whichButton) -> startActivity(Intent.createChooser(new Intent(DownloadManager.ACTION_VIEW_DOWNLOADS), null)));
                     builder.setNegativeButton(R.string.app_cancel, (dialog, whichButton) -> dialog.cancel());
                     Dialog dialog = builder.create();
-                    dialog.show();
+                    //dialog.show();
                     HelperUnit.setupDialog(context, dialog);
                 } catch (Exception e) {
                     Log.v(TAG, "Failed to show download complete dialog");
