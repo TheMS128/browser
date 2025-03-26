@@ -299,6 +299,7 @@ public class BrowserUnit {
     public static void intentURL(Context context, Uri uri) {
         Intent browserIntent = new Intent(Intent.ACTION_VIEW);
         browserIntent.setData(uri);
+        browserIntent.setPackage("de.baumann.browser");
         context.startActivity(browserIntent);
     }
 
