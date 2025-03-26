@@ -465,7 +465,7 @@ public class NinjaWebViewClient extends WebViewClient {
         final Uri uri = request.getUrl();
         String url = uri.toString();
         if (url.startsWith("http:") || url.startsWith("https:")) {
-            BrowserUnit.intentURL(ninjaWebView.getContext(), uri);
+            view.loadUrl(url);
         } else  {
             Intent intent = new Intent(Intent.ACTION_VIEW);
             intent.setData(Uri.parse(url));
