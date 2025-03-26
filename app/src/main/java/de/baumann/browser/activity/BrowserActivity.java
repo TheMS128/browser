@@ -487,18 +487,15 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
         WindowInsetsControllerCompat controller = new WindowInsetsControllerCompat(
                 getWindow(), getWindow().getDecorView()
         );
-
         controller.hide(WindowInsetsCompat.Type.systemBars());
         controller.setSystemBarsBehavior(
                 WindowInsetsControllerCompat.BEHAVIOR_SHOW_TRANSIENT_BARS_BY_SWIPE
         );
-
         if (view == null) return;
         if (customView != null && callback != null) {
             callback.onCustomViewHidden();
             return;
         }
-
         customView = view;
         fullscreenHolder = new FrameLayout(context);
         fullscreenHolder.addView(
@@ -507,7 +504,6 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
                         FrameLayout.LayoutParams.MATCH_PARENT,
                         FrameLayout.LayoutParams.MATCH_PARENT
                 ));
-
         FrameLayout decorView = (FrameLayout) getWindow().getDecorView();
         decorView.addView(
                 fullscreenHolder,
@@ -515,11 +511,9 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
                         FrameLayout.LayoutParams.MATCH_PARENT,
                         FrameLayout.LayoutParams.MATCH_PARENT
                 ));
-
         customView.setKeepScreenOn(true);
         ((View) currentAlbumController).setVisibility(GONE);
         setCustomFullscreen(true);
-
         if (view instanceof FrameLayout) {
             if (((FrameLayout) view).getFocusedChild() instanceof VideoView) {
                 videoView = (VideoView) ((FrameLayout) view).getFocusedChild();

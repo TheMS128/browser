@@ -1,6 +1,6 @@
 "FOSS Browser" ist ein komplett freier (wie in Freiheit), quelloffener Browser für Android: datenschutzfreundlich mit einer modernen Benutzeroberfläche. Your privacy - your data.
 
-<b>Projektseite mit weiteren Informationen: https://github.com/scoute-dich/browser/</b>
+<b>Projektseite mit weiteren Informationen: https://codeberg.org/Gaukler_Faun/FOSS_Browser</b>
 
 
 -------------------------------------------------

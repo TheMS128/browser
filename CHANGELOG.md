@@ -7,8 +7,10 @@ With this release is possible to save settings separate for each website. There 
 - fix: removed a lot of old code
 - fix: Sequences of Java Session Id's appears in URL #1187
 - fix: "show on start" doesn't show start #1206
+- fix: f-droid information shows old link to github #1204
 - fix: Navigation bar not hidden in fullscreen #1099 ??
 - fix: On opening url app crashes #1190 ??
+- fix: Opening URL using window.open() uses default browser instead of Foss Browser #1165 ??
 - updated: WIKI
 - updated: layout
 - updated: settings
