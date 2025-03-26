@@ -3,6 +3,7 @@ package de.baumann.browser.activity;
 import static android.content.ContentValues.TAG;
 import static android.view.View.GONE;
 import static android.view.View.VISIBLE;
+import static android.view.ViewGroup.LayoutParams.WRAP_CONTENT;
 import static android.webkit.WebView.HitTestResult.IMAGE_TYPE;
 import static android.webkit.WebView.HitTestResult.SRC_ANCHOR_TYPE;
 import static android.webkit.WebView.HitTestResult.SRC_IMAGE_ANCHOR_TYPE;
@@ -41,6 +42,7 @@ import android.text.TextWatcher;
 import android.util.Log;
 import android.util.TypedValue;
 import android.view.ContextMenu;
+import android.view.Gravity;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.ViewGroup;
@@ -74,6 +76,7 @@ import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
+import androidx.core.view.WindowCompat;
 import androidx.core.view.WindowInsetsCompat;
 import androidx.preference.PreferenceManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -240,15 +243,23 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
                 break;
         }
         setContentView(R.layout.activity_main);
+        RelativeLayout main = findViewById(R.id.main);
+        contentFrame = findViewById(R.id.main_content);
 
         EdgeToEdge.enable(this);
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
+
+            boolean isKeyboardVisible = insets.isVisible(WindowInsetsCompat.Type.ime());
+            int keyboardHeight = insets.getInsets(WindowInsetsCompat.Type.ime()).bottom;
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
+            //Do your job here
+            if (isKeyboardVisible) {
+                v.setPadding(0, 0, 0, keyboardHeight);
+            } else {
+                v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
+            }
             return insets;
         });
-
-        contentFrame = findViewById(R.id.main_content);
 
         MaterialAlertDialogBuilder builder = new MaterialAlertDialogBuilder(context);
         View dialogView = View.inflate(context, R.layout.sheet_tabs, null);
@@ -1503,8 +1514,8 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
                             dialogFilter.cancel();
                         });
                         LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(
-                                LinearLayout.LayoutParams.WRAP_CONTENT,
-                                LinearLayout.LayoutParams.WRAP_CONTENT
+                                WRAP_CONTENT,
+                                WRAP_CONTENT
                         );
                         params.setMargins(HelperUnit.convertDpToPixel(20f, context),
                                 HelperUnit.convertDpToPixel(10f, context),
@@ -2419,7 +2430,7 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
         }
 
         View albumView = ninjaWebView.getAlbumView();
-        tab_container.addView(albumView, LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
+        tab_container.addView(albumView, WRAP_CONTENT, WRAP_CONTENT);
         updateOmniBox();
     }
 
