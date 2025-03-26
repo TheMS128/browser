@@ -66,17 +66,16 @@ public class NinjaWebViewClient extends WebViewClient {
     public void onPageFinished(WebView view, String url) {
         super.onPageFinished(view, url);
 
-        String profile = sp.getString("profile", "profileStandard");
         if (ninjaWebView.isForeground()) ninjaWebView.invalidate();
         else ninjaWebView.postInvalidate();
 
         if (sp.getBoolean("onPageFinished", false))
             view.evaluateJavascript(Objects.requireNonNull(sp.getString("sp_onPageFinished", "")), null);
 
-        if (sp.getBoolean(profile + "_saveData", false))
+        if (ninjaWebView.isSaveData())
             view.evaluateJavascript("var links=document.getElementsByTagName('video'); for(let i=0;i<links.length;i++){links[i].pause()};", null);
 
-        if (sp.getBoolean(profile + "_history", true)) {
+        if (ninjaWebView.isHistory()) {
             RecordAction action = new RecordAction(ninjaWebView.getContext());
             action.open(true);
             if (action.checkUrl(ninjaWebView.getUrl(), RecordUnit.TABLE_HISTORY)) action.deleteURL(ninjaWebView.getUrl(), RecordUnit.TABLE_HISTORY);
@@ -84,6 +83,7 @@ public class NinjaWebViewClient extends WebViewClient {
             action.close();
         }
 
+        String profile = NinjaWebView.getProfile();
         if (sp.getBoolean(profile + "_deny_cookie_banners",false)){
             //click opt-out if possible
             String bannerBlockScript = BannerBlock.getBannerBlockScriptPageFinished();
@@ -104,14 +104,14 @@ public class NinjaWebViewClient extends WebViewClient {
         if (sp.getBoolean("onPageStarted", false))
             view.evaluateJavascript(Objects.requireNonNull(sp.getString("sp_onPageStarted", "")), null);
 
-        String profile = sp.getString("profile", "profileStandard");
+        String profile = NinjaWebView.getProfile();
         if (sp.getBoolean(profile + "_deny_cookie_banners",false)){
             //click opt-out if possible
             String bannerBlockScript = BannerBlock.getBannerBlockScriptPageStarted();
             if (bannerBlockScript != null) view.evaluateJavascript(bannerBlockScript,null);
         }
 
-        if (sp.getBoolean(profile + "_fingerPrintProtection", true)) {
+        if (ninjaWebView.isFingerPrintProtection()) {
             //Block WebRTC requests which can reveal local IP address
             //Tested with https://diafygi.github.io/webrtc-ips/
             view.evaluateJavascript("['createOffer', 'createAnswer','setLocalDescription', 'setRemoteDescription'].forEach(function(method) {\n" +
@@ -416,7 +416,7 @@ public class NinjaWebViewClient extends WebViewClient {
                     "Object.defineProperty(navigator, 'keyboard',{value:null});" +
                     "Object.defineProperty(navigator, 'sendBeacon',{value:null});", null);
 
-            if (!sp.getBoolean(profile + "_camera", false))
+            if (!ninjaWebView.isCamera())
                 //noinspection ConcatenationWithEmptyString
                 view.evaluateJavascript("" + "Object.defineProperty(navigator, 'mediaDevices',{value:null});", null);
         }
@@ -424,11 +424,11 @@ public class NinjaWebViewClient extends WebViewClient {
 
     @Override
     public void onLoadResource(WebView view, String url) {
-        String profile = sp.getString("profile", "profileStandard");
+
         if (sp.getBoolean("onLoadResource", false))
             view.evaluateJavascript(Objects.requireNonNull(sp.getString("sp_onLoadResource", "")), null);
 
-        if (sp.getBoolean(profile + "_fingerPrintProtection", true))
+        if (ninjaWebView.isFingerPrintProtection())
             view.evaluateJavascript("var test=document.querySelector(\"a[ping]\"); if(test!==null){test.removeAttribute('ping')};", null);
             //do not allow ping on http only pages (tested with http://tests.caniuse.com)
 
@@ -465,7 +465,7 @@ public class NinjaWebViewClient extends WebViewClient {
         final Uri uri = request.getUrl();
         String url = uri.toString();
         if (url.startsWith("http:") || url.startsWith("https:")) {
-            view.loadUrl(url);
+            ninjaWebView.loadUrl(url);
         } else  {
             Intent intent = new Intent(Intent.ACTION_VIEW);
             intent.setData(Uri.parse(url));
@@ -477,8 +477,7 @@ public class NinjaWebViewClient extends WebViewClient {
 
     @Override
     public WebResourceResponse shouldInterceptRequest(WebView view, WebResourceRequest request) {
-        String profile = sp.getString("profile", "profileStandard");
-        if (sp.getBoolean(profile + "_adBlock", false) && adBlock.isAd(request.getUrl().toString()))
+        if (ninjaWebView.isAdBlock() && adBlock.isAd(request.getUrl().toString()))
             return new WebResourceResponse(
                     BrowserUnit.MIME_TYPE_TEXT_PLAIN,
                     BrowserUnit.URL_ENCODING,

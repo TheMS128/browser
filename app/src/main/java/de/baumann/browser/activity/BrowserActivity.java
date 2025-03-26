@@ -75,7 +75,6 @@ import androidx.core.content.ContextCompat;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
-import androidx.core.view.WindowInsetsControllerCompat;
 import androidx.preference.PreferenceManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -483,19 +482,12 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
 
     @Override
     public void onShowCustomView(View view, WebChromeClient.CustomViewCallback callback) {
-
-        WindowInsetsControllerCompat controller = new WindowInsetsControllerCompat(
-                getWindow(), getWindow().getDecorView()
-        );
-        controller.hide(WindowInsetsCompat.Type.systemBars());
-        controller.setSystemBarsBehavior(
-                WindowInsetsControllerCompat.BEHAVIOR_SHOW_TRANSIENT_BARS_BY_SWIPE
-        );
         if (view == null) return;
         if (customView != null && callback != null) {
             callback.onCustomViewHidden();
             return;
         }
+
         customView = view;
         fullscreenHolder = new FrameLayout(context);
         fullscreenHolder.addView(
@@ -504,6 +496,7 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
                         FrameLayout.LayoutParams.MATCH_PARENT,
                         FrameLayout.LayoutParams.MATCH_PARENT
                 ));
+
         FrameLayout decorView = (FrameLayout) getWindow().getDecorView();
         decorView.addView(
                 fullscreenHolder,
@@ -511,9 +504,11 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
                         FrameLayout.LayoutParams.MATCH_PARENT,
                         FrameLayout.LayoutParams.MATCH_PARENT
                 ));
+
         customView.setKeepScreenOn(true);
         ((View) currentAlbumController).setVisibility(GONE);
         setCustomFullscreen(true);
+
         if (view instanceof FrameLayout) {
             if (((FrameLayout) view).getFocusedChild() instanceof VideoView) {
                 videoView = (VideoView) ((FrameLayout) view).getFocusedChild();
