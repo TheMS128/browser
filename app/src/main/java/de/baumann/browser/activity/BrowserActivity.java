@@ -42,7 +42,6 @@ import android.text.TextWatcher;
 import android.util.Log;
 import android.util.TypedValue;
 import android.view.ContextMenu;
-import android.view.Gravity;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.ViewGroup;
@@ -76,7 +75,6 @@ import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowCompat;
 import androidx.core.view.WindowInsetsCompat;
 import androidx.preference.PreferenceManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -243,7 +241,6 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
                 break;
         }
         setContentView(R.layout.activity_main);
-        RelativeLayout main = findViewById(R.id.main);
         contentFrame = findViewById(R.id.main_content);
 
         EdgeToEdge.enable(this);
