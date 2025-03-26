@@ -22,28 +22,20 @@ import de.baumann.browser.R;
 import de.baumann.browser.unit.ClipboardUnit;
 import de.baumann.browser.unit.RecordUnit;
 
-/** @noinspection ExtractMethodRecommender*/
 public class RecordAction {
     public static final int HISTORY_ITEM = 0;
     public static final int STARTSITE_ITEM = 1;
     public static final int BOOKMARK_ITEM = 2;
-    public static final int CLIPBOARD_ITEM = 3;
     private final RecordHelper helper;
     private SQLiteDatabase database;
 
     public RecordAction(Context context) {
         this.helper = new RecordHelper(context);
     }
-
-    public void open(boolean rw) {
-        database = rw ? helper.getWritableDatabase() : helper.getReadableDatabase();
-    }
-
+    public void open(boolean rw) {database = rw ? helper.getWritableDatabase() : helper.getReadableDatabase();}
     public void close() {
         helper.close();
     }
-
-    //StartSite
 
     public boolean addStartSite(Record record) {
         if (record == null
@@ -51,8 +43,6 @@ public class RecordAction {
                 || record.getTitle().trim().isEmpty()
                 || record.getURL() == null
                 || record.getURL().trim().isEmpty()
-                || record.getDesktopMode() == null
-                || record.getNightMode() == null
                 || record.getTime() < 0L
                 || record.getOrdinal() < 0) {
             return false;
@@ -60,25 +50,17 @@ public class RecordAction {
         ContentValues values = new ContentValues();
         values.put(RecordUnit.COLUMN_TITLE, record.getTitle().trim());
         values.put(RecordUnit.COLUMN_URL, record.getURL().trim());
-
         // Bookmark time is used for color, desktop mode, javascript, and List_standard content
-        // bit 0..3  icon color
-        // bit 4: 1 = Desktop Mode
-        // bit 5: 0 = NightMode (0 due backward compatibility)
-        // bit 6: 0 = List_standard Content allowed (0 due to backward compatibility)
-
-        values.put(RecordUnit.COLUMN_FILENAME, (long) (record.getDesktopMode() ? 16 : 0) + (long) (record.getNightMode() ? 32 : 0));
+        values.put(RecordUnit.COLUMN_FILENAME, record.getTime());
         values.put(RecordUnit.COLUMN_ORDINAL, record.getOrdinal());
         database.insert(RecordUnit.TABLE_START, null, values);
         return true;
     }
 
     public List<Record> listStartSite(Activity activity) {
-
         List<Record> list = new LinkedList<>();
         SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(activity);
         String sortBy = Objects.requireNonNull(sp.getString("sort_startSite", "ordinal"));
-
         Cursor cursor;
         cursor = database.query(
                 RecordUnit.TABLE_START,
@@ -112,31 +94,19 @@ public class RecordAction {
         return list;
     }
 
-    //BOOKMARK
-
     public void addBookmark(Record record) {
         if (record == null
                 || record.getTitle() == null
                 || record.getTitle().trim().isEmpty()
                 || record.getURL() == null
                 || record.getURL().trim().isEmpty()
-                || record.getDesktopMode() == null
-                || record.getNightMode() == null
                 || record.getTime() < 0L) {
             return;
         }
-
         ContentValues values = new ContentValues();
         values.put(RecordUnit.COLUMN_TITLE, record.getTitle().trim());
         values.put(RecordUnit.COLUMN_URL, record.getURL().trim());
-
-        // Bookmark time is used for color, desktop mode, javascript, and List_standard content
-        // bit 0..3  icon color
-        // bit 4: 1 = Desktop Mode
-        // bit 5: 0 = NightMode (0 due backward compatibility)
-        // bit 6: 0 = List_standard Content allowed (0 due to backward compatibility)
-
-        values.put(RecordUnit.COLUMN_TIME, record.getIconColor() + (long) (record.getDesktopMode() ? 16 : 0) + (long) (record.getNightMode() ? 32 : 0));
+        values.put(RecordUnit.COLUMN_TIME, record.getIconColor());
         database.insert(RecordUnit.TABLE_BOOKMARK, null, values);
     }
 
@@ -187,8 +157,6 @@ public class RecordAction {
         return list;
     }
 
-    //History
-
     public void addHistory(Record record) {
         if (record == null
                 || record.getTitle() == null
@@ -198,12 +166,12 @@ public class RecordAction {
                 || record.getTime() < 0L) {
             return;
         }
-        record.setTime(record.getTime() & (~255));    //blank out lower 8bits of time
+        record.setTime(record.getTime());
 
         ContentValues values = new ContentValues();
         values.put(RecordUnit.COLUMN_TITLE, record.getTitle().trim());
         values.put(RecordUnit.COLUMN_URL, record.getURL().trim());
-        values.put(RecordUnit.COLUMN_TIME, record.getTime() + (long) (record.getDesktopMode() ? 16 : 0) + (long) (record.getNightMode() ? 32 : 0));
+        values.put(RecordUnit.COLUMN_TIME, record.getTime());
         database.insert(RecordUnit.TABLE_HISTORY, null, values);
     }
 
@@ -236,9 +204,6 @@ public class RecordAction {
         }
         return list;
     }
-
-
-    // General
 
     public void addDomain(String domain, String table) {
         if (domain == null || domain.trim().isEmpty()) {
@@ -338,19 +303,12 @@ public class RecordAction {
         record.setTitle(cursor.getString(0));
         record.setURL(cursor.getString(1));
         record.setTime(cursor.getLong(2));
-        record.setType(type);
 
-        if ((type == STARTSITE_ITEM) || (type == BOOKMARK_ITEM)) {
-            record.setDesktopMode((record.getTime() & 16) == 16);
-            record.setNightMode(!((record.getTime() & 32) == 32));
-            if (type == BOOKMARK_ITEM) {
-                record.setIconColor(record.getTime() & 15);
-            }
+        if (type == BOOKMARK_ITEM) {
+            record.setIconColor(record.getTime());
             record.setTime(0);  //time is no longer needed after extracting data
         } else if (type == HISTORY_ITEM) {
-            record.setDesktopMode((record.getTime() & 16) == 16);
-            record.setNightMode(!((record.getTime() & 32) == 32));
-            record.setTime(record.getTime() & (~255));  //blank out lower 8bits of time
+            record.setTime(record.getTime());
         }
         return record;
     }
@@ -363,7 +321,7 @@ public class RecordAction {
         String clipboardEntry = ClipboardUnit.getPrimary(activity);
         if (clipboardEntry == null || !URLUtil.isValidUrl(clipboardEntry)) return null;
         return new Record(
-                activity.getString(R.string.link_you_copied), clipboardEntry, 0L, -1, CLIPBOARD_ITEM, null, null, 0L
+                activity.getString(R.string.link_you_copied), clipboardEntry, 0L, -1, 0L
         );
     }
 

@@ -1,45 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <Preference
+        android:icon="@drawable/icon_edit"
+        android:key="settings_profile"
+        android:title="@string/setting_title_profiles_standard" />
+
+    <Preference
+        android:icon="@drawable/icon_menu_save"
+        android:key="edit_standard"
+        android:title="@string/setting_title_savedWebSites" />
 
     <CheckBoxPreference
-        android:defaultValue="true"
-        android:key="sp_drm"
-        android:summary="@string/hint_DRM_Media"/>
+        android:title="@string/setting_title_clipboard_record"
+        android:icon="@drawable/icon_clipboard"
+        android:defaultValue="false"
+        android:key="sp_clipboard_record" />
 
-    <CheckBoxPreference
-        android:defaultValue="true"
-        android:key="sp_autofill"
-        android:summary="@string/setting_summary_autofill" />
+    <PreferenceCategory android:title="@string/privacy_redirect"
+        android:icon="@drawable/icon_redirect">
 
-    <PreferenceCategory android:title="@string/setting_title_profiles">
-
-        <ListPreference
-            android:defaultValue="profileStandard"
-            android:entries="@array/profileToStart_entries"
-            android:entryValues="@array/profileToStart_values"
-            android:key="profile_toStart"
-            android:title="@string/setting_title_profiles_startApp" />
+        <CheckBoxPreference
+            android:title="@string/privacy_redirect_use"
+            android:defaultValue="false"
+            android:key="redirect" />
 
         <Preference
-            android:key="settings_profile"
-            android:title="@string/setting_title_profiles_edit" />
-
-        <Preference
-            android:icon="@drawable/icon_profile_trusted"
-            android:key="edit_trusted"
-            android:summary="@string/setting_title_profiles_trustedList" />
-
-        <Preference
-            android:icon="@drawable/icon_profile_standard"
-            android:key="edit_standard"
-            android:summary="@string/setting_title_profiles_standardList" />
-
-        <Preference
-            android:icon="@drawable/icon_profile_protected"
-            android:key="edit_protected"
-            android:summary="@string/setting_title_profiles_protectedList" />
+            android:key="custom_redirects"
+            android:defaultValue="false"
+            android:title="@string/privacy_redirect_title" />
 
     </PreferenceCategory>
 
@@ -56,68 +46,6 @@
             android:entryValues="@array/setting_values_adBlock"
             android:key="ab_hosts"
             android:title="@string/setting_title_adblockHost" />
-
-        <Preference
-            android:key="custom_adblock"
-            android:selectable="true"
-            android:title="@string/custom_domains" />
-
-        <Preference
-            android:key="refreshHosts"
-            android:selectable="true"
-            android:title="@string/menu_reload"/>
-
-    </PreferenceCategory>
-
-    <PreferenceCategory android:title="@string/privacy_redirect"
-        android:icon="@drawable/icon_redirect">
-
-        <de.baumann.browser.preferences.EditTextSwitchPreference
-            android:defaultValue="yewtu.be"
-            android:key="sp_youTube_string_domain"
-            android:selectable="true"
-            android:title="@string/privacy_redirect_youTube"
-            app:editTextSwitchKey="sp_youTube_switch"
-            app:useSimpleSummaryProvider="true" />
-
-        <de.baumann.browser.preferences.EditTextSwitchPreference
-            android:defaultValue="nitter.net"
-            android:key="sp_twitter_string_domain"
-            android:selectable="true"
-            android:title="@string/privacy_redirect_twitter"
-            app:editTextSwitchKey="sp_twitter_switch"
-            app:useSimpleSummaryProvider="true" />
-
-        <Preference
-            android:key="custom_redirects"
-            android:selectable="true"
-            android:title="@string/custom_redirects" />
-
-    </PreferenceCategory>
-
-    <PreferenceCategory android:title="@string/setting_userScript"
-        android:icon="@drawable/icon_java">
-
-        <de.baumann.browser.preferences.EditTextSwitchPreference
-            android:key="sp_onPageStarted"
-            android:selectable="true"
-            android:title="onPageStarted"
-            app:editTextSwitchKey="onPageStarted"
-            app:useSimpleSummaryProvider="true" />
-
-        <de.baumann.browser.preferences.EditTextSwitchPreference
-            android:key="sp_onPageFinished"
-            android:selectable="true"
-            android:title="onPageFinished"
-            app:editTextSwitchKey="onPageFinished"
-            app:useSimpleSummaryProvider="true" />
-
-        <de.baumann.browser.preferences.EditTextSwitchPreference
-            android:key="sp_onLoadResource"
-            android:selectable="true"
-            android:title="onLoadResource"
-            app:editTextSwitchKey="onLoadResource"
-            app:useSimpleSummaryProvider="true" />
 
     </PreferenceCategory>
 

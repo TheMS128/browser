@@ -86,11 +86,12 @@
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true"
                 android:layout_marginEnd="3dp"
-                app:icon="@drawable/icon_profile_standard"
+                app:icon="@drawable/icon_settings"
                 app:fabCustomSize="40dp"
                 app:elevation="0dp"
                 android:backgroundTint="?attr/colorSurfaceDim"
-                android:layout_alignParentEnd="true" />
+                android:layout_alignParentEnd="true"
+                android:src="@drawable/icon_settings" />
 
         </RelativeLayout>
 

@@ -47,40 +47,4 @@
         <item name="colorSurfaceContainerHigh">@color/md_theme_surfaceContainerHigh</item>
         <item name="colorSurfaceContainerHighest">@color/md_theme_surfaceContainerHighest</item>
     </style>
-
-    <style name="AppTheme_OLED" parent="Theme.Material3.Dark.NoActionBar">
-        <item name="windowActionBar">false</item>
-        <item name="windowNoTitle">true</item>
-        <item name="elevationOverlayColor">#000000</item>
-        <item name="colorPrimary">#ffffff</item>
-        <item name="colorOnPrimary">#000000</item>
-        <item name="colorPrimaryContainer">#000000</item>
-        <item name="colorOnPrimaryContainer">#ffffff</item>
-        <item name="colorSecondary">#ffffff</item>
-        <item name="colorOnSecondary">#000000</item>
-        <item name="colorSecondaryContainer">#000000</item>
-        <item name="colorOnSecondaryContainer">#ffffff</item>
-        <item name="colorTertiary">#ffffff</item>
-        <item name="colorOnTertiary">#000000</item>
-        <item name="colorTertiaryContainer">#000000</item>
-        <item name="colorOnTertiaryContainer">#ffffff</item>
-        <item name="colorError">@color/md_theme_error</item>
-        <item name="colorErrorContainer">@color/md_theme_errorContainer</item>
-        <item name="colorOnError">@color/md_theme_onError</item>
-        <item name="colorOnErrorContainer">@color/md_theme_onErrorContainer</item>
-        <item name="android:colorBackground">#000000</item>
-        <item name="colorOnBackground">#ffffff</item>
-        <item name="colorSurface">#000000</item>
-        <item name="colorOnSurface">#ffffff</item>
-        <item name="colorSurfaceVariant">#000000</item>
-        <item name="colorOnSurfaceVariant">#ffffff</item>
-        <item name="colorOutline">#ffffff</item>
-        <item name="colorOnSurfaceInverse">#000000</item>
-        <item name="colorSurfaceInverse">#ffffff</item>
-        <item name="colorPrimaryInverse">#ffffff</item>
-        <item name="colorSurfaceContainerHigh">@color/md_theme_surface</item>
-        <item name="colorSurfaceContainer">@color/md_theme_surface</item>
-        <item name="switchPreferenceCompatStyle">@style/MaterialPreferenceSwitch</item>
-    </style>
-
 </resources>

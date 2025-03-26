@@ -22,25 +22,9 @@ public class Fragment_settings_Profile extends BasePreferenceFragment  implement
     public void onCreatePreferences(Bundle savedInstanceState, String rootKey) {
         Context context = getContext();
         assert context != null;
-
-        SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(context);
-        String profile = sp.getString("profileToEdit", "profileStandard");
         getPreferenceScreen();
-
-        switch (Objects.requireNonNull(profile)) {
-            case "profileStandard":
-                setPreferencesFromResource(R.xml.preference_profile_standard, rootKey);
-                PreferenceManager.setDefaultValues(context, R.xml.preference_profile_standard, false);
-                break;
-            case "profileTrusted":
-                setPreferencesFromResource(R.xml.preference_profile_trusted, rootKey);
-                PreferenceManager.setDefaultValues(context, R.xml.preference_profile_trusted, false);
-                break;
-            case "profileProtected":
-                setPreferencesFromResource(R.xml.preference_profile_protected, rootKey);
-                PreferenceManager.setDefaultValues(context, R.xml.preference_profile_protected, false);
-                break;
-        }
+        setPreferencesFromResource(R.xml.preference_profile_standard, rootKey);
+        PreferenceManager.setDefaultValues(context, R.xml.preference_profile_standard, false);
         initSummary(getPreferenceScreen());
     }
 

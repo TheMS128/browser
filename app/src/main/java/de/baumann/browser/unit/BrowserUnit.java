@@ -3,9 +3,11 @@ package de.baumann.browser.unit;
 import static android.app.PendingIntent.FLAG_IMMUTABLE;
 import static android.content.ContentValues.TAG;
 import static android.content.Context.NOTIFICATION_SERVICE;
+import static android.os.Build.VERSION.SDK_INT;
 
 import android.Manifest;
 import android.app.Activity;
+import android.app.Dialog;
 import android.app.DownloadManager;
 import android.app.Notification;
 import android.app.NotificationChannel;
@@ -15,26 +17,17 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
-import android.content.pm.ShortcutManager;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Environment;
-import android.text.TextUtils;
 import android.util.Log;
-import android.view.Gravity;
-import android.view.View;
 import android.webkit.CookieManager;
 import android.webkit.WebStorage;
 import android.webkit.WebView;
-import android.widget.GridView;
-import android.widget.LinearLayout;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AlertDialog;
-import androidx.core.app.ActivityCompat;
 import androidx.core.app.NotificationCompat;
-import androidx.core.content.ContextCompat;
 import androidx.preference.PreferenceManager;
 
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
@@ -43,7 +36,6 @@ import org.json.JSONException;
 
 import java.io.File;
 import java.io.FileOutputStream;
-import java.util.LinkedList;
 import java.util.List;
 import java.util.Locale;
 import java.util.Objects;
@@ -53,12 +45,10 @@ import de.baumann.browser.R;
 import de.baumann.browser.activity.BrowserActivity;
 import de.baumann.browser.browser.DataURIParser;
 import de.baumann.browser.browser.JavaScriptInterface;
-import de.baumann.browser.database.FaviconHelper;
+import de.baumann.browser.browser.List_standard;
 import de.baumann.browser.database.RecordAction;
 import de.baumann.browser.objects.CustomRedirect;
 import de.baumann.browser.objects.CustomRedirectsHelper;
-import de.baumann.browser.view.GridAdapter;
-import de.baumann.browser.view.GridItem;
 
 public class BrowserUnit {
 
@@ -84,11 +74,10 @@ public class BrowserUnit {
     private static final String URL_SCHEME_FTP = "ftp://";
     private static final String URL_SCHEME_INTENT = "intent://";
 
+    private static final int REQUEST_CODE_ASK_PERMISSIONS_4 = 1234567;
+
     public static boolean isURL(String url) {
-
-
         url = url.toLowerCase(Locale.getDefault());
-
         if (url.startsWith(URL_ABOUT_BLANK)
                 || url.startsWith(URL_SCHEME_MAIL_TO)
                 || url.startsWith(URL_SCHEME_FILE)
@@ -128,7 +117,6 @@ public class BrowserUnit {
             String customSearchEngine = sp.getString("sp_search_engine_custom", "");
             String customSearches = sp.getString("sp_search_customSearches", "");
             query = query.replace("&", "%26");
-
             //Override UserAgent if own UserAgent is defined
             if (!sp.contains("searchEngineSwitch")) {
                 //if new switch_text_preference has never been used initialize the switch
@@ -173,46 +161,41 @@ public class BrowserUnit {
     }
 
     public static void download(final Context context, final WebView webview, final String url, final String fileName, final String mimeType) {
-
-        try {
-            Activity activity = (Activity) context;
-            if (url.startsWith("blob:")) {
-                if (BackupUnit.checkPermissionStorage(context)) {
+        Activity activity = (Activity) context;
+        if (BackupUnit.checkPermissionStorage(context)) {
+            try {
+                if (url.startsWith("blob:")) {
                     webview.evaluateJavascript(JavaScriptInterface.getBase64StringFromBlobUrl(url, fileName, mimeType), null);
-                } else BackupUnit.requestPermission(activity);
-            } else if (url.startsWith("data:")) {
-                DataURIParser dataURIParser = new DataURIParser(url);
-                if (BackupUnit.checkPermissionStorage(context)) {
+                } else if (url.startsWith("data:")) {
+                    DataURIParser dataURIParser = new DataURIParser(url);
                     File file = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS), fileName);
                     FileOutputStream fos = new FileOutputStream(file);
                     fos.write(dataURIParser.getImagedata());
                     fos.flush();
                     fos.close();
                     HelperUnit.openDialogDownloads(context);
-                } else BackupUnit.requestPermission(activity);
-            } else {
-                DownloadManager.Request request = new DownloadManager.Request(Uri.parse(url));
-                CookieManager cookieManager = CookieManager.getInstance();
-                String cookie = cookieManager.getCookie(url);
-                request.addRequestHeader("Cookie", cookie);
-                request.addRequestHeader("Accept", "text/html, application/xhtml+xml, *" + "/" + "*");
-                request.addRequestHeader("Accept-Language", "en-US,en;q=0.7,he;q=0.3");
-                request.addRequestHeader("Referer", url);
-                request.setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE_NOTIFY_COMPLETED);
-                request.setTitle(fileName);
-                request.setMimeType(mimeType);
-                request.setDestinationInExternalPublicDir(Environment.DIRECTORY_DOWNLOADS, fileName);
-                DownloadManager manager = (DownloadManager) context.getSystemService(Context.DOWNLOAD_SERVICE);
-                assert manager != null;
-                if (BackupUnit.checkPermissionStorage(context)) {
-                    manager.enqueue(request);
                 } else {
-                    BackupUnit.requestPermission(activity);
+                    DownloadManager.Request request = new DownloadManager.Request(Uri.parse(url));
+                    CookieManager cookieManager = CookieManager.getInstance();
+                    String cookie = cookieManager.getCookie(url);
+                    request.addRequestHeader("Cookie", cookie);
+                    request.addRequestHeader("Accept", "text/html, application/xhtml+xml, *" + "/" + "*");
+                    request.addRequestHeader("Accept-Language", "en-US,en;q=0.7,he;q=0.3");
+                    request.addRequestHeader("Referer", url);
+                    request.setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE);
+                    request.setTitle(fileName);
+                    request.setMimeType(mimeType);
+                    request.setDestinationInExternalPublicDir(Environment.DIRECTORY_DOWNLOADS, fileName);
+                    DownloadManager manager = (DownloadManager) context.getSystemService(Context.DOWNLOAD_SERVICE);
+                    assert manager != null;
+                    manager.enqueue(request);
                 }
+            } catch (Exception e) {
+                Toast.makeText(context, context.getString(R.string.app_error) + e.toString().substring(e.toString().indexOf(":")), Toast.LENGTH_LONG).show();
+                Log.i(TAG, "FOSS Browser: Error Downloading File:" + e);
             }
-        } catch (Exception e) {
-            Toast.makeText(context, context.getString(R.string.app_error) + e.toString().substring(e.toString().indexOf(":")), Toast.LENGTH_LONG).show();
-            Log.i(TAG, "FOSS Browser: Error Downloading File:" + e);
+        } else {
+            BackupUnit.requestPermission(activity);
         }
     }
 
@@ -228,8 +211,6 @@ public class BrowserUnit {
         action.open(true);
         action.clearTable(RecordUnit.TABLE_BOOKMARK);
         action.close();
-        ShortcutManager shortcutManager = context.getSystemService(ShortcutManager.class);
-        Objects.requireNonNull(shortcutManager).removeAllDynamicShortcuts();
     }
 
     public static void clearHistory(Context context) {
@@ -237,8 +218,6 @@ public class BrowserUnit {
         action.open(true);
         action.clearTable(RecordUnit.TABLE_HISTORY);
         action.close();
-        ShortcutManager shortcutManager = context.getSystemService(ShortcutManager.class);
-        Objects.requireNonNull(shortcutManager).removeAllDynamicShortcuts();
     }
 
     public static void  clearBrowserData(Context context) {
@@ -248,6 +227,7 @@ public class BrowserUnit {
         boolean clearHistory = sp.getBoolean("sp_clear_history", false);
         boolean clearIndexedDB = sp.getBoolean("sp_clearIndexedDB", false);
         boolean clearDB = sp.getBoolean("sp_deleteDatabase", false);
+        boolean clearSettings = sp.getBoolean("sp_clear_settings", false);
         if (clearHistory) BrowserUnit.clearHistory(context);
         if (clearCache)  {
             try {
@@ -256,6 +236,11 @@ public class BrowserUnit {
             } catch (Exception exception) {
                 Log.w("browser", "Error clearing cache");
             }
+        }
+        if (clearSettings) {
+            sp.edit().clear().apply();
+            List_standard listStandard = new List_standard(context);
+            listStandard.clearDomains();
         }
         if (clearCookie) {
             CookieManager cookieManager = CookieManager.getInstance();
@@ -317,8 +302,14 @@ public class BrowserUnit {
         context.startActivity(browserIntent);
     }
 
-    public static String redirectURL(WebView ninjaWebView, SharedPreferences sp, String url) {
+    public static String redirectURL (WebView ninjaWebView, SharedPreferences sp, String url) {
         boolean redirect = sp.getBoolean("redirect", false);
+
+        if (url.contains(";jsessionid=")) {
+            String tracking = url.substring(url.lastIndexOf(";"));
+            url = url.replace(tracking, "");
+        }
+
         if (!redirect) return url;
         try {
             List<CustomRedirect> redirects = CustomRedirectsHelper.getRedirects(sp);
@@ -327,7 +318,6 @@ public class BrowserUnit {
                 if (url.contains(customRedirect.getSource())) {
                     ninjaWebView.stopLoading();
                     url = url.replace(customRedirect.getSource(), customRedirect.getTarget());
-                    url = url.replace("www.", "");
                     return url;
                 }
             }
@@ -367,84 +357,48 @@ public class BrowserUnit {
                     .setContentIntent(pendingIntent);
             Notification buildNotification = mBuilder.build();
 
-            if (sp.getString("dialog_neverAskBackGround", "no").equals("no")) {
-
-                GridItem item_01 = new GridItem(activity.getString(R.string.app_cancel), R.drawable.icon_close);
-                GridItem item_02 = new GridItem(activity.getString(R.string.app_ok), R.drawable.icon_check);
-                GridItem item_03 = new GridItem(activity.getString(R.string.dialog_backGround_always), R.drawable.icon_menu_save);
-
-                View dialogView = View.inflate(activity, R.layout.dialog_menu, null);
-                MaterialAlertDialogBuilder builder = new MaterialAlertDialogBuilder(activity);
-
-                LinearLayout textGroup = dialogView.findViewById(R.id.textGroup);
-                TextView menuURL = dialogView.findViewById(R.id.menuURL);
-                menuURL.setText(webView.getUrl());
-                menuURL.setEllipsize(TextUtils.TruncateAt.MARQUEE);
-                menuURL.setSingleLine(true);
-                menuURL.setMarqueeRepeatLimit(1);
-                menuURL.setSelected(true);
-                textGroup.setOnClickListener(v -> {
-                    menuURL.setEllipsize(TextUtils.TruncateAt.MARQUEE);
-                    menuURL.setSingleLine(true);
-                    menuURL.setMarqueeRepeatLimit(1);
-                    menuURL.setSelected(true);
+            if (sp.getString("openBackground_dialog", "show").equals("show")) {
+                MaterialAlertDialogBuilder builderSubMenu = new MaterialAlertDialogBuilder(activity);
+                builderSubMenu.setTitle(R.string.dialog_backGround);
+                builderSubMenu.setMessage(R.string.app_session);
+                builderSubMenu.setIcon(R.drawable.icon_alert);
+                builderSubMenu.setPositiveButton(R.string.app_always, (dialog2, whichButton) -> {
+                    sp.edit().putString("openBackground_dialog", "always").apply();
+                    displayNotification ( activity,  mNotifyMgr,  buildNotification);
                 });
-                TextView menuTitle = dialogView.findViewById(R.id.menuTitle);
-                menuTitle.setText(HelperUnit.domain(url));
-                FaviconHelper.setFavicon(activity, dialogView, url, R.id.menu_icon, R.drawable.icon_download);
-                builder.setView(dialogView);
-
-                AlertDialog dialog = builder.create();
-                dialog.show();
-                HelperUnit.setupDialog(activity, dialog);
-
-                Objects.requireNonNull(dialog.getWindow()).setGravity(Gravity.BOTTOM);
-                GridView menu_grid = dialogView.findViewById(R.id.menu_grid);
-                final List<GridItem> gridList = new LinkedList<>();
-                gridList.add(gridList.size(), item_03);
-                gridList.add(gridList.size(), item_02);
-                gridList.add(gridList.size(), item_01);
-                GridAdapter gridAdapter = new GridAdapter(activity, gridList);
-                menu_grid.setAdapter(gridAdapter);
-                gridAdapter.notifyDataSetChanged();
-                menu_grid.setOnItemClickListener((parent, view, position, id) -> {
-                    switch (position) {
-                        case 0:
-                            dialog.cancel();
-                            sp.edit().putString("dialog_neverAskBackGround", "yes").apply();
-                            displayNotification ( activity,  mNotifyMgr,  buildNotification);
-                            break;
-                        case 1:
-                            dialog.cancel();
-                            displayNotification ( activity,  mNotifyMgr,  buildNotification);
-                            break;
-                        case 2:
-                            dialog.cancel();
-                            break;
-                    }
-                });
-
-                TextView message = dialogView.findViewById(R.id.message);
-                message.setVisibility(View.VISIBLE);
-                message.setText(R.string.dialog_backGround);
+                builderSubMenu.setNegativeButton(R.string.app_never, (dialog2, whichButton) -> sp.edit().putString("openBackground_dialog", "never").apply());
+                Dialog dialogSubMenu = builderSubMenu.create();
+                dialogSubMenu.show();
+                HelperUnit.setupDialog(activity, dialogSubMenu);
             } else  {
-                displayNotification ( activity,  mNotifyMgr,  buildNotification);
+                if (!sp.getString("openBackground_dialog", "no").equals("never")) {
+                    displayNotification ( activity,  mNotifyMgr,  buildNotification);
+                }
             }
         }
     }
 
     private static void displayNotification(Activity activity, NotificationManager mNotifyMgr, Notification buildNotification) {
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
-            int permissionState = ContextCompat.checkSelfPermission(activity, Manifest.permission.POST_NOTIFICATIONS);
-            if (permissionState == PackageManager.PERMISSION_DENIED) {
-                ActivityCompat.requestPermissions(activity, new String[]{Manifest.permission.POST_NOTIFICATIONS}, 1);
+        if (SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+            int notificationAllowed = activity.checkSelfPermission(Manifest.permission.POST_NOTIFICATIONS);
+            if (notificationAllowed != PackageManager.PERMISSION_GRANTED) {
+                MaterialAlertDialogBuilder builder = new MaterialAlertDialogBuilder(activity);
+                builder.setIcon(R.drawable.icon_alert);
+                builder.setMessage(R.string.app_permission);
+                builder.setTitle(R.string.app_permission_notification);
+                builder.setPositiveButton(R.string.app_ok, (dialog, whichButton) -> activity.requestPermissions(new String[]{Manifest.permission.POST_NOTIFICATIONS}, REQUEST_CODE_ASK_PERMISSIONS_4));
+                builder.setNegativeButton(R.string.app_cancel, (dialog, whichButton) -> dialog.cancel());
+                AlertDialog dialog = builder.create();
+                dialog.show();
+                HelperUnit.setupDialog(activity, dialog);
             } else {
                 mNotifyMgr.notify(4, buildNotification);
+                activity.moveTaskToBack(true);
             }
         } else {
             mNotifyMgr.notify(4, buildNotification);
+            activity.moveTaskToBack(true);
         }
-        activity.moveTaskToBack(true);
     }
     public static boolean deleteDir(File dir) {
         if (dir != null && dir.isDirectory()) {

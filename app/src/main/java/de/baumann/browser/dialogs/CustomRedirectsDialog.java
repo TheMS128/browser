@@ -52,17 +52,16 @@ public class CustomRedirectsDialog extends DialogFragment {
         adapter = new AdapterCustomRedirect(redirects, requireContext());
         recyclerView.setAdapter(adapter);
 
-        builder.setTitle(R.string.custom_redirects);
+        builder.setTitle(R.string.privacy_redirect);
         builder.setIcon(R.drawable.icon_redirect);
-        builder.setPositiveButton(R.string.app_ok, null);
-        builder.setNeutralButton(R.string.create_new, null);
+        builder.setPositiveButton(R.string.create_new, null);
         builder.setView(dialogView);
 
         AlertDialog dialog = builder.create();
         HelperUnit.setupDialog(requireContext(), dialog);
         // when the button to create a new entry is clicked, don't close the dialog
         dialog.setOnShowListener(dI -> {
-            Button b = dialog.getButton(AlertDialog.BUTTON_NEUTRAL);
+            Button b = dialog.getButton(AlertDialog.BUTTON_POSITIVE);
             b.setOnClickListener(view -> showCreateNewDialog());
         });
         return dialog;
@@ -74,7 +73,7 @@ public class CustomRedirectsDialog extends DialogFragment {
         TextInputEditText source = dialogView.findViewById(R.id.source);
         TextInputEditText target = dialogView.findViewById(R.id.target);
 
-        builder.setTitle(R.string.custom_redirects);
+        builder.setTitle(R.string.privacy_redirect);
         builder.setIcon(R.drawable.icon_redirect);
         builder.setNegativeButton(R.string.app_cancel, null);
         builder.setPositiveButton(R.string.app_ok, ((dialogInterface, i) -> {
@@ -86,7 +85,7 @@ public class CustomRedirectsDialog extends DialogFragment {
             }
             adapter.addRedirect(new CustomRedirect(sourceText, targetText));
             try {
-                CustomRedirectsHelper.saveRedirects(requireContext(), adapter.getRedirects());
+                CustomRedirectsHelper.saveRedirects(adapter.getRedirects());
             } catch (JSONException e) {
                 throw new RuntimeException(e);
             }

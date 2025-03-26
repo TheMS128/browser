@@ -61,7 +61,7 @@ class AdapterTabs {
         albumClose.setVisibility(View.VISIBLE);
         albumClose.setOnClickListener(view -> {
             browserController.removeAlbum(albumController);
-            if (BrowserContainer.size() < 2) { browserController.hideOverview();}
+            if (BrowserContainer.size() < 2) { browserController.hideSideSheets();}
         });
     }
 
@@ -74,7 +74,7 @@ class AdapterTabs {
         albumTitle.setTypeface(null, Typeface.BOLD);
         albumView.setOnClickListener(view -> {
             albumCardView.setCardBackgroundColor(color);
-            browserController.hideOverview();
+            browserController.hideSideSheets();
         });
     }
 
@@ -86,7 +86,7 @@ class AdapterTabs {
         albumTitle.setTypeface(null, Typeface.NORMAL);
         albumView.setOnClickListener(view -> {
             browserController.showAlbum(albumController);
-            browserController.hideOverview();
+            browserController.hideSideSheets();
         });
     }
 }

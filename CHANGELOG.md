@@ -1,12 +1,55 @@
-### v 16 "..." (WIP)
+### v 19 WIP
+
+With this release is possible to save settings separate for each website. There will be only one standard profile. No more switching between different profiles. If you do not like this, please do not install the next updates. More infos will be released soon on the procect website: https://codeberg.org/Gaukler_Faun/FOSS_Browser.
+
+- new: save settings per website
+- fix: not showing most recent entries in overview in some cases
+- fix: removed a lot of old code
+- fix: Sequences of Java Session Id's appears in URL #1187
+- fix: "show on start" doesn't show start #1206
+- updated: WIKI
+- updated: layout
+- updated: settings
+- updated: translations
+- updated: build libraries
+- removed: play audio in background, due to Android limitations
+- removed: OLED-theme
+
+### v 18.1 "Die rote Zora"
+
+With the release of Android 15 Google introduced a feature called "window insets". Because of that feature there were many layout issues, mainly concerning the system navigation bar. I had to rewrite some layouts. The list of opened tabs, the overview and the search are moved in sidebars.
+
+- layout changes
+- updated translations
+- some minor code improvements
+- fix: tab issues
+
+### v 17 "Michail Alexandrowitsch Bakunin"
+- upgrade: Android target SDK
+- upgrade: dependencies
+- update: translations
+- fix: redirecting urls
+- fix: minor layout issues
+- fix: open links in background #1184
+- fix: link on readme.md (thanks to @[Artemka](https://codeberg.org/Artem13327))
+- fix: wrong menu contents in landscape orientation #1186
+- fix: rename Disable Profiles -> Custom #1178
+- fix: Update README #1176
+- fix: “Close Tab” icon too small #1156
+- fix: crash when clicking overflow with empty URL
+- fix: crash with missing notification permission
+- fix: Themed Icon Missing #1157
+- new: switched from deepl to fairtranslate
+- new: edit custom redirects
+
+### v 16 "Alexander Berkmann"
 - new: tracking-URL-popup
 - fix: context menu in tab overview
 - fix: onRenderProcessGone
 - fix: http-dialog
-- fix: Download-dialog with too long file names
-- fix:tab-layout in overflow menu
+- fix: dialogs with long file names
+- fix: tab-layout in overflow menu
 - updated: translations
-
 
 ### v 15 "Kabale und Liebe"
 - new: auto deny cookie-banners (@https://github.com/woheller69/browser)

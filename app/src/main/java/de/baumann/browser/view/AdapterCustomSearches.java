@@ -2,7 +2,6 @@ package de.baumann.browser.view;
 
 import android.app.Dialog;
 import android.content.Context;
-import android.content.Intent;
 import android.content.SharedPreferences;
 import android.net.Uri;
 import android.view.LayoutInflater;
@@ -22,6 +21,7 @@ import org.json.JSONException;
 import java.util.ArrayList;
 
 import de.baumann.browser.R;
+import de.baumann.browser.activity.BrowserActivity;
 import de.baumann.browser.database.FaviconHelper;
 import de.baumann.browser.objects.CustomRedirect;
 import de.baumann.browser.objects.CustomSearchesHelper;
@@ -67,7 +67,7 @@ public class AdapterCustomSearches extends RecyclerView.Adapter<RedirectsViewHol
                 notifyItemRemoved(position);
                 notifyItemRangeChanged(position, getItemCount());
                 try {
-                    CustomSearchesHelper.saveRedirects(context, redirects);
+                    CustomSearchesHelper.saveRedirects(redirects);
                 } catch (JSONException e) {
                     throw new RuntimeException(e);
                 }
@@ -81,12 +81,14 @@ public class AdapterCustomSearches extends RecyclerView.Adapter<RedirectsViewHol
             SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(context);
             sp.edit().putString("sp_search_customSearches", current.getTarget()).apply();
             String t = BrowserUnit.queryWrapper(context, url);
-            Intent i = new Intent(Intent.ACTION_VIEW);
-            i.setData(Uri.parse(t));
-            context.startActivity(i);
-            sp.edit().putString("sp_search_customSearches", "").apply();
-        });
 
+            if (BrowserUnit.isURL(t)) {
+                BrowserUnit.intentURL(context, Uri.parse(t));
+                sp.edit().putString("sp_search_customSearches", "").apply();
+            } else {
+                NinjaToast.show(BrowserActivity.getAppContext(), R.string.app_error);
+            }
+        });
         FaviconHelper.setFavicon(context, favicon, target.getText().toString(), R.id.faviconView, R.drawable.icon_image_broken);
     }
 

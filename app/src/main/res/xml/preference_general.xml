@@ -2,38 +2,40 @@
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <PreferenceCategory
-        android:title="@string/setting_title_general">
+    <CheckBoxPreference
+        android:defaultValue="true"
+        android:key="sp_drm"
+        android:summary="@string/hint_DRM_Media"/>
 
-        <EditTextPreference
-            android:defaultValue="https://codeberg.org/Gaukler_Faun/FOSS_Browser/wiki"
-            android:key="favoriteURL"
-            android:title="@string/setting_title_fav"
-            android:icon="@drawable/icon_fav" />
+    <CheckBoxPreference
+        android:defaultValue="true"
+        android:key="sp_autofill"
+        android:summary="@string/setting_summary_autofill" />
 
-        <EditTextPreference
-            android:defaultValue=""
-            android:key="urlForPosting"
-            android:title="@string/dialog_postOnWebsite"
-            android:summary="@string/dialog_postOnWebsiteHint"
-            android:icon="@drawable/icon_post" />
+    <EditTextPreference
+        android:defaultValue="https://codeberg.org/Gaukler_Faun/FOSS_Browser/wiki"
+        android:key="favoriteURL"
+        android:title="@string/setting_title_fav"
+        android:icon="@drawable/icon_fav" />
 
-        <Preference android:summary="@string/dialog_postOnWebsiteHint" />
+    <EditTextPreference
+        android:defaultValue=""
+        android:key="urlForPosting"
+        android:title="@string/dialog_postOnWebsite"
+        android:summary="@string/dialog_postOnWebsiteHint"
+        android:icon="@drawable/icon_post" />
 
-        <de.baumann.browser.preferences.EditTextSwitchPreference
-            android:key="sp_userAgent"
-            android:selectable="true"
-            android:title="@string/setting_title_userAgent"
-            app:editTextSwitchKey="userAgentSwitch"
-            app:useSimpleSummaryProvider="true" />
-
-    </PreferenceCategory>
+    <de.baumann.browser.preferences.EditTextSwitchPreference
+        android:key="sp_userAgent"
+        android:icon="@drawable/icon_desktop"
+        android:selectable="true"
+        android:title="@string/setting_title_userAgent"
+        app:editTextSwitchKey="userAgentSwitch"
+        app:useSimpleSummaryProvider="true" />
 
     <PreferenceCategory
         android:title="@string/setting_title_search_engine"
         android:icon="@drawable/icon_search">
-
-        <Preference android:summary="@string/custom_searches_summary" />
 
         <ListPreference
             android:defaultValue="0"
@@ -51,13 +53,29 @@
 
     </PreferenceCategory>
 
-    <PreferenceCategory
-        android:title="@string/menu_more">
+    <PreferenceCategory android:title="@string/setting_userScript"
+        android:icon="@drawable/icon_java">
 
-        <CheckBoxPreference
-            android:title="@string/setting_title_clipboard_record"
-            android:defaultValue="false"
-            android:key="sp_clipboard_record" />
+        <de.baumann.browser.preferences.EditTextSwitchPreference
+            android:key="sp_onPageStarted"
+            android:selectable="true"
+            android:title="onPageStarted"
+            app:editTextSwitchKey="onPageStarted"
+            app:useSimpleSummaryProvider="true" />
+
+        <de.baumann.browser.preferences.EditTextSwitchPreference
+            android:key="sp_onPageFinished"
+            android:selectable="true"
+            android:title="onPageFinished"
+            app:editTextSwitchKey="onPageFinished"
+            app:useSimpleSummaryProvider="true" />
+
+        <de.baumann.browser.preferences.EditTextSwitchPreference
+            android:key="sp_onLoadResource"
+            android:selectable="true"
+            android:title="onLoadResource"
+            app:editTextSwitchKey="onLoadResource"
+            app:useSimpleSummaryProvider="true" />
 
     </PreferenceCategory>
 

@@ -68,42 +68,11 @@ public class Fragment_settings_Backup extends BasePreferenceFragment {
             builder.setIcon(R.drawable.icon_alert);
             builder.setTitle(R.string.app_warning);
             builder.setMessage(R.string.toast_backup);
-            builder.setPositiveButton(R.string.app_ok, (dialog, whichButton) -> {
-                if (!BackupUnit.checkPermissionStorage(activity)) {
-                    BackupUnit.requestPermission(activity);
-                } else {
-                    BackupUnit.makeBackupDir();
-                    if (sp.getBoolean("database", false)) {
-                        copyDirectory(activity, sourceDB, backupDB);
-                    }
-                    if (sp.getBoolean("settings", false)) {
-                        final File prefsFile = new File(activity.getFilesDir(), "../shared_prefs/" + activity.getPackageName() + "_preferences.xml");
-                        final File backupFile = new File(sd, "browser_backup/preferenceBackup.xml");
-                        copyDirectory(activity, prefsFile, backupFile);
-                    }
-                    if (sp.getBoolean("bookmark", false)) {
-                        BackupUnit.backupData(activity, 4);
-                    }
-                    if (sp.getBoolean("bookmark_simple", false)) {
-                        BackupUnit.backupData(activity, 5);
-                    }
-                    if (sp.getBoolean("java", false)) {
-                        BackupUnit.backupData(activity, 1);
-                    }
-                    if (sp.getBoolean("cookie", false)) {
-                        BackupUnit.backupData(activity, 2);
-                    }
-                    if (sp.getBoolean("dom", false)) {
-                        BackupUnit.backupData(activity, 3);
-                    }
-                }
-            });
-
+            builder.setPositiveButton(R.string.app_ok, (dialog, whichButton) -> backup(activity));
             builder.setNegativeButton(R.string.app_cancel, (dialog, whichButton) -> dialog.cancel());
             AlertDialog dialog = builder.create();
             dialog.show();
             HelperUnit.setupDialog(context, dialog);
-
         });
 
         Button ib_restore = activity.findViewById(R.id.ib_restore);
@@ -121,21 +90,10 @@ public class Fragment_settings_Backup extends BasePreferenceFragment {
                     }
                     if (sp.getBoolean("settings", false)) {
                         restoreUserPrefs(context);
-                    }
-                    if (sp.getBoolean("bookmark", false)) {
-                        BackupUnit.restoreData(getActivity(), 4);
+                        BackupUnit.restoreData(getActivity(), 3);
                     }
                     if (sp.getBoolean("bookmark_simple", false)) {
                         BackupUnit.restoreData(getActivity(), 5);
-                    }
-                    if (sp.getBoolean("java", false)) {
-                        BackupUnit.restoreData(getActivity(), 1);
-                    }
-                    if (sp.getBoolean("cookie", false)) {
-                        BackupUnit.restoreData(getActivity(), 2);
-                    }
-                    if (sp.getBoolean("dom", false)) {
-                        BackupUnit.restoreData(getActivity(), 3);
                     }
                     sp.edit().putInt("restart_changed", 1).apply();
                 }
@@ -155,15 +113,26 @@ public class Fragment_settings_Backup extends BasePreferenceFragment {
         File sourceDB = new File(data, database_app);
         File backupDB = new File(sd, database_backup);
 
-        if (!BackupUnit.checkPermissionStorage(activity)) {
+        SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(activity);if (!BackupUnit.checkPermissionStorage(activity)) {
             BackupUnit.requestPermission(activity);
         } else {
-            copyDirectory(activity, sourceDB, backupDB);
+            BackupUnit.makeBackupDir();
+            if (sp.getBoolean("database", false)) {
+                copyDirectory(activity, sourceDB, backupDB);
+            }
+            if (sp.getBoolean("settings", false)) {
+                final File prefsFile = new File(activity.getFilesDir(), "../shared_prefs/" + activity.getPackageName() + "_preferences.xml");
+                final File backupFile = new File(sd, "browser_backup/preferenceBackup.xml");
+                copyDirectory(activity, prefsFile, backupFile);
+                BackupUnit.backupData(activity, 3);
+            }
+            if (sp.getBoolean("bookmark_simple", false)) {
+                BackupUnit.backupData(activity, 5);
+            }
         }
     }
 
     public static void copyDirectory(Activity activity, File sourceLocation, File targetLocation) {
-
         try {
             if (sourceLocation.isDirectory()) {
                 if (!targetLocation.exists() && !targetLocation.mkdirs()) {

@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <!-- App -->
     <string name="app_name">المتصفح الحر FOSS Browser</string>
     <string name="app_ok">موافق</string>
     <string name="app_help">مساعدة</string>
@@ -26,7 +25,6 @@
     <string name="color_orange">برتقالي</string>
     <string name="color_brown">بنّي</string>
     <string name="color_grey">رمادي</string>
-    <!-- Menu -->
     <string name="main_menu_new_tab">علامة تبويب جديدة (الخلفية)</string>
     <string name="main_menu_new_tabOpen">علامة تبويب جديدة (الواجهة)</string>
     <string name="main_omnibox_input_hint">ابحث أو أدخل رابطا</string>
@@ -47,7 +45,6 @@
     <string name="menu_save_pdf">حفظ كـ PDF</string>
     <string name="menu_shareClipboard">نسخ للحافظة</string>
     <string name="menu_other_searchSite">البحث في الموقع</string>
-    <!-- Dialog -->
     <string name="dialog_title_hint">العنوان:</string>
     <string name="dialog_URL_hint">العنوان:</string>
     <string name="dialog_extension_hint">الامتداد (مثلا: \"‎.jpg\"):</string>
@@ -59,11 +56,8 @@
     <string name="dialog_sortName">افرز حسب الاسم</string>
     <string name="dialog_sortIcon">افرز حسب الأيقونة</string>
     <string name="dialog_sortDate">افرز حسب التاريخ</string>
-    <!-- Settings -->
     <string name="setting_label">الاعدادات</string>
-    <!-- browser setting -->
     <string name="setting_title_browser">إعدادات المتصفح</string>
-    <string name="setting_title_general">General</string>
     <string name="setting_title_search_engine">محرك البحث</string>
     <string name="setting_summary_search_engine_google">غوغل</string>
     <string name="setting_summary_search_engine_duckduckgo">محرك DuckDuckGo</string>
@@ -78,25 +72,13 @@
     <string name="setting_title_font">حجم الخط</string>
     <string name="setting_title_dom">تخزين DOM</string>
     <string name="privacy_redirect">أعدْ التوجيه</string>
-    <string name="privacy_redirect_twitter">تويتر</string>
-    <string name="privacy_redirect_youTube">يوتيوب</string>
-    <string name="custom_redirects">عمليات إعادة التوجيه المخصصة</string>
     <string name="source">Source</string>
     <string name="target">هدف</string>
     <string name="setting_title_save_data">اطلب \'حفظ البيانات\'</string>
-    <string name="setting_title_profiles">ملفات شخصية</string>
-    <string name="setting_title_profiles_edit">حرّر الملفات الشخصية</string>
-    <string name="setting_title_profiles_trustedList">المواقع الموثوقة</string>
-    <string name="setting_title_profiles_standardList">المواقع القياسية</string>
-    <string name="setting_title_profiles_protectedList">المواقع المحمية</string>
-    <string name="setting_title_profiles_startApp">الملف الشخصي عند بدء التطبيق</string>
-    <string name="setting_title_profiles_trusted">موثوق</string>
     <string name="setting_title_profiles_standard">قياسي</string>
-    <string name="setting_title_profiles_protected">محمي</string>
     <string name="setting_title_profiles_dataUsage">استخدام البيانات</string>
     <string name="setting_title_profiles_privacy">الخصوصية</string>
     <string name="setting_title_profiles_Security">الأمان</string>
-    <!-- browser start -->
     <string name="setting_title_images">الصور</string>
     <string name="setting_title_cookie">الكعكات</string>
     <string name="setting_summary_cookie_delete">إذا فُعّل، ستحذف جميع الكعكات، حتى الخاصة بالمواقع الموثوقة.</string>
@@ -106,19 +88,12 @@
     <string name="setting_summary_adblock">مكن مانع الاعلانات لمنع الإعلانات المزعجة. تمكينه يسرع تحميل المواقع.</string>
     <string name="setting_title_adblockHost">المحتوى المحظور</string>
     <string name="setting_title_location">الموقع</string>
-    <string name="setting_title_history">التأريخ</string>
     <string name="setting_summary_autofill">تمكين حفظ بيانات النموذج (أندرويد نوجات وما دونها) أو خدمة التعبئة التلقائية (أندرويد أوريو وما فوق).</string>
-    <!-- browser clear -->
     <string name="data_summary">سيتم تصدير جميع الملفات إلى دليل \"Documents / browser_backup /\" لبطاقة SD الخاصة بك.</string>
     <string name="clear_title_quit">امسح عند خروج التطبيق</string>
     <string name="clear_title_cache">امسح التخزين المؤقت</string>
     <string name="clear_title_cookie">امسح الكوكيز</string>
-    <string name="clear_title_history">حذف التأريخ</string>
     <string name="localData">مسح البيانات المخزنة على الجهاز</string>
-    <string name="clear_title_deleteDatabase">احذف قاعدة البيانات</string>
-    <string name="clear_summary_deleteDatabase">احذف قاعدة البيانات بأكملها (صفحة البدء، العلامات، التأريخ وجميع القوائم البيضاء).</string>
-    <!-- App setting -->
-    <string name="setting_title_app">إعدادات التطبيق</string>
     <string name="setting_title_ui">السلوك/واجهة المستخدم</string>
     <string name="setting_title_data">النسخ الاحتياطي</string>
     <string name="setting_filter">مرشح العلامات</string>
@@ -129,16 +104,10 @@
     <string name="setting_title_fingerPrint">حماية بصمة الإصبع</string>
     <string name="setting_theme">السمة</string>
     <string name="setting_theme_system">نظام</string>
-    <string name="setting_theme_OLED">أو أل إي دي</string>
-    <string name="setting_theme_wallpaper">يستند إلى ورق الجدران</string>
-    <!-- App behavior -->
-    <string name="setting_title_hideToolbar">أخفِ شريط الأدوات</string>
-    <string name="setting_title_behavior">السلوك</string>
     <string name="setting_title_confirm_exit">تأكيد خروج المتصفح</string>
     <string name="setting_title_confirm_tab_close">أكّد خروج التبويب</string>
     <string name="setting_overView_onStart_title">أَظهر عند البداية</string>
     <string name="setting_gestures">إيماءات</string>
-    <!-- gestures -->
     <string name="setting_title_longPress">ضغط مطوّل</string>
     <string name="setting_title_overViewButton">نظرة عامة</string>
     <string name="setting_gesture_up">مرر لأعلى</string>
@@ -156,11 +125,8 @@
     <string name="setting_gesture_09">افتح تبويبا جديدا</string>
     <string name="setting_gesture_10">أغلق التبويب</string>
     <string name="setting_gesture_11">إظهار مفتاح الجلب</string>
-    <!-- Data -->
     <string name="hint_database">هذا سيحذف البيانات الحالية. أواصل؟</string>
     <string name="settings_data_restore">يعيد</string>
-    <!-- Others setting -->
-    <!-- Toast -->
     <string name="toast_add_whitelist_successful">أضيف النطاق بنجاح</string>
     <string name="toast_copy_successful">نُسخ بنجاح</string>
     <string name="toast_delete_successful">حُذف بنجاح</string>
@@ -176,19 +142,16 @@
     <string name="toast_backup">اعمل نسخا احتياطيا للبيانات؟ هذا سيستبدل النسخ الاحتياطي القديم.</string>
     <string name="dialog_postOnWebsiteHint">الرابط للفتح. سيتم حفظه للاستخدام التالي.</string>
     <string name="dialog_postOnWebsite">نشر على الموقع</string>
-    <!-- Whitelist -->
     <string name="whitelist_edit_hint">النطاق</string>
     <string name="whitelist_add">أضف</string>
     <string name="menu_desktopView">عرض سطح المكتب</string>
     <string name="menu_dayView">عرض يومي</string>
-    <string name="menu_more">المزيد</string>
     <string name="menu_nightView">عرض ليلي</string>
     <string name="setting_userScript">شفرة جافاسكريت مخصصة</string>
     <string name="setting_title_camera">السماح باستخدام الكاميرا</string>
     <string name="setting_title_microphone">السماح باستخدام لاقط الصوت</string>
     <string name="setting_title_tabsReload">أعد تحميل التبويبات</string>
     <string name="setting_title_tabsRestore">استعد التبويبات</string>
-    <string name="setting_title_userInterface">واجهة المستخدم</string>
     <string name="setting_summary_tabsReload">إعادة تحميل آخر علامات التبويب المفتوحة، عند بدء المتصفح الحر FOSS Browser.</string>
     <string name="setting_summary_tabsRestore">استعادة علامات التبويب عندما يقتل المتصفح الحر FOSS Browser بواسطة النظام.</string>
     <string name="hint_DRM_Media">السماح بتشغيل الوسائط محمية الحقوق الرقمية DRM؟</string>
@@ -196,21 +159,12 @@
     <string name="menu_restart">إعادة تشغيل وإعادة تحميل علامات التبويب</string>
     <string name="setting_title_screenOn">إبقاء الشاشة مشتغلة</string>
     <string name="setting_title_audioBackground">شغل الصوت في الخلفية</string>
-    <!-- License changelog -->
-    <string name="dialog_neverAsk">رفض. لا تسأل هذه الجلسة أبدًا.</string>
     <string name="link_you_copied">الرابط الذي نسخته</string>
-    <string name="dialog_translate">ترجمة مع DeepL</string>
     <string name="create_new">جديد</string>
-    <string name="dialog_translate_hint">قم بتمكين JavaScript وملفات تعريف الارتباط لـ \"deepl.com\".</string>
-    <string name="custom_searches_summary">فقط اضغط مطولاً على أيقونة البحث في شريط الأدوات للحصول على نتائج من صفحات الويب المخصصة.</string>
     <string name="custom_searches_title">بحث سريع على …</string>
-    <string name="custom_domains">النطاقات المخصصة</string>
     <string name="app_error_copy">يرجى تحديد النص ونسخه يدوياً</string>
     <string name="dialog_backGround">فتح الروابط في الخلفية …</string>
-    <string name="dialog_backGround_always">دائماً هذه الجلسة.</string>
-    <string name="album_title_bookmarks_simple">إشارات مرجعية (بسيطة)</string>
     <string name="setting_title_cookie_thirdParty">ملفات تعريف ارتباط الطرف الثالث</string>
-    <string name="setting_title_backup_exit">قاعدة بيانات النسخ الاحتياطي (صفحة البدء والإشارات المرجعية والمحفوظات وجميع قوائم النطاقات) عند الخروج؟</string>
     <string name="title_appDatabase">قاعدة البيانات</string>
     <string name="app_error_save">تم الحفظ بالفعل.</string>
     <string name="menu_shareOpenWith">افتح مع …</string>
@@ -219,10 +173,20 @@
     <string name="app_intro_d">يمكنك أيضًا فتح الإعدادات وتهيئة متصفح FOSS وفقًا لاحتياجاتك.</string>
     <string name="app_intro_c">لبدء التصفح فقط اضغط على شريط الأدوات. يمكنك البحث في الويب عن شيء ما أو إدخال عنوان url لفتحه.</string>
     <string name="dialog_sortDomain">فرز حسب المجال</string>
-    <string name="summary_deny_cookie_banners">حاول رفض لافتات ملفات تعريف الارتباط تلقائيًا باستخدام قواعد ملفات تعريف الارتباط الخاصة بملفات تعريف الارتباط في</string>
     <string name="setting_title_deny_cookie_banners">مانع شعارات ملفات تعريف الارتباط</string>
-    <string name="setting_title_profiles_without">تعطيل الملفات الشخصية</string>
     <string name="dialog_tracking">عنوان URL التتبع المحتمل. إزالة جزء التتبع:</string>
     <string name="setting_title_trackingURL">تتبع-URL المنبثق</string>
     <string name="app_no">لا يوجد</string>
+    <string name="app_always">دائماً</string>
+    <string name="app_session">… في الدورة الحالية؟</string>
+    <string name="app_never">أبداً</string>
+    <string name="app_permission_notification">الإشعارات</string>
+    <string name="album_title_bookmarks_html">الإشارات المرجعية (HTML)</string>
+    <string name="setting_title_dynColors">ألوان ديناميكية</string>
+    <string name="setting_backup_ext">النسخ الاحتياطي عند الخروج</string>
+    <string name="setting_backup_sumSettings">إعدادات التطبيق والموقع الإلكتروني</string>
+    <string name="setting_title_savedWebSites">المواقع المحفوظة</string>
+    <string name="setting_backup_sumDatabase">موقع البداية، الإشارات المرجعية، التاريخ</string>
+    <string name="privacy_redirect_use">استخدام عمليات إعادة التوجيه</string>
+    <string name="privacy_redirect_title">عمليات إعادة التوجيه</string>
 </resources>

@@ -52,13 +52,25 @@
                 android:scaleType="fitCenter"
                 android:src="@drawable/icon_delete" />
 
+            <ImageView
+                android:id="@+id/edit_redirect"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="15dp"
+                android:layout_toStartOf="@id/remove_redirect"
+                android:contentDescription="@null"
+                android:layout_centerInParent="true"
+                android:scaleType="fitCenter"
+                android:src="@drawable/icon_edit"
+                android:visibility="gone"/>
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:id="@+id/textGroup"
                 android:orientation="vertical"
                 android:layout_toEndOf="@id/cardView"
-                android:layout_toStartOf="@id/remove_redirect"
+                android:layout_toStartOf="@id/edit_redirect"
                 android:gravity="center_vertical"
                 android:layout_marginBottom="10dp"
                 android:layout_marginTop="10dp"

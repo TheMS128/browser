@@ -1,10 +1,5 @@
 package de.baumann.browser.view;
 
-import static de.baumann.browser.database.RecordAction.BOOKMARK_ITEM;
-import static de.baumann.browser.database.RecordAction.CLIPBOARD_ITEM;
-import static de.baumann.browser.database.RecordAction.HISTORY_ITEM;
-import static de.baumann.browser.database.RecordAction.STARTSITE_ITEM;
-
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.graphics.Bitmap;
@@ -53,7 +48,7 @@ public class AdapterSearch extends BaseAdapter implements Filterable {
                     && !record.getTitle().isEmpty()
                     && record.getURL() != null
                     && !record.getURL().isEmpty()) {
-                originalList.add(new CompleteItem(record.getTitle(), record.getURL(), record.getType()));
+                originalList.add(new CompleteItem(record.getTitle(), record.getURL()));
             }
         }
 
@@ -96,7 +91,6 @@ public class AdapterSearch extends BaseAdapter implements Filterable {
             holder = new Holder();
             holder.titleView = view.findViewById(R.id.titleView);
             holder.urlView = view.findViewById(R.id.dateView);
-            holder.iconView = view.findViewById(R.id.iconView);
             holder.favicon = view.findViewById(R.id.faviconView);
             view.setTag(holder);
         } else {
@@ -106,17 +100,6 @@ public class AdapterSearch extends BaseAdapter implements Filterable {
         CompleteItem item = resultList.get(position);
         holder.titleView.setText(item.title);
         holder.urlView.setText(item.url);
-        holder.iconView.setVisibility(View.VISIBLE);
-
-        if (item.getType() == STARTSITE_ITEM) {  //Item from start page
-            holder.iconView.setImageResource(R.drawable.icon_web);
-        } else if (item.getType() == HISTORY_ITEM) {  //Item from history
-            holder.iconView.setImageResource(R.drawable.icon_history);
-        } else if (item.getType() == BOOKMARK_ITEM) { //Item from bookmarks
-            holder.iconView.setImageResource(R.drawable.icon_bookmark);
-        } else if (item.getType() == CLIPBOARD_ITEM) {
-            holder.iconView.setImageResource(R.drawable.icon_clipboard);
-        }
 
         try(FaviconHelper faviconHelper = new FaviconHelper(context)) {
             Bitmap bitmap = faviconHelper.getFavicon(item.url);
@@ -137,18 +120,12 @@ public class AdapterSearch extends BaseAdapter implements Filterable {
 
     private static class CompleteItem {
         private final String title;
-        private final int type;
         private final String url;
         private int index = Integer.MAX_VALUE;
 
-        private CompleteItem(String title, String url, int type) {
+        private CompleteItem(String title, String url) {
             this.title = title;
             this.url = url;
-            this.type = type;
-        }
-
-        private int getType() {
-            return this.type;
         }
 
         String getTitle() {
@@ -172,7 +149,6 @@ public class AdapterSearch extends BaseAdapter implements Filterable {
             if (!(object instanceof CompleteItem)) {
                 return false;
             }
-
             CompleteItem item = (CompleteItem) object;
             return item.getTitle().equals(title) && item.getURL().equals(url);
         }
@@ -182,13 +158,11 @@ public class AdapterSearch extends BaseAdapter implements Filterable {
             if (title == null || url == null) {
                 return 0;
             }
-
             return title.hashCode() & url.hashCode();
         }
     }
 
     private static class Holder {
-        private ImageView iconView;
         private ImageView favicon;
         private TextView titleView;
         private TextView urlView;
@@ -212,13 +186,10 @@ public class AdapterSearch extends BaseAdapter implements Filterable {
                     workList.add(item);
                 }
             }
-
             workList.sort(Comparator.comparingInt(CompleteItem::getIndex));
-
             FilterResults results = new FilterResults();
             results.values = workList;
             results.count = workList.size();
-
             return results;
         }
 

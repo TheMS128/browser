@@ -1,6 +1,5 @@
 package de.baumann.browser.browser;
 
-import android.graphics.Bitmap;
 import android.net.Uri;
 import android.view.View;
 import android.webkit.ValueCallback;
@@ -12,7 +11,6 @@ public interface BrowserController {
     void removeAlbum(AlbumController albumController);
     void showFileChooser(ValueCallback<Uri[]> filePathCallback);
     void onShowCustomView(View view, WebChromeClient.CustomViewCallback callback);
-    void hideOverview();
+    void hideSideSheets();
     void onHideCustomView();
-    Bitmap favicon ();
 }
