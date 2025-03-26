@@ -53,11 +53,6 @@ import de.baumann.browser.unit.HelperUnit;
 
 public class NinjaWebView extends WebView implements AlbumController {
 
-    public boolean fingerPrintProtection;
-    public boolean history;
-    public boolean adBlock;
-    public boolean saveData;
-    public boolean camera;
     private Context context;
     private boolean stopped;
     private AdapterTabs album;
@@ -65,7 +60,6 @@ public class NinjaWebView extends WebView implements AlbumController {
     private NinjaWebViewClient webViewClient;
     private NinjaWebChromeClient webChromeClient;
     private NinjaDownloadListener downloadListener;
-    private static String profile;
     private List_standard listStandard;
     private Bitmap favicon;
     private SharedPreferences sp;
@@ -83,14 +77,8 @@ public class NinjaWebView extends WebView implements AlbumController {
     public NinjaWebView(Context context) {
         super(context);
         sp = PreferenceManager.getDefaultSharedPreferences(context);
-        String profile = sp.getString("profile", "standard");
         this.context = context;
         this.foreground = false;
-        this.fingerPrintProtection = sp.getBoolean(profile + "_fingerPrintProtection", true);
-        this.history = sp.getBoolean(profile + "_history", true);
-        this.adBlock = sp.getBoolean(profile + "_adBlock", false);
-        this.saveData = sp.getBoolean(profile + "_saveData", false);
-        this.camera = sp.getBoolean(profile + "_camera", false);
 
         this.stopped = false;
         this.listStandard = new List_standard(this.context);
@@ -126,8 +114,7 @@ public class NinjaWebView extends WebView implements AlbumController {
     public synchronized void initPreferences(String url) {
 
         sp = PreferenceManager.getDefaultSharedPreferences(context);
-        profile = sp.getString("profile", "profileStandard");
-        String profileOriginal = profile;
+        String profile = sp.getString("profile", "profileStandard");
         WebSettings webSettings = getSettings();
         addJavascriptInterface(new JavaScriptInterface(context, this), "NinjaWebViewJS");
 
@@ -201,12 +188,6 @@ public class NinjaWebView extends WebView implements AlbumController {
         webSettings.setAllowFileAccessFromFileURLs(true);
         webSettings.setAllowUniversalAccessFromFileURLs(true);
 
-        fingerPrintProtection = sp.getBoolean(profile + "_fingerPrintProtection", true);
-        history = sp.getBoolean(profile + "_saveHistory", true);
-        adBlock = sp.getBoolean(profile + "_adBlock", true);
-        saveData = sp.getBoolean(profile + "_saveData", true);
-        camera = sp.getBoolean(profile + "_camera", true);
-
         try {
             CookieManager manager = CookieManager.getInstance();
             if (sp.getBoolean(profile + "_cookies", false)) {
@@ -220,7 +201,6 @@ public class NinjaWebView extends WebView implements AlbumController {
         } catch (Exception e) {
             Log.i(TAG, "Error loading cookies:" + e);
         }
-        profile = profileOriginal;
     }
 
     public void setProfileIcon(FloatingActionButton one, FloatingActionButton two, String url) {
@@ -312,7 +292,7 @@ public class NinjaWebView extends WebView implements AlbumController {
         requestHeaders.put("Sec-GPC", "1");
         requestHeaders.put("X-Requested-With", "com.duckduckgo.mobile.android");
         requestHeaders.put("Referer", this.getUrl());
-        profile = sp.getString("profile", "profileStandard");
+        String profile = sp.getString("profile", "profileStandard");
         if (sp.getBoolean(profile + "_saveData", false)) requestHeaders.put("Save-Data", "on");
         return requestHeaders;
     }
@@ -349,7 +329,7 @@ public class NinjaWebView extends WebView implements AlbumController {
         stopped = false;
 
         listStandard = new List_standard(context);
-        profile = sp.getString("profile", "profileStandard");
+        String profile = sp.getString("profile", "profileStandard");
         if (listStandard.isWhite(url)) profile = HelperUnit.domain(urlToLoad);
 
         boolean removeTracking = sp.getBoolean(profile + "_trackingULS", true);
@@ -534,26 +514,6 @@ public class NinjaWebView extends WebView implements AlbumController {
         super.destroy();
     }
 
-    public boolean isFingerPrintProtection() {
-        return fingerPrintProtection;
-    }
-
-    public boolean isHistory() {
-        return history;
-    }
-
-    public boolean isAdBlock() {
-        return adBlock;
-    }
-
-    public boolean isSaveData() {
-        return saveData;
-    }
-
-    public boolean isCamera() {
-        return camera;
-    }
-
     public void resetFavicon() {
         this.favicon = null;
     }
@@ -581,10 +541,6 @@ public class NinjaWebView extends WebView implements AlbumController {
 
     public void setStopped(boolean stopped) {
         this.stopped = stopped;
-    }
-
-    public static String getProfile() {
-        return profile;
     }
 
     public AlbumController getPredecessor() {

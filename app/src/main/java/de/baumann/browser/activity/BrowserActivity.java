@@ -62,7 +62,6 @@ import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 import android.widget.VideoView;
 
 import androidx.activity.EdgeToEdge;
@@ -87,7 +86,6 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.card.MaterialCardView;
-import com.google.android.material.chip.Chip;
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.navigation.NavigationBarView;
@@ -1666,8 +1664,8 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
             CheckBox checkbox_fingerPrint = dialogViewFastToggle.findViewById(R.id.checkbox_fingerPrint);
             checkbox_fingerPrint.setChecked(sp.getBoolean(profile + "_fingerPrintProtection", true));
             checkbox_fingerPrint.setOnClickListener(v -> {
-                String profileToSave = sp.getString("profile", "profileStandard");
                 ninjaWebView.setProfileChanged(url);
+                String profileToSave = sp.getString("profile", "profileStandard");
                 sp.edit().putBoolean(profileToSave + "_fingerPrintProtection", checkbox_fingerPrint.isChecked()).apply();
                 ninjaWebView.setProfileIcon(buttonProfile, omniBox_tab, url);
             });

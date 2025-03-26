@@ -116,11 +116,12 @@ public class NinjaWebChromeClient extends WebChromeClient {
     @Override
     public void onPermissionRequest(final PermissionRequest request) {
         SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(ninjaWebView.getContext());
+        String profile = sp.getString("profile", "profileStandard");
         Activity activity = (Activity) ninjaWebView.getContext();
         String[] resources = request.getResources();
         for (String resource : resources) {
             if (PermissionRequest.RESOURCE_VIDEO_CAPTURE.equals(resource)) {
-                if (sp.getBoolean(NinjaWebView.getProfile() + "_camera", false)){
+                if (sp.getBoolean(profile + "_camera", false)){
                     HelperUnit.grantPermissionsCamera(activity);
                     if (ninjaWebView.getSettings().getMediaPlaybackRequiresUserGesture())
                         ninjaWebView.getSettings().setMediaPlaybackRequiresUserGesture(false);
@@ -129,7 +130,7 @@ public class NinjaWebChromeClient extends WebChromeClient {
                     request.grant(request.getResources());
                 }
             } else if (PermissionRequest.RESOURCE_AUDIO_CAPTURE.equals(resource)) {
-                if (sp.getBoolean(NinjaWebView.getProfile() + "_microphone", false)){
+                if (sp.getBoolean(profile + "_microphone", false)){
                     HelperUnit.grantPermissionsMic(activity);
                     request.grant(request.getResources());
                 }
