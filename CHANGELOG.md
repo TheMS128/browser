@@ -17,6 +17,7 @@ With this release is possible to save settings separate for each website. There 
 - updated: settings
 - updated: translations
 - updated: build libraries
+- removed: "Open downloads" popup dialog is annoying #1196
 - removed: play audio in background, due to Android limitations
 - removed: OLED-theme
 

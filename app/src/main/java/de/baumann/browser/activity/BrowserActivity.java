@@ -1784,7 +1784,8 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
                         .putBoolean(profileToSave + "_microphone", checkbox_mic.isChecked())
                         .putBoolean(profileToSave + "_dom", checkbox_dom.isChecked())
                         .putBoolean(profileToSave + "_night", checkbox_nightView.isChecked())
-                        .putBoolean(profileToSave + "_desktop", checkbox_desktop.isChecked()).apply();
+                        .putBoolean(profileToSave + "_desktop", checkbox_desktop.isChecked())
+                        .putString("profile", "profileStandard").apply();
                 ninjaWebView.setProfileIcon(buttonProfile,omniBox_tab, url);
                 dialogFastToggle.cancel();
                 ninjaWebView.reload();

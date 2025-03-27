@@ -59,4 +59,8 @@
     <color name="teal">#40009688</color>
     <color name="yellow">#40ffc107</color>
 
+
+    <color name="launcher_icon_background">@color/md_theme_surface</color>
+    <color name="launcher_icon">@color/md_theme_primary</color>
+
 </resources>
