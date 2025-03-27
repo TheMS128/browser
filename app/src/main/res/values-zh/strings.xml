@@ -94,8 +94,6 @@
     <string name="data_summary">所有文件将导出到您SD卡的“Documents/browser_backup/”目录。</string>
     <string name="clear_title_quit">在应用退出时清除</string>
     <string name="clear_title_cache">清除缓存</string>
-    <string name="clear_title_cookie">清除Cookies</string>
-    <string name="localData">清除设备上存储的数据</string>
     <string name="setting_title_ui">行为/界面</string>
     <string name="setting_title_data">备份</string>
     <string name="setting_filter">书签过滤器</string>
@@ -139,7 +137,6 @@
     <string name="toast_restart">您必须重启“FOSS浏览器”才能应用更改。现在关闭吗？</string>
     <string name="toast_quit">您想要退出“FOSS浏览器”吗？</string>
     <string name="toast_quit_TAB">您想关闭标签页吗？</string>
-    <string name="toast_downloadComplete">下载完成。打开文件管理器？</string>
     <string name="toast_unsecured">网站使用不安全的连接 (\"http://\")。尝试安全连接 (\"https://\")？</string>
     <string name="toast_backup">备份数据？这将覆盖现有的旧备份。</string>
     <string name="dialog_postOnWebsiteHint">打开的网址。将被保存起来供下次使用。</string>
@@ -160,7 +157,6 @@
     <string name="menu_reload">重载</string>
     <string name="menu_restart">重新启动并重新加载标签</string>
     <string name="setting_title_screenOn">保持屏幕开启</string>
-    <string name="setting_title_audioBackground">在后台播放音频</string>
     <string name="custom_searches_title">快速搜索…</string>
     <string name="app_error_copy">请手动选择并复制文本</string>
     <string name="dialog_backGround">在后台打开链接 …</string>

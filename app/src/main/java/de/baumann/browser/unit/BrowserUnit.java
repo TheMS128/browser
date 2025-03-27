@@ -44,11 +44,11 @@ import java.util.regex.Pattern;
 import de.baumann.browser.R;
 import de.baumann.browser.activity.BrowserActivity;
 import de.baumann.browser.browser.DataURIParser;
-import de.baumann.browser.browser.JavaScriptInterface;
 import de.baumann.browser.browser.List_standard;
 import de.baumann.browser.database.RecordAction;
 import de.baumann.browser.objects.CustomRedirect;
 import de.baumann.browser.objects.CustomRedirectsHelper;
+import de.baumann.browser.view.NinjaToast;
 
 public class BrowserUnit {
 
@@ -160,7 +160,7 @@ public class BrowserUnit {
         }
     }
 
-    public static void download(final Context context, final WebView webview, final String url, final String fileName, final String mimeType) {
+    public static void download(final Context context, final String url, final String fileName, final String mimeType) {
         Activity activity = (Activity) context;
         if (BackupUnit.checkPermissionStorage(context)) {
             try {
@@ -171,7 +171,8 @@ public class BrowserUnit {
                     fos.write(dataURIParser.getImagedata());
                     fos.flush();
                     fos.close();
-                    HelperUnit.openDialogDownloads(context);
+                    String text = context.getString(R.string.app_done) + ": " + context.getString(R.string.menu_download) +"?";
+                    NinjaToast.show(context, text);
                 } else {
                     DownloadManager.Request request = new DownloadManager.Request(Uri.parse(url));
                     CookieManager cookieManager = CookieManager.getInstance();

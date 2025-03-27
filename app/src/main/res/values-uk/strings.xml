@@ -94,8 +94,6 @@
     <string name="data_summary">Усі файли буде збережено до каталогу «Documents/browser_backup/» на SD-карті.</string>
     <string name="clear_title_quit">Очищати при виході</string>
     <string name="clear_title_cache">Очистити кеш</string>
-    <string name="clear_title_cookie">Очистити куки</string>
-    <string name="localData">Очистити на пристрої збережені дані</string>
     <string name="setting_title_ui">Поведінка та інтерфейс</string>
     <string name="setting_title_data">Резервне копіювання</string>
     <string name="setting_filter">Фільтр закладок</string>
@@ -139,7 +137,6 @@
     <string name="toast_restart">Перезапустити, щоб застосувати зміни?</string>
     <string name="toast_quit">Закрити FOSS Браузер?</string>
     <string name="toast_quit_TAB">Закрити вкладку?</string>
-    <string name="toast_downloadComplete">Завантаження завершене. Відкрити файловий менеджер?</string>
     <string name="toast_unsecured">Цей сайт використовує незахищене з\'єднання («http»). Спробувати захищене з\'єднання («https»)?</string>
     <string name="toast_backup">Зберегти дані\? Це перезапише наявну резервну копію.</string>
     <string name="dialog_postOnWebsiteHint">URL для відкриття. Буде збережено для наступного використання.</string>
@@ -160,7 +157,6 @@
     <string name="menu_reload">Оновити</string>
     <string name="menu_restart">Перезавантажити та оновити вкладки</string>
     <string name="setting_title_screenOn">Не вимикати екран</string>
-    <string name="setting_title_audioBackground">Відтворювати аудіо у фоновому режимі</string>
     <string name="custom_searches_title">Швидкий пошук у …</string>
     <string name="app_error_copy">Виберіть і скопіюйте текст вручну</string>
     <string name="dialog_backGround">Відкривати посилання у фоні…</string>

@@ -99,7 +99,7 @@ public class NinjaDownloadListener implements DownloadListener {
                 switch (position) {
                     case 0:
                         dialog.cancel();
-                        BrowserUnit.download(context, webView, msgString[0], filename, mimeType);
+                        BrowserUnit.download(context, msgString[0], filename, mimeType);
                         break;
                     case 1:
                         dialog.cancel();
@@ -109,7 +109,7 @@ public class NinjaDownloadListener implements DownloadListener {
                         context.startActivity(Intent.createChooser(sharingIntent, (context.getString(R.string.menu_share_link))));
                         break;
                     case 2:
-                        HelperUnit.saveAs(activity, msgString[0], filename, dialog, webView);
+                        HelperUnit.saveAs(activity, msgString[0], filename, dialog);
                         break;
                 }
             });

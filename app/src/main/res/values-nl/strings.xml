@@ -94,8 +94,6 @@
     <string name="data_summary">Alle bestanden worden geëxporteerd naar de map \"Documents/browser_backup/\" van uw SD-card.</string>
     <string name="clear_title_quit">Wissen bij afsluiten van toepassing</string>
     <string name="clear_title_cache">Cache leegmaken</string>
-    <string name="clear_title_cookie">Cookies wissen</string>
-    <string name="localData">Wissen op apparaat opgeslagen gegevens</string>
     <string name="setting_title_ui">Gedrag/Uiterlijk</string>
     <string name="setting_title_data">Back-up</string>
     <string name="setting_filter">Bladwijzer filter</string>
@@ -139,7 +137,6 @@
     <string name="toast_restart">\"FOSS-browser\" moet worden herstart om de wijzigingen toe te passen. Wil je nu afsluiten?</string>
     <string name="toast_quit">Wil je \"FOSS-browser\" afsluiten?</string>
     <string name="toast_quit_TAB">Wilt u de TAB sluiten?</string>
-    <string name="toast_downloadComplete">Downloaden voltooid. Wil je bestandsbeheer openen?</string>
     <string name="toast_unsecured">Deze website gebruikt een onbeveiligde verbinding (\"http\"). Wilt u een beveiligde verbinding (\"https\") proberen?</string>
     <string name="toast_backup">Back-up gegevens\? Dit overschrijft de bestaande back-up.</string>
     <string name="dialog_postOnWebsiteHint">URL om te openen. Zal worden opgeslagen voor volgend gebruik.</string>
@@ -160,7 +157,6 @@
     <string name="menu_reload">Herladen</string>
     <string name="menu_restart">Herstart en herlaad tabbladen</string>
     <string name="setting_title_screenOn">Scherm aanlaten</string>
-    <string name="setting_title_audioBackground">Audio op achtergrond afspelen</string>
     <string name="custom_searches_title">Snel zoeken op …</string>
     <string name="app_error_copy">Selecteer en kopieer tekst handmatig</string>
     <string name="dialog_backGround">Links openen op achtergrond …</string>

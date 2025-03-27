@@ -94,8 +94,6 @@
     <string name="data_summary">全てのファイルは SD カードの「Documents/browser_backup/」ディレクトリにエクスポートされます。</string>
     <string name="clear_title_quit">アプリ終了時に消去</string>
     <string name="clear_title_cache">キャッシュを削除</string>
-    <string name="clear_title_cookie">クッキーを消去</string>
-    <string name="localData">端末に保存されているデータを消去する</string>
     <string name="setting_title_ui">動作/UI</string>
     <string name="setting_title_data">バックアップ</string>
     <string name="setting_filter">ブックマークフィルター</string>
@@ -139,7 +137,6 @@
     <string name="toast_restart">変更を適用するには \"FOSS Browser\" を再起動する必要があります。今すぐ閉じますか?</string>
     <string name="toast_quit">\"FOSS Browser\" を終了しますか?</string>
     <string name="toast_quit_TAB">タブを閉じますか?</string>
-    <string name="toast_downloadComplete">ダウンロードが完了しました。ファイルマネージャーを開きますか?</string>
     <string name="toast_unsecured">ウェブサイトは安全でない接続 (\"http\") を使用しています。安全な接続を試してみますか (\"https\")?</string>
     <string name="toast_backup">データをバックアップしますか？既存のバックアップを上書きします。</string>
     <string name="dialog_postOnWebsiteHint">開くためのURL。次回の使用時に保存されます。</string>
@@ -160,7 +157,6 @@
     <string name="menu_reload">再読込</string>
     <string name="menu_restart">再起動してタブを再読込</string>
     <string name="setting_title_screenOn">画面を消灯しない</string>
-    <string name="setting_title_audioBackground">バックグラウンドで音声を再生</string>
     <string name="custom_searches_title">高速検索 …</string>
     <string name="app_error_copy">手動でテキストを選択してコピーしてください</string>
     <string name="dialog_backGround">バックグラウンドでリンクを開く …</string>

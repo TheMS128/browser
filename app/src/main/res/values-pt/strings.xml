@@ -93,8 +93,6 @@
     <string name="data_summary">Todos os arquivos serão salvos para o diretório \"Documents/browser_backup/\" do seu cartão SD.</string>
     <string name="clear_title_quit">Limpar ao sair</string>
     <string name="clear_title_cache">Limpar o cache</string>
-    <string name="clear_title_cookie">Limpar cookies</string>
-    <string name="localData">Limpar dados armazenados no dispositivo</string>
     <string name="setting_title_ui">Comportamento/Interface</string>
     <string name="setting_title_data">Backup</string>
     <string name="setting_filter">Filtro de favoritos</string>
@@ -138,7 +136,6 @@
     <string name="toast_restart">Reiniciar para aplicar mudanças?</string>
     <string name="toast_quit">Sair do \"FOSS Browser\"?</string>
     <string name="toast_quit_TAB">Fechar separador?</string>
-    <string name="toast_downloadComplete">Download finalizado. Abrir gerenciador de arquivos?</string>
     <string name="toast_unsecured">O site usa uma conexão insegura (\"http\"). Tentar uma conexão segura (\"https\")?</string>
     <string name="toast_backup">Dados de cópia de segurança\? Isto irá substituir a cópia de segurança existente.</string>
     <string name="dialog_postOnWebsiteHint">URL para abrir. Será guardada para o próximo uso.</string>
@@ -159,7 +156,6 @@
     <string name="menu_reload">Recarregar</string>
     <string name="menu_restart">Reiniciar e recarregar abas</string>
     <string name="setting_title_screenOn">Mantenha a tela ligada</string>
-    <string name="setting_title_audioBackground">Reprodução de áudio em segundo plano</string>
     <string name="setting_title_javascript_popUp">pop-ups</string>
     <string name="custom_searches_title">Pesquisa rápida em …</string>
     <string name="app_error_copy">Seleccione e copie o texto manualmente</string>

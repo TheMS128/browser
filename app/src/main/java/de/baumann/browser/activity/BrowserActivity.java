@@ -285,21 +285,8 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
         BroadcastReceiver downloadReceiver = new BroadcastReceiver() {
             @Override
             public void onReceive(Context context, Intent intent) {
-
-                NinjaToast.show(context, getString(R.string.toast_downloadComplete));
-                try {
-                    MaterialAlertDialogBuilder builder = new MaterialAlertDialogBuilder(context);
-                    builder.setTitle(R.string.menu_download);
-                    builder.setIcon(R.drawable.icon_download);
-                    builder.setMessage(R.string.toast_downloadComplete);
-                    builder.setPositiveButton(R.string.app_ok, (dialog, whichButton) -> startActivity(Intent.createChooser(new Intent(DownloadManager.ACTION_VIEW_DOWNLOADS), null)));
-                    builder.setNegativeButton(R.string.app_cancel, (dialog, whichButton) -> dialog.cancel());
-                    Dialog dialog = builder.create();
-                    //dialog.show();
-                    HelperUnit.setupDialog(context, dialog);
-                } catch (Exception e) {
-                    Log.v(TAG, "Failed to show download complete dialog");
-                }
+                String text = getString(R.string.app_done) + ": " + getString(R.string.menu_download) +"?";
+                NinjaToast.show(context, text);
             }};
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
@@ -364,23 +351,19 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
     @Override
     public void onResume() {
         super.onResume();
-
         if (sp.getBoolean("sp_camera", false)) {
             if (ContextCompat.checkSelfPermission(this, Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {
-                ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.CAMERA}, 1); }}
+                ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.CAMERA}, 1);
+            }
+        }
         if (sp.getInt("restart_changed", 1) == 1) {
-            HelperUnit.triggerRebirth(context); }
+            HelperUnit.triggerRebirth(context);
+        }
         if (sp.getBoolean("pdf_create", false)) {
             sp.edit().putBoolean("pdf_create", false).apply();
-            MaterialAlertDialogBuilder builder = new MaterialAlertDialogBuilder(context);
-            builder.setTitle(R.string.menu_download);
-            builder.setIcon(R.drawable.icon_download);
-            builder.setMessage(R.string.toast_downloadComplete);
-            builder.setPositiveButton(R.string.app_ok, (dialog, whichButton) -> startActivity(new Intent(Intent.createChooser(new Intent(DownloadManager.ACTION_VIEW_DOWNLOADS), null))));
-            builder.setNegativeButton(R.string.app_cancel, (dialog, whichButton) -> dialog.cancel());
-            AlertDialog dialog = builder.create();
-            dialog.show();
-            HelperUnit.setupDialog(context, dialog); }
+            String text = getString(R.string.app_done) + ": " + getString(R.string.menu_download) +"?";
+            NinjaToast.show(context, text);
+        }
         dispatchIntent(getIntent());
     }
 
@@ -1101,7 +1084,7 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
                 if (url.startsWith("data:")) {
                     DataURIParser dataURIParser = new DataURIParser(url);
                     HelperUnit.saveDataURI(activity, dataURIParser, dialog_overflow);
-                } else HelperUnit.saveAs(activity, url, null, dialog_overflow, ninjaWebView);
+                } else HelperUnit.saveAs(activity, url, null, dialog_overflow);
                 dialog_overflow.cancel();
             }
             else if (position == 4) {
@@ -1347,7 +1330,7 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
                     dialog.cancel();
                     break;
                 case 5:
-                    HelperUnit.saveAs(activity,  url, null, dialog, ninjaWebView);
+                    HelperUnit.saveAs(activity,  url, null, dialog);
                     break;
                 case 6:
                     save_atHome(finalTitle, url);

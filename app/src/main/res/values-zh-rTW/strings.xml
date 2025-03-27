@@ -85,8 +85,6 @@
     <string name="data_summary">所有文件都將導出到 SD 卡的“Documents/browser_backup/”目錄。</string>
     <string name="clear_title_quit">離開後清除</string>
     <string name="clear_title_cache">清除快取</string>
-    <string name="clear_title_cookie">清除 Cookies</string>
-    <string name="localData">清除設備上存儲的數據</string>
     <string name="setting_title_ui">行為/介面</string>
     <string name="setting_title_data">備份</string>
     <string name="setting_filter">書籤分類</string>
@@ -130,7 +128,6 @@
     <string name="toast_restart">你必需重啟FOSS瀏覽器以應用變更，現在關閉？</string>
     <string name="toast_quit">是否退出FOSS瀏覽器？</string>
     <string name="toast_quit_TAB">你想关闭TAB吗？</string>
-    <string name="toast_downloadComplete">下載完成。是否開啟檔案管理器？</string>
     <string name="toast_unsecured">此網站使用不安全的連線（http），是否嘗試使用安全連線（https）？</string>
     <string name="toast_backup">是否備份資料？舊的資料將被覆蓋 .</string>
     <string name="dialog_postOnWebsiteHint">要打開的網址。 將被保存以備下次使用。</string>
@@ -151,7 +148,6 @@
     <string name="menu_reload">重新載入</string>
     <string name="menu_restart">重新啟動並重新載入分頁</string>
     <string name="setting_title_screenOn">保持螢幕開啓</string>
-    <string name="setting_title_audioBackground">背景播放</string>
     <string name="app_cancel">取消</string>
     <string name="album_title_history">歷史</string>
     <string name="search_hint">搜索</string>

@@ -94,8 +94,6 @@
     <string name="data_summary">Tüm dosyalar cihazın \"Documents/browser_backup/\" dizinine aktarılacaktır.</string>
     <string name="clear_title_quit">Tarayıcıdan çıkarken temizle</string>
     <string name="clear_title_cache">Önbelleği temizle</string>
-    <string name="clear_title_cookie">Çerezleri temizle</string>
-    <string name="localData">Cihazda depolanan verileri temizle</string>
     <string name="setting_title_ui">Davranış | Kullanıcı arayüzü</string>
     <string name="setting_title_data">Yedekle</string>
     <string name="setting_filter">Yer işareti filtresi</string>
@@ -139,7 +137,6 @@
     <string name="toast_restart">Değişiklikleri uygulamak için \"FOSS Tarayıcı\"sını yeniden başlatmalısınız. Şimdi kapatılsın mı?</string>
     <string name="toast_quit">\"FOSS Tarayıcı\"sından çıkmak istiyor musunuz?</string>
     <string name="toast_quit_TAB">Sekmeyi kapatmak istiyor musunuz?</string>
-    <string name="toast_downloadComplete">İndirme tamamlandı. Dosya yöneticisi açılsın mı?</string>
     <string name="toast_unsecured">Web sitesi güvenli olmayan bir bağlantı (\"http\") kullanıyor. Güvenli bir bağlantı (\"https\") denensin mi?</string>
     <string name="toast_backup">Yedek veri mi\? Bu, mevcut yedeklemenin üzerine yazacaktır.</string>
     <string name="dialog_postOnWebsiteHint">Açılacak URL\'yi seçin. Bir sonraki kullanım için kaydedilecektir.</string>
@@ -160,7 +157,6 @@
     <string name="menu_reload">Yenile</string>
     <string name="menu_restart">Sekmeleri yeniden başlat</string>
     <string name="setting_title_screenOn">Ekranı açık tut</string>
-    <string name="setting_title_audioBackground">Sesi arka planda oynat</string>
     <string name="custom_searches_title">Hızlı arama …</string>
     <string name="app_error_copy">Lütfen metni manuel olarak seçin ve kopyalayın</string>
     <string name="dialog_backGround">Bağlantıları arka planda aç …</string>

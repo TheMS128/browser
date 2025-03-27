@@ -158,7 +158,8 @@ public class Fragment_settings_Backup extends BasePreferenceFragment {
                 }
                 in.close();
                 out.close();
-                NinjaToast.show(activity, activity.getString(R.string.app_done));
+                String text = activity.getString(R.string.app_done) + ": " + activity.getString(R.string.setting_title_data);
+                NinjaToast.show(activity, text);
             }
         } catch (IOException e) {
             Log.i("FOSS Browser", "copyDirectory:" + e);
@@ -195,7 +196,8 @@ public class Fragment_settings_Backup extends BasePreferenceFragment {
                 child = child.getNextSibling();
             }
             editor.apply();
-            NinjaToast.show(context, context.getString(R.string.app_done));
+            String text = context.getString(R.string.app_done) + ": " + context.getString(R.string.settings_data_restore);
+            NinjaToast.show(context, text);
         } catch (IOException | SAXException | ParserConfigurationException e) {
             Log.i("FOSS Browser", "restoreUserPrefs:" + e);
             NinjaToast.show(context, context.getString(R.string.app_error));

@@ -80,7 +80,6 @@ import java.util.Objects;
 import de.baumann.browser.R;
 import de.baumann.browser.activity.BrowserActivity;
 import de.baumann.browser.browser.DataURIParser;
-import de.baumann.browser.browser.JavaScriptInterface;
 import de.baumann.browser.browser.List_standard;
 import de.baumann.browser.view.GridItem;
 import de.baumann.browser.view.NinjaToast;
@@ -138,7 +137,7 @@ public class HelperUnit {
         }
     }
 
-    public static void saveAs(final Activity activity, final String url, final String name, Dialog dialogParent, WebView webView) {
+    public static void saveAs(final Activity activity, final String url, final String name, Dialog dialogParent) {
         if (BackupUnit.checkPermissionStorage(activity)) {
 
             try {
@@ -188,7 +187,8 @@ public class HelperUnit {
                                 fos.write(dataURIParser.getImagedata());
                                 fos.flush();
                                 fos.close();
-                                HelperUnit.openDialogDownloads(activity.getApplicationContext());
+                                String text = activity.getString(R.string.app_done) + ": " + activity.getString(R.string.menu_download) +"?";
+                                NinjaToast.show(activity, text);
                             } else {
                                 DownloadManager.Request request = new DownloadManager.Request(Uri.parse(url));
                                 CookieManager cookieManager = CookieManager.getInstance();
@@ -448,18 +448,6 @@ public class HelperUnit {
      */
     public static int convertDpToPixel(float dp, Context context){
         return Math.round(dp * ((float) context.getResources().getDisplayMetrics().densityDpi / DisplayMetrics.DENSITY_DEFAULT));
-    }
-
-    public static void openDialogDownloads(Context context) {
-        ((Activity) context).runOnUiThread(() -> {
-            MaterialAlertDialogBuilder builder = new MaterialAlertDialogBuilder(context);
-            builder.setMessage(R.string.toast_downloadComplete);
-            builder.setPositiveButton(R.string.app_ok, (dialog, whichButton) -> context.startActivity(new Intent(DownloadManager.ACTION_VIEW_DOWNLOADS)));
-            builder.setNegativeButton(R.string.app_cancel, (dialog, whichButton) -> dialog.cancel());
-            Dialog dialog = builder.create();
-            dialog.show();
-            Objects.requireNonNull(dialog.getWindow()).setGravity(Gravity.BOTTOM);
-        });
     }
 
     public static void print(Context context, NinjaWebView ninjaWebView) {

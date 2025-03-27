@@ -93,8 +93,6 @@
     <string name="data_summary">Tất cả các tệp sẽ được xuất sang thư mục \"Documents / browser_backup /\" của thẻ SD của bạn.</string>
     <string name="clear_title_quit">Xoá khi thoát ứng dụng</string>
     <string name="clear_title_cache">Xóa bộ nhớ đệm</string>
-    <string name="clear_title_cookie">Xóa cookie</string>
-    <string name="localData">Xóa dữ liệu được lưu trữ trên thiết bị</string>
     <string name="setting_title_ui">Hành vi/Giao diện</string>
     <string name="setting_title_data">Sao lưu</string>
     <string name="setting_filter">Bộ lọc dấu trang</string>
@@ -137,7 +135,6 @@
     <string name="toast_restart">Bạn phải khởi động lại \"Trình duyệt FOSS\" để áp dụng các thay đổi. Đóng ngay?</string>
     <string name="toast_quit">Bạn có muốn thoát \"Trình duyệt FOSS\" không?</string>
     <string name="toast_quit_TAB">Bạn có muốn đóng TAB không?</string>
-    <string name="toast_downloadComplete">Tải xuống hoàn tất. Mở trình quản lý tệp?</string>
     <string name="toast_unsecured">Trang web sử dụng kết nối không bảo mật (\"http\"). Thử kết nối bảo mật (\"https\")?</string>
     <string name="toast_backup">Sao lưu dữ liệu\? Việc này sẽ ghi đè lên bản sao lưu cũ.</string>
     <string name="dialog_postOnWebsiteHint">URL để mở. Sẽ được lưu lại để sử dụng lần sau.</string>
@@ -158,7 +155,6 @@
     <string name="menu_reload">Tải lại</string>
     <string name="menu_restart">Khởi động lại và tải lại các tab</string>
     <string name="setting_title_screenOn">Giữ màn hình bật</string>
-    <string name="setting_title_audioBackground">Phát âm thanh trong nền</string>
     <string name="setting_title_clipboard_record">Bản ghi bảng nhớ tạm</string>
     <string name="target">mục tiêu</string>
 </resources>

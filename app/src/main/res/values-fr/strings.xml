@@ -94,8 +94,6 @@
     <string name="data_summary">Tous les fichiers seront exportés vers le répertoire \"Documents/browser_backup/\" de votre carte SD.</string>
     <string name="clear_title_quit">Effacer à la fermeture de l\'application</string>
     <string name="clear_title_cache">Vider le cache</string>
-    <string name="clear_title_cookie">Effacer les cookies</string>
-    <string name="localData">Effacer les données stockées sur l\'appareil</string>
     <string name="setting_title_ui">Comportement/UI</string>
     <string name="setting_title_data">Sauvegarde</string>
     <string name="setting_filter">Filtre de signet</string>
@@ -139,7 +137,6 @@
     <string name="toast_restart">Vous devez redémarrer FOSS Browser pour appliquer les modifications. Fermer maintenant ?</string>
     <string name="toast_quit">Voulez-vous quitter FOSS Browser ?</string>
     <string name="toast_quit_TAB">Voulez-vous fermer l\'onglet ?</string>
-    <string name="toast_downloadComplete">Téléchargement terminé. Ouvrir le gestionnaire de fichiers ?</string>
     <string name="toast_unsecured">Le site Web utilise une connexion non sécurisée (\"http\"). Essayez une connexion sécurisée (\"https\") ?</string>
     <string name="toast_backup">Sauvegarde des données \? Cette opération écrasera la sauvegarde existante.</string>
     <string name="dialog_postOnWebsiteHint">URL à ouvrir. Sera sauvegardé pour la prochaine utilisation.</string>
@@ -160,7 +157,6 @@
     <string name="menu_reload">Recharger</string>
     <string name="menu_restart">Redémarrer et recharger les onglets</string>
     <string name="setting_title_screenOn">Garder l\'écran allumé</string>
-    <string name="setting_title_audioBackground">Jouer l\'audio en arrière-plan</string>
     <string name="custom_searches_title">Recherche rapide sur …</string>
     <string name="app_error_copy">Veuillez sélectionner et copier le texte manuellement</string>
     <string name="dialog_backGround">Ouvrir les liens en arrière-plan …</string>

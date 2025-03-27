@@ -92,8 +92,6 @@
     <string name="data_summary">سيتم تصدير جميع الملفات إلى دليل \"Documents / browser_backup /\" لبطاقة SD الخاصة بك.</string>
     <string name="clear_title_quit">امسح عند خروج التطبيق</string>
     <string name="clear_title_cache">امسح التخزين المؤقت</string>
-    <string name="clear_title_cookie">امسح الكوكيز</string>
-    <string name="localData">مسح البيانات المخزنة على الجهاز</string>
     <string name="setting_title_ui">السلوك/واجهة المستخدم</string>
     <string name="setting_title_data">النسخ الاحتياطي</string>
     <string name="setting_filter">مرشح العلامات</string>
@@ -137,7 +135,6 @@
     <string name="toast_restart">يجب عليك إعادة تشغيل المتصفح الحر\"FOSS Browser\" لتطبيق التغييرات. أغلق الآن؟</string>
     <string name="toast_quit">أتريد إنهاء المتصفح الحر\"FOSS Browser\"؟</string>
     <string name="toast_quit_TAB">أتريد إغلاق التبويب؟</string>
-    <string name="toast_downloadComplete">اكتمل التحميل. أفتح مدير الملفات؟</string>
     <string name="toast_unsecured">يستخدم الموقع اتصالا غير آمن (\"http\"). أجرب اتصالا آمنا (\"https\")؟</string>
     <string name="toast_backup">اعمل نسخا احتياطيا للبيانات؟ هذا سيستبدل النسخ الاحتياطي القديم.</string>
     <string name="dialog_postOnWebsiteHint">الرابط للفتح. سيتم حفظه للاستخدام التالي.</string>
@@ -158,7 +155,6 @@
     <string name="menu_reload">إعادة تحميل</string>
     <string name="menu_restart">إعادة تشغيل وإعادة تحميل علامات التبويب</string>
     <string name="setting_title_screenOn">إبقاء الشاشة مشتغلة</string>
-    <string name="setting_title_audioBackground">شغل الصوت في الخلفية</string>
     <string name="link_you_copied">الرابط الذي نسخته</string>
     <string name="create_new">جديد</string>
     <string name="custom_searches_title">بحث سريع على …</string>

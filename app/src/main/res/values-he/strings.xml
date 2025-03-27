@@ -93,8 +93,6 @@
     <string name="data_summary">כל הקבצים ייוצאו לספריית \"Documents/browser_backup/\" של כרטיס ה-SD שלכם.</string>
     <string name="clear_title_quit">נקה ביציאה מהאפליקציה</string>
     <string name="clear_title_cache">נקה מטמון</string>
-    <string name="clear_title_cookie">נקה קובצי Cookie</string>
-    <string name="localData">נקה את הנתונים המאוחסנים במכשיר</string>
     <string name="setting_title_ui">התנהגות/ממשק משתמש</string>
     <string name="setting_title_data">גיבוי</string>
     <string name="setting_filter">מסנן סימניות</string>
@@ -137,7 +135,6 @@
     <string name="toast_restart">עליך להפעיל מחדש את \"FOSS Browser\" כדי להחיל שינויים. לסגור עכשיו?</string>
     <string name="toast_quit">האם ברצונך לצאת מ\"דפדפן FOSS\"?</string>
     <string name="toast_quit_TAB">האם אתה רוצה לסגור את ה-TAB?</string>
-    <string name="toast_downloadComplete">ההורדה הושלמה. לפתוח את מנהל הקבצים?</string>
     <string name="toast_unsecured">האתר משתמש בחיבור לא מאובטח (\"http\"). האם לנסות חיבור מאובטח (\"https\")?</string>
     <string name="toast_backup">גיבוי נתונים\? פעולה זו תחליף את הגיבוי הישן.</string>
     <string name="dialog_postOnWebsiteHint">כתובת אתר לפתיחה. יישמר לשימוש הבא.</string>
@@ -158,7 +155,6 @@
     <string name="menu_reload">טעינה חמחדש</string>
     <string name="menu_restart">הפעל מחדש וטען מחדש כרטיסיות</string>
     <string name="setting_title_screenOn">השאר מסך דלוק</string>
-    <string name="setting_title_audioBackground">השמעת אודיו ברקע</string>
     <string name="setting_title_clipboard_record">שיא הלוח</string>
     <string name="link_you_copied">קישור שהעתקת</string>
 </resources>

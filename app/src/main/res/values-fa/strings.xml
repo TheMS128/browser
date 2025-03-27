@@ -94,8 +94,6 @@
     <string name="data_summary">همه فایلها به پوشه \"Documents/browser_backup/\" کارت حافظه شما صادر می شوند.</string>
     <string name="clear_title_quit">پاک سازی هنگام خروج از برنامه</string>
     <string name="clear_title_cache">پاک‌سازی حافظه پنهان</string>
-    <string name="clear_title_cookie">پاک سازی کوکی ها</string>
-    <string name="localData">داده های ذخیره شده در دستگاه را پاک کنید</string>
     <string name="setting_title_ui">رفتار/محیط کاربری</string>
     <string name="setting_title_data">پشتیبان گیری</string>
     <string name="setting_filter">جداسازی نشانک ها</string>
@@ -139,7 +137,6 @@
     <string name="toast_restart">جهت اعمال تغییرات نیاز به راه اندازی مجدد \"FOSS Browser\" می باشد،انجام شود؟</string>
     <string name="toast_quit">آیا مایل به خروج از \"FOSS Browser\" هستید؟</string>
     <string name="toast_quit_TAB">می خواهید برگه ها را ببندید؟</string>
-    <string name="toast_downloadComplete">بارگذاری به اتمام رسید، صفحه مدیریت فایل ها باز شود؟</string>
     <string name="toast_unsecured">وبسایت مورد نظر از ارتباط نا امن (http) استفاده می کند.آیامایل به انتقال به نسخه امن (https) وبسایت هستید؟</string>
     <string name="toast_backup">این پشتیبان گیری روی نسخه ی قبلی بازنویسی خواهد شد،در هرحال انجام شود؟</string>
     <string name="dialog_postOnWebsiteHint">آدرس اینترنتی برای باز کردن برای استفاده بعدی ذخیره می شود.</string>
@@ -160,6 +157,5 @@
     <string name="menu_reload">بازخوانی</string>
     <string name="menu_restart">شروع مجدد و بازخوانی برگه ها</string>
     <string name="setting_title_screenOn">روشن نگه داشتن صفحه نمایش</string>
-    <string name="setting_title_audioBackground">پخش صدا در پس زمینه</string>
     <string name="app_never">هرگز</string>
 </resources>

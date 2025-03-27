@@ -94,8 +94,6 @@
     <string name="data_summary">Све датотеке биће извезене у фасцикли \"Documents/browser_backup/\" на СД картици.</string>
     <string name="clear_title_quit">Бриши при затварању</string>
     <string name="clear_title_cache">Очисти кеш</string>
-    <string name="clear_title_cookie">Избриши колачиће</string>
-    <string name="localData">Обришите податке сачуване на уређају</string>
     <string name="setting_title_ui">Понашање/сучеље</string>
     <string name="setting_title_data">Резерва</string>
     <string name="setting_filter">Филтер забелешки</string>
@@ -138,7 +136,6 @@
     <string name="toast_restart">Морате поново покренути „ФОСС претраживач“ да бисте применили промене. Затвори сада?</string>
     <string name="toast_quit">Да ли желите да затворите „ФОСС претраживач“?</string>
     <string name="toast_quit_TAB">Да ли желите да затворите КАРТИЦУ?</string>
-    <string name="toast_downloadComplete">Скидање је завршено. Отворити менаџер датотека?</string>
     <string name="toast_unsecured">Веб страница користи небезбедну везу („хттп“). Зелите ли покушати са безбедном везом („хттпс“)?</string>
     <string name="toast_backup">Сигурносно копирајте податке\? Ово ће преписати стару резервну копију.</string>
     <string name="dialog_postOnWebsiteHint">Урл за отварање. Биће сачуван за следећу употребу.</string>
@@ -159,6 +156,5 @@
     <string name="menu_reload">Освежи</string>
     <string name="menu_restart">Поново покрените и учитајте картице</string>
     <string name="setting_title_screenOn">Држите екран укључен</string>
-    <string name="setting_title_audioBackground">Пустите аудио у позадини</string>
     <string name="setting_title_clipboard_record">запис у међуспремнику</string>
 </resources>

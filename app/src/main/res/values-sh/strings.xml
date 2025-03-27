@@ -91,8 +91,6 @@
     <string name="data_summary">Sve datoteke će biti izvezene u direktorij \"Documents/browser_backup/\" na vašoj SD kartici.</string>
     <string name="clear_title_quit">Očistite pri izlazku iz aplikacije</string>
     <string name="clear_title_cache">Očisti Skladište</string>
-    <string name="clear_title_cookie">Očisti Kekse</string>
-    <string name="localData">Očistite pohranjene podatke na uređaju</string>
     <string name="setting_title_ui">Ponašanje/UI</string>
     <string name="setting_title_data">Sigurnosna kopija</string>
     <string name="setting_filter">Filter za bilješke</string>
@@ -135,7 +133,6 @@
     <string name="toast_restart">Morate ponovo pokrenuti \"FOSS Preglednik\" da biste primijenili promjene. Zatvoriti sada?</string>
     <string name="toast_quit">Da li želite zatvoriti \"FOSS Preglednik\"?</string>
     <string name="toast_quit_TAB">Želite li zatvoriti KARTICU?</string>
-    <string name="toast_downloadComplete">Preuzimanje je završeno. Otvoriti upravitelj datoteka?</string>
     <string name="toast_unsecured">Web stranica koristi nezaštićenu vezu (\"http\"). Želite li isprobati sigurnu vezu (\"https\")?</string>
     <string name="toast_backup">Sigurnosno kopirajte podatke\? Ovo će prepisati staru sigurnosnu kopiju.</string>
     <string name="dialog_postOnWebsiteHint">URL za otvaranje. Biće sačuvan za sljedeću upotrebu.</string>
@@ -156,5 +153,4 @@
     <string name="menu_reload">Osvježi</string>
     <string name="menu_restart">Ponovo pokrenite i učitajte kartice</string>
     <string name="setting_title_screenOn">Držite ekran uključen</string>
-    <string name="setting_title_audioBackground">Pustite audio u pozadini</string>
 </resources>

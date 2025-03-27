@@ -114,8 +114,6 @@
     <string name="data_summary">All files will be saved to the \"Documents/browser_backup/\" directory of your SD-card.</string>
     <string name="clear_title_quit">Clear on exit</string>
     <string name="clear_title_cache">Clear cache</string>
-    <string name="clear_title_cookie">Clear cookies</string>
-    <string name="localData">Clear on device stored data</string>
     <string name="setting_title_ui">Behavior/UI</string>
     <string name="setting_title_data">Backup</string>
     <string name="setting_filter">Bookmark filter</string>
@@ -163,7 +161,6 @@
     <string name="toast_restart">Restart to apply changes?</string>
     <string name="toast_quit">Quit \"FOSS Browser\"?</string>
     <string name="toast_quit_TAB">Close tab?</string>
-    <string name="toast_downloadComplete">Download complete. Open file manager?</string>
     <string name="toast_unsecured">Website uses unsecured connection (\"http\"). Try secure connection (\"https\")?</string>
     <string name="toast_backup">Backup data? This will overwrite existing backup.</string>
     <string name="dialog_postOnWebsiteHint">URL to open. Will be saved for next use.</string>
@@ -184,7 +181,6 @@
     <string name="menu_reload">Reload</string>
     <string name="menu_restart">Restart and reload tabs</string>
     <string name="setting_title_screenOn">Keep screen on</string>
-    <string name="setting_title_audioBackground">Background audio playback</string>
     <string name="app_intro_a">Thanks for using FOSS Browser!</string>
     <string name="app_intro_b">The currently opened website is the WIKI of FOSS Browser. This site is also saved as your first Bookmark. On the WIKI you can find helpful tips and links.</string>
     <string name="app_intro_c">To start browsing just tip on the toolbar. You can search the web for something or enter an url to open.</string>

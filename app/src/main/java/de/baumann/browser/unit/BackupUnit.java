@@ -123,7 +123,8 @@ public class BackupUnit {
             }
             handler.post(() -> {
                 //UI Thread work here
-                NinjaToast.show(context, context.getString(R.string.app_done));
+                String text = context.getString(R.string.app_done) + ": " + context.getString(R.string.setting_title_data);
+                NinjaToast.show(context, text);
             });
         });
     }
@@ -140,7 +141,8 @@ public class BackupUnit {
             }
             handler.post(() -> {
                 //UI Thread work here
-                NinjaToast.show(context, context.getString(R.string.app_done));
+                String text = context.getString(R.string.app_done) + ": " + context.getString(R.string.settings_data_restore);
+                NinjaToast.show(context, text);
             });
         });
     }

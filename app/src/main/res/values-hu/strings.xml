@@ -93,8 +93,6 @@
     <string name="data_summary">Minden fájl exportálódik az SD-kártya \"Documents/browser_backup/\" könyvtárába.</string>
     <string name="clear_title_quit">Törlés az alkalmazás bezárásakor</string>
     <string name="clear_title_cache">Gyorsítótár törlése</string>
-    <string name="clear_title_cookie">Sütik törlése</string>
-    <string name="localData">Törölje az eszközön tárolt adatokat</string>
     <string name="setting_title_ui">Viselkedés/felhasználói felület</string>
     <string name="setting_title_data">Biztonsági másolat</string>
     <string name="setting_filter">Könyvjelző szűrő</string>
@@ -137,7 +135,6 @@
     <string name="toast_restart">A változások alkalmazásához újra kell indítania a \"FOSS Browser\"-t. Bezárja most?</string>
     <string name="toast_quit">Ki akar lépni a \"FOSS Browser\"-ből?</string>
     <string name="toast_quit_TAB">Be akarja zárni a TAB-ot?</string>
-    <string name="toast_downloadComplete">Befejezve a letöltés. Megnyitja a fájlkezelőt?</string>
     <string name="toast_unsecured">A weboldal nem biztonságos kapcsolatot használ (\"http\"). Megpróbálja a biztonságos kapcsolatot (\"https\")?</string>
     <string name="toast_backup">Adatmentés\? Ez felülírja a meglévő biztonsági mentést.</string>
     <string name="dialog_postOnWebsiteHint">URL megnyitásához. A következő használatra el lesz mentve.</string>
@@ -158,7 +155,6 @@
     <string name="menu_reload">Újratöltés</string>
     <string name="menu_restart">Újraindítás és a lapok újratöltése</string>
     <string name="setting_title_screenOn">Kijelző ébrentartása</string>
-    <string name="setting_title_audioBackground">Hang lejátszása a háttérben</string>
     <string name="setting_title_dom">dom tárolás</string>
     <string name="setting_title_clipboard_record">Vágólap rekord</string>
     <string name="custom_searches_title">Gyors keresés a …</string>

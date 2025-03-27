@@ -94,8 +94,6 @@
     <string name="data_summary">Všechny soubory budou exportovány do adresáře „Documents/browser_backup/“ na vaší SD kartě.</string>
     <string name="clear_title_quit">Vymazat při ukončení aplikace</string>
     <string name="clear_title_cache">Vymazat mezipaměť</string>
-    <string name="clear_title_cookie">Vymazat soubory cookie</string>
-    <string name="localData">Vymazat data uložená v zařízení</string>
     <string name="setting_title_ui">Chování/UI</string>
     <string name="setting_title_data">Záloha</string>
     <string name="setting_filter">Filtr záložek</string>
@@ -139,7 +137,6 @@
     <string name="toast_restart">Pro provedení změn musíte restartovat aplikaci „FOSS Browser“. Ukončit nyní?</string>
     <string name="toast_quit">Opravdu chcete ukončit aplikaci „FOSS Browser“?</string>
     <string name="toast_quit_TAB">Chcete zavřít KARTU?</string>
-    <string name="toast_downloadComplete">Stahování dokončeno. Otevřít správce souborů?</string>
     <string name="toast_unsecured">Stránka používá nezabezpečené připojení („http“). Chcete zkusit zabezpečné připojení („https“)?</string>
     <string name="toast_backup">Zálohování dat\? Tím se přepíše stávající záloha.</string>
     <string name="dialog_postOnWebsiteHint">URL pro otevření. Uloží se pro další použití.</string>
@@ -160,7 +157,6 @@
     <string name="menu_reload">Obnovit</string>
     <string name="menu_restart">Restartování a opětovné načtení karet</string>
     <string name="setting_title_screenOn">Nechat obrazovku zapnutou</string>
-    <string name="setting_title_audioBackground">Přehrát zvuk na pozadí</string>
     <string name="custom_searches_title">Rychlé vyhledávání na …</string>
     <string name="app_error_copy">Vyberte a zkopírujte text ručně</string>
     <string name="dialog_backGround">Otevření odkazů na pozadí …</string>

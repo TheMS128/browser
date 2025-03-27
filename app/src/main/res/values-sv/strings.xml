@@ -94,8 +94,6 @@
     <string name="data_summary">Alla filer kommer att exporteras till \"Documents/browser_backup/\" på ditt SD-kort.</string>
     <string name="clear_title_quit">Rensa när appen stängs</string>
     <string name="clear_title_cache">Rensa cache</string>
-    <string name="clear_title_cookie">Rensa cookies</string>
-    <string name="localData">Rensa data lagrad på enheten</string>
     <string name="setting_title_ui">Beteende/UI</string>
     <string name="setting_title_data">Säkerhetskopiering</string>
     <string name="setting_filter">Bokmärkesfilter</string>
@@ -139,7 +137,6 @@
     <string name="toast_restart">Du måste starta om \"FOSS Browser\" för att tillämpa ändringar. Stäng nu?</string>
     <string name="toast_quit">Vill du avsluta \"FOSS Browser\"?</string>
     <string name="toast_quit_TAB">Vill du stänga FLIKEN?</string>
-    <string name="toast_downloadComplete">Hämtning slutförd. Öppna filhanterare?</string>
     <string name="toast_unsecured">Webbplatsen använder en osäker anslutning (\"http\"). Vill du prova en säker anslutning (\"https\")?</string>
     <string name="toast_backup">Säkerhetskopierade data\? Detta kommer att skriva över befintlig säkerhetskopia.</string>
     <string name="dialog_postOnWebsiteHint">URL att öppna. Kommer sparas för nästa användning.</string>
@@ -160,7 +157,6 @@
     <string name="menu_reload">Ladda om</string>
     <string name="menu_restart">Starta om och ladda om flikar</string>
     <string name="setting_title_screenOn">Behåll skärmen på</string>
-    <string name="setting_title_audioBackground">Spela ljud i bakgrunden</string>
     <string name="custom_searches_title">Snabb sökning på …</string>
     <string name="app_error_copy">Vänligen välj och kopiera text manuellt</string>
     <string name="dialog_backGround">Öppna länkar i bakgrunden …</string>
