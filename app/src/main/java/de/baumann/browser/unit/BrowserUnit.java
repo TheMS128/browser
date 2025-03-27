@@ -187,7 +187,7 @@ public class BrowserUnit {
                     request.addRequestHeader("Accept", "text/html, application/xhtml+xml, *" + "/" + "*");
                     request.addRequestHeader("Accept-Language", "en-US,en;q=0.7,he;q=0.3");
                     request.addRequestHeader("Referer", url);
-                    request.setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE);
+                    request.setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE_NOTIFY_COMPLETED);
                     request.setTitle(fileName);
                     request.setMimeType(mimeType);
                     request.setDestinationInExternalPublicDir(Environment.DIRECTORY_DOWNLOADS, fileName);

@@ -2208,10 +2208,11 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
                 break;
             case "02":
                 if (ninjaWebView.canGoForward()) {
+                    ninjaWebView.stopLoading();
                     WebBackForwardList mWebBackForwardList = ninjaWebView.copyBackForwardList();
                     String historyUrl = mWebBackForwardList.getItemAtIndex(mWebBackForwardList.getCurrentIndex() + 1).getUrl();
                     ninjaWebView.initPreferences(historyUrl);
-                    ninjaWebView.goForward();
+                    ninjaWebView.loadUrl(historyUrl);
                 }
                 else NinjaToast.show(this, R.string.toast_webview_forward);
                 break;
