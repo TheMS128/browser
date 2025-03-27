@@ -335,7 +335,6 @@ public class NinjaWebView extends WebView implements AlbumController {
             String historyUrl = mWebBackForwardList.getItemAtIndex(mWebBackForwardList.getCurrentIndex()-1).getUrl();
             initPreferences(historyUrl);
             loadUrl(historyUrl);
-            NinjaToast.show(context, historyUrl);
         }
         super.goBack();
     }
