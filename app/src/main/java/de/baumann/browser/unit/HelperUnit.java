@@ -39,9 +39,6 @@ import android.net.Uri;
 import android.os.Environment;
 import android.os.Handler;
 import android.os.SystemClock;
-import android.print.PrintAttributes;
-import android.print.PrintDocumentAdapter;
-import android.print.PrintManager;
 import android.text.Spannable;
 import android.text.SpannableString;
 import android.text.TextUtils;
@@ -54,7 +51,6 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.webkit.CookieManager;
 import android.webkit.URLUtil;
-import android.webkit.WebView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -448,15 +444,6 @@ public class HelperUnit {
      */
     public static int convertDpToPixel(float dp, Context context){
         return Math.round(dp * ((float) context.getResources().getDisplayMetrics().densityDpi / DisplayMetrics.DENSITY_DEFAULT));
-    }
-
-    public static void print(Context context, NinjaWebView ninjaWebView) {
-        ((Activity) context).runOnUiThread(() -> {
-            String title = HelperUnit.fileName(ninjaWebView.getUrl());
-            PrintManager printManager = (PrintManager) context.getSystemService(Context.PRINT_SERVICE);
-            PrintDocumentAdapter printAdapter = ninjaWebView.createPrintDocumentAdapter(title);
-            Objects.requireNonNull(printManager).print(title, printAdapter, new PrintAttributes.Builder().build());
-        });
     }
 
     public static void setHighLightedText(Context context, TextView tv, String url, String textToHighlight) {
