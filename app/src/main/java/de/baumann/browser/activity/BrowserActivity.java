@@ -2289,6 +2289,13 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
                 sp.edit().putString("profile", "profileStandard").apply();
                 ninjaWebView.reload();
                 break;
+            case "28":
+                sp.edit().putBoolean("redirect", !sp.getBoolean("redirect", false)).apply();
+                ninjaWebView.reload();
+                break;
+            case "29":
+                startActivity(Intent.createChooser(new Intent(DownloadManager.ACTION_VIEW_DOWNLOADS), null));
+                break;
         }
     }
 
