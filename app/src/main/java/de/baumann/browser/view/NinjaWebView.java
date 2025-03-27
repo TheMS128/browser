@@ -16,7 +16,6 @@ import android.util.TypedValue;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.webkit.CookieManager;
-import android.webkit.WebBackForwardList;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.widget.GridView;
@@ -328,17 +327,6 @@ public class NinjaWebView extends WebView implements AlbumController {
         super.reload();
     }
 
-    public synchronized void goBack() {
-        WebBackForwardList mWebBackForwardList = this.copyBackForwardList();
-        if (mWebBackForwardList.getCurrentIndex() > 0) {
-            stopLoading();
-            String historyUrl = mWebBackForwardList.getItemAtIndex(mWebBackForwardList.getCurrentIndex()-1).getUrl();
-            initPreferences(historyUrl);
-            loadUrl(historyUrl);
-        }
-        super.goBack();
-    }
-
     @Override
     public synchronized void reload() {
         stopped = false;
@@ -350,12 +338,14 @@ public class NinjaWebView extends WebView implements AlbumController {
     public synchronized void loadUrl(@NonNull String url) {
 
         browserController.hideSideSheets();
-        favicon = null;
-        stopped = false;
 
         InputMethodManager imm = (InputMethodManager) this.context.getSystemService(Context.INPUT_METHOD_SERVICE);
         imm.hideSoftInputFromWindow(this.getWindowToken(), 0);
+
         String urlToLoad = BrowserUnit.redirectURL( this, sp, url);
+
+        favicon = null;
+        stopped = false;
 
         listStandard = new List_standard(context);
         profile = sp.getString("profile", "profileStandard");
@@ -485,7 +475,6 @@ public class NinjaWebView extends WebView implements AlbumController {
                         super.loadUrl(BrowserUnit.queryWrapper(context, url), getRequestHeaders());
                         break;
                     case 2:
-                        dialog.cancel();
                         sp.edit().putString("dialog_neverAsk", "yes").apply();
                         initPreferences(BrowserUnit.queryWrapper(context, url));
                         super.loadUrl(BrowserUnit.queryWrapper(context, url), getRequestHeaders());

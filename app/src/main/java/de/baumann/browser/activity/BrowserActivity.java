@@ -227,8 +227,7 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
         sp.edit()
                 .putInt("restart_changed", 0)
                 .putBoolean("pdf_create", false)
-                .putString("openBackground_dialog", "show")
-                .putString("dialog_neverAsk", "no").apply();
+                .putString("openBackground_dialog", "show").apply();
 
         switch (Objects.requireNonNull(sp.getString("start_tab", "3"))) {
             case "3":
@@ -2208,11 +2207,10 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
                 break;
             case "02":
                 if (ninjaWebView.canGoForward()) {
-                    ninjaWebView.stopLoading();
                     WebBackForwardList mWebBackForwardList = ninjaWebView.copyBackForwardList();
                     String historyUrl = mWebBackForwardList.getItemAtIndex(mWebBackForwardList.getCurrentIndex() + 1).getUrl();
                     ninjaWebView.initPreferences(historyUrl);
-                    ninjaWebView.loadUrl(historyUrl);
+                    ninjaWebView.goForward();
                 }
                 else NinjaToast.show(this, R.string.toast_webview_forward);
                 break;
