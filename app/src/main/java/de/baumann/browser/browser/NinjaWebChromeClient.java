@@ -40,7 +40,6 @@ public class NinjaWebChromeClient extends WebChromeClient {
         this.ninjaWebView = ninjaWebView;
     }
 
-
     @Override
     public boolean onConsoleMessage(ConsoleMessage consoleMessage) {
         if (consoleMessage.message().contains("NotAllowedError: Write permission denied.")) {  //this error occurs when user copies to clipboard

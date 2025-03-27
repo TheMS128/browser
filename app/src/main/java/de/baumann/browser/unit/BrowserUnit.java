@@ -104,6 +104,11 @@ public class BrowserUnit {
 
     public static String queryWrapper(Context context, String query) {
 
+        if (query.contains(";jsessionid=")) {
+            String tracking = query.substring(query.lastIndexOf(";"));
+            query = query.replace(tracking, "");
+        }
+
         if (isURL(query) || query.isEmpty()) {
             if (query.startsWith(URL_SCHEME_ABOUT) || query.startsWith(URL_SCHEME_MAIL_TO)) {
                 return query;
@@ -305,12 +310,6 @@ public class BrowserUnit {
 
     public static String redirectURL (WebView ninjaWebView, SharedPreferences sp, String url) {
         boolean redirect = sp.getBoolean("redirect", false);
-
-        if (url.contains(";jsessionid=")) {
-            String tracking = url.substring(url.lastIndexOf(";"));
-            url = url.replace(tracking, "");
-        }
-
         if (!redirect) return url;
         try {
             List<CustomRedirect> redirects = CustomRedirectsHelper.getRedirects(sp);

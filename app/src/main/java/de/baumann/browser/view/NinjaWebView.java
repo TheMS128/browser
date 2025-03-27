@@ -338,14 +338,12 @@ public class NinjaWebView extends WebView implements AlbumController {
     public synchronized void loadUrl(@NonNull String url) {
 
         browserController.hideSideSheets();
+        favicon = null;
+        stopped = false;
 
         InputMethodManager imm = (InputMethodManager) this.context.getSystemService(Context.INPUT_METHOD_SERVICE);
         imm.hideSoftInputFromWindow(this.getWindowToken(), 0);
-
         String urlToLoad = BrowserUnit.redirectURL( this, sp, url);
-
-        favicon = null;
-        stopped = false;
 
         listStandard = new List_standard(context);
         profile = sp.getString("profile", "profileStandard");
@@ -377,10 +375,10 @@ public class NinjaWebView extends WebView implements AlbumController {
                 builderTrack.setTitle(urlToLoad);
                 builderTrack.setIcon(R.drawable.icon_tracking);
                 builderTrack.setMessage(m);
-                builderTrack.setPositiveButton(R.string.app_cancel, (dialog2, whichButton) -> dialog2.cancel());
                 builderTrack.setView(dialogView);
                 AlertDialog dialogTrack = builderTrack.create();
                 dialogTrack.show();
+                dialogTrack.setCancelable(false);
                 HelperUnit.setupDialog(context, dialogTrack);
 
                 GridView menu_grid = dialogView.findViewById(R.id.menu_grid);
@@ -447,11 +445,11 @@ public class NinjaWebView extends WebView implements AlbumController {
             builder.setTitle(HelperUnit.domain(url));
             builder.setIcon(R.drawable.icon_unsecure);
             builder.setMessage(R.string.toast_unsecured);
-            builder.setPositiveButton(R.string.app_cancel, (dialog2, whichButton) -> dialog2.cancel());
             builder.setView(dialogView);
 
             AlertDialog dialog = builder.create();
             dialog.show();
+            dialog.setCancelable(false);
             HelperUnit.setupDialog(context, dialog);
 
             GridView menu_grid = dialogView.findViewById(R.id.menu_grid);
@@ -475,6 +473,7 @@ public class NinjaWebView extends WebView implements AlbumController {
                         super.loadUrl(BrowserUnit.queryWrapper(context, url), getRequestHeaders());
                         break;
                     case 2:
+                        dialog.cancel();
                         sp.edit().putString("dialog_neverAsk", "yes").apply();
                         initPreferences(BrowserUnit.queryWrapper(context, url));
                         super.loadUrl(BrowserUnit.queryWrapper(context, url), getRequestHeaders());
