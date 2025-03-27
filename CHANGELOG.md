@@ -13,6 +13,7 @@ With this release is possible to save settings separate for each website. There 
 - fix: Opening URL using window.open() uses default browser instead of Foss Browser #1165
 - fix: Input box blocked by the keyboard in the screen #1207
 - fix: Themed Icon Missing #1157
+- fix: custom search, when containing "#"
 - updated: WIKI
 - updated: layout
 - updated: settings

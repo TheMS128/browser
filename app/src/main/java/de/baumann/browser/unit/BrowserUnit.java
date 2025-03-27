@@ -117,6 +117,7 @@ public class BrowserUnit {
             String customSearchEngine = sp.getString("sp_search_engine_custom", "");
             String customSearches = sp.getString("sp_search_customSearches", "");
             query = query.replace("&", "%26");
+            query = query.replace("#", "");
             //Override UserAgent if own UserAgent is defined
             if (!sp.contains("searchEngineSwitch")) {
                 //if new switch_text_preference has never been used initialize the switch
