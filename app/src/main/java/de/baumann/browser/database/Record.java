@@ -5,8 +5,6 @@ import de.baumann.browser.unit.HelperUnit;
 public class Record {
 
     private final int ordinal;
-    private Boolean isDesktopMode;
-    private Boolean isNightMode;
     private long iconColor;
     private String title;
     private String url;
@@ -17,7 +15,6 @@ public class Record {
         this.url = null;
         this.time = 0L;
         this.ordinal = -1;
-        this.isDesktopMode = null;
         this.iconColor = 0L;
     }
 
