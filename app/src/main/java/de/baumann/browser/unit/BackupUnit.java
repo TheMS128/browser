@@ -234,8 +234,6 @@ public class BackupUnit {
                 record.setTitle(title);
                 record.setURL(url);
                 record.setIconColor(1);
-                record.setDesktopMode(false);
-                record.setNightMode(false);
 
                 if (!action.checkUrl(url, RecordUnit.TABLE_BOOKMARK)) list.add(record);}
             reader.close();

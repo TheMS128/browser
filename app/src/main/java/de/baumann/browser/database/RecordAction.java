@@ -76,9 +76,6 @@ public class RecordAction {
                 null,
                 sortBy + " COLLATE NOCASE;"
         );
-        if (cursor == null) {
-            return list;
-        }
         cursor.moveToFirst();
         while (!cursor.isAfterLast()) {
             list.add(getRecord(cursor, STARTSITE_ITEM));
@@ -129,9 +126,6 @@ public class RecordAction {
                 null,
                 sortBy + " COLLATE NOCASE;"
         );
-        if (cursor == null) {
-            return list;
-        }
         cursor.moveToFirst();
         while (!cursor.isAfterLast()) {
             if (filter) {
@@ -227,12 +221,9 @@ public class RecordAction {
                 null,
                 null
         );
-        if (cursor != null) {
-            boolean result = cursor.moveToFirst();
-            cursor.close();
-            return result;
-        }
-        return false;
+        boolean result = cursor.moveToFirst();
+        cursor.close();
+        return result;
     }
 
     public void deleteDomain(String domain, String table) {
@@ -253,9 +244,6 @@ public class RecordAction {
                 null,
                 RecordUnit.COLUMN_DOMAIN
         );
-        if (cursor == null) {
-            return list;
-        }
         cursor.moveToFirst();
         while (!cursor.isAfterLast()) {
             list.add(cursor.getString(0));
@@ -278,13 +266,10 @@ public class RecordAction {
                 null,
                 null
         );
-        if (cursor != null) {
-            boolean result = cursor.moveToFirst();
-            cursor.close();
+        boolean result = cursor.moveToFirst();
+        cursor.close();
 
-            return result;
-        }
-        return false;
+        return result;
     }
 
     public void deleteURL(String domain, String table) {

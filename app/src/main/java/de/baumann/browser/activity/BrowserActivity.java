@@ -862,6 +862,7 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
         bottomSheetDialog_searchOnSite = new BottomSheetDialog(context);
         bottomSheetDialog_searchOnSite.setContentView(R.layout.sheet_search_site);
         bottomSheetDialog_searchOnSite.setCancelable(false);
+        Objects.requireNonNull(bottomSheetDialog_searchOnSite.getWindow()).clearFlags(WindowManager.LayoutParams.FLAG_DIM_BEHIND);
 
         searchBox = bottomSheetDialog_searchOnSite.findViewById(R.id.searchBox_input);
         Button searchUp = bottomSheetDialog_searchOnSite.findViewById(R.id.searchBox_up);
@@ -2207,6 +2208,7 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
                 break;
             case "02":
                 if (ninjaWebView.canGoForward()) {
+                    ninjaWebView.stopLoading();
                     WebBackForwardList mWebBackForwardList = ninjaWebView.copyBackForwardList();
                     String historyUrl = mWebBackForwardList.getItemAtIndex(mWebBackForwardList.getCurrentIndex() + 1).getUrl();
                     ninjaWebView.initPreferences(historyUrl);

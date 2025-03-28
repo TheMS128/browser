@@ -108,7 +108,7 @@ public class FaviconHelper extends SQLiteOpenHelper {
                 new String[]{domain}, null, null, null, null);
         byte[] image;
 
-        if (cursor != null && cursor.moveToFirst()) {
+        if (cursor.moveToFirst()) {
             image = cursor.getBlob(1);
             cursor.close();
             database.close();

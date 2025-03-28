@@ -8,8 +8,6 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 
-import android.widget.Button;
-import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ListView;
 
@@ -36,7 +34,6 @@ import de.baumann.browser.view.AdapterProfileList;
 
 public class Settings_ProfileList extends AppCompatActivity {
 
-    private AdapterProfileList adapter;
     private List<String> list;
     private List_standard listStandard;
 
@@ -60,7 +57,7 @@ public class Settings_ProfileList extends AppCompatActivity {
         listView.setEmptyView(findViewById(R.id.whitelist_empty));
 
         //noinspection NullableProblems
-        adapter = new AdapterProfileList(this, list) {
+        AdapterProfileList adapter = new AdapterProfileList(this, list) {
             @Override
             public View getView(final int position, View convertView, @NonNull ViewGroup parent) {
                 View v = super.getView(position, convertView, parent);
@@ -109,29 +106,6 @@ public class Settings_ProfileList extends AppCompatActivity {
         };
         listView.setAdapter(adapter);
         adapter.notifyDataSetChanged();
-
-        Button button = findViewById(R.id.profileListAdd);
-        button.setOnClickListener(v -> {
-            EditText editText = findViewById(R.id.whitelist_edit);
-            String domain = editText.getText().toString().trim();
-            if (domain.isEmpty()) {
-                NinjaToast.show(Settings_ProfileList.this, R.string.toast_input_empty);
-            } else if (!BrowserUnit.isURL(domain)) {
-                NinjaToast.show(Settings_ProfileList.this, R.string.toast_invalid_domain);
-            } else {
-                RecordAction action1 = new RecordAction(Settings_ProfileList.this);
-                action1.open(true);
-                if (action1.checkDomain(domain, RecordUnit.TABLE_PROTECTED)) {
-                    NinjaToast.show(Settings_ProfileList.this, R.string.toast_domain_already_exists);
-                } else {
-                    listStandard.addDomain(domain.trim());
-                    list.add(0, domain.trim());
-                    adapter.notifyDataSetChanged();
-                    NinjaToast.show(Settings_ProfileList.this, R.string.toast_add_whitelist_successful);
-                }
-                action1.close();
-            }
-        });
     }
 
     @Override

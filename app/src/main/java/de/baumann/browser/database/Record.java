@@ -37,22 +37,6 @@ public class Record {
         this.iconColor = iconColor;
     }
 
-    public Boolean getDesktopMode() {
-        return isDesktopMode;
-    }
-
-    public void setDesktopMode(Boolean desktopMode) {
-        isDesktopMode = desktopMode;
-    }
-
-    public Boolean getNightMode() {
-        return isNightMode;
-    }
-
-    public void setNightMode(Boolean desktopMode) {
-        isNightMode = desktopMode;
-    }
-
     public String getTitle() {
         return title;
     }
