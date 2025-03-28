@@ -426,7 +426,6 @@ public class NinjaWebView extends WebView implements AlbumController {
                             MaterialAlertDialogBuilder builder = new MaterialAlertDialogBuilder(context);
                             builder.setTitle(context.getString(R.string.menu_edit));
                             builder.setIcon(R.drawable.icon_tracking);
-                            builder.setNegativeButton(R.string.app_cancel, null);
                             builder.setPositiveButton(R.string.app_ok, (dialog, i) -> {
                                 dialog.dismiss();
                                 String newValue = Objects.requireNonNull(input.getText()).toString();
@@ -436,6 +435,7 @@ public class NinjaWebView extends WebView implements AlbumController {
                             builder.setView(dialogEdit);
                             Dialog dialog = builder.create();
                             dialog.show();
+                            dialog.setCancelable(false);
                             HelperUnit.setupDialog(context, dialog);
                             break;
                     }
