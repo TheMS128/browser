@@ -298,6 +298,8 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
         initOmniBox();
         initSearchPanel();
         initOverview();
+
+
         dispatchIntent(getIntent());
 
         //restore open Tabs from shared preferences if app got killed
@@ -320,7 +322,15 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
         if (BrowserContainer.size() < 1) {
             addAlbum(getString(R.string.app_name), sp.getString("favoriteURL", "https://codeberg.org/Gaukler_Faun/FOSS_Browser/wiki"), true);
         }
-        if (sp.getBoolean("start_tabStart", false)) showOverview();
+        if (sp.getBoolean("start_tabStart", false) && !Objects.equals(ninjaWebView.getUrl(), "about:blank")) {
+            showOverview();
+        }
+
+        if (sp.getBoolean("start_tabStart", false) &&
+                (sp.getString("favoriteURL", "https://codeberg.org/Gaukler_Faun/FOSS_Browser/wiki").isEmpty() ||
+                sp.getString("favoriteURL", "https://codeberg.org/Gaukler_Faun/FOSS_Browser/wiki").equals("about:blank"))) {
+            showOverview();
+        }
     }
 
     @Override
@@ -824,9 +834,6 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
 
     @SuppressLint({"UnsafeOptInUsageError"})
     private void updateOmniBox() {
-        if (Objects.equals(ninjaWebView.getUrl(), "about:blank")) {
-            ninjaWebView.stopLoading();
-        }
         if (overViewTab.equals(getString(R.string.album_title_bookmarks))) {
             try {
                 RecordAction action = new RecordAction(context);
@@ -1890,6 +1897,10 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
 
     private void showDialogCustomSearches(String url) {
 
+        if (dialogOverview.isShowing()) {
+            dialogOverview.cancel();
+        }
+
         if (!url.isEmpty()) {
             ninjaWebView.stopLoading();
             MaterialAlertDialogBuilder builder = new MaterialAlertDialogBuilder(context);
@@ -1932,9 +1943,17 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
                 dialogCustomSearchesNew.show();
                 HelperUnit.setupDialog(context, dialogCustomSearchesNew);
             }));
+            builder.setNegativeButton(R.string.app_cancel, ((dialogInterface, i) -> {
+                if (Objects.equals(ninjaWebView.getUrl(), "about:blank")) {
+                    ninjaWebView.loadUrl(sp.getString("favoriteURL", "https://codeberg.org/Gaukler_Faun/FOSS_Browser/wiki"));
+                } else {
+                    dialogCustomSearches.cancel();
+                }
+            }));
             builder.setView(dialogView);
             dialogCustomSearches = builder.create();
             dialogCustomSearches.show();
+            dialogCustomSearches.setCancelable(false);
             HelperUnit.setupDialog(context, dialogCustomSearches);
         } else {
             NinjaToast.show(this, R.string.toast_input_empty);
