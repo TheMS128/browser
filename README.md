@@ -12,6 +12,10 @@ __[README](https://codeberg.org/Gaukler_Faun/FOSS_Browser/src/branch/master/READ
 
 ----
 
+FOSS Browser is an Android application to browse through the internet. It uses the Android webview to render websites and has no advanced render engine like  normal  browsers.
+
+----
+
 ### Privacy
 
 FOSS Browser can save settings fot each domain to protect your privacy. For each domain you can enable or disable: AdBlock, JavaScript, cookies, fingerprint protection and much more. For non saved domains you can edit a standard profile to your needs.
