@@ -86,7 +86,7 @@ public class Fragment_settings_Backup extends BasePreferenceFragment {
                     BackupUnit.requestPermission(activity);
                 } else {
                     if (sp.getBoolean("database", false)) {
-                        copyDirectory(activity, backupDB, sourceDB);
+                        copyDirectory(backupDB, sourceDB);
                     }
                     if (sp.getBoolean("settings", false)) {
                         restoreUserPrefs(context);
@@ -118,12 +118,12 @@ public class Fragment_settings_Backup extends BasePreferenceFragment {
         } else {
             BackupUnit.makeBackupDir();
             if (sp.getBoolean("database", false)) {
-                copyDirectory(activity, sourceDB, backupDB);
+                copyDirectory(sourceDB, backupDB);
             }
             if (sp.getBoolean("settings", false)) {
                 final File prefsFile = new File(activity.getFilesDir(), "../shared_prefs/" + activity.getPackageName() + "_preferences.xml");
                 final File backupFile = new File(sd, "browser_backup/preferenceBackup.xml");
-                copyDirectory(activity, prefsFile, backupFile);
+                copyDirectory(prefsFile, backupFile);
                 BackupUnit.backupData(activity, 3);
             }
             if (sp.getBoolean("bookmark_simple", false)) {
@@ -132,7 +132,7 @@ public class Fragment_settings_Backup extends BasePreferenceFragment {
         }
     }
 
-    public static void copyDirectory(Activity activity, File sourceLocation, File targetLocation) {
+    public static void copyDirectory(File sourceLocation, File targetLocation) {
         try {
             if (sourceLocation.isDirectory()) {
                 if (!targetLocation.exists() && !targetLocation.mkdirs()) {
@@ -140,7 +140,7 @@ public class Fragment_settings_Backup extends BasePreferenceFragment {
                 }
                 String[] children = sourceLocation.list();
                 for (String aChildren : Objects.requireNonNull(children)) {
-                    copyDirectory(activity, new File(sourceLocation, aChildren), new File(targetLocation, aChildren));
+                    copyDirectory( new File(sourceLocation, aChildren), new File(targetLocation, aChildren));
                 }
             } else {
                 // make sure the directory we plan to store the recording in exists
@@ -158,8 +158,6 @@ public class Fragment_settings_Backup extends BasePreferenceFragment {
                 }
                 in.close();
                 out.close();
-                String text = activity.getString(R.string.app_done) + ": " + activity.getString(R.string.setting_title_data);
-                NinjaToast.show(activity, text);
             }
         } catch (IOException e) {
             Log.i("FOSS Browser", "copyDirectory:" + e);
@@ -196,8 +194,6 @@ public class Fragment_settings_Backup extends BasePreferenceFragment {
                 child = child.getNextSibling();
             }
             editor.apply();
-            String text = context.getString(R.string.app_done) + ": " + context.getString(R.string.settings_data_restore);
-            NinjaToast.show(context, text);
         } catch (IOException | SAXException | ParserConfigurationException e) {
             Log.i("FOSS Browser", "restoreUserPrefs:" + e);
             NinjaToast.show(context, context.getString(R.string.app_error));

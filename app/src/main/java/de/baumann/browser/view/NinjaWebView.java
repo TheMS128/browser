@@ -350,6 +350,7 @@ public class NinjaWebView extends WebView implements AlbumController {
     @Override
     public synchronized void loadUrl(@NonNull String url) {
 
+        stopLoading();
         browserController.hideSideSheets();
 
         InputMethodManager imm = (InputMethodManager) this.context.getSystemService(Context.INPUT_METHOD_SERVICE);
@@ -366,7 +367,7 @@ public class NinjaWebView extends WebView implements AlbumController {
 
         boolean removeTracking = sp.getBoolean(profile + "_trackingULS", true);
         if (removeTracking && urlToLoad.contains("?") && urlToLoad.contains("/")) {
-            stopLoading();
+
             String lastIndex = urlToLoad.substring(urlToLoad.lastIndexOf("/"));
             String tracking = urlToLoad.substring(urlToLoad.lastIndexOf("?"));
             String urlClean = urlToLoad.replace(tracking, "");
@@ -444,7 +445,6 @@ public class NinjaWebView extends WebView implements AlbumController {
 
         } else if (url.startsWith("http://") && sp.getString("dialog_neverAsk", "no").equals("no")) {
 
-            stopLoading();
             GridItem item_01 = new GridItem("https://", R.drawable.icon_secure);
             GridItem item_02 = new GridItem( "http://", R.drawable.icon_unsecure);
             GridItem item_03 = new GridItem( context.getString(R.string.app_never), R.drawable.icon_close);
@@ -582,13 +582,16 @@ public class NinjaWebView extends WebView implements AlbumController {
         FaviconHelper faviconHelper = new FaviconHelper(context);
         RecordAction action = new RecordAction(context);
         action.open(false);
-        List<Record> list;
-        list = action.listEntries((Activity) context);
+        //List<Record> list;
+        //list = action.listEntries((Activity) context);
         action.close();
-        for (Record listItem : list) {
-            if (listItem.getURL().equals(getUrl()) && faviconHelper.getFavicon(listItem.getURL()) == null)
-                faviconHelper.addFavicon(this.context, getUrl(), getFavicon());
-        }
+//        for (Record listItem : list) {
+//            if (listItem.getURL().equals(getUrl()) && faviconHelper.getFavicon(listItem.getURL()) == null){
+//                faviconHelper.addFavicon(this.context, getUrl(), getFavicon());
+//            }
+//        }
+
+        faviconHelper.addFavicon(this.context, getUrl(), getFavicon());
     }
 
     public void setStopped(boolean stopped) {

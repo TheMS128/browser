@@ -227,6 +227,7 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
         sp.edit()
                 .putInt("restart_changed", 0)
                 .putBoolean("pdf_create", false)
+                .putBoolean("show_overview", true)
                 .putString("openBackground_dialog", "show").apply();
 
         switch (Objects.requireNonNull(sp.getString("start_tab", "3"))) {
@@ -322,13 +323,7 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
         if (BrowserContainer.size() < 1) {
             addAlbum(getString(R.string.app_name), sp.getString("favoriteURL", "https://codeberg.org/Gaukler_Faun/FOSS_Browser/wiki"), true);
         }
-        if (sp.getBoolean("start_tabStart", false) && !Objects.equals(ninjaWebView.getUrl(), "about:blank")) {
-            showOverview();
-        }
-
-        if (sp.getBoolean("start_tabStart", false) &&
-                (sp.getString("favoriteURL", "https://codeberg.org/Gaukler_Faun/FOSS_Browser/wiki").isEmpty() ||
-                sp.getString("favoriteURL", "https://codeberg.org/Gaukler_Faun/FOSS_Browser/wiki").equals("about:blank"))) {
+        if (sp.getBoolean("start_tabStart", false) && sp.getBoolean("show_overview", true)) {
             showOverview();
         }
     }
@@ -1920,6 +1915,11 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
             builder.setTitle(url);
             builder.setIcon(R.drawable.icon_custom_searches);
             builder.setPositiveButton(R.string.create_new, ((dialogInterface, i) -> {
+                if (Objects.equals(ninjaWebView.getUrl(), "about:blank")) {
+                    ninjaWebView.loadUrl(sp.getString("favoriteURL", "https://codeberg.org/Gaukler_Faun/FOSS_Browser/wiki"));
+                } else {
+                    dialogCustomSearches.cancel();
+                }
                 MaterialAlertDialogBuilder builderAddCustom = new MaterialAlertDialogBuilder(context);
                 View dialogViewAddCustom = View.inflate(context, R.layout.create_new_searches, null);
                 TextInputEditText source = dialogViewAddCustom.findViewById(R.id.source);
@@ -2346,13 +2346,16 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
             filePathCallback = null;
             getIntent().setAction("");
         } else if (Intent.ACTION_VIEW.equals(action)) {
+            sp.edit().putBoolean("show_overview", false).apply();
             getIntent().setAction("");
             addAlbum(null, Objects.requireNonNull(getIntent().getData()).toString(), true);
             BrowserUnit.openInBackground(activity, ninjaWebView);
         } else if ("postLink".equals(action)) {
+            sp.edit().putBoolean("show_overview", false).apply();
             getIntent().setAction("");
             postLink(url, null);
         } else if ("customSearches".equals(action)) {
+            sp.edit().putBoolean("show_overview", false).apply();
             getIntent().setAction("");
             if (BrowserContainer.size() == 0) {
                 addAlbum(null, "", true);
@@ -2360,16 +2363,19 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
             assert url != null;
             showDialogCustomSearches(url);
         } else if (intent.getAction() != null && intent.getAction().equals(Intent.ACTION_PROCESS_TEXT)) {
+            sp.edit().putBoolean("show_overview", false).apply();
             getIntent().setAction("");
             CharSequence text = getIntent().getCharSequenceExtra(Intent.EXTRA_PROCESS_TEXT);
             assert text != null;
             url = text.toString();
             addAlbum(null, url, true);
         } else if (intent.getAction() != null && intent.getAction().equals(Intent.ACTION_WEB_SEARCH)) {
+            sp.edit().putBoolean("show_overview", false).apply();
             getIntent().setAction("");
             url = Objects.requireNonNull(intent.getStringExtra(SearchManager.QUERY));
             addAlbum(null, url, true);
         } else if (url != null && Intent.ACTION_SEND.equals(action)) {
+            sp.edit().putBoolean("show_overview", false).apply();
             getIntent().setAction("");
             addAlbum(null, url, true);
         }

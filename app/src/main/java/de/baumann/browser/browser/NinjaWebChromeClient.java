@@ -136,7 +136,8 @@ public class NinjaWebChromeClient extends WebChromeClient {
             } else if (PermissionRequest.RESOURCE_PROTECTED_MEDIA_ID.equals(resource)) {
                 if (sp.getBoolean("sp_drm", true)) {
                     request.grant(request.getResources());
-                } else {MaterialAlertDialogBuilder builder = new MaterialAlertDialogBuilder(ninjaWebView.getContext());
+                } else {
+                    MaterialAlertDialogBuilder builder = new MaterialAlertDialogBuilder(ninjaWebView.getContext());
                     builder.setIcon(R.drawable.icon_alert);
                     builder.setTitle(R.string.app_warning);
                     builder.setMessage(R.string.hint_DRM_Media);
