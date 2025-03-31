@@ -1,6 +1,6 @@
-"FOSS Browser" ist ein komplett freier (wie in Freiheit), quelloffener Browser für Android: datenschutzfreundlich mit einer modernen Benutzeroberfläche. Your privacy - your data.
+"FOSS Browser" is a fully free (as in freedom) open source Android browser: privacy-friendly with a modern user interface. - Your privacy - your data.
 
-<b>Projektseite mit weiteren Informationen: https://codeberg.org/Gaukler_Faun/FOSS_Browser</b>
+<b>Project Homepage with further info: https://codeberg.org/Gaukler_Faun/FOSS_Browser</b>
 
 
 -------------------------------------------------
@@ -11,11 +11,9 @@ FOSS Browser uses the latest Material You design libraries. Following system day
 
 More features:
 
-• Play audio on background.
 • Keep screen on.
 • Open links in background.
 • Restore tabs on restart.
-
 
 -------------------------------------------------
 <b>Privacy</b>
@@ -26,7 +24,7 @@ FOSS Browser uses profiles to protect your privacy. For each profile you can ena
 More privacy features:
 
 • Build in AdBlock, which updates automatically. You can decide which content to block. AdBlock hosts are taken from Steven Black - AbBlock hosts: https://github.com/StevenBlack/hosts.
-• Third-part-cookies can not be enabled.
+• Third-part-cookies can not be disabled.
 • Enable or disable Android-autofill.
 • Delete browser data (on app exit).
 • Choose between different search engines (or set a custom one).

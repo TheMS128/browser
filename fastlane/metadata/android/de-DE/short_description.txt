@@ -1,1 +1,1 @@
-"FOSS Browser": ein komplett freier (wie in Freiheit) Browser der deine Privatsphäre schützt.
+"FOSS Browser" ist ein komplett freier (wie in Freiheit) Android-Browser.

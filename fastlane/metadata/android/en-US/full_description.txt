@@ -11,11 +11,9 @@ FOSS Browser uses the latest Material You design libraries. Following system day
 
 More features:
 
-• Play audio on background.
 • Keep screen on.
 • Open links in background.
 • Restore tabs on restart.
-
 
 -------------------------------------------------
 <b>Privacy</b>
@@ -26,7 +24,7 @@ FOSS Browser uses profiles to protect your privacy. For each profile you can ena
 More privacy features:
 
 • Build in AdBlock, which updates automatically. You can decide which content to block. AdBlock hosts are taken from Steven Black - AbBlock hosts: https://github.com/StevenBlack/hosts.
-• Third-part-cookies can not be enabled.
+• Third-part-cookies can not be disabled.
 • Enable or disable Android-autofill.
 • Delete browser data (on app exit).
 • Choose between different search engines (or set a custom one).

@@ -15,6 +15,7 @@ With this release is possible to save settings separate for each website. There 
 - fix: Input box blocked by the keyboard in the screen #1207
 - fix: Themed Icon Missing #1157
 - fix: custom search, when containing "#"
+- fix: Update Screenshots On F-Droid #1214
 - updated: WIKI
 - updated: layout
 - updated: settings
