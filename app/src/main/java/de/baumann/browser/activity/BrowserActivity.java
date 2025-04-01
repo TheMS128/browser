@@ -1274,6 +1274,14 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
         builder.setView(dialogView);
         AlertDialog dialog = builder.create();
         dialog.show();
+
+        FloatingActionButton buttonProfile = dialogView.findViewById(R.id.buttonProfile);
+        ninjaWebView.setProfileIcon(buttonProfile, omniBox_tab, url);
+        buttonProfile.setOnClickListener(v -> {
+            sp.edit().putString("profile", "profileStandard").apply();
+            ninjaWebView.setProfileIcon(buttonProfile, omniBox_tab, url);
+            dialog.cancel();
+        });
         HelperUnit.setupDialog(context, dialog);
 
         GridItem tabOpen = new GridItem( getString(R.string.main_menu_new_tabOpen), R.drawable.icon_tab_plus);
@@ -1381,6 +1389,14 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
         builder.setView(dialogView);
         AlertDialog dialog = builder.create();
         dialog.show();
+
+        FloatingActionButton buttonProfile = dialogView.findViewById(R.id.buttonProfile);
+        ninjaWebView.setProfileIcon(buttonProfile, omniBox_tab, url);
+        buttonProfile.setOnClickListener(v -> {
+            sp.edit().putString("profile", "profileStandard").apply();
+            ninjaWebView.setProfileIcon(buttonProfile, omniBox_tab, url);
+            dialog.cancel();
+        });
         HelperUnit.setupDialog(context, dialog);
 
         GridItem tabOpen = new GridItem( getString(R.string.main_menu_new_tabOpen), R.drawable.icon_tab_plus);
@@ -1586,22 +1602,14 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
             ninjaWebView.setProfileIcon(buttonProfile, omniBox_tab, url);
             buttonProfile.setOnClickListener(v -> {
                 sp.edit().putString("profile", "profileStandard").apply();
-                ninjaWebView.reload();
+                if (!listStandard.isWhite(url)) {
+                    ninjaWebView.reload();
+                }
                 dialogFastToggle.cancel();
             });
 
             Button ib_save = dialogViewFastToggle.findViewById(R.id.ib_save);
             Button ib_delete = dialogViewFastToggle.findViewById(R.id.ib_delete);
-
-            if (listStandard.isWhite(url)) {
-                ib_save.setVisibility(GONE);
-                buttonProfile.setVisibility(GONE);
-                ib_delete.setVisibility(VISIBLE);
-            } else {
-                ib_save.setVisibility(VISIBLE);
-                buttonProfile.setVisibility(VISIBLE);
-                ib_delete.setVisibility(GONE);
-            }
 
             CheckBox checkbox_image = dialogViewFastToggle.findViewById(R.id.checkbox_image);
             checkbox_image.setChecked(sp.getBoolean(profile + "_images", false));

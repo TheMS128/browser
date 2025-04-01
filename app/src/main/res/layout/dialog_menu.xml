@@ -17,10 +17,11 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="15dp"
         android:layout_marginEnd="15dp"
-        android:layout_marginTop="15dp" >
+        android:layout_marginTop="15dp"
+        android:layout_marginBottom="5dp" >
 
         <RelativeLayout
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content">
 
             <com.google.android.material.card.MaterialCardView
@@ -44,16 +45,17 @@
             </com.google.android.material.card.MaterialCardView>
 
             <LinearLayout
-                android:id="@+id/textGroup"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="10dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginEnd="10dp"
-                android:layout_marginBottom="10dp"
-                android:layout_toEndOf="@id/cardView"
+                android:id="@+id/textGroup"
+                android:orientation="vertical"
                 android:gravity="center_vertical"
-                android:orientation="vertical">
+                android:layout_marginBottom="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="5dp"
+                android:layout_toStartOf="@+id/buttonProfile"
+                android:layout_toEndOf="@id/cardView">
 
                 <TextView
                     android:id="@+id/menuTitle"
@@ -64,7 +66,7 @@
                     android:includeFontPadding="false"
                     android:maxLines="1"
                     android:textAppearance="?attr/textAppearanceBodyLarge"
-                    android:textStyle="bold" />
+                    android:textStyle="bold"/>
 
                 <TextView
                     android:id="@+id/menuURL"
@@ -74,9 +76,23 @@
                     android:includeFontPadding="false"
                     android:maxLines="1"
                     android:textAppearance="?attr/textAppearanceBodySmall"
-                    android:textColor="?attr/colorOutline" />
+                    android:textColor="?attr/colorOutline"/>
 
             </LinearLayout>
+
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/buttonProfile"
+                style="@style/Widget.Material3.Button.IconButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:layout_marginEnd="3dp"
+                app:icon="@drawable/icon_settings"
+                app:fabCustomSize="40dp"
+                app:elevation="0dp"
+                android:backgroundTint="?attr/colorSurfaceDim"
+                android:layout_alignParentEnd="true"
+                android:src="@drawable/icon_settings" />
 
         </RelativeLayout>
 
