@@ -10,6 +10,7 @@ import android.net.http.SslError;
 import android.os.Message;
 import android.text.InputType;
 import android.view.View;
+import android.webkit.CookieManager;
 import android.webkit.HttpAuthHandler;
 import android.webkit.RenderProcessGoneDetail;
 import android.webkit.SslErrorHandler;
@@ -68,6 +69,7 @@ public class NinjaWebViewClient extends WebViewClient {
 
         if (ninjaWebView.isForeground()) ninjaWebView.invalidate();
         else ninjaWebView.postInvalidate();
+        CookieManager.getInstance().flush();
 
         if (sp.getBoolean("onPageFinished", false))
             view.evaluateJavascript(Objects.requireNonNull(sp.getString("sp_onPageFinished", "")), null);
