@@ -1605,6 +1605,7 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
                 if (!listStandard.isWhite(url)) {
                     ninjaWebView.reload();
                 }
+                ninjaWebView.setProfileIcon(buttonProfile, omniBox_tab, url);
                 dialogFastToggle.cancel();
             });
 
