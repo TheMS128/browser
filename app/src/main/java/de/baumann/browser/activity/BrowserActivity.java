@@ -205,11 +205,6 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
         }
     }
 
-    @Override
-    public void onPause() {
-        super.onPause();
-    }
-
     @SuppressLint("UnspecifiedRegisterReceiverFlag")
     @Override
     public void onCreate(Bundle savedInstanceState) {
