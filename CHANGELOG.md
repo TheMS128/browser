@@ -1,4 +1,4 @@
-### v 19 WIP
+### v 19 Henry David Thoreau
 
 With this release is possible to save settings separate for each website. There will be only one standard profile. No more switching between different profiles. If you do not like this, please do not install the next updates. More infos will be released soon on the procect website: https://codeberg.org/Gaukler_Faun/FOSS_Browser.
 

@@ -240,8 +240,6 @@ public class NinjaWebView extends WebView implements AlbumController {
         theme.resolveAttribute(R.attr.colorError, typedValue, true);
         int color = typedValue.data;
         if (listStandard.isWhite(url)) {
-            one.setImageResource(R.drawable.icon_profile_changed);
-            two.setImageResource(R.drawable.icon_profile_changed);
             one.getDrawable().mutate().setTint(color);
             two.getDrawable().mutate().setTint(color);
         }
