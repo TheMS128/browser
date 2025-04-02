@@ -1,6 +1,7 @@
-### v 19 Henry David Thoreau
+### v 19.1 Henry David Thoreau
 
-With this release, it is possible to save settings separate for each website. There will be only one standard profile. No more switching between different profiles. If you do not like this, please do not install the next updates. Look at the WIKI for more Infos: https://codeberg.org/Gaukler_Faun/FOSS_Browser/wiki
+With this release, it is possible to save settings separate for each website. Look at the WIKI for more Infos: https://codeberg.org/Gaukler_Faun/FOSS_Browser/wiki
+
 - new: save settings per website
 - new: Error-dialog, when downloading Blob-files
 - new: gestures -> toggle redirects, switch to standard profile, open downloads
