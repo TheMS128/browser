@@ -40,7 +40,6 @@ public class NinjaWebChromeClient extends WebChromeClient {
         this.ninjaWebView = ninjaWebView;
     }
 
-
     @Override
     public boolean onConsoleMessage(ConsoleMessage consoleMessage) {
         if (consoleMessage.message().contains("NotAllowedError: Write permission denied.")) {  //this error occurs when user copies to clipboard
@@ -57,7 +56,7 @@ public class NinjaWebChromeClient extends WebChromeClient {
         String title = ninjaWebView.getTitle();
         ninjaWebView.updateTitle(progress);
         assert title != null;
-        if (title.isEmpty()) ninjaWebView.updateTitle(url, url);
+        if (title.isEmpty()) ninjaWebView.updateTitle(HelperUnit.domain(url), url);
         else ninjaWebView.updateTitle(title,url);
     }
 
@@ -72,7 +71,6 @@ public class NinjaWebChromeClient extends WebChromeClient {
         newWebView.setWebViewClient(new WebViewClient() {
             @Override
             public boolean shouldOverrideUrlLoading(WebView view, WebResourceRequest request) {
-                //newWebView.loadUrl(request.getUrl().toString());
                 try {
                     BrowserUnit.intentURL(context, request.getUrl());
                 } catch (Exception e) {

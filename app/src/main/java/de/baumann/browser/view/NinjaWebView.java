@@ -124,17 +124,16 @@ public class NinjaWebView extends WebView implements AlbumController {
     @SuppressLint({"SetJavaScriptEnabled", "JavascriptInterface"})
     public synchronized void initPreferences(String url) {
 
-        sp = PreferenceManager.getDefaultSharedPreferences(context);
-        profile = sp.getString("profile", "profileStandard");
-        String profileOriginal = profile;
         WebSettings webSettings = getSettings();
-
         webSettings.setDefaultTextEncodingName("utf-8");
         webSettings.setSafeBrowsingEnabled(true);
         webSettings.setSupportZoom(true);
         webSettings.setBuiltInZoomControls(true);
         webSettings.setDisplayZoomControls(false);
         webSettings.setSupportMultipleWindows(true);
+        webSettings.setAllowFileAccess(true);
+        webSettings.setAllowFileAccessFromFileURLs(true);
+        webSettings.setAllowUniversalAccessFromFileURLs(true);
         webSettings.setTextZoom(Integer.parseInt(Objects.requireNonNull(sp.getString("sp_fontSize", "100"))));
 
         if (sp.getBoolean("sp_autofill", true)) {
@@ -142,6 +141,9 @@ public class NinjaWebView extends WebView implements AlbumController {
         } else {
             this.setImportantForAutofill(View.IMPORTANT_FOR_AUTOFILL_NO);
         }
+
+        profile = sp.getString("profile", "profileStandard");
+        String profileOriginal = profile;
 
         if (listStandard.isWhite(url)) {
             profile = HelperUnit.domain(url);
@@ -197,10 +199,6 @@ public class NinjaWebView extends WebView implements AlbumController {
         webSettings.setJavaScriptEnabled(sp.getBoolean(profile + "_javascript", true));
         webSettings.setJavaScriptCanOpenWindowsAutomatically(sp.getBoolean(profile + "_javascriptPopUp", false));
         webSettings.setDomStorageEnabled(sp.getBoolean(profile + "_dom", false));
-
-        webSettings.setAllowFileAccess(true);
-        webSettings.setAllowFileAccessFromFileURLs(true);
-        webSettings.setAllowUniversalAccessFromFileURLs(true);
 
         fingerPrintProtection = sp.getBoolean(profile + "_fingerPrintProtection", true);
         history = sp.getBoolean(profile + "_saveHistory", true);
@@ -347,9 +345,7 @@ public class NinjaWebView extends WebView implements AlbumController {
     @Override
     public synchronized void loadUrl(@NonNull String url) {
 
-        stopLoading();
         browserController.hideSideSheets();
-
         InputMethodManager imm = (InputMethodManager) this.context.getSystemService(Context.INPUT_METHOD_SERVICE);
         imm.hideSoftInputFromWindow(this.getWindowToken(), 0);
 
@@ -575,19 +571,10 @@ public class NinjaWebView extends WebView implements AlbumController {
 
     public void setFavicon(Bitmap favicon) {
         this.favicon = favicon;
-        //Save faviconView for existing bookmarks or start site entries
         FaviconHelper faviconHelper = new FaviconHelper(context);
         RecordAction action = new RecordAction(context);
         action.open(false);
-        //List<Record> list;
-        //list = action.listEntries((Activity) context);
         action.close();
-//        for (Record listItem : list) {
-//            if (listItem.getURL().equals(getUrl()) && faviconHelper.getFavicon(listItem.getURL()) == null){
-//                faviconHelper.addFavicon(this.context, getUrl(), getFavicon());
-//            }
-//        }
-
         faviconHelper.addFavicon(this.context, getUrl(), getFavicon());
     }
 
