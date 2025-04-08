@@ -1,6 +1,7 @@
 ### v 20 (WIP)
 
 - new: disable webview diagnostic data
+- new: set render priority to high
 
 
 ### v 19.1 Henry David Thoreau

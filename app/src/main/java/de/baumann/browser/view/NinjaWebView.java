@@ -124,6 +124,7 @@ public class NinjaWebView extends WebView implements AlbumController {
     @SuppressLint({"SetJavaScriptEnabled", "JavascriptInterface"})
     public synchronized void initPreferences(String url) {
 
+        this.setRendererPriorityPolicy(RENDERER_PRIORITY_IMPORTANT, true);
         WebSettings webSettings = getSettings();
         webSettings.setDefaultTextEncodingName("utf-8");
         webSettings.setSafeBrowsingEnabled(true);
