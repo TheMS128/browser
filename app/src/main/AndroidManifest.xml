@@ -37,6 +37,10 @@
         tools:ignore="GoogleAppIndexingWarning"
         tools:targetApi="s">
 
+        <meta-data
+            android:name="android.webkit.WebView.MetricsOptOut"
+            android:value="true" />
+
         <!-- BrowserActivity -->
         <activity
             android:name="de.baumann.browser.activity.BrowserActivity"

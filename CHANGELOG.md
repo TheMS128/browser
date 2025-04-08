@@ -1,3 +1,8 @@
+### v 20 (WIP)
+
+- new: disable webview diagnostic data
+
+
 ### v 19.1 Henry David Thoreau
 
 With this release, it is possible to save settings separate for each website. Look at the WIKI for more Infos: https://codeberg.org/Gaukler_Faun/FOSS_Browser/wiki
