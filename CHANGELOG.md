@@ -2,6 +2,7 @@
 
 - new: disable webview diagnostic data
 - new: set render priority to high
+- fix: third Party Cookies
 
 
 ### v 19.1 Henry David Thoreau
