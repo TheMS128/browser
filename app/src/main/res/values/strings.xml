@@ -97,7 +97,7 @@
     <string name="target">Target</string>
     <string name="setting_title_save_data">Request \'Save data\'</string>
     <string name="setting_title_profiles_standard">Standard</string>
-    <string name="setting_title_profiles_standard_always">Switch to standard profile for new links and tabs.</string>
+    <string name="setting_title_profiles_standard_always">Switch to standard profile for new domains and tabs.</string>
     <string name="setting_title_profiles_dataUsage">Data usage</string>
     <string name="setting_title_profiles_privacy">Privacy</string>
     <string name="setting_title_profiles_Security">Security</string>

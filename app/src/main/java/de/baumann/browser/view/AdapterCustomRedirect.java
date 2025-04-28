@@ -55,8 +55,6 @@ public class AdapterCustomRedirect extends RecyclerView.Adapter<RedirectsViewHol
         edit.setVisibility(View.VISIBLE);
 
         remove.setVisibility(VISIBLE);
-        CardView cardView = holder.itemView.findViewById(R.id.cardView);
-        //cardView.setVisibility(View.GONE);
         source.setText(current.getSource());
         target.setText(current.getTarget());
 
