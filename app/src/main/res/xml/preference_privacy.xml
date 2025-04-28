@@ -13,6 +13,12 @@
         android:title="@string/setting_title_savedWebSites" />
 
     <CheckBoxPreference
+        android:title="@string/setting_title_profiles_standard_always"
+        android:icon="@drawable/icon_profile_standard"
+        android:defaultValue="true"
+        android:key="sp_standard_always" />
+
+    <CheckBoxPreference
         android:title="@string/setting_title_clipboard_record"
         android:icon="@drawable/icon_clipboard"
         android:defaultValue="false"

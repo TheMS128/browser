@@ -2,6 +2,8 @@
 
 - new: disable webview diagnostic data
 - new: set render priority to high
+- new: enabling/disabling switching always to standard profile
+- fix: removed unused code
 - fix: third Party Cookies
 
 

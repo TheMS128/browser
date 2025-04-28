@@ -1615,6 +1615,13 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
                 ib_delete.setVisibility(GONE);
             }
 
+            CheckBox checkbox_reset = dialogViewFastToggle.findViewById(R.id.checkbox_reset);
+            checkbox_reset.setChecked(sp.getBoolean("sp_standard_always", true));
+            checkbox_reset.setOnClickListener(v -> {
+                sp.edit().putBoolean("sp_standard_always", checkbox_reset.isChecked()).apply();
+                checkbox_reset.setChecked(sp.getBoolean("sp_standard_always", true));
+            });
+
             CheckBox checkbox_image = dialogViewFastToggle.findViewById(R.id.checkbox_image);
             checkbox_image.setChecked(sp.getBoolean(profile + "_images", false));
             checkbox_image.setOnClickListener(v -> {
@@ -1622,7 +1629,7 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
                 String profileToSave = sp.getString("profile", "profileStandard");
                 sp.edit().putBoolean(profileToSave + "_images", checkbox_image.isChecked()).apply();
                 ninjaWebView.setProfileIcon(buttonProfile, omniBox_tab, url);
-                if (listStandard.isWhite(url)) {
+                if (listStandard.isWhite(url) && sp.getBoolean("sp_standard_always", true)) {
                     sp.edit().putString("profile", "profileStandard").apply();
                     ninjaWebView.setProfileIcon(buttonProfile, omniBox_tab, url);
                 }
@@ -1635,7 +1642,7 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
                 String profileToSave = sp.getString("profile", "profileStandard");
                 sp.edit().putBoolean(profileToSave + "_javascript", checkbox_java.isChecked()).apply();
                 ninjaWebView.setProfileIcon(buttonProfile, omniBox_tab, url);
-                if (listStandard.isWhite(url)) {
+                if (listStandard.isWhite(url) && sp.getBoolean("sp_standard_always", true)) {
                     sp.edit().putString("profile", "profileStandard").apply();
                     ninjaWebView.setProfileIcon(buttonProfile, omniBox_tab, url);
                 }
@@ -1648,7 +1655,7 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
                 String profileToSave = sp.getString("profile", "profileStandard");
                 sp.edit().putBoolean(profileToSave + "_javascriptPopUp", checkbox_javaPopUp.isChecked()).apply();
                 ninjaWebView.setProfileIcon(buttonProfile, omniBox_tab, url);
-                if (listStandard.isWhite(url)) {
+                if (listStandard.isWhite(url) && sp.getBoolean("sp_standard_always", true)) {
                     sp.edit().putString("profile", "profileStandard").apply();
                     ninjaWebView.setProfileIcon(buttonProfile, omniBox_tab, url);
                 }
@@ -1661,7 +1668,7 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
                 String profileToSave = sp.getString("profile", "profileStandard");
                 sp.edit().putBoolean(profileToSave + "_cookies", checkbox_cookies.isChecked()).apply();
                 ninjaWebView.setProfileIcon(buttonProfile, omniBox_tab, url);
-                if (listStandard.isWhite(url)) {
+                if (listStandard.isWhite(url) && sp.getBoolean("sp_standard_always", true)) {
                     sp.edit().putString("profile", "profileStandard").apply();
                     ninjaWebView.setProfileIcon(buttonProfile, omniBox_tab, url);
                 }
@@ -1674,7 +1681,7 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
                 String profileToSave = sp.getString("profile", "profileStandard");
                 sp.edit().putBoolean(profileToSave + "_cookiesThirdParty", checkbox_cookiesThirdParty.isChecked()).apply();
                 ninjaWebView.setProfileIcon(buttonProfile, omniBox_tab, url);
-                if (listStandard.isWhite(url)) {
+                if (listStandard.isWhite(url) && sp.getBoolean("sp_standard_always", true)) {
                     sp.edit().putString("profile", "profileStandard").apply();
                     ninjaWebView.setProfileIcon(buttonProfile, omniBox_tab, url);
                 }
@@ -1687,7 +1694,7 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
                 String profileToSave = sp.getString("profile", "profileStandard");
                 sp.edit().putBoolean(profileToSave + "_deny_cookie_banners", checkbox_cookiesBanner.isChecked()).apply();
                 ninjaWebView.setProfileIcon(buttonProfile, omniBox_tab, url);
-                if (listStandard.isWhite(url)) {
+                if (listStandard.isWhite(url) && sp.getBoolean("sp_standard_always", true)) {
                     sp.edit().putString("profile", "profileStandard").apply();
                     ninjaWebView.setProfileIcon(buttonProfile, omniBox_tab, url);
                 }
@@ -1700,7 +1707,7 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
                 String profileToSave = sp.getString("profile", "profileStandard");
                 sp.edit().putBoolean(profileToSave + "_fingerPrintProtection", checkbox_fingerPrint.isChecked()).apply();
                 ninjaWebView.setProfileIcon(buttonProfile, omniBox_tab, url);
-                if (listStandard.isWhite(url)) {
+                if (listStandard.isWhite(url) && sp.getBoolean("sp_standard_always", true)) {
                     sp.edit().putString("profile", "profileStandard").apply();
                     ninjaWebView.setProfileIcon(buttonProfile, omniBox_tab, url);
                 }
@@ -1713,7 +1720,7 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
                 String profileToSave = sp.getString("profile", "profileStandard");
                 sp.edit().putBoolean(profileToSave + "_adBlock", checkbox_adBlock.isChecked()).apply();
                 ninjaWebView.setProfileIcon(buttonProfile, omniBox_tab, url);
-                if (listStandard.isWhite(url)) {
+                if (listStandard.isWhite(url) && sp.getBoolean("sp_standard_always", true)) {
                     sp.edit().putString("profile", "profileStandard").apply();
                     ninjaWebView.setProfileIcon(buttonProfile, omniBox_tab, url);
                 }
@@ -1726,7 +1733,7 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
                 String profileToSave = sp.getString("profile", "profileStandard");
                 sp.edit().putBoolean(profileToSave + "_trackingULS", checkbox_trackingURL.isChecked()).apply();
                 ninjaWebView.setProfileIcon(buttonProfile, omniBox_tab, url);
-                if (listStandard.isWhite(url)) {
+                if (listStandard.isWhite(url) && sp.getBoolean("sp_standard_always", true)) {
                     sp.edit().putString("profile", "profileStandard").apply();
                     ninjaWebView.setProfileIcon(buttonProfile, omniBox_tab, url);
                 }
@@ -1739,7 +1746,7 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
                 String profileToSave = sp.getString("profile", "profileStandard");
                 sp.edit().putBoolean(profileToSave + "_saveData", checkbox_saveData.isChecked()).apply();
                 ninjaWebView.setProfileIcon(buttonProfile, omniBox_tab, url);
-                if (listStandard.isWhite(url)) {
+                if (listStandard.isWhite(url) && sp.getBoolean("sp_standard_always", true)) {
                     sp.edit().putString("profile", "profileStandard").apply();
                     ninjaWebView.setProfileIcon(buttonProfile, omniBox_tab, url);
                 }
@@ -1752,7 +1759,7 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
                 String profileToSave = sp.getString("profile", "profileStandard");
                 sp.edit().putBoolean(profileToSave + "_saveHistory", checkbox_history.isChecked()).apply();
                 ninjaWebView.setProfileIcon(buttonProfile, omniBox_tab, url);
-                if (listStandard.isWhite(url)) {
+                if (listStandard.isWhite(url) && sp.getBoolean("sp_standard_always", true)) {
                     sp.edit().putString("profile", "profileStandard").apply();
                     ninjaWebView.setProfileIcon(buttonProfile, omniBox_tab, url);
                 }
@@ -1765,7 +1772,7 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
                 String profileToSave = sp.getString("profile", "profileStandard");
                 sp.edit().putBoolean(profileToSave + "_location", checkbox_location.isChecked()).apply();
                 ninjaWebView.setProfileIcon(buttonProfile, omniBox_tab, url);
-                if (listStandard.isWhite(url)) {
+                if (listStandard.isWhite(url) && sp.getBoolean("sp_standard_always", true)) {
                     sp.edit().putString("profile", "profileStandard").apply();
                     ninjaWebView.setProfileIcon(buttonProfile, omniBox_tab, url);
                 }
@@ -1778,7 +1785,7 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
                 String profileToSave = sp.getString("profile", "profileStandard");
                 sp.edit().putBoolean(profileToSave + "_microphone", checkbox_mic.isChecked()).apply();
                 ninjaWebView.setProfileIcon(buttonProfile, omniBox_tab, url);
-                if (listStandard.isWhite(url)) {
+                if (listStandard.isWhite(url) && sp.getBoolean("sp_standard_always", true)) {
                     sp.edit().putString("profile", "profileStandard").apply();
                     ninjaWebView.setProfileIcon(buttonProfile, omniBox_tab, url);
                 }
@@ -1791,7 +1798,7 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
                 String profileToSave = sp.getString("profile", "profileStandard");
                 sp.edit().putBoolean(profileToSave + "_camera", checkbox_camera.isChecked()).apply();
                 ninjaWebView.setProfileIcon(buttonProfile, omniBox_tab, url);
-                if (listStandard.isWhite(url)) {
+                if (listStandard.isWhite(url) && sp.getBoolean("sp_standard_always", true)) {
                     sp.edit().putString("profile", "profileStandard").apply();
                     ninjaWebView.setProfileIcon(buttonProfile, omniBox_tab, url);
                 }
@@ -1804,7 +1811,7 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
                 String profileToSave = sp.getString("profile", "profileStandard");
                 sp.edit().putBoolean(profileToSave + "_dom", checkbox_dom.isChecked()).apply();
                 ninjaWebView.setProfileIcon(buttonProfile, omniBox_tab, url);
-                if (listStandard.isWhite(url)) {
+                if (listStandard.isWhite(url) && sp.getBoolean("sp_standard_always", true)) {
                     sp.edit().putString("profile", "profileStandard").apply();
                     ninjaWebView.setProfileIcon(buttonProfile, omniBox_tab, url);
                 }
@@ -1825,7 +1832,7 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
                     String profileToSave = sp.getString("profile", "profileStandard");
                     sp.edit().putBoolean(profileToSave + "_night", checkbox_nightView.isChecked()).apply();
                     ninjaWebView.setProfileIcon(buttonProfile, omniBox_tab, url);
-                    if (listStandard.isWhite(url)) {
+                    if (listStandard.isWhite(url) && sp.getBoolean("sp_standard_always", true)) {
                         sp.edit().putString("profile", "profileStandard").apply();
                         ninjaWebView.setProfileIcon(buttonProfile, omniBox_tab, url);
                     }
@@ -1839,7 +1846,7 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
                 String profileToSave = sp.getString("profile", "profileStandard");
                 sp.edit().putBoolean(profileToSave + "_desktop", checkbox_desktop.isChecked()).apply();
                 ninjaWebView.setProfileIcon(buttonProfile, omniBox_tab, url);
-                if (listStandard.isWhite(url)) {
+                if (listStandard.isWhite(url) && sp.getBoolean("sp_standard_always", true)) {
                     sp.edit().putString("profile", "profileStandard").apply();
                     ninjaWebView.setProfileIcon(buttonProfile, omniBox_tab, url);
                 }
@@ -1867,8 +1874,11 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
                         .putBoolean(profileToSave + "_microphone", checkbox_mic.isChecked())
                         .putBoolean(profileToSave + "_dom", checkbox_dom.isChecked())
                         .putBoolean(profileToSave + "_night", checkbox_nightView.isChecked())
-                        .putBoolean(profileToSave + "_desktop", checkbox_desktop.isChecked())
-                        .putString("profile", "profileStandard").apply();
+                        .putBoolean(profileToSave + "_desktop", checkbox_desktop.isChecked()).apply();
+                if (sp.getBoolean("sp_standard_always", true)) {
+                    sp.edit().putString("profile", "profileStandard").apply();
+                    ninjaWebView.setProfileIcon(buttonProfile, omniBox_tab, url);
+                }
                 ninjaWebView.setProfileIcon(buttonProfile,omniBox_tab, url);
                 dialogFastToggle.cancel();
                 ninjaWebView.reload();
@@ -1895,7 +1905,10 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
                         .remove(profileToSave + "_dom")
                         .remove(profileToSave + "_night")
                         .remove(profileToSave + "_desktop").apply();
-                sp.edit().putString("profile", "profileStandard").apply();
+                if (sp.getBoolean("sp_standard_always", true)) {
+                    sp.edit().putString("profile", "profileStandard").apply();
+                    ninjaWebView.setProfileIcon(buttonProfile, omniBox_tab, url);
+                }
                 ninjaWebView.setProfileIcon(buttonProfile, omniBox_tab, url);
                 dialogFastToggle.cancel();
                 ninjaWebView.reload();
@@ -2532,7 +2545,6 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
     }
 
     private synchronized void addAlbum(String title, final String url, final boolean foreground) {
-        sp.edit().putString("profile", "profileStandard").apply();
         setWebView(title, url, foreground);
     }
 }

@@ -178,8 +178,7 @@ public class NinjaWebView extends WebView implements AlbumController {
         }
 
         String ownUserAgent = sp.getString("sp_userAgent", "");
-        if (!ownUserAgent.isEmpty() && (sp.getBoolean("userAgentSwitch", false)))
-            mobileUserAgent = ownUserAgent;
+        if (!ownUserAgent.isEmpty() && (sp.getBoolean("userAgentSwitch", false))) mobileUserAgent = ownUserAgent;
 
         if (sp.getBoolean(profile + "_desktop", false)) {
             webSettings.setUserAgentString(desktopUserAgent);
@@ -349,8 +348,13 @@ public class NinjaWebView extends WebView implements AlbumController {
         browserController.hideSideSheets();
         InputMethodManager imm = (InputMethodManager) this.context.getSystemService(Context.INPUT_METHOD_SERVICE);
         imm.hideSoftInputFromWindow(this.getWindowToken(), 0);
-
         String urlToLoad = BrowserUnit.redirectURL( this, sp, url);
+
+        if (!Objects.equals(HelperUnit.domain(this.getUrl()), HelperUnit.domain(urlToLoad)) && sp.getBoolean("sp_standard_always", true)) {
+            sp.edit().putString("profile", "profileStandard").apply();
+        }
+
+
 
         favicon = null;
         stopped = false;

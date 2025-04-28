@@ -1,5 +1,7 @@
 package de.baumann.browser.view;
 
+import static android.view.View.VISIBLE;
+
 import android.app.Dialog;
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -39,20 +41,22 @@ public class AdapterCustomRedirect extends RecyclerView.Adapter<RedirectsViewHol
     @NonNull
     @Override
     public RedirectsViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.custom_searches_row, parent, false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_list, parent, false);
         return new RedirectsViewHolder(view);
     }
 
     @Override
     public void onBindViewHolder(@NonNull RedirectsViewHolder holder, int position) {
         CustomRedirect current = redirects.get(position);
-        TextView source = holder.itemView.findViewById(R.id.redirect_source);
-        TextView target = holder.itemView.findViewById(R.id.redirect_target);
-        ImageView remove = holder.itemView.findViewById(R.id.remove_redirect);
-        ImageView edit = holder.itemView.findViewById(R.id.edit_redirect);
+        TextView source = holder.itemView.findViewById(R.id.titleView);
+        TextView target = holder.itemView.findViewById(R.id.dateView);
+        ImageView remove = holder.itemView.findViewById(R.id.iconView);
+        ImageView edit = holder.itemView.findViewById(R.id.faviconView);
         edit.setVisibility(View.VISIBLE);
+
+        remove.setVisibility(VISIBLE);
         CardView cardView = holder.itemView.findViewById(R.id.cardView);
-        cardView.setVisibility(View.GONE);
+        //cardView.setVisibility(View.GONE);
         source.setText(current.getSource());
         target.setText(current.getTarget());
 
