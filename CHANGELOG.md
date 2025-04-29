@@ -2,7 +2,8 @@
 
 - new: disable webview diagnostic data
 - new: set render priority to high
-- new: enabling/disabling switching always to standard profile
+- new: enabling/disabling switching always to standard profile (also in in FastToggleDialog)
+- new: enabling/disabling redirects in FastToggleDialog
 - fix: removed unused code
 - fix: third Party Cookies
 

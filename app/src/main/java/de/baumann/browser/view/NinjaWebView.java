@@ -348,13 +348,17 @@ public class NinjaWebView extends WebView implements AlbumController {
         browserController.hideSideSheets();
         InputMethodManager imm = (InputMethodManager) this.context.getSystemService(Context.INPUT_METHOD_SERVICE);
         imm.hideSoftInputFromWindow(this.getWindowToken(), 0);
+
+        if (url.contains(";jsessionid=")) {
+            String tracking = url.substring(url.lastIndexOf(";"));
+            url = url.replace(tracking, "");
+        }
+
         String urlToLoad = BrowserUnit.redirectURL( this, sp, url);
 
         if (!Objects.equals(HelperUnit.domain(this.getUrl()), HelperUnit.domain(urlToLoad)) && sp.getBoolean("sp_standard_always", true)) {
             sp.edit().putString("profile", "profileStandard").apply();
         }
-
-
 
         favicon = null;
         stopped = false;
@@ -363,8 +367,7 @@ public class NinjaWebView extends WebView implements AlbumController {
         profile = sp.getString("profile", "profileStandard");
         if (listStandard.isWhite(url)) profile = HelperUnit.domain(urlToLoad);
 
-        boolean removeTracking = sp.getBoolean(profile + "_trackingULS", true);
-        if (removeTracking && urlToLoad.contains("?") && urlToLoad.contains("/")) {
+        if (sp.getBoolean(profile + "_trackingULS", true) && urlToLoad.contains("?") && urlToLoad.contains("/")) {
 
             String lastIndex = urlToLoad.substring(urlToLoad.lastIndexOf("/"));
             String tracking = urlToLoad.substring(urlToLoad.lastIndexOf("?"));
@@ -412,7 +415,7 @@ public class NinjaWebView extends WebView implements AlbumController {
                             break;
                         case 1:
                             dialogTrack.cancel();
-                            initPreferences(BrowserUnit.queryWrapper(context, urlClean));
+                            initPreferences(BrowserUnit.queryWrapper(context, urlToLoad));
                             super.loadUrl(BrowserUnit.queryWrapper(context, urlToLoad), getRequestHeaders());
                             break;
                         case 2:
@@ -454,6 +457,7 @@ public class NinjaWebView extends WebView implements AlbumController {
             albumCardView.setVisibility(GONE);
 
             String secure = url.replace("http://", "https://");
+            String unSecure = url;
 
             builder.setTitle(HelperUnit.domain(url));
             builder.setIcon(R.drawable.icon_unsecure);
@@ -482,13 +486,13 @@ public class NinjaWebView extends WebView implements AlbumController {
                         break;
                     case 1:
                         dialog.cancel();
-                        initPreferences(BrowserUnit.queryWrapper(context, url));
-                        super.loadUrl(BrowserUnit.queryWrapper(context, url), getRequestHeaders());
+                        initPreferences(BrowserUnit.queryWrapper(context, unSecure));
+                        super.loadUrl(BrowserUnit.queryWrapper(context, unSecure), getRequestHeaders());
                         break;
                     case 2:
                         sp.edit().putString("dialog_neverAsk", "yes").apply();
-                        initPreferences(BrowserUnit.queryWrapper(context, url));
-                        super.loadUrl(BrowserUnit.queryWrapper(context, url), getRequestHeaders());
+                        initPreferences(BrowserUnit.queryWrapper(context, unSecure));
+                        super.loadUrl(BrowserUnit.queryWrapper(context, unSecure), getRequestHeaders());
                         break;
                 }
             });

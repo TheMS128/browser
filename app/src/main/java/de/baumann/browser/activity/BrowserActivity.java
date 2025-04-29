@@ -1622,6 +1622,13 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
                 checkbox_reset.setChecked(sp.getBoolean("sp_standard_always", true));
             });
 
+            CheckBox checkbox_redirect = dialogViewFastToggle.findViewById(R.id.checkbox_redirect);
+            checkbox_redirect.setChecked(sp.getBoolean("redirect", true));
+            checkbox_redirect.setOnClickListener(v -> {
+                sp.edit().putBoolean("redirect", checkbox_redirect.isChecked()).apply();
+                checkbox_redirect.setChecked(sp.getBoolean("redirect", true));
+            });
+
             CheckBox checkbox_image = dialogViewFastToggle.findViewById(R.id.checkbox_image);
             checkbox_image.setChecked(sp.getBoolean(profile + "_images", false));
             checkbox_image.setOnClickListener(v -> {

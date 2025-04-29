@@ -309,14 +309,7 @@ public class BrowserUnit {
     }
 
     public static String redirectURL (WebView ninjaWebView, SharedPreferences sp, String url) {
-        boolean redirect = sp.getBoolean("redirect", false);
-
-        if (url.contains(";jsessionid=")) {
-            String tracking = url.substring(url.lastIndexOf(";"));
-            url = url.replace(tracking, "");
-        }
-
-        if (!redirect) return url;
+        if (!sp.getBoolean("redirect", false)) return url;
         try {
             List<CustomRedirect> redirects = CustomRedirectsHelper.getRedirects(sp);
             for (int i = 0; i < redirects.size(); i++) {
