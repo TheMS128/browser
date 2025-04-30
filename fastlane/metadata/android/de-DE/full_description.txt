@@ -1,52 +1,46 @@
-"FOSS Browser" is a fully free (as in freedom) open source Android browser: privacy-friendly with a modern user interface. - Your privacy - your data.
-
-<b>Project Homepage with further info: https://codeberg.org/Gaukler_Faun/FOSS_Browser</b>
-
-
--------------------------------------------------
-<b>UI/Handling</b>
--------------------------------------------------
-
-FOSS Browser uses the latest Material You design libraries. Following system day/night mode and a wallpaper based theme are just two features of this new library. The UI is optimized for one-hand-use. All UI-elements are at the bottom of the screen.
-
-More features:
-
-• Keep screen on.
-• Open links in background.
-• Restore tabs on restart.
-
--------------------------------------------------
-<b>Privacy</b>
--------------------------------------------------
-
-FOSS Browser uses profiles to protect your privacy. For each profile you can enable or disable: AdBlock, JavaScript, cookies, fingerprint protection and much more. Profiles can also be saved for domains ("github.com" ⇒ Trusted website). This saved domains always overwrite the current profile. So, for example, "github.com" will always open with the trusted profile, even if you are browsing in the protected mode.
-
-More privacy features:
-
-• Build in AdBlock, which updates automatically. You can decide which content to block. AdBlock hosts are taken from Steven Black - AbBlock hosts: https://github.com/StevenBlack/hosts.
-• Third-part-cookies can not be disabled.
-• Enable or disable Android-autofill.
-• Delete browser data (on app exit).
-• Choose between different search engines (or set a custom one).
-• FOSS Browser itself doesn't collect any data
+„FOSS Browser“ ist ein völlig freier (wie in Freiheit) Open-Source-Android-Browser: datenschutzfreundlich, mit einer modernen Benutzeroberfläche. - Ihre Privatsphäre - Ihre Daten.
+<b>Projektseite mit weiteren Informationen: https://codeberg.org/Gaukler_Faun/FOSS_Browser</b>
 
 
 -------------------------------------------------
-<b>Bookmarks filter</b>
+<b>Benutzeroberfläche</b>
 -------------------------------------------------
 
-Organize your bookmarks with filters. You can set custom names for each filter. Long press the bookmark icon in the toolbar to get fast access to your favorite bookmarks.
+FOSS Browser verwendet die neuesten Material You Design-Bibliotheken. Der Tag-/Nachtmodus des Systems und ein auf Hintergrundbildern basierendes Thema sind nur zwei Merkmale dieser neuen Bibliothek. Die Benutzeroberfläche ist für die Einhand-Bedienung optimiert. Alle UI-Elemente befinden sich am unteren Rand des Bildschirms.
 
+Weitere Funktionen:
 
--------------------------------------------------
-<b>Gestures</b>
--------------------------------------------------
-
-You can assign nearly twenty different gestures to the toolbar and the toolbar buttons. Each in four directions. You can also trigger events by long pressing the toolbar buttons. So you have up to ten different gestures to control FOSS Browser. Supported is for example: load last website, switch tab, reload, open bookmarks, ... and many more.
-
+- Bildschirm eingeschaltet lassen.
+- Links im Hintergrund öffnen.
+- Tabs beim Neustart wiederherstellen.
 
 -------------------------------------------------
-<b>Backups</b>
+<b>Privatsphäre</b>
 -------------------------------------------------
 
-Backup all your important data (bookmarks, history, trusted websites and so on) on your SD-card. You can also back up FOSS Browser settings. Backups can even be restored on a fresh install or an other device (if you copy the backup files to the new device).
+FOSS Browser verwendet Profile, um Ihre Privatsphäre zu schützen. Für jedes Profil können Sie den Schutz aktivieren oder deaktivieren: AdBlock, JavaScript, Cookies, Fingerabdruckschutz und vieles mehr. Profile können auch für Domänen gespeichert werden ("github.com" ⇒ Vertrauenswürdige Website). Diese gespeicherten Domains überschreiben immer das aktuelle Profil. So wird z.B. "github.com" immer mit dem vertrauenswürdigen Profil geöffnet, auch wenn Sie im geschützten Modus surfen. Weitere Datenschutzfunktionen:
+
+- Eingebauter AdBlock, der automatisch aktualisiert wird. Sie können entscheiden, welche Inhalte blockiert werden sollen. AdBlock-Hosts werden von Steven Black - AbBlock-Hosts übernommen: https://github.com/StevenBlack/hosts.
+- Drittanbieter-Cookies können nicht deaktiviert werden.
+- Aktivieren oder deaktivieren Sie Android-Autofill.
+- Löschen der Browserdaten (beim Beenden der App).
+- Wählen Sie zwischen verschiedenen Suchmaschinen (oder legen Sie eine benutzerdefinierte Suchmaschine fest).
+- FOSS Browser selbst sammelt keine Daten
+
+-------------------------------------------------
+<b>Lesezeicen-Filter</b>
+-------------------------------------------------
+
+Organisieren Sie Ihre Lesezeichen mit Filtern. Sie können für jeden Filter einen eigenen Namen festlegen. Drücken Sie lange auf das Lesezeichensymbol in der Symbolleiste, um schnellen Zugriff auf Ihre bevorzugten Lesezeichen zu erhalten.
+
+-------------------------------------------------
+<b>Gesten</b>
+-------------------------------------------------
+
+Sie können der Symbolleiste und den Schaltflächen der Symbolleiste fast zwanzig verschiedene Gesten zuweisen. Jede in vier Richtungen. Sie können auch Ereignisse auslösen, indem Sie die Schaltflächen der Symbolleiste lange drücken. Sie können also bis zu zehn verschiedene Gesten zur Steuerung von FOSS Browser verwenden. Unterstützt werden z.B.: letzte Webseite laden, Tab wechseln, neu laden, Lesezeichen öffnen, ... und viele mehr.
+
+-------------------------------------------------
+<b>Sicherungen</b>
+-------------------------------------------------
+
+Sichern Sie alle Ihre wichtigen Daten (Lesezeichen, Verlauf, vertrauenswürdige Websites usw.) auf Ihrer SD-Karte. Sie können auch die Einstellungen von FOSS Browser sichern. Backups können sogar bei einer Neuinstallation oder auf einem anderen Gerät wiederhergestellt werden (wenn Sie die Backup-Dateien auf das neue Gerät kopieren).
