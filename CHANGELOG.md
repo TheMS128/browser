@@ -6,6 +6,8 @@
 - new: enabling/disabling redirects in FastToggleDialog
 - fix: removed unused code
 - fix: third Party Cookies
+- fix: tracking-URL-dialog
+- fix: HTTP-dialog
 
 
 ### v 19.1 Henry David Thoreau

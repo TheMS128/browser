@@ -46,6 +46,13 @@ public class NinjaWebChromeClient extends WebChromeClient {
             NinjaToast.show(ninjaWebView.getContext(), R.string.app_error_copy);
             return true;
         }
+
+        if (consoleMessage.message().contains("Uncaught TypeError: Cannot read properties of undefined (reading 'more_items')")) {
+            Context context = ninjaWebView.getContext();
+            String s = context.getString(R.string.app_error) + ": " + consoleMessage.message();
+            NinjaToast.show(ninjaWebView.getContext(), s);
+            return true;
+        }
         return false;
     }
 

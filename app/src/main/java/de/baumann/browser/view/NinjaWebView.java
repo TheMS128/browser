@@ -18,6 +18,7 @@ import android.webkit.CookieManager;
 import android.webkit.WebBackForwardList;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
+import android.widget.Button;
 import android.widget.GridView;
 
 import androidx.annotation.NonNull;
@@ -154,20 +155,8 @@ public class NinjaWebView extends WebView implements AlbumController {
             WebSettingsCompat.setAlgorithmicDarkeningAllowed(webSettings, sp.getBoolean(profile + "_night", true));
         }
 
-        String mobilePrefix = "Mozilla/5.0 (Linux; Android " + Build.VERSION.RELEASE + ")";
-        String desktopPrefix = "Mozilla/5.0 (X11; Linux " + System.getProperty("os.arch") + ")";
-        String mobileUserAgent = "Mozilla/5.0 (Linux; Android " + Build.VERSION.RELEASE + ")";
         String desktopUserAgent = "Mozilla/5.0 (X11; Linux " + System.getProperty("os.arch") + ")";
-
-        String newUserAgent = WebSettings.getDefaultUserAgent(context);
-        String prefix = newUserAgent.substring(0, newUserAgent.indexOf(")") + 1);
-
-        try {
-            desktopUserAgent = newUserAgent.replace(prefix, desktopPrefix);
-            mobileUserAgent = newUserAgent.replace(prefix, mobilePrefix);
-        } catch (Exception e) {
-            Log.v(TAG, "Failed: UserAgent");
-        }
+        String mobileUserAgent = "Mozilla/5.0 (Android " + Build.VERSION.RELEASE + "; Mobile; rv:68.0) Gecko/68.0 Firefox/138.0";
 
         //Override UserAgent if own UserAgent is defined
         if (!sp.contains("userAgentSwitch")) {
@@ -192,13 +181,14 @@ public class NinjaWebView extends WebView implements AlbumController {
             this.setInitialScale(0);
         }
 
+        webSettings.setDomStorageEnabled(sp.getBoolean(profile + "_dom", false));
+
         webSettings.setMixedContentMode(WebSettings.MIXED_CONTENT_COMPATIBILITY_MODE);
         webSettings.setMediaPlaybackRequiresUserGesture(sp.getBoolean(profile + "_saveData", true));
         webSettings.setBlockNetworkImage(!sp.getBoolean(profile + "_images", true));
         webSettings.setGeolocationEnabled(sp.getBoolean(profile + "_location", false));
         webSettings.setJavaScriptEnabled(sp.getBoolean(profile + "_javascript", true));
         webSettings.setJavaScriptCanOpenWindowsAutomatically(sp.getBoolean(profile + "_javascriptPopUp", false));
-        webSettings.setDomStorageEnabled(sp.getBoolean(profile + "_dom", false));
 
         fingerPrintProtection = sp.getBoolean(profile + "_fingerPrintProtection", true);
         history = sp.getBoolean(profile + "_saveHistory", true);
@@ -374,6 +364,7 @@ public class NinjaWebView extends WebView implements AlbumController {
             String urlClean = urlToLoad.replace(tracking, "");
             if (lastIndex.contains(tracking)) {
 
+                stopLoading();
                 String m = context.getString(R.string.dialog_tracking) + " \"" + tracking + "\"" + "?";
 
                 if (m.length() > 150) {
@@ -394,6 +385,12 @@ public class NinjaWebView extends WebView implements AlbumController {
                 builderTrack.setMessage(m);
                 builderTrack.setView(dialogView);
                 AlertDialog dialogTrack = builderTrack.create();
+                Button menuCancel = dialogView.findViewById(R.id.menuCancel);
+                menuCancel.setVisibility(VISIBLE);
+                menuCancel.setOnClickListener(v -> {
+                    dialogTrack.cancel();
+                    loadUrl("about:blank");
+                });
                 dialogTrack.show();
                 dialogTrack.setCancelable(false);
                 HelperUnit.setupDialog(context, dialogTrack);
@@ -446,6 +443,8 @@ public class NinjaWebView extends WebView implements AlbumController {
 
         } else if (url.startsWith("http://") && sp.getString("dialog_neverAsk", "no").equals("no")) {
 
+            stopLoading();
+
             GridItem item_01 = new GridItem("https://", R.drawable.icon_secure);
             GridItem item_02 = new GridItem( "http://", R.drawable.icon_unsecure);
             GridItem item_03 = new GridItem( context.getString(R.string.app_never), R.drawable.icon_close);
@@ -465,6 +464,12 @@ public class NinjaWebView extends WebView implements AlbumController {
             builder.setView(dialogView);
 
             AlertDialog dialog = builder.create();
+            Button menuCancel = dialogView.findViewById(R.id.menuCancel);
+            menuCancel.setVisibility(VISIBLE);
+            menuCancel.setOnClickListener(v -> {
+                dialog.cancel();
+                loadUrl("about:blank");
+            });
             dialog.show();
             dialog.setCancelable(false);
             HelperUnit.setupDialog(context, dialog);

@@ -108,4 +108,18 @@
         android:layout_marginBottom="10dp"
         android:layout_marginTop="10dp" />
 
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/menuCancel"
+        style="@style/Widget.Material3.Button.TextButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="10dp"
+        android:layout_gravity="end"
+        android:ellipsize="end"
+        android:maxLines="1"
+        android:text="@string/app_cancel"
+        android:visibility="gone"/>
+
 </LinearLayout>
