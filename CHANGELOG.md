@@ -8,7 +8,7 @@
 - fix: third Party Cookies
 - fix: tracking-URL-dialog
 - fix: HTTP-dialog
-- fix (workaround): Codeberg JavaScript error only on FOSS Browser #1231
+- fix: (workaround): Codeberg JavaScript error only on FOSS Browser #1231
 
 
 ### v 19.1 Henry David Thoreau
