@@ -27,8 +27,10 @@ import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 import com.google.android.material.snackbar.Snackbar;
 
 import de.baumann.browser.R;
+import de.baumann.browser.database.RecordAction;
 import de.baumann.browser.unit.BrowserUnit;
 import de.baumann.browser.unit.HelperUnit;
+import de.baumann.browser.unit.RecordUnit;
 import de.baumann.browser.view.NinjaToast;
 import de.baumann.browser.view.NinjaWebView;
 
@@ -51,15 +53,16 @@ public class NinjaWebChromeClient extends WebChromeClient {
         if (consoleMessage.message().contains("Uncaught TypeError: Cannot read properties of undefined (reading 'more_items')")) {
             Context context = ninjaWebView.getContext();
             String s = context.getString(R.string.app_error) + ": \"" + consoleMessage.message() +"\"";
-            Snackbar snackbar = Snackbar.make(ninjaWebView, s, Snackbar.LENGTH_LONG);
-            snackbar.setAction(context.getString(R.string.menu_reload), v -> {
-                // Perform any action when the button on the snackbar is clicked
-                // In this case, it shows a simple toast
-                ninjaWebView.reload();
-            });
-            snackbar.setTextMaxLines(50);
-            snackbar.show();
-            return true;
+            try {
+                Snackbar snackbar = Snackbar.make(ninjaWebView, s, Snackbar.LENGTH_LONG);
+                snackbar.setAction(context.getString(R.string.menu_reload), v -> ninjaWebView.reload());
+                snackbar.setTextMaxLines(50);
+                snackbar.show();
+                return true;
+            } catch (Exception e) {
+                NinjaToast.show(context, s);
+                Log.i(TAG, "dialogCustomSearches:" + e);
+            }
         }
         return false;
     }
