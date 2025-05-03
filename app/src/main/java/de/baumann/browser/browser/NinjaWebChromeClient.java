@@ -24,6 +24,7 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.preference.PreferenceManager;
 
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
+import com.google.android.material.snackbar.Snackbar;
 
 import de.baumann.browser.R;
 import de.baumann.browser.unit.BrowserUnit;
@@ -49,8 +50,15 @@ public class NinjaWebChromeClient extends WebChromeClient {
 
         if (consoleMessage.message().contains("Uncaught TypeError: Cannot read properties of undefined (reading 'more_items')")) {
             Context context = ninjaWebView.getContext();
-            String s = context.getString(R.string.app_error) + ": " + consoleMessage.message();
-            NinjaToast.show(ninjaWebView.getContext(), s);
+            String s = context.getString(R.string.app_error) + ": \"" + consoleMessage.message() +"\"";
+            Snackbar snackbar = Snackbar.make(ninjaWebView, s, Snackbar.LENGTH_LONG);
+            snackbar.setAction(context.getString(R.string.menu_reload), v -> {
+                // Perform any action when the button on the snackbar is clicked
+                // In this case, it shows a simple toast
+                ninjaWebView.reload();
+            });
+            snackbar.setTextMaxLines(50);
+            snackbar.show();
             return true;
         }
         return false;
