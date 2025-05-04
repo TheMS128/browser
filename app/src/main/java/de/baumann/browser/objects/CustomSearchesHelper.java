@@ -9,6 +9,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.Objects;
 
 import de.baumann.browser.activity.BrowserActivity;
@@ -33,6 +34,7 @@ public class CustomSearchesHelper {
             String source = redirect.getString("source");
             String target = redirect.getString("target");
             redirects.add(new CustomRedirect(source, target));
+            redirects.sort(Comparator.comparing(CustomRedirect::getSource));
             preferences.edit().putString("saved_searches_ok", "yes").apply();
         }
         return redirects;

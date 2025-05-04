@@ -4,6 +4,7 @@
 - new: set render priority to high
 - new: enabling/disabling switching always to standard profile (also in in FastToggleDialog)
 - new: enabling/disabling redirects in FastToggleDialog
+- new: sort FastSearchDialog alphabetically
 - fix: removed unused code
 - fix: third Party Cookies
 - fix: tracking-URL-dialog

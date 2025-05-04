@@ -9,6 +9,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.Objects;
 
 import de.baumann.browser.activity.BrowserActivity;
@@ -35,6 +36,7 @@ public class CustomRedirectsHelper {
             String source = redirect.getString("source");
             String target = redirect.getString("target");
             redirects.add(new CustomRedirect(source, target));
+            redirects.sort(Comparator.comparing(CustomRedirect::getSource));
         }
         return redirects;
     }
