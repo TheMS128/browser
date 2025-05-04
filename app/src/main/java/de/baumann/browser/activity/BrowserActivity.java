@@ -1,6 +1,7 @@
 package de.baumann.browser.activity;
 
 import static android.content.ContentValues.TAG;
+import static android.os.Build.VERSION.SDK_INT;
 import static android.view.View.GONE;
 import static android.view.View.VISIBLE;
 import static android.view.ViewGroup.LayoutParams.WRAP_CONTENT;
@@ -285,7 +286,7 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
                 NinjaToast.show(context, text);
             }};
 
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+        if (SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
             registerReceiver(downloadReceiver, new IntentFilter(DownloadManager.ACTION_DOWNLOAD_COMPLETE), RECEIVER_EXPORTED);
         } else {
             registerReceiver(downloadReceiver, new IntentFilter(DownloadManager.ACTION_DOWNLOAD_COMPLETE));
@@ -1629,6 +1630,35 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
                 checkbox_redirect.setChecked(sp.getBoolean("redirect", true));
             });
 
+            CheckBox checkbox_screenOn = dialogViewFastToggle.findViewById(R.id.checkbox_screenOn);
+            checkbox_screenOn.setChecked(sp.getBoolean("sp_screenOn", false));
+            checkbox_screenOn.setOnClickListener(v -> {
+                sp.edit().putBoolean("sp_screenOn", checkbox_screenOn.isChecked()).apply();
+                checkbox_screenOn.setChecked(sp.getBoolean("sp_screenOn", true));
+            });
+
+            CheckBox checkbox_links = dialogViewFastToggle.findViewById(R.id.checkbox_links);
+            if (SDK_INT >= Build.VERSION_CODES.TIRAMISU && sp.getBoolean("sp_tabBackground", false)) {
+                int notificationAllowed = 0;
+                notificationAllowed = checkSelfPermission(Manifest.permission.POST_NOTIFICATIONS);
+                if (notificationAllowed != PackageManager.PERMISSION_GRANTED) {
+                    MaterialAlertDialogBuilder builder = new MaterialAlertDialogBuilder(activity);
+                    builder.setIcon(R.drawable.icon_alert);
+                    builder.setMessage(R.string.app_permission);
+                    builder.setTitle(R.string.app_permission_notification);
+                    builder.setPositiveButton(R.string.app_ok, (dialog, whichButton) -> requestPermissions(new String[]{Manifest.permission.POST_NOTIFICATIONS}, 1234567));
+                    builder.setNegativeButton(R.string.app_cancel, (dialog, whichButton) -> dialog.cancel());
+                    AlertDialog dialog = builder.create();
+                    dialog.show();
+                    HelperUnit.setupDialog(activity, dialog);
+                }
+            }
+            checkbox_links.setChecked(sp.getBoolean("sp_tabBackground", false));
+            checkbox_links.setOnClickListener(v -> {
+                sp.edit().putBoolean("sp_tabBackground", checkbox_links.isChecked()).apply();
+                checkbox_links.setChecked(sp.getBoolean("sp_tabBackground", true));
+            });
+
             CheckBox checkbox_image = dialogViewFastToggle.findViewById(R.id.checkbox_image);
             checkbox_image.setChecked(sp.getBoolean(profile + "_images", false));
             checkbox_image.setOnClickListener(v -> {
@@ -2087,7 +2117,7 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
 
     private void setCustomFullscreen(boolean fullscreen) {
         if (fullscreen) {
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
+            if (SDK_INT >= Build.VERSION_CODES.R) {
                 final WindowInsetsController insetsController = getWindow().getInsetsController();
                 if (insetsController != null) {
                     insetsController.hide(WindowInsets.Type.statusBars());
@@ -2096,7 +2126,7 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
             }
             else getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN); }
         else {
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
+            if (SDK_INT >= Build.VERSION_CODES.R) {
                 final WindowInsetsController insetsController = getWindow().getInsetsController();
                 if (insetsController != null) {
                     insetsController.show(WindowInsets.Type.statusBars() | WindowInsets.Type.navigationBars());

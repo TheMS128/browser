@@ -174,6 +174,7 @@
 
             <RelativeLayout
                 android:layout_marginStart="15dp"
+                android:layout_marginEnd="10dp"
                 android:layout_width="wrap_content"
                 android:layout_height="?android:attr/listPreferredItemHeightSmall">
                 <ImageView
@@ -184,22 +185,20 @@
                     android:src="@drawable/icon_java"
                     android:layout_marginEnd="10dp"
                     android:layout_alignParentStart="true" />
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="?android:attr/listPreferredItemHeightSmall"
-                    android:gravity="center_vertical"
-                    android:text="@string/setting_title_javascript"
-                    android:layout_toEndOf="@+id/icon_java"
-                    android:layout_toStartOf="@+id/checkbox_java"/>
+
                 <CheckBox
                     android:id="@+id/checkbox_java"
                     android:layout_width="wrap_content"
+                    android:layoutDirection="rtl"
+                    android:text="@string/setting_title_javascript"
+                    android:layout_toEndOf="@+id/icon_java"
                     android:layout_height="?android:attr/listPreferredItemHeightSmall"
                     android:layout_alignParentEnd="true"/>
             </RelativeLayout>
 
             <RelativeLayout
                 android:layout_marginStart="15dp"
+                android:layout_marginEnd="10dp"
                 android:layout_width="wrap_content"
                 android:layout_height="?android:attr/listPreferredItemHeightSmall">
                 <ImageView
@@ -210,22 +209,19 @@
                     android:src="@drawable/icon_popup"
                     android:layout_marginEnd="10dp"
                     android:layout_alignParentStart="true" />
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="?android:attr/listPreferredItemHeightSmall"
-                    android:gravity="center_vertical"
-                    android:text="@string/setting_title_javascript_popUp"
-                    android:layout_toEndOf="@+id/icon_javaPopUp"
-                    android:layout_toStartOf="@+id/checkbox_javaPopUp"/>
                 <CheckBox
                     android:id="@+id/checkbox_javaPopUp"
                     android:layout_width="wrap_content"
+                    android:layoutDirection="rtl"
+                    android:text="@string/setting_title_javascript_popUp"
+                    android:layout_toEndOf="@+id/icon_javaPopUp"
                     android:layout_height="?android:attr/listPreferredItemHeightSmall"
                     android:layout_alignParentEnd="true"/>
             </RelativeLayout>
 
             <RelativeLayout
                 android:layout_marginStart="15dp"
+                android:layout_marginEnd="10dp"
                 android:layout_width="wrap_content"
                 android:layout_height="?android:attr/listPreferredItemHeightSmall">
                 <ImageView
@@ -236,15 +232,11 @@
                     android:src="@drawable/icon_location"
                     android:layout_marginEnd="10dp"
                     android:layout_alignParentStart="true" />
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="?android:attr/listPreferredItemHeightSmall"
-                    android:gravity="center_vertical"
-                    android:text="@string/setting_title_location"
-                    android:layout_toEndOf="@+id/icon_location"
-                    android:layout_toStartOf="@+id/checkbox_location"/>
                 <CheckBox
                     android:id="@+id/checkbox_location"
+                    android:layoutDirection="rtl"
+                    android:text="@string/setting_title_location"
+                    android:layout_toEndOf="@+id/icon_location"
                     android:layout_width="wrap_content"
                     android:layout_height="?android:attr/listPreferredItemHeightSmall"
                     android:layout_alignParentEnd="true"/>
@@ -252,6 +244,7 @@
 
             <RelativeLayout
                 android:layout_marginStart="15dp"
+                android:layout_marginEnd="10dp"
                 android:layout_width="wrap_content"
                 android:layout_height="?android:attr/listPreferredItemHeightSmall">
                 <ImageView
@@ -262,15 +255,11 @@
                     android:src="@drawable/icon_camera"
                     android:layout_marginEnd="10dp"
                     android:layout_alignParentStart="true" />
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="?android:attr/listPreferredItemHeightSmall"
-                    android:gravity="center_vertical"
-                    android:text="@string/setting_title_camera"
-                    android:layout_toEndOf="@+id/icon_camera"
-                    android:layout_toStartOf="@+id/checkbox_camera"/>
                 <CheckBox
                     android:id="@+id/checkbox_camera"
+                    android:layoutDirection="rtl"
+                    android:text="@string/setting_title_camera"
+                    android:layout_toEndOf="@+id/icon_camera"
                     android:layout_width="wrap_content"
                     android:layout_height="?android:attr/listPreferredItemHeightSmall"
                     android:layout_alignParentEnd="true"/>
@@ -278,6 +267,7 @@
 
             <RelativeLayout
                 android:layout_marginStart="15dp"
+                android:layout_marginEnd="10dp"
                 android:layout_width="wrap_content"
                 android:layout_height="?android:attr/listPreferredItemHeightSmall">
                 <ImageView
@@ -288,15 +278,11 @@
                     android:src="@drawable/icon_microphone"
                     android:layout_marginEnd="10dp"
                     android:layout_alignParentStart="true" />
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="?android:attr/listPreferredItemHeightSmall"
-                    android:gravity="center_vertical"
-                    android:text="@string/setting_title_microphone"
-                    android:layout_toEndOf="@+id/icon_mic"
-                    android:layout_toStartOf="@+id/checkbox_mic"/>
                 <CheckBox
                     android:id="@+id/checkbox_mic"
+                    android:layoutDirection="rtl"
+                    android:text="@string/setting_title_microphone"
+                    android:layout_toEndOf="@+id/icon_mic"
                     android:layout_width="wrap_content"
                     android:layout_height="?android:attr/listPreferredItemHeightSmall"
                     android:layout_alignParentEnd="true"/>
@@ -315,6 +301,7 @@
 
             <RelativeLayout
                 android:layout_marginStart="15dp"
+                android:layout_marginEnd="10dp"
                 android:layout_width="wrap_content"
                 android:layout_height="?android:attr/listPreferredItemHeightSmall">
                 <ImageView
@@ -325,15 +312,11 @@
                     android:src="@drawable/icon_history"
                     android:layout_marginEnd="10dp"
                     android:layout_alignParentStart="true" />
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="?android:attr/listPreferredItemHeightSmall"
-                    android:gravity="center_vertical"
-                    android:text="@string/album_title_history"
-                    android:layout_toEndOf="@+id/icon_history"
-                    android:layout_toStartOf="@+id/checkbox_history"/>
                 <CheckBox
                     android:id="@+id/checkbox_history"
+                    android:layoutDirection="rtl"
+                    android:text="@string/album_title_history"
+                    android:layout_toEndOf="@+id/icon_history"
                     android:layout_width="wrap_content"
                     android:layout_height="?android:attr/listPreferredItemHeightSmall"
                     android:layout_alignParentEnd="true"/>
@@ -341,6 +324,7 @@
 
             <RelativeLayout
                 android:layout_marginStart="15dp"
+                android:layout_marginEnd="10dp"
                 android:layout_width="wrap_content"
                 android:layout_height="?android:attr/listPreferredItemHeightSmall">
                 <ImageView
@@ -351,15 +335,11 @@
                     android:src="@drawable/icon_cookie"
                     android:layout_marginEnd="10dp"
                     android:layout_alignParentStart="true" />
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="?android:attr/listPreferredItemHeightSmall"
-                    android:gravity="center_vertical"
-                    android:text="@string/setting_title_cookie"
-                    android:layout_toEndOf="@+id/icon_cookies"
-                    android:layout_toStartOf="@+id/checkbox_cookies"/>
                 <CheckBox
                     android:id="@+id/checkbox_cookies"
+                    android:layoutDirection="rtl"
+                    android:text="@string/setting_title_cookie"
+                    android:layout_toEndOf="@+id/icon_cookies"
                     android:layout_width="wrap_content"
                     android:layout_height="?android:attr/listPreferredItemHeightSmall"
                     android:layout_alignParentEnd="true"/>
@@ -367,6 +347,7 @@
 
             <RelativeLayout
                 android:layout_marginStart="15dp"
+                android:layout_marginEnd="10dp"
                 android:layout_width="wrap_content"
                 android:layout_height="?android:attr/listPreferredItemHeightSmall">
                 <ImageView
@@ -377,15 +358,11 @@
                     android:src="@drawable/icon_cookie"
                     android:layout_marginEnd="10dp"
                     android:layout_alignParentStart="true" />
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="?android:attr/listPreferredItemHeightSmall"
-                    android:gravity="center_vertical"
-                    android:text="@string/setting_title_cookie_thirdParty"
-                    android:layout_toEndOf="@+id/icon_cookiesThirdParty"
-                    android:layout_toStartOf="@+id/checkbox_cookiesThirdParty"/>
                 <CheckBox
                     android:id="@+id/checkbox_cookiesThirdParty"
+                    android:layoutDirection="rtl"
+                    android:text="@string/setting_title_cookie_thirdParty"
+                    android:layout_toEndOf="@+id/icon_cookiesThirdParty"
                     android:layout_width="wrap_content"
                     android:layout_height="?android:attr/listPreferredItemHeightSmall"
                     android:layout_alignParentEnd="true"/>
@@ -393,6 +370,7 @@
 
             <RelativeLayout
                 android:layout_marginStart="15dp"
+                android:layout_marginEnd="10dp"
                 android:layout_width="wrap_content"
                 android:layout_height="?android:attr/listPreferredItemHeightSmall">
                 <ImageView
@@ -403,15 +381,11 @@
                     android:src="@drawable/icon_cookie"
                     android:layout_marginEnd="10dp"
                     android:layout_alignParentStart="true" />
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="?android:attr/listPreferredItemHeightSmall"
-                    android:gravity="center_vertical"
-                    android:text="@string/setting_title_deny_cookie_banners"
-                    android:layout_toEndOf="@+id/icon_cookiesBanner"
-                    android:layout_toStartOf="@+id/checkbox_cookiesBanner"/>
                 <CheckBox
                     android:id="@+id/checkbox_cookiesBanner"
+                    android:layoutDirection="rtl"
+                    android:text="@string/setting_title_deny_cookie_banners"
+                    android:layout_toEndOf="@+id/icon_cookiesBanner"
                     android:layout_width="wrap_content"
                     android:layout_height="?android:attr/listPreferredItemHeightSmall"
                     android:layout_alignParentEnd="true"/>
@@ -419,6 +393,7 @@
 
             <RelativeLayout
                 android:layout_marginStart="15dp"
+                android:layout_marginEnd="10dp"
                 android:layout_width="wrap_content"
                 android:layout_height="?android:attr/listPreferredItemHeightSmall">
                 <ImageView
@@ -429,15 +404,11 @@
                     android:src="@drawable/icon_dom"
                     android:layout_marginEnd="10dp"
                     android:layout_alignParentStart="true" />
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="?android:attr/listPreferredItemHeightSmall"
-                    android:gravity="center_vertical"
-                    android:text="@string/setting_title_dom"
-                    android:layout_toEndOf="@+id/icon_dom"
-                    android:layout_toStartOf="@+id/checkbox_dom"/>
                 <CheckBox
                     android:id="@+id/checkbox_dom"
+                    android:layoutDirection="rtl"
+                    android:text="@string/setting_title_dom"
+                    android:layout_toEndOf="@+id/icon_dom"
                     android:layout_width="wrap_content"
                     android:layout_height="?android:attr/listPreferredItemHeightSmall"
                     android:layout_alignParentEnd="true"/>
@@ -445,6 +416,7 @@
 
             <RelativeLayout
                 android:layout_marginStart="15dp"
+                android:layout_marginEnd="10dp"
                 android:layout_width="wrap_content"
                 android:layout_height="?android:attr/listPreferredItemHeightSmall">
                 <ImageView
@@ -456,15 +428,11 @@
                     android:layout_marginEnd="10dp"
                     android:layout_alignParentStart="true"
                     tools:ignore="TooManyViews" />
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="?android:attr/listPreferredItemHeightSmall"
-                    android:gravity="center_vertical"
-                    android:text="@string/setting_title_adblock"
-                    android:layout_toEndOf="@+id/icon_adBlock"
-                    android:layout_toStartOf="@+id/checkbox_adBlock"/>
                 <CheckBox
                     android:id="@+id/checkbox_adBlock"
+                    android:layoutDirection="rtl"
+                    android:text="@string/setting_title_adblock"
+                    android:layout_toEndOf="@+id/icon_adBlock"
                     android:layout_width="wrap_content"
                     android:layout_height="?android:attr/listPreferredItemHeightSmall"
                     android:layout_alignParentEnd="true"/>
@@ -472,6 +440,7 @@
 
             <RelativeLayout
                 android:layout_marginStart="15dp"
+                android:layout_marginEnd="10dp"
                 android:layout_width="wrap_content"
                 android:layout_height="?android:attr/listPreferredItemHeightSmall">
                 <ImageView
@@ -482,15 +451,11 @@
                     android:src="@drawable/icon_fingerprint"
                     android:layout_marginEnd="10dp"
                     android:layout_alignParentStart="true" />
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="?android:attr/listPreferredItemHeightSmall"
-                    android:gravity="center_vertical"
-                    android:text="@string/setting_title_fingerPrint"
-                    android:layout_toEndOf="@+id/icon_fingerPrint"
-                    android:layout_toStartOf="@+id/checkbox_fingerPrint"/>
                 <CheckBox
                     android:id="@+id/checkbox_fingerPrint"
+                    android:layoutDirection="rtl"
+                    android:text="@string/setting_title_fingerPrint"
+                    android:layout_toEndOf="@+id/icon_fingerPrint"
                     android:layout_width="wrap_content"
                     android:layout_height="?android:attr/listPreferredItemHeightSmall"
                     android:layout_alignParentEnd="true"/>
@@ -498,6 +463,7 @@
 
             <RelativeLayout
                 android:layout_marginStart="15dp"
+                android:layout_marginEnd="10dp"
                 android:layout_width="wrap_content"
                 android:layout_height="?android:attr/listPreferredItemHeightSmall">
                 <ImageView
@@ -508,15 +474,11 @@
                     android:src="@drawable/icon_tracking"
                     android:layout_marginEnd="10dp"
                     android:layout_alignParentStart="true" />
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="?android:attr/listPreferredItemHeightSmall"
-                    android:gravity="center_vertical"
-                    android:text="@string/setting_title_trackingURL"
-                    android:layout_toEndOf="@+id/icon_trackingURL"
-                    android:layout_toStartOf="@+id/checkbox_trackingURL"/>
                 <CheckBox
                     android:id="@+id/checkbox_trackingURL"
+                    android:layoutDirection="rtl"
+                    android:text="@string/setting_title_trackingURL"
+                    android:layout_toEndOf="@+id/icon_trackingURL"
                     android:layout_width="wrap_content"
                     android:layout_height="?android:attr/listPreferredItemHeightSmall"
                     android:layout_alignParentEnd="true"/>
@@ -535,6 +497,7 @@
 
             <RelativeLayout
                 android:layout_marginStart="15dp"
+                android:layout_marginEnd="10dp"
                 android:layout_width="wrap_content"
                 android:layout_height="?android:attr/listPreferredItemHeightSmall">
                 <ImageView
@@ -545,15 +508,11 @@
                     android:src="@drawable/icon_image"
                     android:layout_marginEnd="10dp"
                     android:layout_alignParentStart="true" />
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="?android:attr/listPreferredItemHeightSmall"
-                    android:gravity="center_vertical"
-                    android:text="@string/setting_title_images"
-                    android:layout_toEndOf="@+id/icon_image"
-                    android:layout_toStartOf="@+id/checkbox_image"/>
                 <CheckBox
                     android:id="@+id/checkbox_image"
+                    android:layoutDirection="rtl"
+                    android:text="@string/setting_title_images"
+                    android:layout_toEndOf="@+id/icon_image"
                     android:layout_width="wrap_content"
                     android:layout_height="?android:attr/listPreferredItemHeightSmall"
                     android:layout_alignParentEnd="true"/>
@@ -561,6 +520,7 @@
 
             <RelativeLayout
                 android:layout_marginStart="15dp"
+                android:layout_marginEnd="10dp"
                 android:layout_width="wrap_content"
                 android:layout_height="?android:attr/listPreferredItemHeightSmall">
                 <ImageView
@@ -571,16 +531,11 @@
                     android:src="@drawable/icon_savedata"
                     android:layout_marginEnd="10dp"
                     android:layout_alignParentStart="true" />
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="?android:attr/listPreferredItemHeightSmall"
-                    android:gravity="center_vertical"
-                    android:text="@string/setting_title_save_data"
-                    android:layout_toEndOf="@+id/icon_saveData"
-                    android:layout_toStartOf="@+id/checkbox_saveData"
-                    tools:ignore="TooManyViews" />
                 <CheckBox
                     android:id="@+id/checkbox_saveData"
+                    android:layoutDirection="rtl"
+                    android:text="@string/setting_title_save_data"
+                    android:layout_toEndOf="@+id/icon_saveData"
                     android:layout_width="wrap_content"
                     android:layout_height="?android:attr/listPreferredItemHeightSmall"
                     android:layout_alignParentEnd="true"/>
@@ -600,6 +555,7 @@
             <RelativeLayout
                 android:id="@+id/layout_nightView"
                 android:layout_marginStart="15dp"
+                android:layout_marginEnd="10dp"
                 android:layout_width="wrap_content"
                 android:layout_height="?android:attr/listPreferredItemHeightSmall">
                 <ImageView
@@ -610,15 +566,11 @@
                     android:src="@drawable/icon_night"
                     android:layout_marginEnd="10dp"
                     android:layout_alignParentStart="true" />
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="?android:attr/listPreferredItemHeightSmall"
-                    android:gravity="center_vertical"
-                    android:text="@string/menu_nightView"
-                    android:layout_toEndOf="@+id/icon_nightView"
-                    android:layout_toStartOf="@+id/checkbox_nightView"/>
                 <CheckBox
                     android:id="@+id/checkbox_nightView"
+                    android:layoutDirection="rtl"
+                    android:text="@string/menu_nightView"
+                    android:layout_toEndOf="@+id/icon_nightView"
                     android:layout_width="wrap_content"
                     android:layout_height="?android:attr/listPreferredItemHeightSmall"
                     android:layout_alignParentEnd="true"/>
@@ -626,6 +578,7 @@
 
             <RelativeLayout
                 android:layout_marginStart="15dp"
+                android:layout_marginEnd="10dp"
                 android:layout_width="wrap_content"
                 android:layout_height="?android:attr/listPreferredItemHeightSmall">
                 <ImageView
@@ -636,15 +589,11 @@
                     android:src="@drawable/icon_desktop"
                     android:layout_marginEnd="10dp"
                     android:layout_alignParentStart="true" />
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="?android:attr/listPreferredItemHeightSmall"
-                    android:gravity="center_vertical"
-                    android:text="@string/menu_desktopView"
-                    android:layout_toEndOf="@+id/icon_desktop"
-                    android:layout_toStartOf="@+id/checkbox_desktop"/>
                 <CheckBox
                     android:id="@+id/checkbox_desktop"
+                    android:layoutDirection="rtl"
+                    android:text="@string/menu_desktopView"
+                    android:layout_toEndOf="@+id/icon_desktop"
                     android:layout_width="wrap_content"
                     android:layout_height="?android:attr/listPreferredItemHeightSmall"
                     android:layout_alignParentEnd="true"/>
@@ -656,41 +605,42 @@
                 android:layout_marginTop="5dp"
                 android:layout_marginBottom="5dp"/>
 
-            <RelativeLayout
-                android:layout_marginStart="15dp"
-                android:layout_width="wrap_content"
-                android:layout_height="?android:attr/listPreferredItemHeightSmall">
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="?android:attr/listPreferredItemHeightSmall"
-                    android:gravity="center_vertical"
-                    android:text="@string/setting_title_profiles_standard_always"
-                    android:layout_toStartOf="@+id/checkbox_reset"
-                    android:layout_alignParentStart="true"/>
-                <CheckBox
-                    android:id="@+id/checkbox_reset"
-                    android:layout_width="wrap_content"
-                    android:layout_height="?android:attr/listPreferredItemHeightSmall"
-                    android:layout_alignParentEnd="true"/>
-            </RelativeLayout>
+            <CheckBox
+                android:id="@+id/checkbox_reset"
+                android:layoutDirection="rtl"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="15dp"
+                android:text="@string/setting_title_profiles_standard_always"
+                android:layout_width="match_parent"
+                android:layout_height="?android:attr/listPreferredItemHeightSmall" />
 
-            <RelativeLayout
-                android:layout_marginStart="15dp"
-                android:layout_width="wrap_content"
-                android:layout_height="?android:attr/listPreferredItemHeightSmall">
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="?android:attr/listPreferredItemHeightSmall"
-                    android:gravity="center_vertical"
-                    android:text="@string/privacy_redirect_use"
-                    android:layout_toStartOf="@+id/checkbox_redirect"
-                    android:layout_alignParentStart="true"/>
-                <CheckBox
-                    android:id="@+id/checkbox_redirect"
-                    android:layout_width="wrap_content"
-                    android:layout_height="?android:attr/listPreferredItemHeightSmall"
-                    android:layout_alignParentEnd="true"/>
-            </RelativeLayout>
+            <CheckBox
+                android:id="@+id/checkbox_redirect"
+                android:layoutDirection="rtl"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="15dp"
+                android:text="@string/privacy_redirect_use"
+                android:layout_width="match_parent"
+                android:layout_height="?android:attr/listPreferredItemHeightSmall" />
+
+
+            <CheckBox
+                android:id="@+id/checkbox_screenOn"
+                android:layoutDirection="rtl"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="15dp"
+                android:text="@string/setting_title_screenOn"
+                android:layout_width="match_parent"
+                android:layout_height="?android:attr/listPreferredItemHeightSmall" />
+
+            <CheckBox
+                android:id="@+id/checkbox_links"
+                android:layoutDirection="rtl"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="15dp"
+                android:text="@string/dialog_backGround"
+                android:layout_width="match_parent"
+                android:layout_height="?android:attr/listPreferredItemHeightSmall" />
 
         </LinearLayout>
 

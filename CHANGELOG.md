@@ -5,6 +5,7 @@
 - new: enabling/disabling switching always to standard profile (also in in FastToggleDialog)
 - new: enabling/disabling redirects in FastToggleDialog
 - new: sort FastSearchDialog alphabetically
+- new: some app settings in FastToggleDialog
 - fix: removed unused code
 - fix: third Party Cookies
 - fix: tracking-URL-dialog

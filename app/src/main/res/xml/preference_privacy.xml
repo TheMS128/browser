@@ -3,7 +3,7 @@
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
 
     <Preference
-        android:icon="@drawable/icon_edit"
+        android:icon="@drawable/icon_profile_standard"
         android:key="settings_profile"
         android:title="@string/setting_title_profiles_standard" />
 
@@ -12,32 +12,17 @@
         android:key="edit_standard"
         android:title="@string/setting_title_savedWebSites" />
 
-    <CheckBoxPreference
-        android:title="@string/setting_title_profiles_standard_always"
-        android:icon="@drawable/icon_profile_standard"
-        android:defaultValue="true"
-        android:key="sp_standard_always" />
+    <Preference
+        android:icon="@drawable/icon_redirect"
+        android:key="custom_redirects"
+        android:defaultValue="false"
+        android:title="@string/privacy_redirect_title" />
 
     <CheckBoxPreference
         android:title="@string/setting_title_clipboard_record"
         android:icon="@drawable/icon_clipboard"
         android:defaultValue="false"
         android:key="sp_clipboard_record" />
-
-    <PreferenceCategory android:title="@string/privacy_redirect_title"
-        android:icon="@drawable/icon_redirect">
-
-        <CheckBoxPreference
-            android:title="@string/privacy_redirect_use"
-            android:defaultValue="false"
-            android:key="redirect" />
-
-        <Preference
-            android:key="custom_redirects"
-            android:defaultValue="false"
-            android:title="@string/privacy_redirect_title" />
-
-    </PreferenceCategory>
 
     <PreferenceCategory android:title="@string/setting_title_adblock"
         android:icon="@drawable/icon_adblock">
