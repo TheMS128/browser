@@ -54,7 +54,6 @@ public class NinjaWebChromeClient extends WebChromeClient {
             try {
                 Snackbar snackbar = Snackbar.make(ninjaWebView, s, Snackbar.LENGTH_LONG);
                 snackbar.setAction(context.getString(R.string.menu_reload), v -> ninjaWebView.reload());
-                snackbar.setTextMaxLines(50);
                 snackbar.show();
                 return true;
             } catch (Exception e) {

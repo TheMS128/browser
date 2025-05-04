@@ -73,7 +73,6 @@
     <string name="setting_summary_search_engine_metager">Metager</string>
     <string name="setting_title_font">Розмір шрифту</string>
     <string name="setting_title_dom">DOM сховище</string>
-    <string name="privacy_redirect">Переадресація</string>
     <string name="source">Джерело</string>
     <string name="target">Ціль</string>
     <string name="setting_title_save_data">Надсилати запит «Збереження даних»</string>
@@ -127,12 +126,9 @@
     <string name="setting_gesture_11">Швидкі налаштування</string>
     <string name="hint_database">Поточні дані будуть видалені. Продовжити?</string>
     <string name="settings_data_restore">Відновити</string>
-    <string name="toast_add_whitelist_successful">Домен додано</string>
     <string name="toast_copy_successful">Скопійовано</string>
     <string name="toast_delete_successful">Видалено</string>
-    <string name="toast_domain_already_exists">Домен уже існує</string>
     <string name="toast_input_empty">Будь ласка, введіть щось.</string>
-    <string name="toast_invalid_domain">Невірний домен</string>
     <string name="toast_webview_forward">Не вдається завантажити наступний сайт.</string>
     <string name="toast_restart">Перезапустити, щоб застосувати зміни?</string>
     <string name="toast_quit">Закрити FOSS Браузер?</string>
@@ -141,8 +137,6 @@
     <string name="toast_backup">Зберегти дані\? Це перезапише наявну резервну копію.</string>
     <string name="dialog_postOnWebsiteHint">URL для відкриття. Буде збережено для наступного використання.</string>
     <string name="dialog_postOnWebsite">Публікувати на сайті</string>
-    <string name="whitelist_edit_hint">Домен</string>
-    <string name="whitelist_add">Додати</string>
     <string name="menu_desktopView">Комп\'ютерна версія</string>
     <string name="menu_dayView">Світла тема</string>
     <string name="menu_nightView">Нічна тема</string>

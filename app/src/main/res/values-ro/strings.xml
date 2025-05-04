@@ -73,7 +73,6 @@
     <string name="setting_summary_search_engine_metager">Metager</string>
     <string name="setting_title_font">Dimensiune font</string>
     <string name="setting_title_dom">Stocare DOM</string>
-    <string name="privacy_redirect">Redirecționare</string>
     <string name="source">Sursă</string>
     <string name="target">Destinație</string>
     <string name="setting_title_save_data">Solicită \'Salvare date\'</string>
@@ -127,12 +126,9 @@
     <string name="setting_gesture_11">Afișează comutarea rapidă</string>
     <string name="hint_database">Aceasta va șterge datele curente. Continui?</string>
     <string name="settings_data_restore">Restaurare</string>
-    <string name="toast_add_whitelist_successful">Domeniu adăugat cu succes</string>
     <string name="toast_copy_successful">Copiat cu succes</string>
     <string name="toast_delete_successful">Eliminat cu succes</string>
-    <string name="toast_domain_already_exists">Domeniul există deja</string>
     <string name="toast_input_empty">Nu ai introdus nimic.</string>
-    <string name="toast_invalid_domain">Domeniu nevalid</string>
     <string name="toast_webview_forward">Nu se poate încărca următorul site</string>
     <string name="toast_restart">Trebuie să repornești \"FOSS Browser\" pentru a aplica modificările. Închizi acum?</string>
     <string name="toast_quit">Dorești să închizi „Browser-ul FOSS”?</string>
@@ -141,8 +137,6 @@
     <string name="toast_backup">Date de rezervă\? Aceasta va suprascrie copia de rezervă existentă.</string>
     <string name="dialog_postOnWebsiteHint">URL pentru deschidere. Va fi salvat pentru următoarea utilizare.</string>
     <string name="dialog_postOnWebsite">Postează pe site</string>
-    <string name="whitelist_edit_hint">Domeniu</string>
-    <string name="whitelist_add">Adaugă</string>
     <string name="menu_desktopView">Vizualizare desktop</string>
     <string name="menu_dayView">Vizualizare zi</string>
     <string name="menu_nightView">Vizualizare nocturnă</string>

@@ -73,7 +73,6 @@
     <string name="setting_summary_search_engine_metager">Metager</string>
     <string name="setting_title_font">Yazı boyutu</string>
     <string name="setting_title_dom">DOM depolama</string>
-    <string name="privacy_redirect">Yönlendir</string>
     <string name="source">Kaynak</string>
     <string name="target">Hedef</string>
     <string name="setting_title_save_data">\'Veri kaydetme\' isteği</string>
@@ -127,12 +126,9 @@
     <string name="setting_gesture_11">Hızlı geçişi göster</string>
     <string name="hint_database">Bu işlem mevcut verileri silecektir. Devam edilsin mi?</string>
     <string name="settings_data_restore">Geri yükle</string>
-    <string name="toast_add_whitelist_successful">Alan adı başarıyla eklendi</string>
     <string name="toast_copy_successful">Başarıyla kopyalandı</string>
     <string name="toast_delete_successful">Başarıyla silindi</string>
-    <string name="toast_domain_already_exists">Alan adı zaten mevcut</string>
     <string name="toast_input_empty">Hiçbir şey girmediniz.</string>
-    <string name="toast_invalid_domain">Geçersiz alan adı</string>
     <string name="toast_webview_forward">Sonraki site yüklenemiyor</string>
     <string name="toast_restart">Değişiklikleri uygulamak için \"FOSS Tarayıcı\"sını yeniden başlatmalısınız. Şimdi kapatılsın mı?</string>
     <string name="toast_quit">\"FOSS Tarayıcı\"sından çıkmak istiyor musunuz?</string>
@@ -141,8 +137,6 @@
     <string name="toast_backup">Yedek veri mi\? Bu, mevcut yedeklemenin üzerine yazacaktır.</string>
     <string name="dialog_postOnWebsiteHint">Açılacak URL\'yi seçin. Bir sonraki kullanım için kaydedilecektir.</string>
     <string name="dialog_postOnWebsite">Web sitesinde yayınla</string>
-    <string name="whitelist_edit_hint">Alan adı</string>
-    <string name="whitelist_add">Ekle</string>
     <string name="menu_desktopView">Masaüstü görünümü</string>
     <string name="menu_dayView">Gündüz görünümü</string>
     <string name="menu_nightView">Gece görünümü</string>

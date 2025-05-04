@@ -72,7 +72,6 @@
     <string name="setting_summary_search_engine_ecosia">Ecosia</string>
     <string name="setting_summary_search_engine_metager">Metager</string>
     <string name="setting_title_font">Betűméret</string>
-    <string name="privacy_redirect">Átirányítás</string>
     <string name="source">Forrás</string>
     <string name="target">Célpont</string>
     <string name="setting_title_save_data">\'Save Data\' kérése</string>
@@ -125,12 +124,9 @@
     <string name="setting_gesture_11">Gyors kapcsoló megjelenítése</string>
     <string name="hint_database">Ezzel törli az aktuális adatokat. Folytatja?</string>
     <string name="settings_data_restore">Visszaállítás</string>
-    <string name="toast_add_whitelist_successful">A Domain sikeresen hozzáadva</string>
     <string name="toast_copy_successful">Sikeresen másolva</string>
     <string name="toast_delete_successful">Sikeresen törölve</string>
-    <string name="toast_domain_already_exists">A domain már létezik</string>
     <string name="toast_input_empty">Nem írt be semmit.</string>
-    <string name="toast_invalid_domain">Érvénytelen tartomány</string>
     <string name="toast_webview_forward">Nem tölthető be a következő oldal</string>
     <string name="toast_restart">A változások alkalmazásához újra kell indítania a \"FOSS Browser\"-t. Bezárja most?</string>
     <string name="toast_quit">Ki akar lépni a \"FOSS Browser\"-ből?</string>
@@ -139,8 +135,6 @@
     <string name="toast_backup">Adatmentés\? Ez felülírja a meglévő biztonsági mentést.</string>
     <string name="dialog_postOnWebsiteHint">URL megnyitásához. A következő használatra el lesz mentve.</string>
     <string name="dialog_postOnWebsite">Közzététel a weboldalon</string>
-    <string name="whitelist_edit_hint">Tartomány</string>
-    <string name="whitelist_add">Hozzáad</string>
     <string name="menu_desktopView">Asztali nézet</string>
     <string name="menu_dayView">Napi nézet</string>
     <string name="menu_nightView">Éjszakai nézet</string>

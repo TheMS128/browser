@@ -73,7 +73,6 @@
     <string name="setting_summary_search_engine_metager">Metager</string>
     <string name="setting_title_font">Lettertypegrootte</string>
     <string name="setting_title_dom">DOM Opslag</string>
-    <string name="privacy_redirect">Doorverwijzen</string>
     <string name="source">Bron</string>
     <string name="target">Doel</string>
     <string name="setting_title_save_data">Verzoek \'Gegevens opslaan\'</string>
@@ -127,12 +126,9 @@
     <string name="setting_gesture_11">Snelheidsschakelaar weergeven</string>
     <string name="hint_database">Dit zal huidige data verwijderen. Doorgaan?</string>
     <string name="settings_data_restore">Herstellen</string>
-    <string name="toast_add_whitelist_successful">Domein toegevoegd</string>
     <string name="toast_copy_successful">Gekopieerd</string>
     <string name="toast_delete_successful">Verwijderd</string>
-    <string name="toast_domain_already_exists">Domein is al aanwezig</string>
     <string name="toast_input_empty">Je hebt niks ingevoerd.</string>
-    <string name="toast_invalid_domain">Ongeldig domein</string>
     <string name="toast_webview_forward">Volgende site kan niet worden geladen</string>
     <string name="toast_restart">\"FOSS-browser\" moet worden herstart om de wijzigingen toe te passen. Wil je nu afsluiten?</string>
     <string name="toast_quit">Wil je \"FOSS-browser\" afsluiten?</string>
@@ -141,8 +137,6 @@
     <string name="toast_backup">Back-up gegevens\? Dit overschrijft de bestaande back-up.</string>
     <string name="dialog_postOnWebsiteHint">URL om te openen. Zal worden opgeslagen voor volgend gebruik.</string>
     <string name="dialog_postOnWebsite">Post op de website</string>
-    <string name="whitelist_edit_hint">Domein</string>
-    <string name="whitelist_add">Toevoegen</string>
     <string name="menu_desktopView">Bureaublad weergave</string>
     <string name="menu_dayView">Dag-weergave</string>
     <string name="menu_nightView">Nacht-weergave</string>

@@ -73,7 +73,6 @@
     <string name="setting_summary_search_engine_metager">Metager</string>
     <string name="setting_title_font">Velikost písma</string>
     <string name="setting_title_dom">Úložiště DOM</string>
-    <string name="privacy_redirect">Přesměrovat</string>
     <string name="source">Zdroj</string>
     <string name="target">Cíl</string>
     <string name="setting_title_save_data">Požadavek „Ušetřit data“</string>
@@ -127,12 +126,9 @@
     <string name="setting_gesture_11">Zobrazit rychlé přepínání</string>
     <string name="hint_database">Tímto odstraníte aktuální data. Chcete pokračovat?</string>
     <string name="settings_data_restore">Obnovit</string>
-    <string name="toast_add_whitelist_successful">Doména byla úspěšně přidána</string>
     <string name="toast_copy_successful">Úspěšně zkopírováno</string>
     <string name="toast_delete_successful">Úspěšně smazáno</string>
-    <string name="toast_domain_already_exists">Doména již existuje</string>
     <string name="toast_input_empty">Nic jste nevložili.</string>
-    <string name="toast_invalid_domain">Neplatná doména</string>
     <string name="toast_webview_forward">Nelze načíst další stránku</string>
     <string name="toast_restart">Pro provedení změn musíte restartovat aplikaci „FOSS Browser“. Ukončit nyní?</string>
     <string name="toast_quit">Opravdu chcete ukončit aplikaci „FOSS Browser“?</string>
@@ -141,8 +137,6 @@
     <string name="toast_backup">Zálohování dat\? Tím se přepíše stávající záloha.</string>
     <string name="dialog_postOnWebsiteHint">URL pro otevření. Uloží se pro další použití.</string>
     <string name="dialog_postOnWebsite">Příspěvek na webových stránkách</string>
-    <string name="whitelist_edit_hint">Doména</string>
-    <string name="whitelist_add">Přidat</string>
     <string name="menu_desktopView">Zobrazení pro PC</string>
     <string name="menu_dayView">Denní přehled</string>
     <string name="menu_nightView">Noční zobrazení</string>

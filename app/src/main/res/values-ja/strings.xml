@@ -73,7 +73,6 @@
     <string name="setting_summary_search_engine_metager">MetaGer</string>
     <string name="setting_title_font">フォントサイズ</string>
     <string name="setting_title_dom">ウェブストレージ</string>
-    <string name="privacy_redirect">リダイレクト</string>
     <string name="source">ソース</string>
     <string name="target">目標</string>
     <string name="setting_title_save_data">「データを保存」のリクエスト</string>
@@ -127,12 +126,9 @@
     <string name="setting_gesture_11">高速トグルを表示</string>
     <string name="hint_database">現在のデータを削除します。続行しますか?</string>
     <string name="settings_data_restore">復元</string>
-    <string name="toast_add_whitelist_successful">ドメインの追加に成功しました</string>
     <string name="toast_copy_successful">正常にコピーされました</string>
     <string name="toast_delete_successful">正常に削除されました</string>
-    <string name="toast_domain_already_exists">ドメインは既に存在します</string>
     <string name="toast_input_empty">何も入力していません.</string>
-    <string name="toast_invalid_domain">無効なドメイン</string>
     <string name="toast_webview_forward">次のサイトを読み込めません</string>
     <string name="toast_restart">変更を適用するには \"FOSS Browser\" を再起動する必要があります。今すぐ閉じますか?</string>
     <string name="toast_quit">\"FOSS Browser\" を終了しますか?</string>
@@ -141,8 +137,6 @@
     <string name="toast_backup">データをバックアップしますか？既存のバックアップを上書きします。</string>
     <string name="dialog_postOnWebsiteHint">開くためのURL。次回の使用時に保存されます。</string>
     <string name="dialog_postOnWebsite">ウェブサイトに掲載</string>
-    <string name="whitelist_edit_hint">ドメイン</string>
-    <string name="whitelist_add">追加</string>
     <string name="menu_desktopView">デスクトップ表示</string>
     <string name="menu_dayView">明るい時での表示</string>
     <string name="menu_nightView">暗い時での表示</string>

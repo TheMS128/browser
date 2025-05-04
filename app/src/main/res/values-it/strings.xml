@@ -73,7 +73,6 @@
     <string name="setting_summary_search_engine_metager">Metager</string>
     <string name="setting_title_font">Dimensione testo</string>
     <string name="setting_title_dom">Archivio DOM</string>
-    <string name="privacy_redirect">Reindirizzamento</string>
     <string name="source">Sorgente</string>
     <string name="target">Bersaglio</string>
     <string name="setting_title_save_data">Richiedi \'Salva dati\'</string>
@@ -127,12 +126,9 @@
     <string name="setting_gesture_11">Mostra il toggle veloce</string>
     <string name="hint_database">Questo eliminerà i dati correnti. Procedere?</string>
     <string name="settings_data_restore">Ripristina</string>
-    <string name="toast_add_whitelist_successful">Dominio aggiunto con successo</string>
     <string name="toast_copy_successful">Copiato con successo</string>
     <string name="toast_delete_successful">Eliminato con successo</string>
-    <string name="toast_domain_already_exists">Dominio già presente</string>
     <string name="toast_input_empty">Non hai inserito nulla.</string>
-    <string name="toast_invalid_domain">Dominio non valido</string>
     <string name="toast_webview_forward">Non è possibile caricare il sito successivo</string>
     <string name="toast_restart">Per applicare le modifiche è necessario riavviare \"FOSS Browser\". Chiudere ora?</string>
     <string name="toast_quit">Vuoi uscire da \"FOSS Browser\"?</string>
@@ -141,8 +137,6 @@
     <string name="toast_backup">Backup dei dati\? Il backup esistente verrà sovrascritto.</string>
     <string name="dialog_postOnWebsiteHint">URL da aprire. Sarà salvato per il prossimo utilizzo.</string>
     <string name="dialog_postOnWebsite">Pubblica sul sito web</string>
-    <string name="whitelist_edit_hint">Dominio</string>
-    <string name="whitelist_add">Aggiungi</string>
     <string name="menu_desktopView">Vista desktop</string>
     <string name="menu_dayView">Vista giorno</string>
     <string name="menu_nightView">Vista notturna</string>

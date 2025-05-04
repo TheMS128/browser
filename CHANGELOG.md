@@ -8,6 +8,7 @@
 - fix: third Party Cookies
 - fix: tracking-URL-dialog
 - fix: HTTP-dialog
+- fix: removed unused strings
 - fix: (workaround): Codeberg JavaScript error only on FOSS Browser #1231
 
 

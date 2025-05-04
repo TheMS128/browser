@@ -52,7 +52,7 @@ public class CustomRedirectsDialog extends DialogFragment {
         adapter = new AdapterCustomRedirect(redirects, requireContext());
         recyclerView.setAdapter(adapter);
 
-        builder.setTitle(R.string.privacy_redirect);
+        builder.setTitle(R.string.privacy_redirect_title);
         builder.setIcon(R.drawable.icon_redirect);
         builder.setPositiveButton(R.string.create_new, null);
         builder.setView(dialogView);
@@ -73,7 +73,7 @@ public class CustomRedirectsDialog extends DialogFragment {
         TextInputEditText source = dialogView.findViewById(R.id.source);
         TextInputEditText target = dialogView.findViewById(R.id.target);
 
-        builder.setTitle(R.string.privacy_redirect);
+        builder.setTitle(R.string.privacy_redirect_title);
         builder.setIcon(R.drawable.icon_redirect);
         builder.setNegativeButton(R.string.app_cancel, null);
         builder.setPositiveButton(R.string.app_ok, ((dialogInterface, i) -> {

@@ -72,7 +72,6 @@
     <string name="setting_summary_search_engine_metager">metager</string>
     <string name="setting_title_font">גודל גופן</string>
     <string name="setting_title_dom">אחסון DOM</string>
-    <string name="privacy_redirect">הפניה מחדש</string>
     <string name="source">מקור</string>
     <string name="target">מטרה</string>
     <string name="setting_title_save_data">בקש \'שמור נתונים\'</string>
@@ -125,12 +124,9 @@
     <string name="setting_gesture_11">הצג החלפה מהירה</string>
     <string name="hint_database">פעולה זו תמחק את הנתונים הנוכחיים. להמשיך?</string>
     <string name="settings_data_restore">שחזר</string>
-    <string name="toast_add_whitelist_successful">דומיין נוסף בהצלחה</string>
     <string name="toast_copy_successful">הועתק בהצלחה</string>
     <string name="toast_delete_successful">נמחק בהצלחה</string>
-    <string name="toast_domain_already_exists">הדומיין כבר קיים</string>
     <string name="toast_input_empty">לא הזנת כלום.</string>
-    <string name="toast_invalid_domain">דומיין לא חוקי</string>
     <string name="toast_webview_forward">לא ניתן לטעון את האתר הבא</string>
     <string name="toast_restart">עליך להפעיל מחדש את \"FOSS Browser\" כדי להחיל שינויים. לסגור עכשיו?</string>
     <string name="toast_quit">האם ברצונך לצאת מ\"דפדפן FOSS\"?</string>
@@ -139,8 +135,6 @@
     <string name="toast_backup">גיבוי נתונים\? פעולה זו תחליף את הגיבוי הישן.</string>
     <string name="dialog_postOnWebsiteHint">כתובת אתר לפתיחה. יישמר לשימוש הבא.</string>
     <string name="dialog_postOnWebsite">פרסם באתר</string>
-    <string name="whitelist_edit_hint">תחום</string>
-    <string name="whitelist_add">הוסף</string>
     <string name="menu_desktopView">תצוגת שולחן עבודה</string>
     <string name="menu_dayView">תצוגת יום</string>
     <string name="menu_nightView">תצוגת לילה</string>

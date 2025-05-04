@@ -73,7 +73,6 @@
     <string name="setting_summary_search_engine_metager">Metager</string>
     <string name="setting_title_font">Tamanho de letra</string>
     <string name="setting_title_dom">Armazenamento DOM</string>
-    <string name="privacy_redirect">Redirecionar</string>
     <string name="source">Origem</string>
     <string name="target">Destino</string>
     <string name="setting_title_save_data">Solicitar \'Dados salvados\'</string>
@@ -126,12 +125,9 @@
     <string name="setting_gesture_11">Mostrar alternância rápida</string>
     <string name="hint_database">Isto irá apagar os dados atuais. Continuar?</string>
     <string name="settings_data_restore">Restaurar</string>
-    <string name="toast_add_whitelist_successful">Domínio adicionado</string>
     <string name="toast_copy_successful">Copiado</string>
     <string name="toast_delete_successful">Apagado</string>
-    <string name="toast_domain_already_exists">Domínio já existe</string>
     <string name="toast_input_empty">Por favor digite algo.</string>
-    <string name="toast_invalid_domain">Domínio inválido</string>
     <string name="toast_webview_forward">Não foi possível carregar o próximo site.</string>
     <string name="toast_restart">Reiniciar para aplicar mudanças?</string>
     <string name="toast_quit">Sair do \"FOSS Browser\"?</string>
@@ -140,8 +136,6 @@
     <string name="toast_backup">Dados de cópia de segurança\? Isto irá substituir a cópia de segurança existente.</string>
     <string name="dialog_postOnWebsiteHint">URL para abrir. Será guardada para o próximo uso.</string>
     <string name="dialog_postOnWebsite">Publicar no site</string>
-    <string name="whitelist_edit_hint">Domínio</string>
-    <string name="whitelist_add">Adicionar</string>
     <string name="menu_desktopView">Visualização para área de trabalho</string>
     <string name="menu_dayView">Visão de dia</string>
     <string name="menu_nightView">Visão de noite</string>

@@ -73,7 +73,6 @@
     <string name="setting_summary_search_engine_metager">Metager</string>
     <string name="setting_title_font">Schriftgröße</string>
     <string name="setting_title_dom">DOM-Speicher</string>
-    <string name="privacy_redirect">Umleitung</string>
     <string name="source">Quelle</string>
     <string name="target">Ziel</string>
     <string name="setting_title_save_data">\"Daten sparen\" verlangen</string>
@@ -127,12 +126,9 @@
     <string name="setting_gesture_11">Schnelleinstellungen</string>
     <string name="hint_database">Aktuelle Daten werden gelöscht. Fortfahren?</string>
     <string name="settings_data_restore">Wiederherstellen</string>
-    <string name="toast_add_whitelist_successful">Domain hinzugefügt</string>
     <string name="toast_copy_successful">Kopiert</string>
     <string name="toast_delete_successful">Gelöscht</string>
-    <string name="toast_domain_already_exists">Domain existiert bereits</string>
     <string name="toast_input_empty">Bitte gib etwas ein.</string>
-    <string name="toast_invalid_domain">Ungültige Domain</string>
     <string name="toast_webview_forward">Kann die nächste Seite nicht laden.</string>
     <string name="toast_restart">Neustarten, damit die Änderungen wirksam werden?</string>
     <string name="toast_quit">\"FOSS Browser\" beenden?</string>
@@ -141,8 +137,6 @@
     <string name="toast_backup">Daten sichern\? Das überschreibt die bestehende Sicherung.</string>
     <string name="dialog_postOnWebsiteHint">Zu öffnende URL. Wird für die nächste Verwendung gespeichert.</string>
     <string name="dialog_postOnWebsite">Auf Webseite posten</string>
-    <string name="whitelist_edit_hint">Domain</string>
-    <string name="whitelist_add">Hinzufügen</string>
     <string name="menu_desktopView">Desktop-Ansicht</string>
     <string name="menu_dayView">Tages-Ansicht</string>
     <string name="menu_nightView">Nacht-Ansicht</string>

@@ -577,7 +577,8 @@
                     android:gravity="center_vertical"
                     android:text="@string/setting_title_save_data"
                     android:layout_toEndOf="@+id/icon_saveData"
-                    android:layout_toStartOf="@+id/checkbox_saveData"/>
+                    android:layout_toStartOf="@+id/checkbox_saveData"
+                    tools:ignore="TooManyViews" />
                 <CheckBox
                     android:id="@+id/checkbox_saveData"
                     android:layout_width="wrap_content"
@@ -674,7 +675,6 @@
             </RelativeLayout>
 
             <RelativeLayout
-                android:id="@+id/layoutRedirect"
                 android:layout_marginStart="15dp"
                 android:layout_width="wrap_content"
                 android:layout_height="?android:attr/listPreferredItemHeightSmall">

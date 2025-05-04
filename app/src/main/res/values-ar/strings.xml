@@ -71,7 +71,6 @@
     <string name="setting_summary_search_engine_metager">Metager</string>
     <string name="setting_title_font">حجم الخط</string>
     <string name="setting_title_dom">تخزين DOM</string>
-    <string name="privacy_redirect">أعدْ التوجيه</string>
     <string name="source">Source</string>
     <string name="target">هدف</string>
     <string name="setting_title_save_data">اطلب \'حفظ البيانات\'</string>
@@ -125,12 +124,9 @@
     <string name="setting_gesture_11">إظهار مفتاح الجلب</string>
     <string name="hint_database">هذا سيحذف البيانات الحالية. أواصل؟</string>
     <string name="settings_data_restore">يعيد</string>
-    <string name="toast_add_whitelist_successful">أضيف النطاق بنجاح</string>
     <string name="toast_copy_successful">نُسخ بنجاح</string>
     <string name="toast_delete_successful">حُذف بنجاح</string>
-    <string name="toast_domain_already_exists">النطاق موجود مسبقا</string>
     <string name="toast_input_empty">لم تُدخل أي شيء.</string>
-    <string name="toast_invalid_domain">نطاق غير سليم</string>
     <string name="toast_webview_forward">لا يمكن تحميل الموقع التالي</string>
     <string name="toast_restart">يجب عليك إعادة تشغيل المتصفح الحر\"FOSS Browser\" لتطبيق التغييرات. أغلق الآن؟</string>
     <string name="toast_quit">أتريد إنهاء المتصفح الحر\"FOSS Browser\"؟</string>
@@ -139,8 +135,6 @@
     <string name="toast_backup">اعمل نسخا احتياطيا للبيانات؟ هذا سيستبدل النسخ الاحتياطي القديم.</string>
     <string name="dialog_postOnWebsiteHint">الرابط للفتح. سيتم حفظه للاستخدام التالي.</string>
     <string name="dialog_postOnWebsite">نشر على الموقع</string>
-    <string name="whitelist_edit_hint">النطاق</string>
-    <string name="whitelist_add">أضف</string>
     <string name="menu_desktopView">عرض سطح المكتب</string>
     <string name="menu_dayView">عرض يومي</string>
     <string name="menu_nightView">عرض ليلي</string>
