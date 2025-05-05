@@ -1659,6 +1659,10 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
                 checkbox_links.setChecked(sp.getBoolean("sp_tabBackground", true));
             });
 
+            TextView titeViewSettings = dialogViewFastToggle.findViewById(R.id.titeViewSettings);
+            String s = context.getString(R.string.app_name) + " " + context.getString(R.string.setting_label);
+            titeViewSettings.setText(s);
+
             CheckBox checkbox_image = dialogViewFastToggle.findViewById(R.id.checkbox_image);
             checkbox_image.setChecked(sp.getBoolean(profile + "_images", false));
             checkbox_image.setOnClickListener(v -> {
