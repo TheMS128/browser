@@ -1,4 +1,4 @@
-### v 20 (WIP)
+### v 20 Bertha von Suttner (Die Waffen nieder)
 
 - new: disable webview diagnostic data
 - new: set render priority to high
