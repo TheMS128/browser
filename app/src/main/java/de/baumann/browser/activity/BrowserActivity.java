@@ -92,6 +92,7 @@ import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.navigation.NavigationBarView;
 import com.google.android.material.progressindicator.CircularProgressIndicator;
+import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.tabs.TabLayout;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
@@ -282,8 +283,10 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
         BroadcastReceiver downloadReceiver = new BroadcastReceiver() {
             @Override
             public void onReceive(Context context, Intent intent) {
-                String text = getString(R.string.app_done) + ": " + getString(R.string.menu_download) +"?";
-                NinjaToast.show(context, text);
+                String text = getString(R.string.app_done) + ". " + getString(R.string.menu_download) +"?";
+                Snackbar snackbar = Snackbar.make(ninjaWebView, text, Snackbar.LENGTH_LONG);
+                snackbar.setAction(context.getString(R.string.app_ok), v -> startActivity(Intent.createChooser(new Intent(DownloadManager.ACTION_VIEW_DOWNLOADS), null)));
+                snackbar.show();
             }};
 
         if (SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
