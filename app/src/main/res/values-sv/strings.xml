@@ -179,4 +179,5 @@
     <string name="privacy_redirect_use">Använd omdirigeringar</string>
     <string name="privacy_redirect_title">Omdirigeringar</string>
     <string name="album_title_bookmarks_html">Bokmärken (HTML)</string>
+    <string name="setting_title_profiles_standard_always">Byt till standardprofil för nya domäner och flikar.</string>
 </resources>

@@ -179,4 +179,5 @@
     <string name="setting_backup_sumSettings">Paramètres des applications et des sites web</string>
     <string name="privacy_redirect_use">Utiliser des redirections</string>
     <string name="privacy_redirect_title">Redirections</string>
+    <string name="setting_title_profiles_standard_always">Passer au profil standard pour les nouveaux domaines et onglets.</string>
 </resources>

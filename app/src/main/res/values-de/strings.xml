@@ -179,4 +179,5 @@
     <string name="setting_title_dynColors">Dynamische Farben</string>
     <string name="privacy_redirect_use">Benutze Umleitungen</string>
     <string name="privacy_redirect_title">Umleitungen</string>
+    <string name="setting_title_profiles_standard_always">Wechseln zum Standardprofil für neue Domains und Tabs.</string>
 </resources>

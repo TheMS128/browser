@@ -179,4 +179,5 @@
     <string name="setting_backup_sumSettings">Настройки приложений и веб-сайтов</string>
     <string name="privacy_redirect_use">Используйте перенаправления</string>
     <string name="privacy_redirect_title">Перенаправления</string>
+    <string name="setting_title_profiles_standard_always">Переключитесь на стандартный профиль для новых доменов и вкладок.</string>
 </resources>

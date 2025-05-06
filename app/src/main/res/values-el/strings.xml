@@ -179,4 +179,5 @@
     <string name="privacy_redirect_title">Αναδρομολογήσεις</string>
     <string name="album_title_bookmarks_html">Σελιδοδείκτες (HTML)</string>
     <string name="setting_title_dynColors">Δυναμικά χρώματα</string>
+    <string name="setting_title_profiles_standard_always">Εναλλαγή σε τυπικό προφίλ για νέους τομείς και καρτέλες.</string>
 </resources>

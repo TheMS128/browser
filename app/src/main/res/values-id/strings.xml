@@ -179,4 +179,5 @@
     <string name="privacy_redirect_use">Gunakan pengalihan</string>
     <string name="privacy_redirect_title">Pengalihan</string>
     <string name="setting_backup_sumDatabase">Situs awal, Penanda, riwayat</string>
+    <string name="setting_title_profiles_standard_always">Beralih ke profil standar untuk domain dan tab baru.</string>
 </resources>

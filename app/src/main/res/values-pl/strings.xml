@@ -179,4 +179,5 @@
     <string name="privacy_redirect_title">Przekierowania</string>
     <string name="setting_title_savedWebSites">Zapisane strony internetowe</string>
     <string name="setting_backup_ext">Kopia zapasowa przy wyjściu</string>
+    <string name="setting_title_profiles_standard_always">Przełącz na profil standardowy dla nowych domen i zakładek.</string>
 </resources>

@@ -179,4 +179,5 @@
     <string name="setting_backup_sumDatabase">Başlangıç Sitesi, Yer İmleri, Geçmiş</string>
     <string name="setting_backup_sumSettings">Uygulama ve web sitesi ayarları</string>
     <string name="privacy_redirect_use">Yönlendirmeleri kullanın</string>
+    <string name="setting_title_profiles_standard_always">Yeni alan adları ve sekmeler için standart profile geçin.</string>
 </resources>

@@ -179,4 +179,5 @@
     <string name="setting_backup_sumSettings">Definições de aplicações e sítios Web</string>
     <string name="privacy_redirect_title">Redireccionamentos</string>
     <string name="privacy_redirect_use">Utilizar redireccionamentos</string>
+    <string name="setting_title_profiles_standard_always">Mudar para o perfil padrão para novos domínios e separadores.</string>
 </resources>

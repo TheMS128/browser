@@ -179,4 +179,5 @@
     <string name="setting_title_dynColors">Динамічні кольори</string>
     <string name="privacy_redirect_use">Використовувати перенаправлення</string>
     <string name="privacy_redirect_title">Перенаправлення</string>
+    <string name="setting_title_profiles_standard_always">Перемикатися на стандартний профіль для нових доменів і вкладок.</string>
 </resources>

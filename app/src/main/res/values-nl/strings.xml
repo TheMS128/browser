@@ -179,4 +179,5 @@
     <string name="setting_backup_sumSettings">App- en website-instellingen</string>
     <string name="privacy_redirect_use">Omleidingen gebruiken</string>
     <string name="privacy_redirect_title">Omleidingen</string>
+    <string name="setting_title_profiles_standard_always">Overschakelen naar standaardprofiel voor nieuwe domeinen en tabbladen.</string>
 </resources>
