@@ -6,17 +6,15 @@ import android.content.res.TypedArray;
 import android.util.AttributeSet;
 import android.view.ViewGroup;
 import android.widget.CompoundButton;
-import android.widget.LinearLayout;
 
 import androidx.annotation.NonNull;
 import androidx.preference.ListPreference;
 import androidx.preference.PreferenceManager;
 import androidx.preference.PreferenceViewHolder;
 
-import com.google.android.material.materialswitch.MaterialSwitch;
+import com.google.android.material.checkbox.MaterialCheckBox;
 
 import de.baumann.browser.R;
-import de.baumann.browser.unit.HelperUnit;
 
 public class ListSwitchPreference extends ListPreference {
 
@@ -42,21 +40,13 @@ public class ListSwitchPreference extends ListPreference {
 
         final SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(getContext());
         final ViewGroup rootView;
-        final MaterialSwitch onOffSwitch;
+        final MaterialCheckBox onOffSwitch;
         final CompoundButton.OnCheckedChangeListener checkedChangeListener;
         super.onBindViewHolder(holder);
 
         rootView = (ViewGroup) holder.itemView;
         if (!switchAttached && (ListSwitchKey != null)) {
-
-            LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(
-                    LinearLayout.LayoutParams.WRAP_CONTENT,
-                    LinearLayout.LayoutParams.WRAP_CONTENT
-            );
-            params.setMargins(0, 0, HelperUnit.convertDpToPixel(5f, getContext()),0);
-
-            onOffSwitch = new MaterialSwitch(getContext());
-            onOffSwitch.setLayoutParams(params);
+            onOffSwitch = new MaterialCheckBox(getContext());
             rootView.addView(onOffSwitch);
             switchAttached = true;
             onOffSwitch.setChecked(sp.getBoolean(ListSwitchKey, ListSwitchKeyDefaultValue));

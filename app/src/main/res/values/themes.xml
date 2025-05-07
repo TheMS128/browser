@@ -3,19 +3,16 @@
     <style name="AppTheme_wallpaper" parent="Theme.Material3.DynamicColors.DayNight">
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
-        <item name="switchPreferenceCompatStyle">@style/MaterialPreferenceSwitch</item>
     </style>
 
     <style name="AppTheme_wallpaper_day" parent="Theme.Material3.DynamicColors.Light">
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
-        <item name="switchPreferenceCompatStyle">@style/MaterialPreferenceSwitch</item>
     </style>
 
     <style name="AppTheme_wallpaper_night" parent="Theme.Material3.DynamicColors.Dark">
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
-        <item name="switchPreferenceCompatStyle">@style/MaterialPreferenceSwitch</item>
     </style>
 
     <style name="AppTheme" parent="Theme.Material3.Light.NoActionBar">
@@ -65,10 +62,6 @@
         <item name="colorSurfaceContainer">@color/md_theme_surfaceContainer</item>
         <item name="colorSurfaceContainerHigh">@color/md_theme_surfaceContainerHigh</item>
         <item name="colorSurfaceContainerHighest">@color/md_theme_surfaceContainerHighest</item>
-    </style>
-
-    <style name="MaterialPreferenceSwitch" parent="@style/Preference.SwitchPreferenceCompat.Material">
-        <item name="widgetLayout">@layout/view_preference_switch</item>
     </style>
 
 </resources>

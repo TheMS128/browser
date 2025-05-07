@@ -113,7 +113,7 @@
             android:summary="@string/menu_nightView" />
 
         <CheckBoxPreference
-            android:defaultValue="true"
+            android:defaultValue="false"
             android:icon="@drawable/icon_desktop"
             android:key="profileStandard_desktop"
             android:summary="@string/menu_desktopView" />

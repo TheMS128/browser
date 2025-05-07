@@ -7,7 +7,6 @@ import android.util.AttributeSet;
 import android.util.TypedValue;
 import android.view.ViewGroup;
 import android.widget.CompoundButton;
-import android.widget.LinearLayout;
 
 import androidx.annotation.NonNull;
 import androidx.core.content.res.ResourcesCompat;
@@ -15,10 +14,9 @@ import androidx.preference.EditTextPreference;
 import androidx.preference.PreferenceManager;
 import androidx.preference.PreferenceViewHolder;
 
-import com.google.android.material.materialswitch.MaterialSwitch;
+import com.google.android.material.checkbox.MaterialCheckBox;
 
 import de.baumann.browser.R;
-import de.baumann.browser.unit.HelperUnit;
 
 public class EditTextSwitchPreference extends EditTextPreference {
 
@@ -43,22 +41,14 @@ public class EditTextSwitchPreference extends EditTextPreference {
     public void onBindViewHolder(@NonNull PreferenceViewHolder holder) {
         final SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(getContext());
         final ViewGroup rootView;
-        final MaterialSwitch onOffSwitch;
+        final MaterialCheckBox onOffSwitch;
         final CompoundButton.OnCheckedChangeListener checkedChangeListener;
         Context context = getContext();
         super.onBindViewHolder(holder);
         rootView = (ViewGroup) holder.itemView;
 
         if (!switchAttached && (EditTextSwitchKey != null)) {
-
-            LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(
-                    LinearLayout.LayoutParams.WRAP_CONTENT,
-                    LinearLayout.LayoutParams.WRAP_CONTENT
-            );
-            params.setMargins(0, 0, HelperUnit.convertDpToPixel(5f, getContext()),0);
-
-            onOffSwitch = new MaterialSwitch(context);
-            onOffSwitch.setLayoutParams(params);
+            onOffSwitch = new MaterialCheckBox(context);
             rootView.addView(onOffSwitch);
             switchAttached = true;
             onOffSwitch.setChecked(sp.getBoolean(EditTextSwitchKey, EditTextSwitchKeyDefaultValue));

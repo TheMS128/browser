@@ -141,12 +141,11 @@ public class HelperUnit {
 
                 View dialogView = View.inflate(activity, R.layout.dialog_edit, null);
                 TextInputLayout editBottomLayout = dialogView.findViewById(R.id.editBottomLayout);
+                TextInputLayout editTopLayout = dialogView.findViewById(R.id.editTopLayout);
                 editBottomLayout.setHint(activity.getString(R.string.dialog_extension_hint));
-
+                editTopLayout.setHint(activity.getString(R.string.dialog_title_hint));
                 EditText editTop = dialogView.findViewById(R.id.editTop);
                 EditText editBottom = dialogView.findViewById(R.id.editBottom);
-                editTop.setHint(activity.getString(R.string.dialog_title_hint));
-                editBottom.setHint(activity.getString(R.string.dialog_extension_hint));
 
                 String filename = name != null ? name : URLUtil.guessFileName(url, null, null);
                 String extension = filename.substring(filename.lastIndexOf("."));
@@ -343,11 +342,12 @@ public class HelperUnit {
         MaterialAlertDialogBuilder builder = new MaterialAlertDialogBuilder(activity);
 
         View dialogView = View.inflate(activity, R.layout.dialog_edit, null);
+        TextInputLayout editBottomLayout = dialogView.findViewById(R.id.editBottomLayout);
+        TextInputLayout editTopLayout = dialogView.findViewById(R.id.editTopLayout);
+        editBottomLayout.setHint(activity.getString(R.string.dialog_extension_hint));
+        editTopLayout.setHint(activity.getString(R.string.dialog_title_hint));
         EditText editTop = dialogView.findViewById(R.id.editTop);
         EditText editBottom = dialogView.findViewById(R.id.editBottom);
-        editTop.setHint(activity.getString(R.string.dialog_title_hint));
-        editBottom.setHint(activity.getString(R.string.dialog_extension_hint));
-
         editTop.setText(filename.substring(0, filename.indexOf(".")));
 
         String extension = filename.substring(filename.lastIndexOf("."));

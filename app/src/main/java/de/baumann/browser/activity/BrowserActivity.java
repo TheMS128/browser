@@ -298,8 +298,6 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
         initOmniBox();
         initSearchPanel();
         initOverview();
-
-
         dispatchIntent(getIntent());
 
         //restore open Tabs from shared preferences if app got killed
@@ -365,8 +363,10 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
         }
         if (sp.getBoolean("pdf_create", false)) {
             sp.edit().putBoolean("pdf_create", false).apply();
-            String text = getString(R.string.app_done) + ": " + getString(R.string.menu_download) +"?";
-            NinjaToast.show(context, text);
+            String text = getString(R.string.app_done) + ". " + getString(R.string.menu_download) +"?";
+            Snackbar snackbar = Snackbar.make(ninjaWebView, text, Snackbar.LENGTH_LONG);
+            snackbar.setAction(context.getString(R.string.app_ok), v -> startActivity(Intent.createChooser(new Intent(DownloadManager.ACTION_VIEW_DOWNLOADS), null)));
+            snackbar.show();
         }
         dispatchIntent(getIntent());
     }
@@ -1470,17 +1470,14 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
                     builderSubMenu = new MaterialAlertDialogBuilder(context);
 
                     View dialogViewSubMenu = View.inflate(context, R.layout.dialog_edit, null);
-                    TextInputLayout editTopLayout = dialogViewSubMenu.findViewById(R.id.editTopLayout);
-                    editTopLayout.setHint(getString(R.string.dialog_title_hint));
                     TextInputLayout editBottomLayout = dialogViewSubMenu.findViewById(R.id.editBottomLayout);
-                    editBottomLayout.setHint(getString(R.string.dialog_URL_hint));
-
+                    TextInputLayout editTopLayout = dialogViewSubMenu.findViewById(R.id.editTopLayout);
+                    editBottomLayout.setHint(activity.getString(R.string.dialog_URL_hint));
+                    editTopLayout.setHint(activity.getString(R.string.dialog_title_hint));
                     EditText editTop = dialogViewSubMenu.findViewById(R.id.editTop);
                     EditText editBottom = dialogViewSubMenu.findViewById(R.id.editBottom);
                     editTop.setText(title);
-                    editTop.setHint(getString(R.string.dialog_title_hint));
                     editBottom.setText(url);
-                    editBottom.setHint(getString(R.string.dialog_URL_hint));
 
                     MaterialCardView ib_icon = dialogViewSubMenu.findViewById(R.id.editIcon);
                     ib_icon.setVisibility(VISIBLE);
@@ -1642,8 +1639,7 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
 
             CheckBox checkbox_links = dialogViewFastToggle.findViewById(R.id.checkbox_links);
             if (SDK_INT >= Build.VERSION_CODES.TIRAMISU && sp.getBoolean("sp_tabBackground", false)) {
-                int notificationAllowed = 0;
-                notificationAllowed = checkSelfPermission(Manifest.permission.POST_NOTIFICATIONS);
+                int notificationAllowed = checkSelfPermission(Manifest.permission.POST_NOTIFICATIONS);
                 if (notificationAllowed != PackageManager.PERMISSION_GRANTED) {
                     MaterialAlertDialogBuilder builder = new MaterialAlertDialogBuilder(activity);
                     builder.setIcon(R.drawable.icon_alert);
@@ -1662,9 +1658,9 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
                 checkbox_links.setChecked(sp.getBoolean("sp_tabBackground", true));
             });
 
-            TextView titeViewSettings = dialogViewFastToggle.findViewById(R.id.titeViewSettings);
+            TextView titleViewSettings = dialogViewFastToggle.findViewById(R.id.titeViewSettings);
             String s = context.getString(R.string.app_name) + " " + context.getString(R.string.setting_label);
-            titeViewSettings.setText(s);
+            titleViewSettings.setText(s);
 
             CheckBox checkbox_image = dialogViewFastToggle.findViewById(R.id.checkbox_image);
             checkbox_image.setChecked(sp.getBoolean(profile + "_images", false));
@@ -2246,16 +2242,25 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
                             break;
                         case 2:
                             dialogTrack.cancel();
-                            View dialogEdit = View.inflate(context, R.layout.dialog_edit_text, null);
-                            TextInputEditText input = dialogEdit.findViewById(R.id.textInput);
+                            View dialogEdit = View.inflate(context, R.layout.dialog_edit, null);
+                            TextInputLayout editBottomLayout = dialogEdit.findViewById(R.id.editBottomLayout);
+                            TextInputLayout editTopLayout = dialogEdit.findViewById(R.id.editTopLayout);
+                            editBottomLayout.setHint(activity.getString(R.string.dialog_URL_hint));
+                            editTopLayout.setVisibility(GONE);
+                            EditText input = dialogEdit.findViewById(R.id.editBottom);
                             input.setText(url);
                             HelperUnit.showSoftKeyboard(input);
 
                             MaterialAlertDialogBuilder builder = new MaterialAlertDialogBuilder(context);
                             builder.setTitle(context.getString(R.string.menu_edit));
                             builder.setIcon(R.drawable.icon_tracking);
-                            builder.setNegativeButton(R.string.app_cancel, null);
-                            builder.setPositiveButton(R.string.app_ok, (dialog, i) -> {
+                            builder.setView(dialogEdit);
+                            Dialog dialog = builder.create();
+
+                            Button ib_cancel = dialogEdit.findViewById(R.id.editCancel);
+                            ib_cancel.setOnClickListener(v -> dialog.cancel());
+                            Button ib_ok = dialogEdit.findViewById(R.id.editOK);
+                            ib_ok.setOnClickListener(v -> {
                                 dialog.dismiss();
                                 String newValue = Objects.requireNonNull(input.getText()).toString();
                                 Intent sharingIntentEdit;
@@ -2265,8 +2270,6 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
                                 sharingIntentEdit.putExtra(Intent.EXTRA_TEXT, newValue);
                                 context.startActivity(Intent.createChooser(sharingIntentEdit, (context.getString(R.string.menu_share_link))));
                             });
-                            builder.setView(dialogEdit);
-                            Dialog dialog = builder.create();
                             dialog.show();
                             HelperUnit.setupDialog(context, dialog);
                             break;
@@ -2295,16 +2298,12 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
         } else {
             MaterialAlertDialogBuilder builder = new MaterialAlertDialogBuilder(context);
             View dialogViewSubMenu = View.inflate(context, R.layout.dialog_edit, null);
-
-            TextInputLayout editTopLayout = dialogViewSubMenu.findViewById(R.id.editTopLayout);
-            editTopLayout.setVisibility(GONE);
             TextInputLayout editBottomLayout = dialogViewSubMenu.findViewById(R.id.editBottomLayout);
-            editBottomLayout.setHint(getString(R.string.dialog_URL_hint));
+            TextInputLayout editTopLayout = dialogViewSubMenu.findViewById(R.id.editTopLayout);
+            editBottomLayout.setHint(activity.getString(R.string.dialog_URL_hint));
+            editTopLayout.setVisibility(GONE);
+            EditText editBottom = dialogViewSubMenu.findViewById(R.id.editBottom);
             editBottomLayout.setHelperText(getString(R.string.dialog_postOnWebsiteHint));
-
-            EditText editTop = dialogViewSubMenu.findViewById(R.id.editBottom);
-            editTop.setText("");
-            editTop.setHint(getString(R.string.dialog_URL_hint));
 
             builder.setView(dialogViewSubMenu);
             builder.setTitle(data);
@@ -2318,7 +2317,7 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
             ib_cancel.setOnClickListener(v -> dialog.cancel());
             Button ib_ok = dialogViewSubMenu.findViewById(R.id.editOK);
             ib_ok.setOnClickListener(v -> {
-                String shareTop = editTop.getText().toString().trim();
+                String shareTop = editBottom.getText().toString().trim();
                 sp.edit().putString("urlForPosting", shareTop).apply();
                 ClipboardManager clipboard = (ClipboardManager) getSystemService(Context.CLIPBOARD_SERVICE);
                 ClipData clip = ClipData.newPlainText("text", data);

@@ -19,13 +19,13 @@ import android.webkit.WebResourceResponse;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.Button;
+import android.widget.EditText;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.preference.PreferenceManager;
 
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
-import com.google.android.material.textfield.TextInputEditText;
 import com.google.android.material.textfield.TextInputLayout;
 
 import java.io.ByteArrayInputStream;
@@ -548,17 +548,16 @@ public class NinjaWebViewClient extends WebViewClient {
         MaterialAlertDialogBuilder builder = new MaterialAlertDialogBuilder(context);
         View dialogView = View.inflate(context, R.layout.dialog_edit, null);
 
-        TextInputLayout editTopLayout = dialogView.findViewById(R.id.editTopLayout);
-        editTopLayout.setHint(this.context.getString(R.string.dialog_sign_in_username));
         TextInputLayout editBottomLayout = dialogView.findViewById(R.id.editBottomLayout);
+        TextInputLayout editTopLayout = dialogView.findViewById(R.id.editTopLayout);
         editBottomLayout.setHint(this.context.getString(R.string.dialog_sign_in_password));
-        TextInputEditText editTop = dialogView.findViewById(R.id.editTop);
-        TextInputEditText editBottom = dialogView.findViewById(R.id.editBottom);
+        editTopLayout.setHint(this.context.getString(R.string.dialog_sign_in_username));
+        EditText editTop = dialogView.findViewById(R.id.editTop);
+        EditText editBottom = dialogView.findViewById(R.id.editBottom);
+
         editTop.setText("");
-        editTop.setHint(this.context.getString(R.string.dialog_sign_in_username));
         editBottom.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_PASSWORD);
         editBottom.setText("");
-        editBottom.setHint(this.context.getString(R.string.dialog_sign_in_password));
 
         builder.setTitle(view.getTitle());
         builder.setIcon(R.drawable.icon_alert);

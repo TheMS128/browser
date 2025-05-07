@@ -1,3 +1,9 @@
+### v 21 (WIP)
+
+- fix: edit text dialogs
+- new: snackbar on download complete
+
+
 ### v 20 Rudi Dutschke
 
 - new: disable webview diagnostic data
@@ -41,6 +47,7 @@ With this release, it is possible to save settings separate for each website. Lo
 - removed: play audio in background, due to Android limitations
 - removed: OLED-theme
 
+
 ### v 18.1 "Die rote Zora"
 
 With the release of Android 15 Google introduced a feature called "window insets". Because of that feature there were many layout issues, mainly concerning the system navigation bar. I had to rewrite some layouts. The list of opened tabs, the overview and the search are moved in sidebars.
@@ -49,6 +56,7 @@ With the release of Android 15 Google introduced a feature called "window insets
 - updated translations
 - some minor code improvements
 - fix: tab issues
+
 
 ### v 17 "Michail Alexandrowitsch Bakunin"
 - upgrade: Android target SDK
@@ -123,7 +131,6 @@ With the release of Android 15 Google introduced a feature called "window insets
 - new: icons in overview menus
 - new: fast search on websites (long press search icon in toolbar)
 - new: AdBlock -> add custom domains
-
 
 ### v 12 "Gandhi"
 - fix: Open Downloads after download complete
@@ -693,7 +700,6 @@ as many tabs as you wish. Also you have a new startpage. Please read the new "He
 for more information.
     
 - full oreo support
-
 
 ### v 4.5
 - new: Chinese translation (Thanks: Jumping Yang)
