@@ -1,4 +1,4 @@
-### v 20 Bertha von Suttner (Die Waffen nieder)
+### v 20 Rudi Dutschke
 
 - new: disable webview diagnostic data
 - new: set render priority to high
