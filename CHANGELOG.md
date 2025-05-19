@@ -1,6 +1,7 @@
 ### v 21 (WIP)
 
 - fix: edit text dialogs
+- fix: userAgent
 - new: snackbar on download complete
 
 
