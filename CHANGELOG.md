@@ -2,6 +2,7 @@
 
 - fix: edit text dialogs
 - fix: userAgent
+- fix: not detecting saved websites in some cases
 - new: snackbar on download complete
 
 
