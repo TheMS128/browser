@@ -3,6 +3,7 @@
 - fix: edit text dialogs
 - fix: userAgent
 - fix: not detecting saved websites in some cases
+- fix: not switching to default profile, when going back in history
 - new: snackbar on download complete
 
 

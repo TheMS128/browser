@@ -321,6 +321,9 @@ public class NinjaWebView extends WebView implements AlbumController {
             stopLoading();
             String historyUrl = mWebBackForwardList.getItemAtIndex(mWebBackForwardList.getCurrentIndex()-1).getUrl();
             initPreferences(historyUrl);
+            if (!Objects.equals(HelperUnit.domain(this.getUrl()), HelperUnit.domain(historyUrl)) && sp.getBoolean("sp_standard_always", true)) {
+                sp.edit().putString("profile", "profileStandard").apply();
+            }
         }
         super.goBack();
     }
