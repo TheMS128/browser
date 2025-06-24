@@ -34,6 +34,7 @@
         android:icon="@mipmap/ic_launcher"
         android:supportsRtl="true"
         android:usesCleartextTraffic="true"
+        android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning"
         tools:targetApi="s">
 
@@ -49,8 +50,7 @@
             android:fitsSystemWindows="false"
             android:exported="true"
             android:grantUriPermissions="true"
-            android:launchMode="singleTask"
-            android:theme="@style/AppTheme">
+            android:launchMode="singleTask">
 
             <intent-filter>
                 <action android:name="android.intent.action.SEND" />
@@ -115,53 +115,43 @@
         <!-- Settings -->
         <activity
             android:name="de.baumann.browser.activity.Settings_Activity"
-            android:label="@string/setting_label"
-            android:theme="@style/AppTheme" />
+            android:label="@string/setting_label" />
 
         <activity
             android:name="de.baumann.browser.activity.Settings_ProfileList"
-            android:label="@string/setting_title_savedWebSites"
-            android:theme="@style/AppTheme" />
+            android:label="@string/setting_title_savedWebSites" />
 
         <activity
             android:name="de.baumann.browser.activity.Settings_General"
-            android:label="@string/setting_title_browser"
-            android:theme="@style/AppTheme" />
+            android:label="@string/setting_title_browser" />
 
         <activity
             android:name="de.baumann.browser.activity.Settings_Delete"
-            android:label="@string/menu_delete"
-            android:theme="@style/AppTheme" />
+            android:label="@string/menu_delete" />
 
         <activity
             android:name="de.baumann.browser.activity.Settings_Privacy"
-            android:label="@string/setting_title_profiles_privacy"
-            android:theme="@style/AppTheme" />
+            android:label="@string/setting_title_profiles_privacy" />
 
         <activity
             android:name="de.baumann.browser.activity.Settings_Backup"
-            android:label="@string/setting_title_data"
-            android:theme="@style/AppTheme" />
+            android:label="@string/setting_title_data" />
 
         <activity
             android:name="de.baumann.browser.activity.Settings_UI"
-            android:label="@string/setting_title_ui"
-            android:theme="@style/AppTheme" />
+            android:label="@string/setting_title_ui" />
 
         <activity
             android:name="de.baumann.browser.activity.Settings_Gesture"
-            android:label="@string/setting_gestures"
-            android:theme="@style/AppTheme" />
+            android:label="@string/setting_gestures" />
 
         <activity
             android:name="de.baumann.browser.activity.Settings_Filter"
-            android:label="@string/setting_filter"
-            android:theme="@style/AppTheme" />
+            android:label="@string/setting_filter" />
 
         <activity
             android:name="de.baumann.browser.activity.Settings_Profile"
-            android:label="@string/setting_title_profiles_standard"
-            android:theme="@style/AppTheme" />
+            android:label="@string/setting_title_profiles_standard" />
 
     </application>
 
