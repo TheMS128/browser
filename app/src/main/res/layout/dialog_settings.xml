@@ -100,8 +100,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginBottom="5dp">
+        android:layout_gravity="center_horizontal">
 
         <Button
             android:id="@+id/ib_save"
@@ -145,6 +144,16 @@
             app:icon="@drawable/icon_help"/>
 
     </LinearLayout>
+
+    <CheckBox
+        android:id="@+id/checkbox_reset"
+        android:layoutDirection="rtl"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="15dp"
+        android:text="@string/setting_title_profiles_standard_always"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="5dp" />
 
     <com.google.android.material.divider.MaterialDivider
         android:layout_width="match_parent"
@@ -618,15 +627,6 @@
                 android:textStyle="bold"/>
 
             <CheckBox
-                android:id="@+id/checkbox_reset"
-                android:layoutDirection="rtl"
-                android:layout_marginStart="10dp"
-                android:layout_marginEnd="15dp"
-                android:text="@string/setting_title_profiles_standard_always"
-                android:layout_width="match_parent"
-                android:layout_height="?android:attr/listPreferredItemHeightSmall" />
-
-            <CheckBox
                 android:id="@+id/checkbox_redirect"
                 android:layoutDirection="rtl"
                 android:layout_marginStart="10dp"
@@ -634,7 +634,6 @@
                 android:text="@string/privacy_redirect_use"
                 android:layout_width="match_parent"
                 android:layout_height="?android:attr/listPreferredItemHeightSmall" />
-
 
             <CheckBox
                 android:id="@+id/checkbox_screenOn"
