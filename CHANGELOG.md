@@ -1,4 +1,4 @@
-### v 21 (WIP)
+### v 21 Astrid Lindgren
 
 - fix: edit text dialogs
 - fix: userAgent
