@@ -31,6 +31,7 @@ import androidx.core.app.NotificationCompat;
 import androidx.preference.PreferenceManager;
 
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
+import com.google.android.material.snackbar.Snackbar;
 
 import org.json.JSONException;
 
@@ -48,7 +49,6 @@ import de.baumann.browser.browser.List_standard;
 import de.baumann.browser.database.RecordAction;
 import de.baumann.browser.objects.CustomRedirect;
 import de.baumann.browser.objects.CustomRedirectsHelper;
-import de.baumann.browser.view.NinjaToast;
 
 public class BrowserUnit {
 
@@ -177,8 +177,11 @@ public class BrowserUnit {
                     fos.write(dataURIParser.getImagedata());
                     fos.flush();
                     fos.close();
-                    String text = context.getString(R.string.app_done) + ": " + context.getString(R.string.menu_download) +"?";
-                    NinjaToast.show(context, text);
+
+                    String text = context.getString(R.string.app_done) + ". " + context.getString(R.string.menu_download) +"?";
+                    Snackbar snackbar = Snackbar.make(BrowserActivity.getView(), text, Snackbar.LENGTH_LONG);
+                    snackbar.setAction(context.getString(R.string.app_ok), v -> context.startActivity(Intent.createChooser(new Intent(DownloadManager.ACTION_VIEW_DOWNLOADS), null)));
+                    snackbar.show();
                 } else {
                     DownloadManager.Request request = new DownloadManager.Request(Uri.parse(url));
                     CookieManager cookieManager = CookieManager.getInstance();

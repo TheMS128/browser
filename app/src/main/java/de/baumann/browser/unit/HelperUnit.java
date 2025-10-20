@@ -26,7 +26,6 @@ import android.Manifest;
 import android.app.Activity;
 import android.app.Dialog;
 import android.app.DownloadManager;
-import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -63,6 +62,7 @@ import androidx.preference.PreferenceManager;
 
 import com.google.android.material.card.MaterialCardView;
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
+import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.textfield.TextInputLayout;
 
 import java.io.File;
@@ -182,8 +182,10 @@ public class HelperUnit {
                                 fos.write(dataURIParser.getImagedata());
                                 fos.flush();
                                 fos.close();
-                                String text = activity.getString(R.string.app_done) + ": " + activity.getString(R.string.menu_download) +"?";
-                                NinjaToast.show(activity, text);
+                                String text = activity.getString(R.string.app_done) + ". " + activity.getString(R.string.menu_download) +"?";
+                                Snackbar snackbar = Snackbar.make(BrowserActivity.getView(), text, Snackbar.LENGTH_LONG);
+                                snackbar.setAction(activity.getString(R.string.app_ok), v -> activity.startActivity(Intent.createChooser(new Intent(DownloadManager.ACTION_VIEW_DOWNLOADS), null)));
+                                snackbar.show();
                             } else {
                                 DownloadManager.Request request = new DownloadManager.Request(Uri.parse(url));
                                 CookieManager cookieManager = CookieManager.getInstance();
@@ -409,30 +411,6 @@ public class HelperUnit {
         ImageView imageView = dialog.findViewById(android.R.id.icon);
         if (imageView != null) imageView.setColorFilter(color, PorterDuff.Mode.SRC_IN);
         Objects.requireNonNull(dialog.getWindow()).setGravity(Gravity.BOTTOM);
-    }
-
-    public static void triggerRebirth(Context context) {
-        sp = PreferenceManager.getDefaultSharedPreferences(context);
-        sp.edit().putInt("restart_changed", 0).apply();
-        sp.edit().putBoolean("restoreOnRestart", true).apply();
-
-        MaterialAlertDialogBuilder builder = new MaterialAlertDialogBuilder(context);
-        builder.setTitle(R.string.menu_restart);
-        builder.setIcon(R.drawable.icon_alert);
-        builder.setMessage(R.string.toast_restart);
-        builder.setPositiveButton(R.string.app_ok, (dialog, whichButton) -> {
-            PackageManager packageManager = context.getPackageManager();
-            Intent intent = packageManager.getLaunchIntentForPackage(context.getPackageName());
-            assert intent != null;
-            ComponentName componentName = intent.getComponent();
-            Intent mainIntent = Intent.makeRestartActivityTask(componentName);
-            context.startActivity(mainIntent);
-            System.exit(0);
-        });
-        builder.setNegativeButton(R.string.app_cancel, (dialog, whichButton) -> dialog.cancel());
-        AlertDialog dialog = builder.create();
-        dialog.show();
-        HelperUnit.setupDialog(context, dialog);
     }
 
     /**

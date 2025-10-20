@@ -19,6 +19,7 @@ import android.app.SearchManager;
 import android.content.BroadcastReceiver;
 import android.content.ClipData;
 import android.content.ClipboardManager;
+import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
@@ -144,7 +145,7 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
     private TextInputEditText omniBox_text;
     private TextView omniBox_title;
     private EditText searchBox;
-    private NinjaWebView ninjaWebView;
+    private static NinjaWebView ninjaWebView;
     private View customView;
     private VideoView videoView;
     private FloatingActionButton omniBox_tab;
@@ -359,7 +360,7 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
             }
         }
         if (sp.getInt("restart_changed", 1) == 1) {
-            HelperUnit.triggerRebirth(context);
+            triggerRebirth(context);
         }
         if (sp.getBoolean("pdf_create", false)) {
             sp.edit().putBoolean("pdf_create", false).apply();
@@ -1183,7 +1184,8 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
                 startActivity(settings);
                 dialog_overflow.cancel();
             } else if (position == 3) {
-                HelperUnit.triggerRebirth(context);
+                dialog_overflow.cancel();
+                triggerRebirth(context);
             } else if (position == 4) {
                 Uri webpage = Uri.parse("https://codeberg.org/Gaukler_Faun/FOSS_Browser/wiki");
                 BrowserUnit.intentURL(this, webpage);
@@ -1635,6 +1637,8 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
             checkbox_screenOn.setOnClickListener(v -> {
                 sp.edit().putBoolean("sp_screenOn", checkbox_screenOn.isChecked()).apply();
                 checkbox_screenOn.setChecked(sp.getBoolean("sp_screenOn", true));
+                dialogFastToggle.cancel();
+                triggerRebirth(context);
             });
 
             CheckBox checkbox_links = dialogViewFastToggle.findViewById(R.id.checkbox_links);
@@ -2430,7 +2434,7 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
                 break;
             case "22":
                 sp.edit().putBoolean("sp_screenOn", !sp.getBoolean("sp_screenOn", false)).apply();
-                HelperUnit.triggerRebirth(context);
+                triggerRebirth(context);
                 break;
             case "24":
                 copyLink(ninjaWebView.getUrl());
@@ -2589,5 +2593,25 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
 
     private synchronized void addAlbum(String title, final String url, final boolean foreground) {
         setWebView(title, url, foreground);
+    }
+
+    private void triggerRebirth(Context context) {
+        sp.edit().putInt("restart_changed", 0).apply();
+        sp.edit().putBoolean("restoreOnRestart", true).apply();
+        Snackbar snackbar = Snackbar.make(ninjaWebView, R.string.toast_restart, Snackbar.LENGTH_LONG);
+        snackbar.setAction(context.getString(R.string.app_ok), (v -> {
+            PackageManager packageManager = context.getPackageManager();
+            Intent intent = packageManager.getLaunchIntentForPackage(context.getPackageName());
+            assert intent != null;
+            ComponentName componentName = intent.getComponent();
+            Intent mainIntent = Intent.makeRestartActivityTask(componentName);
+            context.startActivity(mainIntent);
+            System.exit(0);
+        }));
+        snackbar.show();
+    }
+
+    public static View getView() {
+        return ninjaWebView.getRootView();
     }
 }

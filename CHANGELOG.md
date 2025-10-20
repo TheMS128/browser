@@ -1,3 +1,9 @@
+### v 22 (WIP)
+
+- fix: opening UI-settings crashing
+- new: snackbar instead of dialog on some places
+
+
 ### v 21 Astrid Lindgren
 
 - fix: edit text dialogs

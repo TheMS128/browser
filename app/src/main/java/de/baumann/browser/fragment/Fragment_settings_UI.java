@@ -1,12 +1,7 @@
 package de.baumann.browser.fragment;
 
-import static android.os.Build.VERSION.SDK_INT;
-
-import android.Manifest;
 import android.content.Context;
 import android.content.SharedPreferences;
-import android.content.pm.PackageManager;
-import android.os.Build;
 import android.os.Bundle;
 
 import androidx.preference.EditTextPreference;
@@ -53,18 +48,6 @@ public class Fragment_settings_UI extends BasePreferenceFragment implements Shar
         theme = findPreference("sp_theme");
         assert theme != null;
         theme.setEnabled(useDynamicColor);
-
-
-        if (SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
-            int notificationAllowed = requireActivity().checkSelfPermission(Manifest.permission.POST_NOTIFICATIONS);
-            if (notificationAllowed != PackageManager.PERMISSION_GRANTED) {
-                Preference sp_tabBackground;
-                sp_tabBackground = findPreference("sp_tabBackground");
-                assert sp_tabBackground != null;
-                theme.setDefaultValue(false);
-            }
-        }
-
 
         if (p instanceof ListPreference) {
             ListPreference listPref = (ListPreference) p;
