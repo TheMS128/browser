@@ -36,18 +36,6 @@
                 app:indicatorSize="25dp"/>
 
             <com.google.android.material.floatingactionbutton.FloatingActionButton
-                android:id="@+id/omniBox_tab"
-                style="@style/Widget.Material3.FloatingActionButton.Surface"
-                android:backgroundTint="?attr/colorSurfaceContainer"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginEnd="5dp"
-                android:src="@drawable/icon_profile_standard"
-                app:fabCustomSize="45dp"
-                app:elevation="0dp" />
-
-            <com.google.android.material.floatingactionbutton.FloatingActionButton
                 android:id="@+id/omnibox_overview"
                 style="@style/Widget.Material3.FloatingActionButton.Surface"
                 android:backgroundTint="?attr/colorSurfaceContainer"
@@ -60,13 +48,13 @@
                 app:elevation="0dp" />
 
             <com.google.android.material.floatingactionbutton.FloatingActionButton
-                android:id="@+id/omnibox_overflow"
+                android:id="@+id/omniBox_tab"
                 style="@style/Widget.Material3.FloatingActionButton.Surface"
                 android:backgroundTint="?attr/colorSurfaceContainer"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:layout_marginEnd="15dp"
+                android:layout_marginEnd="10dp"
                 android:src="@drawable/icon_overflow"
                 app:fabCustomSize="45dp"
                 app:elevation="0dp" />

@@ -214,18 +214,22 @@ public class NinjaWebView extends WebView implements AlbumController {
     public void setProfileIcon(FloatingActionButton one, FloatingActionButton two, String url) {
         String profile = sp.getString("profile", "profileStandard");
         assert url != null;
-        if (profile.equals("profileStandard")) {
-            one.setImageResource(R.drawable.icon_profile_standard);
-            two.setImageResource(R.drawable.icon_profile_standard);
-        } else {
-            one.setImageResource(R.drawable.icon_profile_changed);
-            two.setImageResource(R.drawable.icon_profile_changed);
-        }
-        
+
+
         TypedValue typedValue = new TypedValue();
         Resources.Theme theme = context.getTheme();
         theme.resolveAttribute(R.attr.colorError, typedValue, true);
         int color = typedValue.data;
+
+        if (profile.equals("profileStandard")) {
+            one.setImageResource(R.drawable.icon_profile_standard);
+            two.setImageResource(R.drawable.icon_overflow);
+        } else {
+            one.setImageResource(R.drawable.icon_profile_changed);
+            two.setImageResource(R.drawable.icon_overflow);
+            two.getDrawable().mutate().setTint(color);
+        }
+
         if (listStandard.isWhite(url)) {
             one.getDrawable().mutate().setTint(color);
             two.getDrawable().mutate().setTint(color);
@@ -337,7 +341,7 @@ public class NinjaWebView extends WebView implements AlbumController {
     @Override
     public synchronized void loadUrl(@NonNull String url) {
 
-        browserController.hideSideSheets();
+        //browserController.hideSearch();
         InputMethodManager imm = (InputMethodManager) this.context.getSystemService(Context.INPUT_METHOD_SERVICE);
         imm.hideSoftInputFromWindow(this.getWindowToken(), 0);
 

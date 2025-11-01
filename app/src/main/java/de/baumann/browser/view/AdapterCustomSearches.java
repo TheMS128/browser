@@ -81,6 +81,7 @@ public class AdapterCustomSearches extends RecyclerView.Adapter<RedirectsViewHol
             HelperUnit.setupDialog(context, dialogSubMenu);
         });
         holder.itemView.setOnClickListener(v -> {
+            NinjaWebView.getBrowserController().hideSearch();
             SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(context);
             sp.edit().putString("sp_search_customSearches", current.getTarget()).apply();
             String t = BrowserUnit.queryWrapper(context, url);

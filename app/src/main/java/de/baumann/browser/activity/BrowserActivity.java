@@ -177,7 +177,6 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
     public static Context getAppContext() {
         return context;
     }
-    private AlertDialog dialogTabOverview;
     private AlertDialog dialogOverview;
     private AlertDialog dialogSearch;
     private View dialogViewSearch;
@@ -257,20 +256,12 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
             return insets;
         });
 
-        MaterialAlertDialogBuilder builder = new MaterialAlertDialogBuilder(context);
-        View dialogView = View.inflate(context, R.layout.sheet_tabs, null);
-        builder.setView(dialogView);
-        dialogTabOverview = builder.create();
-        Button tabs_close = dialogView.findViewById(R.id.tabs_close);
-        tabs_close.setOnClickListener(view -> dialogTabOverview.cancel());
-        tab_container = dialogView.findViewById(R.id.listTabs);
-        HelperUnit.setupDialog(context, dialogTabOverview);
-
         MaterialAlertDialogBuilder builderOverview = new MaterialAlertDialogBuilder(context);
         View dialogViewOverview = View.inflate(context, R.layout.sheet_overview, null);
         builderOverview.setView(dialogViewOverview);
         dialogOverview = builderOverview.create();
         bottom_navigation = dialogViewOverview.findViewById(R.id.bottom_navigation);
+        tab_container = dialogViewOverview.findViewById(R.id.listTabs);
         HelperUnit.setupDialog(context, dialogOverview);
         dialogOverview.show();
 
@@ -299,6 +290,7 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
         initOmniBox();
         initSearchPanel();
         initOverview();
+        hideSearch();
         dispatchIntent(getIntent());
 
         //restore open Tabs from shared preferences if app got killed
@@ -563,10 +555,18 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
         AtomicInteger intPage = new AtomicInteger();
         NavigationBarView.OnItemSelectedListener navListener = menuItem -> {
 
-            if (menuItem.getItemId() == R.id.page_1) {
+            if (menuItem.getItemId() == R.id.page_0) {
+                omniBox_overview.setImageResource(R.drawable.icon_tab);
+                overViewTab = getString(R.string.album_title_tab);
+                intPage.set(R.id.page_0);
+                listView.setVisibility(GONE);
+                tab_container.setVisibility(VISIBLE);}
+            else if (menuItem.getItemId() == R.id.page_1) {
                 omniBox_overview.setImageResource(R.drawable.icon_web);
                 overViewTab = getString(R.string.album_title_home);
                 intPage.set(R.id.page_1);
+                listView.setVisibility(VISIBLE);
+                tab_container.setVisibility(GONE);
 
                 RecordAction action = new RecordAction(context);
                 action.open(false);
@@ -577,11 +577,15 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
                 listView.setAdapter(adapter);
                 adapter.notifyDataSetChanged();
 
-                listView.setOnItemClickListener((parent, view, position, id) -> ninjaWebView.loadUrl(list.get(position).getURL()));
+                listView.setOnItemClickListener((parent, view, position, id) -> {
+                    ninjaWebView.loadUrl(list.get(position).getURL());
+                    hideOverview();
+                });
                 listView.setOnItemLongClickListener((parent, view, position, id) -> {
                     showContextMenuList(list.get(position).getTitle(), list.get(position).getURL(), adapter, list, position);
                     return true;
                 }); }
+
             else if (menuItem.getItemId() == R.id.page_2) {
                 try {
                     RecordAction action = new RecordAction(context);
@@ -596,6 +600,9 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
                 catch (Exception e) {Log.i(TAG, "dialogCustomSearches:" + e);}
                 overViewTab = getString(R.string.album_title_bookmarks);
                 intPage.set(R.id.page_2);
+                listView.setVisibility(VISIBLE);
+                tab_container.setVisibility(GONE);
+
                 RecordAction action = new RecordAction(context);
                 action.open(false);
                 final List<Record> list;
@@ -605,7 +612,10 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
                 listView.setAdapter(adapter);
                 adapter.notifyDataSetChanged();
                 filter = false;
-                listView.setOnItemClickListener((parent, view, position, id) -> ninjaWebView.loadUrl(list.get(position).getURL()));
+                listView.setOnItemClickListener((parent, view, position, id) -> {
+                    ninjaWebView.loadUrl(list.get(position).getURL());
+                    hideOverview();
+                });
                 listView.setOnItemLongClickListener((parent, view, position, id) -> {
                     showContextMenuList(list.get(position).getTitle(), list.get(position).getURL(), adapter, list, position);
                     return true;
@@ -614,6 +624,8 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
                 omniBox_overview.setImageResource(R.drawable.icon_history);
                 overViewTab = getString(R.string.album_title_history);
                 intPage.set(R.id.page_3);
+                listView.setVisibility(VISIBLE);
+                tab_container.setVisibility(GONE);
 
                 RecordAction action = new RecordAction(context);
                 action.open(false);
@@ -632,7 +644,10 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
                 };
                 listView.setAdapter(adapter);
                 adapter.notifyDataSetChanged();
-                listView.setOnItemClickListener((parent, view, position, id) -> ninjaWebView.loadUrl(list.get(position).getURL()));
+                listView.setOnItemClickListener((parent, view, position, id) -> {
+                    ninjaWebView.loadUrl(list.get(position).getURL());
+                    hideOverview();
+                });
                 listView.setOnItemLongClickListener((parent, view, position, id) -> {
                     showContextMenuList(list.get(position).getTitle(), list.get(position).getURL(), adapter, list, position);
                     return true;
@@ -641,7 +656,9 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
                 PopupMenu popup = new PopupMenu(this, bottom_navigation.findViewById(R.id.page_2));
                 popup.setForceShowIcon(true);
                 popup.setOnDismissListener(menu -> setSelectedTab());
-                if (bottom_navigation.getSelectedItemId() == R.id.page_1)
+                if (bottom_navigation.getSelectedItemId() == R.id.page_0)
+                    popup.inflate(R.menu.menu_help);
+                else if (bottom_navigation.getSelectedItemId() == R.id.page_1)
                     popup.inflate(R.menu.menu_list_start);
                 else if (bottom_navigation.getSelectedItemId() == R.id.page_2)
                     popup.inflate(R.menu.menu_list_bookmark);
@@ -737,7 +754,7 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
         });
 
         omniBox_tab = findViewById(R.id.omniBox_tab);
-        omniBox_tab.setOnClickListener(v -> showTabView());
+        omniBox_tab.setOnClickListener(view -> showOverflow());
         omniBox_tab.setOnLongClickListener(view -> {
             performGesture("setting_gesture_tabButton");
             return true;
@@ -750,7 +767,7 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
         omnibox_close.setOnClickListener(view -> {
             if (Objects.requireNonNull(omniBox_text.getText()).length() > 0)
                 omniBox_text.setText("");
-            else dialogSearch.cancel();
+            else hideSearch();
         });
         Button omnibox_customSearch = dialogViewSearch.findViewById(R.id.omnibox_customSearch);
         assert omnibox_customSearch != null;
@@ -759,6 +776,7 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
             if (query.isEmpty()) {
                 NinjaToast.show(context, getString(R.string.toast_input_empty));
             } else {
+                hideSearch();
                 showDialogCustomSearches(query);
             }
         });
@@ -769,6 +787,7 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
             if (query.isEmpty()) {
                 NinjaToast.show(context, getString(R.string.toast_input_empty));
             } else {
+                hideSearch();
                 ninjaWebView.loadUrl(omniBox_text.getText().toString());
             }
         });
@@ -789,8 +808,6 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
         badgeDrawable.setBackgroundColor(color);
         badgeDrawable.setBadgeTextColor(color2);
 
-        FloatingActionButton omnibox_overflow = findViewById(R.id.omnibox_overflow);
-        omnibox_overflow.setOnClickListener(v -> showOverflow());
         omniBox_overview.setOnTouchListener(new SwipeTouchListener(context) {
             public void onSwipeTop() { performGesture("setting_gesture_tb_up"); }
             public void onSwipeBottom() { performGesture("setting_gesture_tb_down"); }
@@ -845,7 +862,7 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
 
         badgeDrawable.setVisible(BrowserContainer.size() > 1);
         badgeDrawable.setNumber(BrowserContainer.size());
-        BadgeUtils.attachBadgeDrawable(badgeDrawable, omniBox_tab, findViewById(R.id.layout));
+        BadgeUtils.attachBadgeDrawable(badgeDrawable, omniBox_overview, findViewById(R.id.layout));
         ninjaWebView = (NinjaWebView) currentAlbumController;
         String url = ninjaWebView.getUrl();
         ninjaWebView.initPreferences(url);
@@ -900,6 +917,7 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
         list_search.setTextFilterEnabled(true);
         adapterSearch.notifyDataSetChanged();
         list_search.setOnItemClickListener((parent, view, position, id) -> {
+            hideSearch();
             omniBox_text.clearFocus();
             String url = ((TextView) view.findViewById(R.id.dateView)).getText().toString();
             ninjaWebView.loadUrl(url);
@@ -925,19 +943,18 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
         dialogOverview.show();
     }
 
-    public void hideSideSheets() {
-        dialogOverview.cancel();
-        dialogTabOverview.cancel();
+    public void hideSearch() {
         dialogSearch.cancel();
         try {dialogCustomSearches.cancel();} catch (Exception e) {Log.i(TAG, "dialogCustomSearches:" + e);}
     }
 
-    public void showTabView() {
-        dialogTabOverview.show();
+    public void hideOverview() {
+        dialogOverview.cancel();
     }
 
     private void setSelectedTab() {
-        if (overViewTab.equals(getString(R.string.album_title_home))) bottom_navigation.setSelectedItemId(R.id.page_1);
+        if (overViewTab.equals(getString(R.string.album_title_tab))) bottom_navigation.setSelectedItemId(R.id.page_0);
+        else if (overViewTab.equals(getString(R.string.album_title_home))) bottom_navigation.setSelectedItemId(R.id.page_1);
         else if (overViewTab.equals(getString(R.string.album_title_bookmarks))) bottom_navigation.setSelectedItemId(R.id.page_2);
         else if (overViewTab.equals(getString(R.string.album_title_history))) bottom_navigation.setSelectedItemId(R.id.page_3);
     }
@@ -1318,37 +1335,42 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
         menu_grid.setAdapter(gridAdapter);
         gridAdapter.notifyDataSetChanged();
         menu_grid.setOnItemClickListener((parent, view, position, id) -> {
+
+            dialog.cancel();
+
             switch (position) {
                 case 0:
+                    hideSearch();
                     addAlbum(finalTitle, url, true);
-                    dialog.cancel();
                     break;
                 case 1:
                     addAlbum(finalTitle, url, false);
-                    dialog.cancel();
                     break;
                 case 2:
+                    hideSearch();
                     Intent intent = new Intent(Intent.ACTION_VIEW);
                     intent.setData(Uri.parse(url));
                     context.startActivity(Intent.createChooser(intent, null));
-                    dialog.cancel();
                     break;
                 case 3:
+                    hideSearch();
                     shareLink(HelperUnit.domain(url), url);
-                    dialog.cancel();
+                    dialogSearch.cancel();
                     break;
                 case 4:
+                    hideSearch();
                     copyLink(url);
-                    dialog.cancel();
                     break;
                 case 5:
+                    hideSearch();
                     HelperUnit.saveAs(activity,  url, null, dialog);
                     break;
                 case 6:
+                    hideSearch();
                     save_atHome(finalTitle, url);
-                    dialog.cancel();
                     break;
                 case 7:
+                    hideSearch();
                     MaterialAlertDialogBuilder builderSubMenu = new MaterialAlertDialogBuilder(context);
                     builderSubMenu.setTitle(R.string.menu_delete);
                     builderSubMenu.setMessage(R.string.hint_database);
@@ -1362,7 +1384,6 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
                         action.close();
                         adapterSearch.notifyDataSetChanged();
                         initSearch();
-                        dialog.cancel();
                     });
                     builderSubMenu.setNegativeButton(R.string.app_cancel, (dialog2, whichButton) -> builderSubMenu.setCancelable(true));
                     Dialog dialogSubMenu = builderSubMenu.create();
@@ -2404,7 +2425,9 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
                 removeAlbum(currentAlbumController);
                 break;
             case "11":
-                showTabView();
+                overViewTab = getString(R.string.album_title_tab);
+                setSelectedTab();
+                showOverview();
                 break;
             case "12":
                 shareLink(ninjaWebView.getTitle(), Objects.requireNonNull(ninjaWebView.getUrl()));
@@ -2581,8 +2604,10 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
 
         if (!foreground) ninjaWebView.deactivate();
         else {
+            hideOverview();
             ninjaWebView.setBrowserController(this);
             ninjaWebView.activate();
+            dialogOverview.cancel();
             showAlbum(ninjaWebView);
         }
 
