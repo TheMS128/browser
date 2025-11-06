@@ -2,6 +2,7 @@
 <resources>
     <string name="app_never">Never</string>
     <string name="app_always">Always</string>
+    <string name="app_restart">On restart</string>
     <string name="app_session">… in current session?</string>
     <string name="app_name">FOSS Browser</string>
     <string name="app_ok">OK</string>

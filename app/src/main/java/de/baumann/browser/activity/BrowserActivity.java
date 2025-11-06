@@ -9,6 +9,8 @@ import static android.webkit.WebView.HitTestResult.IMAGE_TYPE;
 import static android.webkit.WebView.HitTestResult.SRC_ANCHOR_TYPE;
 import static android.webkit.WebView.HitTestResult.SRC_IMAGE_ANCHOR_TYPE;
 
+import static com.google.android.material.badge.BadgeDrawable.TOP_END;
+
 import android.Manifest;
 import android.annotation.SuppressLint;
 import android.app.Activity;
@@ -65,6 +67,7 @@ import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 import android.widget.VideoView;
 
 import androidx.activity.EdgeToEdge;
@@ -220,6 +223,7 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
         HelperUnit.initTheme(activity);
         
         if (sp.getBoolean("sp_screenOn", false)) getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
+        if (sp.getBoolean("sp_standard_restart", false)) sp.edit().putString("profile", "profileStandard").apply();
 
         sp.edit()
                 .putInt("restart_changed", 0)
@@ -553,6 +557,23 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
     private void initOverview() {
         listView = dialogOverview.findViewById(R.id.list_overView);
         AtomicInteger intPage = new AtomicInteger();
+
+        TypedValue typedValue = new TypedValue();
+        context.getTheme().resolveAttribute(R.attr.colorPrimaryInverse, typedValue, true);
+        int color = typedValue.data;
+        TypedValue typedValue2 = new TypedValue();
+        context.getTheme().resolveAttribute(R.attr.colorOnSurface, typedValue2, true);
+        int color2 = typedValue2.data;
+
+        bottom_navigation.getOrCreateBadge(R.id.page_0).setBackgroundColor(color);
+        bottom_navigation.getOrCreateBadge(R.id.page_0).setBadgeTextColor(color2);
+        bottom_navigation.getOrCreateBadge(R.id.page_0).setHorizontalOffset(0);
+        bottom_navigation.getOrCreateBadge(R.id.page_0).setVerticalOffset(0);
+
+        if (BrowserContainer.size() > 1) {
+            bottom_navigation.getOrCreateBadge(R.id.page_0).setNumber(BrowserContainer.size());
+        }
+
         NavigationBarView.OnItemSelectedListener navListener = menuItem -> {
 
             if (menuItem.getItemId() == R.id.page_0) {
@@ -693,12 +714,41 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
                         else if (overViewTab.equals(getString(R.string.album_title_home))) {
                             sp.edit().putString("sort_startSite", "title").apply();
                             sp.edit().putBoolean("sort_startSiteDomain", false).apply();
-                            bottom_navigation.setSelectedItemId(R.id.page_1); }}
-                    else if (item.getItemId() == R.id.menu_sortIcon) {
+                            bottom_navigation.setSelectedItemId(R.id.page_1); }
+                    } else if (item.getItemId() == R.id.menu_sortIcon) {
                         sp.edit().putString("sort_bookmark", "time").apply();
                         sp.edit().putBoolean("sort_bookmarkDomain", false).apply();
-                        bottom_navigation.setSelectedItemId(R.id.page_2); }
-                    else if (item.getItemId() == R.id.menu_sortDate) {
+                        bottom_navigation.setSelectedItemId(R.id.page_2);
+                    } else if (item.getItemId() == R.id.menu_delete) {
+                        MaterialAlertDialogBuilder builder = new MaterialAlertDialogBuilder(context);
+                        builder.setTitle(R.string.menu_delete);
+                        builder.setMessage(R.string.hint_database);
+                        builder.setIcon(R.drawable.icon_delete);
+                        builder.setPositiveButton(R.string.app_ok, (dialog, whichButton) -> {
+                            if (overViewTab.equals(getString(R.string.album_title_home))) {
+                                BrowserUnit.clearHome(context);
+                                bottom_navigation.setSelectedItemId(R.id.page_1); }
+                            else if (overViewTab.equals(getString(R.string.album_title_bookmarks))) {
+                                BrowserUnit.clearBookmark(context);
+                                bottom_navigation.setSelectedItemId(R.id.page_2); }
+                            else if (overViewTab.equals(getString(R.string.album_title_history))) {
+                                BrowserUnit.clearHistory(context);
+                                bottom_navigation.setSelectedItemId(R.id.page_3); }
+                        });
+                        builder.setNegativeButton(R.string.app_cancel, (dialog, whichButton) -> dialog.cancel());
+                        AlertDialog dialog = builder.create();
+                        dialog.show();
+                        HelperUnit.setupDialog(context, dialog);
+                    } else if (item.getItemId() == R.id.menu_sortName) {
+                        if (overViewTab.equals(getString(R.string.album_title_bookmarks))) {
+                            sp.edit().putString("sort_bookmark", "title").apply();
+                            sp.edit().putBoolean("sort_bookmarkDomain", false).apply();
+                            bottom_navigation.setSelectedItemId(R.id.page_2); }
+                        else if (overViewTab.equals(getString(R.string.album_title_home))) {
+                            sp.edit().putString("sort_startSite", "title").apply();
+                            sp.edit().putBoolean("sort_startSiteDomain", false).apply();
+                            bottom_navigation.setSelectedItemId(R.id.page_1); }
+                    } else if (item.getItemId() == R.id.menu_sortDate) {
                         if (overViewTab.equals(getString(R.string.album_title_history))) {
                             sp.edit().putBoolean("sort_historyDomain", false).apply();
                             bottom_navigation.setSelectedItemId(R.id.page_3);
@@ -708,8 +758,7 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
                             sp.edit().putBoolean("sort_startSiteDomain", false).apply();
                             bottom_navigation.setSelectedItemId(R.id.page_1);
                         }
-                    }
-                    else if (item.getItemId() == R.id.menu_sortDomain) {
+                    } else if (item.getItemId() == R.id.menu_sortDomain) {
                         if (overViewTab.equals(getString(R.string.album_title_bookmarks))) {
                             sp.edit().putBoolean("sort_bookmarkDomain", true).apply();
                             bottom_navigation.setSelectedItemId(R.id.page_2); }
@@ -721,10 +770,9 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
                             sp.edit().putBoolean("sort_historyDomain", true).apply();
                             bottom_navigation.setSelectedItemId(R.id.page_3);
                         }
-                    }
-                    else if (item.getItemId() == R.id.menu_filter) {
-                        showDialogFilter(); }
-                    else if (item.getItemId() == R.id.menu_help) {
+                    } else if (item.getItemId() == R.id.menu_filter) {
+                        showDialogFilter();
+                    } else if (item.getItemId() == R.id.menu_help) {
                         Uri webpage = Uri.parse("https://codeberg.org/Gaukler_Faun/FOSS_Browser/wiki/Overview");
                         BrowserUnit.intentURL(this, webpage); }
                     return true;
@@ -863,6 +911,8 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
         badgeDrawable.setVisible(BrowserContainer.size() > 1);
         badgeDrawable.setNumber(BrowserContainer.size());
         BadgeUtils.attachBadgeDrawable(badgeDrawable, omniBox_overview, findViewById(R.id.layout));
+        bottom_navigation.getOrCreateBadge(R.id.page_0).setNumber(BrowserContainer.size());
+
         ninjaWebView = (NinjaWebView) currentAlbumController;
         String url = ninjaWebView.getUrl();
         ninjaWebView.initPreferences(url);
@@ -1298,7 +1348,6 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
         buttonProfile.setOnClickListener(v -> {
             sp.edit().putString("profile", "profileStandard").apply();
             ninjaWebView.setProfileIcon(buttonProfile, omniBox_tab, url);
-            dialog.cancel();
         });
         HelperUnit.setupDialog(context, dialog);
 
@@ -1417,7 +1466,6 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
         buttonProfile.setOnClickListener(v -> {
             sp.edit().putString("profile", "profileStandard").apply();
             ninjaWebView.setProfileIcon(buttonProfile, omniBox_tab, url);
-            dialog.cancel();
         });
         HelperUnit.setupDialog(context, dialog);
 
@@ -1621,15 +1669,12 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
             ninjaWebView.setProfileIcon(buttonProfile, omniBox_tab, url);
             buttonProfile.setOnClickListener(v -> {
                 sp.edit().putString("profile", "profileStandard").apply();
-                if (!listStandard.isWhite(url)) {
-                    ninjaWebView.reload();
-                }
                 ninjaWebView.setProfileIcon(buttonProfile, omniBox_tab, url);
-                dialogFastToggle.cancel();
             });
 
             Button ib_save = dialogViewFastToggle.findViewById(R.id.ib_save);
             Button ib_delete = dialogViewFastToggle.findViewById(R.id.ib_delete);
+
 
             if (listStandard.isWhite(url)) {
                 ib_save.setVisibility(GONE);
@@ -1639,11 +1684,43 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
                 ib_delete.setVisibility(GONE);
             }
 
-            CheckBox checkbox_reset = dialogViewFastToggle.findViewById(R.id.checkbox_reset);
-            checkbox_reset.setChecked(sp.getBoolean("sp_standard_always", true));
+            RelativeLayout checkbox_reset = dialogViewFastToggle.findViewById(R.id.checkbox_reset);
+            ImageView icon_standard = dialogViewFastToggle.findViewById(R.id.icon_standard);
+
+            if (sp.getBoolean("sp_standard_always", true)) {
+                icon_standard.setImageResource(R.drawable.icon_check);
+            } else {
+                icon_standard.setImageResource(R.drawable.icon_close);
+            }
+
+            if (sp.getBoolean("sp_standard_restart", true)) {
+                icon_standard.setImageResource(R.drawable.icon_refresh);
+            }
+            // Setting onClick behavior for the button
             checkbox_reset.setOnClickListener(v -> {
-                sp.edit().putBoolean("sp_standard_always", checkbox_reset.isChecked()).apply();
-                checkbox_reset.setChecked(sp.getBoolean("sp_standard_always", true));
+                // Initializing the popup menu and giving the reference as current context
+                PopupMenu popupMenu = new PopupMenu(context, checkbox_reset);
+                // Inflating popup menu from popup_menu.xml file
+                popupMenu.getMenuInflater().inflate(R.menu.menu_standard, popupMenu.getMenu());
+                // Handling menu item click events
+                popupMenu.setOnMenuItemClickListener(menuItem -> {
+                    if (menuItem.getItemId() == R.id.menu_standardAlways) {
+                        sp.edit().putBoolean("sp_standard_always", true).apply();
+                        sp.edit().putBoolean("sp_standard_restart", false).apply();
+                        icon_standard.setImageResource(R.drawable.icon_check);
+                    } else if (menuItem.getItemId() == R.id.menu_standardNever) {
+                        sp.edit().putBoolean("sp_standard_always", false).apply();
+                        sp.edit().putBoolean("sp_standard_restart", false).apply();
+                        icon_standard.setImageResource(R.drawable.icon_close);
+                    } else if (menuItem.getItemId() == R.id.menu_standardRestart) {
+                        sp.edit().putBoolean("sp_standard_always", false).apply();
+                        sp.edit().putBoolean("sp_standard_restart", true).apply();
+                        icon_standard.setImageResource(R.drawable.icon_refresh);
+                    }
+                    return true;
+                });
+                // Showing the popup menu
+                popupMenu.show();
             });
 
             CheckBox checkbox_redirect = dialogViewFastToggle.findViewById(R.id.checkbox_redirect);

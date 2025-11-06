@@ -215,7 +215,6 @@ public class NinjaWebView extends WebView implements AlbumController {
         String profile = sp.getString("profile", "profileStandard");
         assert url != null;
 
-
         TypedValue typedValue = new TypedValue();
         Resources.Theme theme = context.getTheme();
         theme.resolveAttribute(R.attr.colorError, typedValue, true);
@@ -226,8 +225,7 @@ public class NinjaWebView extends WebView implements AlbumController {
             two.setImageResource(R.drawable.icon_overflow);
         } else {
             one.setImageResource(R.drawable.icon_profile_changed);
-            two.setImageResource(R.drawable.icon_overflow);
-            two.getDrawable().mutate().setTint(color);
+            two.setImageResource(R.drawable.icon_profile_changed);
         }
 
         if (listStandard.isWhite(url)) {

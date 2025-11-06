@@ -1,7 +1,10 @@
 ### v 22 (WIP)
 
 - fix: opening UI-settings crashing
+- fix: some dialogs closing when clicking profile icon
 - new: snackbar instead of dialog on some places
+- new: layout: removing tab-button
+- new: opened tabs now in overview
 
 
 ### v 21 Astrid Lindgren
