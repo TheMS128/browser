@@ -1214,7 +1214,7 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
         GridItem searchSite = new GridItem( getString(R.string.menu_other_searchSite), R.drawable.icon_search_site);
         GridItem openDownload = new GridItem( getString(R.string.menu_download), R.drawable.icon_download);
         GridItem openSettings = new GridItem( getString(R.string.setting_label), R.drawable.icon_settings);
-        GridItem restartAndReload = new GridItem( getString(R.string.menu_restart), R.drawable.icon_refresh);
+        GridItem restartAndReload = new GridItem( getString(R.string.menu_restart), R.drawable.icon_restart);
         GridItem help = new GridItem( getString((R.string.app_help)), R.drawable.icon_help);
 
         final List<GridItem> gridList_other = new LinkedList<>();
