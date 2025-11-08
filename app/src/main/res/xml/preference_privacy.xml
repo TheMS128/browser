@@ -12,12 +12,6 @@
         android:key="edit_standard"
         android:title="@string/setting_title_savedWebSites" />
 
-    <Preference
-        android:icon="@drawable/icon_redirect"
-        android:key="custom_redirects"
-        android:defaultValue="false"
-        android:title="@string/privacy_redirect_title" />
-
     <CheckBoxPreference
         android:title="@string/setting_title_clipboard_record"
         android:icon="@drawable/icon_clipboard"

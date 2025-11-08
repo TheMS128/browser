@@ -2,6 +2,8 @@
 
 - fix: opening UI-settings crashing
 - fix: some dialogs closing when clicking profile icon
+- fix: profile-icon showing wrong icon
+- fix: profile settings
 - new: snackbar instead of dialog on some places
 - new: layout: removing tab-button
 - new: opened tabs now in overview

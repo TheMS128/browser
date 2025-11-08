@@ -312,12 +312,11 @@ public class BrowserUnit {
     }
 
     public static String redirectURL (WebView ninjaWebView, SharedPreferences sp, String url) {
-        if (!sp.getBoolean("redirect", false)) return url;
         try {
             List<CustomRedirect> redirects = CustomRedirectsHelper.getRedirects(sp);
             for (int i = 0; i < redirects.size(); i++) {
                 CustomRedirect customRedirect = redirects.get(i);
-                if (url.contains(customRedirect.getSource())) {
+                if (url.contains(customRedirect.getSource()) && sp.getBoolean(customRedirect.getSource(), true)) {
                     ninjaWebView.stopLoading();
                     url = url.replace(customRedirect.getSource(), customRedirect.getTarget());
                     return url;

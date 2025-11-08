@@ -4,14 +4,18 @@ import static android.view.View.VISIBLE;
 
 import android.app.Dialog;
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.CheckBox;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
+import androidx.preference.PreferenceManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
@@ -40,18 +44,25 @@ public class AdapterCustomRedirect extends RecyclerView.Adapter<RedirectsViewHol
     @NonNull
     @Override
     public RedirectsViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_list, parent, false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_redirect, parent, false);
         return new RedirectsViewHolder(view);
     }
 
     @Override
     public void onBindViewHolder(@NonNull RedirectsViewHolder holder, int position) {
+
+        SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(context);
         CustomRedirect current = redirects.get(position);
         TextView source = holder.itemView.findViewById(R.id.titleView);
         TextView target = holder.itemView.findViewById(R.id.dateView);
-        ImageView remove = holder.itemView.findViewById(R.id.iconView);
-        ImageView edit = holder.itemView.findViewById(R.id.faviconView);
-        edit.setVisibility(View.VISIBLE);
+        ImageView remove = holder.itemView.findViewById(R.id.faviconView);
+
+        CheckBox checkbox_redirect = holder.itemView.findViewById(R.id.checkbox_redirect);
+        checkbox_redirect.setChecked(sp.getBoolean(current.getSource(), true));
+        checkbox_redirect.setOnClickListener(v -> {
+            sp.edit().putBoolean(current.getSource(), checkbox_redirect.isChecked()).apply();
+            checkbox_redirect.setChecked(sp.getBoolean(current.getSource(), true));
+        });
 
         remove.setVisibility(VISIBLE);
         source.setText(current.getSource());
@@ -64,6 +75,7 @@ public class AdapterCustomRedirect extends RecyclerView.Adapter<RedirectsViewHol
             builderSubMenu.setIcon(R.drawable.icon_delete);
             builderSubMenu.setPositiveButton(R.string.app_ok, (dialog2, whichButton) -> {
                 redirects.remove(position);
+                sp.edit().remove(redirects.get(position).getSource()).apply();
                 notifyItemRemoved(position);
                 notifyItemRangeChanged(position, getItemCount());
                 try {
@@ -78,7 +90,8 @@ public class AdapterCustomRedirect extends RecyclerView.Adapter<RedirectsViewHol
             HelperUnit.setupDialog(context, dialogSubMenu);
         });
 
-        edit.setOnClickListener((iV) -> {
+        LinearLayout textGroup = holder.itemView.findViewById(R.id.textGroup);
+        textGroup.setOnClickListener((iV) -> {
 
             MaterialAlertDialogBuilder builder = new MaterialAlertDialogBuilder(context);
             View dialogView = View.inflate(context, R.layout.create_new_redirect, null);
@@ -124,6 +137,8 @@ public class AdapterCustomRedirect extends RecyclerView.Adapter<RedirectsViewHol
 
     public void addRedirect(CustomRedirect redirect) {
         redirects.add(redirect);
+        SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(context);
+        sp.edit().putBoolean(redirect.getSource(), true).apply();
         notifyItemInserted(getItemCount() - 1);
     }
 }

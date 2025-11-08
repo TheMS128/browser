@@ -261,32 +261,26 @@ public class NinjaWebView extends WebView implements AlbumController {
                 .putBoolean("profileStandard_desktop", false).apply();
     }
 
-    public void setProfileChanged(String url) {
-        List_standard listStandard = new List_standard(context);
-
-        if (listStandard.isWhite(url)) {
-            sp.edit().putString("profile", HelperUnit.domain(url)).apply();
-        } else if (sp.getString("profile", "profileStandard").equals("profileStandard")) {
-            sp.edit()
-                    .putString("profile", "profileChanged")
-                    .putBoolean("profileChanged_saveData", sp.getBoolean( "profileStandard_saveData", true))
-                    .putBoolean("profileChanged_images", sp.getBoolean( "profileStandard_images", true))
-                    .putBoolean("profileChanged_adBlock", sp.getBoolean( "profileStandard_adBlock", true))
-                    .putBoolean("profileChanged_trackingULS", sp.getBoolean( "profileStandard_trackingULS", true))
-                    .putBoolean("profileChanged_location", sp.getBoolean( "profileStandard_location", false))
-                    .putBoolean("profileChanged_fingerPrintProtection", sp.getBoolean( "profileStandard_fingerPrintProtection", true))
-                    .putBoolean("profileChanged_cookies", sp.getBoolean( "_cookies", false))
-                    .putBoolean("profileChanged_cookiesThirdParty", sp.getBoolean( "profileStandard_cookiesThirdParty", false))
-                    .putBoolean("profileChanged_deny_cookie_banners", sp.getBoolean( "profileStandard_deny_cookie_banners", false))
-                    .putBoolean("profileChanged_javascript", sp.getBoolean( "profileStandard_javascript", true))
-                    .putBoolean("profileChanged_javascriptPopUp", sp.getBoolean( "profileStandard_javascriptPopUp", false))
-                    .putBoolean("profileChanged_saveHistory", sp.getBoolean( "profileStandard_saveHistory", true))
-                    .putBoolean("profileChanged_camera", sp.getBoolean( "profileStandard_camera", false))
-                    .putBoolean("profileChanged_microphone", sp.getBoolean( "profileStandard_microphone", false))
-                    .putBoolean("profileChanged_dom", sp.getBoolean( "profileStandard_dom", false))
-                    .putBoolean("profileChanged_night", sp.getBoolean( "profileStandard_night", true))
-                    .putBoolean("profileChanged_desktop", sp.getBoolean( "profileStandard_desktop", false)).apply();
-        }
+    public void setProfileChanged () {
+        sp.edit()
+                .putString("profile", "profileChanged")
+                .putBoolean("profileChanged_saveData", sp.getBoolean( "profileStandard_saveData", true))
+                .putBoolean("profileChanged_images", sp.getBoolean( "profileStandard_images", true))
+                .putBoolean("profileChanged_adBlock", sp.getBoolean( "profileStandard_adBlock", true))
+                .putBoolean("profileChanged_trackingULS", sp.getBoolean( "profileStandard_trackingULS", true))
+                .putBoolean("profileChanged_location", sp.getBoolean( "profileStandard_location", false))
+                .putBoolean("profileChanged_fingerPrintProtection", sp.getBoolean( "profileStandard_fingerPrintProtection", true))
+                .putBoolean("profileChanged_cookies", sp.getBoolean( "_cookies", false))
+                .putBoolean("profileChanged_cookiesThirdParty", sp.getBoolean( "profileStandard_cookiesThirdParty", false))
+                .putBoolean("profileChanged_deny_cookie_banners", sp.getBoolean( "profileStandard_deny_cookie_banners", false))
+                .putBoolean("profileChanged_javascript", sp.getBoolean( "profileStandard_javascript", true))
+                .putBoolean("profileChanged_javascriptPopUp", sp.getBoolean( "profileStandard_javascriptPopUp", false))
+                .putBoolean("profileChanged_saveHistory", sp.getBoolean( "profileStandard_saveHistory", true))
+                .putBoolean("profileChanged_camera", sp.getBoolean( "profileStandard_camera", false))
+                .putBoolean("profileChanged_microphone", sp.getBoolean( "profileStandard_microphone", false))
+                .putBoolean("profileChanged_dom", sp.getBoolean( "profileStandard_dom", false))
+                .putBoolean("profileChanged_night", sp.getBoolean( "profileStandard_night", true))
+                .putBoolean("profileChanged_desktop", sp.getBoolean( "profileStandard_desktop", false)).apply();
     }
 
     private synchronized void initAlbum() {
