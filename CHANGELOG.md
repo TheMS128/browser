@@ -1,12 +1,16 @@
-### v 22 (WIP)
+### v 22 Die Edelweißpiraten (WIP)
 
 - fix: opening UI-settings crashing
 - fix: some dialogs closing when clicking profile icon
 - fix: profile-icon showing wrong icon
 - fix: profile settings
+- improved: using of profile button
+- improved: redirects control from FastToggleDialog
+- improved: layout -> removed tab-button -> opened tabs now in overview
+- improved: layout -> using outlined style where possible for better contrast
 - new: snackbar instead of dialog on some places
-- new: layout: removing tab-button
-- new: opened tabs now in overview
+- new: gestures -> open startsite,bookmark, history
+- new: option to load default profile on start/always/never (via FastToggleDialog)
 
 
 ### v 21 Astrid Lindgren

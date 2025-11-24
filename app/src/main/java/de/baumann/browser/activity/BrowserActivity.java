@@ -179,6 +179,8 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
         return context;
     }
     private AlertDialog dialogOverview;
+
+    private AlertDialog dialog_overflow;
     private AlertDialog dialogSearch;
     private View dialogViewSearch;
     private BottomSheetDialog bottomSheetDialog_searchOnSite;
@@ -855,21 +857,39 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
         badgeDrawable.setBadgeTextColor(color2);
 
         omniBox_overview.setOnTouchListener(new SwipeTouchListener(context) {
-            public void onSwipeTop() { performGesture("setting_gesture_tb_up"); }
-            public void onSwipeBottom() { performGesture("setting_gesture_tb_down"); }
-            public void onSwipeRight() { performGesture("setting_gesture_tb_right"); }
-            public void onSwipeLeft() { performGesture("setting_gesture_tb_left"); }});
+        public void onSwipeTop() {
+            performGesture("setting_gesture_tb_up");
+            hideOverview(); }
+            public void onSwipeBottom() {
+                performGesture("setting_gesture_tb_down");
+                hideOverview(); }
+            public void onSwipeRight() {
+                performGesture("setting_gesture_tb_right");
+                hideOverview(); }
+            public void onSwipeLeft() {
+                performGesture("setting_gesture_tb_left");
+                hideOverview(); }});
+
         omniBox_tab.setOnTouchListener(new SwipeTouchListener(context) {
-            public void onSwipeTop() { performGesture("setting_gesture_nav_up"); }
-            public void onSwipeBottom() { performGesture("setting_gesture_nav_down"); }
-            public void onSwipeRight() { performGesture("setting_gesture_nav_right"); }
-            public void onSwipeLeft() { performGesture("setting_gesture_nav_left"); }});
+            public void onSwipeTop() {
+                performGesture("setting_gesture_nav_up");
+                hideOverflow(); }
+            public void onSwipeBottom() {
+                performGesture("setting_gesture_nav_down");
+                hideOverflow();}
+            public void onSwipeRight() {
+                performGesture("setting_gesture_nav_right");
+                hideOverflow();}
+            public void onSwipeLeft() {
+                performGesture("setting_gesture_nav_left");
+                hideOverflow(); }});
 
         omniBox_text.setOnEditorActionListener((v, actionId, event) -> {
             String query = Objects.requireNonNull(omniBox_text.getText()).toString().trim();
             if (omniBox_text.getText().toString().isEmpty()) {
                 NinjaToast.show(context, getString(R.string.toast_input_empty));
             } else {
+                hideSearch();
                 ninjaWebView.loadUrl(query);
             }
             return false;
@@ -1009,6 +1029,10 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
 
     // OverflowMenu
 
+    private void hideOverflow () {
+        dialog_overflow.cancel();
+    }
+
     @SuppressLint("ClickableViewAccessibility")
     private void showOverflow() {
 
@@ -1031,7 +1055,7 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
         menuTitle.setText(title);
 
         builder.setView(dialogView);
-        AlertDialog dialog_overflow = builder.create();
+        dialog_overflow = builder.create();
 
         FloatingActionButton buttonProfile = dialogView.findViewById(R.id.buttonProfile);
         buttonProfile.setOnClickListener(v -> {
@@ -2532,6 +2556,21 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
                 break;
             case "29":
                 startActivity(Intent.createChooser(new Intent(DownloadManager.ACTION_VIEW_DOWNLOADS), null));
+                break;
+            case "30":
+                overViewTab = getString(R.string.album_title_bookmarks);
+                setSelectedTab();
+                showOverview();
+                break;
+            case "31":
+                overViewTab = getString(R.string.album_title_home);
+                setSelectedTab();
+                showOverview();
+                break;
+            case "32":
+                overViewTab = getString(R.string.album_title_history);
+                setSelectedTab();
+                showOverview();
                 break;
         }
     }

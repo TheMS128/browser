@@ -10,7 +10,8 @@
     tools:ignore="ContentDescription">
 
     <com.google.android.material.card.MaterialCardView
-        style="@style/Widget.Material3.CardView.Filled"
+        style="@style/Widget.Material3.CardView.Outlined"
+        android:backgroundTint="?attr/colorSurfaceContainerHighest"
         android:id="@+id/albumCardView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -81,15 +82,18 @@
 
             <com.google.android.material.floatingactionbutton.FloatingActionButton
                 android:id="@+id/buttonProfile"
-                style="@style/Widget.Material3.Button.IconButton"
+                style="@style/Widget.Material3.Button.IconButton.Outlined"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true"
                 android:layout_marginEnd="3dp"
                 app:icon="@drawable/icon_settings"
-                app:fabCustomSize="40dp"
+                app:maxImageSize="20dp"
+                app:fabCustomSize="35dp"
                 app:elevation="0dp"
-                android:backgroundTint="?attr/colorSurfaceDim"
+                android:backgroundTint="?attr/colorSurfaceContainerHighest"
+                app:backgroundTint="?attr/colorOutline"
+                app:borderWidth="0.5dp"
                 android:layout_alignParentEnd="true"
                 android:src="@drawable/icon_settings" />
 

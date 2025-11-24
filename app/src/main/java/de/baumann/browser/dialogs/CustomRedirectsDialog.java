@@ -55,7 +55,7 @@ public class CustomRedirectsDialog extends DialogFragment {
         builder.setTitle(R.string.privacy_redirect_title);
         builder.setIcon(R.drawable.icon_redirect);
         builder.setPositiveButton(R.string.create_new, null);
-        builder.setNegativeButton(R.string.app_cancel, null);
+        builder.setNegativeButton(R.string.app_ok, null);
         builder.setView(dialogView);
 
         AlertDialog dialog = builder.create();

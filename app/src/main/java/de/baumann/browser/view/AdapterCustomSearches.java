@@ -6,6 +6,7 @@ import android.app.Dialog;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.net.Uri;
+import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,6 +14,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.cardview.widget.CardView;
 import androidx.preference.PreferenceManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -57,6 +59,13 @@ public class AdapterCustomSearches extends RecyclerView.Adapter<RedirectsViewHol
         TextView target = holder.itemView.findViewById(R.id.dateView);
         ImageView remove = holder.itemView.findViewById(R.id.iconView);
         ImageView favicon = holder.itemView.findViewById(R.id.faviconView);
+        CardView albumCardView = holder.itemView.findViewById(R.id.albumCardView);
+
+        TypedValue typedValue = new TypedValue();
+        context.getTheme().resolveAttribute(R.attr.colorSurfaceContainerHighest, typedValue, true);
+        int color = typedValue.data;
+        albumCardView.setCardBackgroundColor(color);
+
         remove.setVisibility(VISIBLE);
         source.setText(current.getSource());
         target.setText(current.getTarget());

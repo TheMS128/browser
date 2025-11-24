@@ -5,6 +5,7 @@ import static android.view.View.VISIBLE;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,6 +16,7 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
+import androidx.cardview.widget.CardView;
 import androidx.preference.PreferenceManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -56,6 +58,12 @@ public class AdapterCustomRedirect extends RecyclerView.Adapter<RedirectsViewHol
         TextView source = holder.itemView.findViewById(R.id.titleView);
         TextView target = holder.itemView.findViewById(R.id.dateView);
         ImageView remove = holder.itemView.findViewById(R.id.faviconView);
+        CardView albumCardView = holder.itemView.findViewById(R.id.albumCardView);
+
+        TypedValue typedValue = new TypedValue();
+        context.getTheme().resolveAttribute(R.attr.colorSurfaceContainerHighest, typedValue, true);
+        int color = typedValue.data;
+        albumCardView.setCardBackgroundColor(color);
 
         CheckBox checkbox_redirect = holder.itemView.findViewById(R.id.checkbox_redirect);
         checkbox_redirect.setChecked(sp.getBoolean(current.getSource(), true));

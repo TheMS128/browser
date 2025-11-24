@@ -3,6 +3,7 @@ package de.baumann.browser.view;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.graphics.Bitmap;
+import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,6 +14,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.preference.PreferenceManager;
+
+import com.google.android.material.card.MaterialCardView;
 
 import java.util.ArrayList;
 import java.util.Comparator;
@@ -86,12 +89,15 @@ public class AdapterSearch extends BaseAdapter implements Filterable {
         View view = convertView;
         Holder holder;
 
+
+
         if (view == null) {
             view = LayoutInflater.from(context).inflate(layoutResId, null, false);
             holder = new Holder();
             holder.titleView = view.findViewById(R.id.titleView);
             holder.urlView = view.findViewById(R.id.dateView);
             holder.favicon = view.findViewById(R.id.faviconView);
+            holder.albumCardView = view.findViewById(R.id.albumCardView);
             view.setTag(holder);
         } else {
             holder = (Holder) view.getTag();
@@ -100,6 +106,11 @@ public class AdapterSearch extends BaseAdapter implements Filterable {
         CompleteItem item = resultList.get(position);
         holder.titleView.setText(item.title);
         holder.urlView.setText(item.url);
+
+        TypedValue typedValue = new TypedValue();
+        context.getTheme().resolveAttribute(R.attr.colorSurfaceContainerHighest, typedValue, true);
+        int color = typedValue.data;
+        holder.albumCardView.setCardBackgroundColor(color);
 
         try(FaviconHelper faviconHelper = new FaviconHelper(context)) {
             Bitmap bitmap = faviconHelper.getFavicon(item.url);
@@ -166,6 +177,8 @@ public class AdapterSearch extends BaseAdapter implements Filterable {
         private ImageView favicon;
         private TextView titleView;
         private TextView urlView;
+
+        private MaterialCardView albumCardView;
     }
 
     private class CompleteFilter extends Filter {
