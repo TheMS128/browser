@@ -24,8 +24,6 @@ import static android.Manifest.permission.WRITE_EXTERNAL_STORAGE;
 import static android.os.Build.VERSION.SDK_INT;
 import static android.os.Environment.DIRECTORY_DOCUMENTS;
 
-import static androidx.constraintlayout.motion.utils.Oscillator.TAG;
-
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -257,7 +255,7 @@ public class BackupUnit {
         Matcher m = Patterns.WEB_URL.matcher(text);
         while (m.find()) {
             String url = m.group();
-            Log.d(TAG, "URL extracted: " + url);
+            Log.d("FOSS Browser", "URL extracted: " + url);
             if (links.isEmpty()) {
                 links.add(url);
                 link = url;

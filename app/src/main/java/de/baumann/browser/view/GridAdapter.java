@@ -1,7 +1,5 @@
 package de.baumann.browser.view;
 
-import static androidx.constraintlayout.motion.utils.Oscillator.TAG;
-
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.util.Log;
@@ -52,7 +50,7 @@ public class GridAdapter extends BaseAdapter {
             try {
                 holder.iconMenu.setImageResource(item.getData());
             } catch (Exception e) {
-                Log.i(TAG, "Exception:" + e);
+                Log.i("FOSS Browser", "Exception:" + e);
             }
 
             if (sp.getString("showFilterDialogX", "false").equals("true")) {
