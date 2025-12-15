@@ -1,4 +1,4 @@
-### v 22 Die Edelweißpiraten (WIP)
+### v 22 Die Edelweißpiraten
 
 - fix: opening UI-settings crashing
 - fix: some dialogs closing when clicking profile icon
@@ -11,8 +11,6 @@
 - new: snackbar instead of dialog on some places
 - new: gestures -> open startsite,bookmark, history
 - new: option to load default profile on start/always/never (via FastToggleDialog)
-- new: FreeDroidWarn Dialog
-
 
 ### v 21 Astrid Lindgren
 
