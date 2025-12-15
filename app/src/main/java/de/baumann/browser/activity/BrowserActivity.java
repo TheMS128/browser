@@ -26,6 +26,7 @@ import android.content.IntentFilter;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.content.res.Configuration;
+import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.media.MediaPlayer;
 import android.net.Uri;
@@ -107,6 +108,7 @@ import java.util.List;
 import java.util.Objects;
 import java.util.concurrent.atomic.AtomicInteger;
 
+import de.baumann.browser.BuildConfig;
 import de.baumann.browser.R;
 import de.baumann.browser.browser.AlbumController;
 import de.baumann.browser.browser.BannerBlock;
@@ -221,7 +223,7 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
         //noinspection InstantiationOfUtilityClass
         new BannerBlock(context);
         HelperUnit.initTheme(activity);
-        
+
         if (sp.getBoolean("sp_screenOn", false)) getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
         if (sp.getBoolean("sp_standard_restart", false)) sp.edit().putString("profile", "profileStandard").apply();
 
@@ -1063,6 +1065,15 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
             dialog_overflow.cancel();
         });
 
+        List_standard listStandard = new List_standard(context);
+        TypedValue typedValue = new TypedValue();
+        Resources.Theme theme = context.getTheme();
+        theme.resolveAttribute(R.attr.colorError, typedValue, true);
+        int color = typedValue.data;
+        if (listStandard.isWhite(url)) {
+            buttonProfile.getDrawable().mutate().setTint(color);
+        }
+
         final GridView menu_grid_tab = dialogView.findViewById(R.id.overflow_tab);
         final GridView menu_grid_share = dialogView.findViewById(R.id.overflow_share);
         final GridView menu_grid_save = dialogView.findViewById(R.id.overflow_save);
@@ -1717,13 +1728,10 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
             if (sp.getBoolean("sp_standard_restart", true)) {
                 icon_standard.setImageResource(R.drawable.icon_restart);
             }
-            // Setting onClick behavior for the button
+
             checkbox_reset.setOnClickListener(v -> {
-                // Initializing the popup menu and giving the reference as current context
                 PopupMenu popupMenu = new PopupMenu(context, checkbox_reset);
-                // Inflating popup menu from popup_menu.xml file
                 popupMenu.getMenuInflater().inflate(R.menu.menu_standard, popupMenu.getMenu());
-                // Handling menu item click events
                 popupMenu.setOnMenuItemClickListener(menuItem -> {
                     if (menuItem.getItemId() == R.id.menu_standardAlways) {
                         sp.edit().putBoolean("sp_standard_always", true).apply();

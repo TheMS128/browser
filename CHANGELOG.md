@@ -11,6 +11,7 @@
 - new: snackbar instead of dialog on some places
 - new: gestures -> open startsite,bookmark, history
 - new: option to load default profile on start/always/never (via FastToggleDialog)
+- new: FreeDroidWarn Dialog
 
 
 ### v 21 Astrid Lindgren
