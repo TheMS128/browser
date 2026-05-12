@@ -1,6 +1,7 @@
 package de.baumann.browser.browser;
 
 import android.net.Uri;
+import android.view.MotionEvent;
 import android.view.View;
 import android.webkit.ValueCallback;
 import android.webkit.WebChromeClient;

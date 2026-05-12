@@ -11,7 +11,7 @@ android {
     defaultConfig {
         applicationId "de.baumann.browser"
         minSdkVersion 26
-        targetSdkVersion 35
+        targetSdkVersion 36
         versionCode 157
         versionName "22.2"
         multiDexEnabled true
@@ -36,5 +36,5 @@ android {
 dependencies {
     implementation 'com.google.android.material:material:1.13.0'
     implementation 'androidx.preference:preference:1.2.1'
-    implementation 'androidx.webkit:webkit:1.14.0'
+    implementation 'androidx.webkit:webkit:1.16.0'
 }

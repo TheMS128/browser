@@ -67,7 +67,7 @@ public class NinjaWebView extends WebView implements AlbumController {
     private static String profile;
     private List_standard listStandard;
     private Bitmap favicon;
-    private SharedPreferences sp;
+    private static SharedPreferences sp;
     private boolean foreground;
     private static BrowserController browserController = null;
 
@@ -595,7 +595,7 @@ public class NinjaWebView extends WebView implements AlbumController {
     }
 
     public static String getProfile() {
-        return profile;
+        return sp.getString("profile", "profileStandard");
     }
 
     public AlbumController getPredecessor() {

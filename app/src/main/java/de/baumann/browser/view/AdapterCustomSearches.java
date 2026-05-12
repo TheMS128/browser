@@ -1,5 +1,6 @@
 package de.baumann.browser.view;
 
+import static android.view.View.GONE;
 import static android.view.View.VISIBLE;
 
 import android.app.Dialog;
@@ -26,7 +27,6 @@ import java.util.ArrayList;
 
 import de.baumann.browser.R;
 import de.baumann.browser.activity.BrowserActivity;
-import de.baumann.browser.database.FaviconHelper;
 import de.baumann.browser.objects.CustomRedirect;
 import de.baumann.browser.objects.CustomSearchesHelper;
 import de.baumann.browser.unit.BrowserUnit;
@@ -58,13 +58,14 @@ public class AdapterCustomSearches extends RecyclerView.Adapter<RedirectsViewHol
         TextView source = holder.itemView.findViewById(R.id.titleView);
         TextView target = holder.itemView.findViewById(R.id.dateView);
         ImageView remove = holder.itemView.findViewById(R.id.iconView);
-        ImageView favicon = holder.itemView.findViewById(R.id.faviconView);
-        CardView albumCardView = holder.itemView.findViewById(R.id.albumCardView);
 
         TypedValue typedValue = new TypedValue();
         context.getTheme().resolveAttribute(R.attr.colorSurfaceContainerHighest, typedValue, true);
         int color = typedValue.data;
+        CardView albumCardView = holder.itemView.findViewById(R.id.albumCardView);
         albumCardView.setCardBackgroundColor(color);
+        CardView cardView = holder.itemView.findViewById(R.id.cardView);
+        cardView.setVisibility(GONE);
 
         remove.setVisibility(VISIBLE);
         source.setText(current.getSource());
@@ -102,7 +103,6 @@ public class AdapterCustomSearches extends RecyclerView.Adapter<RedirectsViewHol
                 NinjaToast.show(BrowserActivity.getAppContext(), R.string.app_error);
             }
         });
-        FaviconHelper.setFavicon(context, favicon, target.getText().toString(), R.id.faviconView, R.drawable.icon_image_broken);
     }
 
     @Override

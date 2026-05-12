@@ -10,6 +10,7 @@ import static android.webkit.WebView.HitTestResult.SRC_ANCHOR_TYPE;
 import static android.webkit.WebView.HitTestResult.SRC_IMAGE_ANCHOR_TYPE;
 
 import android.Manifest;
+import android.animation.ObjectAnimator;
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.Dialog;
@@ -94,6 +95,7 @@ import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.navigation.NavigationBarView;
 import com.google.android.material.progressindicator.CircularProgressIndicator;
+import com.google.android.material.progressindicator.LinearProgressIndicator;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.tabs.TabLayout;
 import com.google.android.material.textfield.TextInputEditText;
@@ -108,7 +110,6 @@ import java.util.List;
 import java.util.Objects;
 import java.util.concurrent.atomic.AtomicInteger;
 
-import de.baumann.browser.BuildConfig;
 import de.baumann.browser.R;
 import de.baumann.browser.browser.AlbumController;
 import de.baumann.browser.browser.BannerBlock;
@@ -156,7 +157,7 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
     private AdapterSearch adapterSearch;
 
     // Layouts
-    private CircularProgressIndicator progressBar;
+    private LinearProgressIndicator progressBar;
     private FrameLayout contentFrame;
     private LinearLayout tab_container;
     private FrameLayout fullscreenHolder;
@@ -323,6 +324,7 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
             showOverview();
         }
     }
+
 
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
@@ -843,10 +845,6 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
         });
 
         progressBar = findViewById(R.id.main_progress_bar);
-        progressBar.setOnClickListener(v -> {
-            ninjaWebView.stopLoading();
-            progressBar.setVisibility(GONE);
-        });
         badgeDrawable = BadgeDrawable.create(context);
 
         TypedValue typedValue = new TypedValue();
@@ -1703,6 +1701,10 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
             buttonProfile.setOnClickListener(v -> {
                 sp.edit().putString("profile", "profileStandard").apply();
                 ninjaWebView.setProfileIcon(buttonProfile, omniBox_tab, url);
+                dialogFastToggle.cancel();
+                if (!listStandard.isWhite(url)){
+                    ninjaWebView.reload();
+                }
             });
 
             Button ib_save = dialogViewFastToggle.findViewById(R.id.ib_save);
@@ -1792,180 +1794,210 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
             CheckBox checkbox_image = dialogViewFastToggle.findViewById(R.id.checkbox_image);
             checkbox_image.setChecked(sp.getBoolean(profile + "_images", false));
             checkbox_image.setOnClickListener(v -> {
-                if (listStandard.isWhite(url) || profile.equals("profileChanged")){
+                if (listStandard.isWhite(url)){
                     sp.edit().putBoolean(profile + "_images", checkbox_image.isChecked()).apply();
-                } else if (profile.equals("profileStandard")) {
+                }  else if (profile.equals("profileStandard")) {
                     ninjaWebView.setProfileChanged();
                     ninjaWebView.setProfileIcon(buttonProfile, omniBox_tab, url);
-                    sp.edit().putBoolean("profileChanged_images", checkbox_image.isChecked()).apply();
+                    sp.edit().putBoolean(NinjaWebView.getProfile() + "_images", checkbox_image.isChecked()).apply();
+                } else {
+                    sp.edit().putBoolean(NinjaWebView.getProfile() + "_images", checkbox_image.isChecked()).apply();
                 }
             });
 
             CheckBox checkbox_java = dialogViewFastToggle.findViewById(R.id.checkbox_java);
             checkbox_java.setChecked(sp.getBoolean(profile + "_javascript", false));
             checkbox_java.setOnClickListener(v -> {
-                if (listStandard.isWhite(url) || profile.equals("profileChanged")){
+                if (listStandard.isWhite(url)){
                     sp.edit().putBoolean(profile + "_javascript", checkbox_java.isChecked()).apply();
-                } else if (profile.equals("profileStandard")) {
+                } else if (NinjaWebView.getProfile().equals("profileStandard")) {
                     ninjaWebView.setProfileChanged();
                     ninjaWebView.setProfileIcon(buttonProfile, omniBox_tab, url);
-                    sp.edit().putBoolean("profileChanged_javascript", checkbox_java.isChecked()).apply();
+                    sp.edit().putBoolean(NinjaWebView.getProfile() + "_javascript", checkbox_java.isChecked()).apply();
+                } else {
+                    sp.edit().putBoolean(NinjaWebView.getProfile() + "_javascript", checkbox_java.isChecked()).apply();
                 }
             });
 
             CheckBox checkbox_javaPopUp = dialogViewFastToggle.findViewById(R.id.checkbox_javaPopUp);
             checkbox_javaPopUp.setChecked(sp.getBoolean(profile + "_javascriptPopUp", false));
             checkbox_javaPopUp.setOnClickListener(v -> {
-                if (listStandard.isWhite(url) || profile.equals("profileChanged")){
+                if (listStandard.isWhite(url)){
                     sp.edit().putBoolean(profile + "_javascriptPopUp", checkbox_javaPopUp.isChecked()).apply();
-                } else if (profile.equals("profileStandard")) {
+                } else if (NinjaWebView.getProfile().equals("profileStandard")) {
                     ninjaWebView.setProfileChanged();
                     ninjaWebView.setProfileIcon(buttonProfile, omniBox_tab, url);
-                    sp.edit().putBoolean("profileChanged_javascriptPopUp", checkbox_javaPopUp.isChecked()).apply();
+                    sp.edit().putBoolean(NinjaWebView.getProfile() + "_javascriptPopUp", checkbox_javaPopUp.isChecked()).apply();
+                } else {
+                    sp.edit().putBoolean(NinjaWebView.getProfile() + "_javascriptPopUp", checkbox_javaPopUp.isChecked()).apply();
                 }
             });
 
             CheckBox checkbox_cookies = dialogViewFastToggle.findViewById(R.id.checkbox_cookies);
             checkbox_cookies.setChecked(sp.getBoolean(profile + "_cookies", false));
             checkbox_cookies.setOnCheckedChangeListener((buttonView, isChecked) -> {
-                if (listStandard.isWhite(url) || profile.equals("profileChanged")){
+                if (listStandard.isWhite(url)){
                     sp.edit().putBoolean(profile + "_cookies", checkbox_cookies.isChecked()).apply();
-                } else if (profile.equals("profileStandard")) {
+                } else if (NinjaWebView.getProfile().equals("profileStandard")) {
                     ninjaWebView.setProfileChanged();
                     ninjaWebView.setProfileIcon(buttonProfile, omniBox_tab, url);
-                    sp.edit().putBoolean("profileChanged_cookies", checkbox_cookies.isChecked()).apply();
+                    sp.edit().putBoolean(NinjaWebView.getProfile() + "_cookies", checkbox_cookies.isChecked()).apply();
+                } else {
+                    sp.edit().putBoolean(NinjaWebView.getProfile() + "_cookies", checkbox_cookies.isChecked()).apply();
                 }
             });
 
             CheckBox checkbox_cookiesThirdParty = dialogViewFastToggle.findViewById(R.id.checkbox_cookiesThirdParty);
             checkbox_cookiesThirdParty.setChecked(sp.getBoolean(profile + "_cookiesThirdParty", false));
             checkbox_cookiesThirdParty.setOnCheckedChangeListener((buttonView, isChecked) -> {
-                if (listStandard.isWhite(url) || profile.equals("profileChanged")){
+                if (listStandard.isWhite(url)){
                     sp.edit().putBoolean(profile + "_cookiesThirdParty", checkbox_cookiesThirdParty.isChecked()).apply();
-                } else if (profile.equals("profileStandard")) {
+                }  else if (NinjaWebView.getProfile().equals("profileStandard")) {
                     ninjaWebView.setProfileChanged();
                     ninjaWebView.setProfileIcon(buttonProfile, omniBox_tab, url);
-                    sp.edit().putBoolean("profileChanged_cookiesThirdParty", checkbox_cookiesThirdParty.isChecked()).apply();
+                    sp.edit().putBoolean(NinjaWebView.getProfile() + "_cookiesThirdParty", checkbox_cookiesThirdParty.isChecked()).apply();
+                } else {
+                    sp.edit().putBoolean(NinjaWebView.getProfile() + "_cookiesThirdParty", checkbox_cookiesThirdParty.isChecked()).apply();
                 }
             });
 
             CheckBox checkbox_cookiesBanner = dialogViewFastToggle.findViewById(R.id.checkbox_cookiesBanner);
             checkbox_cookiesBanner.setChecked(sp.getBoolean(profile + "_deny_cookie_banners", true));
             checkbox_cookiesBanner.setOnCheckedChangeListener((buttonView, isChecked) -> {
-                if (listStandard.isWhite(url) || profile.equals("profileChanged")){
+                if (listStandard.isWhite(url)){
                     sp.edit().putBoolean(profile + "_deny_cookie_banners", checkbox_cookiesBanner.isChecked()).apply();
-                } else if (profile.equals("profileStandard")) {
+                } else if (NinjaWebView.getProfile().equals("profileStandard")) {
                     ninjaWebView.setProfileChanged();
                     ninjaWebView.setProfileIcon(buttonProfile, omniBox_tab, url);
-                    sp.edit().putBoolean("profileChanged_deny_cookie_banners", checkbox_cookiesBanner.isChecked()).apply();
+                    sp.edit().putBoolean(NinjaWebView.getProfile() + "_deny_cookie_banners", checkbox_cookiesBanner.isChecked()).apply();
+                } else {
+                    sp.edit().putBoolean(NinjaWebView.getProfile() + "_deny_cookie_banners", checkbox_cookiesBanner.isChecked()).apply();
                 }
             });
 
             CheckBox checkbox_fingerPrint = dialogViewFastToggle.findViewById(R.id.checkbox_fingerPrint);
             checkbox_fingerPrint.setChecked(sp.getBoolean(profile + "_fingerPrintProtection", true));
             checkbox_fingerPrint.setOnClickListener(v -> {
-                if (listStandard.isWhite(url) || profile.equals("profileChanged")){
+                if (listStandard.isWhite(url)){
                     sp.edit().putBoolean(profile + "_fingerPrintProtection", checkbox_fingerPrint.isChecked()).apply();
-                } else if (profile.equals("profileStandard")) {
+                } else if (NinjaWebView.getProfile().equals("profileStandard")) {
                     ninjaWebView.setProfileChanged();
                     ninjaWebView.setProfileIcon(buttonProfile, omniBox_tab, url);
-                    sp.edit().putBoolean("profileChanged_fingerPrintProtection", checkbox_fingerPrint.isChecked()).apply();
+                    sp.edit().putBoolean(NinjaWebView.getProfile() + "_fingerPrintProtection", checkbox_fingerPrint.isChecked()).apply();
+                } else {
+                    sp.edit().putBoolean(NinjaWebView.getProfile() + "_fingerPrintProtection", checkbox_fingerPrint.isChecked()).apply();
                 }
             });
 
             CheckBox checkbox_adBlock = dialogViewFastToggle.findViewById(R.id.checkbox_adBlock);
             checkbox_adBlock.setChecked(sp.getBoolean(profile + "_adBlock", true));
             checkbox_adBlock.setOnCheckedChangeListener((buttonView, isChecked) -> {
-                if (listStandard.isWhite(url) || profile.equals("profileChanged")){
+                if (listStandard.isWhite(url)){
                     sp.edit().putBoolean(profile + "_adBlock", checkbox_adBlock.isChecked()).apply();
-                } else if (profile.equals("profileStandard")) {
+                }  else if (NinjaWebView.getProfile().equals("profileStandard")) {
                     ninjaWebView.setProfileChanged();
                     ninjaWebView.setProfileIcon(buttonProfile, omniBox_tab, url);
-                    sp.edit().putBoolean("profileChanged_adBlock", checkbox_adBlock.isChecked()).apply();
+                    sp.edit().putBoolean(NinjaWebView.getProfile() + "_adBlock", checkbox_adBlock.isChecked()).apply();
+                } else {
+                    sp.edit().putBoolean(NinjaWebView.getProfile() + "_adBlock", checkbox_adBlock.isChecked()).apply();
                 }
             });
 
             CheckBox checkbox_trackingURL = dialogViewFastToggle.findViewById(R.id.checkbox_trackingURL);
             checkbox_trackingURL.setChecked(sp.getBoolean(profile + "_trackingULS", true));
             checkbox_trackingURL.setOnCheckedChangeListener((buttonView, isChecked) -> {
-                if (listStandard.isWhite(url) || profile.equals("profileChanged")){
+                if (listStandard.isWhite(url)){
                     sp.edit().putBoolean(profile + "_trackingULS", checkbox_trackingURL.isChecked()).apply();
-                } else if (profile.equals("profileStandard")) {
+                }  else if (NinjaWebView.getProfile().equals("profileStandard")) {
                     ninjaWebView.setProfileChanged();
                     ninjaWebView.setProfileIcon(buttonProfile, omniBox_tab, url);
-                    sp.edit().putBoolean("profileChanged_trackingULS", checkbox_trackingURL.isChecked()).apply();
+                    sp.edit().putBoolean(NinjaWebView.getProfile() + "_trackingULS", checkbox_trackingURL.isChecked()).apply();
+                } else {
+                    sp.edit().putBoolean(NinjaWebView.getProfile() + "_trackingULS", checkbox_trackingURL.isChecked()).apply();
                 }
             });
 
             CheckBox checkbox_saveData = dialogViewFastToggle.findViewById(R.id.checkbox_saveData);
             checkbox_saveData.setChecked(sp.getBoolean(profile + "_saveData", true));
             checkbox_saveData.setOnClickListener(v -> {
-                if (listStandard.isWhite(url) || profile.equals("profileChanged")){
+                if (listStandard.isWhite(url)){
                     sp.edit().putBoolean(profile + "_saveData", checkbox_saveData.isChecked()).apply();
-                } else if (profile.equals("profileStandard")) {
+                }  else if (NinjaWebView.getProfile().equals("profileStandard")) {
                     ninjaWebView.setProfileChanged();
                     ninjaWebView.setProfileIcon(buttonProfile, omniBox_tab, url);
-                    sp.edit().putBoolean("profileChanged_saveData", checkbox_saveData.isChecked()).apply();
+                    sp.edit().putBoolean(NinjaWebView.getProfile() + "_saveData", checkbox_saveData.isChecked()).apply();
+                } else {
+                    sp.edit().putBoolean(NinjaWebView.getProfile() + "_saveData", checkbox_saveData.isChecked()).apply();
                 }
             });
 
             CheckBox checkbox_history = dialogViewFastToggle.findViewById(R.id.checkbox_history);
             checkbox_history.setChecked(sp.getBoolean(profile + "_saveHistory", true));
             checkbox_history.setOnClickListener(v -> {
-                if (listStandard.isWhite(url) || profile.equals("profileChanged")){
+                if (listStandard.isWhite(url)){
                     sp.edit().putBoolean(profile + "_saveHistory", checkbox_history.isChecked()).apply();
-                } else if (profile.equals("profileStandard")) {
+                }  else if (NinjaWebView.getProfile().equals("profileStandard")) {
                     ninjaWebView.setProfileChanged();
                     ninjaWebView.setProfileIcon(buttonProfile, omniBox_tab, url);
-                    sp.edit().putBoolean("profileChanged_saveHistory", checkbox_history.isChecked()).apply();
+                    sp.edit().putBoolean(NinjaWebView.getProfile() + "_saveHistory", checkbox_history.isChecked()).apply();
+                } else {
+                    sp.edit().putBoolean(NinjaWebView.getProfile() + "_saveHistory", checkbox_history.isChecked()).apply();
                 }
             });
 
             CheckBox checkbox_location = dialogViewFastToggle.findViewById(R.id.checkbox_location);
             checkbox_location.setChecked(sp.getBoolean(profile + "_location", false));
             checkbox_location.setOnClickListener(v -> {
-                if (listStandard.isWhite(url) || profile.equals("profileChanged")){
+                if (listStandard.isWhite(url)){
                     sp.edit().putBoolean(profile + "_location", checkbox_location.isChecked()).apply();
-                } else if (profile.equals("profileStandard")) {
+                } else if (NinjaWebView.getProfile().equals("profileStandard")) {
                     ninjaWebView.setProfileChanged();
                     ninjaWebView.setProfileIcon(buttonProfile, omniBox_tab, url);
-                    sp.edit().putBoolean("profileChanged_location", checkbox_location.isChecked()).apply();
+                    sp.edit().putBoolean(NinjaWebView.getProfile() + "_location", checkbox_location.isChecked()).apply();
+                } else {
+                    sp.edit().putBoolean(NinjaWebView.getProfile() + "_location", checkbox_location.isChecked()).apply();
                 }
             });
 
             CheckBox checkbox_mic = dialogViewFastToggle.findViewById(R.id.checkbox_mic);
             checkbox_mic.setChecked(sp.getBoolean(profile + "_microphone", false));
             checkbox_mic.setOnClickListener(v -> {
-                if (listStandard.isWhite(url) || profile.equals("profileChanged")){
+                if (listStandard.isWhite(url)){
                     sp.edit().putBoolean(profile + "_microphone", checkbox_mic.isChecked()).apply();
-                } else if (profile.equals("profileStandard")) {
+                }  else if (NinjaWebView.getProfile().equals("profileStandard")) {
                     ninjaWebView.setProfileChanged();
                     ninjaWebView.setProfileIcon(buttonProfile, omniBox_tab, url);
-                    sp.edit().putBoolean("profileChanged_microphone", checkbox_mic.isChecked()).apply();
+                    sp.edit().putBoolean(NinjaWebView.getProfile() + "_microphone", checkbox_mic.isChecked()).apply();
+                } else {
+                    sp.edit().putBoolean(NinjaWebView.getProfile() + "_microphone", checkbox_mic.isChecked()).apply();
                 }
             });
 
             CheckBox checkbox_camera = dialogViewFastToggle.findViewById(R.id.checkbox_camera);
             checkbox_camera.setChecked(sp.getBoolean(profile + "_camera", false));
             checkbox_camera.setOnClickListener(v -> {
-                if (listStandard.isWhite(url) || profile.equals("profileChanged")){
+                if (listStandard.isWhite(url)){
                     sp.edit().putBoolean(profile + "_camera", checkbox_camera.isChecked()).apply();
-                } else if (profile.equals("profileStandard")) {
+                } else if (NinjaWebView.getProfile().equals("profileStandard")) {
                     ninjaWebView.setProfileChanged();
                     ninjaWebView.setProfileIcon(buttonProfile, omniBox_tab, url);
-                    sp.edit().putBoolean("profileChanged_camera", checkbox_camera.isChecked()).apply();
+                    sp.edit().putBoolean(NinjaWebView.getProfile() + "_camera", checkbox_camera.isChecked()).apply();
+                } else {
+                    sp.edit().putBoolean(NinjaWebView.getProfile() + "_camera", checkbox_camera.isChecked()).apply();
                 }
             });
 
             CheckBox checkbox_dom = dialogViewFastToggle.findViewById(R.id.checkbox_dom);
             checkbox_dom.setChecked(sp.getBoolean(profile + "_dom", false));
             checkbox_dom.setOnClickListener(v -> {
-                if (listStandard.isWhite(url) || profile.equals("profileChanged")){
+                if (listStandard.isWhite(url)){
                     sp.edit().putBoolean(profile + "_dom", checkbox_dom.isChecked()).apply();
-                } else if (profile.equals("profileStandard")) {
+                }  else if (NinjaWebView.getProfile().equals("profileStandard")) {
                     ninjaWebView.setProfileChanged();
                     ninjaWebView.setProfileIcon(buttonProfile, omniBox_tab, url);
-                    sp.edit().putBoolean("profileChanged_dom", checkbox_dom.isChecked()).apply();
+                    sp.edit().putBoolean(NinjaWebView.getProfile() + "_dom", checkbox_dom.isChecked()).apply();
+                } else {
+                    sp.edit().putBoolean(NinjaWebView.getProfile() + "_dom", checkbox_dom.isChecked()).apply();
                 }
             });
 
@@ -1980,12 +2012,14 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
             if (WebViewFeature.isFeatureSupported(WebViewFeature.ALGORITHMIC_DARKENING)) {
                 checkbox_nightView.setChecked(sp.getBoolean(profile + "_night", true));
                 checkbox_nightView.setOnClickListener(v -> {
-                    if (listStandard.isWhite(url) || profile.equals("profileChanged")){
+                    if (listStandard.isWhite(url)){
                         sp.edit().putBoolean(profile + "_night", checkbox_nightView.isChecked()).apply();
-                    } else if (profile.equals("profileStandard")) {
+                    }  else if (NinjaWebView.getProfile().equals("profileStandard")) {
                         ninjaWebView.setProfileChanged();
                         ninjaWebView.setProfileIcon(buttonProfile, omniBox_tab, url);
-                        sp.edit().putBoolean("profileChanged_night", checkbox_nightView.isChecked()).apply();
+                        sp.edit().putBoolean(NinjaWebView.getProfile() + "_night", checkbox_nightView.isChecked()).apply();
+                    } else {
+                        sp.edit().putBoolean(NinjaWebView.getProfile() + "_night", checkbox_nightView.isChecked()).apply();
                     }
                 });
             }
@@ -1993,12 +2027,14 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
             CheckBox checkbox_desktop = dialogViewFastToggle.findViewById(R.id.checkbox_desktop);
             checkbox_desktop.setChecked(sp.getBoolean(profile + "_desktop", false));
             checkbox_desktop.setOnClickListener(v -> {
-                if (listStandard.isWhite(url) || profile.equals("profileChanged")){
+                if (listStandard.isWhite(url)){
                     sp.edit().putBoolean(profile + "_desktop", checkbox_desktop.isChecked()).apply();
-                } else if (profile.equals("profileStandard")) {
+                }  else if (NinjaWebView.getProfile().equals("profileStandard")) {
                     ninjaWebView.setProfileChanged();
                     ninjaWebView.setProfileIcon(buttonProfile, omniBox_tab, url);
-                    sp.edit().putBoolean("profileChanged_desktop", checkbox_desktop.isChecked()).apply();
+                    sp.edit().putBoolean(NinjaWebView.getProfile() + "_desktop", checkbox_desktop.isChecked()).apply();
+                } else {
+                    sp.edit().putBoolean(NinjaWebView.getProfile() + "_desktop", checkbox_desktop.isChecked()).apply();
                 }
             });
 
@@ -2647,6 +2683,25 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
     @SuppressLint("ClickableViewAccessibility")
     private void setWebView(String title, final String url, final boolean foreground) {
         ninjaWebView = new NinjaWebView(context);
+        RelativeLayout appBar = findViewById(R.id.appBar);
+
+        ninjaWebView.setOnScrollChangeListener((v, scrollX, scrollY, oldScrollX, oldScrollY) -> {
+            final Handler handler = new Handler();
+            handler.postDelayed(() -> {
+                if (scrollY > ninjaWebView.getScrollY()){
+                    //appBar.setVisibility(VISIBLE);
+                    ObjectAnimator animation = ObjectAnimator.ofFloat(appBar, "translationY", 0f);
+                    animation.setDuration(250);
+                    animation.start();
+                } else if (scrollY < ninjaWebView.getScrollY()) {
+                    //appBar.setVisibility(GONE);
+                    ObjectAnimator animation = ObjectAnimator.ofFloat(appBar, "translationY", 275f);
+                    animation.setDuration(250);
+                    animation.start();
+                };
+                Log.d("Handler", "Running Handler");
+            }, 50);
+        });
 
         if (Objects.requireNonNull(sp.getString("saved_key_ok", "no")).equals("no")) {
             sp.edit().putString("saved_key_ok", "yes")

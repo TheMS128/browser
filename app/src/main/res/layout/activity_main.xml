@@ -10,76 +10,76 @@
     <FrameLayout
         android:id="@+id/main_content"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:paddingBottom="75dp"/>
+        android:layout_height="match_parent"/>
 
     <RelativeLayout
+        android:id="@+id/appBar"
         android:layout_width="match_parent"
-        android:layout_height="75dp"
-        android:layout_alignParentBottom="true">
-
-        <LinearLayout
-            android:id="@+id/omnibox_buttonsView"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_alignParentEnd="true"
-            android:layout_centerVertical="true"
-            android:orientation="horizontal">
-
-            <com.google.android.material.progressindicator.CircularProgressIndicator
-                android:id="@+id/main_progress_bar"
-                android:layout_width="25dp"
-                android:layout_height="25dp"
-                android:layout_gravity="center"
-                android:indeterminate="true"
-                android:layout_margin="5dp"
-                app:indicatorSize="25dp"/>
-
-            <com.google.android.material.floatingactionbutton.FloatingActionButton
-                android:id="@+id/omnibox_overview"
-                style="@style/Widget.Material3.Button.IconButton.Outlined"
-                app:backgroundTint="?attr/colorOutline"
-                app:borderWidth="0.5dp"
-                android:backgroundTint="?attr/colorSurface"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginEnd="5dp"
-                android:src="@drawable/icon_bookmark"
-                app:fabCustomSize="45dp"
-                app:elevation="0dp" />
-
-            <com.google.android.material.floatingactionbutton.FloatingActionButton
-                android:id="@+id/omniBox_tab"
-                style="@style/Widget.Material3.Button.IconButton.Outlined"
-                app:backgroundTint="?attr/colorOutline"
-                app:borderWidth="0.5dp"
-                android:backgroundTint="?attr/colorSurface"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginEnd="10dp"
-                android:src="@drawable/icon_overflow"
-                app:fabCustomSize="45dp"
-                app:elevation="0dp" />
-
-        </LinearLayout>
+        android:layout_height="?android:attr/listPreferredItemHeight"
+        android:layout_alignParentBottom="true"
+        android:background="?attr/colorSurface"
+        android:paddingEnd="110dp"
+        tools:ignore="RtlSymmetry">
 
         <TextView
             android:id="@+id/omniBox_title"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:layout_alignParentStart="true"
             android:layout_centerInParent="true"
             android:layout_marginStart="15dp"
             android:layout_marginEnd="5dp"
-            android:gravity="center_vertical"
-            android:layout_toStartOf="@id/omnibox_buttonsView"
             android:singleLine="true"
             android:textAppearance="?attr/textAppearanceTitleMedium"
             android:textStyle="bold"
             android:ellipsize="end" />
 
     </RelativeLayout>
+
+    <com.google.android.material.progressindicator.LinearProgressIndicator
+        android:id="@+id/main_progress_bar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        app:trackThickness="5dp"/>
+
+    <LinearLayout
+        android:id="@+id/omnibox_buttonsView"
+        android:layout_width="wrap_content"
+        android:layout_height="?android:attr/listPreferredItemHeight"
+        android:layout_alignParentEnd="true"
+        android:layout_centerVertical="true"
+        android:orientation="horizontal"
+        android:layout_alignParentBottom="true">
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/omnibox_overview"
+            style="@style/Widget.Material3.Button.IconButton.Outlined"
+            app:backgroundTint="?attr/colorOutline"
+            app:borderWidth="0.5dp"
+            android:backgroundTint="#00000000"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginEnd="5dp"
+            android:src="@drawable/icon_bookmark"
+            app:fabCustomSize="45dp"
+            app:elevation="0dp" />
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/omniBox_tab"
+            style="@style/Widget.Material3.Button.IconButton.Outlined"
+            app:backgroundTint="?attr/colorOutline"
+            app:borderWidth="0.5dp"
+            android:backgroundTint="#00000000"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginEnd="10dp"
+            android:src="@drawable/icon_overflow"
+            app:fabCustomSize="45dp"
+            app:elevation="0dp" />
+
+    </LinearLayout>
 
 </RelativeLayout>
