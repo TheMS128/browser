@@ -11,9 +11,7 @@
     <string name="list_empty">Lista jest pusta</string>
     <string name="album_title_bookmarks">Zakładki</string>
     <string name="album_title_history">Historia</string>
-    <string name="album_title_home">Strona główna</string>
     <string name="album_title_tab">Otwarte karty</string>
-    <string name="search_hint">Szukaj</string>
     <string name="create_new">Nowy</string>
     <string name="color_red">Czerwony</string>
     <string name="color_pink">Różowy</string>
@@ -40,13 +38,11 @@
     <string name="menu_sort">Sortuj według …</string>
     <string name="menu_filter">Filtruj według …</string>
     <string name="menu_share_link">Udostępnij odnośnik</string>
-    <string name="menu_save_home">Dodaj do strony głównej</string>
     <string name="menu_save_bookmark">Zapisz jako zakładkę</string>
     <string name="menu_save_as">Zapisz jako …</string>
     <string name="menu_save_pdf">Zapisz jako PDF</string>
     <string name="menu_shareClipboard">Kopiuj do schowka</string>
     <string name="menu_other_searchSite">Wyszukaj na stronie</string>
-    <string name="link_you_copied">Link skopiowany</string>
     <string name="dialog_title_hint">Tytuł:</string>
     <string name="dialog_URL_hint">Adres URL:</string>
     <string name="dialog_extension_hint">Rozszerzenie (np.: \".jpg\"):</string>
@@ -99,7 +95,6 @@
     <string name="setting_title_fav">Ulubione</string>
     <string name="setting_title_searchEngine">Własna wyszukiwarka</string>
     <string name="setting_title_userAgent">Niestandardowy agent użytkownika</string>
-    <string name="setting_title_clipboard_record">Rekord schowka</string>
     <string name="setting_title_fingerPrint">Ochrona przed fingerprintingiem</string>
     <string name="setting_theme">Motyw</string>
     <string name="setting_theme_system">Systemowy</string>
@@ -108,7 +103,6 @@
     <string name="setting_overView_onStart_title">Wysuwaj na starcie</string>
     <string name="setting_gestures">Gesty</string>
     <string name="setting_title_longPress">Długie naciśnięcie</string>
-    <string name="setting_title_overViewButton">Wszechgląd</string>
     <string name="setting_gesture_up">Pociagniecie w górę</string>
     <string name="setting_gesture_down">Pociągnięcie w doł</string>
     <string name="setting_gesture_left">Przesunięcie w lewo</string>
@@ -140,11 +134,8 @@
     <string name="menu_desktopView">Widok pulpitu</string>
     <string name="menu_dayView">Widok Dnia</string>
     <string name="menu_nightView">Widok nocny</string>
-    <string name="setting_userScript">Własny kod JavaScript</string>
     <string name="setting_title_camera">Zezwolenie na użycie kamery</string>
     <string name="setting_title_microphone">Zezwalaj na używanie mikrofonu</string>
-    <string name="setting_title_tabsReload">Przeładuj karty</string>
-    <string name="setting_title_tabsRestore">Przywracanie zakładek</string>
     <string name="setting_summary_tabsReload">Przeładuj ostatnio otwarte karty, podczas uruchamiania FOSS Browser.</string>
     <string name="setting_summary_tabsRestore">Przywracanie zakładek, gdy FOSS Browser zostanie zabity przez system.</string>
     <string name="hint_DRM_Media">Zezwolić na odtwarzanie mediów chronionych DRM?</string>

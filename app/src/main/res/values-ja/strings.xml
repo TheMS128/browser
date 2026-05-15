@@ -11,9 +11,7 @@
     <string name="list_empty">リストが空です</string>
     <string name="album_title_bookmarks">ブックマーク</string>
     <string name="album_title_history">履歴</string>
-    <string name="album_title_home">ホーム</string>
     <string name="album_title_tab">開かれたタブ</string>
-    <string name="search_hint">検索</string>
     <string name="create_new">新規</string>
     <string name="color_red">赤</string>
     <string name="color_pink">ピンク</string>
@@ -40,13 +38,11 @@
     <string name="menu_sort">ソート…</string>
     <string name="menu_filter">フィルター…</string>
     <string name="menu_share_link">リンクを共有</string>
-    <string name="menu_save_home">ホームに保存</string>
     <string name="menu_save_bookmark">ブックマークに保存</string>
     <string name="menu_save_as">名前を付けて保存…</string>
     <string name="menu_save_pdf">PDF として保存</string>
     <string name="menu_shareClipboard">クリップボードにコピー</string>
     <string name="menu_other_searchSite">サイト内の検索</string>
-    <string name="link_you_copied">リンクがコピーされました</string>
     <string name="dialog_title_hint">タイトル:</string>
     <string name="dialog_URL_hint">URL:</string>
     <string name="dialog_extension_hint">拡張子 (例: \".jpg\"):</string>
@@ -99,7 +95,6 @@
     <string name="setting_title_fav">スタートページ</string>
     <string name="setting_title_searchEngine">カスタム検索エンジン</string>
     <string name="setting_title_userAgent">カスタムユーザーエージェント</string>
-    <string name="setting_title_clipboard_record">クリップボードの記録</string>
     <string name="setting_title_fingerPrint">指紋の保護</string>
     <string name="setting_theme">テーマ</string>
     <string name="setting_theme_system">システム</string>
@@ -108,7 +103,6 @@
     <string name="setting_overView_onStart_title">開始時に表示</string>
     <string name="setting_gestures">ジェスチャー</string>
     <string name="setting_title_longPress">長押し</string>
-    <string name="setting_title_overViewButton">一覧画面</string>
     <string name="setting_gesture_up">上スワイプ</string>
     <string name="setting_gesture_down">下スワイプ</string>
     <string name="setting_gesture_left">左スワイプ</string>
@@ -140,11 +134,8 @@
     <string name="menu_desktopView">デスクトップ表示</string>
     <string name="menu_dayView">明るい時での表示</string>
     <string name="menu_nightView">暗い時での表示</string>
-    <string name="setting_userScript">カスタム JavaScript コード</string>
     <string name="setting_title_camera">カメラの使用を許可</string>
     <string name="setting_title_microphone">マイクの使用を許可</string>
-    <string name="setting_title_tabsReload">タブを再読み込み</string>
-    <string name="setting_title_tabsRestore">タブを復元</string>
     <string name="setting_summary_tabsReload">FOSS Browser を起動する時に、最後に開いたタブを再読み込みします。</string>
     <string name="setting_summary_tabsRestore">FOSS Browser のプロセスがシステムによって終了された時、タブを復元します。</string>
     <string name="hint_DRM_Media">DRM 保護のメディア再生を許可しますか?</string>

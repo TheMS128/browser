@@ -11,9 +11,7 @@
     <string name="list_empty">Seznam je prázdný</string>
     <string name="album_title_bookmarks">Záložky</string>
     <string name="album_title_history">Historie</string>
-    <string name="album_title_home">Plocha</string>
     <string name="album_title_tab">Otevřené karty</string>
-    <string name="search_hint">Hledat</string>
     <string name="create_new">Nový</string>
     <string name="color_red">Červená</string>
     <string name="color_pink">Růžová</string>
@@ -40,13 +38,11 @@
     <string name="menu_sort">Třídit podle …</string>
     <string name="menu_filter">Filtrovat podle …</string>
     <string name="menu_share_link">Sdílet odkaz</string>
-    <string name="menu_save_home">Uložit na plochu</string>
     <string name="menu_save_bookmark">Uložit jako záložku</string>
     <string name="menu_save_as">Uložit jako …</string>
     <string name="menu_save_pdf">Uložit jako PDF</string>
     <string name="menu_shareClipboard">Kopírovat do schránky</string>
     <string name="menu_other_searchSite">Hledat na stránce</string>
-    <string name="link_you_copied">Odkaz, který jste zkopírovali</string>
     <string name="dialog_title_hint">Název:</string>
     <string name="dialog_URL_hint">URL:</string>
     <string name="dialog_extension_hint">Přípona (například: „.jpg“):</string>
@@ -99,7 +95,6 @@
     <string name="setting_title_fav">Oblíbené</string>
     <string name="setting_title_searchEngine">Vlastní vyhledávač</string>
     <string name="setting_title_userAgent">Vlastní uživatelský agent</string>
-    <string name="setting_title_clipboard_record">Záznam schránky</string>
     <string name="setting_title_fingerPrint">Ochrana pomocí otisku prstu</string>
     <string name="setting_theme">Motiv</string>
     <string name="setting_theme_system">Systém</string>
@@ -108,7 +103,6 @@
     <string name="setting_overView_onStart_title">Zobrazit při spuštění</string>
     <string name="setting_gestures">Gesta</string>
     <string name="setting_title_longPress">Dlouhé stisknutí</string>
-    <string name="setting_title_overViewButton">Přehled</string>
     <string name="setting_gesture_up">Přejetí nahoru</string>
     <string name="setting_gesture_down">Přejetí dolů</string>
     <string name="setting_gesture_left">Přejetí vlevo</string>
@@ -140,11 +134,8 @@
     <string name="menu_desktopView">Zobrazení pro PC</string>
     <string name="menu_dayView">Denní přehled</string>
     <string name="menu_nightView">Noční zobrazení</string>
-    <string name="setting_userScript">Vlastní kód JavaScript</string>
     <string name="setting_title_camera">Povolit používání kamery</string>
     <string name="setting_title_microphone">Povolit použití mikrofonu</string>
-    <string name="setting_title_tabsReload">Znovu načíst karty</string>
-    <string name="setting_title_tabsRestore">Obnovit karty</string>
     <string name="setting_summary_tabsReload">Znovu načíst naposledy otevřené karty při spuštění aplikace FOSS Browser.</string>
     <string name="setting_summary_tabsRestore">Obnovit karty při ukončení aplikace FOSS Browser systémem.</string>
     <string name="hint_DRM_Media">Povolit přehrávání médií chráněných DRM?</string>

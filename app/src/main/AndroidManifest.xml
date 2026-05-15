@@ -122,24 +122,12 @@
             android:label="@string/setting_title_savedWebSites" />
 
         <activity
-            android:name="de.baumann.browser.activity.Settings_General"
-            android:label="@string/setting_title_browser" />
-
-        <activity
             android:name="de.baumann.browser.activity.Settings_Delete"
             android:label="@string/menu_delete" />
 
         <activity
-            android:name="de.baumann.browser.activity.Settings_Privacy"
-            android:label="@string/setting_title_profiles_privacy" />
-
-        <activity
             android:name="de.baumann.browser.activity.Settings_Backup"
             android:label="@string/setting_title_data" />
-
-        <activity
-            android:name="de.baumann.browser.activity.Settings_UI"
-            android:label="@string/setting_title_ui" />
 
         <activity
             android:name="de.baumann.browser.activity.Settings_Gesture"

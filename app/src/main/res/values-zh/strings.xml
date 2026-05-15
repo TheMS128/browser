@@ -11,9 +11,7 @@
     <string name="list_empty">列表为空</string>
     <string name="album_title_bookmarks">书签</string>
     <string name="album_title_history">历史记录</string>
-    <string name="album_title_home">主页</string>
     <string name="album_title_tab">已打开的标签页</string>
-    <string name="search_hint">搜索</string>
     <string name="create_new">新建</string>
     <string name="color_red">红色</string>
     <string name="color_pink">粉色</string>
@@ -40,13 +38,11 @@
     <string name="menu_sort">按…排序</string>
     <string name="menu_filter">按…过滤</string>
     <string name="menu_share_link">分享链接</string>
-    <string name="menu_save_home">保存到桌面</string>
     <string name="menu_save_bookmark">保存为书签</string>
     <string name="menu_save_as">另存为…</string>
     <string name="menu_save_pdf">保存为 PDF</string>
     <string name="menu_shareClipboard">复制到剪切板</string>
     <string name="menu_other_searchSite">页面内搜索</string>
-    <string name="link_you_copied">您复制的链接</string>
     <string name="dialog_title_hint">标题:</string>
     <string name="dialog_URL_hint">URL：</string>
     <string name="dialog_extension_hint">扩展名 (例如: \".jpg\"):</string>
@@ -99,7 +95,6 @@
     <string name="setting_title_fav">起始页设置</string>
     <string name="setting_title_searchEngine">自定义搜索引擎</string>
     <string name="setting_title_userAgent">自定义User Agent</string>
-    <string name="setting_title_clipboard_record">剪切板记录</string>
     <string name="setting_title_fingerPrint">指纹保护</string>
     <string name="setting_theme">主题</string>
     <string name="setting_theme_system">系統</string>
@@ -108,7 +103,6 @@
     <string name="setting_overView_onStart_title">启动时显示</string>
     <string name="setting_gestures">手势</string>
     <string name="setting_title_longPress">长按</string>
-    <string name="setting_title_overViewButton">概览</string>
     <string name="setting_gesture_up">向上滑动</string>
     <string name="setting_gesture_down">向下滑动</string>
     <string name="setting_gesture_left">向左滑动</string>
@@ -140,11 +134,8 @@
     <string name="menu_desktopView">桌面端网页</string>
     <string name="menu_dayView">日间模式</string>
     <string name="menu_nightView">夜间模式</string>
-    <string name="setting_userScript">自定义 JavaScript 代码</string>
     <string name="setting_title_camera">允许相机使用</string>
     <string name="setting_title_microphone">允许访问麦克风</string>
-    <string name="setting_title_tabsReload">重新加载标签页</string>
-    <string name="setting_title_tabsRestore">恢复标签页</string>
     <string name="setting_summary_tabsReload">启动 FOSS 浏览器时重新加载上次打开的标签</string>
     <string name="setting_summary_tabsRestore">当 FOSS 浏览器被系统杀死时，还原标签页。</string>
     <string name="hint_DRM_Media">允许 DRM 保护的媒体播放？</string>

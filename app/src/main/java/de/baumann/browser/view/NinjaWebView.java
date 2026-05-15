@@ -238,7 +238,7 @@ public class NinjaWebView extends WebView implements AlbumController {
 
         RecordAction action = new RecordAction(context);
         action.open(true);
-        action.addBookmark(new Record("FOSS Browser - WIKI", "https://codeberg.org/Gaukler_Faun/FOSS_Browser/wiki", 0, 0, 0));
+        action.addBookmark(new Record("FOSS Browser - WIKI", "https://codeberg.org/Gaukler_Faun/FOSS_Browser/wiki", 0, 0));
         action.close();
 
         sp.edit()

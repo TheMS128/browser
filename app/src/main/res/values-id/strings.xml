@@ -11,9 +11,7 @@
     <string name="list_empty">Daftar kosong</string>
     <string name="album_title_bookmarks">Bookmark</string>
     <string name="album_title_history">Riwayat</string>
-    <string name="album_title_home">Beranda</string>
     <string name="album_title_tab">Tab Teebuka</string>
-    <string name="search_hint">Cari</string>
     <string name="create_new">Baru</string>
     <string name="color_red">Merah</string>
     <string name="color_pink">Merah Muda</string>
@@ -39,13 +37,11 @@
     <string name="menu_sort">Urutkan berdasarkan …</string>
     <string name="menu_filter">Saring berdasarkan …</string>
     <string name="menu_share_link">Bagikan tautan</string>
-    <string name="menu_save_home">Simpan di Beranda</string>
     <string name="menu_save_bookmark">Simpan sebagai penanda</string>
     <string name="menu_save_as">Simpan sebagai …</string>
     <string name="menu_save_pdf">Simpan sebagai PDF</string>
     <string name="menu_shareClipboard">Salin ke papan klip</string>
     <string name="menu_other_searchSite">Cari di situs</string>
-    <string name="link_you_copied">Tautan yang disalin</string>
     <string name="dialog_title_hint">Judul:</string>
     <string name="dialog_URL_hint">URL:</string>
     <string name="dialog_extension_hint">Ekstensi (sebagai contoh: \".jpg\"):</string>
@@ -98,7 +94,6 @@
     <string name="setting_title_fav">Favorit</string>
     <string name="setting_title_searchEngine">Mesin pencari kustom</string>
     <string name="setting_title_userAgent">Agen pengguna kustom</string>
-    <string name="setting_title_clipboard_record">Rekaman Clipboard</string>
     <string name="setting_title_fingerPrint">Perlindungan fingerprint</string>
     <string name="setting_theme">Tema</string>
     <string name="setting_theme_system">Sistem</string>
@@ -107,7 +102,6 @@
     <string name="setting_overView_onStart_title">Tampilkan saat mulai</string>
     <string name="setting_gestures">Gestur</string>
     <string name="setting_title_longPress">Tekan lama</string>
-    <string name="setting_title_overViewButton">Ringkasan</string>
     <string name="setting_gesture_up">Geser ke atas</string>
     <string name="setting_gesture_down">Geser ke bawah</string>
     <string name="setting_gesture_left">Geser ke kiri</string>
@@ -139,11 +133,8 @@
     <string name="menu_desktopView">Tampilan desktop</string>
     <string name="menu_dayView">Tampilan terang</string>
     <string name="menu_nightView">Tampilan malam</string>
-    <string name="setting_userScript">Kode JavaScript Kustom</string>
     <string name="setting_title_camera">Izinkan penggunaan kamera</string>
     <string name="setting_title_microphone">Izinkan penggunaan mikrofon</string>
-    <string name="setting_title_tabsReload">Muat ulang tab</string>
-    <string name="setting_title_tabsRestore">Pulihkan tab</string>
     <string name="setting_summary_tabsReload">Muat ulang tab yang dibuka terakhir, saat memulai FOSS Browser.</string>
     <string name="setting_summary_tabsRestore">Pulihkan tab, saat FOSS Browser dihentikan oleh sistem.</string>
     <string name="hint_DRM_Media">Izinkan pemutaran media yang dilindungi DRM?</string>

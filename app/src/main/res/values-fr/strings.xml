@@ -11,9 +11,7 @@
     <string name="list_empty">Liste vide</string>
     <string name="album_title_bookmarks">Signets</string>
     <string name="album_title_history">Historique</string>
-    <string name="album_title_home">Accueil</string>
     <string name="album_title_tab">Onglets ouverts</string>
-    <string name="search_hint">Chercher</string>
     <string name="create_new">Nouveau</string>
     <string name="color_red">Rouge</string>
     <string name="color_pink">Rose</string>
@@ -40,13 +38,11 @@
     <string name="menu_sort">Trier par …</string>
     <string name="menu_filter">Filtrer par …</string>
     <string name="menu_share_link">Partager le lien</string>
-    <string name="menu_save_home">Enregistrer sur l\'Accueil</string>
     <string name="menu_save_bookmark">Enregistrer comme signet</string>
     <string name="menu_save_as">Enregistrer sous …</string>
     <string name="menu_save_pdf">Enregistrer en PDF</string>
     <string name="menu_shareClipboard">Copier dans le presse-papiers</string>
     <string name="menu_other_searchSite">Rechercher sur le site</string>
-    <string name="link_you_copied">Lien copié</string>
     <string name="dialog_title_hint">Titre :</string>
     <string name="dialog_URL_hint">URL :</string>
     <string name="dialog_extension_hint">Extension (par exemple : .jpg) :</string>
@@ -99,7 +95,6 @@
     <string name="setting_title_fav">Favoris</string>
     <string name="setting_title_searchEngine">Moteur de recherche personnalisé</string>
     <string name="setting_title_userAgent">Agent utilisateur personnalisé</string>
-    <string name="setting_title_clipboard_record">Dossiers du presse-papiers</string>
     <string name="setting_title_fingerPrint">Protection contre l\'empreinte digitale</string>
     <string name="setting_theme">Thème</string>
     <string name="setting_theme_system">Système</string>
@@ -108,7 +103,6 @@
     <string name="setting_overView_onStart_title">Montrer au démarrage</string>
     <string name="setting_gestures">Gestes</string>
     <string name="setting_title_longPress">Appui prolongé</string>
-    <string name="setting_title_overViewButton">Vue d\'ensemble</string>
     <string name="setting_gesture_up">Balayer vers le haut</string>
     <string name="setting_gesture_down">Balayer vers le bas</string>
     <string name="setting_gesture_left">Balayer à gauche</string>
@@ -140,11 +134,8 @@
     <string name="menu_desktopView">Vue bureau</string>
     <string name="menu_dayView">Vue Jour</string>
     <string name="menu_nightView">Vue nocturne</string>
-    <string name="setting_userScript">Scripts JavaScript personnalisés</string>
     <string name="setting_title_camera">Autoriser l\'utilisation de la caméra</string>
     <string name="setting_title_microphone">Autoriser l\'utilisation du microphone</string>
-    <string name="setting_title_tabsReload">Recharger les onglets</string>
-    <string name="setting_title_tabsRestore">Restaurer les onglets</string>
     <string name="setting_summary_tabsReload">Recharger les derniers onglets ouverts lors du démarrage de FOSS Browser.</string>
     <string name="setting_summary_tabsRestore">Restaurer les onglets quand FOSS Browser est tué par le système.</string>
     <string name="hint_DRM_Media">Autoriser la lecture des médias protégés par le DRM ?</string>

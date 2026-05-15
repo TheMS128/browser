@@ -11,9 +11,7 @@
     <string name="list_empty">A lista üres</string>
     <string name="album_title_bookmarks">Könyvjelzők</string>
     <string name="album_title_history">Előzmények</string>
-    <string name="album_title_home">Kezdőlap</string>
     <string name="album_title_tab">Megnyitott lapok</string>
-    <string name="search_hint">Keresés</string>
     <string name="create_new">Új</string>
     <string name="color_red">Piros</string>
     <string name="color_pink">Rózsaszín</string>
@@ -40,13 +38,11 @@
     <string name="menu_sort">Rendezés …</string>
     <string name="menu_filter">Szűrés …</string>
     <string name="menu_share_link">Hivatkozás megosztása</string>
-    <string name="menu_save_home">Mentés kezdőlapként</string>
     <string name="menu_save_bookmark">Mentés könyvjelzőként</string>
     <string name="menu_save_as">Mentés másként …</string>
     <string name="menu_save_pdf">Mentés PDF-ként</string>
     <string name="menu_shareClipboard">Másolás a vágólapra</string>
     <string name="menu_other_searchSite">Keresés az oldalon</string>
-    <string name="link_you_copied">Link másolva</string>
     <string name="dialog_title_hint">Cím:</string>
     <string name="dialog_URL_hint">URL:</string>
     <string name="dialog_extension_hint">Kiterjesztés (például: \".jpg\"):</string>
@@ -106,7 +102,6 @@
     <string name="setting_overView_onStart_title">Mutassa indításkor</string>
     <string name="setting_gestures">Kézmozdulatok</string>
     <string name="setting_title_longPress">Hosszú érintés</string>
-    <string name="setting_title_overViewButton">Áttekintés</string>
     <string name="setting_gesture_up">Csúsztatás felfelé</string>
     <string name="setting_gesture_down">Csúsztatás lefelé</string>
     <string name="setting_gesture_left">Csúsztatás balra</string>
@@ -138,11 +133,8 @@
     <string name="menu_desktopView">Asztali nézet</string>
     <string name="menu_dayView">Napi nézet</string>
     <string name="menu_nightView">Éjszakai nézet</string>
-    <string name="setting_userScript">Egyéni JavaScript kód</string>
     <string name="setting_title_camera">Kamera használatának engedélyezése</string>
     <string name="setting_title_microphone">Mikrofonhasználat engedélyezése</string>
-    <string name="setting_title_tabsReload">Lapok újratöltése</string>
-    <string name="setting_title_tabsRestore">Lapok visszaállítása</string>
     <string name="setting_summary_tabsReload">Utoljára megnyitott lapok újratöltése a FOSS Browser indításakor.</string>
     <string name="setting_summary_tabsRestore">A lapok visszaállítása, ha a FOSS Browser-t megöli a rendszer.</string>
     <string name="hint_DRM_Media">DRM-védett média lejátszásának engedélyezése?</string>
@@ -150,7 +142,6 @@
     <string name="menu_restart">Újraindítás és a lapok újratöltése</string>
     <string name="setting_title_screenOn">Kijelző ébrentartása</string>
     <string name="setting_title_dom">dom tárolás</string>
-    <string name="setting_title_clipboard_record">Vágólap rekord</string>
     <string name="custom_searches_title">Gyors keresés a …</string>
     <string name="app_error_copy">Kérjük, válassza ki és másolja ki a szöveget kézzel</string>
     <string name="dialog_backGround">Linkek megnyitása a háttérben …</string>

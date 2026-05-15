@@ -4,7 +4,6 @@ import de.baumann.browser.unit.HelperUnit;
 
 public class Record {
 
-    private final int ordinal;
     private long iconColor;
     private String title;
     private String url;
@@ -14,15 +13,13 @@ public class Record {
         this.title = null;
         this.url = null;
         this.time = 0L;
-        this.ordinal = -1;
         this.iconColor = 0L;
     }
 
-    public Record(String title, String url, long time, int ordinal, long iconColor) {
+    public Record(String title, String url, long time, long iconColor) {
         this.title = title;
         this.url = url;
         this.time = time;
-        this.ordinal = ordinal;
         this.iconColor = iconColor;
     }
 
@@ -60,9 +57,5 @@ public class Record {
 
     public void setTime(long time) {
         this.time = time;
-    }
-
-    int getOrdinal() {
-        return ordinal;
     }
 }

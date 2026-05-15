@@ -11,9 +11,7 @@
     <string name="list_empty">Spisak je prazan</string>
     <string name="album_title_bookmarks">Bilješci</string>
     <string name="album_title_history">Povijest</string>
-    <string name="album_title_home">Početna stranica</string>
     <string name="album_title_tab">Otvorene Kartice</string>
-    <string name="search_hint">Traži</string>
     <string name="color_red">Crvena</string>
     <string name="color_pink">Ružičasta</string>
     <string name="color_purple">Ljubičasta</string>
@@ -39,7 +37,6 @@
     <string name="menu_sort">Sortiraj po …</string>
     <string name="menu_filter">Filtriraj po …</string>
     <string name="menu_share_link">Podijeli vezu</string>
-    <string name="menu_save_home">Spasi na početnoj stranici</string>
     <string name="menu_save_bookmark">Spasi kao bilježak</string>
     <string name="menu_save_as">Spasi kao …</string>
     <string name="menu_save_pdf">Spasi kao PDF</string>
@@ -104,7 +101,6 @@
     <string name="setting_overView_onStart_title">Prikaži pri početku</string>
     <string name="setting_gestures">Gestovi</string>
     <string name="setting_title_longPress">Dugi pritisak</string>
-    <string name="setting_title_overViewButton">Pregled</string>
     <string name="setting_gesture_up">Povucite gore</string>
     <string name="setting_gesture_down">Povucite dole</string>
     <string name="setting_gesture_left">Povucite lijevo</string>
@@ -136,11 +132,8 @@
     <string name="menu_desktopView">Veliki prikaz</string>
     <string name="menu_dayView">Danski prikaz</string>
     <string name="menu_nightView">Noćni prikaz</string>
-    <string name="setting_userScript">Prilagođeni JavaScript kod</string>
     <string name="setting_title_camera">Dozvolite korištenje kamere</string>
     <string name="setting_title_microphone">Dozvolite korištenje mikrofona</string>
-    <string name="setting_title_tabsReload">Osvježite kartice</string>
-    <string name="setting_title_tabsRestore">Obnovi kartice</string>
     <string name="setting_summary_tabsReload">Ponovo učitajte posljednje otvorene kartice, kada pokrenete FOSS Preglednik.</string>
     <string name="setting_summary_tabsRestore">Obnovite kartice, kada sistem prisilno zaustavi FOSS Preglednik.</string>
     <string name="hint_DRM_Media">Dozvoliti DRM zaštićenu reprodukciju medija?</string>

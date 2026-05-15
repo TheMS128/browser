@@ -11,9 +11,7 @@
     <string name="list_empty">القائمة فارغة</string>
     <string name="album_title_bookmarks">العلامات</string>
     <string name="album_title_history">السجل</string>
-    <string name="album_title_home">الصفحة الرئيسية</string>
     <string name="album_title_tab">علامات التبويب المفتوحة</string>
-    <string name="search_hint">البحث</string>
     <string name="color_red">أحمر</string>
     <string name="color_pink">وردي</string>
     <string name="color_purple">بنفسجي</string>
@@ -39,7 +37,6 @@
     <string name="menu_sort">فرز حسب …</string>
     <string name="menu_filter">فرز بواسطة…</string>
     <string name="menu_share_link">مشاركة الرابط</string>
-    <string name="menu_save_home">حفظ في الصفحة الرئيسية</string>
     <string name="menu_save_bookmark">حفظ كإشارة مرجعية</string>
     <string name="menu_save_as">حفظ كـ …</string>
     <string name="menu_save_pdf">حفظ كـ PDF</string>
@@ -97,7 +94,6 @@
     <string name="setting_title_fav">المفضلة</string>
     <string name="setting_title_searchEngine">محرك بحث مخصص</string>
     <string name="setting_title_userAgent">وكيل مستخدم مخصص</string>
-    <string name="setting_title_clipboard_record">سجل الحافظة</string>
     <string name="setting_title_fingerPrint">حماية بصمة الإصبع</string>
     <string name="setting_theme">السمة</string>
     <string name="setting_theme_system">نظام</string>
@@ -106,7 +102,6 @@
     <string name="setting_overView_onStart_title">أَظهر عند البداية</string>
     <string name="setting_gestures">إيماءات</string>
     <string name="setting_title_longPress">ضغط مطوّل</string>
-    <string name="setting_title_overViewButton">نظرة عامة</string>
     <string name="setting_gesture_up">مرر لأعلى</string>
     <string name="setting_gesture_down">مرر لأسفل</string>
     <string name="setting_gesture_left">مرر لليسار</string>
@@ -138,18 +133,14 @@
     <string name="menu_desktopView">عرض سطح المكتب</string>
     <string name="menu_dayView">عرض يومي</string>
     <string name="menu_nightView">عرض ليلي</string>
-    <string name="setting_userScript">شفرة جافاسكريت مخصصة</string>
     <string name="setting_title_camera">السماح باستخدام الكاميرا</string>
     <string name="setting_title_microphone">السماح باستخدام لاقط الصوت</string>
-    <string name="setting_title_tabsReload">أعد تحميل التبويبات</string>
-    <string name="setting_title_tabsRestore">استعد التبويبات</string>
     <string name="setting_summary_tabsReload">إعادة تحميل آخر علامات التبويب المفتوحة، عند بدء المتصفح الحر FOSS Browser.</string>
     <string name="setting_summary_tabsRestore">استعادة علامات التبويب عندما يقتل المتصفح الحر FOSS Browser بواسطة النظام.</string>
     <string name="hint_DRM_Media">السماح بتشغيل الوسائط محمية الحقوق الرقمية DRM؟</string>
     <string name="menu_reload">إعادة تحميل</string>
     <string name="menu_restart">إعادة تشغيل وإعادة تحميل علامات التبويب</string>
     <string name="setting_title_screenOn">إبقاء الشاشة مشتغلة</string>
-    <string name="link_you_copied">الرابط الذي نسخته</string>
     <string name="create_new">جديد</string>
     <string name="custom_searches_title">بحث سريع على …</string>
     <string name="app_error_copy">يرجى تحديد النص ونسخه يدوياً</string>

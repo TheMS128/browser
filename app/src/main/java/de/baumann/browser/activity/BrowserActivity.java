@@ -148,6 +148,7 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
     private TextInputEditText omniBox_text;
     private TextView omniBox_title;
     private EditText searchBox;
+    @SuppressLint("StaticFieldLeak")
     private static NinjaWebView ninjaWebView;
     private View customView;
     private VideoView videoView;
@@ -233,16 +234,10 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
                 .putBoolean("show_overview", true)
                 .putString("openBackground_dialog", "show").apply();
 
-        switch (Objects.requireNonNull(sp.getString("start_tab", "3"))) {
-            case "3":
-                overViewTab = getString(R.string.album_title_bookmarks);
-                break;
-            case "4":
-                overViewTab = getString(R.string.album_title_history);
-                break;
-            default:
-                overViewTab = getString(R.string.album_title_home);
-                break;
+        if (Objects.requireNonNull(sp.getString("start_tab", "3")).equals("4")) {
+            overViewTab = getString(R.string.album_title_history);
+        } else {
+            overViewTab = getString(R.string.album_title_bookmarks);
         }
         setContentView(R.layout.activity_main);
         contentFrame = findViewById(R.id.main_content);
@@ -585,30 +580,6 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
                 intPage.set(R.id.page_0);
                 listView.setVisibility(GONE);
                 tab_container.setVisibility(VISIBLE);}
-            else if (menuItem.getItemId() == R.id.page_1) {
-                omniBox_overview.setImageResource(R.drawable.icon_web);
-                overViewTab = getString(R.string.album_title_home);
-                intPage.set(R.id.page_1);
-                listView.setVisibility(VISIBLE);
-                tab_container.setVisibility(GONE);
-
-                RecordAction action = new RecordAction(context);
-                action.open(false);
-                final List<Record> list = action.listStartSite(activity);
-                action.close();
-
-                adapter = new AdapterRecord(context, list);
-                listView.setAdapter(adapter);
-                adapter.notifyDataSetChanged();
-
-                listView.setOnItemClickListener((parent, view, position, id) -> {
-                    ninjaWebView.loadUrl(list.get(position).getURL());
-                    hideOverview();
-                });
-                listView.setOnItemLongClickListener((parent, view, position, id) -> {
-                    showContextMenuList(list.get(position).getTitle(), list.get(position).getURL(), adapter, list, position);
-                    return true;
-                }); }
 
             else if (menuItem.getItemId() == R.id.page_2) {
                 try {
@@ -682,8 +653,6 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
                 popup.setOnDismissListener(menu -> setSelectedTab());
                 if (bottom_navigation.getSelectedItemId() == R.id.page_0)
                     popup.inflate(R.menu.menu_help);
-                else if (bottom_navigation.getSelectedItemId() == R.id.page_1)
-                    popup.inflate(R.menu.menu_list_start);
                 else if (bottom_navigation.getSelectedItemId() == R.id.page_2)
                     popup.inflate(R.menu.menu_list_bookmark);
                 else if (bottom_navigation.getSelectedItemId() == R.id.page_3)
@@ -695,10 +664,7 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
                         builder.setMessage(R.string.hint_database);
                         builder.setIcon(R.drawable.icon_delete);
                         builder.setPositiveButton(R.string.app_ok, (dialog, whichButton) -> {
-                            if (overViewTab.equals(getString(R.string.album_title_home))) {
-                                BrowserUnit.clearHome(context);
-                                bottom_navigation.setSelectedItemId(R.id.page_1); }
-                            else if (overViewTab.equals(getString(R.string.album_title_bookmarks))) {
+                            if (overViewTab.equals(getString(R.string.album_title_bookmarks))) {
                                 BrowserUnit.clearBookmark(context);
                                 bottom_navigation.setSelectedItemId(R.id.page_2); }
                             else if (overViewTab.equals(getString(R.string.album_title_history))) {
@@ -710,14 +676,9 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
                         dialog.show();
                         HelperUnit.setupDialog(context, dialog);
                     } else if (item.getItemId() == R.id.menu_sortName) {
-                        if (overViewTab.equals(getString(R.string.album_title_bookmarks))) {
-                            sp.edit().putString("sort_bookmark", "title").apply();
-                            sp.edit().putBoolean("sort_bookmarkDomain", false).apply();
-                            bottom_navigation.setSelectedItemId(R.id.page_2); }
-                        else if (overViewTab.equals(getString(R.string.album_title_home))) {
-                            sp.edit().putString("sort_startSite", "title").apply();
-                            sp.edit().putBoolean("sort_startSiteDomain", false).apply();
-                            bottom_navigation.setSelectedItemId(R.id.page_1); }
+                        sp.edit().putString("sort_bookmark", "title").apply();
+                        sp.edit().putBoolean("sort_bookmarkDomain", false).apply();
+                        bottom_navigation.setSelectedItemId(R.id.page_2);
                     } else if (item.getItemId() == R.id.menu_sortIcon) {
                         sp.edit().putString("sort_bookmark", "time").apply();
                         sp.edit().putBoolean("sort_bookmarkDomain", false).apply();
@@ -728,10 +689,7 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
                         builder.setMessage(R.string.hint_database);
                         builder.setIcon(R.drawable.icon_delete);
                         builder.setPositiveButton(R.string.app_ok, (dialog, whichButton) -> {
-                            if (overViewTab.equals(getString(R.string.album_title_home))) {
-                                BrowserUnit.clearHome(context);
-                                bottom_navigation.setSelectedItemId(R.id.page_1); }
-                            else if (overViewTab.equals(getString(R.string.album_title_bookmarks))) {
+                            if (overViewTab.equals(getString(R.string.album_title_bookmarks))) {
                                 BrowserUnit.clearBookmark(context);
                                 bottom_navigation.setSelectedItemId(R.id.page_2); }
                             else if (overViewTab.equals(getString(R.string.album_title_history))) {
@@ -743,32 +701,16 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
                         dialog.show();
                         HelperUnit.setupDialog(context, dialog);
                     } else if (item.getItemId() == R.id.menu_sortName) {
-                        if (overViewTab.equals(getString(R.string.album_title_bookmarks))) {
-                            sp.edit().putString("sort_bookmark", "title").apply();
-                            sp.edit().putBoolean("sort_bookmarkDomain", false).apply();
-                            bottom_navigation.setSelectedItemId(R.id.page_2); }
-                        else if (overViewTab.equals(getString(R.string.album_title_home))) {
-                            sp.edit().putString("sort_startSite", "title").apply();
-                            sp.edit().putBoolean("sort_startSiteDomain", false).apply();
-                            bottom_navigation.setSelectedItemId(R.id.page_1); }
+                        sp.edit().putString("sort_bookmark", "title").apply();
+                        sp.edit().putBoolean("sort_bookmarkDomain", false).apply();
+                        bottom_navigation.setSelectedItemId(R.id.page_2);
                     } else if (item.getItemId() == R.id.menu_sortDate) {
-                        if (overViewTab.equals(getString(R.string.album_title_history))) {
-                            sp.edit().putBoolean("sort_historyDomain", false).apply();
-                            bottom_navigation.setSelectedItemId(R.id.page_3);
-                        }
-                        else if (overViewTab.equals(getString(R.string.album_title_home))) {
-                            sp.edit().putString("sort_startSite", "ordinal").apply();
-                            sp.edit().putBoolean("sort_startSiteDomain", false).apply();
-                            bottom_navigation.setSelectedItemId(R.id.page_1);
-                        }
+                        sp.edit().putBoolean("sort_historyDomain", false).apply();
+                        bottom_navigation.setSelectedItemId(R.id.page_3);
                     } else if (item.getItemId() == R.id.menu_sortDomain) {
                         if (overViewTab.equals(getString(R.string.album_title_bookmarks))) {
                             sp.edit().putBoolean("sort_bookmarkDomain", true).apply();
                             bottom_navigation.setSelectedItemId(R.id.page_2); }
-                        else if (overViewTab.equals(getString(R.string.album_title_home))) {
-                            sp.edit().putBoolean("sort_startSiteDomain", true).apply();
-                            bottom_navigation.setSelectedItemId(R.id.page_1);
-                        }
                         else if (overViewTab.equals(getString(R.string.album_title_history))) {
                             sp.edit().putBoolean("sort_historyDomain", true).apply();
                             bottom_navigation.setSelectedItemId(R.id.page_3);
@@ -799,6 +741,8 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
         omniBox_text = dialogViewSearch.findViewById(R.id.omniBox_input);
         omniBox_title = findViewById(R.id.omniBox_title);
         omniBox_title.setOnClickListener(view -> {
+            initSearch();
+            sp.edit().putString("sp_search_customSearches", "").apply();
             omniBox_text.setText(ninjaWebView.getUrl());
             dialogSearch.show();
             HelperUnit.showSoftKeyboard(omniBox_text);
@@ -893,15 +837,6 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
             }
             return false;
         });
-        omniBox_text.setOnFocusChangeListener((v, hasFocus) -> {
-            if (omniBox_text.hasFocus()) {
-                HelperUnit.showSoftKeyboard(omniBox_text);
-                sp.edit().putString("sp_search_customSearches", "").apply();
-                ninjaWebView.stopLoading();
-                initSearch();
-                omniBox_text.selectAll();
-            }
-        });
         omniBox_overview.setOnClickListener(v -> showOverview());
         omniBox_overview.setOnLongClickListener(v -> {
             performGesture("setting_gesture_overViewButton");
@@ -971,11 +906,9 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
         assert searchCancel != null;
         searchCancel.setOnClickListener(v -> {
             if (searchBox.getText().length() > 0) searchBox.setText("");
-            else {
-                bottomSheetDialog_searchOnSite.cancel();}
+            else {bottomSheetDialog_searchOnSite.cancel();}
         });
     }
-
     public void initSearch() {
         RecordAction action = new RecordAction(this);
         List<Record> list = action.listEntries(activity);
@@ -1021,7 +954,6 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
 
     private void setSelectedTab() {
         if (overViewTab.equals(getString(R.string.album_title_tab))) bottom_navigation.setSelectedItemId(R.id.page_0);
-        else if (overViewTab.equals(getString(R.string.album_title_home))) bottom_navigation.setSelectedItemId(R.id.page_1);
         else if (overViewTab.equals(getString(R.string.album_title_bookmarks))) bottom_navigation.setSelectedItemId(R.id.page_2);
         else if (overViewTab.equals(getString(R.string.album_title_history))) bottom_navigation.setSelectedItemId(R.id.page_3);
     }
@@ -1139,14 +1071,12 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
             } });
 
         // Save
-        GridItem saveHome = new GridItem( getString(R.string.menu_save_home), R.drawable.icon_web);
         GridItem saveBookmark = new GridItem( getString(R.string.menu_save_bookmark), R.drawable.icon_bookmark);
         GridItem savePDF = new GridItem( getString(R.string.menu_save_pdf), R.drawable.icon_file);
         GridItem saveAs = new GridItem( getString(R.string.menu_save_as), R.drawable.icon_menu_save);
         GridItem saveFav = new GridItem( getString(R.string.menu_fav), R.drawable.icon_fav);
 
         final List<GridItem> gridList_save = new LinkedList<>();
-        gridList_save.add(gridList_save.size(), saveHome);
         gridList_save.add(gridList_save.size(), saveBookmark);
         gridList_save.add(gridList_save.size(), savePDF);
         gridList_save.add(gridList_save.size(), saveAs);
@@ -1157,8 +1087,7 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
         gridAdapter_save.notifyDataSetChanged();
 
         menu_grid_save.setOnItemLongClickListener((arg0, arg1, position, arg3) -> {
-            if (position == 0) NinjaToast.show(context, saveHome.getTitle());
-            else if (position == 1) NinjaToast.show(context, saveBookmark.getTitle());
+            if (position == 1) NinjaToast.show(context, saveBookmark.getTitle());
             else if (position == 2) NinjaToast.show(context, saveBookmark.getTitle());
             else if (position == 3) NinjaToast.show(context, savePDF.getTitle());
             else if (position == 4) NinjaToast.show(context, saveAs.getTitle());
@@ -1168,18 +1097,14 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
         menu_grid_save.setOnItemClickListener((parent, view13, position, id) -> {
             RecordAction action = new RecordAction(context);
             if (position == 0) {
-                save_atHome(title, url);
-                dialog_overflow.cancel();
-            }
-            else if (position == 1) {
                 saveBookmark();
                 action.close();
                 dialog_overflow.cancel();
             }
-            else if (position == 2) {
+            else if (position == 1) {
                 printPDF();
             }
-            else if (position == 3) {
+            else if (position == 2) {
                 assert url != null;
                 if (url.startsWith("data:")) {
                     DataURIParser dataURIParser = new DataURIParser(url);
@@ -1187,7 +1112,7 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
                 } else HelperUnit.saveAs(activity, url, null, dialog_overflow);
                 dialog_overflow.cancel();
             }
-            else if (position == 4) {
+            else if (position == 3) {
                 sp.edit().putString("favoriteURL", url).apply();
                 NinjaToast.show(this, R.string.app_done);
                 dialog_overflow.cancel();
@@ -1386,7 +1311,6 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
         GridItem shareLink = new GridItem( getString(R.string.menu_share_link), R.drawable.icon_link);
         GridItem shareClipboard = new GridItem( getString(R.string.menu_shareClipboard), R.drawable.icon_clipboard);
         GridItem saveAs = new GridItem( getString(R.string.menu_save_as), R.drawable.icon_menu_save);
-        GridItem saveHome = new GridItem( getString(R.string.menu_save_home), R.drawable.icon_web);
         GridItem openWith = new GridItem( getString(R.string.menu_shareOpenWith), R.drawable.icon_share_open_with);
         GridItem delete = new GridItem( getString(R.string.menu_delete), R.drawable.icon_delete);
 
@@ -1398,7 +1322,6 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
         gridList.add(gridList.size(), shareLink);
         gridList.add(gridList.size(), shareClipboard);
         gridList.add(gridList.size(), saveAs);
-        gridList.add(gridList.size(), saveHome);
 
         if (showAll) {
             gridList.add(gridList.size(), delete);
@@ -1445,10 +1368,6 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
                     HelperUnit.saveAs(activity,  url, null, dialog);
                     break;
                 case 6:
-                    hideSearch();
-                    save_atHome(finalTitle, url);
-                    break;
-                case 7:
                     hideSearch();
                     MaterialAlertDialogBuilder builderSubMenu = new MaterialAlertDialogBuilder(context);
                     builderSubMenu.setTitle(R.string.menu_delete);
@@ -1507,7 +1426,7 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
 
         final List<GridItem> gridList = new LinkedList<>();
 
-        if (overViewTab.equals(getString(R.string.album_title_bookmarks)) || overViewTab.equals(getString(R.string.album_title_home))) {
+        if (overViewTab.equals(getString(R.string.album_title_bookmarks))) {
             gridList.add(gridList.size(), tabOpen);
             gridList.add(gridList.size(), tabOpenBack);
             gridList.add(gridList.size(), shareLink);
@@ -1553,8 +1472,7 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
                         Record record = recordList.get(location);
                         RecordAction action = new RecordAction(context);
                         action.open(true);
-                        if (overViewTab.equals(getString(R.string.album_title_home))) action.deleteURL(record.getURL(), RecordUnit.TABLE_START);
-                        else if (overViewTab.equals(getString(R.string.album_title_bookmarks))) action.deleteURL(record.getURL(), RecordUnit.TABLE_BOOKMARK);
+                        if (overViewTab.equals(getString(R.string.album_title_bookmarks))) action.deleteURL(record.getURL(), RecordUnit.TABLE_BOOKMARK);
                         else if (overViewTab.equals(getString(R.string.album_title_history))) action.deleteURL(record.getURL(), RecordUnit.TABLE_HISTORY);
                         action.close();
                         recordList.remove(location);
@@ -1636,25 +1554,15 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
                     ib_cancel.setOnClickListener(v -> dialogSubMenu.cancel());
                     Button ib_ok = dialogViewSubMenu.findViewById(R.id.editOK);
                     ib_ok.setOnClickListener(v -> {
-                        if (overViewTab.equals(getString(R.string.album_title_bookmarks))) {
-                            RecordAction action = new RecordAction(context);
-                            action.open(true);
-                            action.deleteURL(url, RecordUnit.TABLE_BOOKMARK);
-                            action.deleteURL(editBottom.getText().toString(), RecordUnit.TABLE_BOOKMARK);
-                            action.addBookmark(new Record(editTop.getText().toString(), editBottom.getText().toString(), 0, 0, newIcon));
-                            updateOmniBox();
-                            NinjaToast.show(this, R.string.app_done);
-                            action.close();
-                            bottom_navigation.setSelectedItemId(R.id.page_2);}
-                        else {
-                            RecordAction action = new RecordAction(context);
-                            action.open(true);
-                            action.deleteURL(url, RecordUnit.TABLE_START);
-                            action.deleteURL(editBottom.getText().toString(), RecordUnit.TABLE_START);
-                            action.addStartSite(new Record(editTop.getText().toString(), editBottom.getText().toString(), 0, 0, newIcon));
-                            NinjaToast.show(this, R.string.app_done);
-                            action.close();
-                            bottom_navigation.setSelectedItemId(R.id.page_1); }
+                        RecordAction action = new RecordAction(context);
+                        action.open(true);
+                        action.deleteURL(url, RecordUnit.TABLE_BOOKMARK);
+                        action.deleteURL(editBottom.getText().toString(), RecordUnit.TABLE_BOOKMARK);
+                        action.addBookmark(new Record(editTop.getText().toString(), editBottom.getText().toString(), 0, newIcon));
+                        updateOmniBox();
+                        NinjaToast.show(this, R.string.app_done);
+                        action.close();
+                        bottom_navigation.setSelectedItemId(R.id.page_2);
                         dialogSubMenu.cancel();
                         dialog.cancel();
                     });
@@ -1786,7 +1694,7 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
                 checkbox_links.setChecked(sp.getBoolean("sp_tabBackground", true));
             });
 
-            TextView titleViewSettings = dialogViewFastToggle.findViewById(R.id.titeViewSettings);
+            TextView titleViewSettings = dialogViewFastToggle.findViewById(R.id.titleViewSettings);
             String s = context.getString(R.string.app_name) + " " + context.getString(R.string.setting_label);
             titleViewSettings.setText(s);
 
@@ -2040,7 +1948,6 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
             ib_save.setOnClickListener(v -> {
                 listStandard.removeDomain(HelperUnit.domain(url));
                 listStandard.addDomain(HelperUnit.domain(url));
-                sp.edit().putString("profile", HelperUnit.domain(url)).apply();
                 String profileToSave = HelperUnit.domain(url);
                 sp.edit()
                         .putBoolean(profileToSave + "_saveData", checkbox_saveData.isChecked())
@@ -2291,23 +2198,6 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
         sp.edit().putBoolean("pdf_create", true).apply();
     }
 
-    private void save_atHome(final String title, final String url) {
-        FaviconHelper faviconHelper = new FaviconHelper(context);
-        faviconHelper.addFavicon(context, ninjaWebView.getUrl(), ninjaWebView.getFavicon());
-        String message = context.getString(R.string.app_error) + ": " + context.getString(R.string.app_error_save);
-
-        RecordAction action = new RecordAction(context);
-        action.open(true);
-        if (action.checkUrl(url, RecordUnit.TABLE_START)) NinjaToast.show(this, message);
-        else {
-            int counter = sp.getInt("counter", 0);
-            counter = counter + 1;
-            sp.edit().putInt("counter", counter).apply();
-            if (action.addStartSite(new Record(title, url, 0, counter, 0))) NinjaToast.show(this, R.string.app_done);
-            else NinjaToast.show(this, R.string.app_error); }
-        action.close();
-    }
-
     private void copyLink(String url) {
         ClipboardManager clipboard = (ClipboardManager) getSystemService(Context.CLIPBOARD_SERVICE);
         ClipData clip = ClipData.newPlainText("text", url);
@@ -2495,7 +2385,7 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
             NinjaToast.show(this, message);
         else {
             long value = 0;  //default red icon
-            action.addBookmark(new Record(ninjaWebView.getTitle(), ninjaWebView.getUrl(), 0, 0, value));
+            action.addBookmark(new Record(ninjaWebView.getTitle(), ninjaWebView.getUrl(), 0, value));
             updateOmniBox();
             NinjaToast.show(this, R.string.app_done); }
         action.close();
@@ -2558,9 +2448,6 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
             case "14":
                 saveBookmark();
                 break;
-            case "15":
-                save_atHome(ninjaWebView.getTitle(), ninjaWebView.getUrl());
-                break;
             case "16":
                 ninjaWebView.reload();
                 break;
@@ -2606,11 +2493,6 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
                 showOverview();
                 break;
             case "31":
-                overViewTab = getString(R.string.album_title_home);
-                setSelectedTab();
-                showOverview();
-                break;
-            case "32":
                 overViewTab = getString(R.string.album_title_history);
                 setSelectedTab();
                 showOverview();
@@ -2682,22 +2564,19 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
     @SuppressLint("ClickableViewAccessibility")
     private void setWebView(String title, final String url, final boolean foreground) {
         ninjaWebView = new NinjaWebView(context);
-        RelativeLayout appBar = findViewById(R.id.appBar);
-
+        CardView appBar = findViewById(R.id.appBar);
         ninjaWebView.setOnScrollChangeListener((v, scrollX, scrollY, oldScrollX, oldScrollY) -> {
             final Handler handler = new Handler();
             handler.postDelayed(() -> {
                 if (scrollY > ninjaWebView.getScrollY()){
-                    //appBar.setVisibility(VISIBLE);
                     ObjectAnimator animation = ObjectAnimator.ofFloat(appBar, "translationY", 0f);
                     animation.setDuration(250);
                     animation.start();
                 } else if (scrollY < ninjaWebView.getScrollY()) {
-                    //appBar.setVisibility(GONE);
                     ObjectAnimator animation = ObjectAnimator.ofFloat(appBar, "translationY", 275f);
                     animation.setDuration(250);
                     animation.start();
-                };
+                }
                 Log.d("Handler", "Running Handler");
             }, 50);
         });

@@ -207,13 +207,6 @@ public class BrowserUnit {
         }
     }
 
-    public static void clearHome(Context context) {
-        RecordAction action = new RecordAction(context);
-        action.open(true);
-        action.clearTable(RecordUnit.TABLE_START);
-        action.close();
-    }
-
     public static void clearBookmark(Context context) {
         RecordAction action = new RecordAction(context);
         action.open(true);

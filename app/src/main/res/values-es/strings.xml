@@ -11,9 +11,7 @@
     <string name="list_empty">Lista vacía</string>
     <string name="album_title_bookmarks">Marcadores</string>
     <string name="album_title_history">Historial</string>
-    <string name="album_title_home">Inicio</string>
     <string name="album_title_tab">Pestañas abiertas</string>
-    <string name="search_hint">Búsqueda</string>
     <string name="create_new">Nuevo</string>
     <string name="color_red">Rojo</string>
     <string name="color_pink">Rosa</string>
@@ -40,13 +38,11 @@
     <string name="menu_sort">Ordenar por …</string>
     <string name="menu_filter">Filtrar por …</string>
     <string name="menu_share_link">Compartir enlace</string>
-    <string name="menu_save_home">Guardar en Inicio</string>
     <string name="menu_save_bookmark">Guardar como marcador</string>
     <string name="menu_save_as">Guardar como …</string>
     <string name="menu_save_pdf">Guardar como PDF</string>
     <string name="menu_shareClipboard">Copiar al portapapeles</string>
     <string name="menu_other_searchSite">Buscar en sitio web</string>
-    <string name="link_you_copied">Enlace copiado</string>
     <string name="dialog_title_hint">Título de entrada:</string>
     <string name="dialog_URL_hint">URL:</string>
     <string name="dialog_extension_hint">Extensión (por ejemplo: \".jpg\"):</string>
@@ -98,7 +94,6 @@
     <string name="setting_title_fav">Favorito</string>
     <string name="setting_title_searchEngine">Motor de búsqueda personalizado</string>
     <string name="setting_title_userAgent">Agente de usuario personalizado</string>
-    <string name="setting_title_clipboard_record">Registro del portapapeles</string>
     <string name="setting_title_fingerPrint">Protección de huella dactilar</string>
     <string name="setting_theme">Tema</string>
     <string name="setting_theme_system">Sistema</string>
@@ -107,7 +102,6 @@
     <string name="setting_overView_onStart_title">Mostrar al inicio</string>
     <string name="setting_gestures">Gestos</string>
     <string name="setting_title_longPress">Dejar pulsado</string>
-    <string name="setting_title_overViewButton">Vista general</string>
     <string name="setting_gesture_up">Deslizar hacia arriba</string>
     <string name="setting_gesture_down">Deslizar hacia abajo</string>
     <string name="setting_gesture_left">Deslizar a la izquierda</string>
@@ -139,11 +133,8 @@
     <string name="menu_desktopView">Vista escritorio</string>
     <string name="menu_dayView">Vista día</string>
     <string name="menu_nightView">Vista nocturna</string>
-    <string name="setting_userScript">Código JavaScript personalizado</string>
     <string name="setting_title_camera">Permitir uso de cámara</string>
     <string name="setting_title_microphone">Permitir el uso del micrófono</string>
-    <string name="setting_title_tabsReload">Recarga de pestañas</string>
-    <string name="setting_title_tabsRestore">Restaurar pestañas</string>
     <string name="setting_summary_tabsReload">Recarga de las últimas pestañas abiertas, al iniciar el navegador FOSS.</string>
     <string name="setting_summary_tabsRestore">Restaurar pestañas, cuando el navegador FOSS es eliminado por el sistema.</string>
     <string name="hint_DRM_Media">¿Desea permitir reproducción multimedia protegida por DRM?</string>

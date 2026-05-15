@@ -1,3 +1,11 @@
+### v 23 Harriet Tubman (WIP)
+
+- fix: Unable to access full tab list #1282
+- fix: Hide URL-Bar/Status Bar when Scrolling #1278
+- fix: Highlight entire URL #1269
+- fix: lost settings when changing profile
+
+
 ### v 22 Die Edelweißpiraten
 
 - fix: opening UI-settings crashing

@@ -20,9 +20,7 @@
     <string name="album_title_bookmarks">Bookmarks</string>
     <string name="album_title_bookmarks_html">Bookmarks (HTML)</string>
     <string name="album_title_history">History</string>
-    <string name="album_title_home">Home</string>
     <string name="album_title_tab">Opened Tabs</string>
-    <string name="search_hint">Search</string>
     <string name="create_new">New</string>
     <string name="custom_searches_title">Fast search on …</string>
     <string name="color_red">Red</string>
@@ -51,13 +49,11 @@
     <string name="menu_filter">Filter by …</string>
     <string name="menu_share_link">Share link</string>
     <string name="menu_shareOpenWith">Open with …</string>
-    <string name="menu_save_home">Save at Home</string>
     <string name="menu_save_bookmark">Save as bookmark</string>
     <string name="menu_save_as">Save as …</string>
     <string name="menu_save_pdf">Save as PDF</string>
     <string name="menu_shareClipboard">Copy to clipboard</string>
     <string name="menu_other_searchSite">Search on site</string>
-    <string name="link_you_copied">Link you copied</string>
     <string name="dialog_title_hint">Title:</string>
     <string name="dialog_URL_hint">URL:</string>
     <string name="dialog_extension_hint">Extension (for example: \".jpg\"):</string>
@@ -122,7 +118,6 @@
     <string name="setting_title_fav">Favorite</string>
     <string name="setting_title_searchEngine">Custom search engine</string>
     <string name="setting_title_userAgent">Custom user agent</string>
-    <string name="setting_title_clipboard_record">Clipboard record</string>
     <string name="setting_title_fingerPrint">Fingerprint protection</string>
     <string name="setting_theme">Theme</string>
     <string name="setting_theme_system">System</string>
@@ -133,7 +128,6 @@
     <string name="setting_backup_sumDatabase">Startsite, Bookmarks, history</string>
     <string name="setting_backup_sumSettings">App- and website settings</string>
     <string name="setting_title_longPress">Long press</string>
-    <string name="setting_title_overViewButton">Overview</string>
     <string name="setting_gesture_up">Swipe up</string>
     <string name="setting_gesture_down">Swipe down</string>
     <string name="setting_gesture_left">Swipe left</string>
@@ -166,11 +160,8 @@
     <string name="menu_desktopView">Desktop view</string>
     <string name="menu_dayView">Day view</string>
     <string name="menu_nightView">Night view</string>
-    <string name="setting_userScript">Custom JavaScript code</string>
     <string name="setting_title_camera">Allow camera usage</string>
     <string name="setting_title_microphone">Allow microphone usage</string>
-    <string name="setting_title_tabsReload">Reload tabs</string>
-    <string name="setting_title_tabsRestore">Restore tabs</string>
     <string name="setting_summary_tabsReload">Reload last opened tabs, when starting FOSS Browser.</string>
     <string name="setting_summary_tabsRestore">Restore tabs, when FOSS Browser gets killed by the system.</string>
     <string name="hint_DRM_Media">Allow DRM protected media playback?</string>

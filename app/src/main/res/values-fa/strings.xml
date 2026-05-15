@@ -11,9 +11,7 @@
     <string name="list_empty">لیست خالی می باشد</string>
     <string name="album_title_bookmarks">نشانک ها</string>
     <string name="album_title_history">تاریخچه</string>
-    <string name="album_title_home">صفحه خانگی</string>
     <string name="album_title_tab">زبانه های باز</string>
-    <string name="search_hint">جستجو</string>
     <string name="create_new">جدید</string>
     <string name="color_red">قرمز</string>
     <string name="color_pink">صورتی</string>
@@ -40,13 +38,11 @@
     <string name="menu_sort">مرتب سازی بر اساس …</string>
     <string name="menu_filter">فیلتر بر اساس …</string>
     <string name="menu_share_link">اشتراک لینک</string>
-    <string name="menu_save_home">افزودن به صفحه خانگی</string>
     <string name="menu_save_bookmark">ذخیره در نشانک ها</string>
     <string name="menu_save_as">ذخیره به عتوان …</string>
     <string name="menu_save_pdf">ذخیره به عنوان PDF</string>
     <string name="menu_shareClipboard">کپی در حافظه</string>
     <string name="menu_other_searchSite">جستجو در صفحه </string>
-    <string name="link_you_copied">پیوند کپی شد</string>
     <string name="dialog_title_hint">عنوان:</string>
     <string name="dialog_URL_hint">URL:</string>
     <string name="dialog_extension_hint">پسوند: (مانند: jpg.):</string>
@@ -99,7 +95,6 @@
     <string name="setting_title_fav">مورد علاقه</string>
     <string name="setting_title_searchEngine">موتور جستجوی سفارشی</string>
     <string name="setting_title_userAgent">سفارشی سازی نماینده کاربری </string>
-    <string name="setting_title_clipboard_record">ثبت بریده‌دان</string>
     <string name="setting_title_fingerPrint">محافظت به وسیله اثرانگشت</string>
     <string name="setting_theme">پوسته</string>
     <string name="setting_theme_system">سامانه</string>
@@ -108,7 +103,6 @@
     <string name="setting_overView_onStart_title">نمایش در آغاز</string>
     <string name="setting_gestures">اشارات انگشت</string>
     <string name="setting_title_longPress">نگه داشتن</string>
-    <string name="setting_title_overViewButton">نگاه اجمالی</string>
     <string name="setting_gesture_up">کشیدن به بالا</string>
     <string name="setting_gesture_down">کشیدن به پایین</string>
     <string name="setting_gesture_left">کشیدن به چپ</string>
@@ -140,11 +134,8 @@
     <string name="menu_desktopView">DesktopPC نماي</string>
     <string name="menu_dayView">روز</string>
     <string name="menu_nightView">دید شب</string>
-    <string name="setting_userScript">فایل‌های جاوا اسکریپت سفارشی</string>
     <string name="setting_title_camera">اجازه استفاده دوربین</string>
     <string name="setting_title_microphone">اجازه استفاده میکروفون</string>
-    <string name="setting_title_tabsReload">بازخوانی برگه ها</string>
-    <string name="setting_title_tabsRestore">بازگردانی برگه ها</string>
     <string name="setting_summary_tabsReload">بازخوانی آخرین برگه های باز شده هنگام آغاز برنامه.</string>
     <string name="setting_summary_tabsRestore">بازگردانی برگه ها، هنگام بسته شدن برنامه توسط دستگاه.</string>
     <string name="hint_DRM_Media">اجازه پخش رسانه محافظت شده DRM؟ </string>

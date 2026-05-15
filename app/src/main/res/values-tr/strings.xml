@@ -11,9 +11,7 @@
     <string name="list_empty">Liste boş</string>
     <string name="album_title_bookmarks">Yer işaretleri</string>
     <string name="album_title_history">Geçmiş</string>
-    <string name="album_title_home">Ana sayfa</string>
     <string name="album_title_tab">Açık sekmeler</string>
-    <string name="search_hint">Ara</string>
     <string name="create_new">Yeni</string>
     <string name="color_red">Kırmızı</string>
     <string name="color_pink">Pembe</string>
@@ -40,13 +38,11 @@
     <string name="menu_sort">Sırala …</string>
     <string name="menu_filter">Filtrele …</string>
     <string name="menu_share_link">Bağlantıyı paylaş</string>
-    <string name="menu_save_home">Ana sayfaya kaydet</string>
     <string name="menu_save_bookmark">Yer işareti ekle</string>
     <string name="menu_save_as">Farklı kaydet …</string>
     <string name="menu_save_pdf">PDF olarak kaydet</string>
     <string name="menu_shareClipboard">Panoya kopyala</string>
     <string name="menu_other_searchSite">Sayfada bul</string>
-    <string name="link_you_copied">Kopyaladığınız bağlantı</string>
     <string name="dialog_title_hint">Başlık:</string>
     <string name="dialog_URL_hint">URL:</string>
     <string name="dialog_extension_hint">Uzantı (örneğin: \".jpg\"):</string>
@@ -99,7 +95,6 @@
     <string name="setting_title_fav">Başlangıç sayfası</string>
     <string name="setting_title_searchEngine">Özel arama motoru</string>
     <string name="setting_title_userAgent">Özel kullanıcı aracısı</string>
-    <string name="setting_title_clipboard_record">Pano Kayıtları</string>
     <string name="setting_title_fingerPrint">Parmak izi koruması</string>
     <string name="setting_theme">Tema</string>
     <string name="setting_theme_system">Kendiliğinden (aygıt teması)</string>
@@ -108,7 +103,6 @@
     <string name="setting_overView_onStart_title">Başlangıçta göster</string>
     <string name="setting_gestures">Hareketler</string>
     <string name="setting_title_longPress">Uzun dokunma</string>
-    <string name="setting_title_overViewButton">Genel bakış</string>
     <string name="setting_gesture_up">Yukarı kaydır</string>
     <string name="setting_gesture_down">Aşağı kaydır</string>
     <string name="setting_gesture_left">Sola kaydır</string>
@@ -140,11 +134,8 @@
     <string name="menu_desktopView">Masaüstü görünümü</string>
     <string name="menu_dayView">Gündüz görünümü</string>
     <string name="menu_nightView">Gece görünümü</string>
-    <string name="setting_userScript">Özel JavaScript kodu</string>
     <string name="setting_title_camera">Kamera</string>
     <string name="setting_title_microphone">Mikrofon</string>
-    <string name="setting_title_tabsReload">Sekmeleri yenile</string>
-    <string name="setting_title_tabsRestore">Sekmeleri geri yükle</string>
     <string name="setting_summary_tabsReload">FOSS Tarayıcısı açılırken son açılan sekmeleri yeniler.</string>
     <string name="setting_summary_tabsRestore">FOSS Tarayıcısı sistem tarafından durdurulduğunda sekmeleri geri yükler.</string>
     <string name="hint_DRM_Media">DRM korumalı medya oynatmaya izin verilsin mi?</string>

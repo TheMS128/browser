@@ -11,9 +11,7 @@
     <string name="list_empty">Пустой лист</string>
     <string name="album_title_bookmarks">Закладки</string>
     <string name="album_title_history">История</string>
-    <string name="album_title_home">Главная</string>
     <string name="album_title_tab">Открытые вкладки</string>
-    <string name="search_hint">Поиск</string>
     <string name="create_new">Новый</string>
     <string name="color_red">Красный</string>
     <string name="color_pink">Розовый</string>
@@ -40,13 +38,11 @@
     <string name="menu_sort">Сортировка по…</string>
     <string name="menu_filter">Фильтр по …</string>
     <string name="menu_share_link">Поделиться ссылкой</string>
-    <string name="menu_save_home">Сохранить на главной</string>
     <string name="menu_save_bookmark">Сохранить как закладку</string>
     <string name="menu_save_as">Сохранить как …</string>
     <string name="menu_save_pdf">Сохранить в PDF</string>
     <string name="menu_shareClipboard">Копировать в буфер</string>
     <string name="menu_other_searchSite">Поиск по сайту</string>
-    <string name="link_you_copied">Ссылка скопирована</string>
     <string name="dialog_title_hint">Заголовок:</string>
     <string name="dialog_URL_hint">URL:</string>
     <string name="dialog_extension_hint">Расширение (например: \".jpg\"):</string>
@@ -99,7 +95,6 @@
     <string name="setting_title_fav">Домашняя страница</string>
     <string name="setting_title_searchEngine">Пользовательская поисковая система</string>
     <string name="setting_title_userAgent">Произвольный юзер-агент</string>
-    <string name="setting_title_clipboard_record">Записи буфера обмена</string>
     <string name="setting_title_fingerPrint">Защита отпечатков пальцев</string>
     <string name="setting_theme">Тема</string>
     <string name="setting_theme_system">Система</string>
@@ -108,7 +103,6 @@
     <string name="setting_overView_onStart_title">Показывать при запуске</string>
     <string name="setting_gestures">Жесты</string>
     <string name="setting_title_longPress">Удержание нажатия</string>
-    <string name="setting_title_overViewButton">Обзор</string>
     <string name="setting_gesture_up">Свайп вверх</string>
     <string name="setting_gesture_down">Свайп вниз</string>
     <string name="setting_gesture_left">Свайп влево</string>
@@ -140,11 +134,8 @@
     <string name="menu_desktopView">Десктопный вид</string>
     <string name="menu_dayView">Дневной режим</string>
     <string name="menu_nightView">Тёмный режим</string>
-    <string name="setting_userScript">Пользовательский JavaScript</string>
     <string name="setting_title_camera">Разрешить использование камеры</string>
     <string name="setting_title_microphone">Разрешить использование микрофона</string>
-    <string name="setting_title_tabsReload">Перезагрузка вкладок</string>
-    <string name="setting_title_tabsRestore">Восстановить вкладки</string>
     <string name="setting_summary_tabsReload">Перезагрузка последних открытых вкладок при запуске FOSS Browser.</string>
     <string name="setting_summary_tabsRestore">Восстановить вкладки при завершении FOSS Browser системой.</string>
     <string name="hint_DRM_Media">Разрешить воспроизведение медиафайлов, защищенных DRM?</string>

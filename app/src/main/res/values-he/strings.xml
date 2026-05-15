@@ -11,9 +11,7 @@
     <string name="list_empty">הרשימה ריקה</string>
     <string name="album_title_bookmarks">סימניות</string>
     <string name="album_title_history">היסטוריה</string>
-    <string name="album_title_home">בית</string>
     <string name="album_title_tab">כרטיסיות נפתחות</string>
-    <string name="search_hint">לחפש</string>
     <string name="create_new">חדש</string>
     <string name="color_red">אדום</string>
     <string name="color_pink">ורוד</string>
@@ -40,7 +38,6 @@
     <string name="menu_sort">מיין לפי …</string>
     <string name="menu_filter">סנן לפי…</string>
     <string name="menu_share_link">שתף קישור</string>
-    <string name="menu_save_home">שמור בבית</string>
     <string name="menu_save_bookmark">שמור כסימנייה</string>
     <string name="menu_save_as">שמור כ …</string>
     <string name="menu_save_pdf">שמור כ-PDF</string>
@@ -106,7 +103,6 @@
     <string name="setting_overView_onStart_title">הצג בהתחלה</string>
     <string name="setting_gestures">מחוות</string>
     <string name="setting_title_longPress">לחיצה ארוכה</string>
-    <string name="setting_title_overViewButton">סקירה כללית</string>
     <string name="setting_gesture_up">החלק למעלה</string>
     <string name="setting_gesture_down">החלק למטה</string>
     <string name="setting_gesture_left">החלק שמאלה</string>
@@ -138,17 +134,12 @@
     <string name="menu_desktopView">תצוגת שולחן עבודה</string>
     <string name="menu_dayView">תצוגת יום</string>
     <string name="menu_nightView">תצוגת לילה</string>
-    <string name="setting_userScript">קוד JavaScript מותאם אישית</string>
     <string name="setting_title_camera">אפשר שימוש במצלמה</string>
     <string name="setting_title_microphone">אפשר שימוש במיקרופון</string>
-    <string name="setting_title_tabsReload">טען מחדש כרטיסיות</string>
-    <string name="setting_title_tabsRestore">שחזר כרטיסיות</string>
     <string name="setting_summary_tabsReload">טען מחדש את הכרטיסיות שנפתחו לאחרונה, בעת הפעלת דפדפן FOSS.</string>
     <string name="setting_summary_tabsRestore">שחזר כרטיסיות, כאשר דפדפן FOSS נהרג על ידי המערכת.</string>
     <string name="hint_DRM_Media">האם לאפשר השמעת מדיה מוגנת ב-DRM?</string>
     <string name="menu_reload">טעינה חמחדש</string>
     <string name="menu_restart">הפעל מחדש וטען מחדש כרטיסיות</string>
     <string name="setting_title_screenOn">השאר מסך דלוק</string>
-    <string name="setting_title_clipboard_record">שיא הלוח</string>
-    <string name="link_you_copied">קישור שהעתקת</string>
 </resources>

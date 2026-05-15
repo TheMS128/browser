@@ -11,9 +11,7 @@
     <string name="list_empty">Elenco vuoto</string>
     <string name="album_title_bookmarks">Segnalibri</string>
     <string name="album_title_history">Cronologia</string>
-    <string name="album_title_home">Pagina principale</string>
     <string name="album_title_tab">Schede aperte</string>
-    <string name="search_hint">Cerca</string>
     <string name="create_new">Nuovo</string>
     <string name="color_red">Rosso</string>
     <string name="color_pink">Rosa</string>
@@ -40,13 +38,11 @@
     <string name="menu_sort">Ordina per …</string>
     <string name="menu_filter">Filtra per …</string>
     <string name="menu_share_link">Condividi link</string>
-    <string name="menu_save_home">Salva in Home</string>
     <string name="menu_save_bookmark">Salva come segnalibro</string>
     <string name="menu_save_as">Salva come …</string>
     <string name="menu_save_pdf">Salva come PDF</string>
     <string name="menu_shareClipboard">Copia negli Appunti</string>
     <string name="menu_other_searchSite">Cerca nel sito</string>
-    <string name="link_you_copied">Link copiato</string>
     <string name="dialog_title_hint">Titolo:</string>
     <string name="dialog_URL_hint">URL:</string>
     <string name="dialog_extension_hint">Estensione (per esempio: \".jpg\"):</string>
@@ -99,7 +95,6 @@
     <string name="setting_title_fav">Preferito</string>
     <string name="setting_title_searchEngine">Motore di ricerca personalizzato</string>
     <string name="setting_title_userAgent">Agente utente personalizzato</string>
-    <string name="setting_title_clipboard_record">Registrazioni nel blocco note</string>
     <string name="setting_title_fingerPrint">Protezione dalle impronte digitali</string>
     <string name="setting_theme">Tema</string>
     <string name="setting_theme_system">Sistema</string>
@@ -108,7 +103,6 @@
     <string name="setting_overView_onStart_title">Mostra all\'avvio</string>
     <string name="setting_gestures">Gesti</string>
     <string name="setting_title_longPress">Premere a lungo</string>
-    <string name="setting_title_overViewButton">Panoramica</string>
     <string name="setting_gesture_up">Scorri verso l\'alto</string>
     <string name="setting_gesture_down">Scorri verso il basso</string>
     <string name="setting_gesture_left">Scorri a sinistra</string>
@@ -140,11 +134,8 @@
     <string name="menu_desktopView">Vista desktop</string>
     <string name="menu_dayView">Vista giorno</string>
     <string name="menu_nightView">Vista notturna</string>
-    <string name="setting_userScript">Codice JavaScript personalizzato</string>
     <string name="setting_title_camera">Consenti l\'utilizzo della fotocamera</string>
     <string name="setting_title_microphone">Consenti l\'accesso al microfono</string>
-    <string name="setting_title_tabsReload">Ricaricare le schede</string>
-    <string name="setting_title_tabsRestore">Ripristinare le schede</string>
     <string name="setting_summary_tabsReload">Ricarica le ultime schede aperte all\'avvio di FOSS Browser.</string>
     <string name="setting_summary_tabsRestore">Ripristinare le schede, quando FOSS Browser viene ucciso dal sistema.</string>
     <string name="hint_DRM_Media">Consentire la riproduzione di supporti protetti da DRM?</string>

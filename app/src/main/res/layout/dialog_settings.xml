@@ -608,7 +608,7 @@
                 android:layout_marginBottom="5dp"/>
 
             <TextView
-                android:id="@+id/titeViewSettings"
+                android:id="@+id/titleViewSettings"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="5dp"
@@ -639,7 +639,6 @@
                 tools:ignore="TooManyViews" />
 
             <RelativeLayout
-                android:id="@+id/checkbox_redirectLayout"
                 android:layout_width="match_parent"
                 android:layout_height="?android:attr/listPreferredItemHeightSmall">
 
@@ -662,7 +661,8 @@
                     app:icon="@drawable/icon_redirect"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
-                    android:layout_alignParentEnd="true"/>
+                    android:layout_alignParentEnd="true"
+                    tools:ignore="TooManyViews" />
 
             </RelativeLayout>
 

@@ -11,9 +11,7 @@
     <string name="list_empty">Danh sách trống</string>
     <string name="album_title_bookmarks">Dấu trang</string>
     <string name="album_title_history">Lịch sử</string>
-    <string name="album_title_home">Trang chủ</string>
     <string name="album_title_tab">Tab đã mở</string>
-    <string name="search_hint">Tìm kiếm</string>
     <string name="create_new">Mới</string>
     <string name="color_red">Đỏ</string>
     <string name="color_pink">Hồng</string>
@@ -40,13 +38,11 @@
     <string name="menu_sort">Sắp xếp theo …</string>
     <string name="menu_filter">Lọc theo …</string>
     <string name="menu_share_link">Chia sẻ liên kết</string>
-    <string name="menu_save_home">Lưu tại Trang chủ</string>
     <string name="menu_save_bookmark">Lưu dưới dạng dấu trang</string>
     <string name="menu_save_as">Lưu dưới dạng …</string>
     <string name="menu_save_pdf">Lưu dưới dạng PDF</string>
     <string name="menu_shareClipboard">Sao chép vào bộ nhớ tạm</string>
     <string name="menu_other_searchSite">Tìm kiếm trên trang</string>
-    <string name="link_you_copied">Đã sao chép liên kết</string>
     <string name="dialog_title_hint">Tiêu đề:</string>
     <string name="dialog_URL_hint">URL:</string>
     <string name="dialog_extension_hint">Phần mở rộng (ví dụ: \".jpg\"):</string>
@@ -106,7 +102,6 @@
     <string name="setting_overView_onStart_title">Hiện khi khởi động</string>
     <string name="setting_gestures">Cử chỉ</string>
     <string name="setting_title_longPress">Nhấn giữ</string>
-    <string name="setting_title_overViewButton">Tổng quan</string>
     <string name="setting_gesture_up">Vuốt lên</string>
     <string name="setting_gesture_down">Vuốt xuống</string>
     <string name="setting_gesture_left">Vuốt sang trái</string>
@@ -138,17 +133,13 @@
     <string name="menu_desktopView">Xem kiểu Máy tính</string>
     <string name="menu_dayView">Dạng hiển thị theo Ngày</string>
     <string name="menu_nightView">viễn cảnh buổi đêm</string>
-    <string name="setting_userScript">Mã JavaScript tuỳ chỉnh</string>
     <string name="setting_title_camera">Cho phép sử dụng máy ảnh</string>
     <string name="setting_title_microphone">Cho phép sử dụng micro</string>
-    <string name="setting_title_tabsReload">Tải lại các tab</string>
-    <string name="setting_title_tabsRestore">Khôi phục các tab</string>
     <string name="setting_summary_tabsReload">Tải lại các tab đã mở lần cuối, khi khởi động Trình duyệt FOSS.</string>
     <string name="setting_summary_tabsRestore">Khôi phục các tab, khi Trình duyệt FOSS bị hệ thống dừng.</string>
     <string name="hint_DRM_Media">Cho phép phát phương tiện có DRM bảo vệ?</string>
     <string name="menu_reload">Tải lại</string>
     <string name="menu_restart">Khởi động lại và tải lại các tab</string>
     <string name="setting_title_screenOn">Giữ màn hình bật</string>
-    <string name="setting_title_clipboard_record">Bản ghi bảng nhớ tạm</string>
     <string name="target">mục tiêu</string>
 </resources>

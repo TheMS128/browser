@@ -1,14 +1,18 @@
 package de.baumann.browser.fragment;
 
+import static android.content.ContentValues.TAG;
+
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
 
 import androidx.preference.EditTextPreference;
 import androidx.preference.ListPreference;
 import androidx.preference.Preference;
 import androidx.preference.PreferenceGroup;
+import androidx.preference.PreferenceManager;
 
 import java.util.Objects;
 
@@ -16,11 +20,12 @@ import de.baumann.browser.R;
 import de.baumann.browser.activity.Settings_Backup;
 import de.baumann.browser.activity.Settings_Delete;
 import de.baumann.browser.activity.Settings_Filter;
-import de.baumann.browser.activity.Settings_General;
 import de.baumann.browser.activity.Settings_Gesture;
-import de.baumann.browser.activity.Settings_Privacy;
-import de.baumann.browser.activity.Settings_UI;
+import de.baumann.browser.activity.Settings_Profile;
+import de.baumann.browser.activity.Settings_ProfileList;
+import de.baumann.browser.browser.AdBlock;
 import de.baumann.browser.preferences.BasePreferenceFragment;
+import de.baumann.browser.view.NinjaToast;
 
 public class Fragment_settings extends BasePreferenceFragment implements SharedPreferences.OnSharedPreferenceChangeListener {
 
@@ -31,6 +36,28 @@ public class Fragment_settings extends BasePreferenceFragment implements SharedP
         Context context = getContext();
         assert context != null;
         initSummary(getPreferenceScreen());
+
+        SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(context);
+
+        Preference sp_ad_block = findPreference("sp_ad_block");
+        assert sp_ad_block != null;
+        sp_ad_block.setSummary(getString(R.string.setting_summary_adblock) + "\n\n" + AdBlock.getHostsDate(getContext()));
+
+        Preference settings_profile = findPreference("settings_profile");
+        assert settings_profile != null;
+        settings_profile.setOnPreferenceClickListener(preference -> {
+            Intent intent = new Intent(getActivity(), Settings_Profile.class);
+            requireActivity().startActivity(intent);
+            return false;
+        });
+        Preference edit_standard = findPreference("edit_standard");
+        assert edit_standard != null;
+        edit_standard.setOnPreferenceClickListener(preference -> {
+            sp.edit().putString("listToLoad", "standard").apply();
+            Intent intent = new Intent(getActivity(), Settings_ProfileList.class);
+            requireActivity().startActivity(intent);
+            return false;
+        });
 
         Preference settings_filter = findPreference("settings_filter");
         assert settings_filter != null;
@@ -48,34 +75,10 @@ public class Fragment_settings extends BasePreferenceFragment implements SharedP
             return false;
         });
 
-        Preference settings_ui = findPreference("settings_ui");
-        assert settings_ui != null;
-        settings_ui.setOnPreferenceClickListener(preference -> {
-            Intent intent = new Intent(getActivity(), Settings_UI.class);
-            requireActivity().startActivity(intent);
-            return false;
-        });
-
         Preference settings_gesture = findPreference("settings_gesture");
         assert settings_gesture != null;
         settings_gesture.setOnPreferenceClickListener(preference -> {
             Intent intent = new Intent(getActivity(), Settings_Gesture.class);
-            requireActivity().startActivity(intent);
-            return false;
-        });
-
-        Preference settings_start = findPreference("settings_start");
-        assert settings_start != null;
-        settings_start.setOnPreferenceClickListener(preference -> {
-            Intent intent = new Intent(getActivity(), Settings_Privacy.class);
-            requireActivity().startActivity(intent);
-            return false;
-        });
-
-        Preference settings_general = findPreference("settings_general");
-        assert settings_general != null;
-        settings_general.setOnPreferenceClickListener(preference -> {
-            Intent intent = new Intent(getActivity(), Settings_General.class);
             requireActivity().startActivity(intent);
             return false;
         });
@@ -96,33 +99,59 @@ public class Fragment_settings extends BasePreferenceFragment implements SharedP
                 initSummary(pGrp.getPreference(i));
             }
         } else {
-            updatePrefSummary(p);
+            try {updatePrefSummary(p);}
+            catch (Exception e) {Log.i(TAG, "Settings:" + e);}
         }
     }
 
     private void updatePrefSummary(Preference p) {
+
         if (p instanceof ListPreference) {
             ListPreference listPref = (ListPreference) p;
-            p.setSummary(listPref.getEntry());
+            if (p.getSummaryProvider() == null) p.setSummary(listPref.getEntry());
         }
         if (p instanceof EditTextPreference) {
             EditTextPreference editTextPref = (EditTextPreference) p;
-            if (Objects.requireNonNull(p.getTitle()).toString().toLowerCase().contains("password")) {
-                p.setSummary("******");
-            } else {
-                if (p.getSummaryProvider() == null) p.setSummary(editTextPref.getText());
+            p.setSummary(editTextPref.getText());
+        }
+
+        Context context = getContext();
+        assert context != null;
+        SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(context);
+        boolean customSE = sp.getBoolean("searchEngineSwitch", false);
+
+        boolean useDynamicColor = sp.getBoolean("useDynamicColor", false);
+        ListPreference theme;
+        theme = findPreference("sp_theme");
+        assert theme != null;
+        theme.setEnabled(useDynamicColor);
+
+        ListPreference searchEngines;
+        searchEngines= findPreference("sp_search_engine");
+        assert searchEngines != null;
+        String customSearchEngine = sp.getString("sp_search_engine_custom", "");
+        String text = getString(R.string.setting_title_searchEngine) + ": " + getString(R.string.toast_input_empty);
+        if(customSE) {
+            searchEngines.setEnabled(false);
+            if (customSearchEngine.isEmpty()) {
+                NinjaToast.show(context, text);
             }
+        } else {
+            searchEngines.setEnabled(true);
         }
     }
 
     @Override
     public void onSharedPreferenceChanged(final SharedPreferences sp, String key) {
+
         assert key != null;
-        if (key.equals("sp_userAgent") ||
-                key.equals("sp_search_engine_custom") ||
-                key.equals("searchEngineSwitch") ||
-                key.equals("userAgentSwitch") ||
-                key.equals("sp_search_engine")) {
+        updatePrefSummary(findPreference(key));
+
+        if (key.equals("sp_ad_block") || key.equals("ab_hosts")) {
+            AdBlock.downloadHosts(getActivity());
+        }
+
+        if ( key.equals("sp_theme") || key.equals("useDynamicColor")) {
             sp.edit().putInt("restart_changed", 1).apply();
             updatePrefSummary(findPreference(key));
         }

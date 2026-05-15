@@ -19,9 +19,7 @@
     <string name="album_title_bookmarks">Järjehoidjad</string>
     <string name="album_title_bookmarks_html">Järjehoidjad (HTML)</string>
     <string name="album_title_history">Ajalugu</string>
-    <string name="album_title_home">Avaleht</string>
     <string name="album_title_tab">Avatud vahekaardid</string>
-    <string name="search_hint">Otsi</string>
     <string name="create_new">Uus</string>
     <string name="custom_searches_title">Kiirotsing…</string>
     <string name="color_red">Punane</string>
@@ -53,7 +51,6 @@
     <string name="menu_save_pdf">Salvesta pdf-failina</string>
     <string name="menu_shareClipboard">Kopeeri lõikelauale</string>
     <string name="menu_other_searchSite">Otsi veebisaidist</string>
-    <string name="link_you_copied">Sinu kopeeritud link</string>
     <string name="dialog_title_hint">Pealkiri:</string>
     <string name="dialog_extension_hint">Faililaiend (näiteks: „.jpg“):</string>
     <string name="dialog_sign_in_username">Kasutajanimi</string>
@@ -86,7 +83,6 @@
     <string name="privacy_redirect_use">Kasuta ümbersuunamisi</string>
     <string name="color_lime">Laimiroheline</string>
     <string name="main_omnibox_input_hint">Otsi midagi või sisesta võrguaadress</string>
-    <string name="menu_save_home">Salvesta avalehele</string>
     <string name="dialog_content_ssl_error">Selle veebisaidi sertifikaat pole usaldusväärne. Kas jätkame ikkagi?</string>
     <string name="dialog_tracking">Ilmselt on tegemist jälitava võrguaadressiga. Eemaldan jälitava osa:</string>
     <string name="privacy_redirect_title">Ümbersuunamised</string>
@@ -95,7 +91,6 @@
     <string name="setting_backup_sumDatabase">Avasait, järjehoidjad, jalugu</string>
     <string name="setting_backup_sumSettings">Rakenduse ja veebisaidi seadistused</string>
     <string name="setting_title_longPress">Pikk vajutus</string>
-    <string name="setting_title_overViewButton">Ülevaade</string>
     <string name="setting_gesture_up">Viipamine üles</string>
     <string name="app_intro_d">Lisaks saad alati avada seadistused ning kohendada FOSS Brauseri toimima vastavalt sinu eelistustele.</string>
     <string name="menu_restart">Käivita rakendus ja laadi vahekaardid uuesti</string>
@@ -127,7 +122,6 @@
     <string name="setting_title_fav">Lemmik</string>
     <string name="setting_title_searchEngine">Sinu valitud otsingumootor</string>
     <string name="setting_title_userAgent">Sinu loodud brauseritunnus</string>
-    <string name="setting_title_clipboard_record">Lõikelaua salvestamine</string>
     <string name="setting_theme">Kujundus</string>
     <string name="setting_theme_system">Süsteemi kujundus</string>
     <string name="setting_title_confirm_exit">Küsi kinnitust brauseri sulgemisel</string>
@@ -159,8 +153,6 @@
     <string name="menu_desktopView">Töölauavaade</string>
     <string name="menu_dayView">Päevavaade</string>
     <string name="menu_nightView">Öövaade</string>
-    <string name="setting_title_tabsReload">Laadi vahekaardid uuesti</string>
-    <string name="setting_title_tabsRestore">Taasta vahekaardid</string>
     <string name="setting_summary_tabsReload">FOSS Brauseri käivitamisel taasta viimatikasutatud vahekaardid.</string>
     <string name="hint_DRM_Media">Kas lubad DRM-iga kaitstud meedia esitamist?</string>
     <string name="app_intro_c">Alustamaks kirjuta midagi otsinguribale. See võib olla üksik sõna (siis käivitub otsing) või veebiaadress (siis avaneb see aadress).</string>
@@ -176,7 +168,6 @@
     <string name="setting_title_microphone">Luba kasutada mikrofoni</string>
     <string name="setting_gesture_07">Näita parempoolset vahekaarti</string>
     <string name="toast_delete_successful">Kustutatud</string>
-    <string name="setting_userScript">Sinu kohendatud JavaScripti kood</string>
     <string name="setting_summary_tabsRestore">Taasta vahekaardid, kui operatsioonisüsteem lõpetab FOSS Brauseri töö.</string>
     <string name="app_intro_b">Hetkel avatud veebisait on FOSS Brauseri viki. Ta on lisatud ka esimese järjehoidjana. Vikist leiad juhendeid, kasulikku teavet ja asjakohaseid linke.</string>
     <string name="menu_reload">Laadi uuesti</string>

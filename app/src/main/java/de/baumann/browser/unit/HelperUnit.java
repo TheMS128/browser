@@ -400,8 +400,8 @@ public class HelperUnit {
         new Handler().postDelayed(() -> {
             editText.dispatchTouchEvent(MotionEvent.obtain(SystemClock.uptimeMillis(), SystemClock.uptimeMillis(), MotionEvent.ACTION_DOWN, 0f, 0f, 0));
             editText.dispatchTouchEvent(MotionEvent.obtain(SystemClock.uptimeMillis(), SystemClock.uptimeMillis(), MotionEvent.ACTION_UP, 0f, 0f, 0));
-            editText.setSelection(Objects.requireNonNull(editText.getText()).length());
-        }, 200);
+            editText.selectAll();
+        }, 500);
     }
 
     public static void setupDialog(Context context, Dialog dialog) {

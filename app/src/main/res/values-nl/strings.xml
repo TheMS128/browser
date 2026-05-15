@@ -11,9 +11,7 @@
     <string name="list_empty">Lijst is leeg</string>
     <string name="album_title_bookmarks">Bladwijzers</string>
     <string name="album_title_history">Geschiedenis</string>
-    <string name="album_title_home">Startpagina</string>
     <string name="album_title_tab">Geopende Tabbladen</string>
-    <string name="search_hint">Zoeken</string>
     <string name="create_new">Nieuw</string>
     <string name="color_red">Rood</string>
     <string name="color_pink">Roze</string>
@@ -40,13 +38,11 @@
     <string name="menu_sort">Sorteren op …</string>
     <string name="menu_filter">Filter op …</string>
     <string name="menu_share_link">Link delen</string>
-    <string name="menu_save_home">Opslaan op beginscherm</string>
     <string name="menu_save_bookmark">Opslaan als bladwijzer</string>
     <string name="menu_save_as">Opslaan als…</string>
     <string name="menu_save_pdf">Opslaan als PDF-bestand</string>
     <string name="menu_shareClipboard">Kopiëren naar klembord</string>
     <string name="menu_other_searchSite">Zoek op site</string>
-    <string name="link_you_copied">Link gekopieerd</string>
     <string name="dialog_title_hint">Titel:</string>
     <string name="dialog_URL_hint">URL:</string>
     <string name="dialog_extension_hint">Extensie (bijv.: \".jpg\"):</string>
@@ -99,7 +95,6 @@
     <string name="setting_title_fav">Favoriete</string>
     <string name="setting_title_searchEngine">Aangepaste zoekmachine</string>
     <string name="setting_title_userAgent">Aangepaste user agent</string>
-    <string name="setting_title_clipboard_record">Clipboard bestanden</string>
     <string name="setting_title_fingerPrint">Vingerafdruk bescherming</string>
     <string name="setting_theme">Thema</string>
     <string name="setting_theme_system">Systeem</string>
@@ -108,7 +103,6 @@
     <string name="setting_overView_onStart_title">Toon bij start</string>
     <string name="setting_gestures">Vingerbewegingen</string>
     <string name="setting_title_longPress">Lang indrukken</string>
-    <string name="setting_title_overViewButton">Overzicht</string>
     <string name="setting_gesture_up">Veeg omhoog</string>
     <string name="setting_gesture_down">Omlaag vegen</string>
     <string name="setting_gesture_left">Naar links vegen</string>
@@ -140,11 +134,8 @@
     <string name="menu_desktopView">Bureaublad weergave</string>
     <string name="menu_dayView">Dag-weergave</string>
     <string name="menu_nightView">Nacht-weergave</string>
-    <string name="setting_userScript">Aangepaste JavaScript-code</string>
     <string name="setting_title_camera">Camera-gebruik toestaan</string>
     <string name="setting_title_microphone">Microfoon-gebruik toestaan</string>
-    <string name="setting_title_tabsReload">Tabbladen vernieuwen</string>
-    <string name="setting_title_tabsRestore">Tabbladen herstellen</string>
     <string name="setting_summary_tabsReload">Herlaad laatst geopende tabbladen, bij het starten van de FOSS-browser.</string>
     <string name="setting_summary_tabsRestore">Tabbladen herstellen wanneer de FOSS Browser wordt gedood door het systeem.</string>
     <string name="hint_DRM_Media">DRM-beschermde media weergeven?</string>

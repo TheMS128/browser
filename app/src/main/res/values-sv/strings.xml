@@ -11,9 +11,7 @@
     <string name="list_empty">Listan är tom</string>
     <string name="album_title_bookmarks">Bokmärken</string>
     <string name="album_title_history">Historik</string>
-    <string name="album_title_home">Hem</string>
     <string name="album_title_tab">Öppnade flikar</string>
-    <string name="search_hint">Sök</string>
     <string name="create_new">Nya</string>
     <string name="color_red">Röd</string>
     <string name="color_pink">Rosa</string>
@@ -40,13 +38,11 @@
     <string name="menu_sort">Sortera efter …</string>
     <string name="menu_filter">Filtrera på …</string>
     <string name="menu_share_link">Dela länk</string>
-    <string name="menu_save_home">Spara Hemma</string>
     <string name="menu_save_bookmark">Spara som bokmärke</string>
     <string name="menu_save_as">Spara som …</string>
     <string name="menu_save_pdf">Spara som PDF</string>
     <string name="menu_shareClipboard">Kopiera till urklipp</string>
     <string name="menu_other_searchSite">Sök på sida</string>
-    <string name="link_you_copied">Länk kopierad</string>
     <string name="dialog_title_hint">Titel:</string>
     <string name="dialog_URL_hint">URL:</string>
     <string name="dialog_extension_hint">Filtyp (till exempel: \".jpg\"):</string>
@@ -99,7 +95,6 @@
     <string name="setting_title_fav">Favorit</string>
     <string name="setting_title_searchEngine">Anpassad sökmotor</string>
     <string name="setting_title_userAgent">Anpassad användaragent</string>
-    <string name="setting_title_clipboard_record">Urklipp post</string>
     <string name="setting_title_fingerPrint">Fingeravtrycksskydd</string>
     <string name="setting_theme">Tema</string>
     <string name="setting_theme_system">System</string>
@@ -108,7 +103,6 @@
     <string name="setting_overView_onStart_title">Visa vid start</string>
     <string name="setting_gestures">Gester</string>
     <string name="setting_title_longPress">Långtryck</string>
-    <string name="setting_title_overViewButton">Översikt</string>
     <string name="setting_gesture_up">Svep uppåt</string>
     <string name="setting_gesture_down">Svep nedåt</string>
     <string name="setting_gesture_left">Svep vänster</string>
@@ -140,11 +134,8 @@
     <string name="menu_desktopView">Skrivbordsvy</string>
     <string name="menu_dayView">Dagsvy</string>
     <string name="menu_nightView">Nattvy</string>
-    <string name="setting_userScript">Anpassad JavaScript-kod</string>
     <string name="setting_title_camera">Tillåt kameraanvändning</string>
     <string name="setting_title_microphone">Tillåt mikrofonanvändning</string>
-    <string name="setting_title_tabsReload">Uppdatera flikar</string>
-    <string name="setting_title_tabsRestore">Återställ flikar</string>
     <string name="setting_summary_tabsReload">Ladda om senast öppnade flikar, när du startar FOSS webbläsare.</string>
     <string name="setting_summary_tabsRestore">Återställ flikar, när FOSS webbläsare blir avstängd av systemet.</string>
     <string name="hint_DRM_Media">Tillåt DRM-skyddad medieuppspelning?</string>

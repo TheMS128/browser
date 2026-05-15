@@ -11,9 +11,7 @@
     <string name="list_empty">Lista este goală</string>
     <string name="album_title_bookmarks">Marcaje</string>
     <string name="album_title_history">Istoric</string>
-    <string name="album_title_home">Pagina de pornire</string>
     <string name="album_title_tab">File deschise</string>
-    <string name="search_hint">Căutare</string>
     <string name="create_new">Nou</string>
     <string name="color_red">Roșu</string>
     <string name="color_pink">Roz</string>
@@ -40,13 +38,11 @@
     <string name="menu_sort">Sortează după …</string>
     <string name="menu_filter">Filtrează după …</string>
     <string name="menu_share_link">Distribuie link-ul</string>
-    <string name="menu_save_home">Salvează acasă</string>
     <string name="menu_save_bookmark">Salvează ca marcaj</string>
     <string name="menu_save_as">Salvează ca …</string>
     <string name="menu_save_pdf">Salvează ca PDF</string>
     <string name="menu_shareClipboard">Copiază în clipboard</string>
     <string name="menu_other_searchSite">Căutare pe site</string>
-    <string name="link_you_copied">Link copiat</string>
     <string name="dialog_title_hint">Titlu:</string>
     <string name="dialog_URL_hint">URL:</string>
     <string name="dialog_extension_hint">Extensie (de exemplu: \".jpg\"):</string>
@@ -99,7 +95,6 @@
     <string name="setting_title_fav">Favorit</string>
     <string name="setting_title_searchEngine">Motor de căutare personalizat</string>
     <string name="setting_title_userAgent">Agent utilizator personalizat</string>
-    <string name="setting_title_clipboard_record">Înregistrare clipboard</string>
     <string name="setting_title_fingerPrint">Protecție prin amprentă</string>
     <string name="setting_theme">Temă</string>
     <string name="setting_theme_system">Sistem</string>
@@ -108,7 +103,6 @@
     <string name="setting_overView_onStart_title">Arată la pornire</string>
     <string name="setting_gestures">Gesturi</string>
     <string name="setting_title_longPress">Apăsare lungă</string>
-    <string name="setting_title_overViewButton">Privire de ansamblu</string>
     <string name="setting_gesture_up">Glisare în sus</string>
     <string name="setting_gesture_down">Glisare în jos</string>
     <string name="setting_gesture_left">Glisare spre stânga</string>
@@ -140,11 +134,8 @@
     <string name="menu_desktopView">Vizualizare desktop</string>
     <string name="menu_dayView">Vizualizare zi</string>
     <string name="menu_nightView">Vizualizare nocturnă</string>
-    <string name="setting_userScript">Cod JavaScript personalizat</string>
     <string name="setting_title_camera">Permite utilizarea camerei</string>
     <string name="setting_title_microphone">Permite utilizarea microfonului</string>
-    <string name="setting_title_tabsReload">Reîncarcă filele</string>
-    <string name="setting_title_tabsRestore">Restaurează filele</string>
     <string name="setting_summary_tabsReload">Reîncarcă ultimele file deschise, la pornirea browser-ului FOSS.</string>
     <string name="setting_summary_tabsRestore">Restaurează filele, când browser-ul FOSS este oprit de sistem.</string>
     <string name="hint_DRM_Media">Permiți redarea conținutului media protejat DRM?</string>

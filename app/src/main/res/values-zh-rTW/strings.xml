@@ -8,7 +8,6 @@
     <string name="app_warning">警告（Warning）</string>
     <string name="app_permission">要使用这个功能，你必须授予权限。之后，重新启动应用程序。</string>
     <string name="list_empty">清單是空的</string>
-    <string name="album_title_home">Home</string>
     <string name="album_title_tab">已開啟的分頁</string>
     <string name="create_new">新增</string>
     <string name="color_red">Red</string>
@@ -31,13 +30,11 @@
     <string name="menu_sort">以…排序</string>
     <string name="menu_filter">以…篩選</string>
     <string name="menu_share_link">分享連結</string>
-    <string name="menu_save_home">釘選至主頁</string>
     <string name="menu_save_bookmark">儲存為書籤</string>
     <string name="menu_save_as">儲存為…</string>
     <string name="menu_save_pdf">儲存為PDF</string>
     <string name="menu_shareClipboard">複製到剪貼簿</string>
     <string name="menu_other_searchSite">在網頁中尋找</string>
-    <string name="link_you_copied">您已複製的連結</string>
     <string name="dialog_title_hint">標題：</string>
     <string name="dialog_URL_hint">網址：</string>
     <string name="dialog_extension_hint">副檔名（例如：\".jpg\"):</string>
@@ -90,7 +87,6 @@
     <string name="setting_title_fav">首頁</string>
     <string name="setting_title_searchEngine">自訂搜尋引擎</string>
     <string name="setting_title_userAgent">使用自訂的使用者代理</string>
-    <string name="setting_title_clipboard_record">剪切板記錄</string>
     <string name="setting_title_fingerPrint">指纹保护</string>
     <string name="setting_theme">主題</string>
     <string name="setting_theme_system">公共</string>
@@ -99,7 +95,6 @@
     <string name="setting_overView_onStart_title">開啟時顯示</string>
     <string name="setting_gestures">手勢</string>
     <string name="setting_title_longPress">長按</string>
-    <string name="setting_title_overViewButton">概覽</string>
     <string name="setting_gesture_up">上滑</string>
     <string name="setting_gesture_down">下滑</string>
     <string name="setting_gesture_left">左滑</string>
@@ -131,11 +126,8 @@
     <string name="menu_desktopView">電腦版網站</string>
     <string name="menu_dayView">日檢視</string>
     <string name="menu_nightView">暗夜之眼</string>
-    <string name="setting_userScript">自定义JavaScript代码</string>
     <string name="setting_title_camera">允许使用摄像头</string>
     <string name="setting_title_microphone">允许使用麦克风</string>
-    <string name="setting_title_tabsReload">重新加载标签</string>
-    <string name="setting_title_tabsRestore">恢复标签</string>
     <string name="setting_summary_tabsReload">重新加载最后打开的标签，当启动FOSS浏览器时。</string>
     <string name="setting_summary_tabsRestore">恢复标签，当FOSS浏览器被系统杀死时。</string>
     <string name="hint_DRM_Media">允许受DRM保护的媒体播放？</string>
@@ -144,7 +136,6 @@
     <string name="setting_title_screenOn">保持螢幕開啓</string>
     <string name="app_cancel">取消</string>
     <string name="album_title_history">歷史</string>
-    <string name="search_hint">搜索</string>
     <string name="color_pink">粉</string>
     <string name="main_menu_new_tabOpen">新選項卡（前景）</string>
     <string name="main_omnibox_input_hint">搜索或輸入網址</string>

@@ -11,9 +11,7 @@
     <string name="list_empty">Η λίστα είναι κενή</string>
     <string name="album_title_bookmarks">Σελιδοδείκτες</string>
     <string name="album_title_history">Ιστορικό</string>
-    <string name="album_title_home">Αρχική</string>
     <string name="album_title_tab">Ανοιγμένες Καρτέλες</string>
-    <string name="search_hint">Αναζήτηση</string>
     <string name="create_new">Νέο</string>
     <string name="color_red">Κόκκινο</string>
     <string name="color_pink">Ροζ</string>
@@ -40,13 +38,11 @@
     <string name="menu_sort">Ταξινόμηση κατά …</string>
     <string name="menu_filter">Φιλτράρισμα κατά …</string>
     <string name="menu_share_link">Κοινοποίηση συνδέσμου</string>
-    <string name="menu_save_home">Αποθήκευση στην Αρχική</string>
     <string name="menu_save_bookmark">Αποθήκευση ως σελιδοδείκτη</string>
     <string name="menu_save_as">Αποθήκευση ως …</string>
     <string name="menu_save_pdf">Αποθήκευση ως PDF</string>
     <string name="menu_shareClipboard">Αντιγραφή στο πρόχειρο</string>
     <string name="menu_other_searchSite">Αναζήτηση στον ιστότοπο</string>
-    <string name="link_you_copied">Σύνδεσμος που αντιγράψατε</string>
     <string name="dialog_title_hint">Τίτλος:</string>
     <string name="dialog_URL_hint">url:</string>
     <string name="dialog_extension_hint">Επέκταση (για παράδειγμα: \".jpg\"):</string>
@@ -99,7 +95,6 @@
     <string name="setting_title_fav">Αγαπημένο</string>
     <string name="setting_title_searchEngine">Προσαρμοσμένη μηχανή αναζήτησης</string>
     <string name="setting_title_userAgent">Προσαρμοσμένος user agent</string>
-    <string name="setting_title_clipboard_record">Εγγραφή πρόχειρου</string>
     <string name="setting_title_fingerPrint">Προστασία δακτυλικών αποτυπωμάτων</string>
     <string name="setting_theme">Θέμα</string>
     <string name="setting_theme_system">Σύστημα</string>
@@ -108,7 +103,6 @@
     <string name="setting_overView_onStart_title">Εμφάνιση κατά την έναρξη</string>
     <string name="setting_gestures">Χειρονομίες</string>
     <string name="setting_title_longPress">Πιέστε και κρατήστε</string>
-    <string name="setting_title_overViewButton">Επισκόπηση</string>
     <string name="setting_gesture_up">Σύρετε προς τα επάνω</string>
     <string name="setting_gesture_down">Σύρετε προς τα κάτω</string>
     <string name="setting_gesture_left">Σάρωση προς τα αριστερά</string>
@@ -140,11 +134,8 @@
     <string name="menu_desktopView">Προβολή για υπολογιστή</string>
     <string name="menu_dayView">Προβολή ημέρας</string>
     <string name="menu_nightView">Νυχτερινή προβολή</string>
-    <string name="setting_userScript">Προσαρμοσμένος κώδικας JavaScript</string>
     <string name="setting_title_camera">Να επιτρέπεται η χρήση κάμερας</string>
     <string name="setting_title_microphone">Επιτρέψτε τη χρήση μικροφώνου</string>
-    <string name="setting_title_tabsReload">Επαναφόρτωση καρτελών</string>
-    <string name="setting_title_tabsRestore">Επαναφορά καρτελών</string>
     <string name="setting_summary_tabsReload">Επαναφόρτωση των τελευταίων ανοιχτών καρτελών, κατά την εκκίνηση του FOSS Browser.</string>
     <string name="setting_summary_tabsRestore">Επαναφορά καρτελών, όταν το FOSS Browser τερματιστεί από το σύστημα.</string>
     <string name="hint_DRM_Media">Να επιτρέπεται η προστατευμένη αναπαραγωγή πολυμέσων DRM;</string>
