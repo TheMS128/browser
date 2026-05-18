@@ -595,8 +595,7 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
                         omniBox_overview.setImageResource(R.drawable.icon_bookmark);
                     }
                     action.close();
-                }
-                catch (Exception e) {Log.i(TAG, "dialogCustomSearches:" + e);}
+                } catch (Exception e) {Log.i(TAG, "dialogCustomSearches:" + e);}
                 overViewTab = getString(R.string.album_title_bookmarks);
                 intPage.set(R.id.page_2);
                 listView.setVisibility(VISIBLE);
@@ -1753,7 +1752,7 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
 
             CheckBox checkbox_cookies = dialogViewFastToggle.findViewById(R.id.checkbox_cookies);
             checkbox_cookies.setChecked(sp.getBoolean(profile + "_cookies", false));
-            checkbox_cookies.setOnCheckedChangeListener((buttonView, isChecked) -> {
+            checkbox_cookies.setOnClickListener(v -> {
                 if (listStandard.isWhite(url)){
                     sp.edit().putBoolean(profile + "_cookies", checkbox_cookies.isChecked()).apply();
                 } else if (NinjaWebView.getProfile().equals("profileStandard")) {
@@ -1767,7 +1766,7 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
 
             CheckBox checkbox_cookiesThirdParty = dialogViewFastToggle.findViewById(R.id.checkbox_cookiesThirdParty);
             checkbox_cookiesThirdParty.setChecked(sp.getBoolean(profile + "_cookiesThirdParty", false));
-            checkbox_cookiesThirdParty.setOnCheckedChangeListener((buttonView, isChecked) -> {
+            checkbox_cookiesThirdParty.setOnClickListener(v -> {
                 if (listStandard.isWhite(url)){
                     sp.edit().putBoolean(profile + "_cookiesThirdParty", checkbox_cookiesThirdParty.isChecked()).apply();
                 }  else if (NinjaWebView.getProfile().equals("profileStandard")) {
@@ -1781,7 +1780,7 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
 
             CheckBox checkbox_cookiesBanner = dialogViewFastToggle.findViewById(R.id.checkbox_cookiesBanner);
             checkbox_cookiesBanner.setChecked(sp.getBoolean(profile + "_deny_cookie_banners", true));
-            checkbox_cookiesBanner.setOnCheckedChangeListener((buttonView, isChecked) -> {
+            checkbox_cookiesBanner.setOnClickListener(v -> {
                 if (listStandard.isWhite(url)){
                     sp.edit().putBoolean(profile + "_deny_cookie_banners", checkbox_cookiesBanner.isChecked()).apply();
                 } else if (NinjaWebView.getProfile().equals("profileStandard")) {
@@ -1809,7 +1808,7 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
 
             CheckBox checkbox_adBlock = dialogViewFastToggle.findViewById(R.id.checkbox_adBlock);
             checkbox_adBlock.setChecked(sp.getBoolean(profile + "_adBlock", true));
-            checkbox_adBlock.setOnCheckedChangeListener((buttonView, isChecked) -> {
+            checkbox_adBlock.setOnClickListener(v -> {
                 if (listStandard.isWhite(url)){
                     sp.edit().putBoolean(profile + "_adBlock", checkbox_adBlock.isChecked()).apply();
                 }  else if (NinjaWebView.getProfile().equals("profileStandard")) {
@@ -1823,7 +1822,7 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
 
             CheckBox checkbox_trackingURL = dialogViewFastToggle.findViewById(R.id.checkbox_trackingURL);
             checkbox_trackingURL.setChecked(sp.getBoolean(profile + "_trackingULS", true));
-            checkbox_trackingURL.setOnCheckedChangeListener((buttonView, isChecked) -> {
+            checkbox_trackingURL.setOnClickListener(v -> {
                 if (listStandard.isWhite(url)){
                     sp.edit().putBoolean(profile + "_trackingULS", checkbox_trackingURL.isChecked()).apply();
                 }  else if (NinjaWebView.getProfile().equals("profileStandard")) {
@@ -1953,6 +1952,20 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
                     sp.edit().putBoolean(NinjaWebView.getProfile() + "_desktop", checkbox_desktop.isChecked()).apply();
                 } else {
                     sp.edit().putBoolean(NinjaWebView.getProfile() + "_desktop", checkbox_desktop.isChecked()).apply();
+                }
+            });
+
+            CheckBox checkbox_drm = dialogViewFastToggle.findViewById(R.id.checkbox_drm);
+            checkbox_drm.setChecked(sp.getBoolean(profile + "_drm", true));
+            checkbox_drm.setOnClickListener(v -> {
+                if (listStandard.isWhite(url)){
+                    sp.edit().putBoolean(profile + "_drm", checkbox_drm.isChecked()).apply();
+                }  else if (NinjaWebView.getProfile().equals("profileStandard")) {
+                    ninjaWebView.setProfileChanged();
+                    ninjaWebView.setProfileIcon(buttonProfile, omnibox_menu, url);
+                    sp.edit().putBoolean(NinjaWebView.getProfile() + "_drm", checkbox_drm.isChecked()).apply();
+                } else {
+                    sp.edit().putBoolean(NinjaWebView.getProfile() + "_drm", checkbox_drm.isChecked()).apply();
                 }
             });
 

@@ -85,7 +85,6 @@
     <string name="setting_summary_adblock">Aktivera AdBlock för att blockera irriterande annonser. Webbplatser laddar också snabbare när det är aktiverat.</string>
     <string name="setting_title_adblockHost">Blockerat innehåll</string>
     <string name="setting_title_location">Plats</string>
-    <string name="setting_summary_autofill">Aktivera sparande av formulärdata (Android Nougat eller lägre) eller autofyllningstjänst (Android Oreo eller högre).</string>
     <string name="data_summary">Alla filer kommer att exporteras till \"Documents/browser_backup/\" på ditt SD-kort.</string>
     <string name="clear_title_quit">Rensa när appen stängs</string>
     <string name="clear_title_cache">Rensa cache</string>

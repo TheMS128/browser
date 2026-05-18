@@ -189,6 +189,8 @@
                     android:layout_alignParentStart="true" />
 
                 <CheckBox
+                    android:ellipsize="end"
+                    android:maxLines="1"
                     android:id="@+id/checkbox_java"
                     android:layout_width="wrap_content"
                     android:layoutDirection="rtl"
@@ -212,6 +214,8 @@
                     android:layout_marginEnd="10dp"
                     android:layout_alignParentStart="true" />
                 <CheckBox
+                    android:ellipsize="end"
+                    android:maxLines="1"
                     android:id="@+id/checkbox_javaPopUp"
                     android:layout_width="wrap_content"
                     android:layoutDirection="rtl"
@@ -235,6 +239,8 @@
                     android:layout_marginEnd="10dp"
                     android:layout_alignParentStart="true" />
                 <CheckBox
+                    android:ellipsize="end"
+                    android:maxLines="1"
                     android:id="@+id/checkbox_location"
                     android:layoutDirection="rtl"
                     android:text="@string/setting_title_location"
@@ -258,6 +264,8 @@
                     android:layout_marginEnd="10dp"
                     android:layout_alignParentStart="true" />
                 <CheckBox
+                    android:ellipsize="end"
+                    android:maxLines="1"
                     android:id="@+id/checkbox_camera"
                     android:layoutDirection="rtl"
                     android:text="@string/setting_title_camera"
@@ -281,6 +289,8 @@
                     android:layout_marginEnd="10dp"
                     android:layout_alignParentStart="true" />
                 <CheckBox
+                    android:ellipsize="end"
+                    android:maxLines="1"
                     android:id="@+id/checkbox_mic"
                     android:layoutDirection="rtl"
                     android:text="@string/setting_title_microphone"
@@ -315,6 +325,8 @@
                     android:layout_marginEnd="10dp"
                     android:layout_alignParentStart="true" />
                 <CheckBox
+                    android:ellipsize="end"
+                    android:maxLines="1"
                     android:id="@+id/checkbox_history"
                     android:layoutDirection="rtl"
                     android:text="@string/album_title_history"
@@ -338,6 +350,8 @@
                     android:layout_marginEnd="10dp"
                     android:layout_alignParentStart="true" />
                 <CheckBox
+                    android:ellipsize="end"
+                    android:maxLines="1"
                     android:id="@+id/checkbox_cookies"
                     android:layoutDirection="rtl"
                     android:text="@string/setting_title_cookie"
@@ -361,6 +375,8 @@
                     android:layout_marginEnd="10dp"
                     android:layout_alignParentStart="true" />
                 <CheckBox
+                    android:ellipsize="end"
+                    android:maxLines="1"
                     android:id="@+id/checkbox_cookiesThirdParty"
                     android:layoutDirection="rtl"
                     android:text="@string/setting_title_cookie_thirdParty"
@@ -384,6 +400,8 @@
                     android:layout_marginEnd="10dp"
                     android:layout_alignParentStart="true" />
                 <CheckBox
+                    android:ellipsize="end"
+                    android:maxLines="1"
                     android:id="@+id/checkbox_cookiesBanner"
                     android:layoutDirection="rtl"
                     android:text="@string/setting_title_deny_cookie_banners"
@@ -407,6 +425,8 @@
                     android:layout_marginEnd="10dp"
                     android:layout_alignParentStart="true" />
                 <CheckBox
+                    android:ellipsize="end"
+                    android:maxLines="1"
                     android:id="@+id/checkbox_dom"
                     android:layoutDirection="rtl"
                     android:text="@string/setting_title_dom"
@@ -431,6 +451,8 @@
                     android:layout_alignParentStart="true"
                     tools:ignore="TooManyViews" />
                 <CheckBox
+                    android:ellipsize="end"
+                    android:maxLines="1"
                     android:id="@+id/checkbox_adBlock"
                     android:layoutDirection="rtl"
                     android:text="@string/setting_title_adblock"
@@ -454,6 +476,8 @@
                     android:layout_marginEnd="10dp"
                     android:layout_alignParentStart="true" />
                 <CheckBox
+                    android:ellipsize="end"
+                    android:maxLines="1"
                     android:id="@+id/checkbox_fingerPrint"
                     android:layoutDirection="rtl"
                     android:text="@string/setting_title_fingerPrint"
@@ -477,6 +501,8 @@
                     android:layout_marginEnd="10dp"
                     android:layout_alignParentStart="true" />
                 <CheckBox
+                    android:ellipsize="end"
+                    android:maxLines="1"
                     android:id="@+id/checkbox_trackingURL"
                     android:layoutDirection="rtl"
                     android:text="@string/setting_title_trackingURL"
@@ -511,6 +537,8 @@
                     android:layout_marginEnd="10dp"
                     android:layout_alignParentStart="true" />
                 <CheckBox
+                    android:ellipsize="end"
+                    android:maxLines="1"
                     android:id="@+id/checkbox_image"
                     android:layoutDirection="rtl"
                     android:text="@string/setting_title_images"
@@ -534,6 +562,8 @@
                     android:layout_marginEnd="10dp"
                     android:layout_alignParentStart="true" />
                 <CheckBox
+                    android:ellipsize="end"
+                    android:maxLines="1"
                     android:id="@+id/checkbox_saveData"
                     android:layoutDirection="rtl"
                     android:text="@string/setting_title_save_data"
@@ -555,6 +585,31 @@
                 android:textStyle="bold"/>
 
             <RelativeLayout
+                android:layout_marginStart="15dp"
+                android:layout_marginEnd="10dp"
+                android:layout_width="wrap_content"
+                android:layout_height="?android:attr/listPreferredItemHeightSmall">
+                <ImageView
+                    android:id="@+id/icon_drm"
+                    android:layout_width="wrap_content"
+                    android:layout_height="?android:attr/listPreferredItemHeightSmall"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/icon_movie"
+                    android:layout_marginEnd="10dp"
+                    android:layout_alignParentStart="true" />
+                <CheckBox
+                    android:ellipsize="end"
+                    android:maxLines="1"
+                    android:id="@+id/checkbox_drm"
+                    android:layoutDirection="rtl"
+                    android:text="@string/hint_DRM_Media"
+                    android:layout_toEndOf="@+id/icon_drm"
+                    android:layout_width="wrap_content"
+                    android:layout_height="?android:attr/listPreferredItemHeightSmall"
+                    android:layout_alignParentEnd="true"/>
+            </RelativeLayout>
+
+            <RelativeLayout
                 android:id="@+id/layout_nightView"
                 android:layout_marginStart="15dp"
                 android:layout_marginEnd="10dp"
@@ -569,6 +624,8 @@
                     android:layout_marginEnd="10dp"
                     android:layout_alignParentStart="true" />
                 <CheckBox
+                    android:ellipsize="end"
+                    android:maxLines="1"
                     android:id="@+id/checkbox_nightView"
                     android:layoutDirection="rtl"
                     android:text="@string/menu_nightView"
@@ -592,6 +649,8 @@
                     android:layout_marginEnd="10dp"
                     android:layout_alignParentStart="true" />
                 <CheckBox
+                    android:ellipsize="end"
+                    android:maxLines="1"
                     android:id="@+id/checkbox_desktop"
                     android:layoutDirection="rtl"
                     android:text="@string/menu_desktopView"
@@ -620,6 +679,8 @@
                 android:textStyle="bold"/>
 
             <CheckBox
+                android:ellipsize="end"
+                android:maxLines="1"
                 android:id="@+id/checkbox_screenOn"
                 android:layoutDirection="rtl"
                 android:layout_marginStart="10dp"
@@ -629,6 +690,8 @@
                 android:layout_height="?android:attr/listPreferredItemHeightSmall" />
 
             <CheckBox
+                android:ellipsize="end"
+                android:maxLines="1"
                 android:id="@+id/checkbox_links"
                 android:layoutDirection="rtl"
                 android:layout_marginStart="10dp"
@@ -643,6 +706,8 @@
                 android:layout_height="?android:attr/listPreferredItemHeightSmall">
 
                 <TextView
+                    android:ellipsize="end"
+                    android:maxLines="1"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="15dp"
@@ -672,11 +737,13 @@
                 android:layout_height="?android:attr/listPreferredItemHeightSmall">
 
                 <TextView
+                    android:ellipsize="end"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:layout_marginStart="15dp"
                     android:layout_marginEnd="5dp"
                     android:layoutDirection="rtl"
+                    android:layout_centerVertical="true"
                     android:text="@string/setting_title_profiles_standard_always"
                     android:layout_toStartOf="@+id/icon_standard"
                     android:layout_alignParentStart="true" />
@@ -684,11 +751,11 @@
                 <ImageView
                     android:id="@+id/icon_standard"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_height="match_parent"
                     android:scaleType="fitCenter"
                     android:src="@drawable/icon_popup"
                     android:layout_marginEnd="15dp"
-                    android:layout_centerInParent="true"
+                    android:layout_centerVertical="true"
                     android:layout_alignParentEnd="true"/>
 
             </RelativeLayout>

@@ -137,12 +137,6 @@ public class NinjaWebView extends WebView implements AlbumController {
         webSettings.setAllowUniversalAccessFromFileURLs(true);
         webSettings.setTextZoom(Integer.parseInt(Objects.requireNonNull(sp.getString("sp_fontSize", "100"))));
 
-        if (sp.getBoolean("sp_autofill", true)) {
-            this.setImportantForAutofill(View.IMPORTANT_FOR_AUTOFILL_YES);
-        } else {
-            this.setImportantForAutofill(View.IMPORTANT_FOR_AUTOFILL_NO);
-        }
-
         profile = sp.getString("profile", "profileStandard");
         String profileOriginal = profile;
 

@@ -84,7 +84,6 @@
     <string name="setting_summary_adblock">Aktifkan AdBlock untuk memblokir iklan yang mengganggu. Situs juga akan dimuat dengan lebih cepat saat diaktifkan.</string>
     <string name="setting_title_adblockHost">Konten yang Diblokir</string>
     <string name="setting_title_location">Lokasi</string>
-    <string name="setting_summary_autofill">Aktifkan penyimpanan dari formulir data (Android Nougat dan di bawahnya) atau layanan pengisian otomatis (Android Oreo dan di atasnya).</string>
     <string name="data_summary">Seluruh file akan di ekspor ke direktori \"Documents/browser_backup/\" di SD-card Anda.</string>
     <string name="clear_title_quit">Bersihkan pada saat keluar aplikasi</string>
     <string name="clear_title_cache">Bersihkan Cache</string>

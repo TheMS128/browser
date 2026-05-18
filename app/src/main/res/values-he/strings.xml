@@ -85,7 +85,6 @@
     <string name="setting_summary_adblock">אפשר AdBlock כדי לחסום מודעות מעצבנות. אתרים גם נטענים מהר יותר כשהם מופעלים.</string>
     <string name="setting_title_adblockHost">תוכן חסום</string>
     <string name="setting_title_location">מקום</string>
-    <string name="setting_summary_autofill">אפשר שמירת נתוני טפסים (אנדרואיד נוגט ומטה) או שירות מילוי אוטומטי (אנדרואיד אוראו ומעלה).</string>
     <string name="data_summary">כל הקבצים ייוצאו לספריית \"Documents/browser_backup/\" של כרטיס ה-SD שלכם.</string>
     <string name="clear_title_quit">נקה ביציאה מהאפליקציה</string>
     <string name="clear_title_cache">נקה מטמון</string>

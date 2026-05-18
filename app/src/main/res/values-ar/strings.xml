@@ -84,7 +84,6 @@
     <string name="setting_summary_adblock">مكن مانع الاعلانات لمنع الإعلانات المزعجة. تمكينه يسرع تحميل المواقع.</string>
     <string name="setting_title_adblockHost">المحتوى المحظور</string>
     <string name="setting_title_location">الموقع</string>
-    <string name="setting_summary_autofill">تمكين حفظ بيانات النموذج (أندرويد نوجات وما دونها) أو خدمة التعبئة التلقائية (أندرويد أوريو وما فوق).</string>
     <string name="data_summary">سيتم تصدير جميع الملفات إلى دليل \"Documents / browser_backup /\" لبطاقة SD الخاصة بك.</string>
     <string name="clear_title_quit">امسح عند خروج التطبيق</string>
     <string name="clear_title_cache">امسح التخزين المؤقت</string>

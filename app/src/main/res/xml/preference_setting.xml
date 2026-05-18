@@ -96,16 +96,6 @@
             app:editTextSwitchKey="searchEngineSwitch"
             app:useSimpleSummaryProvider="true" />
 
-        <CheckBoxPreference
-            android:defaultValue="true"
-            android:key="sp_drm"
-            android:summary="@string/hint_DRM_Media"/>
-
-        <CheckBoxPreference
-            android:defaultValue="true"
-            android:key="sp_autofill"
-            android:summary="@string/setting_summary_autofill" />
-
         <de.baumann.browser.preferences.EditTextSwitchPreference
             android:key="sp_userAgent"
             android:selectable="true"

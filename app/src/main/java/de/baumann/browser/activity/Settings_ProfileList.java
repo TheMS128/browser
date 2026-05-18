@@ -1,8 +1,11 @@
 package de.baumann.browser.activity;
 
+import static android.content.ContentValues.TAG;
+
 import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
+import android.util.Log;
 import android.util.TypedValue;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -79,30 +82,32 @@ public class Settings_ProfileList extends AppCompatActivity {
                     builder.setTitle(R.string.menu_delete);
                     builder.setMessage(R.string.hint_database);
                     builder.setPositiveButton(R.string.app_ok, (dialog, whichButton) -> {
-                        listStandard.removeDomain(list.get(position));
-                        list.remove(position);
-                        notifyDataSetChanged();
-
-                        SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(this.getContext());
-                        sp.edit()
-                                .remove(list.get(position) + "_saveData")
-                                .remove(list.get(position) + "_images")
-                                .remove(list.get(position) + "_adBlock")
-                                .remove(list.get(position) + "_trackingULS")
-                                .remove(list.get(position) + "_location")
-                                .remove(list.get(position) + "_fingerPrintProtection")
-                                .remove(list.get(position) + "_cookies")
-                                .remove(list.get(position) + "_cookiesThirdParty")
-                                .remove(list.get(position) + "_deny_cookie_banners")
-                                .remove(list.get(position) + "_javascript")
-                                .remove(list.get(position) + "_javascriptPopUp")
-                                .remove(list.get(position) + "_saveHistory")
-                                .remove(list.get(position) + "_camera")
-                                .remove(list.get(position) + "_microphone")
-                                .remove(list.get(position) + "_dom")
-                                .remove(list.get(position) + "_night")
-                                .remove(list.get(position) + "_desktop").apply();
-                        NinjaToast.show(Settings_ProfileList.this, R.string.toast_delete_successful);
+                        try {
+                            listStandard.removeDomain(list.get(position));
+                            list.remove(position);
+                            notifyDataSetChanged();
+                            SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(this.getContext());
+                            sp.edit()
+                                    .remove(list.get(position) + "_saveData")
+                                    .remove(list.get(position) + "_images")
+                                    .remove(list.get(position) + "_adBlock")
+                                    .remove(list.get(position) + "_trackingULS")
+                                    .remove(list.get(position) + "_location")
+                                    .remove(list.get(position) + "_fingerPrintProtection")
+                                    .remove(list.get(position) + "_cookies")
+                                    .remove(list.get(position) + "_cookiesThirdParty")
+                                    .remove(list.get(position) + "_deny_cookie_banners")
+                                    .remove(list.get(position) + "_javascript")
+                                    .remove(list.get(position) + "_javascriptPopUp")
+                                    .remove(list.get(position) + "_saveHistory")
+                                    .remove(list.get(position) + "_camera")
+                                    .remove(list.get(position) + "_microphone")
+                                    .remove(list.get(position) + "_dom")
+                                    .remove(list.get(position) + "_night")
+                                    .remove(list.get(position) + "_desktop").apply();
+                            NinjaToast.show(Settings_ProfileList.this, R.string.toast_delete_successful);
+                        }
+                        catch (Exception e) {Log.i(TAG, "dialogCustomSearches:" + e);}
                     });
                     builder.setNegativeButton(R.string.app_cancel, (dialog, whichButton) -> dialog.cancel());
                     AlertDialog dialog = builder.create();

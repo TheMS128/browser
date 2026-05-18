@@ -85,7 +85,6 @@
     <string name="setting_summary_adblock">Can sıkıcı reklamları engellemek için reklam engelleyiciyi etkinleştirebilirsiniz. Bu özellik etkinleştirildiğinde siteler ayrıca daha hızlı yüklenir.</string>
     <string name="setting_title_adblockHost">Engellenen içerik</string>
     <string name="setting_title_location">Konum</string>
-    <string name="setting_summary_autofill">Android Nougat ve altı sürümler için form verilerinin kaydedilmesini, Android Oreo ve üstü sürümler içinse otomatik doldurma hizmetini etkinleştirir.</string>
     <string name="data_summary">Tüm dosyalar cihazın \"Documents/browser_backup/\" dizinine aktarılacaktır.</string>
     <string name="clear_title_quit">Tarayıcıdan çıkarken temizle</string>
     <string name="clear_title_cache">Önbelleği temizle</string>

@@ -85,7 +85,6 @@
     <string name="setting_summary_adblock">Aktiviere AdBlock, um Werbung zu blockieren. Websites laden auch schneller.</string>
     <string name="setting_title_adblockHost">Blockierter Inhalt</string>
     <string name="setting_title_location">Standortbestimmung</string>
-    <string name="setting_summary_autofill">Aktiviere das Speichern von Formulardaten (Android Nougat und älter) oder den Autofill-Service (Android Oreo und neuer).</string>
     <string name="data_summary">Alle Dateien werden im Verzeichnis \"Documents/browser_backup/\" Ihrer SD-Karte gespeichert.</string>
     <string name="clear_title_quit">Beim Verlassen löschen</string>
     <string name="clear_title_cache">Cache löschen</string>

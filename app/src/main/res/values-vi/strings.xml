@@ -84,7 +84,6 @@
     <string name="setting_summary_adblock">Bật Chặn quảng cáo để chặn các quảng cáo gây phiền nhiễu. Các trang web cũng tải nhanh hơn khi được bật.</string>
     <string name="setting_title_adblockHost">Nội dung đã chặn</string>
     <string name="setting_title_location">Vị trí</string>
-    <string name="setting_summary_autofill">Bật tính năng lưu dữ liệu biểu mẫu (Android Nougat trở xuống) hoặc dịch vụ tự động điền (Android Oreo trở lên).</string>
     <string name="data_summary">Tất cả các tệp sẽ được xuất sang thư mục \"Documents / browser_backup /\" của thẻ SD của bạn.</string>
     <string name="clear_title_quit">Xoá khi thoát ứng dụng</string>
     <string name="clear_title_cache">Xóa bộ nhớ đệm</string>

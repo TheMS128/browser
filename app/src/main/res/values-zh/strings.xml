@@ -85,7 +85,6 @@
     <string name="setting_summary_adblock">启用AdBlock可阻止烦人的广告。网站的加载速度也会更快。</string>
     <string name="setting_title_adblockHost">屏蔽的内容</string>
     <string name="setting_title_location">地理位置</string>
-    <string name="setting_summary_autofill">启用表单数据保存（Android 7及以下版本）或自动填充服务（Android 8及以上版本）。</string>
     <string name="data_summary">所有文件将导出到您SD卡的“Documents/browser_backup/”目录。</string>
     <string name="clear_title_quit">在应用退出时清除</string>
     <string name="clear_title_cache">清除缓存</string>

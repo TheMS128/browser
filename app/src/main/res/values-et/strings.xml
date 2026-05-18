@@ -111,7 +111,6 @@
     <string name="setting_summary_adblock">Reklaamide blokeerimisel on kasutusel AdBlock ja saitide laadimine toimib kiiremini.</string>
     <string name="setting_title_adblockHost">Blokeeritud sisu</string>
     <string name="setting_title_location">Asukoht</string>
-    <string name="setting_summary_autofill">Kasuta sisestusvormide andmete salvestamist (Android 7 aka Nougat ja vanem) või automaattäite teenust (Android 8 aka Oreo ja uuem).</string>
     <string name="data_summary">Kõik failid salvestuvad sinu nutiseadme SD-kaardi kausta „Documents/browser_backup/“.</string>
     <string name="clear_title_quit">Kustuta väljumisel</string>
     <string name="clear_title_cache">Kustuta andmepuhver</string>

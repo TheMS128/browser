@@ -85,7 +85,6 @@
     <string name="setting_summary_adblock">Включите AdBlock, чтобы заблокировать рекламу. Сайты загружаются быстрее когда включено.</string>
     <string name="setting_title_adblockHost">Блокированное содержимое</string>
     <string name="setting_title_location">Местоположение</string>
-    <string name="setting_summary_autofill">Включить сохранение данных полей (Android Nougat и ниже) или службу автозаполнения (Android Oreo и выше).</string>
     <string name="data_summary">Все файлы будут сохранены в каталог «Documents / browser_backup /» вашей SD-карты.</string>
     <string name="clear_title_quit">Очистить при выходе</string>
     <string name="clear_title_cache">Очистить кэш</string>
