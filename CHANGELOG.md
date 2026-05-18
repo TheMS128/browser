@@ -4,6 +4,8 @@
 - fix: Hide URL-Bar/Status Bar when Scrolling #1278
 - fix: Highlight entire URL #1269
 - fix: lost settings when changing profile
+- fix: not showing status bar in settings
+- removed: not working settings
 
 
 ### v 22 Die Edelweißpiraten

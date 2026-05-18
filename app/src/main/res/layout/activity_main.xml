@@ -67,7 +67,7 @@
             app:elevation="0dp" />
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:id="@+id/omniBox_tab"
+            android:id="@+id/omniBox_menu"
             style="@style/Widget.Material3.Button.IconButton.Outlined"
             app:backgroundTint="?attr/colorOutline"
             app:borderWidth="0.5dp"

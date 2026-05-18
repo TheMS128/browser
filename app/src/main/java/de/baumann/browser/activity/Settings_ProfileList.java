@@ -3,6 +3,7 @@ package de.baumann.browser.activity;
 import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
+import android.util.TypedValue;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -11,6 +12,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.ListView;
 
+import androidx.activity.EdgeToEdge;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
@@ -41,6 +43,7 @@ public class Settings_ProfileList extends AppCompatActivity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        EdgeToEdge.enable(this);
         HelperUnit.initTheme(this);
         setContentView(R.layout.activity_settings_profile_list);
         Toolbar toolbar = findViewById(R.id.toolbar);
@@ -61,10 +64,15 @@ public class Settings_ProfileList extends AppCompatActivity {
             @Override
             public View getView(final int position, View convertView, @NonNull ViewGroup parent) {
                 View v = super.getView(position, convertView, parent);
-                ImageView deleteEntry = v.findViewById(R.id.iconView);
+                ImageView deleteEntry = v.findViewById(R.id.iconMenu);
                 deleteEntry.setVisibility(View.VISIBLE);
-                MaterialCardView cardView = v.findViewById(R.id.cardView);
-                cardView.setVisibility(View.GONE);
+
+                TypedValue typedValue = new TypedValue();
+                getTheme().resolveAttribute(R.attr.colorSurface, typedValue, true);
+                int color = typedValue.data;
+                MaterialCardView cardView = v.findViewById(R.id.menuCardView);
+                cardView.setBackgroundColor(color);
+
                 deleteEntry.setOnClickListener(v1 -> {
                     MaterialAlertDialogBuilder builder = new MaterialAlertDialogBuilder(Settings_ProfileList.this);
                     builder.setIcon(R.drawable.icon_delete);

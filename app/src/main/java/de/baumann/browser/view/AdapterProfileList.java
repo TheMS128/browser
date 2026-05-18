@@ -21,7 +21,7 @@ public class AdapterProfileList extends ArrayAdapter<String> {
     public AdapterProfileList(Context context, List<String> list) {
         super(context, R.layout.item_list, list);
         this.context = context;
-        this.layoutResId = R.layout.item_list;
+        this.layoutResId = R.layout.item_menu;
         this.list = list;
     }
 
@@ -34,7 +34,7 @@ public class AdapterProfileList extends ArrayAdapter<String> {
         if (view == null) {
             view = LayoutInflater.from(context).inflate(layoutResId, parent, false);
             holder = new Holder();
-            holder.domain = view.findViewById(R.id.titleView);
+            holder.domain = view.findViewById(R.id.menuEntry);
             view.setTag(holder);
         } else {
             holder = (Holder) view.getTag();

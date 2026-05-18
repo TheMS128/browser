@@ -71,9 +71,6 @@ public class NinjaWebViewClient extends WebViewClient {
         else ninjaWebView.postInvalidate();
         CookieManager.getInstance().flush();
 
-        if (sp.getBoolean("onPageFinished", false))
-            view.evaluateJavascript(Objects.requireNonNull(sp.getString("sp_onPageFinished", "")), null);
-
         if (ninjaWebView.isSaveData())
             view.evaluateJavascript("var links=document.getElementsByTagName('video'); for(let i=0;i<links.length;i++){links[i].pause()};", null);
 
@@ -100,9 +97,6 @@ public class NinjaWebViewClient extends WebViewClient {
         ninjaWebView.resetFavicon();
 
         super.onPageStarted(view, url, favicon);
-
-        if (sp.getBoolean("onPageStarted", false))
-            view.evaluateJavascript(Objects.requireNonNull(sp.getString("sp_onPageStarted", "")), null);
 
         String profile = NinjaWebView.getProfile();
         if (sp.getBoolean(profile + "_deny_cookie_banners",false)){
@@ -424,40 +418,37 @@ public class NinjaWebViewClient extends WebViewClient {
 
     @Override
     public void onLoadResource(WebView view, String url) {
-
-        if (sp.getBoolean("onLoadResource", false))
-            view.evaluateJavascript(Objects.requireNonNull(sp.getString("sp_onLoadResource", "")), null);
-
-        if (ninjaWebView.isFingerPrintProtection())
+        if (ninjaWebView.isFingerPrintProtection()) {
             view.evaluateJavascript("var test=document.querySelector(\"a[ping]\"); if(test!==null){test.removeAttribute('ping')};", null);
             //do not allow ping on http only pages (tested with http://tests.caniuse.com)
-
-        if (view.getSettings().getUseWideViewPort() && (view.getWidth() < 1300))
-            view.evaluateJavascript("document.querySelector('meta[name=\"viewport\"]').setAttribute('content', 'width=1200px');", null);
-        //  Client-side detection for GlobalPrivacyControl
-        view.evaluateJavascript("if (navigator.globalPrivacyControl === undefined) { Object.defineProperty(navigator, 'globalPrivacyControl', { value: true, writable: false,configurable: false});} else {try { navigator.globalPrivacyControl = true;} catch (e) { console.error('globalPrivacyControl is not writable: ', e); }};", null);
-        //  Script taken from:
-        //
-        //  donotsell.js
-        //  DuckDuckGo
-        //
-        //  Copyright © 2020 DuckDuckGo. All rights reserved.
-        //
-        //  Licensed under the Apache License, Version 2.0 (the "License");
-        //  you may not use this file except in compliance with the License.
-        //  You may obtain a copy of the License at
-        //
-        //  http://www.apache.org/licenses/LICENSE-2.0
-        //
-        //  Unless required by applicable law or agreed to in writing, software
-        //  distributed under the License is distributed on an "AS IS" BASIS,
-        //  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-        //  See the License for the specific language governing permissions and
-        //  limitations under the License.
-        //
-        view.evaluateJavascript("if (navigator.doNotTrack === null) { Object.defineProperty(navigator, 'doNotTrack', { value: 1, writable: false,configurable: false});} else {try { navigator.doNotTrack = 1;} catch (e) { console.error('doNotTrack is not writable: ', e); }};", null);
-        view.evaluateJavascript("if (window.doNotTrack === undefined) { Object.defineProperty(window, 'doNotTrack', { value: 1, writable: false,configurable: false});} else {try { window.doNotTrack = 1;} catch (e) { console.error('doNotTrack is not writable: ', e); }};", null);
-        view.evaluateJavascript("if (navigator.msDoNotTrack === undefined) { Object.defineProperty(navigator, 'msDoNotTrack', { value: 1, writable: false,configurable: false});} else {try { navigator.msDoNotTrack = 1;} catch (e) { console.error('msDoNotTrack is not writable: ', e); }};", null);
+            if (view.getSettings().getUseWideViewPort() && (view.getWidth() < 1300)){
+                view.evaluateJavascript("document.querySelector('meta[name=\"viewport\"]').setAttribute('content', 'width=1200px');", null);
+            }
+            //  Client-side detection for GlobalPrivacyControl
+            view.evaluateJavascript("if (navigator.globalPrivacyControl === undefined) { Object.defineProperty(navigator, 'globalPrivacyControl', { value: true, writable: false,configurable: false});} else {try { navigator.globalPrivacyControl = true;} catch (e) { console.error('globalPrivacyControl is not writable: ', e); }};", null);
+            //  Script taken from:
+            //
+            //  donotsell.js
+            //  DuckDuckGo
+            //
+            //  Copyright © 2020 DuckDuckGo. All rights reserved.
+            //
+            //  Licensed under the Apache License, Version 2.0 (the "License");
+            //  you may not use this file except in compliance with the License.
+            //  You may obtain a copy of the License at
+            //
+            //  http://www.apache.org/licenses/LICENSE-2.0
+            //
+            //  Unless required by applicable law or agreed to in writing, software
+            //  distributed under the License is distributed on an "AS IS" BASIS,
+            //  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+            //  See the License for the specific language governing permissions and
+            //  limitations under the License.
+            //
+            view.evaluateJavascript("if (navigator.doNotTrack === null) { Object.defineProperty(navigator, 'doNotTrack', { value: 1, writable: false,configurable: false});} else {try { navigator.doNotTrack = 1;} catch (e) { console.error('doNotTrack is not writable: ', e); }};", null);
+            view.evaluateJavascript("if (window.doNotTrack === undefined) { Object.defineProperty(window, 'doNotTrack', { value: 1, writable: false,configurable: false});} else {try { window.doNotTrack = 1;} catch (e) { console.error('doNotTrack is not writable: ', e); }};", null);
+            view.evaluateJavascript("if (navigator.msDoNotTrack === undefined) { Object.defineProperty(navigator, 'msDoNotTrack', { value: 1, writable: false,configurable: false});} else {try { navigator.msDoNotTrack = 1;} catch (e) { console.error('msDoNotTrack is not writable: ', e); }};", null);
+        }
     }
 
     @Override

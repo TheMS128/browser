@@ -79,7 +79,9 @@ import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
+import androidx.core.view.WindowCompat;
 import androidx.core.view.WindowInsetsCompat;
+import androidx.core.view.WindowInsetsControllerCompat;
 import androidx.preference.PreferenceManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -145,14 +147,14 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
     private ListView listView;
 
     // Views
-    private TextInputEditText omniBox_text;
+    private TextInputEditText search_input;
     private TextView omniBox_title;
     private EditText searchBox;
     @SuppressLint("StaticFieldLeak")
     private static NinjaWebView ninjaWebView;
     private View customView;
     private VideoView videoView;
-    private FloatingActionButton omniBox_tab;
+    private FloatingActionButton omnibox_menu;
     private BadgeDrawable badgeDrawable;
     private AdapterSearch adapterSearch;
 
@@ -239,16 +241,18 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
         } else {
             overViewTab = getString(R.string.album_title_bookmarks);
         }
+
+        EdgeToEdge.enable(this);
         setContentView(R.layout.activity_main);
         contentFrame = findViewById(R.id.main_content);
 
-        EdgeToEdge.enable(this);
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
-
             boolean isKeyboardVisible = insets.isVisible(WindowInsetsCompat.Type.ime());
             int keyboardHeight = insets.getInsets(WindowInsetsCompat.Type.ime()).bottom;
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
-            //Do your job here
+            v.setBackgroundColor(ContextCompat.getColor(context, R.color.design_default_color_on_secondary));
+            WindowInsetsControllerCompat controller = WindowCompat.getInsetsController(getWindow(), getWindow().getDecorView());
+            controller.setAppearanceLightStatusBars(false);
             if (isKeyboardVisible) {
                 v.setPadding(0, 0, 0, keyboardHeight);
             } else {
@@ -277,7 +281,7 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
             @Override
             public void onReceive(Context context, Intent intent) {
                 String text = getString(R.string.app_done) + ". " + getString(R.string.menu_download) +"?";
-                Snackbar snackbar = Snackbar.make(ninjaWebView, text, Snackbar.LENGTH_LONG);
+                Snackbar snackbar = Snackbar.make(ninjaWebView, text, Snackbar.LENGTH_SHORT);
                 snackbar.setAction(context.getString(R.string.app_ok), v -> startActivity(Intent.createChooser(new Intent(DownloadManager.ACTION_VIEW_DOWNLOADS), null)));
                 snackbar.show();
             }};
@@ -359,7 +363,7 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
         if (sp.getBoolean("pdf_create", false)) {
             sp.edit().putBoolean("pdf_create", false).apply();
             String text = getString(R.string.app_done) + ". " + getString(R.string.menu_download) +"?";
-            Snackbar snackbar = Snackbar.make(ninjaWebView, text, Snackbar.LENGTH_LONG);
+            Snackbar snackbar = Snackbar.make(ninjaWebView, text, Snackbar.LENGTH_SHORT);
             snackbar.setAction(context.getString(R.string.app_ok), v -> startActivity(Intent.createChooser(new Intent(DownloadManager.ACTION_VIEW_DOWNLOADS), null)));
             snackbar.show();
         }
@@ -738,36 +742,43 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
     @SuppressLint({"ClickableViewAccessibility", "UnsafeOptInUsageError"})
     private void initOmniBox() {
 
-        omniBox_text = dialogViewSearch.findViewById(R.id.omniBox_input);
+        search_input = dialogViewSearch.findViewById(R.id.search_input);
         omniBox_title = findViewById(R.id.omniBox_title);
         omniBox_title.setOnClickListener(view -> {
             initSearch();
             sp.edit().putString("sp_search_customSearches", "").apply();
-            omniBox_text.setText(ninjaWebView.getUrl());
+            search_input.setText(ninjaWebView.getUrl());
             dialogSearch.show();
-            HelperUnit.showSoftKeyboard(omniBox_text);
+            HelperUnit.showSoftKeyboard(search_input);
+        });
+        omniBox_title.setOnLongClickListener(v -> {
+            CardView appBar = findViewById(R.id.appBar);
+            ObjectAnimator animation = ObjectAnimator.ofFloat(appBar, "translationY", 275f);
+            animation.setDuration(250);
+            animation.start();
+            return true;
         });
 
-        omniBox_tab = findViewById(R.id.omniBox_tab);
-        omniBox_tab.setOnClickListener(view -> showOverflow());
-        omniBox_tab.setOnLongClickListener(view -> {
+        omnibox_menu = findViewById(R.id.omniBox_menu);
+        omnibox_menu.setOnClickListener(view -> showOverflow());
+        omnibox_menu.setOnLongClickListener(view -> {
             performGesture("setting_gesture_tabButton");
             return true;
         });
         omniBox_overview = findViewById(R.id.omnibox_overview);
 
         list_search = dialogViewSearch.findViewById(R.id.list_search);
-        Button omnibox_close = dialogViewSearch.findViewById(R.id.omnibox_close);
+        Button omnibox_close = dialogViewSearch.findViewById(R.id.search_close);
         assert omnibox_close != null;
         omnibox_close.setOnClickListener(view -> {
-            if (Objects.requireNonNull(omniBox_text.getText()).length() > 0)
-                omniBox_text.setText("");
+            if (Objects.requireNonNull(search_input.getText()).length() > 0)
+                search_input.setText("");
             else hideSearch();
         });
-        Button omnibox_customSearch = dialogViewSearch.findViewById(R.id.omnibox_customSearch);
-        assert omnibox_customSearch != null;
-        omnibox_customSearch.setOnClickListener(view -> {
-            String query = Objects.requireNonNull(omniBox_text.getText()).toString().trim();
+        Button search_custom = dialogViewSearch.findViewById(R.id.search_custom);
+        assert search_custom != null;
+        search_custom.setOnClickListener(view -> {
+            String query = Objects.requireNonNull(search_input.getText()).toString().trim();
             if (query.isEmpty()) {
                 NinjaToast.show(context, getString(R.string.toast_input_empty));
             } else {
@@ -775,15 +786,15 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
                 showDialogCustomSearches(query);
             }
         });
-        Button omnibox_search = dialogViewSearch.findViewById(R.id.omnibox_search);
-        assert omnibox_search != null;
-        omnibox_search.setOnClickListener(view -> {
-            String query = Objects.requireNonNull(omniBox_text.getText()).toString().trim();
+        Button search_search = dialogViewSearch.findViewById(R.id.search_search);
+        assert search_search != null;
+        search_search.setOnClickListener(view -> {
+            String query = Objects.requireNonNull(search_input.getText()).toString().trim();
             if (query.isEmpty()) {
                 NinjaToast.show(context, getString(R.string.toast_input_empty));
             } else {
                 hideSearch();
-                ninjaWebView.loadUrl(omniBox_text.getText().toString());
+                ninjaWebView.loadUrl(search_input.getText().toString());
             }
         });
 
@@ -800,7 +811,7 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
         badgeDrawable.setBadgeTextColor(color2);
 
         omniBox_overview.setOnTouchListener(new SwipeTouchListener(context) {
-        public void onSwipeTop() {
+            public void onSwipeTop() {
             performGesture("setting_gesture_tb_up");
             hideOverview(); }
             public void onSwipeBottom() {
@@ -813,7 +824,7 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
                 performGesture("setting_gesture_tb_left");
                 hideOverview(); }});
 
-        omniBox_tab.setOnTouchListener(new SwipeTouchListener(context) {
+        omnibox_menu.setOnTouchListener(new SwipeTouchListener(context) {
             public void onSwipeTop() {
                 performGesture("setting_gesture_nav_up");
                 hideOverflow(); }
@@ -827,9 +838,9 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
                 performGesture("setting_gesture_nav_left");
                 hideOverflow(); }});
 
-        omniBox_text.setOnEditorActionListener((v, actionId, event) -> {
-            String query = Objects.requireNonNull(omniBox_text.getText()).toString().trim();
-            if (omniBox_text.getText().toString().isEmpty()) {
+        search_input.setOnEditorActionListener((v, actionId, event) -> {
+            String query = Objects.requireNonNull(search_input.getText()).toString().trim();
+            if (search_input.getText().toString().isEmpty()) {
                 NinjaToast.show(context, getString(R.string.toast_input_empty));
             } else {
                 hideSearch();
@@ -871,7 +882,7 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
 
         if (url != null) {
             progressBar.setVisibility(GONE);
-            ninjaWebView.setProfileIcon(omniBox_tab,omniBox_tab, url);
+            ninjaWebView.setProfileIcon(omnibox_menu, omnibox_menu, url);
             if (Objects.requireNonNull(ninjaWebView.getTitle()).isEmpty())
                 omniBox_title.setText(url);
             else omniBox_title.setText(ninjaWebView.getTitle());
@@ -918,7 +929,7 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
         adapterSearch.notifyDataSetChanged();
         list_search.setOnItemClickListener((parent, view, position, id) -> {
             hideSearch();
-            omniBox_text.clearFocus();
+            search_input.clearFocus();
             String url = ((TextView) view.findViewById(R.id.dateView)).getText().toString();
             ninjaWebView.loadUrl(url);
         });
@@ -928,7 +939,7 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
             showContextMenuLink(title, url, SRC_ANCHOR_TYPE, true);
             return true;
         });
-        omniBox_text.addTextChangedListener(new TextWatcher() {
+        search_input.addTextChangedListener(new TextWatcher() {
             public void afterTextChanged(Editable s) {}
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
             public void onTextChanged(CharSequence s, int start, int before, int count) {
@@ -1299,10 +1310,10 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
         dialog.show();
 
         FloatingActionButton buttonProfile = dialogView.findViewById(R.id.buttonProfile);
-        ninjaWebView.setProfileIcon(buttonProfile, omniBox_tab, url);
+        ninjaWebView.setProfileIcon(buttonProfile, omnibox_menu, url);
         buttonProfile.setOnClickListener(v -> {
             sp.edit().putString("profile", "profileStandard").apply();
-            ninjaWebView.setProfileIcon(buttonProfile, omniBox_tab, url);
+            ninjaWebView.setProfileIcon(buttonProfile, omnibox_menu, url);
         });
         HelperUnit.setupDialog(context, dialog);
 
@@ -1411,10 +1422,10 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
         dialog.show();
 
         FloatingActionButton buttonProfile = dialogView.findViewById(R.id.buttonProfile);
-        ninjaWebView.setProfileIcon(buttonProfile, omniBox_tab, url);
+        ninjaWebView.setProfileIcon(buttonProfile, omnibox_menu, url);
         buttonProfile.setOnClickListener(v -> {
             sp.edit().putString("profile", "profileStandard").apply();
-            ninjaWebView.setProfileIcon(buttonProfile, omniBox_tab, url);
+            ninjaWebView.setProfileIcon(buttonProfile, omnibox_menu, url);
         });
         HelperUnit.setupDialog(context, dialog);
 
@@ -1604,10 +1615,10 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
             FaviconHelper.setFavicon(context, dialogViewFastToggle, url, R.id.menu_icon, R.drawable.icon_image_broken);
 
             FloatingActionButton buttonProfile = dialogViewFastToggle.findViewById(R.id.buttonProfile);
-            ninjaWebView.setProfileIcon(buttonProfile, omniBox_tab, url);
+            ninjaWebView.setProfileIcon(buttonProfile, omnibox_menu, url);
             buttonProfile.setOnClickListener(v -> {
                 sp.edit().putString("profile", "profileStandard").apply();
-                ninjaWebView.setProfileIcon(buttonProfile, omniBox_tab, url);
+                ninjaWebView.setProfileIcon(buttonProfile, omnibox_menu, url);
                 dialogFastToggle.cancel();
                 if (!listStandard.isWhite(url)){
                     ninjaWebView.reload();
@@ -1705,7 +1716,7 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
                     sp.edit().putBoolean(profile + "_images", checkbox_image.isChecked()).apply();
                 }  else if (profile.equals("profileStandard")) {
                     ninjaWebView.setProfileChanged();
-                    ninjaWebView.setProfileIcon(buttonProfile, omniBox_tab, url);
+                    ninjaWebView.setProfileIcon(buttonProfile, omnibox_menu, url);
                     sp.edit().putBoolean(NinjaWebView.getProfile() + "_images", checkbox_image.isChecked()).apply();
                 } else {
                     sp.edit().putBoolean(NinjaWebView.getProfile() + "_images", checkbox_image.isChecked()).apply();
@@ -1719,7 +1730,7 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
                     sp.edit().putBoolean(profile + "_javascript", checkbox_java.isChecked()).apply();
                 } else if (NinjaWebView.getProfile().equals("profileStandard")) {
                     ninjaWebView.setProfileChanged();
-                    ninjaWebView.setProfileIcon(buttonProfile, omniBox_tab, url);
+                    ninjaWebView.setProfileIcon(buttonProfile, omnibox_menu, url);
                     sp.edit().putBoolean(NinjaWebView.getProfile() + "_javascript", checkbox_java.isChecked()).apply();
                 } else {
                     sp.edit().putBoolean(NinjaWebView.getProfile() + "_javascript", checkbox_java.isChecked()).apply();
@@ -1733,7 +1744,7 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
                     sp.edit().putBoolean(profile + "_javascriptPopUp", checkbox_javaPopUp.isChecked()).apply();
                 } else if (NinjaWebView.getProfile().equals("profileStandard")) {
                     ninjaWebView.setProfileChanged();
-                    ninjaWebView.setProfileIcon(buttonProfile, omniBox_tab, url);
+                    ninjaWebView.setProfileIcon(buttonProfile, omnibox_menu, url);
                     sp.edit().putBoolean(NinjaWebView.getProfile() + "_javascriptPopUp", checkbox_javaPopUp.isChecked()).apply();
                 } else {
                     sp.edit().putBoolean(NinjaWebView.getProfile() + "_javascriptPopUp", checkbox_javaPopUp.isChecked()).apply();
@@ -1747,7 +1758,7 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
                     sp.edit().putBoolean(profile + "_cookies", checkbox_cookies.isChecked()).apply();
                 } else if (NinjaWebView.getProfile().equals("profileStandard")) {
                     ninjaWebView.setProfileChanged();
-                    ninjaWebView.setProfileIcon(buttonProfile, omniBox_tab, url);
+                    ninjaWebView.setProfileIcon(buttonProfile, omnibox_menu, url);
                     sp.edit().putBoolean(NinjaWebView.getProfile() + "_cookies", checkbox_cookies.isChecked()).apply();
                 } else {
                     sp.edit().putBoolean(NinjaWebView.getProfile() + "_cookies", checkbox_cookies.isChecked()).apply();
@@ -1761,7 +1772,7 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
                     sp.edit().putBoolean(profile + "_cookiesThirdParty", checkbox_cookiesThirdParty.isChecked()).apply();
                 }  else if (NinjaWebView.getProfile().equals("profileStandard")) {
                     ninjaWebView.setProfileChanged();
-                    ninjaWebView.setProfileIcon(buttonProfile, omniBox_tab, url);
+                    ninjaWebView.setProfileIcon(buttonProfile, omnibox_menu, url);
                     sp.edit().putBoolean(NinjaWebView.getProfile() + "_cookiesThirdParty", checkbox_cookiesThirdParty.isChecked()).apply();
                 } else {
                     sp.edit().putBoolean(NinjaWebView.getProfile() + "_cookiesThirdParty", checkbox_cookiesThirdParty.isChecked()).apply();
@@ -1775,7 +1786,7 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
                     sp.edit().putBoolean(profile + "_deny_cookie_banners", checkbox_cookiesBanner.isChecked()).apply();
                 } else if (NinjaWebView.getProfile().equals("profileStandard")) {
                     ninjaWebView.setProfileChanged();
-                    ninjaWebView.setProfileIcon(buttonProfile, omniBox_tab, url);
+                    ninjaWebView.setProfileIcon(buttonProfile, omnibox_menu, url);
                     sp.edit().putBoolean(NinjaWebView.getProfile() + "_deny_cookie_banners", checkbox_cookiesBanner.isChecked()).apply();
                 } else {
                     sp.edit().putBoolean(NinjaWebView.getProfile() + "_deny_cookie_banners", checkbox_cookiesBanner.isChecked()).apply();
@@ -1789,7 +1800,7 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
                     sp.edit().putBoolean(profile + "_fingerPrintProtection", checkbox_fingerPrint.isChecked()).apply();
                 } else if (NinjaWebView.getProfile().equals("profileStandard")) {
                     ninjaWebView.setProfileChanged();
-                    ninjaWebView.setProfileIcon(buttonProfile, omniBox_tab, url);
+                    ninjaWebView.setProfileIcon(buttonProfile, omnibox_menu, url);
                     sp.edit().putBoolean(NinjaWebView.getProfile() + "_fingerPrintProtection", checkbox_fingerPrint.isChecked()).apply();
                 } else {
                     sp.edit().putBoolean(NinjaWebView.getProfile() + "_fingerPrintProtection", checkbox_fingerPrint.isChecked()).apply();
@@ -1803,7 +1814,7 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
                     sp.edit().putBoolean(profile + "_adBlock", checkbox_adBlock.isChecked()).apply();
                 }  else if (NinjaWebView.getProfile().equals("profileStandard")) {
                     ninjaWebView.setProfileChanged();
-                    ninjaWebView.setProfileIcon(buttonProfile, omniBox_tab, url);
+                    ninjaWebView.setProfileIcon(buttonProfile, omnibox_menu, url);
                     sp.edit().putBoolean(NinjaWebView.getProfile() + "_adBlock", checkbox_adBlock.isChecked()).apply();
                 } else {
                     sp.edit().putBoolean(NinjaWebView.getProfile() + "_adBlock", checkbox_adBlock.isChecked()).apply();
@@ -1817,7 +1828,7 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
                     sp.edit().putBoolean(profile + "_trackingULS", checkbox_trackingURL.isChecked()).apply();
                 }  else if (NinjaWebView.getProfile().equals("profileStandard")) {
                     ninjaWebView.setProfileChanged();
-                    ninjaWebView.setProfileIcon(buttonProfile, omniBox_tab, url);
+                    ninjaWebView.setProfileIcon(buttonProfile, omnibox_menu, url);
                     sp.edit().putBoolean(NinjaWebView.getProfile() + "_trackingULS", checkbox_trackingURL.isChecked()).apply();
                 } else {
                     sp.edit().putBoolean(NinjaWebView.getProfile() + "_trackingULS", checkbox_trackingURL.isChecked()).apply();
@@ -1831,7 +1842,7 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
                     sp.edit().putBoolean(profile + "_saveData", checkbox_saveData.isChecked()).apply();
                 }  else if (NinjaWebView.getProfile().equals("profileStandard")) {
                     ninjaWebView.setProfileChanged();
-                    ninjaWebView.setProfileIcon(buttonProfile, omniBox_tab, url);
+                    ninjaWebView.setProfileIcon(buttonProfile, omnibox_menu, url);
                     sp.edit().putBoolean(NinjaWebView.getProfile() + "_saveData", checkbox_saveData.isChecked()).apply();
                 } else {
                     sp.edit().putBoolean(NinjaWebView.getProfile() + "_saveData", checkbox_saveData.isChecked()).apply();
@@ -1845,7 +1856,7 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
                     sp.edit().putBoolean(profile + "_saveHistory", checkbox_history.isChecked()).apply();
                 }  else if (NinjaWebView.getProfile().equals("profileStandard")) {
                     ninjaWebView.setProfileChanged();
-                    ninjaWebView.setProfileIcon(buttonProfile, omniBox_tab, url);
+                    ninjaWebView.setProfileIcon(buttonProfile, omnibox_menu, url);
                     sp.edit().putBoolean(NinjaWebView.getProfile() + "_saveHistory", checkbox_history.isChecked()).apply();
                 } else {
                     sp.edit().putBoolean(NinjaWebView.getProfile() + "_saveHistory", checkbox_history.isChecked()).apply();
@@ -1859,7 +1870,7 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
                     sp.edit().putBoolean(profile + "_location", checkbox_location.isChecked()).apply();
                 } else if (NinjaWebView.getProfile().equals("profileStandard")) {
                     ninjaWebView.setProfileChanged();
-                    ninjaWebView.setProfileIcon(buttonProfile, omniBox_tab, url);
+                    ninjaWebView.setProfileIcon(buttonProfile, omnibox_menu, url);
                     sp.edit().putBoolean(NinjaWebView.getProfile() + "_location", checkbox_location.isChecked()).apply();
                 } else {
                     sp.edit().putBoolean(NinjaWebView.getProfile() + "_location", checkbox_location.isChecked()).apply();
@@ -1873,7 +1884,7 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
                     sp.edit().putBoolean(profile + "_microphone", checkbox_mic.isChecked()).apply();
                 }  else if (NinjaWebView.getProfile().equals("profileStandard")) {
                     ninjaWebView.setProfileChanged();
-                    ninjaWebView.setProfileIcon(buttonProfile, omniBox_tab, url);
+                    ninjaWebView.setProfileIcon(buttonProfile, omnibox_menu, url);
                     sp.edit().putBoolean(NinjaWebView.getProfile() + "_microphone", checkbox_mic.isChecked()).apply();
                 } else {
                     sp.edit().putBoolean(NinjaWebView.getProfile() + "_microphone", checkbox_mic.isChecked()).apply();
@@ -1887,7 +1898,7 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
                     sp.edit().putBoolean(profile + "_camera", checkbox_camera.isChecked()).apply();
                 } else if (NinjaWebView.getProfile().equals("profileStandard")) {
                     ninjaWebView.setProfileChanged();
-                    ninjaWebView.setProfileIcon(buttonProfile, omniBox_tab, url);
+                    ninjaWebView.setProfileIcon(buttonProfile, omnibox_menu, url);
                     sp.edit().putBoolean(NinjaWebView.getProfile() + "_camera", checkbox_camera.isChecked()).apply();
                 } else {
                     sp.edit().putBoolean(NinjaWebView.getProfile() + "_camera", checkbox_camera.isChecked()).apply();
@@ -1901,7 +1912,7 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
                     sp.edit().putBoolean(profile + "_dom", checkbox_dom.isChecked()).apply();
                 }  else if (NinjaWebView.getProfile().equals("profileStandard")) {
                     ninjaWebView.setProfileChanged();
-                    ninjaWebView.setProfileIcon(buttonProfile, omniBox_tab, url);
+                    ninjaWebView.setProfileIcon(buttonProfile, omnibox_menu, url);
                     sp.edit().putBoolean(NinjaWebView.getProfile() + "_dom", checkbox_dom.isChecked()).apply();
                 } else {
                     sp.edit().putBoolean(NinjaWebView.getProfile() + "_dom", checkbox_dom.isChecked()).apply();
@@ -1923,7 +1934,7 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
                         sp.edit().putBoolean(profile + "_night", checkbox_nightView.isChecked()).apply();
                     }  else if (NinjaWebView.getProfile().equals("profileStandard")) {
                         ninjaWebView.setProfileChanged();
-                        ninjaWebView.setProfileIcon(buttonProfile, omniBox_tab, url);
+                        ninjaWebView.setProfileIcon(buttonProfile, omnibox_menu, url);
                         sp.edit().putBoolean(NinjaWebView.getProfile() + "_night", checkbox_nightView.isChecked()).apply();
                     } else {
                         sp.edit().putBoolean(NinjaWebView.getProfile() + "_night", checkbox_nightView.isChecked()).apply();
@@ -1938,7 +1949,7 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
                     sp.edit().putBoolean(profile + "_desktop", checkbox_desktop.isChecked()).apply();
                 }  else if (NinjaWebView.getProfile().equals("profileStandard")) {
                     ninjaWebView.setProfileChanged();
-                    ninjaWebView.setProfileIcon(buttonProfile, omniBox_tab, url);
+                    ninjaWebView.setProfileIcon(buttonProfile, omnibox_menu, url);
                     sp.edit().putBoolean(NinjaWebView.getProfile() + "_desktop", checkbox_desktop.isChecked()).apply();
                 } else {
                     sp.edit().putBoolean(NinjaWebView.getProfile() + "_desktop", checkbox_desktop.isChecked()).apply();
@@ -1969,9 +1980,9 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
                         .putBoolean(profileToSave + "_desktop", checkbox_desktop.isChecked()).apply();
                 if (sp.getBoolean("sp_standard_always", true)) {
                     sp.edit().putString("profile", "profileStandard").apply();
-                    ninjaWebView.setProfileIcon(buttonProfile, omniBox_tab, url);
+                    ninjaWebView.setProfileIcon(buttonProfile, omnibox_menu, url);
                 }
-                ninjaWebView.setProfileIcon(buttonProfile,omniBox_tab, url);
+                ninjaWebView.setProfileIcon(buttonProfile, omnibox_menu, url);
                 dialogFastToggle.cancel();
                 ninjaWebView.reload();
             });
@@ -1999,9 +2010,9 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
                         .remove(profileToSave + "_desktop").apply();
                 if (sp.getBoolean("sp_standard_always", true)) {
                     sp.edit().putString("profile", "profileStandard").apply();
-                    ninjaWebView.setProfileIcon(buttonProfile, omniBox_tab, url);
+                    ninjaWebView.setProfileIcon(buttonProfile, omnibox_menu, url);
                 }
-                ninjaWebView.setProfileIcon(buttonProfile, omniBox_tab, url);
+                ninjaWebView.setProfileIcon(buttonProfile, omnibox_menu, url);
                 dialogFastToggle.cancel();
                 ninjaWebView.reload();
             });
@@ -2150,15 +2161,10 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
     private void doubleTapsQuit() {
         if (!sp.getBoolean("sp_close_browser_confirm", true)) finishAndRemoveTask();
         else {
-            MaterialAlertDialogBuilder builder = new MaterialAlertDialogBuilder(context);
-            builder.setTitle(R.string.setting_title_confirm_exit);
-            builder.setIcon(R.drawable.icon_alert);
-            builder.setMessage(R.string.toast_quit);
-            builder.setPositiveButton(R.string.app_ok, (dialog, whichButton) -> finishAndRemoveTask());
-            builder.setNegativeButton(R.string.app_cancel, (dialog, whichButton) -> dialog.cancel());
-            AlertDialog dialog = builder.create();
-            dialog.show();
-            HelperUnit.setupDialog(context, dialog);}
+            Snackbar snackbar = Snackbar.make(ninjaWebView, R.string.toast_quit, Snackbar.LENGTH_SHORT);
+            snackbar.setAction(context.getString(R.string.app_ok), (v -> finishAndRemoveTask()));
+            snackbar.show();
+        }
     }
 
     private void saveOpenedTabs() {
@@ -2503,15 +2509,10 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
     private void closeTabConfirmation(final Runnable okAction) {
         if (!sp.getBoolean("sp_close_tab_confirm", false)) okAction.run();
         else {
-            MaterialAlertDialogBuilder builder = new MaterialAlertDialogBuilder(context);
-            builder.setTitle(R.string.menu_closeTab);
-            builder.setIcon(R.drawable.icon_alert);
-            builder.setMessage(R.string.toast_quit_TAB);
-            builder.setPositiveButton(R.string.app_ok, (dialog, whichButton) -> okAction.run());
-            builder.setNegativeButton(R.string.app_cancel, (dialog, whichButton) -> dialog.cancel());
-            AlertDialog dialog = builder.create();
-            dialog.show();
-            HelperUnit.setupDialog(context, dialog); }
+            Snackbar snackbar = Snackbar.make(ninjaWebView, R.string.toast_quit_TAB, Snackbar.LENGTH_SHORT);
+            snackbar.setAction(context.getString(R.string.app_ok), (v -> okAction.run()));
+            snackbar.show();
+        }
     }
 
     @SuppressLint("SetJavaScriptEnabled")
@@ -2610,7 +2611,7 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
             MaterialButton startBrowsing = dialogView.findViewById(R.id.startBrowsing);
             startBrowsing.setOnClickListener(v -> {
                 dialog.cancel();
-                HelperUnit.showSoftKeyboard(omniBox_text);
+                HelperUnit.showSoftKeyboard(search_input);
             });
 
             MaterialButton openSettings = dialogView.findViewById(R.id.openSettings);
@@ -2656,7 +2657,7 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
     private void triggerRebirth(Context context) {
         sp.edit().putInt("restart_changed", 0).apply();
         sp.edit().putBoolean("restoreOnRestart", true).apply();
-        Snackbar snackbar = Snackbar.make(ninjaWebView, R.string.toast_restart, Snackbar.LENGTH_LONG);
+        Snackbar snackbar = Snackbar.make(ninjaWebView, R.string.toast_restart, Snackbar.LENGTH_SHORT);
         snackbar.setAction(context.getString(R.string.app_ok), (v -> {
             PackageManager packageManager = context.getPackageManager();
             Intent intent = packageManager.getLaunchIntentForPackage(context.getPackageName());
