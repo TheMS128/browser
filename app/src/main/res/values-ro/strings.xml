@@ -82,8 +82,6 @@
     <string name="setting_title_javascript_popUp">Ferestre plutitoare</string>
     <string name="setting_title_javascript">JavaScript</string>
     <string name="setting_title_adblock">AdBlock</string>
-    <string name="setting_summary_adblock">Activează AdBlock pentru a bloca reclamele enervante. De asemenea, site-urile se încarcă mai repede când este activat.</string>
-    <string name="setting_title_adblockHost">Conținut Blocat</string>
     <string name="setting_title_location">Locație</string>
     <string name="data_summary">Toate fișierele vor fi exportate în dosarul \"Documente/browser_backup/\" de pe cardul SD.</string>
     <string name="clear_title_quit">Curățare la ieșirea din aplicație</string>

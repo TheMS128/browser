@@ -81,8 +81,6 @@
     <string name="setting_title_javascript_popUp">نوافذ منبثقة</string>
     <string name="setting_title_javascript">جافا سكريبت</string>
     <string name="setting_title_adblock">مانع الاعلانات</string>
-    <string name="setting_summary_adblock">مكن مانع الاعلانات لمنع الإعلانات المزعجة. تمكينه يسرع تحميل المواقع.</string>
-    <string name="setting_title_adblockHost">المحتوى المحظور</string>
     <string name="setting_title_location">الموقع</string>
     <string name="data_summary">سيتم تصدير جميع الملفات إلى دليل \"Documents / browser_backup /\" لبطاقة SD الخاصة بك.</string>
     <string name="clear_title_quit">امسح عند خروج التطبيق</string>

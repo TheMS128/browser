@@ -80,8 +80,6 @@
     <string name="setting_title_javascript_popUp">Iskočke</string>
     <string name="setting_title_javascript">JavaScript</string>
     <string name="setting_title_adblock">AdBlock</string>
-    <string name="setting_summary_adblock">Omogućite AdBlock da biste blokirali dosadne reklame. Stranice se isto brže učitavaju kad je omogućen.</string>
-    <string name="setting_title_adblockHost">Blokirani sadržaji</string>
     <string name="setting_title_location">Lokacija</string>
     <string name="data_summary">Sve datoteke će biti izvezene u direktorij \"Documents/browser_backup/\" na vašoj SD kartici.</string>
     <string name="clear_title_quit">Očistite pri izlazku iz aplikacije</string>

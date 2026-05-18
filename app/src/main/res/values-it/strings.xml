@@ -82,8 +82,6 @@
     <string name="setting_title_javascript_popUp">Popup</string>
     <string name="setting_title_javascript">JavaScript</string>
     <string name="setting_title_adblock">AdBlock</string>
-    <string name="setting_summary_adblock">Abilita AdBlock per bloccare gli annunci fastidiosi. I siti si caricano anche più velocemente quando il blocco è abilitato.</string>
-    <string name="setting_title_adblockHost">Contenuto bloccato</string>
     <string name="setting_title_location">Posizione</string>
     <string name="data_summary">Tutti i file verranno esportati nella directory \"Documents/browser_backup/\" della scheda SD.</string>
     <string name="clear_title_quit">Cancella all\'uscita dell\'applicazione</string>

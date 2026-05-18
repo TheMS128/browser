@@ -82,8 +82,6 @@
     <string name="setting_title_javascript_popUp">Popupy</string>
     <string name="setting_title_javascript">JavaScript</string>
     <string name="setting_title_adblock">AdBlock</string>
-    <string name="setting_summary_adblock">Zezwól na AdBlock do blokady irytujących reklam. Poprawia on prędkość ładowania witryn.</string>
-    <string name="setting_title_adblockHost">Zablokowane treści</string>
     <string name="setting_title_location">Lokalizacja</string>
     <string name="data_summary">Wszystkie pliki zostaną wyeksportowane do katalogu „Documents/browser_backup/” na karcie SD.</string>
     <string name="clear_title_quit">Wymaż na zamknięciu</string>

@@ -82,8 +82,6 @@
     <string name="setting_title_javascript_popUp">Αναδυόμενα</string>
     <string name="setting_title_javascript">JavaScript</string>
     <string name="setting_title_adblock">AdBlock</string>
-    <string name="setting_summary_adblock">Ενεργοποιήστε το AdBlock για να αποκλείσετε ενοχλητικές διαφημίσεις. Οι ιστότοποι επίσης φορτώνουν γρηγορότερα όταν είναι ενεργοποιημένο.</string>
-    <string name="setting_title_adblockHost">Αποκλεισμένο περιεχόμενο</string>
     <string name="setting_title_location">Τοποθεσία</string>
     <string name="data_summary">Όλα τα αρχεία θα εξαχθούν στον κατάλογο \"Documents/browser_backup/\" της κάρτας SD σας.</string>
     <string name="clear_title_quit">Διαγραφή κατά την έξοδο της εφαρμογής</string>

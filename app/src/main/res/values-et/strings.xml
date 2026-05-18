@@ -108,8 +108,6 @@
     <string name="setting_title_javascript_popUp">Hüpikaknad</string>
     <string name="setting_title_javascript">JavaScript</string>
     <string name="setting_title_adblock">Reklaamiblokerija</string>
-    <string name="setting_summary_adblock">Reklaamide blokeerimisel on kasutusel AdBlock ja saitide laadimine toimib kiiremini.</string>
-    <string name="setting_title_adblockHost">Blokeeritud sisu</string>
     <string name="setting_title_location">Asukoht</string>
     <string name="data_summary">Kõik failid salvestuvad sinu nutiseadme SD-kaardi kausta „Documents/browser_backup/“.</string>
     <string name="clear_title_quit">Kustuta väljumisel</string>

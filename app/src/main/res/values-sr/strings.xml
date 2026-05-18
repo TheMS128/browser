@@ -82,8 +82,6 @@
     <string name="setting_title_javascript_popUp">Искачући прозорчићи</string>
     <string name="setting_title_javascript">Џава-скрипт</string>
     <string name="setting_title_adblock">Блокер реклама</string>
-    <string name="setting_summary_adblock">Омогиући блокер реклама како би блокирао досадне рекламе. Сајтови се такође брже учитавају кад је омогућен.</string>
-    <string name="setting_title_adblockHost">Блокиран садржај</string>
     <string name="setting_title_location">Локација</string>
     <string name="data_summary">Све датотеке биће извезене у фасцикли \"Documents/browser_backup/\" на СД картици.</string>
     <string name="clear_title_quit">Бриши при затварању</string>

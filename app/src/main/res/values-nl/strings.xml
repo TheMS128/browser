@@ -82,8 +82,6 @@
     <string name="setting_title_javascript_popUp">Popups</string>
     <string name="setting_title_javascript">JavaScript</string>
     <string name="setting_title_adblock">Advertentieblokkering</string>
-    <string name="setting_summary_adblock">Schakel advertentieblokkering in om vervelende reclame te blokkeren. Websites laden hierdoor ook sneller.</string>
-    <string name="setting_title_adblockHost">Geblokkeerde inhoud</string>
     <string name="setting_title_location">Locatie</string>
     <string name="data_summary">Alle bestanden worden geëxporteerd naar de map \"Documents/browser_backup/\" van uw SD-card.</string>
     <string name="clear_title_quit">Wissen bij afsluiten van toepassing</string>

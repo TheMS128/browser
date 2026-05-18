@@ -82,8 +82,6 @@
     <string name="setting_title_javascript_popUp">Fenêtres contextuelles</string>
     <string name="setting_title_javascript">JavaScript</string>
     <string name="setting_title_adblock">AdBlock</string>
-    <string name="setting_summary_adblock">Activez AdBlock pour bloquer les publicités embêtantes. Les sites chargent aussi plus rapidement une fois activé.</string>
-    <string name="setting_title_adblockHost">Contenu bloqué</string>
     <string name="setting_title_location">Localisation</string>
     <string name="data_summary">Tous les fichiers seront exportés vers le répertoire \"Documents/browser_backup/\" de votre carte SD.</string>
     <string name="clear_title_quit">Effacer à la fermeture de l\'application</string>

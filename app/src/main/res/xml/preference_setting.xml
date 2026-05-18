@@ -103,17 +103,12 @@
             app:editTextSwitchKey="userAgentSwitch"
             app:useSimpleSummaryProvider="true" />
 
-        <Preference
-            android:key="sp_ad_block"
-            android:selectable="false"
-            android:summary="@string/setting_summary_adblock" />
-
         <ListPreference
             android:defaultValue="https://raw.githubusercontent.com/StevenBlack/hosts/master/hosts"
             android:entries="@array/setting_entries_adBlock"
             android:entryValues="@array/setting_values_adBlock"
             android:key="ab_hosts"
-            android:title="@string/setting_title_adblockHost" />
+            android:title="@string/setting_title_adblock" />
 
     </PreferenceCategory>
 

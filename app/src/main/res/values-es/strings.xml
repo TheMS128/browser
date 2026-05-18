@@ -81,8 +81,6 @@
     <string name="setting_summary_cookie_delete">Si se activa, se eliminarán todas las cookies. Esto incluye las cookies de los sitios web de confianza.</string>
     <string name="setting_title_javascript">JavaScript</string>
     <string name="setting_title_adblock">Bloqueador de anuncios</string>
-    <string name="setting_summary_adblock">Activa AdBlock para bloquear los anuncios. Los sitios web se cargan más rápido cuando está activado.</string>
-    <string name="setting_title_adblockHost">Contenido bloqueado</string>
     <string name="setting_title_location">Ubicación</string>
     <string name="data_summary">Todos los archivos se guardarán en el directorio \"Documents/browser_backup/\" de tu tarjeta SD.</string>
     <string name="clear_title_quit">Borrar al salir</string>

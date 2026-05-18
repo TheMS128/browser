@@ -104,8 +104,6 @@
     <string name="setting_title_javascript_popUp">Popups</string>
     <string name="setting_title_javascript">JavaScript</string>
     <string name="setting_title_adblock">AdBlock</string>
-    <string name="setting_summary_adblock">Enable AdBlock to block ads. Websites load faster when enabled.</string>
-    <string name="setting_title_adblockHost">Blocked content</string>
     <string name="setting_title_location">Location</string>
     <string name="data_summary">All files will be saved to the \"Documents/browser_backup/\" directory of your SD-card.</string>
     <string name="clear_title_quit">Clear on exit</string>

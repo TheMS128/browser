@@ -81,8 +81,6 @@
     <string name="setting_summary_cookie_delete">Se selecionado, todos os cookies serão removidos. Isto inclui os cookies de sites confiáveis.</string>
     <string name="setting_title_javascript">JavaScript</string>
     <string name="setting_title_adblock">AdBlock</string>
-    <string name="setting_summary_adblock">Habilita o AdBlock para bloquear anúncios. Sites carregam mais rápido quando ativado.</string>
-    <string name="setting_title_adblockHost">Conteúdo bloqueado</string>
     <string name="setting_title_location">Localização</string>
     <string name="data_summary">Todos os arquivos serão salvos para o diretório \"Documents/browser_backup/\" do seu cartão SD.</string>
     <string name="clear_title_quit">Limpar ao sair</string>

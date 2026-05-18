@@ -29,6 +29,7 @@ import de.baumann.browser.view.NinjaToast;
 
 public class Fragment_settings extends BasePreferenceFragment implements SharedPreferences.OnSharedPreferenceChangeListener {
 
+    private Preference sp_ad_block;
     @Override
     public void onCreatePreferences(Bundle savedInstanceState, String rootKey) {
 
@@ -38,10 +39,9 @@ public class Fragment_settings extends BasePreferenceFragment implements SharedP
         initSummary(getPreferenceScreen());
 
         SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(context);
-
-        Preference sp_ad_block = findPreference("sp_ad_block");
+        sp_ad_block = findPreference("ab_hosts");
         assert sp_ad_block != null;
-        sp_ad_block.setSummary(getString(R.string.setting_summary_adblock) + "\n\n" + AdBlock.getHostsDate(getContext()));
+        sp_ad_block.setSummary(AdBlock.getHostsDate(getContext()));
 
         Preference settings_profile = findPreference("settings_profile");
         assert settings_profile != null;
@@ -109,6 +109,7 @@ public class Fragment_settings extends BasePreferenceFragment implements SharedP
         if (p instanceof ListPreference) {
             ListPreference listPref = (ListPreference) p;
             if (p.getSummaryProvider() == null) p.setSummary(listPref.getEntry());
+            sp_ad_block.setSummary(AdBlock.getHostsDate(requireContext()));
         }
         if (p instanceof EditTextPreference) {
             EditTextPreference editTextPref = (EditTextPreference) p;
@@ -143,14 +144,11 @@ public class Fragment_settings extends BasePreferenceFragment implements SharedP
 
     @Override
     public void onSharedPreferenceChanged(final SharedPreferences sp, String key) {
-
         assert key != null;
         updatePrefSummary(findPreference(key));
-
         if (key.equals("sp_ad_block") || key.equals("ab_hosts")) {
             AdBlock.downloadHosts(getActivity());
         }
-
         if ( key.equals("sp_theme") || key.equals("useDynamicColor")) {
             sp.edit().putInt("restart_changed", 1).apply();
             updatePrefSummary(findPreference(key));

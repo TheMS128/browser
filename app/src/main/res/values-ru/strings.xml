@@ -82,8 +82,6 @@
     <string name="setting_title_javascript_popUp">Всплывающие окна</string>
     <string name="setting_title_javascript">JavaScript</string>
     <string name="setting_title_adblock">AdBlock</string>
-    <string name="setting_summary_adblock">Включите AdBlock, чтобы заблокировать рекламу. Сайты загружаются быстрее когда включено.</string>
-    <string name="setting_title_adblockHost">Блокированное содержимое</string>
     <string name="setting_title_location">Местоположение</string>
     <string name="data_summary">Все файлы будут сохранены в каталог «Documents / browser_backup /» вашей SD-карты.</string>
     <string name="clear_title_quit">Очистить при выходе</string>
