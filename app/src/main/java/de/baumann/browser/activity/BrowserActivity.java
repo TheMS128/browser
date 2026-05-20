@@ -45,7 +45,6 @@ import android.text.TextWatcher;
 
 import android.util.Log;
 import android.util.TypedValue;
-import android.view.ContextMenu;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.ViewGroup;
@@ -529,31 +528,6 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
             videoView = null; }
         contentFrame.requestFocus();
     }
-
-    @Override
-    public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
-        super.onCreateContextMenu(menu, v, menuInfo);
-        WebView.HitTestResult result = ninjaWebView.getHitTestResult();
-        if (result.getExtra() != null) {
-            if (result.getType() == SRC_ANCHOR_TYPE)
-                showContextMenuLink("", result.getExtra(), SRC_ANCHOR_TYPE, false);
-            else if (result.getType() == SRC_IMAGE_ANCHOR_TYPE) {
-                // Create a background thread that has a Looper
-                HandlerThread handlerThread = new HandlerThread("HandlerThread");
-                handlerThread.start();
-                // Create a handler to execute tasks in the background thread.
-                Handler backgroundHandler = new Handler(handlerThread.getLooper());
-                Message msg = backgroundHandler.obtainMessage();
-                ninjaWebView.requestFocusNodeHref(msg);
-                String url = (String) msg.getData().get("url");
-                showContextMenuLink("", url, SRC_ANCHOR_TYPE, false); }
-            else if (result.getType() == IMAGE_TYPE) {
-                showContextMenuLink("", result.getExtra(), IMAGE_TYPE, false);
-            }
-            else showContextMenuLink("", result.getExtra(), 0, false); }
-    }
-
-    // Views
 
     @SuppressLint("ClickableViewAccessibility")
     private void initOverview() {
@@ -1281,9 +1255,7 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
         MaterialAlertDialogBuilder builder = new MaterialAlertDialogBuilder(context);
         View dialogView = View.inflate(context, R.layout.dialog_menu, null);
 
-        if (title.isEmpty()) {
-            title = HelperUnit.domain(url);
-        }
+        if (title.isEmpty()) {title = HelperUnit.domain(url);}
         String finalTitle = title;
         LinearLayout textGroup = dialogView.findViewById(R.id.textGroup);
         TextView menuURL = dialogView.findViewById(R.id.menuURL);
@@ -2593,6 +2565,26 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
                 }
                 Log.d("Handler", "Running Handler");
             }, 50);
+        });
+
+        ninjaWebView.setOnLongClickListener(v -> {
+            WebView.HitTestResult result = ninjaWebView.getHitTestResult();
+            int type = result.getType();
+            if (type == WebView.HitTestResult.SRC_ANCHOR_TYPE || type == WebView.HitTestResult.SRC_IMAGE_ANCHOR_TYPE) {
+                String url1 = result.getExtra();
+                showContextMenuLink("", url1, SRC_ANCHOR_TYPE, false);
+                return true;
+            } else if (result.getType() == SRC_IMAGE_ANCHOR_TYPE) {
+                HandlerThread handlerThread = new HandlerThread("HandlerThread");
+                handlerThread.start();
+                Handler backgroundHandler = new Handler(handlerThread.getLooper());
+                Message msg = backgroundHandler.obtainMessage();
+                ninjaWebView.requestFocusNodeHref(msg);
+                String url1 = (String) msg.getData().get("url");
+                showContextMenuLink("", url1, SRC_ANCHOR_TYPE, false);
+                return true;
+            }
+            return false;
         });
 
         if (Objects.requireNonNull(sp.getString("saved_key_ok", "no")).equals("no")) {

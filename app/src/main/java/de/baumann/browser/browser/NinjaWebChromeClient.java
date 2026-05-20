@@ -12,12 +12,16 @@ import android.util.Log;
 import android.view.View;
 import android.webkit.ConsoleMessage;
 import android.webkit.GeolocationPermissions;
+import android.webkit.JsPromptResult;
+import android.webkit.JsResult;
 import android.webkit.PermissionRequest;
 import android.webkit.ValueCallback;
 import android.webkit.WebChromeClient;
 import android.webkit.WebResourceRequest;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
+import android.widget.EditText;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
 
 import androidx.appcompat.app.AlertDialog;
@@ -39,6 +43,52 @@ public class NinjaWebChromeClient extends WebChromeClient {
     public NinjaWebChromeClient(NinjaWebView ninjaWebView) {
         super();
         this.ninjaWebView = ninjaWebView;
+    }
+
+    @Override
+    public boolean onJsAlert(WebView view, String url, String message, final JsResult result) {
+        new MaterialAlertDialogBuilder(ninjaWebView.getContext())
+                .setMessage(message)
+                .setCancelable(false)
+                .setPositiveButton(android.R.string.ok, (dialog, which) -> result.confirm())
+                .show();
+        return true;
+    }
+
+    @Override
+    public boolean onJsConfirm(WebView view, String url, String message, final JsResult result) {
+        new MaterialAlertDialogBuilder(ninjaWebView.getContext())
+                .setMessage(message)
+                .setCancelable(false)
+                .setPositiveButton(android.R.string.ok, (dialog, which) -> result.confirm())
+                .setNegativeButton(android.R.string.cancel, (dialog, which) -> result.cancel())
+                .show();
+        return true;
+    }
+
+    @Override
+    public boolean onJsPrompt(WebView view, String url, String message, String defaultValue, final JsPromptResult result) {
+        final EditText input = new EditText(ninjaWebView.getContext());
+        input.setText(defaultValue);
+        FrameLayout container = new FrameLayout(ninjaWebView.getContext());
+        FrameLayout.LayoutParams params = new FrameLayout.LayoutParams(
+                FrameLayout.LayoutParams.MATCH_PARENT,
+                FrameLayout.LayoutParams.WRAP_CONTENT
+        );
+        int margin = (int) (20 * ninjaWebView.getContext().getResources().getDisplayMetrics().density);
+        params.leftMargin = margin;
+        params.rightMargin = margin;
+        input.setLayoutParams(params);
+        container.addView(input);
+
+        new MaterialAlertDialogBuilder(ninjaWebView.getContext())
+                .setTitle(message)
+                .setView(container)
+                .setCancelable(false)
+                .setPositiveButton(android.R.string.ok, (dialog, which) -> result.confirm(input.getText().toString()))
+                .setNegativeButton(android.R.string.cancel, (dialog, which) -> result.cancel())
+                .show();
+        return true;
     }
 
     @Override

@@ -14,6 +14,7 @@ import android.webkit.CookieManager;
 import android.webkit.HttpAuthHandler;
 import android.webkit.RenderProcessGoneDetail;
 import android.webkit.SslErrorHandler;
+import android.webkit.WebBackForwardList;
 import android.webkit.WebResourceRequest;
 import android.webkit.WebResourceResponse;
 import android.webkit.WebView;
@@ -70,6 +71,8 @@ public class NinjaWebViewClient extends WebViewClient {
         if (ninjaWebView.isForeground()) ninjaWebView.invalidate();
         else ninjaWebView.postInvalidate();
         CookieManager.getInstance().flush();
+
+        sp.edit().putString("mCurrentUrl", url).apply();
 
         if (ninjaWebView.isSaveData())
             view.evaluateJavascript("var links=document.getElementsByTagName('video'); for(let i=0;i<links.length;i++){links[i].pause()};", null);
@@ -456,14 +459,26 @@ public class NinjaWebViewClient extends WebViewClient {
         final Uri uri = request.getUrl();
         String url = uri.toString();
         if (url.startsWith("http:") || url.startsWith("https:")) {
-            ninjaWebView.loadUrl(url);
+
+            String mCurrentUrl = sp.getString("mCurrentUrl", "");
+            if(url.equals(mCurrentUrl)) {
+                String historyUrl="";
+                WebBackForwardList mWebBackForwardList = view.copyBackForwardList();
+                if (mWebBackForwardList.getCurrentIndex() > 0)
+                    historyUrl = mWebBackForwardList.getItemAtIndex(mWebBackForwardList.getCurrentIndex()-1).getUrl();
+                view.loadUrl(historyUrl);
+                sp.edit().putString("mCurrentUrl", "").apply();
+                return false;
+            } else {
+                view.loadUrl(url);
+                return false;
+            }
         } else  {
             Intent intent = new Intent(Intent.ACTION_VIEW);
             intent.setData(Uri.parse(url));
             context.startActivity(Intent.createChooser(intent, url));
             return true;
         }
-        return false;
     }
 
     @Override

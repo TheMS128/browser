@@ -2,10 +2,15 @@
 
 - fix: Unable to access full tab list #1282
 - fix: Hide URL-Bar/Status Bar when Scrolling #1278
+- fix: auto hide/show control bar when scrolled up/down #1283
 - fix: Highlight entire URL #1269
-- fix: lost settings when changing profile
-- fix: not showing status bar in settings
+- fix: Day Mode hides clock, battery and notifications #1270
+- fix: Behavior/UI settings crashing #1265
+- fix: Update JavaScript alert dialogs #1279
+- fix: go back not work when redirect happens #1281
+- fix: Cookies Getting Disabled #1273
 - removed: redundant settings (autofill, custom javascript)
+- removed: StartSite
 
 
 ### v 22 Die Edelweißpiraten
