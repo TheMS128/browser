@@ -459,20 +459,20 @@ public class NinjaWebViewClient extends WebViewClient {
         final Uri uri = request.getUrl();
         String url = uri.toString();
         if (url.startsWith("http:") || url.startsWith("https:")) {
-
             String mCurrentUrl = sp.getString("mCurrentUrl", "");
-            if(url.equals(mCurrentUrl)) {
+            if(url.equals(mCurrentUrl) && sp.getBoolean("backPressed", false)) {
                 String historyUrl="";
                 WebBackForwardList mWebBackForwardList = view.copyBackForwardList();
                 if (mWebBackForwardList.getCurrentIndex() > 0)
                     historyUrl = mWebBackForwardList.getItemAtIndex(mWebBackForwardList.getCurrentIndex()-1).getUrl();
                 view.loadUrl(historyUrl);
                 sp.edit().putString("mCurrentUrl", "").apply();
-                return false;
+                sp.edit().putBoolean("backPressed", false).apply();
+                //view.loadUrl(url);
             } else {
                 view.loadUrl(url);
-                return false;
             }
+            return false;
         } else  {
             Intent intent = new Intent(Intent.ACTION_VIEW);
             intent.setData(Uri.parse(url));

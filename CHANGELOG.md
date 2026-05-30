@@ -9,6 +9,8 @@
 - fix: Update JavaScript alert dialogs #1279
 - fix: go back not work when redirect happens #1281
 - fix: Cookies Getting Disabled #1273
+- fix: Add ability to view image alt text #1000
+- fix: lint issues
 - removed: redundant settings (autofill, custom javascript)
 - removed: StartSite
 

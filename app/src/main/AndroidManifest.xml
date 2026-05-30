@@ -141,6 +141,10 @@
             android:name="de.baumann.browser.activity.Settings_Profile"
             android:label="@string/setting_title_profiles_standard" />
 
+        <activity
+            android:name="de.baumann.browser.activity.Settings_Menu"
+            android:label="@string/setting_menu" />
+
     </application>
 
 </manifest>

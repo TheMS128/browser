@@ -10,6 +10,7 @@
     <string name="app_help">Help</string>
     <string name="app_cancel">Cancel</string>
     <string name="app_done">Done</string>
+    <string name="menu_delete_entry">Delete entry</string>
     <string name="app_error">Error</string>
     <string name="app_error_copy">Please select and copy text manually</string>
     <string name="app_error_save">Already saved.</string>
@@ -99,6 +100,7 @@
     <string name="setting_title_profiles_Security">Security</string>
     <string name="setting_title_images">Images</string>
     <string name="setting_title_cookie">Cookies</string>
+    <string name="setting_menu">Menu</string>
     <string name="setting_title_cookie_thirdParty">Third Party Cookies</string>
     <string name="setting_summary_cookie_delete">If enabled, all cookies will be removed. This includes the cookies from trusted websites.</string>
     <string name="setting_title_javascript_popUp">Popups</string>

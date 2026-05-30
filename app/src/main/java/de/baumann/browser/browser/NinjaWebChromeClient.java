@@ -28,7 +28,6 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.preference.PreferenceManager;
 
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
-import com.google.android.material.snackbar.Snackbar;
 
 import de.baumann.browser.R;
 import de.baumann.browser.unit.BrowserUnit;
@@ -96,20 +95,6 @@ public class NinjaWebChromeClient extends WebChromeClient {
         if (consoleMessage.message().contains("NotAllowedError: Write permission denied.")) {  //this error occurs when user copies to clipboard
             NinjaToast.show(ninjaWebView.getContext(), R.string.app_error_copy);
             return true;
-        }
-
-        if (consoleMessage.message().contains("Uncaught TypeError: Cannot read properties of undefined (reading 'more_items')")) {
-            Context context = ninjaWebView.getContext();
-            String s = context.getString(R.string.app_error) + ": \"" + consoleMessage.message() +"\"";
-            try {
-                Snackbar snackbar = Snackbar.make(ninjaWebView, s, Snackbar.LENGTH_LONG);
-                snackbar.setAction(context.getString(R.string.menu_reload), v -> ninjaWebView.reload());
-                snackbar.show();
-                return true;
-            } catch (Exception e) {
-                NinjaToast.show(context, s);
-                Log.i(TAG, "dialogCustomSearches:" + e);
-            }
         }
         return false;
     }

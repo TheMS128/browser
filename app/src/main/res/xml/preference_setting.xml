@@ -115,6 +115,10 @@
     <PreferenceCategory >
 
         <Preference
+            android:key="settings_menu"
+            android:title="@string/setting_menu" />
+
+        <Preference
             android:key="settings_filter"
             android:title="@string/setting_filter" />
 

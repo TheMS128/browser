@@ -21,6 +21,7 @@ import de.baumann.browser.activity.Settings_Backup;
 import de.baumann.browser.activity.Settings_Delete;
 import de.baumann.browser.activity.Settings_Filter;
 import de.baumann.browser.activity.Settings_Gesture;
+import de.baumann.browser.activity.Settings_Menu;
 import de.baumann.browser.activity.Settings_Profile;
 import de.baumann.browser.activity.Settings_ProfileList;
 import de.baumann.browser.browser.AdBlock;
@@ -55,6 +56,14 @@ public class Fragment_settings extends BasePreferenceFragment implements SharedP
         edit_standard.setOnPreferenceClickListener(preference -> {
             sp.edit().putString("listToLoad", "standard").apply();
             Intent intent = new Intent(getActivity(), Settings_ProfileList.class);
+            requireActivity().startActivity(intent);
+            return false;
+        });
+
+        Preference settings_menu = findPreference("settings_menu");
+        assert settings_menu != null;
+        settings_menu.setOnPreferenceClickListener(preference -> {
+            Intent intent = new Intent(getActivity(), Settings_Menu.class);
             requireActivity().startActivity(intent);
             return false;
         });
