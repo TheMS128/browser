@@ -284,6 +284,7 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
             public void onReceive(Context context, Intent intent) {
                 String text = getString(R.string.app_done) + ". " + getString(R.string.menu_download) +"?";
                 Snackbar snackbar = Snackbar.make(ninjaWebView, text, Snackbar.LENGTH_SHORT);
+                HelperUnit.makeSnackbarRound(context, snackbar);
                 snackbar.setAction(context.getString(R.string.app_ok), v -> startActivity(Intent.createChooser(new Intent(DownloadManager.ACTION_VIEW_DOWNLOADS), null)));
                 snackbar.show();
             }};
@@ -366,6 +367,7 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
             sp.edit().putBoolean("pdf_create", false).apply();
             String text = getString(R.string.app_done) + ". " + getString(R.string.menu_download) +"?";
             Snackbar snackbar = Snackbar.make(ninjaWebView, text, Snackbar.LENGTH_SHORT);
+            HelperUnit.makeSnackbarRound(context, snackbar);
             snackbar.setAction(context.getString(R.string.app_ok), v -> startActivity(Intent.createChooser(new Intent(DownloadManager.ACTION_VIEW_DOWNLOADS), null)));
             snackbar.show();
         }
@@ -393,7 +395,7 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
     public boolean onKeyDown(int keyCode, KeyEvent event) {
         switch (keyCode) {
             case KeyEvent.KEYCODE_MENU:
-                showOverflow(0, ninjaWebView.getTitle(), ninjaWebView.getUrl(), null, null, 0);
+                showOverflow(null, null, 0, ninjaWebView.getTitle(), ninjaWebView.getUrl(), null, null, 0);
             case KeyEvent.KEYCODE_BACK:
                 if (fullscreenHolder != null || customView != null || videoView != null) {
                     Log.v(TAG, "FOSS Browser in fullscreen mode");
@@ -593,8 +595,7 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
                     hideOverview();
                 });
                 listView.setOnItemLongClickListener((parent, view, position, id) -> {
-                    dialogOverview.cancel();
-                    showOverflow(3, list.get(position).getTitle(), list.get(position).getURL(), adapter, list, position);
+                    showOverflow(dialogOverview,  listView, 3, list.get(position).getTitle(), list.get(position).getURL(), adapter, list, position);
                     return true;
                 }); }
             else if (menuItem.getItemId() == R.id.page_3) {
@@ -626,8 +627,7 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
                     hideOverview();
                 });
                 listView.setOnItemLongClickListener((parent, view, position, id) -> {
-                    dialogOverview.cancel();
-                    showOverflow(4, list.get(position).getTitle(), list.get(position).getURL(), adapter, list, position);
+                    showOverflow(dialogOverview, listView, 4, list.get(position).getTitle(), list.get(position).getURL(), adapter, list, position);
                     return true;
                 }); }
             else if (menuItem.getItemId() == R.id.page_4) {
@@ -739,7 +739,7 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
         });
 
         omnibox_menu = findViewById(R.id.omniBox_menu);
-        omnibox_menu.setOnClickListener(view -> showOverflow(0, ninjaWebView.getTitle(), ninjaWebView.getUrl(), null, null, 0));
+        omnibox_menu.setOnClickListener(view -> showOverflow(null, null, 0, ninjaWebView.getTitle(), ninjaWebView.getUrl(), null, null, 0));
         omnibox_menu.setOnLongClickListener(view -> {
             performGesture("setting_gesture_tabButton");
             return true;
@@ -915,8 +915,7 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
         list_search.setOnItemLongClickListener((adapterView, view, i, l) -> {
             String title = ((TextView) view.findViewById(R.id.titleView)).getText().toString();
             String url = ((TextView) view.findViewById(R.id.dateView)).getText().toString();
-            dialogSearch.cancel();
-            showOverflow(2, title, url, null, null, 0);
+            showOverflow(dialogSearch, list_search, 2, title, url, null, null, 0);
             return true;
         });
         search_input.addTextChangedListener(new TextWatcher() {
@@ -949,19 +948,14 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
         else if (overViewTab.equals(getString(R.string.album_title_history))) bottom_navigation.setSelectedItemId(R.id.page_3);
     }
 
-    // OverflowMenu
-
     private void hideOverflow () {
         dialog_overflow.cancel();
     }
-
-
 
     // Hilfsmethode, um nur ausgewählte Items aus dem lokalen Speicher zu holen
     private List<MenuItem> loadSelectedFromStorage() {
         SharedPreferences prefs = getSharedPreferences(Settings_Menu.PREF_NAME, Context.MODE_PRIVATE);
         String json = prefs.getString(Settings_Menu.KEY_LIST, null);
-
         List<MenuItem> selected = new ArrayList<>();
         if (json != null) {
             Type type = new TypeToken<ArrayList<MenuItem>>() {}.getType();
@@ -977,7 +971,6 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
 
     public void removeItemByName(String name, List<MenuItem> selectedItemsList, AdapterMenu adapter) {
         int indexToRemove = -1;
-
         // 1. Position des Elements in der aktuellen Grid-Liste finden
         for (int i = 0; i < selectedItemsList.size(); i++) {
             if (selectedItemsList.get(i).getTitle().equalsIgnoreCase(name)) {
@@ -985,24 +978,20 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
                 break;
             }
         }
-
         // Wenn das Element im aktuellen Grid existiert
         if (indexToRemove != -1) {
             // 2. Aus der Liste für die Anzeige entfernen
             selectedItemsList.remove(indexToRemove);
-
             // 3. Den Adapter über das Entfernen informieren (zeigt eine schöne Animation)
             adapter.notifyItemRemoved(indexToRemove);
-
             // 4. Die Änderung dauerhaft in der Masterliste (SharedPreferences) speichern
             //updateMasterListInStorage(name);
-
             Toast.makeText(this, name + " wurde entfernt", Toast.LENGTH_SHORT).show();
         }
     }
 
     @SuppressLint("ClickableViewAccessibility")
-    private void showOverflow(int hide, String title, String url, final AdapterRecord adapterRecord, List<Record> recordList, int location) {
+    private void showOverflow(Dialog dialog, View view, int hideMenu, String title, String url, final AdapterRecord adapterRecord, List<Record> recordList, int location) {
 
         MaterialAlertDialogBuilder builder = new MaterialAlertDialogBuilder(context);
         View dialogView = View.inflate(context, R.layout.dialog_menu_overflow, null);
@@ -1014,23 +1003,13 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
         textGroup.setOnClickListener(v -> NinjaToast.show(context, url));
         TextView menuTitle = dialogView.findViewById(R.id.overflowTitle);
         menuTitle.setText(title);
-        String textToShow = title + ":\n\n" + url;
-        textGroup.setOnClickListener(v -> {
-            Snackbar snackbar = Snackbar.make(dialogView, textToShow, Snackbar.LENGTH_INDEFINITE);
-            snackbar.setAction(R.string.app_ok, v1 -> snackbar.dismiss());
-            snackbar.setTextMaxLines(100);
-            snackbar.show();
-        });
-
-        // 1. Prüfen, ob Daten direkt übergeben wurden
+        textGroup.setOnClickListener(v -> HelperUnit.showSnackbar ( context, dialogView, title, url));
         String jsonReceived = getIntent().getStringExtra("SELECTED_DATA");
         List<MenuItem> selectedItemsList;
-
         if (jsonReceived != null) {
             Type type = new TypeToken<ArrayList<MenuItem>>() {}.getType();
             selectedItemsList = new Gson().fromJson(jsonReceived, type);
         } else {
-            // 2. Fallback: Lade den globalen Zustand aus SharedPreferences (bei Kaltstart)
             selectedItemsList = loadSelectedFromStorage();
         }
 
@@ -1041,19 +1020,21 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
         } else {
             recyclerView.setLayoutManager(new GridLayoutManager(this, 1));
         }
+
         @SuppressLint("NonConstantResourceId")
         AdapterMenu adapter = new AdapterMenu(selectedItemsList, item -> {
 
             String favURL = Objects.requireNonNull(sp.getString("favoriteURL", "https://codeberg.org/Gaukler_Faun/FOSS_Browser/wiki"));
             RecordAction action = new RecordAction(context);
+
             dialog_overflow.cancel();
 
             switch (item.getIconResId()) {
                 case R.drawable.icon_fav:
-                    dialog_overflow.cancel();
                     ninjaWebView.loadUrl(favURL);
                     break;
                 case R.drawable.icon_tab_plus:
+                    dialog.cancel();
                     if (url.equals(ninjaWebView.getUrl())) {
                         addAlbum(getString(R.string.app_name), favURL, true);
                     } else {
@@ -1069,11 +1050,9 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
                     break;
                 case R.drawable.icon_refresh:
                     ninjaWebView.reload();
-                    dialog_overflow.cancel();
                     break;
                 case R.drawable.icon_tab_remove:
                     removeAlbum(currentAlbumController);
-                    dialog_overflow.cancel();
                     break;
                 case R.drawable.icon_close:
                     doubleTapsQuit();
@@ -1128,7 +1107,6 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
                     startActivity(settings);
                     break;
                 case R.drawable.icon_restart:
-                    dialog_overflow.cancel();
                     triggerRebirth(context);
                     break;
                 case R.drawable.icon_help:
@@ -1136,12 +1114,9 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
                     BrowserUnit.intentURL(this, webpage);
                     break;
                 case R.drawable.icon_delete:
-                    hideSearch();
-                    MaterialAlertDialogBuilder builderSubMenuDelete = new MaterialAlertDialogBuilder(context);
-                    builderSubMenuDelete.setTitle(R.string.menu_delete);
-                    builderSubMenuDelete.setMessage(R.string.hint_database);
-                    builderSubMenuDelete.setIcon(R.drawable.icon_delete);
-                    builderSubMenuDelete.setPositiveButton(R.string.app_ok, (dialog, whichButton) -> {
+                    Snackbar snackbarSearch = Snackbar.make(view, R.string.hint_database, Snackbar.LENGTH_SHORT);
+                    HelperUnit.makeSnackbarRound(context, snackbarSearch);
+                    snackbarSearch.setAction(context.getString(R.string.app_ok), (v -> {
                         action.open(true);
                         action.deleteURL(url, RecordUnit.TABLE_START);
                         action.deleteURL(url, RecordUnit.TABLE_BOOKMARK);
@@ -1149,18 +1124,14 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
                         action.close();
                         adapterSearch.notifyDataSetChanged();
                         initSearch();
-                    });
-                    builderSubMenuDelete.setNegativeButton(R.string.app_cancel, (dialog, whichButton) -> builderSubMenuDelete.setCancelable(true));
-                    Dialog dialogSubMenuDelete = builderSubMenuDelete.create();
-                    dialogSubMenuDelete.show();
-                    HelperUnit.setupDialog(context, dialogSubMenuDelete);
+                        dialog_overflow.cancel();
+                    }));
+                    snackbarSearch.show();
                     break;
                 case R.drawable.icon_delete_alt:
-                    MaterialAlertDialogBuilder builderSubMenuDeleteList = new MaterialAlertDialogBuilder(context);
-                    builderSubMenuDeleteList.setTitle(R.string.menu_delete);
-                    builderSubMenuDeleteList.setIcon(R.drawable.icon_delete);
-                    builderSubMenuDeleteList.setMessage(R.string.hint_database);
-                    builderSubMenuDeleteList.setPositiveButton(R.string.app_ok, (dialog, whichButton) -> {
+                    Snackbar snackbarList = Snackbar.make(view, R.string.hint_database, Snackbar.LENGTH_SHORT);
+                    HelperUnit.makeSnackbarRound(context, snackbarList);
+                    snackbarList.setAction(context.getString(R.string.app_ok), (v -> {
                         Record record = recordList.get(location);
                         action.open(true);
                         if (overViewTab.equals(getString(R.string.album_title_bookmarks))) action.deleteURL(record.getURL(), RecordUnit.TABLE_BOOKMARK);
@@ -1169,11 +1140,9 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
                         recordList.remove(location);
                         adapterRecord.notifyDataSetChanged();
                         updateOmniBox();
-                    });
-                    builderSubMenuDeleteList.setNegativeButton(R.string.app_cancel, (dialog, whichButton) -> builderSubMenuDeleteList.setCancelable(true));
-                    Dialog dialogSubMenuDeleteList = builderSubMenuDeleteList.create();
-                    dialogSubMenuDeleteList.show();
-                    HelperUnit.setupDialog(context, dialogSubMenuDeleteList);
+                        dialog_overflow.cancel();
+                    }));
+                    snackbarList.show();
                     break;
                 case R.drawable.icon_edit:
 
@@ -1213,7 +1182,7 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
                         menuEditFilter.setVerticalSpacing(20);
                         menuEditFilter.setAdapter(menuEditFilterAdapter);
                         menuEditFilterAdapter.notifyDataSetChanged();
-                        menuEditFilter.setOnItemClickListener((parent, view, position, id) -> {
+                        menuEditFilter.setOnItemClickListener((parent, view2, position, id) -> {
                             newIcon = menuEditFilterList.get(position).getData();
                             HelperUnit.setFilterIcons(context, ib_icon, newIcon);
                             dialogFilter.cancel();
@@ -1261,7 +1230,7 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
             }
         });
         recyclerView.setAdapter(adapter);
-        if (!(hide == 0)) {
+        if (!(hideMenu == 0)) {
             removeItemByName(getString(R.string.menu_openFav), selectedItemsList, adapter);
             removeItemByName(getString(R.string.menu_reload), selectedItemsList, adapter);
             removeItemByName(getString(R.string.menu_closeTab), selectedItemsList, adapter);
@@ -1275,24 +1244,24 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
             removeItemByName(getString(R.string.menu_sc), selectedItemsList, adapter);
             removeItemByName(getString(R.string.menu_save_bookmark), selectedItemsList, adapter);
         }
-        if (hide == 0) {
+        if (hideMenu == 0) {
             //Main menu
             removeItemByName(getString(R.string.menu_delete), selectedItemsList, adapter);
             removeItemByName(getString(R.string.menu_delete_entry), selectedItemsList, adapter);
             removeItemByName(getString(R.string.menu_edit), selectedItemsList, adapter);
-        } else if (hide == 1) {
+        } else if (hideMenu == 1) {
             //Long click
             removeItemByName(getString(R.string.menu_delete), selectedItemsList, adapter);
             removeItemByName(getString(R.string.menu_delete_entry), selectedItemsList, adapter);
             removeItemByName(getString(R.string.menu_edit), selectedItemsList, adapter);
-        } else if (hide == 2) {
+        } else if (hideMenu == 2) {
             //List search
             removeItemByName(getString(R.string.menu_edit), selectedItemsList, adapter);
             removeItemByName(getString(R.string.menu_delete_entry), selectedItemsList, adapter);
-        } else if (hide == 3) {
+        } else if (hideMenu == 3) {
             // Bookmark
             removeItemByName(getString(R.string.menu_delete), selectedItemsList, adapter);
-        } else if (hide == 4) {
+        } else if (hideMenu == 4) {
             // History
             removeItemByName(getString(R.string.menu_delete), selectedItemsList, adapter);
             removeItemByName(getString(R.string.menu_edit), selectedItemsList, adapter);
@@ -1361,13 +1330,7 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
             overflowTitle.setText(ninjaWebView.getTitle());
             FaviconHelper.setFavicon(context, dialogViewFastToggle, url, R.id.menu_icon, R.drawable.icon_image_broken);
 
-            String textToShow = ninjaWebView.getTitle() + ":\n\n" + url;
-            textGroup.setOnClickListener(v -> {
-                Snackbar snackbar = Snackbar.make(dialogViewFastToggle, textToShow, Snackbar.LENGTH_INDEFINITE);
-                snackbar.setAction(R.string.app_ok, v1 -> snackbar.dismiss());
-                snackbar.setTextMaxLines(100);
-                snackbar.show();
-            });
+            textGroup.setOnClickListener(v -> HelperUnit.showSnackbar ( context, dialogViewFastToggle, ninjaWebView.getTitle(), url));
 
             FloatingActionButton buttonProfile = dialogViewFastToggle.findViewById(R.id.buttonProfile);
             ninjaWebView.setProfileIcon(buttonProfile, omnibox_menu, url);
@@ -1931,6 +1894,7 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
         if (!sp.getBoolean("sp_close_browser_confirm", true)) finishAndRemoveTask();
         else {
             Snackbar snackbar = Snackbar.make(ninjaWebView, R.string.toast_quit, Snackbar.LENGTH_SHORT);
+            HelperUnit.makeSnackbarRound(context, snackbar);
             snackbar.setAction(context.getString(R.string.app_ok), (v -> finishAndRemoveTask()));
             snackbar.show();
         }
@@ -2272,6 +2236,7 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
         if (!sp.getBoolean("sp_close_tab_confirm", false)) okAction.run();
         else {
             Snackbar snackbar = Snackbar.make(ninjaWebView, R.string.toast_quit_TAB, Snackbar.LENGTH_SHORT);
+            HelperUnit.makeSnackbarRound(context, snackbar);
             snackbar.setAction(context.getString(R.string.app_ok), (v -> okAction.run()));
             snackbar.show();
         }
@@ -2397,10 +2362,7 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
                         if (textToShow.contains("ERR_ALT_NOT_FOUND") || textToShow.contains("ERR_NO_ALT_ATTR") || textToShow.contains("ERR_ALT_EMPTY")) {
                             NinjaToast.show(this, textToShow);
                         } else {
-                            Snackbar snackbar = Snackbar.make(ninjaWebView, textToShow, Snackbar.LENGTH_INDEFINITE);
-                            snackbar.setAction(R.string.app_ok, v1 -> snackbar.dismiss());
-                            snackbar.setTextMaxLines(100);
-                            snackbar.show();
+                            HelperUnit.showSnackbar(context, ninjaWebView, ninjaWebView.getTitle(), textToShow);
                         }
                     });
                 });
@@ -2409,7 +2371,7 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
 
             if (type == WebView.HitTestResult.SRC_ANCHOR_TYPE || type == WebView.HitTestResult.SRC_IMAGE_ANCHOR_TYPE) {
                 String urlResult = result.getExtra();
-                showOverflow(1, HelperUnit.domain(urlResult), urlResult, null, null, 0);
+                showOverflow(null, null, 1, HelperUnit.domain(urlResult), urlResult, null, null, 0);
                 return true;
             } else if (result.getType() == SRC_IMAGE_ANCHOR_TYPE) {
                 HandlerThread handlerThread = new HandlerThread("HandlerThread");
@@ -2418,11 +2380,16 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
                 Message msg = backgroundHandler.obtainMessage();
                 ninjaWebView.requestFocusNodeHref(msg);
                 String urlResult = result.getExtra();
-                showOverflow(1, HelperUnit.domain(urlResult), urlResult, null, null, 0);
+                showOverflow(null, null, 1, HelperUnit.domain(urlResult), urlResult, null, null, 0);
                 return true;
             }
             return false;
         });
+
+        if (Objects.requireNonNull(sp.getString("saved_menu", "no")).equals("no")) {
+            sp.edit().putString("saved_menu", "yes").apply();
+            HelperUnit.initAndLoadMenu(this);
+        }
 
         if (Objects.requireNonNull(sp.getString("saved_key_ok", "no")).equals("no")) {
             sp.edit().putString("saved_key_ok", "yes")
@@ -2500,6 +2467,7 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
         sp.edit().putInt("restart_changed", 0).apply();
         sp.edit().putBoolean("restoreOnRestart", true).apply();
         Snackbar snackbar = Snackbar.make(ninjaWebView, R.string.toast_restart, Snackbar.LENGTH_SHORT);
+        HelperUnit.makeSnackbarRound(context, snackbar);
         snackbar.setAction(context.getString(R.string.app_ok), (v -> {
             PackageManager packageManager = context.getPackageManager();
             Intent intent = packageManager.getLaunchIntentForPackage(context.getPackageName());

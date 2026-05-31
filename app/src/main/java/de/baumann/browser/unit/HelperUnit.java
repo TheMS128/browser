@@ -64,20 +64,23 @@ import com.google.android.material.card.MaterialCardView;
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.textfield.TextInputLayout;
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 
 import java.io.File;
 import java.io.FileOutputStream;
-import java.text.SimpleDateFormat;
-import java.util.Date;
+import java.lang.reflect.Type;
+import java.util.ArrayList;
 import java.util.List;
-import java.util.Locale;
 import java.util.Objects;
 
 import de.baumann.browser.R;
 import de.baumann.browser.activity.BrowserActivity;
+import de.baumann.browser.activity.Settings_Menu;
 import de.baumann.browser.browser.DataURIParser;
 import de.baumann.browser.browser.List_standard;
 import de.baumann.browser.view.GridItem;
+import de.baumann.browser.view.MenuItem;
 import de.baumann.browser.view.NinjaToast;
 import de.baumann.browser.view.NinjaWebView;
 
@@ -248,13 +251,6 @@ public class HelperUnit {
         } catch (Exception e) {
             System.out.println("failed_to_add");
         }
-    }
-
-    public static String fileName(String url) {
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd_HH-mm-ss", Locale.getDefault());
-        String currentTime = sdf.format(new Date());
-        String domain = Objects.requireNonNull(Uri.parse(url).getHost()).replace("www.", "").trim();
-        return domain.replace(".", "_").trim() + "_" + currentTime.trim();
     }
 
     public static String domain(String url) {
@@ -480,5 +476,115 @@ public class HelperUnit {
         }
         tv.setEllipsize(TextUtils.TruncateAt.END);
         tv.setSingleLine(true);
+    }
+    // Diese Methode stellt sicher, dass die Liste existiert und gibt sie direkt zurück
+    public static void initAndLoadMenu(Context context) {
+        SharedPreferences sharedPreferences = context.getSharedPreferences(Settings_Menu.PREF_NAME, Context.MODE_PRIVATE);
+        String json = sharedPreferences.getString(Settings_Menu.KEY_LIST, null);
+
+        Type type = new TypeToken<ArrayList<MenuItem>>() {}.getType();
+        List<MenuItem> list = new Gson().fromJson(json, type);
+        // Falls die App neu installiert wurde oder die Liste leer ist
+        if (list == null || list.isEmpty()) {
+            list = new ArrayList<>();
+            list.add(new MenuItem(context.getString(R.string.menu_openFav), R.drawable.icon_fav, true));
+            list.add(new MenuItem(context.getString(R.string.menu_fav), R.drawable.icon_fav_plus, true));
+            list.add(new MenuItem(context.getString(R.string.main_menu_new_tabOpen), R.drawable.icon_tab_plus, true));
+            list.add(new MenuItem(context.getString(R.string.main_menu_new_tab), R.drawable.icon_tab_background, true));
+            list.add(new MenuItem(context.getString(R.string.menu_closeTab), R.drawable.icon_tab_remove, true));
+            list.add(new MenuItem(context.getString(R.string.menu_other_searchSite), R.drawable.icon_search_site, true));
+            list.add(new MenuItem(context.getString(R.string.menu_reload), R.drawable.icon_refresh, true));
+            list.add(new MenuItem(context.getString(R.string.menu_share_link), R.drawable.icon_link, true));
+            list.add(new MenuItem(context.getString(R.string.menu_shareClipboard), R.drawable.icon_clipboard, true));
+            list.add(new MenuItem(context.getString(R.string.dialog_postOnWebsite), R.drawable.icon_post, true));
+            list.add(new MenuItem(context.getString(R.string.menu_save_bookmark), R.drawable.icon_bookmark, true));
+            list.add(new MenuItem(context.getString(R.string.menu_save_pdf), R.drawable.icon_file, true));
+            list.add(new MenuItem(context.getString(R.string.menu_save_as), R.drawable.icon_menu_save, true));
+            list.add(new MenuItem(context.getString(R.string.menu_shareOpenWith), R.drawable.icon_share_open_with, true));
+            list.add(new MenuItem(context.getString(R.string.menu_sc), R.drawable.icon_home, true));
+            list.add(new MenuItem(context.getString(R.string.menu_download), R.drawable.icon_download, true));
+            list.add(new MenuItem(context.getString(R.string.setting_label), R.drawable.icon_settings, true));
+            list.add(new MenuItem(context.getString(R.string.menu_restart), R.drawable.icon_restart, true));
+            list.add(new MenuItem(context.getString(R.string.menu_quit), R.drawable.icon_close, true));
+            list.add(new MenuItem(context.getString(R.string.menu_edit), R.drawable.icon_edit, true));
+            list.add(new MenuItem(context.getString(R.string.menu_delete), R.drawable.icon_delete, true));
+            list.add(new MenuItem(context.getString(R.string.menu_delete_entry), R.drawable.icon_delete_alt, true));
+            list.add(new MenuItem(context.getString(R.string.app_help), R.drawable.icon_help, true));
+            // Sofort in den SharedPreferences speichern, damit sie ab jetzt "verfügbar" ist
+            SharedPreferences.Editor editor = sharedPreferences.edit();
+            editor.putString(Settings_Menu.KEY_LIST, new Gson().toJson(list));
+            editor.apply();
+        }
+    }
+    public static void showSnackbar(Context context, View view, String title, String text) {
+        android.text.SpannableStringBuilder snackbarText = new android.text.SpannableStringBuilder();
+        snackbarText.append(title);
+        // Macht den Titel fett (vom ersten bis zum letzten Zeichen des Titels)
+        snackbarText.setSpan(
+                new android.text.style.StyleSpan(android.graphics.Typeface.BOLD),
+                0,
+                title.length(),
+                android.text.Spanned.SPAN_EXCLUSIVE_EXCLUSIVE
+        );
+        // Zeilenumbruch und URL in normaler Schrift anhängen
+        snackbarText.append(":\n").append(text);
+        // 3. Snackbar erstellen
+        com.google.android.material.snackbar.Snackbar snackbar =
+                com.google.android.material.snackbar.Snackbar.make(
+                        view,
+                        snackbarText,
+                        com.google.android.material.snackbar.Snackbar.LENGTH_INDEFINITE
+                );
+        // 4. Wichtig: Der Snackbar erlauben, mehr als 2 Zeilen anzuzeigen
+        android.view.View snackbarView = snackbar.getView();
+        android.widget.TextView textView = snackbarView.findViewById(com.google.android.material.R.id.snackbar_text);
+        if (textView != null) {
+            textView.setMaxLines(100); // Erlaubt der Snackbar, bei langen URLs umzubrechen
+        }
+        // RUNDE ECKEN HINZUFÜGEN:
+        // Wir erstellen ein abgerundetes Rechteck im Code
+        android.graphics.drawable.GradientDrawable background = new android.graphics.drawable.GradientDrawable();
+        background.setShape(android.graphics.drawable.GradientDrawable.RECTANGLE);
+        // Ecken-Radius in Pixel umrechnen (16dp für deutlich sichtbare Rundung)
+        float density = context.getResources().getDisplayMetrics().density;
+        background.setCornerRadius(24 * density);
+        // Option A: Aktuelle Hintergrundfarbe der Snackbar beibehalten
+        if (snackbarView.getBackground() instanceof android.graphics.drawable.ColorDrawable) {
+            background.setColor(((android.graphics.drawable.ColorDrawable) snackbarView.getBackground()).getColor());
+        } else {
+            // Option B: Fallback-Farbe (Dunkelgrau/Material-Standard) falls Option A fehlschlägt
+            background.setColor(android.graphics.Color.parseColor("#323232"));
+        }
+        // Das abgerundete Drawable als neuen Hintergrund setzen
+        snackbarView.setBackground(background);
+        // 5. Snackbar anzeigen
+        snackbar.setAction(R.string.app_ok, v1 -> snackbar.dismiss());
+        snackbar.show();
+    }
+
+    public static void makeSnackbarRound (Context context, Snackbar snackbar) {
+
+        android.view.View snackbarView = snackbar.getView();
+        android.widget.TextView textView = snackbarView.findViewById(com.google.android.material.R.id.snackbar_text);
+        if (textView != null) {
+            textView.setMaxLines(100); // Erlaubt der Snackbar, bei langen URLs umzubrechen
+        }
+        // RUNDE ECKEN HINZUFÜGEN:
+        // Wir erstellen ein abgerundetes Rechteck im Code
+        android.graphics.drawable.GradientDrawable background = new android.graphics.drawable.GradientDrawable();
+        background.setShape(android.graphics.drawable.GradientDrawable.RECTANGLE);
+        // Ecken-Radius in Pixel umrechnen (16dp für deutlich sichtbare Rundung)
+        float density = context.getResources().getDisplayMetrics().density;
+        background.setCornerRadius(24 * density);
+        // Option A: Aktuelle Hintergrundfarbe der Snackbar beibehalten
+        if (snackbarView.getBackground() instanceof android.graphics.drawable.ColorDrawable) {
+            background.setColor(((android.graphics.drawable.ColorDrawable) snackbarView.getBackground()).getColor());
+        } else {
+            // Option B: Fallback-Farbe (Dunkelgrau/Material-Standard) falls Option A fehlschlägt
+            background.setColor(android.graphics.Color.parseColor("#323232"));
+        }
+        // Das abgerundete Drawable als neuen Hintergrund setzen
+        snackbarView.setBackground(background);
+        snackbar.setTextMaxLines(100);
     }
 }

@@ -60,10 +60,10 @@ public class AdapterSettingsMenu extends RecyclerView.Adapter<AdapterSettingsMen
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
-        TextView textView;
-        ImageView imageView;
-        CheckBox checkBox;
-        CardView cardView;
+        final TextView textView;
+        final ImageView imageView;
+        final CheckBox checkBox;
+        final CardView cardView;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);

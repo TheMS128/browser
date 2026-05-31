@@ -11,8 +11,10 @@
 - fix: Cookies Getting Disabled #1273
 - fix: Add ability to view image alt text #1000
 - fix: lint issues
+- fix: toasts not showing entire URL
 - removed: redundant settings (autofill, custom javascript)
 - removed: StartSite
+- new: menu settings
 
 
 ### v 22 Die Edelweißpiraten

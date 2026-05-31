@@ -31,8 +31,8 @@ public class Settings_Menu extends AppCompatActivity {
     private List<MenuItem> masterList;
     private AdapterSettingsMenu adapter;
     private SharedPreferences sharedPreferences;
-    public static final String PREF_NAME = "AppPreferences";
-    public static final String KEY_LIST = "SettingsList";
+    public static final String PREF_NAME = "MenuPreferences";
+    public static final String KEY_LIST = "MenuList";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -75,47 +75,17 @@ public class Settings_Menu extends AppCompatActivity {
             public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder, int direction) {}
         };
         new ItemTouchHelper(simpleCallback).attachToRecyclerView(recyclerView);
+
     }
     private void saveList() {
         SharedPreferences.Editor editor = sharedPreferences.edit();
         editor.putString(KEY_LIST, new Gson().toJson(masterList));
         editor.apply();
     }
-    private void loadList() {
+    public void loadList() {
         String json = sharedPreferences.getString(KEY_LIST, null);
         Type type = new TypeToken<ArrayList<MenuItem>>() {}.getType();
         masterList = new Gson().fromJson(json, type);
-
-        if (masterList == null) {
-            masterList = new ArrayList<>();
-
-            masterList.add(new MenuItem(getString(R.string.menu_openFav), R.drawable.icon_fav, true));
-            masterList.add(new MenuItem(getString(R.string.main_menu_new_tabOpen), R.drawable.icon_tab_plus, true));
-            masterList.add(new MenuItem(getString(R.string.menu_reload), R.drawable.icon_refresh, true));
-            masterList.add(new MenuItem(getString(R.string.menu_closeTab), R.drawable.icon_tab_remove, true));
-            masterList.add(new MenuItem(getString(R.string.menu_quit), R.drawable.icon_close, true));
-
-            masterList.add(new MenuItem(getString(R.string.menu_save_bookmark), R.drawable.icon_bookmark, true));
-            masterList.add(new MenuItem(getString(R.string.menu_save_pdf), R.drawable.icon_file, true));
-            masterList.add(new MenuItem(getString(R.string.menu_save_as), R.drawable.icon_menu_save, true));
-            masterList.add(new MenuItem(getString(R.string.menu_fav), R.drawable.icon_fav_plus, true));
-
-            masterList.add(new MenuItem(getString(R.string.menu_share_link), R.drawable.icon_link, true));
-            masterList.add(new MenuItem(getString(R.string.dialog_postOnWebsite), R.drawable.icon_post, true));
-            masterList.add(new MenuItem(getString(R.string.menu_shareClipboard), R.drawable.icon_clipboard, true));
-            masterList.add(new MenuItem(getString(R.string.menu_shareOpenWith), R.drawable.icon_share_open_with, true));
-            masterList.add(new MenuItem(getString(R.string.menu_sc), R.drawable.icon_home, true));
-
-            masterList.add(new MenuItem(getString(R.string.menu_other_searchSite), R.drawable.icon_search_site, true));
-            masterList.add(new MenuItem(getString(R.string.menu_download), R.drawable.icon_download, true));
-            masterList.add(new MenuItem(getString(R.string.setting_label), R.drawable.icon_settings, true));
-            masterList.add(new MenuItem(getString(R.string.menu_restart), R.drawable.icon_restart, true));masterList.add(new MenuItem(getString((R.string.app_help)), R.drawable.icon_help, true));
-
-            masterList.add(new MenuItem(getString(R.string.main_menu_new_tab), R.drawable.icon_tab_background, true));
-            masterList.add(new MenuItem(getString(R.string.menu_delete), R.drawable.icon_delete, true));
-            masterList.add(new MenuItem(getString(R.string.menu_delete), R.drawable.icon_delete_alt, true));
-            masterList.add(new MenuItem(getString(R.string.menu_edit), R.drawable.icon_edit, true));
-        }
     }
 
     @Override

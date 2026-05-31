@@ -58,7 +58,6 @@
                 android:layout_toEndOf="@id/cardView">
 
                 <TextView
-                    android:id="@+id/menuTitle"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="2dp"
@@ -69,7 +68,6 @@
                     android:textStyle="bold"/>
 
                 <TextView
-                    android:id="@+id/menuURL"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:ellipsize="end"
