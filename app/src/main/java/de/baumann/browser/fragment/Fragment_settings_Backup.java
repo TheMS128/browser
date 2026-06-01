@@ -9,11 +9,11 @@ import android.os.Bundle;
 import android.os.Environment;
 import android.util.Log;
 import android.widget.Button;
+import android.widget.LinearLayout;
 
-import androidx.appcompat.app.AlertDialog;
 import androidx.preference.PreferenceManager;
 
-import com.google.android.material.dialog.MaterialAlertDialogBuilder;
+import com.google.android.material.snackbar.Snackbar;
 
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
@@ -64,24 +64,19 @@ public class Fragment_settings_Backup extends BasePreferenceFragment {
 
         Button ib_backup = activity.findViewById(R.id.ib_backup);
         ib_backup.setOnClickListener(v -> {
-            MaterialAlertDialogBuilder builder = new MaterialAlertDialogBuilder(context);
-            builder.setIcon(R.drawable.icon_alert);
-            builder.setTitle(R.string.app_warning);
-            builder.setMessage(R.string.toast_backup);
-            builder.setPositiveButton(R.string.app_ok, (dialog, whichButton) -> backup(activity));
-            builder.setNegativeButton(R.string.app_cancel, (dialog, whichButton) -> dialog.cancel());
-            AlertDialog dialog = builder.create();
-            dialog.show();
-            HelperUnit.setupDialog(context, dialog);
+            LinearLayout root = getActivity().findViewById(R.id.root);
+            Snackbar snackbarBottom = Snackbar.make(root, R.string.toast_backup, Snackbar.LENGTH_SHORT);
+            HelperUnit.makeSnackbarRound(getContext(), snackbarBottom);
+            snackbarBottom.setAction(this.getString(R.string.app_ok), (r -> backup(activity)));
+            snackbarBottom.show();
         });
 
         Button ib_restore = activity.findViewById(R.id.ib_restore);
         ib_restore.setOnClickListener(v -> {
-            MaterialAlertDialogBuilder builder = new MaterialAlertDialogBuilder(context);
-            builder.setIcon(R.drawable.icon_alert);
-            builder.setTitle(R.string.menu_delete);
-            builder.setMessage(R.string.hint_database);
-            builder.setPositiveButton(R.string.app_ok, (dialog, whichButton) -> {
+            LinearLayout root = getActivity().findViewById(R.id.root);
+            Snackbar snackbarBottom = Snackbar.make(root, R.string.hint_database, Snackbar.LENGTH_SHORT);
+            HelperUnit.makeSnackbarRound(getContext(), snackbarBottom);
+            snackbarBottom.setAction(this.getString(R.string.app_ok), (r -> {
                 if (!BackupUnit.checkPermissionStorage(context)) {
                     BackupUnit.requestPermission(activity);
                 } else {
@@ -97,11 +92,8 @@ public class Fragment_settings_Backup extends BasePreferenceFragment {
                     }
                     sp.edit().putInt("restart_changed", 1).apply();
                 }
-            });
-            builder.setNegativeButton(R.string.app_cancel, (dialog, whichButton) -> dialog.cancel());
-            AlertDialog dialog = builder.create();
-            dialog.show();
-            HelperUnit.setupDialog(context, dialog);
+            }));
+            snackbarBottom.show();
         });
     }
 

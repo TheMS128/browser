@@ -10,7 +10,6 @@
     <string name="app_help">Help</string>
     <string name="app_cancel">Cancel</string>
     <string name="app_done">Done</string>
-    <string name="menu_delete_entry">Delete entry</string>
     <string name="app_error">Error</string>
     <string name="app_error_copy">Please select and copy text manually</string>
     <string name="app_error_save">Already saved.</string>
@@ -100,7 +99,6 @@
     <string name="setting_title_profiles_Security">Security</string>
     <string name="setting_title_images">Images</string>
     <string name="setting_title_cookie">Cookies</string>
-    <string name="setting_menu">Menu</string>
     <string name="setting_title_cookie_thirdParty">Third Party Cookies</string>
     <string name="setting_summary_cookie_delete">If enabled, all cookies will be removed. This includes the cookies from trusted websites.</string>
     <string name="setting_title_javascript_popUp">Popups</string>
@@ -167,6 +165,8 @@
     <string name="menu_reload">Reload</string>
     <string name="menu_restart">Restart and reload tabs</string>
     <string name="setting_title_screenOn">Keep screen on</string>
+    <string name="setting_menu">Menu</string>
+    <string name="menu_delete_entry">Delete entry</string>
     <string name="app_intro_a">Thanks for using FOSS Browser!</string>
     <string name="app_intro_b">The currently opened website is the WIKI of FOSS Browser. This site is also saved as your first Bookmark. On the WIKI you can find helpful tips and links.</string>
     <string name="app_intro_c">To start browsing just tip on the toolbar. You can search the web for something or enter an url to open.</string>

@@ -642,22 +642,17 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
                     popup.inflate(R.menu.menu_list_history);
                 popup.setOnMenuItemClickListener(item -> {
                     if (item.getItemId() == R.id.menu_delete) {
-                        MaterialAlertDialogBuilder builder = new MaterialAlertDialogBuilder(context);
-                        builder.setTitle(R.string.menu_delete);
-                        builder.setMessage(R.string.hint_database);
-                        builder.setIcon(R.drawable.icon_delete);
-                        builder.setPositiveButton(R.string.app_ok, (dialog, whichButton) -> {
+                        Snackbar snackbarBottom = Snackbar.make(bottom_navigation, R.string.hint_database, Snackbar.LENGTH_SHORT);
+                        HelperUnit.makeSnackbarRound(context, snackbarBottom);
+                        snackbarBottom.setAction(context.getString(R.string.app_ok), (v -> {
                             if (overViewTab.equals(getString(R.string.album_title_bookmarks))) {
                                 BrowserUnit.clearBookmark(context);
                                 bottom_navigation.setSelectedItemId(R.id.page_2); }
                             else if (overViewTab.equals(getString(R.string.album_title_history))) {
                                 BrowserUnit.clearHistory(context);
                                 bottom_navigation.setSelectedItemId(R.id.page_3); }
-                        });
-                        builder.setNegativeButton(R.string.app_cancel, (dialog, whichButton) -> dialog.cancel());
-                        AlertDialog dialog = builder.create();
-                        dialog.show();
-                        HelperUnit.setupDialog(context, dialog);
+                        }));
+                        snackbarBottom.show();
                     } else if (item.getItemId() == R.id.menu_sortName) {
                         sp.edit().putString("sort_bookmark", "title").apply();
                         sp.edit().putBoolean("sort_bookmarkDomain", false).apply();
@@ -723,6 +718,9 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
 
         search_input = dialogViewSearch.findViewById(R.id.search_input);
         omniBox_title = findViewById(R.id.omniBox_title);
+        LinearLayout AbbBarButtons = findViewById(R.id.AbbBarButtons);
+
+
         omniBox_title.setOnClickListener(view -> {
             initSearch();
             sp.edit().putString("sp_search_customSearches", "").apply();
@@ -735,6 +733,19 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
             ObjectAnimator animation = ObjectAnimator.ofFloat(appBar, "translationY", 275f);
             animation.setDuration(250);
             animation.start();
+            ObjectAnimator animation2 = ObjectAnimator.ofFloat(AbbBarButtons, "translationY", 275f);
+            animation2.setDuration(250);
+            animation2.start();
+
+            final Handler handler = new Handler();
+            handler.postDelayed(() -> {
+                ObjectAnimator animationBack = ObjectAnimator.ofFloat(appBar, "translationY", 0f);
+                animationBack.setDuration(250);
+                animationBack.start();
+                ObjectAnimator animationBack2 = ObjectAnimator.ofFloat(AbbBarButtons, "translationY", 0f);
+                animationBack2.setDuration(250);
+                animationBack2.start();
+            }, 5000);
             return true;
         });
 
@@ -984,9 +995,6 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
             selectedItemsList.remove(indexToRemove);
             // 3. Den Adapter über das Entfernen informieren (zeigt eine schöne Animation)
             adapter.notifyItemRemoved(indexToRemove);
-            // 4. Die Änderung dauerhaft in der Masterliste (SharedPreferences) speichern
-            //updateMasterListInStorage(name);
-            Toast.makeText(this, name + " wurde entfernt", Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -1034,18 +1042,18 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
                     ninjaWebView.loadUrl(favURL);
                     break;
                 case R.drawable.icon_tab_plus:
-                    dialog.cancel();
+                    if (hideMenu ==2) {dialog.cancel();}
                     if (url.equals(ninjaWebView.getUrl())) {
-                        addAlbum(getString(R.string.app_name), favURL, true);
+                        addAlbum(HelperUnit.domain(favURL), favURL, true);
                     } else {
-                        addAlbum(getString(R.string.app_name), url, true);
+                        addAlbum(HelperUnit.domain(url), url, true);
                     }
                     break;
                 case R.drawable.icon_tab_background:
                     if (url.equals(ninjaWebView.getUrl())) {
-                        addAlbum(getString(R.string.app_name), favURL, false);
+                        addAlbum(HelperUnit.domain(favURL), favURL, false);
                     } else {
-                        addAlbum(getString(R.string.app_name), url, false);
+                        addAlbum(HelperUnit.domain(url), url, false);
                     }
                     break;
                 case R.drawable.icon_refresh:
@@ -1122,9 +1130,7 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
                         action.deleteURL(url, RecordUnit.TABLE_BOOKMARK);
                         action.deleteURL(url, RecordUnit.TABLE_HISTORY);
                         action.close();
-                        adapterSearch.notifyDataSetChanged();
-                        initSearch();
-                        dialog_overflow.cancel();
+                        dialog.cancel();
                     }));
                     snackbarSearch.show();
                     break;
@@ -1282,7 +1288,7 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
             }
         });
         buttonProfile.setOnLongClickListener(v -> {
-            showDialogFastToggle();
+            showDialogFastToggle(title,url);
             dialog_overflow.cancel();
             return false;
         });
@@ -1301,11 +1307,10 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
         dialog_overflow.show();
     }
 
-    private void showDialogFastToggle() {
+    private void showDialogFastToggle(String title, String url) {
 
         listStandard = new List_standard(context);
         ninjaWebView = (NinjaWebView) currentAlbumController;
-        String url = ninjaWebView.getUrl();
 
         String profile;
         if (listStandard.isWhite(url)) {
@@ -1327,10 +1332,9 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
             overflowURL.setText(url);
             HelperUnit.setHighLightedText(context, overflowURL, url, HelperUnit.domain(url));
             TextView overflowTitle = dialogViewFastToggle.findViewById(R.id.textGroup_menuTitle);
-            overflowTitle.setText(ninjaWebView.getTitle());
+            overflowTitle.setText(title);
             FaviconHelper.setFavicon(context, dialogViewFastToggle, url, R.id.menu_icon, R.drawable.icon_image_broken);
-
-            textGroup.setOnClickListener(v -> HelperUnit.showSnackbar ( context, dialogViewFastToggle, ninjaWebView.getTitle(), url));
+            textGroup.setOnClickListener(v -> HelperUnit.showSnackbar ( context, dialogViewFastToggle, title, url));
 
             FloatingActionButton buttonProfile = dialogViewFastToggle.findViewById(R.id.buttonProfile);
             ninjaWebView.setProfileIcon(buttonProfile, omnibox_menu, url);
@@ -2192,7 +2196,7 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
                 showDialogFilter();
                 break;
             case "19":
-                showDialogFastToggle();
+                showDialogFastToggle(ninjaWebView.getTitle(), ninjaWebView.getUrl());
                 break;
             case "22":
                 sp.edit().putBoolean("sp_screenOn", !sp.getBoolean("sp_screenOn", false)).apply();

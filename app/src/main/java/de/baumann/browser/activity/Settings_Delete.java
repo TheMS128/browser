@@ -5,13 +5,13 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Button;
+import android.widget.LinearLayout;
 
 import androidx.activity.EdgeToEdge;
-import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
-import com.google.android.material.dialog.MaterialAlertDialogBuilder;
+import com.google.android.material.snackbar.Snackbar;
 
 import java.util.Objects;
 
@@ -25,14 +25,12 @@ public class Settings_Delete extends AppCompatActivity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-        EdgeToEdge.enable(this);
         HelperUnit.initTheme(this);
+        EdgeToEdge.enable(this);
         setContentView(R.layout.activity_settings_delete);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
-
         getSupportFragmentManager()
                 .beginTransaction()
                 .replace(R.id.content_frame, new Fragment_settings_Delete())
@@ -40,15 +38,11 @@ public class Settings_Delete extends AppCompatActivity {
 
         Button button = findViewById(R.id.profileListAdd);
         button.setOnClickListener(v -> {
-            MaterialAlertDialogBuilder builder = new MaterialAlertDialogBuilder(this);
-            builder.setIcon(R.drawable.icon_delete);
-            builder.setTitle(R.string.menu_delete);
-            builder.setMessage(R.string.hint_database);
-            builder.setPositiveButton(R.string.app_ok, (dialog, whichButton) -> BrowserUnit.clearBrowserData(this));
-            builder.setNegativeButton(R.string.app_cancel, (dialog, whichButton) -> dialog.cancel());
-            AlertDialog dialog = builder.create();
-            dialog.show();
-            HelperUnit.setupDialog(this, dialog);
+            LinearLayout root = findViewById(R.id.root);
+            Snackbar snackbarBottom = Snackbar.make(root, R.string.hint_database, Snackbar.LENGTH_SHORT);
+            HelperUnit.makeSnackbarRound(this, snackbarBottom);
+            snackbarBottom.setAction(this.getString(R.string.app_ok), (r -> BrowserUnit.clearBrowserData(this)));
+            snackbarBottom.show();
         });
     }
 

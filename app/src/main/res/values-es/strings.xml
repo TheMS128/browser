@@ -98,7 +98,7 @@
     <string name="setting_title_confirm_tab_close">Confirmar cerrado de pestañas</string>
     <string name="setting_overView_onStart_title">Mostrar al inicio</string>
     <string name="setting_gestures">Gestos</string>
-    <string name="setting_title_longPress">Dejar pulsado</string>
+    <string name="setting_title_longPress">Pulsación larga</string>
     <string name="setting_gesture_up">Deslizar hacia arriba</string>
     <string name="setting_gesture_down">Deslizar hacia abajo</string>
     <string name="setting_gesture_left">Deslizar a la izquierda</string>
@@ -159,13 +159,14 @@
     <string name="app_session">… en la sesión actual?</string>
     <string name="app_never">Nunca</string>
     <string name="app_permission_notification">Notificaciones</string>
-    <string name="setting_title_savedWebSites">Sitios web guardados</string>
+    <string name="setting_title_savedWebSites">Páginas web guardadas</string>
     <string name="setting_title_dynColors">Colores dinámicos</string>
     <string name="setting_backup_ext">Copia de seguridad al salir</string>
     <string name="privacy_redirect_use">Utilizar redireccionamientos</string>
-    <string name="privacy_redirect_title">Redirecciona</string>
+    <string name="privacy_redirect_title">Redirecciones</string>
     <string name="setting_backup_sumDatabase">Página de inicio, favoritos, historial</string>
     <string name="album_title_bookmarks_html">Marcadores (HTML)</string>
-    <string name="setting_backup_sumSettings">Configuración de aplicaciones y sitios web</string>
-    <string name="setting_title_profiles_standard_always">Cambiar al perfil estándar para nuevos dominios y pestañas.</string>
+    <string name="setting_backup_sumSettings">Configuración de la aplicación y de la página web</string>
+    <string name="setting_title_profiles_standard_always">Cambia al perfil estándar para dominios y nuevas pestañas.</string>
+    <string name="app_restart">Al reiniciar</string>
 </resources>

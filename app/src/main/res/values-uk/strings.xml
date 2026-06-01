@@ -46,7 +46,7 @@
     <string name="dialog_title_hint">Заголовок:</string>
     <string name="dialog_URL_hint">Адреса URL:</string>
     <string name="dialog_extension_hint">Розширення (наприклад: «.jpg»):</string>
-    <string name="dialog_sign_in_username">Ім\'я користувача</string>
+    <string name="dialog_sign_in_username">Ім’я користувача</string>
     <string name="dialog_sign_in_password">Пароль</string>
     <string name="dialog_title_download">Завантажити файл?</string>
     <string name="dialog_content_resubmission">Повторно надіслати дані?</string>
@@ -124,11 +124,11 @@
     <string name="toast_restart">Перезапустити, щоб застосувати зміни?</string>
     <string name="toast_quit">Закрити FOSS Браузер?</string>
     <string name="toast_quit_TAB">Закрити вкладку?</string>
-    <string name="toast_unsecured">Цей сайт використовує незахищене з\'єднання («http»). Спробувати захищене з\'єднання («https»)?</string>
-    <string name="toast_backup">Зберегти дані\? Це перезапише наявну резервну копію.</string>
+    <string name="toast_unsecured">Цей сайт використовує незахищене з’єднання (http). Спробувати захищене з’єднання (https)?</string>
+    <string name="toast_backup">Зберегти дані? Буде перезаписано наявну резервну копію.</string>
     <string name="dialog_postOnWebsiteHint">URL для відкриття. Буде збережено для наступного використання.</string>
     <string name="dialog_postOnWebsite">Публікувати на сайті</string>
-    <string name="menu_desktopView">Комп\'ютерна версія</string>
+    <string name="menu_desktopView">Комп’ютерна версія</string>
     <string name="menu_dayView">Світла тема</string>
     <string name="menu_nightView">Нічна тема</string>
     <string name="setting_title_camera">Дозвіл на використання камери</string>
@@ -168,4 +168,5 @@
     <string name="privacy_redirect_use">Використовувати перенаправлення</string>
     <string name="privacy_redirect_title">Перенаправлення</string>
     <string name="setting_title_profiles_standard_always">Перемикатися на стандартний профіль для нових доменів і вкладок.</string>
+    <string name="app_restart">При перезапуску</string>
 </resources>

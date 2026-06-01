@@ -21,14 +21,12 @@ public class Settings_Activity extends AppCompatActivity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-        EdgeToEdge.enable(this);
         HelperUnit.initTheme(this);
+        EdgeToEdge.enable(this);
         setContentView(R.layout.activity_settings);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
-
         getSupportFragmentManager()
                 .beginTransaction()
                 .replace(R.id.content_frame, new Fragment_settings())
