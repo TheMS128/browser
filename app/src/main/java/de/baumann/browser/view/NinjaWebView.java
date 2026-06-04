@@ -6,11 +6,9 @@ import android.annotation.SuppressLint;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.SharedPreferences;
-import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.util.AttributeSet;
 import android.util.Log;
-import android.util.TypedValue;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.webkit.CookieManager;
@@ -19,6 +17,8 @@ import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.widget.Button;
 import android.widget.GridView;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -205,29 +205,6 @@ public class NinjaWebView extends WebView implements AlbumController {
         profile = profileOriginal;
     }
 
-    public void setProfileIcon(FloatingActionButton one, FloatingActionButton two, String url) {
-        String profile = sp.getString("profile", "profileStandard");
-        assert url != null;
-
-        TypedValue typedValue = new TypedValue();
-        Resources.Theme theme = context.getTheme();
-        theme.resolveAttribute(R.attr.colorError, typedValue, true);
-        int color = typedValue.data;
-
-        if (profile.equals("profileStandard")) {
-            one.setImageResource(R.drawable.icon_profile_standard);
-            two.setImageResource(R.drawable.icon_overflow);
-        } else {
-            one.setImageResource(R.drawable.icon_profile_changed);
-            two.setImageResource(R.drawable.icon_profile_changed);
-        }
-
-        if (listStandard.isWhite(url)) {
-            one.getDrawable().mutate().setTint(color);
-            two.getDrawable().mutate().setTint(color);
-        }
-    }
-
     public void setProfileDefaultValues() {
 
         RecordAction action = new RecordAction(context);
@@ -370,11 +347,32 @@ public class NinjaWebView extends WebView implements AlbumController {
                 View dialogView = View.inflate(context, R.layout.dialog_menu, null);
                 MaterialAlertDialogBuilder builderTrack = new MaterialAlertDialogBuilder(context);
 
-                CardView albumCardView = dialogView.findViewById(R.id.albumCardView);
-                albumCardView.setVisibility(GONE);
-                builderTrack.setTitle(urlToLoad);
-                builderTrack.setIcon(R.drawable.icon_tracking);
-                builderTrack.setMessage(m);
+                LinearLayout textGroup = dialogView.findViewById(R.id.textGroup);
+                TextView overflowURL = dialogView.findViewById(R.id.overflowURL);
+                overflowURL.setText(urlToLoad);
+                TextView overflowMessage = dialogView.findViewById(R.id.overflowMessage);
+                overflowMessage.setText(m);
+                HelperUnit.setHighLightedText(context, overflowURL, url, HelperUnit.domain(url));
+                TextView menuTitle = dialogView.findViewById(R.id.overflowTitle);
+                menuTitle.setText(HelperUnit.domain(urlToLoad));
+                textGroup.setOnClickListener(v -> HelperUnit.showSnackbar ( context, dialogView, HelperUnit.domain(urlToLoad), urlToLoad));
+
+                FloatingActionButton buttonProfile = dialogView.findViewById(R.id.buttonProfile);
+                NinjaWebView.getBrowserController().setProfileIcon(buttonProfile, urlToLoad);
+                FaviconHelper.setFavicon(context, dialogView, url, R.id.menu_icon, R.drawable.icon_image_broken);
+                buttonProfile.setOnClickListener(v -> {
+                    sp.edit().putString("profile", "profileStandard").apply();
+                    NinjaWebView.getBrowserController().setProfileIcon(buttonProfile, urlToLoad);
+                    listStandard = new List_standard(context);
+                    if (!listStandard.isWhite(urlToLoad)){
+                        reload();
+                    }
+                });
+                buttonProfile.setOnLongClickListener(v -> {
+                    NinjaWebView.getBrowserController().showDialogFastToggle(HelperUnit.domain(urlToLoad),urlToLoad, buttonProfile);
+                    return false;
+                });
+
                 builderTrack.setView(dialogView);
                 AlertDialog dialogTrack = builderTrack.create();
                 Button menuCancel = dialogView.findViewById(R.id.menuCancel);

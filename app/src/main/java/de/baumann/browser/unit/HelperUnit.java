@@ -494,7 +494,7 @@ public class HelperUnit {
             list.add(new MenuItem(context.getString(R.string.menu_closeTab), R.drawable.icon_tab_remove, true));
             list.add(new MenuItem(context.getString(R.string.menu_other_searchSite), R.drawable.icon_search_site, true));
             list.add(new MenuItem(context.getString(R.string.menu_reload), R.drawable.icon_refresh, true));
-            list.add(new MenuItem(context.getString(R.string.menu_share_link), R.drawable.icon_link, true));
+            list.add(new MenuItem(context.getString(R.string.menu_share_link), R.drawable.icon_share, true));
             list.add(new MenuItem(context.getString(R.string.menu_shareClipboard), R.drawable.icon_clipboard, true));
             list.add(new MenuItem(context.getString(R.string.dialog_postOnWebsite), R.drawable.icon_post, true));
             list.add(new MenuItem(context.getString(R.string.menu_save_bookmark), R.drawable.icon_bookmark, true));

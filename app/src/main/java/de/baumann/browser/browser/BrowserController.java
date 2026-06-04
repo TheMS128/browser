@@ -5,6 +5,8 @@ import android.view.View;
 import android.webkit.ValueCallback;
 import android.webkit.WebChromeClient;
 
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+
 public interface BrowserController {
     void updateProgress(int progress);
     void showAlbum(AlbumController albumController);
@@ -14,4 +16,6 @@ public interface BrowserController {
     void hideOverview();
     void hideSearch();
     void onHideCustomView();
+    void showDialogFastToggle(String title, String url, FloatingActionButton floatingActionButton);
+    void setProfileIcon (FloatingActionButton floatingActionButton, String url);
 }

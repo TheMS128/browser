@@ -9,11 +9,12 @@
 - fix: Update JavaScript alert dialogs #1279
 - fix: go back not work when redirect happens #1281
 - fix: Cookies Getting Disabled #1273
+- fix: Tracking protection needs improvment #1266
 - fix: Add ability to view image alt text #1000
-- fix: lint issues
 - fix: toasts not showing entire URL
 - removed: redundant settings (autofill, custom javascript)
 - removed: StartSite
+- improved: input of search layouts
 - new: menu settings
 
 
@@ -30,6 +31,7 @@
 - new: snackbar instead of dialog on some places
 - new: gestures -> open startsite,bookmark, history
 - new: option to load default profile on start/always/never (via FastToggleDialog)
+
 
 ### v 21 Astrid Lindgren
 
