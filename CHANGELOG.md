@@ -15,6 +15,7 @@
 - removed: redundant settings (autofill, custom javascript)
 - removed: StartSite
 - improved: input of search layouts
+- improved: more snackbars instead of dialogs
 - new: menu settings
 
 

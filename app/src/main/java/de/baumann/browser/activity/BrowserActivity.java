@@ -738,15 +738,17 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
             animation2.setDuration(250);
             animation2.start();
 
-            final Handler handler = new Handler();
-            handler.postDelayed(() -> {
+            FloatingActionButton showOmniBox = findViewById(R.id.showOmniBox);
+            showOmniBox.setVisibility(VISIBLE);
+            showOmniBox.setOnClickListener(v1 -> {
+                showOmniBox.setVisibility(GONE);
                 ObjectAnimator animationBack = ObjectAnimator.ofFloat(appBar, "translationY", 0f);
                 animationBack.setDuration(250);
                 animationBack.start();
                 ObjectAnimator animationBack2 = ObjectAnimator.ofFloat(AbbBarButtons, "translationY", 0f);
                 animationBack2.setDuration(250);
                 animationBack2.start();
-            }, 5000);
+            });
             return true;
         });
 

@@ -7,6 +7,7 @@ import android.app.Dialog;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.graphics.Bitmap;
+import android.os.Handler;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.View;

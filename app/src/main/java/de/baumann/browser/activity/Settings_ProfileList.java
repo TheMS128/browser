@@ -17,13 +17,12 @@ import android.widget.ListView;
 
 import androidx.activity.EdgeToEdge;
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.preference.PreferenceManager;
 
 import com.google.android.material.card.MaterialCardView;
-import com.google.android.material.dialog.MaterialAlertDialogBuilder;
+import com.google.android.material.snackbar.Snackbar;
 
 import java.util.List;
 import java.util.Objects;
@@ -74,13 +73,11 @@ public class Settings_ProfileList extends AppCompatActivity {
                 int color = typedValue.data;
                 MaterialCardView cardView = v.findViewById(R.id.menuCardView);
                 cardView.setBackgroundColor(color);
-
                 deleteEntry.setOnClickListener(v1 -> {
-                    MaterialAlertDialogBuilder builder = new MaterialAlertDialogBuilder(Settings_ProfileList.this);
-                    builder.setIcon(R.drawable.icon_delete);
-                    builder.setTitle(R.string.menu_delete);
-                    builder.setMessage(R.string.hint_database);
-                    builder.setPositiveButton(R.string.app_ok, (dialog, whichButton) -> {
+
+                    Snackbar snackbarDelete = Snackbar.make(v1, R.string.hint_database, Snackbar.LENGTH_SHORT);
+                    HelperUnit.makeSnackbarRound(this.getContext(), snackbarDelete);
+                    snackbarDelete.setAction(this.getContext().getString(R.string.app_ok), (v2 -> {
                         try {
                             listStandard.removeDomain(list.get(position));
                             list.remove(position);
@@ -107,11 +104,8 @@ public class Settings_ProfileList extends AppCompatActivity {
                             NinjaToast.show(Settings_ProfileList.this, R.string.toast_delete_successful);
                         }
                         catch (Exception e) {Log.i(TAG, "dialogCustomSearches:" + e);}
-                    });
-                    builder.setNegativeButton(R.string.app_cancel, (dialog, whichButton) -> dialog.cancel());
-                    AlertDialog dialog = builder.create();
-                    dialog.show();
-                    HelperUnit.setupDialog(Settings_ProfileList.this, dialog);
+                    }));
+                    snackbarDelete.show();
                 });
                 return v;
             }

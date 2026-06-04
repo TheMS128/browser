@@ -23,6 +23,7 @@ import static android.content.ContentValues.TAG;
 import static android.graphics.drawable.Icon.createWithBitmap;
 
 import android.Manifest;
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.Dialog;
 import android.app.DownloadManager;
@@ -519,46 +520,68 @@ public class HelperUnit {
     public static void showSnackbar(Context context, View view, String title, String text) {
         android.text.SpannableStringBuilder snackbarText = new android.text.SpannableStringBuilder();
         snackbarText.append(title);
-        // Macht den Titel fett (vom ersten bis zum letzten Zeichen des Titels)
+        // Macht den Titel fett
         snackbarText.setSpan(
                 new android.text.style.StyleSpan(android.graphics.Typeface.BOLD),
                 0,
                 title.length(),
                 android.text.Spanned.SPAN_EXCLUSIVE_EXCLUSIVE
         );
-        // Zeilenumbruch und URL in normaler Schrift anhängen
+        // Zeilenumbruch und Text anhängen
         snackbarText.append(":\n").append(text);
-        // 3. Snackbar erstellen
+        // 1. Eine leere Basis-Snackbar erstellen
         com.google.android.material.snackbar.Snackbar snackbar =
                 com.google.android.material.snackbar.Snackbar.make(
                         view,
-                        snackbarText,
+                        "",
                         com.google.android.material.snackbar.Snackbar.LENGTH_INDEFINITE
                 );
-        // 4. Wichtig: Der Snackbar erlauben, mehr als 2 Zeilen anzuzeigen
-        android.view.View snackbarView = snackbar.getView();
-        android.widget.TextView textView = snackbarView.findViewById(com.google.android.material.R.id.snackbar_text);
+        // 2. Das originale Snackbar-Layout holen und leeren
+        android.view.ViewGroup layout = (android.view.ViewGroup) snackbar.getView();
+        layout.removeAllViews();
+        layout.setPadding(0, 0, 0, 0);
+        // WICHTIG: Den eckigen Google-Hintergrund komplett transparent machen,
+        // damit unsere abgerundete customView nicht überlagert wird.
+        layout.setBackgroundColor(android.graphics.Color.TRANSPARENT);
+        // 3. Unser eigenes XML-Layout aufblasen
+        android.view.LayoutInflater inflater = android.view.LayoutInflater.from(context);
+        @SuppressLint("InflateParams")
+        android.view.View customView = inflater.inflate(R.layout.custom_snackbar, null);
+        // 4. Textfeld füllen
+        android.widget.TextView textView = customView.findViewById(R.id.custom_snackbar_text);
         if (textView != null) {
-            textView.setMaxLines(100); // Erlaubt der Snackbar, bei langen URLs umzubrechen
+            textView.setText(snackbarText);
         }
-        // RUNDE ECKEN HINZUFÜGEN:
-        // Wir erstellen ein abgerundetes Rechteck im Code
+        // Klick-Logik für Icon-Button 1
+        android.widget.ImageButton btnOne = customView.findViewById(R.id.custom_btn_one);
+        if (btnOne != null) {
+            btnOne.setOnClickListener(v -> {
+                Intent sharingIntent;
+                sharingIntent = new Intent(Intent.ACTION_SEND);
+                sharingIntent.setType("text/plain");
+                sharingIntent.putExtra(Intent.EXTRA_SUBJECT, title);
+                sharingIntent.putExtra(Intent.EXTRA_TEXT, text);
+                context.startActivity(Intent.createChooser(sharingIntent, (context.getString(R.string.menu_share_link))));
+                snackbar.dismiss();
+            });
+        }
+        // Klick-Logik für Icon-Button 2
+        android.widget.ImageButton btnTwo = customView.findViewById(R.id.custom_btn_two);
+        if (btnTwo != null) {
+            btnTwo.setOnClickListener(v -> snackbar.dismiss());
+        }
+        // 5. RUNDE ECKEN DIREKT AUF DIE CUSTOM VIEW ANWENDEN
         android.graphics.drawable.GradientDrawable background = new android.graphics.drawable.GradientDrawable();
         background.setShape(android.graphics.drawable.GradientDrawable.RECTANGLE);
-        // Ecken-Radius in Pixel umrechnen (16dp für deutlich sichtbare Rundung)
         float density = context.getResources().getDisplayMetrics().density;
         background.setCornerRadius(24 * density);
-        // Option A: Aktuelle Hintergrundfarbe der Snackbar beibehalten
-        if (snackbarView.getBackground() instanceof android.graphics.drawable.ColorDrawable) {
-            background.setColor(((android.graphics.drawable.ColorDrawable) snackbarView.getBackground()).getColor());
-        } else {
-            // Option B: Fallback-Farbe (Dunkelgrau/Material-Standard) falls Option A fehlschlägt
-            background.setColor(android.graphics.Color.parseColor("#323232"));
-        }
-        // Das abgerundete Drawable als neuen Hintergrund setzen
-        snackbarView.setBackground(background);
-        // 5. Snackbar anzeigen
-        snackbar.setAction(R.string.app_ok, v1 -> snackbar.dismiss());
+        // 24dp Radius für deutlich sichtbare Rundung
+        // Bestimmt die Hintergrundfarbe passend zu Material-Dunkelgrau
+        background.setColor(android.graphics.Color.parseColor("#323232"));
+        // Das abgerundete Hintergrund-Drawable direkt unserer customView übergeben
+        customView.setBackground(background);
+        // 6. Das abgerundete Layout in die Snackbar einfügen und anzeigen
+        layout.addView(customView);
         snackbar.show();
     }
 
