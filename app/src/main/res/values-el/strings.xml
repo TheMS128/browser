@@ -168,4 +168,7 @@
     <string name="album_title_bookmarks_html">Σελιδοδείκτες (HTML)</string>
     <string name="setting_title_dynColors">Δυναμικά χρώματα</string>
     <string name="setting_title_profiles_standard_always">Εναλλαγή σε τυπικό προφίλ για νέους τομείς και καρτέλες.</string>
+    <string name="app_restart">Κατά την επανεκκίνηση</string>
+    <string name="setting_menu">Μενού</string>
+    <string name="menu_delete_entry">Διαγραφή εγγραφής</string>
 </resources>

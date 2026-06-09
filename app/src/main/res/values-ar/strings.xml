@@ -168,4 +168,7 @@
     <string name="privacy_redirect_use">استخدام عمليات إعادة التوجيه</string>
     <string name="privacy_redirect_title">عمليات إعادة التوجيه</string>
     <string name="setting_title_profiles_standard_always">قم بالتبديل إلى ملف التعريف القياسي للنطاقات وعلامات التبويب الجديدة.</string>
+    <string name="app_restart">عند إعادة التشغيل</string>
+    <string name="setting_menu">القائمة</string>
+    <string name="menu_delete_entry">حذف الإدخال</string>
 </resources>

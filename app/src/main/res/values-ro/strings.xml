@@ -168,4 +168,7 @@
     <string name="privacy_redirect_title">Redirecționări</string>
     <string name="setting_backup_sumSettings">Setări pentru aplicații și site-uri web</string>
     <string name="setting_title_profiles_standard_always">Treceți la profilul standard pentru domenii și file noi.</string>
+    <string name="app_restart">La repornire</string>
+    <string name="setting_menu">Meniu</string>
+    <string name="menu_delete_entry">Ștergeți înregistrarea</string>
 </resources>

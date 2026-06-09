@@ -168,4 +168,7 @@
     <string name="privacy_redirect_use">Utiliser des redirections</string>
     <string name="privacy_redirect_title">Redirections</string>
     <string name="setting_title_profiles_standard_always">Passer au profil standard pour les nouveaux domaines et onglets.</string>
+    <string name="app_restart">Au redémarrage</string>
+    <string name="setting_menu">Menu</string>
+    <string name="menu_delete_entry">Supprimer l\'entrée</string>
 </resources>

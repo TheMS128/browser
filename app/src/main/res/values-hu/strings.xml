@@ -168,4 +168,7 @@
     <string name="privacy_redirect_use">Átirányítások használata</string>
     <string name="privacy_redirect_title">Átirányítások</string>
     <string name="setting_title_profiles_standard_always">Váltson standard profilra az új tartományok és lapok esetében.</string>
+    <string name="app_restart">Újraindításkor</string>
+    <string name="setting_menu">Menü</string>
+    <string name="menu_delete_entry">Bejegyzés törlése</string>
 </resources>

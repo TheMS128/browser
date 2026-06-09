@@ -121,9 +121,9 @@
     <string name="toast_delete_successful">Radering lyckades</string>
     <string name="toast_input_empty">Du har inte skrivit något.</string>
     <string name="toast_webview_forward">Kan inte ladda nästa webbplats</string>
-    <string name="toast_restart">Du måste starta om \"FOSS Browser\" för att tillämpa ändringar. Stäng nu?</string>
+    <string name="toast_restart">Starta om för att tillämpa ändringarna?</string>
     <string name="toast_quit">Vill du avsluta \"FOSS Browser\"?</string>
-    <string name="toast_quit_TAB">Vill du stänga FLIKEN?</string>
+    <string name="toast_quit_TAB">Stäng flik?</string>
     <string name="toast_unsecured">Webbplatsen använder en osäker anslutning (\"http\"). Vill du prova en säker anslutning (\"https\")?</string>
     <string name="toast_backup">Säkerhetskopierade data\? Detta kommer att skriva över befintlig säkerhetskopia.</string>
     <string name="dialog_postOnWebsiteHint">URL att öppna. Kommer sparas för nästa användning.</string>
@@ -168,4 +168,7 @@
     <string name="privacy_redirect_title">Omdirigeringar</string>
     <string name="album_title_bookmarks_html">Bokmärken (HTML)</string>
     <string name="setting_title_profiles_standard_always">Byt till standardprofil för nya domäner och flikar.</string>
+    <string name="app_restart">Vid omstart</string>
+    <string name="setting_menu">Meny</string>
+    <string name="menu_delete_entry">Radera post</string>
 </resources>

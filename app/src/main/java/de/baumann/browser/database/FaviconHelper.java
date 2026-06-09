@@ -99,23 +99,24 @@ public class FaviconHelper extends SQLiteOpenHelper {
     public synchronized Bitmap getFavicon(String url) {
         if (url == null) return null;
         String domain = HelperUnit.domain(url);
-        SQLiteDatabase database = this.getReadableDatabase();
-        Cursor cursor;
-        cursor = database.query(TABLE_FAVICON,
-                new String[]{DOMAIN,
-                        IMAGE},
-                DOMAIN + " = ?",
-                new String[]{domain}, null, null, null, null);
-        byte[] image;
+        try (SQLiteDatabase database = this.getReadableDatabase()) {
+            Cursor cursor;
+            cursor = database.query(TABLE_FAVICON,
+                    new String[]{DOMAIN,
+                            IMAGE},
+                    DOMAIN + " = ?",
+                    new String[]{domain}, null, null, null, null);
+            byte[] image;
 
-        if (cursor.moveToFirst()) {
-            image = cursor.getBlob(1);
-            cursor.close();
-            database.close();
-            return getBitmap(image);
-        } else {
-            database.close();
-            return null;
+            if (cursor.moveToFirst()) {
+                image = cursor.getBlob(1);
+                cursor.close();
+                database.close();
+                return getBitmap(image);
+            } else {
+                database.close();
+                return null;
+            }
         }
     }
 

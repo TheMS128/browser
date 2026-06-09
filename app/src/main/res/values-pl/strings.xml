@@ -168,4 +168,7 @@
     <string name="setting_title_savedWebSites">Zapisane strony internetowe</string>
     <string name="setting_backup_ext">Kopia zapasowa przy wyjściu</string>
     <string name="setting_title_profiles_standard_always">Przełącz na profil standardowy dla nowych domen i zakładek.</string>
+    <string name="app_restart">Po ponownym uruchomieniu</string>
+    <string name="setting_menu">Menu</string>
+    <string name="menu_delete_entry">Usuń wpis</string>
 </resources>

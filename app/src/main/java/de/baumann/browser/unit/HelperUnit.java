@@ -20,7 +20,6 @@
 package de.baumann.browser.unit;
 
 import static android.content.ContentValues.TAG;
-import static android.graphics.drawable.Icon.createWithBitmap;
 
 import android.Manifest;
 import android.annotation.SuppressLint;
@@ -33,6 +32,7 @@ import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.content.pm.ShortcutInfo;
 import android.content.pm.ShortcutManager;
+import android.graphics.Bitmap;
 import android.graphics.PorterDuff;
 import android.graphics.drawable.Icon;
 import android.net.Uri;
@@ -80,10 +80,10 @@ import de.baumann.browser.activity.BrowserActivity;
 import de.baumann.browser.activity.Settings_Menu;
 import de.baumann.browser.browser.DataURIParser;
 import de.baumann.browser.browser.List_standard;
+import de.baumann.browser.database.FaviconHelper;
 import de.baumann.browser.view.GridItem;
 import de.baumann.browser.view.MenuItem;
 import de.baumann.browser.view.NinjaToast;
-import de.baumann.browser.view.NinjaWebView;
 
 public class HelperUnit {
 
@@ -229,29 +229,33 @@ public class HelperUnit {
         } else BackupUnit.requestPermission(activity);
     }
 
-    public static void createShortcut(Context context, NinjaWebView ninjaWebView, String title, String url) {
+    public static void createShortcut(Context context, String title, String url) {
         Icon icon;
-        icon = createWithBitmap(ninjaWebView.getFavicon());
-        try {
-            Intent i = new Intent();
-            i.setAction(Intent.ACTION_VIEW);
-            i.setData(Uri.parse(url));
-            i.setPackage("de.baumann.browser");
-            ShortcutManager shortcutManager = context.getSystemService(ShortcutManager.class);
-            assert shortcutManager != null;
-            if (shortcutManager.isRequestPinShortcutSupported()) {
-                ShortcutInfo pinShortcutInfo =
-                        new ShortcutInfo.Builder(context, url)
-                                .setShortLabel(title)
-                                .setLongLabel(title)
-                                .setIcon(icon)
-                                .setIntent(new Intent(context, BrowserActivity.class).setAction(Intent.ACTION_VIEW).setData(Uri.parse(url)))
-                                .build();
-                shortcutManager.requestPinShortcut(pinShortcutInfo, null);
-            } else System.out.println("failed_to_add");
-        } catch (Exception e) {
-            System.out.println("failed_to_add");
+        FaviconHelper faviconHelper = new FaviconHelper(context);
+        Bitmap favicon = faviconHelper.getFavicon(url);
+
+        if (favicon != null && !favicon.isRecycled()) {
+            icon = Icon.createWithBitmap(favicon);
+        } else {
+            int appIconResId = context.getApplicationInfo().icon;
+            if (appIconResId == 0) {
+                appIconResId = android.R.drawable.sym_def_app_icon;
+            }
+            icon = Icon.createWithResource(context, appIconResId);
         }
+
+        ShortcutManager shortcutManager = context.getSystemService(ShortcutManager.class);
+        assert shortcutManager != null;
+        if (shortcutManager.isRequestPinShortcutSupported()) {
+            ShortcutInfo pinShortcutInfo =
+                    new ShortcutInfo.Builder(context, url)
+                            .setShortLabel(title)
+                            .setLongLabel(title)
+                            .setIcon(icon)
+                            .setIntent(new Intent(context, BrowserActivity.class).setAction(Intent.ACTION_VIEW).setData(Uri.parse(url)))
+                            .build();
+            shortcutManager.requestPinShortcut(pinShortcutInfo, null);
+        } else System.out.println("failed_to_add");
     }
 
     public static String domain(String url) {

@@ -168,4 +168,7 @@
     <string name="privacy_redirect_title">Pengalihan</string>
     <string name="setting_backup_sumDatabase">Situs awal, Penanda, riwayat</string>
     <string name="setting_title_profiles_standard_always">Beralih ke profil standar untuk domain dan tab baru.</string>
+    <string name="app_restart">Saat dihidupkan kembali</string>
+    <string name="setting_menu">Menu</string>
+    <string name="menu_delete_entry">Hapus entri</string>
 </resources>

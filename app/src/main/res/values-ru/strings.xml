@@ -168,4 +168,7 @@
     <string name="privacy_redirect_use">Используйте перенаправления</string>
     <string name="privacy_redirect_title">Перенаправления</string>
     <string name="setting_title_profiles_standard_always">Переключитесь на стандартный профиль для новых доменов и вкладок.</string>
+    <string name="app_restart">При перезапуске</string>
+    <string name="setting_menu">Меню</string>
+    <string name="menu_delete_entry">Удалить запись</string>
 </resources>

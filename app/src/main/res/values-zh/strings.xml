@@ -169,4 +169,6 @@
     <string name="privacy_redirect_title">重定向</string>
     <string name="setting_title_profiles_standard_always">为新域名和标签页切换到标准配置。</string>
     <string name="app_restart">重启时</string>
+    <string name="setting_menu">菜单</string>
+    <string name="menu_delete_entry">删除条目</string>
 </resources>

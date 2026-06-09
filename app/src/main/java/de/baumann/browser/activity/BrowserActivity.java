@@ -642,6 +642,7 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
                     popup.inflate(R.menu.menu_list_bookmark);
                 else if (bottom_navigation.getSelectedItemId() == R.id.page_3)
                     popup.inflate(R.menu.menu_list_history);
+
                 popup.setOnMenuItemClickListener(item -> {
                     if (item.getItemId() == R.id.menu_delete) {
                         Snackbar snackbarBottom = Snackbar.make(bottom_navigation, R.string.hint_database, Snackbar.LENGTH_SHORT);
@@ -755,7 +756,7 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
         omnibox_menu = findViewById(R.id.omniBox_menu);
         omnibox_menu.setOnClickListener(view -> showOverflow(null, null, 0, ninjaWebView.getTitle(), ninjaWebView.getUrl(), null, null, 0));
         omnibox_menu.setOnLongClickListener(view -> {
-            performGesture("setting_gesture_tabButton");
+            performGesture("setting_gesture_tabButton", ninjaWebView.getUrl());
             return true;
         });
         omniBox_overview = findViewById(R.id.omnibox_overview);
@@ -774,30 +775,30 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
 
         omniBox_overview.setOnTouchListener(new SwipeTouchListener(context) {
             public void onSwipeTop() {
-            performGesture("setting_gesture_tb_up");
+            performGesture("setting_gesture_tb_up", ninjaWebView.getUrl());
             hideOverview(); }
             public void onSwipeBottom() {
-                performGesture("setting_gesture_tb_down");
+                performGesture("setting_gesture_tb_down", ninjaWebView.getUrl());
                 hideOverview(); }
             public void onSwipeRight() {
-                performGesture("setting_gesture_tb_right");
+                performGesture("setting_gesture_tb_right", ninjaWebView.getUrl());
                 hideOverview(); }
             public void onSwipeLeft() {
-                performGesture("setting_gesture_tb_left");
+                performGesture("setting_gesture_tb_left", ninjaWebView.getUrl());
                 hideOverview(); }});
 
         omnibox_menu.setOnTouchListener(new SwipeTouchListener(context) {
             public void onSwipeTop() {
-                performGesture("setting_gesture_nav_up");
+                performGesture("setting_gesture_nav_up", ninjaWebView.getUrl());
                 hideOverflow(); }
             public void onSwipeBottom() {
-                performGesture("setting_gesture_nav_down");
+                performGesture("setting_gesture_nav_down", ninjaWebView.getUrl());
                 hideOverflow();}
             public void onSwipeRight() {
-                performGesture("setting_gesture_nav_right");
+                performGesture("setting_gesture_nav_right", ninjaWebView.getUrl());
                 hideOverflow();}
             public void onSwipeLeft() {
-                performGesture("setting_gesture_nav_left");
+                performGesture("setting_gesture_nav_left", ninjaWebView.getUrl());
                 hideOverflow(); }});
 
         TextInputLayout searchTextInputLayout  = dialogViewSearch.findViewById(R.id.textField);
@@ -845,7 +846,7 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
         });
         omniBox_overview.setOnClickListener(v -> showOverview());
         omniBox_overview.setOnLongClickListener(v -> {
-            performGesture("setting_gesture_overViewButton");
+            performGesture("setting_gesture_overViewButton", ninjaWebView.getUrl());
             return true;
         });
     }
@@ -855,7 +856,6 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
     private void handleFinalSearch(String query) {
         hideSearch();
         ninjaWebView.loadUrl(query);
-        Toast.makeText(this, "Finale Suche gestartet: " + query, Toast.LENGTH_SHORT).show();
     }
 
     @SuppressLint({"UnsafeOptInUsageError"})
@@ -1005,7 +1005,7 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
     }
 
     @SuppressLint("ClickableViewAccessibility")
-    private void showOverflow(Dialog dialog, View view, int hideMenu, String title, String url, final AdapterRecord adapterRecord, List<Record> recordList, int location) {
+    public void showOverflow(Dialog dialog, View view, int hideMenu, String title, String url, final AdapterRecord adapterRecord, List<Record> recordList, int location) {
 
         MaterialAlertDialogBuilder builder = new MaterialAlertDialogBuilder(context);
         View dialogView = View.inflate(context, R.layout.dialog_menu_overflow, null);
@@ -1066,13 +1066,15 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
                     break;
                 case R.drawable.icon_tab_remove:
                     removeAlbum(currentAlbumController);
+                    if (BrowserContainer.size() < 2) {
+                        hideOverview();
+                    }
                     break;
                 case R.drawable.icon_close:
                     doubleTapsQuit();
                     break;
                 case R.drawable.icon_bookmark:
-                    saveBookmark();
-                    action.close();
+                    saveBookmark(title, url);
                     break;
                 case R.drawable.icon_file:
                     PrintManager printManager = (PrintManager) getSystemService(Context.PRINT_SERVICE);
@@ -1107,7 +1109,7 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
                     context.startActivity(Intent.createChooser(intent, null));
                     break;
                 case R.drawable.icon_home:
-                    HelperUnit.createShortcut(context, ninjaWebView, ninjaWebView.getTitle(), ninjaWebView.getOriginalUrl());
+                    HelperUnit.createShortcut(context, title, url);
                     break;
                 case R.drawable.icon_search_site:
                     searchOnSite();
@@ -1248,7 +1250,6 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
         if (!(hideMenu == 0)) {
             removeItemByName(getString(R.string.menu_openFav), selectedItemsList, adapter);
             removeItemByName(getString(R.string.menu_reload), selectedItemsList, adapter);
-            removeItemByName(getString(R.string.menu_closeTab), selectedItemsList, adapter);
             removeItemByName(getString(R.string.menu_restart), selectedItemsList, adapter);
             removeItemByName(getString(R.string.menu_quit), selectedItemsList, adapter);
             removeItemByName(getString(R.string.menu_save_pdf), selectedItemsList, adapter);
@@ -1256,8 +1257,9 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
             removeItemByName(getString(R.string.setting_label), selectedItemsList, adapter);
             removeItemByName(getString(R.string.menu_download), selectedItemsList, adapter);
             removeItemByName(getString(R.string.app_help), selectedItemsList, adapter);
-            removeItemByName(getString(R.string.menu_sc), selectedItemsList, adapter);
-            removeItemByName(getString(R.string.menu_save_bookmark), selectedItemsList, adapter);
+            if (!(hideMenu == 5)) {
+                removeItemByName(getString(R.string.menu_closeTab), selectedItemsList, adapter);
+            }
         }
         if (hideMenu == 0) {
             //Main menu
@@ -1276,10 +1278,18 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
         } else if (hideMenu == 3) {
             // Bookmark
             removeItemByName(getString(R.string.menu_delete), selectedItemsList, adapter);
+            removeItemByName(getString(R.string.menu_save_bookmark), selectedItemsList, adapter);
         } else if (hideMenu == 4) {
             // History
             removeItemByName(getString(R.string.menu_delete), selectedItemsList, adapter);
             removeItemByName(getString(R.string.menu_edit), selectedItemsList, adapter);
+        } else if (hideMenu == 5) {
+            // Tabs
+            removeItemByName(getString(R.string.menu_delete), selectedItemsList, adapter);
+            removeItemByName(getString(R.string.menu_delete_entry), selectedItemsList, adapter);
+            removeItemByName(getString(R.string.menu_edit), selectedItemsList, adapter);
+            removeItemByName(getString(R.string.main_menu_new_tab), selectedItemsList, adapter);
+            removeItemByName(getString(R.string.main_menu_new_tabOpen), selectedItemsList, adapter);
         }
 
         builder.setView(dialogView);
@@ -2150,23 +2160,19 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
         HelperUnit.showSoftKeyboard(searchBox);
     }
 
-    private void saveBookmark() {
-        FaviconHelper faviconHelper = new FaviconHelper(context);
-        faviconHelper.addFavicon(context, ninjaWebView.getUrl(), ninjaWebView.getFavicon());
+    private void saveBookmark(String title, String url) {
         RecordAction action = new RecordAction(context);
         action.open(true);
         String message = context.getString(R.string.app_error) + ": " + context.getString(R.string.app_error_save);
-        if (action.checkUrl(ninjaWebView.getUrl(), RecordUnit.TABLE_BOOKMARK))
+        if (action.checkUrl(url, RecordUnit.TABLE_BOOKMARK))
             NinjaToast.show(this, message);
         else {
-            long value = 0;  //default red icon
-            action.addBookmark(new Record(ninjaWebView.getTitle(), ninjaWebView.getUrl(), 0, value));
-            updateOmniBox();
+            action.addBookmark(new Record(title, url, 0, 0));
             NinjaToast.show(this, R.string.app_done); }
         action.close();
     }
 
-    private void performGesture(String gesture) {
+    private void performGesture(String gesture, String url) {
         String gestureAction = Objects.requireNonNull(sp.getString(gesture, "0"));
         switch (gestureAction) {
             case "01":
@@ -2222,7 +2228,7 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
                 searchOnSite();
                 break;
             case "14":
-                saveBookmark();
+                saveBookmark(ninjaWebView.getTitle(), url);
                 break;
             case "16":
                 ninjaWebView.reload();
@@ -2344,6 +2350,12 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
                     ObjectAnimator animation = ObjectAnimator.ofFloat(appBar, "translationY", 0f);
                     animation.setDuration(250);
                     animation.start();
+                    LinearLayout appBarButtons = findViewById(R.id.AbbBarButtons);
+                    FloatingActionButton showOmniBox = findViewById(R.id.showOmniBox);
+                    ObjectAnimator animationBack = ObjectAnimator.ofFloat(appBarButtons, "translationY", 0f);
+                    animationBack.setDuration(250);
+                    animationBack.start();
+                    showOmniBox.setVisibility(GONE);
                 } else if (scrollY < ninjaWebView.getScrollY()) {
                     ObjectAnimator animation = ObjectAnimator.ofFloat(appBar, "translationY", 275f);
                     animation.setDuration(250);
@@ -2477,7 +2489,6 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
 
         ninjaWebView.setBrowserController(this);
         ninjaWebView.setAlbumTitle(title, url);
-        activity.registerForContextMenu(ninjaWebView);
 
         if (url.isEmpty()) ninjaWebView.loadUrl("about:blank");
         else ninjaWebView.loadUrl(url);
@@ -2497,7 +2508,6 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
             dialogOverview.cancel();
             showAlbum(ninjaWebView);
         }
-
         View albumView = ninjaWebView.getAlbumView();
         tab_container.addView(albumView, WRAP_CONTENT, WRAP_CONTENT);
         updateOmniBox();

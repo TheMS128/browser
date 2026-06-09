@@ -168,4 +168,7 @@
     <string name="privacy_redirect_title">リダイレクト</string>
     <string name="privacy_redirect_use">リダイレクトの使用</string>
     <string name="setting_title_profiles_standard_always">新しいドメインとタブの標準プロファイルに切り替える。</string>
+    <string name="app_restart">再起動時</string>
+    <string name="setting_menu">メニュー</string>
+    <string name="menu_delete_entry">エントリを削除</string>
 </resources>

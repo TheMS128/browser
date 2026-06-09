@@ -168,4 +168,7 @@
     <string name="setting_title_savedWebSites">Uložené webové stránky</string>
     <string name="setting_backup_sumSettings">Nastavení aplikací a webových stránek</string>
     <string name="setting_title_profiles_standard_always">Přepnutí na standardní profil pro nové domény a karty.</string>
+    <string name="app_restart">Po restartu</string>
+    <string name="setting_menu">Nabídka</string>
+    <string name="menu_delete_entry">Odstranit záznam</string>
 </resources>

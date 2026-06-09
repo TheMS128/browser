@@ -168,4 +168,7 @@
     <string name="album_title_bookmarks_html">Segnalibri (HTML)</string>
     <string name="privacy_redirect_title">Reindirizzamenti</string>
     <string name="setting_title_profiles_standard_always">Passare al profilo standard per i nuovi domini e schede.</string>
+    <string name="app_restart">Al riavvio</string>
+    <string name="setting_menu">Menu</string>
+    <string name="menu_delete_entry">Elimina voce</string>
 </resources>

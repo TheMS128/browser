@@ -169,4 +169,6 @@
     <string name="privacy_redirect_title">Перенаправлення</string>
     <string name="setting_title_profiles_standard_always">Перемикатися на стандартний профіль для нових доменів і вкладок.</string>
     <string name="app_restart">При перезапуску</string>
+    <string name="setting_menu">Меню</string>
+    <string name="menu_delete_entry">Видалити запис</string>
 </resources>

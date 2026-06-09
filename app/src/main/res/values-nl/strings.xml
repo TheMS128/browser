@@ -168,4 +168,7 @@
     <string name="privacy_redirect_use">Omleidingen gebruiken</string>
     <string name="privacy_redirect_title">Omleidingen</string>
     <string name="setting_title_profiles_standard_always">Overschakelen naar standaardprofiel voor nieuwe domeinen en tabbladen.</string>
+    <string name="app_restart">Bij het opnieuw opstarten</string>
+    <string name="setting_menu">Menu</string>
+    <string name="menu_delete_entry">Vermelding verwijderen</string>
 </resources>

@@ -17,7 +17,7 @@ import de.baumann.browser.browser.BrowserContainer;
 import de.baumann.browser.browser.BrowserController;
 import de.baumann.browser.unit.HelperUnit;
 
-class AdapterTabs {
+public class AdapterTabs {
 
     private final Context context;
     private final AlbumController albumController;
@@ -37,6 +37,9 @@ class AdapterTabs {
     View getAlbumView() {
         return albumView;
     }
+    public Object getUrl() {
+        return albumUrl.getText().toString();
+    }
 
     void setAlbumTitle(String title, String url) {
         albumTitle.setText(title);
@@ -54,8 +57,6 @@ class AdapterTabs {
         albumCardView = albumView.findViewById(R.id.albumCardView);
         albumTitle = albumView.findViewById(R.id.titleView);
         albumUrl = albumView.findViewById(R.id.dateView);
-        albumCardView = albumView.findViewById(R.id.albumCardView);
-
         ImageView albumClose = albumView.findViewById(R.id.iconView);
         albumClose.setImageResource(R.drawable.icon_tab_remove);
         albumClose.setVisibility(View.VISIBLE);
@@ -64,6 +65,11 @@ class AdapterTabs {
             if (BrowserContainer.size() < 2) {
                 browserController.hideOverview();
             }
+        });
+        assert albumCardView != null;
+        albumView.setOnLongClickListener(v -> {
+            browserController.showOverflow(null, albumCardView, 5, albumTitle.getText().toString(), albumUrl.getText().toString(), null, null, 0);
+            return true;
         });
     }
 

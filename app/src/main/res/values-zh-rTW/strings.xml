@@ -168,4 +168,7 @@
     <string name="privacy_redirect_title">重定向</string>
     <string name="setting_backup_sumDatabase">起始網站、書籤、歷史</string>
     <string name="setting_title_profiles_standard_always">針對新網域和索引標籤切換至標準設定檔。</string>
+    <string name="app_restart">重新啟動時</string>
+    <string name="setting_menu">選單</string>
+    <string name="menu_delete_entry">刪除條目</string>
 </resources>

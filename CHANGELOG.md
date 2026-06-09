@@ -12,10 +12,11 @@
 - fix: Tracking protection needs improvment #1266
 - fix: Add ability to view image alt text #1000
 - fix: toasts not showing entire URL
-- removed: redundant settings (autofill, custom javascript)
-- removed: StartSite
+- updated: translations
 - improved: input of search layouts
 - improved: more snackbars instead of dialogs
+- removed: redundant settings (autofill, custom javascript)
+- removed: StartSite
 - new: menu settings
 
 
