@@ -117,8 +117,6 @@
     <string name="setting_gesture_11">Zobrazit rychlé přepínání</string>
     <string name="hint_database">Tímto odstraníte aktuální data. Chcete pokračovat?</string>
     <string name="settings_data_restore">Obnovit</string>
-    <string name="toast_copy_successful">Úspěšně zkopírováno</string>
-    <string name="toast_delete_successful">Úspěšně smazáno</string>
     <string name="toast_input_empty">Nic jste nevložili.</string>
     <string name="toast_webview_forward">Nelze načíst další stránku</string>
     <string name="toast_restart">Pro provedení změn musíte restartovat aplikaci „FOSS Browser“. Ukončit nyní?</string>

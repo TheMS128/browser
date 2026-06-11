@@ -117,8 +117,6 @@
     <string name="setting_gesture_11">הצג החלפה מהירה</string>
     <string name="hint_database">פעולה זו תמחק את הנתונים הנוכחיים. להמשיך?</string>
     <string name="settings_data_restore">שחזר</string>
-    <string name="toast_copy_successful">הועתק בהצלחה</string>
-    <string name="toast_delete_successful">נמחק בהצלחה</string>
     <string name="toast_input_empty">לא הזנת כלום.</string>
     <string name="toast_webview_forward">לא ניתן לטעון את האתר הבא</string>
     <string name="toast_restart">עליך להפעיל מחדש את \"FOSS Browser\" כדי להחיל שינויים. לסגור עכשיו?</string>

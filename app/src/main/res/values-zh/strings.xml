@@ -117,8 +117,6 @@
     <string name="setting_gesture_11">显示快速切换</string>
     <string name="hint_database">这将删除当前数据。是否继续？</string>
     <string name="settings_data_restore">恢复</string>
-    <string name="toast_copy_successful">已复制</string>
-    <string name="toast_delete_successful">已删除</string>
     <string name="toast_input_empty">请输入一些内容。</string>
     <string name="toast_webview_forward">无法加载下一个网站。</string>
     <string name="toast_restart">是否重启以应用更改？</string>

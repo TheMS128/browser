@@ -22,7 +22,6 @@ package de.baumann.browser.unit;
 import static android.content.ContentValues.TAG;
 
 import android.Manifest;
-import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.Dialog;
 import android.app.DownloadManager;
@@ -74,6 +73,7 @@ import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
+import java.util.function.BooleanSupplier;
 
 import de.baumann.browser.R;
 import de.baumann.browser.activity.BrowserActivity;
@@ -260,15 +260,15 @@ public class HelperUnit {
 
     public static String domain(String url) {
         if (url == null) {
-            return ""; }
-        else {
+            return "";
+        } else {
             try {
                 return Objects.requireNonNull(Uri.parse(url).getHost()).replace("www.", "").trim();
             } catch (Exception e) {
                 return "";
-            }}
+            }
+        }
     }
-
     public static void initTheme(Activity context) {
         sp = PreferenceManager.getDefaultSharedPreferences(context);
         if (sp.getBoolean("useDynamicColor", false)) {
@@ -343,7 +343,6 @@ public class HelperUnit {
         String filename = dataUriParser.getFilename();
 
         MaterialAlertDialogBuilder builder = new MaterialAlertDialogBuilder(activity);
-
         View dialogView = View.inflate(activity, R.layout.dialog_edit, null);
         TextInputLayout editBottomLayout = dialogView.findViewById(R.id.editBottomLayout);
         TextInputLayout editTopLayout = dialogView.findViewById(R.id.editTopLayout);
@@ -352,12 +351,10 @@ public class HelperUnit {
         EditText editTop = dialogView.findViewById(R.id.editTop);
         EditText editBottom = dialogView.findViewById(R.id.editBottom);
         editTop.setText(filename.substring(0, filename.indexOf(".")));
-
         String extension = filename.substring(filename.lastIndexOf("."));
         if (extension.length() <= 8) {
             editBottom.setText(extension);
         }
-
         builder.setView(dialogView);
         builder.setTitle(R.string.menu_save_as);
         builder.setIcon(R.drawable.icon_menu_save);
@@ -395,7 +392,6 @@ public class HelperUnit {
             }
         });
     }
-
     public static void showSoftKeyboard(EditText editText) {
         editText.requestFocus();
         new Handler().postDelayed(() -> {
@@ -426,12 +422,10 @@ public class HelperUnit {
     }
 
     public static void setHighLightedText(Context context, TextView tv, String url, String textToHighlight) {
-
         String tvt = tv.getText().toString().toLowerCase();
         int ofe = tvt.indexOf(textToHighlight.toLowerCase());
         Spannable wordToSpan = new SpannableString(tv.getText());
         List_standard listStandard = new List_standard(context);
-
         for (int ofs = 0; ofs < tvt.length() && ofe != -1; ofs = ofe + 1) {
             ofe = tvt.indexOf(textToHighlight, ofs);
             if (ofe == -1)
@@ -443,7 +437,6 @@ public class HelperUnit {
                 TypedValue typedValue2 = new TypedValue();
                 context.getTheme().resolveAttribute(R.attr.colorOnSurface, typedValue2, true);
                 int color2 = typedValue2.data;
-                // set color here
                 wordToSpan.setSpan(new ForegroundColorSpan(color2), ofe, ofe + textToHighlight.length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
                 tv.setText(wordToSpan, TextView.BufferType.SPANNABLE);
                 try {
@@ -461,11 +454,9 @@ public class HelperUnit {
     }
 
     public static void setHighLightedTextSearch (Context context, TextView tv, String textToHighlight) {
-
         String tvt = tv.getText().toString().toLowerCase();
         int ofe = tvt.indexOf(textToHighlight.toLowerCase());
         Spannable wordToSpan = new SpannableString(tv.getText());
-
         for (int ofs = 0; ofs < tvt.length() && ofe != -1; ofs = ofe + 1) {
             ofe = tvt.indexOf(textToHighlight, ofs);
             if (ofe == -1)
@@ -482,14 +473,11 @@ public class HelperUnit {
         tv.setEllipsize(TextUtils.TruncateAt.END);
         tv.setSingleLine(true);
     }
-    // Diese Methode stellt sicher, dass die Liste existiert und gibt sie direkt zurück
     public static void initAndLoadMenu(Context context) {
         SharedPreferences sharedPreferences = context.getSharedPreferences(Settings_Menu.PREF_NAME, Context.MODE_PRIVATE);
         String json = sharedPreferences.getString(Settings_Menu.KEY_LIST, null);
-
         Type type = new TypeToken<ArrayList<MenuItem>>() {}.getType();
         List<MenuItem> list = new Gson().fromJson(json, type);
-        // Falls die App neu installiert wurde oder die Liste leer ist
         if (list == null || list.isEmpty()) {
             list = new ArrayList<>();
             list.add(new MenuItem(context.getString(R.string.menu_openFav), R.drawable.icon_fav, true));
@@ -515,102 +503,112 @@ public class HelperUnit {
             list.add(new MenuItem(context.getString(R.string.menu_delete), R.drawable.icon_delete, true));
             list.add(new MenuItem(context.getString(R.string.menu_delete_entry), R.drawable.icon_delete_alt, true));
             list.add(new MenuItem(context.getString(R.string.app_help), R.drawable.icon_help, true));
-            // Sofort in den SharedPreferences speichern, damit sie ab jetzt "verfügbar" ist
             SharedPreferences.Editor editor = sharedPreferences.edit();
             editor.putString(Settings_Menu.KEY_LIST, new Gson().toJson(list));
             editor.apply();
         }
     }
-    public static void showSnackbar(Context context, View view, String title, String text) {
+    public static void showCustomSnackbarWithTwoActions(
+            Context context,
+            View parentView,
+            View anchorView,
+            String title,
+            String text,
+            int firstIconResId,
+            BooleanSupplier firstActionListener,
+            int secondIconResId,
+            BooleanSupplier secondActionListener) {
         android.text.SpannableStringBuilder snackbarText = new android.text.SpannableStringBuilder();
         snackbarText.append(title);
-        // Macht den Titel fett
         snackbarText.setSpan(
                 new android.text.style.StyleSpan(android.graphics.Typeface.BOLD),
                 0,
                 title.length(),
                 android.text.Spanned.SPAN_EXCLUSIVE_EXCLUSIVE
         );
-        // Zeilenumbruch und Text anhängen
         snackbarText.append(":\n").append(text);
-        // 1. Eine leere Basis-Snackbar erstellen
         com.google.android.material.snackbar.Snackbar snackbar =
                 com.google.android.material.snackbar.Snackbar.make(
-                        view,
+                        parentView,
                         "",
                         com.google.android.material.snackbar.Snackbar.LENGTH_INDEFINITE
                 );
-        // 2. Das originale Snackbar-Layout holen und leeren
+
+        if (anchorView != null) {
+            snackbar.setAnchorView(anchorView);
+        }
+
         android.view.ViewGroup layout = (android.view.ViewGroup) snackbar.getView();
         layout.removeAllViews();
         layout.setPadding(0, 0, 0, 0);
-        // WICHTIG: Den eckigen Google-Hintergrund komplett transparent machen,
-        // damit unsere abgerundete customView nicht überlagert wird.
         layout.setBackgroundColor(android.graphics.Color.TRANSPARENT);
-        // 3. Unser eigenes XML-Layout aufblasen
+
         android.view.LayoutInflater inflater = android.view.LayoutInflater.from(context);
-        @SuppressLint("InflateParams")
+        @android.annotation.SuppressLint("InflateParams")
         android.view.View customView = inflater.inflate(R.layout.custom_snackbar, null);
-        // 4. Textfeld füllen
+        int currentNightMode = context.getResources().getConfiguration().uiMode & android.content.res.Configuration.UI_MODE_NIGHT_MASK;
+        int backgroundColor;
+        android.content.res.ColorStateList contentColor;
+        if (currentNightMode == android.content.res.Configuration.UI_MODE_NIGHT_YES) {
+            backgroundColor = android.graphics.Color.parseColor("#E0E0E0"); // Hellgrau/Weiß
+            contentColor = android.content.res.ColorStateList.valueOf(android.graphics.Color.BLACK); // Schwarz
+        } else {
+            backgroundColor = android.graphics.Color.parseColor("#323232");
+            contentColor = android.content.res.ColorStateList.valueOf(android.graphics.Color.WHITE); // Weiß
+        }
+        android.graphics.drawable.GradientDrawable shape = new android.graphics.drawable.GradientDrawable();
+        shape.setShape(android.graphics.drawable.GradientDrawable.RECTANGLE);
+        shape.setColor(backgroundColor);
+        shape.setCornerRadius(60f);
+        customView.setBackground(shape);
         android.widget.TextView textView = customView.findViewById(R.id.custom_snackbar_text);
         if (textView != null) {
             textView.setText(snackbarText);
+            textView.setTextColor(contentColor.getDefaultColor());
         }
-        // Klick-Logik für Icon-Button 1
-        android.widget.ImageButton btnOne = customView.findViewById(R.id.custom_btn_one);
-        if (btnOne != null) {
-            btnOne.setOnClickListener(v -> {
-                Intent sharingIntent;
-                sharingIntent = new Intent(Intent.ACTION_SEND);
-                sharingIntent.setType("text/plain");
-                sharingIntent.putExtra(Intent.EXTRA_SUBJECT, title);
-                sharingIntent.putExtra(Intent.EXTRA_TEXT, text);
-                context.startActivity(Intent.createChooser(sharingIntent, (context.getString(R.string.menu_share_link))));
-                snackbar.dismiss();
-            });
+        com.google.android.material.button.MaterialButton firstButton = customView.findViewById(R.id.custom_btn_one);
+        if (firstButton != null && firstIconResId != 0) {
+            firstButton.setIconResource(firstIconResId);
+            firstButton.setIconTint(contentColor);
+            if (firstActionListener != null) {
+                firstButton.setOnClickListener(v -> {
+                    if (firstActionListener.getAsBoolean()) {
+                        snackbar.dismiss();
+                    }
+                });
+            }
         }
-        // Klick-Logik für Icon-Button 2
-        android.widget.ImageButton btnTwo = customView.findViewById(R.id.custom_btn_two);
-        if (btnTwo != null) {
-            btnTwo.setOnClickListener(v -> snackbar.dismiss());
+        com.google.android.material.button.MaterialButton secondButton = customView.findViewById(R.id.custom_btn_two);
+        if (secondButton != null && secondIconResId != 0) {
+            secondButton.setIconResource(secondIconResId);
+            secondButton.setIconTint(contentColor);
+            if (secondActionListener != null) {
+                secondButton.setOnClickListener(v -> {
+                    if (secondActionListener.getAsBoolean()) {
+                        snackbar.dismiss();
+                    }
+                });
+            }
         }
-        // 5. RUNDE ECKEN DIREKT AUF DIE CUSTOM VIEW ANWENDEN
-        android.graphics.drawable.GradientDrawable background = new android.graphics.drawable.GradientDrawable();
-        background.setShape(android.graphics.drawable.GradientDrawable.RECTANGLE);
-        float density = context.getResources().getDisplayMetrics().density;
-        background.setCornerRadius(24 * density);
-        // 24dp Radius für deutlich sichtbare Rundung
-        // Bestimmt die Hintergrundfarbe passend zu Material-Dunkelgrau
-        background.setColor(android.graphics.Color.parseColor("#323232"));
-        // Das abgerundete Hintergrund-Drawable direkt unserer customView übergeben
-        customView.setBackground(background);
-        // 6. Das abgerundete Layout in die Snackbar einfügen und anzeigen
-        layout.addView(customView);
+        layout.addView(customView, 0);
         snackbar.show();
     }
 
     public static void makeSnackbarRound (Context context, Snackbar snackbar) {
-
         android.view.View snackbarView = snackbar.getView();
-        android.widget.TextView textView = snackbarView.findViewById(com.google.android.material.R.id.snackbar_text);
+        android.widget.TextView textView = snackbarView.findViewById(R.id.snackbar_text);
         if (textView != null) {
-            textView.setMaxLines(100); // Erlaubt der Snackbar, bei langen URLs umzubrechen
+            textView.setMaxLines(100);
         }
-        // RUNDE ECKEN HINZUFÜGEN:
-        // Wir erstellen ein abgerundetes Rechteck im Code
         android.graphics.drawable.GradientDrawable background = new android.graphics.drawable.GradientDrawable();
         background.setShape(android.graphics.drawable.GradientDrawable.RECTANGLE);
-        // Ecken-Radius in Pixel umrechnen (16dp für deutlich sichtbare Rundung)
         float density = context.getResources().getDisplayMetrics().density;
         background.setCornerRadius(24 * density);
-        // Option A: Aktuelle Hintergrundfarbe der Snackbar beibehalten
         if (snackbarView.getBackground() instanceof android.graphics.drawable.ColorDrawable) {
             background.setColor(((android.graphics.drawable.ColorDrawable) snackbarView.getBackground()).getColor());
         } else {
-            // Option B: Fallback-Farbe (Dunkelgrau/Material-Standard) falls Option A fehlschlägt
             background.setColor(android.graphics.Color.parseColor("#323232"));
         }
-        // Das abgerundete Drawable als neuen Hintergrund setzen
         snackbarView.setBackground(background);
         snackbar.setTextMaxLines(100);
     }

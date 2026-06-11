@@ -489,19 +489,20 @@ public class NinjaWebViewClient extends WebViewClient {
             );
         return super.shouldInterceptRequest(view, request);
     }
-
     @Override
     public void onFormResubmission(WebView view, @NonNull final Message doNotResend, final Message resend) {
-        MaterialAlertDialogBuilder builder = new MaterialAlertDialogBuilder(context);
-        builder.setTitle(HelperUnit.domain(view.getUrl()));
-        builder.setIcon(R.drawable.icon_alert);
-        builder.setMessage(R.string.dialog_content_resubmission);
-        builder.setPositiveButton(R.string.app_ok, (dialog, whichButton) -> resend.sendToTarget());
-        builder.setNegativeButton(R.string.app_cancel, (dialog, whichButton) -> doNotResend.sendToTarget());
-        AlertDialog dialog = builder.create();
-        dialog.show();
-        dialog.setOnCancelListener(d -> doNotResend.sendToTarget());
-        HelperUnit.setupDialog(context, dialog);
+        HelperUnit.showCustomSnackbarWithTwoActions(
+                context, view, null,
+                view.getTitle(), view.getUrl(),
+                R.drawable.icon_check, () -> {
+                    resend.sendToTarget();
+                    return true;
+                },
+                R.drawable.icon_close, () -> {
+                    doNotResend.sendToTarget();
+                    return true;
+                }
+        );
     }
 
     @SuppressLint("WebViewClientOnReceivedSslError")
@@ -530,19 +531,20 @@ public class NinjaWebViewClient extends WebViewClient {
                 break;
         }
         String text = message + " - " + context.getString(R.string.dialog_content_ssl_error);
-        MaterialAlertDialogBuilder builder = new MaterialAlertDialogBuilder(context);
-        builder.setTitle(HelperUnit.domain(view.getUrl()));
-        builder.setIcon(R.drawable.icon_alert);
-        builder.setMessage(text);
-        builder.setPositiveButton(R.string.app_ok, (dialog, whichButton) -> {
-            handler.proceed();
-            ninjaWebView.reload();
-        });
-        builder.setNegativeButton(R.string.app_cancel, (dialog, whichButton) -> handler.cancel());
-        AlertDialog dialog = builder.create();
-        dialog.show();
-        dialog.setCancelable(false);
-        HelperUnit.setupDialog(context, dialog);
+
+        HelperUnit.showCustomSnackbarWithTwoActions(
+                context, view, null,
+                view.getTitle(), text,
+                R.drawable.icon_check, () -> {
+                    handler.proceed();
+                    ninjaWebView.reload();
+                    return true;
+                },
+                R.drawable.icon_close, () -> {
+                    handler.cancel();
+                    return true;
+                }
+        );
     }
 
     @Override

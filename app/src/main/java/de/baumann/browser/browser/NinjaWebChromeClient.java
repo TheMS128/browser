@@ -24,7 +24,6 @@ import android.widget.EditText;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 
-import androidx.appcompat.app.AlertDialog;
 import androidx.preference.PreferenceManager;
 
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
@@ -89,7 +88,6 @@ public class NinjaWebChromeClient extends WebChromeClient {
                 .show();
         return true;
     }
-
     @Override
     public boolean onConsoleMessage(ConsoleMessage consoleMessage) {
         if (consoleMessage.message().contains("NotAllowedError: Write permission denied.")) {  //this error occurs when user copies to clipboard
@@ -109,7 +107,6 @@ public class NinjaWebChromeClient extends WebChromeClient {
         if (title.isEmpty()) ninjaWebView.updateTitle(HelperUnit.domain(url), url);
         else ninjaWebView.updateTitle(title,url);
     }
-
     @Override
     public boolean onCreateWindow(WebView view, boolean dialog, boolean userGesture, android.os.Message resultMsg) {
         Context context = view.getContext();
@@ -134,25 +131,21 @@ public class NinjaWebChromeClient extends WebChromeClient {
         });
         return true;
     }
-
     @Override
     public void onShowCustomView(View view, WebChromeClient.CustomViewCallback callback) {
         NinjaWebView.getBrowserController().onShowCustomView(view, callback);
         super.onShowCustomView(view, callback);
     }
-
     @Override
     public void onHideCustomView() {
         NinjaWebView.getBrowserController().onHideCustomView();
         super.onHideCustomView();
     }
-
     @Override
     public boolean onShowFileChooser(WebView webView, ValueCallback<Uri[]> filePathCallback, WebChromeClient.FileChooserParams fileChooserParams) {
         NinjaWebView.getBrowserController().showFileChooser(filePathCallback);
         return true;
     }
-
     @Override
     public void onGeolocationPermissionsShowPrompt(String origin, GeolocationPermissions.Callback callback) {
         Activity activity = (Activity) ninjaWebView.getContext();
@@ -160,7 +153,6 @@ public class NinjaWebChromeClient extends WebChromeClient {
         callback.invoke(origin, true, false);
         super.onGeolocationPermissionsShowPrompt(origin, callback);
     }
-
     @Override
     public void onPermissionRequest(final PermissionRequest request) {
         SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(ninjaWebView.getContext());
@@ -185,20 +177,22 @@ public class NinjaWebChromeClient extends WebChromeClient {
                 if (sp.getBoolean(NinjaWebView.getProfile() + "_drm", true)){
                     request.grant(request.getResources());
                 } else {
-                    MaterialAlertDialogBuilder builder = new MaterialAlertDialogBuilder(ninjaWebView.getContext());
-                    builder.setIcon(R.drawable.icon_alert);
-                    builder.setTitle(R.string.app_warning);
-                    builder.setMessage(R.string.hint_DRM_Media);
-                    builder.setPositiveButton(R.string.app_ok, (dialog, whichButton) -> request.grant(request.getResources()));
-                    builder.setNegativeButton(R.string.app_cancel, (dialog, whichButton) -> request.deny());
-                    AlertDialog dialog = builder.create();
-                    dialog.show();
-                    HelperUnit.setupDialog(ninjaWebView.getContext(), dialog);
+                    HelperUnit.showCustomSnackbarWithTwoActions(
+                            ninjaWebView.getContext(), ninjaWebView, null,
+                            ninjaWebView.getContext().getString(R.string.app_warning), ninjaWebView.getContext().getString(R.string.hint_DRM_Media),
+                            R.drawable.icon_check, () -> {
+                                request.grant(request.getResources());
+                                return true;
+                            },
+                            R.drawable.icon_close, () -> {
+                                request.deny();
+                                return true;
+                            }
+                    );
                 }
             }
         }
     }
-
     @Override
     public void onReceivedIcon(WebView view, Bitmap icon) {
         String url = ninjaWebView.getUrl();
@@ -215,7 +209,6 @@ public class NinjaWebChromeClient extends WebChromeClient {
         }
         super.onReceivedIcon(view, icon);
     }
-
     @Override
     public void onReceivedTitle(WebView view, String sTitle) {
         super.onReceivedTitle(view, sTitle);

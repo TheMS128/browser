@@ -117,8 +117,6 @@
     <string name="setting_gesture_11">Pokaż szybkie przełączanie</string>
     <string name="hint_database">Spowoduje to usunięcie aktualnych danych. Kontynuować?</string>
     <string name="settings_data_restore">Przywróć</string>
-    <string name="toast_copy_successful">Kopiowanie zakończone</string>
-    <string name="toast_delete_successful">Usuwanie zakończone</string>
     <string name="toast_input_empty">Nie wprowadziłeś niczego.</string>
     <string name="toast_webview_forward">Nie można załadować kolejnej strony</string>
     <string name="toast_restart">Musisz uruchomić ponownie \"FOSS Browser, aby zachować te zmiany. Zamknąć teraz?</string>

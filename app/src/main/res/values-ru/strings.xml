@@ -117,8 +117,6 @@
     <string name="setting_gesture_11">Показать быстрое переключение</string>
     <string name="hint_database">Это удалит текущие данные. Продолжить?</string>
     <string name="settings_data_restore">Восстановить</string>
-    <string name="toast_copy_successful">Скопировано</string>
-    <string name="toast_delete_successful">Удалено</string>
     <string name="toast_input_empty">Пожалуйста, введите что нибудь.</string>
     <string name="toast_webview_forward">Не удается загрузить следующий сайт.</string>
     <string name="toast_restart">Перезапустить приложение для применения изменений?</string>

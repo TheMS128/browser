@@ -5,9 +5,9 @@ import static android.content.ContentValues.TAG;
 import android.annotation.SuppressLint;
 import android.app.Dialog;
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Bitmap;
-import android.os.Handler;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.View;
@@ -356,7 +356,21 @@ public class NinjaWebView extends WebView implements AlbumController {
                 HelperUnit.setHighLightedText(context, overflowURL, url, HelperUnit.domain(url));
                 TextView menuTitle = dialogView.findViewById(R.id.overflowTitle);
                 menuTitle.setText(HelperUnit.domain(urlToLoad));
-                textGroup.setOnClickListener(v -> HelperUnit.showSnackbar ( context, dialogView, HelperUnit.domain(urlToLoad), urlToLoad));
+                textGroup.setOnClickListener(v ->
+                        HelperUnit.showCustomSnackbarWithTwoActions(
+                        context, dialogView, null,
+                        HelperUnit.domain(urlToLoad), urlToLoad,
+                        R.drawable.icon_share, () -> {
+                            Intent sharingIntent;
+                            sharingIntent = new Intent(Intent.ACTION_SEND);
+                            sharingIntent.setType("text/plain");
+                            sharingIntent.putExtra(Intent.EXTRA_SUBJECT, HelperUnit.domain(urlToLoad));
+                            sharingIntent.putExtra(Intent.EXTRA_TEXT, urlToLoad);
+                            context.startActivity(Intent.createChooser(sharingIntent, (context.getString(R.string.menu_share_link))));
+                            return true;
+                        },
+                        R.drawable.icon_close, () -> true
+                ));
 
                 FloatingActionButton buttonProfile = dialogView.findViewById(R.id.buttonProfile);
                 NinjaWebView.getBrowserController().setProfileIcon(buttonProfile, urlToLoad);

@@ -116,8 +116,6 @@
     <string name="setting_gesture_11">Hiện %s nút chuyển đổi</string>
     <string name="hint_database">Việc này sẽ xoá dữ liệu hiện tại. Tiếp tục?</string>
     <string name="settings_data_restore">Khôi phục</string>
-    <string name="toast_copy_successful">Sao chép thành công</string>
-    <string name="toast_delete_successful">Xóa thành công</string>
     <string name="toast_input_empty">Bạn chưa nhập gì cả.</string>
     <string name="toast_webview_forward">Không thể tải trang tiếp theo</string>
     <string name="toast_restart">Bạn phải khởi động lại \"Trình duyệt FOSS\" để áp dụng các thay đổi. Đóng ngay?</string>

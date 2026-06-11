@@ -101,7 +101,7 @@ public class Settings_ProfileList extends AppCompatActivity {
                                     .remove(list.get(position) + "_dom")
                                     .remove(list.get(position) + "_night")
                                     .remove(list.get(position) + "_desktop").apply();
-                            NinjaToast.show(Settings_ProfileList.this, R.string.toast_delete_successful);
+                            NinjaToast.show(Settings_ProfileList.this, R.string.app_done);
                         }
                         catch (Exception e) {Log.i(TAG, "dialogCustomSearches:" + e);}
                     }));

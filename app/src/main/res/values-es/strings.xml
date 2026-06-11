@@ -116,8 +116,6 @@
     <string name="setting_gesture_11">Mostrar intercambio rápido</string>
     <string name="hint_database">Esto eliminará los datos actuales. ¿Proceder?</string>
     <string name="settings_data_restore">Restaurar</string>
-    <string name="toast_copy_successful">Copiado</string>
-    <string name="toast_delete_successful">Eliminado</string>
     <string name="toast_input_empty">Por favor, introduzca algo.</string>
     <string name="toast_webview_forward">No se puede cargar la página siguiente.</string>
     <string name="toast_restart">¿Reiniciar para aplicar los cambios?</string>

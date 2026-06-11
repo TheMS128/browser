@@ -139,7 +139,6 @@
     <string name="title_appDatabase">Andmebaas</string>
     <string name="hint_database">Sellega kustutad olemasolevad andmed. Kas jätkame?</string>
     <string name="settings_data_restore">Taasta</string>
-    <string name="toast_copy_successful">Kopeeritud</string>
     <string name="toast_input_empty">Palun sisesta midagi.</string>
     <string name="toast_webview_forward">Järgmist veebisaiti ei õnnestu laadida.</string>
     <string name="toast_quit">Kas sulgeme FOSS Brauseri?</string>
@@ -164,7 +163,6 @@
     <string name="setting_gesture_04">Keri lehe ülemisse äärde</string>
     <string name="setting_title_microphone">Luba kasutada mikrofoni</string>
     <string name="setting_gesture_07">Näita parempoolset vahekaarti</string>
-    <string name="toast_delete_successful">Kustutatud</string>
     <string name="setting_summary_tabsRestore">Taasta vahekaardid, kui operatsioonisüsteem lõpetab FOSS Brauseri töö.</string>
     <string name="app_intro_b">Hetkel avatud veebisait on FOSS Brauseri viki. Ta on lisatud ka esimese järjehoidjana. Vikist leiad juhendeid, kasulikku teavet ja asjakohaseid linke.</string>
     <string name="menu_reload">Laadi uuesti</string>

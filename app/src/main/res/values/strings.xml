@@ -143,8 +143,6 @@
     <string name="title_appDatabase">Database</string>
     <string name="hint_database">This will delete current data. Proceed?</string>
     <string name="settings_data_restore">Restore</string>
-    <string name="toast_copy_successful">Copied</string>
-    <string name="toast_delete_successful">Deleted</string>
     <string name="toast_input_empty">Please input something.</string>
     <string name="toast_webview_forward">Can\'t load next site.</string>
     <string name="toast_restart">Restart to apply changes?</string>

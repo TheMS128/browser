@@ -90,7 +90,6 @@ import androidx.webkit.WebViewFeature;
 import com.google.android.material.badge.BadgeDrawable;
 import com.google.android.material.badge.BadgeUtils;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
-import com.google.android.material.bottomsheet.BottomSheetDialog;
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.card.MaterialCardView;
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
@@ -161,6 +160,7 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
     private FloatingActionButton omnibox_menu;
     private BadgeDrawable badgeDrawable;
     private AdapterSearch adapterSearch;
+    private MaterialCardView searchOnSiteLayout;
 
     // Layouts
     private LinearProgressIndicator progressBar;
@@ -192,8 +192,8 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
     private AlertDialog dialog_overflow;
     private AlertDialog dialogSearch;
     private View dialogViewSearch;
-    private BottomSheetDialog bottomSheetDialog_searchOnSite;
     private AlertDialog dialogCustomSearches;
+    private CardView appBar;
 
     private AlbumController nextAlbumController(boolean next) {
         if (BrowserContainer.size() <= 1) return currentAlbumController;
@@ -401,6 +401,9 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
             case KeyEvent.KEYCODE_BACK:
                 if (fullscreenHolder != null || customView != null || videoView != null) {
                     Log.v(TAG, "FOSS Browser in fullscreen mode");
+                } else if (searchOnSiteLayout.getVisibility() == VISIBLE){
+                    searchBox.setText("");
+                    searchOnSiteLayout.setVisibility(GONE);
                 } else if (ninjaWebView.canGoBack()){
                     sp.edit().putBoolean("backPressed", true).apply();
                     ninjaWebView.goBack();
@@ -664,27 +667,6 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
                         sp.edit().putString("sort_bookmark", "time").apply();
                         sp.edit().putBoolean("sort_bookmarkDomain", false).apply();
                         bottom_navigation.setSelectedItemId(R.id.page_2);
-                    } else if (item.getItemId() == R.id.menu_delete) {
-                        MaterialAlertDialogBuilder builder = new MaterialAlertDialogBuilder(context);
-                        builder.setTitle(R.string.menu_delete);
-                        builder.setMessage(R.string.hint_database);
-                        builder.setIcon(R.drawable.icon_delete);
-                        builder.setPositiveButton(R.string.app_ok, (dialog, whichButton) -> {
-                            if (overViewTab.equals(getString(R.string.album_title_bookmarks))) {
-                                BrowserUnit.clearBookmark(context);
-                                bottom_navigation.setSelectedItemId(R.id.page_2); }
-                            else if (overViewTab.equals(getString(R.string.album_title_history))) {
-                                BrowserUnit.clearHistory(context);
-                                bottom_navigation.setSelectedItemId(R.id.page_3); }
-                        });
-                        builder.setNegativeButton(R.string.app_cancel, (dialog, whichButton) -> dialog.cancel());
-                        AlertDialog dialog = builder.create();
-                        dialog.show();
-                        HelperUnit.setupDialog(context, dialog);
-                    } else if (item.getItemId() == R.id.menu_sortName) {
-                        sp.edit().putString("sort_bookmark", "title").apply();
-                        sp.edit().putBoolean("sort_bookmarkDomain", false).apply();
-                        bottom_navigation.setSelectedItemId(R.id.page_2);
                     } else if (item.getItemId() == R.id.menu_sortDate) {
                         sp.edit().putBoolean("sort_historyDomain", false).apply();
                         bottom_navigation.setSelectedItemId(R.id.page_3);
@@ -802,17 +784,23 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
                 hideOverflow(); }});
 
         TextInputLayout searchTextInputLayout  = dialogViewSearch.findViewById(R.id.textField);
-        searchTextInputLayout.setStartIconTintList(ColorStateList.valueOf(Color.GRAY));
         searchTextInputLayout.setStartIconOnClickListener(v -> {
+            if (Objects.requireNonNull(search_input.getText()).toString().isEmpty()) {
+                hideSearch();
+            } else {
+                search_input.setText("");
+            }
+        });
+        searchTextInputLayout.setEndIconOnLongClickListener(v -> {
+            String query = Objects.requireNonNull(search_input.getText()).toString().trim();
+            showDialogCustomSearches(query);
+            return false;
+        });
+        searchTextInputLayout.setEndIconOnClickListener(v -> {
             String query = Objects.requireNonNull(search_input.getText()).toString().trim();
             if (!query.isEmpty()) {
                 handleFinalSearch(query);
             }
-        });
-        searchTextInputLayout.setStartIconOnLongClickListener(v -> {
-            String query = Objects.requireNonNull(search_input.getText()).toString().trim();
-            showDialogCustomSearches(query);
-            return false;
         });
         search_input.setOnEditorActionListener((v, actionId, event) -> {
             String query = Objects.requireNonNull(search_input.getText()).toString().trim();
@@ -893,35 +881,28 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
     }
 
     private void initSearchPanel() {
-
-        bottomSheetDialog_searchOnSite = new BottomSheetDialog(context);
-        bottomSheetDialog_searchOnSite.setContentView(R.layout.sheet_search_site);
-        bottomSheetDialog_searchOnSite.setCancelable(false);
-        Objects.requireNonNull(bottomSheetDialog_searchOnSite.getWindow()).clearFlags(WindowManager.LayoutParams.FLAG_DIM_BEHIND);
-        searchBox = bottomSheetDialog_searchOnSite.findViewById(R.id.searchBox_input);
-        Button searchUp = bottomSheetDialog_searchOnSite.findViewById(R.id.searchBox_up);
-        Button searchDown = bottomSheetDialog_searchOnSite.findViewById(R.id.searchBox_down);
-        TextInputLayout searchTextInputLayout  = bottomSheetDialog_searchOnSite.findViewById(R.id.editTopLayout);
+        searchOnSiteLayout = findViewById(R.id.searchOnSiteLayout);
+        searchBox = findViewById(R.id.search_input);
+        Button searchDown = findViewById(R.id.searchBox_down);
+        TextInputLayout searchTextInputLayout  = findViewById(R.id.textField);
         assert searchTextInputLayout != null;
-        searchTextInputLayout.setStartIconOnClickListener(v -> {
+        searchDown.setOnClickListener(v -> {
             if (searchBox.getText().length() > 0) searchBox.setText("");
-            else {bottomSheetDialog_searchOnSite.cancel();}
+            else {
+                searchOnSiteLayout.setVisibility(GONE);
+                appBar.setVisibility(VISIBLE);
+            }
         });
-
+        searchTextInputLayout.setStartIconOnClickListener(v -> ((NinjaWebView) currentAlbumController).findNext(false));
+        searchTextInputLayout.setEndIconOnClickListener(v -> ((NinjaWebView) currentAlbumController).findNext(true));
         searchBox.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) { }
-
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) { }
-
             @Override
             public void afterTextChanged(Editable s) { if (currentAlbumController != null) ((NinjaWebView) currentAlbumController).findAllAsync(s.toString()); }
         });
-        assert searchUp != null;
-        searchUp.setOnClickListener(v -> ((NinjaWebView) currentAlbumController).findNext(false));
-        assert searchDown != null;
-        searchDown.setOnClickListener(v -> ((NinjaWebView) currentAlbumController).findNext(true));
     }
     public void initSearch() {
         RecordAction action = new RecordAction(this);
@@ -1016,7 +997,27 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
         HelperUnit.setHighLightedText(context, overflowURL, url, HelperUnit.domain(url));
         TextView menuTitle = dialogView.findViewById(R.id.overflowTitle);
         menuTitle.setText(title);
-        textGroup.setOnClickListener(v -> HelperUnit.showSnackbar ( context, dialogView, title, url));
+        textGroup.setOnClickListener(v -> {
+            // 1. Die Root-View deiner aktuellen Activity holen (als Parent für die Snackbar)
+            // View rootView = findViewById(android.R.id.content);
+            // 2. Optional: Eine View bestimmen, ÜBER der die Snackbar schweben soll (z.B. eine Bottom-Navigation)
+            // Wenn sie ganz normal unten am Bildschirmrand kleben soll, übergib hier einfach 'null'.
+            HelperUnit.showCustomSnackbarWithTwoActions(
+                    this, dialogView, null,
+                    title, url,
+                    R.drawable.icon_share, () -> {
+                        dialog_overflow.cancel();
+                        hideOverview();
+                        shareLink(title, url);
+                        return true;
+                    },
+                    R.drawable.icon_close, () -> {
+                        // AKTION 2: Abbrechen schließt immer sofort
+                        return true;
+                    }
+            );
+        });
+
         String jsonReceived = getIntent().getStringExtra("SELECTED_DATA");
         List<MenuItem> selectedItemsList;
         if (jsonReceived != null) {
@@ -1339,7 +1340,6 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
         }
 
         if (url != null) {
-
             MaterialAlertDialogBuilder builderFastToggle = new MaterialAlertDialogBuilder(context);
             View dialogViewFastToggle = View.inflate(context, R.layout.dialog_settings, null);
             builderFastToggle.setView(dialogViewFastToggle);
@@ -1353,7 +1353,16 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
             TextView overflowTitle = dialogViewFastToggle.findViewById(R.id.textGroup_menuTitle);
             overflowTitle.setText(title);
             FaviconHelper.setFavicon(context, dialogViewFastToggle, url, R.id.menu_icon, R.drawable.icon_image_broken);
-            textGroup.setOnClickListener(v -> HelperUnit.showSnackbar ( context, dialogViewFastToggle, title, url));
+            textGroup.setOnClickListener(v ->
+                    HelperUnit.showCustomSnackbarWithTwoActions(
+                    this, dialogViewFastToggle, null,
+                    title, url,
+                    R.drawable.icon_share, () -> {
+                        shareLink(title, url);
+                        return true;
+                    },
+                    R.drawable.icon_close, () -> true
+            ));
 
             FloatingActionButton buttonProfile = dialogViewFastToggle.findViewById(R.id.buttonProfile);
             setProfileIcon(buttonProfile, url);
@@ -1433,20 +1442,6 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
             });
 
             CheckBox checkbox_links = dialogViewFastToggle.findViewById(R.id.checkbox_links);
-            if (SDK_INT >= Build.VERSION_CODES.TIRAMISU && sp.getBoolean("sp_tabBackground", false)) {
-                int notificationAllowed = checkSelfPermission(Manifest.permission.POST_NOTIFICATIONS);
-                if (notificationAllowed != PackageManager.PERMISSION_GRANTED) {
-                    MaterialAlertDialogBuilder builder = new MaterialAlertDialogBuilder(activity);
-                    builder.setIcon(R.drawable.icon_alert);
-                    builder.setMessage(R.string.app_permission);
-                    builder.setTitle(R.string.app_permission_notification);
-                    builder.setPositiveButton(R.string.app_ok, (dialog, whichButton) -> requestPermissions(new String[]{Manifest.permission.POST_NOTIFICATIONS}, 1234567));
-                    builder.setNegativeButton(R.string.app_cancel, (dialog, whichButton) -> dialog.cancel());
-                    AlertDialog dialog = builder.create();
-                    dialog.show();
-                    HelperUnit.setupDialog(activity, dialog);
-                }
-            }
             checkbox_links.setChecked(sp.getBoolean("sp_tabBackground", false));
             checkbox_links.setOnClickListener(v -> {
                 sp.edit().putBoolean("sp_tabBackground", checkbox_links.isChecked()).apply();
@@ -1804,6 +1799,21 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
             });
             dialogFastToggle.setOnDismissListener(dialogInterface -> setProfileIcon(floatingActionButton,url));
             dialogFastToggle.show();
+
+            if (SDK_INT >= Build.VERSION_CODES.TIRAMISU && sp.getBoolean("sp_tabBackground", false)) {
+                int notificationAllowed = checkSelfPermission(Manifest.permission.POST_NOTIFICATIONS);
+                if (notificationAllowed != PackageManager.PERMISSION_GRANTED) {
+                    HelperUnit.showCustomSnackbarWithTwoActions(
+                            context, dialogViewFastToggle, null,
+                            getString(R.string.dialog_backGround), getString(R.string.app_permission),
+                            R.drawable.icon_check, () -> {
+                                requestPermissions(new String[]{Manifest.permission.POST_NOTIFICATIONS}, 1234567);
+                                return true;
+                            },
+                            R.drawable.icon_close, () -> true
+                    );
+                }
+            }
         } else {
             NinjaToast.show(context, getString(R.string.app_error));
         }
@@ -1811,13 +1821,10 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
     
     public void setProfileIcon (FloatingActionButton floatingActionButton, String url) {
         String profile = sp.getString("profile", "profileStandard");
-        assert url != null;
-
         TypedValue typedValue = new TypedValue();
         Resources.Theme theme = context.getTheme();
         theme.resolveAttribute(R.attr.colorError, typedValue, true);
         int color = typedValue.data;
-
         if (profile.equals("profileStandard")) {
             floatingActionButton.setImageResource(R.drawable.icon_profile_standard);
             omnibox_menu.setImageResource(R.drawable.icon_overflow);
@@ -1825,7 +1832,6 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
             floatingActionButton.setImageResource(R.drawable.icon_profile_changed);
             omnibox_menu.setImageResource(R.drawable.icon_profile_changed);
         }
-
         listStandard = new List_standard(context);
         if (listStandard.isWhite(url)) {
             floatingActionButton.getDrawable().mutate().setTint(color);
@@ -1873,11 +1879,9 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
     }
 
     private void showDialogCustomSearches(String url) {
-
         if (dialogOverview.isShowing()) {
             dialogOverview.cancel();
         }
-
         if (!url.isEmpty()) {
             ninjaWebView.stopLoading();
             MaterialAlertDialogBuilder builder = new MaterialAlertDialogBuilder(context);
@@ -1895,7 +1899,7 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
             recyclerView.setAdapter(adapter);
 
             builder.setTitle(url);
-            builder.setIcon(R.drawable.icon_custom_searches);
+            builder.setIcon(R.drawable.icon_search);
             builder.setPositiveButton(R.string.create_new, ((dialogInterface, i) -> {
                 if (Objects.equals(ninjaWebView.getUrl(), "about:blank")) {
                     ninjaWebView.loadUrl(sp.getString("favoriteURL", "https://codeberg.org/Gaukler_Faun/FOSS_Browser/wiki"));
@@ -1907,7 +1911,7 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
                 TextInputEditText source = dialogViewAddCustom.findViewById(R.id.source);
                 TextInputEditText target = dialogViewAddCustom.findViewById(R.id.target);
                 builderAddCustom.setTitle(R.string.custom_searches_title);
-                builderAddCustom.setIcon(R.drawable.icon_custom_searches);
+                builderAddCustom.setIcon(R.drawable.icon_search);
                 builderAddCustom.setNegativeButton(R.string.app_cancel, null);
                 builderAddCustom.setPositiveButton(R.string.app_ok, ((dialogInterface2, i2) -> {
                     String sourceText = Objects.requireNonNull(source.getText()).toString();
@@ -1941,9 +1945,6 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
             NinjaToast.show(this, R.string.toast_input_empty);
         }
     }
-
-    // Voids
-
     private void doubleTapsQuit() {
         if (!sp.getBoolean("sp_close_browser_confirm", true)) finishAndRemoveTask();
         else {
@@ -1953,7 +1954,6 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
             snackbar.show();
         }
     }
-
     private void saveOpenedTabs() {
         ArrayList<String> openTabs = new ArrayList<>();
         for (int i = 0; i < BrowserContainer.size(); i++) {
@@ -1962,7 +1962,6 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
             else openTabs.add(((NinjaWebView) (BrowserContainer.get(i))).getUrl()); }
         sp.edit().putString("openTabs", TextUtils.join("‚‗‚", openTabs)).apply();
     }
-
     private void setCustomFullscreen(boolean fullscreen) {
         if (fullscreen) {
             if (SDK_INT >= Build.VERSION_CODES.R) {
@@ -1982,17 +1981,16 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
             }
             else getWindow().setFlags(WindowManager.LayoutParams.FLAG_FORCE_NOT_FULLSCREEN, WindowManager.LayoutParams.FLAG_FORCE_NOT_FULLSCREEN); }
     }
-
     private void copyLink(String url) {
         ClipboardManager clipboard = (ClipboardManager) getSystemService(Context.CLIPBOARD_SERVICE);
         ClipData clip = ClipData.newPlainText("text", url);
         Objects.requireNonNull(clipboard).setPrimaryClip(clip);
-        String text = getString(R.string.toast_copy_successful) + ": " + url;
-        NinjaToast.show(this, text);
+        NinjaToast.show(this, getString(R.string.app_done));
     }
 
     public void shareLink(String title, String url) {
 
+        hideOverview();
         List_standard listStandard = new List_standard(context);
         String profile = sp.getString("profile", "profileStandard");
         if (listStandard.isWhite(url)) profile = HelperUnit.domain(url);
@@ -2020,13 +2018,41 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
                 View dialogView = View.inflate(context, R.layout.dialog_menu, null);
                 MaterialAlertDialogBuilder builderTrack = new MaterialAlertDialogBuilder(context);
 
-                CardView albumCardView = dialogView.findViewById(R.id.albumCardView);
-                albumCardView.setVisibility(GONE);
-                builderTrack.setTitle(url);
-                builderTrack.setIcon(R.drawable.icon_tracking);
-                builderTrack.setMessage(m);
-                builderTrack.setPositiveButton(R.string.app_cancel, (dialog2, whichButton) -> dialog2.cancel());
+                LinearLayout textGroup = dialogView.findViewById(R.id.textGroup);
+                TextView overflowURL = dialogView.findViewById(R.id.overflowURL);
+                overflowURL.setText(url);
+                TextView overflowMessage = dialogView.findViewById(R.id.overflowMessage);
+                overflowMessage.setText(m);
+                HelperUnit.setHighLightedText(context, overflowURL, url, HelperUnit.domain(url));
+                TextView menuTitle = dialogView.findViewById(R.id.overflowTitle);
+                menuTitle.setText(HelperUnit.domain(url));
+                textGroup.setOnClickListener(v ->
+                        HelperUnit.showCustomSnackbarWithTwoActions(
+                                context, dialogView, null,
+                                title, url,
+                                R.drawable.icon_share, () -> {
+                                    shareLink(title, url);
+                                    return true;
+                                },
+                                R.drawable.icon_close, () -> true
+                        ));
+
+                FloatingActionButton buttonProfile = dialogView.findViewById(R.id.buttonProfile);
+                NinjaWebView.getBrowserController().setProfileIcon(buttonProfile, url);
+                FaviconHelper.setFavicon(context, dialogView, url, R.id.menu_icon, R.drawable.icon_image_broken);
+                buttonProfile.setOnClickListener(v -> {
+                    sp.edit().putString("profile", "profileStandard").apply();
+                    NinjaWebView.getBrowserController().setProfileIcon(buttonProfile, url);
+                    if (!listStandard.isWhite(url)){
+                        ninjaWebView.reload();
+                    }
+                });
+                buttonProfile.setOnLongClickListener(v -> {
+                    NinjaWebView.getBrowserController().showDialogFastToggle(title,url, buttonProfile);
+                    return false;
+                });
                 builderTrack.setView(dialogView);
+
                 AlertDialog dialogTrack = builderTrack.create();
                 dialogTrack.show();
                 HelperUnit.setupDialog(context, dialogTrack);
@@ -2112,8 +2138,7 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
             ClipboardManager clipboard = (ClipboardManager) getSystemService(Context.CLIPBOARD_SERVICE);
             ClipData clip = ClipData.newPlainText("text", data);
             Objects.requireNonNull(clipboard).setPrimaryClip(clip);
-            String text = getString(R.string.toast_copy_successful) + " -  " + data;
-            NinjaToast.show(this, text);
+            NinjaToast.show(this, getString(R.string.app_done));
             addAlbum("", urlForPosting, true);
         } else {
             MaterialAlertDialogBuilder builder = new MaterialAlertDialogBuilder(context);
@@ -2142,8 +2167,7 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
                 ClipboardManager clipboard = (ClipboardManager) getSystemService(Context.CLIPBOARD_SERVICE);
                 ClipData clip = ClipData.newPlainText("text", data);
                 Objects.requireNonNull(clipboard).setPrimaryClip(clip);
-                String text = getString(R.string.toast_copy_successful) + " -  " + data;
-                NinjaToast.show(this, text);
+                NinjaToast.show(this, getString(R.string.app_done));
                 addAlbum("", shareTop, true);
                 dialog.cancel();
                 try {
@@ -2154,12 +2178,11 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
             });
         }
     }
-
     private void searchOnSite() {
-        bottomSheetDialog_searchOnSite.show();
+        appBar.setVisibility(GONE);
+        searchOnSiteLayout.setVisibility(VISIBLE);
         HelperUnit.showSoftKeyboard(searchBox);
     }
-
     private void saveBookmark(String title, String url) {
         RecordAction action = new RecordAction(context);
         action.open(true);
@@ -2342,7 +2365,7 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
     @SuppressLint("ClickableViewAccessibility")
     private void setWebView(String title, final String url, final boolean foreground) {
         ninjaWebView = new NinjaWebView(context);
-        CardView appBar = findViewById(R.id.appBar);
+        appBar = findViewById(R.id.appBar);
         ninjaWebView.setOnScrollChangeListener((v, scrollX, scrollY, oldScrollX, oldScrollY) -> {
             final Handler handler = new Handler();
             handler.postDelayed(() -> {
@@ -2418,7 +2441,15 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
                         if (textToShow.contains("ERR_ALT_NOT_FOUND") || textToShow.contains("ERR_NO_ALT_ATTR") || textToShow.contains("ERR_ALT_EMPTY")) {
                             NinjaToast.show(this, textToShow);
                         } else {
-                            HelperUnit.showSnackbar(context, ninjaWebView, ninjaWebView.getTitle(), textToShow);
+                            HelperUnit.showCustomSnackbarWithTwoActions(
+                                    this, ninjaWebView, null,
+                                    ninjaWebView.getTitle(), textToShow,
+                                    R.drawable.icon_share, () -> {
+                                        shareLink(ninjaWebView.getTitle(), textToShow);
+                                        return true;
+                                    },
+                                    R.drawable.icon_close, () -> true
+                            );
                         }
                     });
                 });
@@ -2467,7 +2498,7 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
             View dialogView = View.inflate(context, R.layout.dialog_intro, null);
             builder.setView(dialogView);
             builder.setTitle(R.string.app_intro_a);
-            builder.setIcon(R.drawable.icon_alert);
+            builder.setIcon(R.drawable.icon_web);
             builder.setPositiveButton(R.string.app_ok, (dialog, whichButton) -> dialog.cancel());
             AlertDialog dialog = builder.create();
             dialog.show();

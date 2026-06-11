@@ -117,8 +117,6 @@
     <string name="setting_gesture_11">Visa snabbinställningar</string>
     <string name="hint_database">Detta kommer att ta bort nuvarande data. Fortsätt?</string>
     <string name="settings_data_restore">Återställ</string>
-    <string name="toast_copy_successful">Kopierat</string>
-    <string name="toast_delete_successful">Radering lyckades</string>
     <string name="toast_input_empty">Du har inte skrivit något.</string>
     <string name="toast_webview_forward">Kan inte ladda nästa webbplats</string>
     <string name="toast_restart">Starta om för att tillämpa ändringarna?</string>

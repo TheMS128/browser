@@ -117,8 +117,6 @@
     <string name="setting_gesture_11">Швидкі налаштування</string>
     <string name="hint_database">Поточні дані будуть видалені. Продовжити?</string>
     <string name="settings_data_restore">Відновити</string>
-    <string name="toast_copy_successful">Скопійовано</string>
-    <string name="toast_delete_successful">Видалено</string>
     <string name="toast_input_empty">Будь ласка, введіть щось.</string>
     <string name="toast_webview_forward">Не вдається завантажити наступний сайт.</string>
     <string name="toast_restart">Перезапустити, щоб застосувати зміни?</string>

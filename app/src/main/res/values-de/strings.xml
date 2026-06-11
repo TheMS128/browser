@@ -117,8 +117,6 @@
     <string name="setting_gesture_11">Schnelleinstellungen</string>
     <string name="hint_database">Aktuelle Daten werden gelöscht. Fortfahren?</string>
     <string name="settings_data_restore">Wiederherstellen</string>
-    <string name="toast_copy_successful">Kopiert</string>
-    <string name="toast_delete_successful">Gelöscht</string>
     <string name="toast_input_empty">Bitte gib etwas ein.</string>
     <string name="toast_webview_forward">Kann die nächste Seite nicht laden.</string>
     <string name="toast_restart">Neustarten, damit die Änderungen wirksam werden?</string>

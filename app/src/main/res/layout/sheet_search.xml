@@ -31,8 +31,9 @@
         app:boxCornerRadiusBottomEnd="28dp"
         app:boxStrokeWidth="0.5dp"
         app:boxStrokeWidthFocused="0.5dp"
-        app:startIconDrawable="@drawable/icon_search"
-        app:endIconMode="clear_text">
+        app:startIconDrawable="@drawable/icon_close"
+        app:endIconDrawable="@drawable/icon_search"
+        app:endIconMode="custom">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/search_input"

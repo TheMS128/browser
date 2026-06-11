@@ -117,8 +117,6 @@
     <string name="setting_gesture_11">Montrer la bascule rapide</string>
     <string name="hint_database">Cela va supprimer les données actuelles. Continuer ?</string>
     <string name="settings_data_restore">Restaurer</string>
-    <string name="toast_copy_successful">Copié avec succès</string>
-    <string name="toast_delete_successful">Supprimé avec succès</string>
     <string name="toast_input_empty">Vous n\'avez rien saisi.</string>
     <string name="toast_webview_forward">Impossible de charger le site suivant</string>
     <string name="toast_restart">Vous devez redémarrer FOSS Browser pour appliquer les modifications. Fermer maintenant ?</string>

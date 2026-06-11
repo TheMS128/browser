@@ -116,8 +116,6 @@
     <string name="setting_gesture_11">Mostrar alternância rápida</string>
     <string name="hint_database">Isto irá apagar os dados atuais. Continuar?</string>
     <string name="settings_data_restore">Restaurar</string>
-    <string name="toast_copy_successful">Copiado</string>
-    <string name="toast_delete_successful">Apagado</string>
     <string name="toast_input_empty">Por favor digite algo.</string>
     <string name="toast_webview_forward">Não foi possível carregar o próximo site.</string>
     <string name="toast_restart">Reiniciar para aplicar mudanças?</string>
