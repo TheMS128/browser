@@ -27,7 +27,6 @@ import java.util.ArrayList;
 import de.baumann.browser.R;
 import de.baumann.browser.activity.BrowserActivity;
 import de.baumann.browser.objects.CustomRedirect;
-import de.baumann.browser.objects.CustomRedirectsHelper;
 import de.baumann.browser.objects.CustomSearchesHelper;
 import de.baumann.browser.unit.BrowserUnit;
 import de.baumann.browser.unit.HelperUnit;

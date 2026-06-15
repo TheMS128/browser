@@ -43,7 +43,6 @@ public class WebAppInterface {
             }
             showSnackbar();
         } catch (IOException | IllegalArgumentException e) {
-            e.printStackTrace();
             Toast.makeText(mContext, mContext.getString(R.string.app_error), Toast.LENGTH_SHORT).show();
         }
     }
