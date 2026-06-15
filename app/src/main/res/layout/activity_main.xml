@@ -14,7 +14,7 @@
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:visibility="gone"
-        android:id="@+id/showOmniBox"
+        android:id="@+id/fab_showAppBar"
         android:layout_alignParentBottom="true"
         android:layout_alignParentEnd="true"
         android:layout_marginBottom="80dp"
@@ -40,10 +40,10 @@
         android:layout_height="65dp"
         android:layout_margin="10dp"
         android:layout_alignParentBottom="true"
-        app:cardCornerRadius="15dp">
+        app:cardCornerRadius="24dp">
 
         <TextView
-            android:id="@+id/omniBox_title"
+            android:id="@+id/appBar_title"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginStart="15dp"
@@ -64,7 +64,7 @@
         app:trackThickness="5dp"/>
 
     <LinearLayout
-        android:id="@+id/AbbBarButtons"
+        android:id="@+id/appBar_buttons"
         android:layout_width="wrap_content"
         android:layout_height="65dp"
         android:layout_alignParentEnd="true"
@@ -74,7 +74,7 @@
         tools:ignore="RelativeOverlap">
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:id="@+id/omnibox_overview"
+            android:id="@+id/fab_overview"
             style="@style/Widget.Material3.Button.IconButton.Outlined"
             app:backgroundTint="?attr/colorOutline"
             app:borderWidth="0.5dp"
@@ -88,7 +88,7 @@
             app:elevation="0dp" />
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
-            android:id="@+id/omniBox_menu"
+            android:id="@+id/fab_menu"
             style="@style/Widget.Material3.Button.IconButton.Outlined"
             app:backgroundTint="?attr/colorOutline"
             app:borderWidth="0.5dp"
@@ -114,7 +114,7 @@
         android:layout_height="75dp"
         android:layout_margin="10dp"
         android:layout_alignParentBottom="true"
-        app:cardCornerRadius="15dp"
+        app:cardCornerRadius="24dp"
         android:orientation="vertical">
 
         <RelativeLayout
@@ -122,7 +122,7 @@
             android:layout_height="match_parent">
 
             <Button
-                android:id="@+id/searchBox_down"
+                android:id="@+id/searchOnSite_buttonClose"
                 style="@style/Widget.Material3.Button.IconButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -132,16 +132,16 @@
                 app:icon="@drawable/icon_close" />
 
             <com.google.android.material.textfield.TextInputLayout
-                android:id="@+id/textField"
+                android:id="@+id/searchOnSite_textField"
                 style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_alignParentBottom="true"
-                android:layout_toStartOf="@+id/searchBox_down"
+                android:layout_toStartOf="@+id/searchOnSite_buttonClose"
                 android:paddingEnd="10dp"
                 android:paddingStart="10dp"
-                android:paddingBottom="10dp"
-                android:paddingTop="10dp"
+                android:paddingBottom="5dp"
+                android:paddingTop="5dp"
                 android:hint="@string/menu_other_searchSite"
                 app:boxCornerRadiusTopStart="28dp"
                 app:boxCornerRadiusTopEnd="28dp"
@@ -154,7 +154,7 @@
                 app:endIconMode="custom">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/search_input"
+                    android:id="@+id/searchOnSite_input"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:inputType="text|textUri"

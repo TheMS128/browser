@@ -7,7 +7,6 @@ import static android.os.Build.VERSION.SDK_INT;
 
 import android.Manifest;
 import android.app.Activity;
-import android.app.Dialog;
 import android.app.DownloadManager;
 import android.app.Notification;
 import android.app.NotificationChannel;
@@ -326,6 +325,9 @@ public class BrowserUnit {
 
         if (sp.getBoolean("sp_tabBackground", false)) {
 
+
+
+
             String url = webView.getUrl();
             String m = activity.getString(R.string.dialog_backGround);
             NotificationManager mNotifyMgr = (NotificationManager) activity.getSystemService(NOTIFICATION_SERVICE);
@@ -352,18 +354,19 @@ public class BrowserUnit {
             Notification buildNotification = mBuilder.build();
 
             if (sp.getString("openBackground_dialog", "show").equals("show")) {
-                MaterialAlertDialogBuilder builderSubMenu = new MaterialAlertDialogBuilder(activity);
-                builderSubMenu.setTitle(R.string.dialog_backGround);
-                builderSubMenu.setMessage(R.string.app_session);
-                builderSubMenu.setIcon(R.drawable.icon_alert);
-                builderSubMenu.setPositiveButton(R.string.app_always, (dialog2, whichButton) -> {
-                    sp.edit().putString("openBackground_dialog", "always").apply();
-                    displayNotification ( activity,  mNotifyMgr,  buildNotification);
-                });
-                builderSubMenu.setNegativeButton(R.string.app_never, (dialog2, whichButton) -> sp.edit().putString("openBackground_dialog", "never").apply());
-                Dialog dialogSubMenu = builderSubMenu.create();
-                dialogSubMenu.show();
-                HelperUnit.setupDialog(activity, dialogSubMenu);
+                HelperUnit.showCustomSnackbarWithTwoActions(
+                        activity, webView, null,
+                        activity.getString(R.string.dialog_backGround), activity.getString(R.string.app_session),
+                        R.drawable.icon_check, () -> {
+                            sp.edit().putString("openBackground_dialog", "always").apply();
+                            displayNotification ( activity,  mNotifyMgr,  buildNotification);
+                            return true;
+                        },
+                        R.drawable.icon_close, () -> {
+                            sp.edit().putString("openBackground_dialog", "never").apply();
+                            return true;
+                        }
+                );
             } else  {
                 if (!sp.getString("openBackground_dialog", "no").equals("never")) {
                     displayNotification ( activity,  mNotifyMgr,  buildNotification);

@@ -48,7 +48,7 @@ public class AdapterMenu extends RecyclerView.Adapter<AdapterMenu.ViewHolder> {
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
         final ImageView iconImageView;
-        TextView titleTextView;
+        final TextView titleTextView;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);

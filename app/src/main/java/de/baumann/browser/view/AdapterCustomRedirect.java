@@ -2,7 +2,6 @@ package de.baumann.browser.view;
 
 import static android.view.View.VISIBLE;
 
-import android.app.Dialog;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.util.TypedValue;
@@ -21,6 +20,7 @@ import androidx.preference.PreferenceManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
+import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.textfield.TextInputEditText;
 
 import org.json.JSONException;
@@ -75,13 +75,10 @@ public class AdapterCustomRedirect extends RecyclerView.Adapter<RedirectsViewHol
         remove.setVisibility(VISIBLE);
         source.setText(current.getSource());
         target.setText(current.getTarget());
-
-        remove.setOnClickListener((iV) -> {
-            MaterialAlertDialogBuilder builderSubMenu = new MaterialAlertDialogBuilder(context);
-            builderSubMenu.setTitle(R.string.menu_delete);
-            builderSubMenu.setMessage(R.string.hint_database);
-            builderSubMenu.setIcon(R.drawable.icon_delete);
-            builderSubMenu.setPositiveButton(R.string.app_ok, (dialog2, whichButton) -> {
+        remove.setOnClickListener(v -> {
+            Snackbar snackbar = Snackbar.make(holder.itemView, R.string.hint_database, Snackbar.LENGTH_SHORT);
+            HelperUnit.makeSnackbarRound(snackbar);
+            snackbar.setAction(context.getString(R.string.app_ok), (v2 -> {
                 redirects.remove(position);
                 sp.edit().remove(redirects.get(position).getSource()).apply();
                 notifyItemRemoved(position);
@@ -91,11 +88,8 @@ public class AdapterCustomRedirect extends RecyclerView.Adapter<RedirectsViewHol
                 } catch (JSONException e) {
                     throw new RuntimeException(e);
                 }
-            });
-            builderSubMenu.setNegativeButton(R.string.app_cancel, (dialog2, whichButton) -> builderSubMenu.setCancelable(true));
-            Dialog dialogSubMenu = builderSubMenu.create();
-            dialogSubMenu.show();
-            HelperUnit.setupDialog(context, dialogSubMenu);
+            }));
+            snackbar.show();
         });
 
         LinearLayout textGroup = holder.itemView.findViewById(R.id.textGroup);

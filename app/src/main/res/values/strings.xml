@@ -63,7 +63,7 @@
     <string name="dialog_content_resubmission">Resubmit data?</string>
     <string name="dialog_content_ssl_error">The certificate of the site is not trusted. Proceed anyway?</string>
     <string name="dialog_sortName">Sort by name</string>
-    <string name="dialog_sortIcon">Sort by icon</string>
+    <string name="dialog_sortIcon">Sort by filter</string>
     <string name="dialog_sortDate">Sort by date</string>
     <string name="dialog_sortDomain">Sort by domain</string>
     <string name="dialog_backGround">Open links in background …</string>

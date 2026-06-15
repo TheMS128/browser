@@ -99,7 +99,7 @@ public class Settings_Menu extends AppCompatActivity {
             finish();
         }
         if (menuItem.getItemId() == R.id.menu_help) {
-            Uri webpage = Uri.parse("https://codeberg.org/Gaukler_Faun/FOSS_Browser/wiki/Gestures");
+            Uri webpage = Uri.parse("https://codeberg.org/Gaukler_Faun/FOSS_Browser/wiki/Menu");
             BrowserUnit.intentURL(this, webpage);
         }
         return true;

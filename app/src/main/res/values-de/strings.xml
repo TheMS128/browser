@@ -52,7 +52,7 @@
     <string name="dialog_content_resubmission">Daten noch einmal senden?</string>
     <string name="dialog_content_ssl_error">Das Zertifikat der Seite ist nicht vertrauenswürdig. Trotzdem fortfahren?</string>
     <string name="dialog_sortName">Nach Namen sortieren</string>
-    <string name="dialog_sortIcon">Nach Icon sortieren</string>
+    <string name="dialog_sortIcon">Nach Filter sortieren</string>
     <string name="dialog_sortDate">Nach Datum sortieren</string>
     <string name="setting_label">Einstellungen</string>
     <string name="setting_title_browser">Browser-Einstellungen</string>

@@ -8,14 +8,14 @@
         android:id="@+id/list_search"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_above="@+id/textField"
+        android:layout_above="@+id/search_textField"
         android:paddingTop="15dp"
         android:divider="@null"
         android:fastScrollEnabled="true"
         android:stackFromBottom="true"/>
 
     <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/textField"
+        android:id="@+id/search_textField"
         style="@style/Widget.Material3.TextInputLayout.OutlinedBox"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

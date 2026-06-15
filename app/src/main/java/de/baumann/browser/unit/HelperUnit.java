@@ -233,7 +233,6 @@ public class HelperUnit {
         Icon icon;
         FaviconHelper faviconHelper = new FaviconHelper(context);
         Bitmap favicon = faviconHelper.getFavicon(url);
-
         if (favicon != null && !favicon.isRecycled()) {
             icon = Icon.createWithBitmap(favicon);
         } else {
@@ -526,7 +525,7 @@ public class HelperUnit {
                 title.length(),
                 android.text.Spanned.SPAN_EXCLUSIVE_EXCLUSIVE
         );
-        snackbarText.append(":\n").append(text);
+        snackbarText.append("\n\n").append(text);
         com.google.android.material.snackbar.Snackbar snackbar =
                 com.google.android.material.snackbar.Snackbar.make(
                         parentView,
@@ -593,8 +592,7 @@ public class HelperUnit {
         layout.addView(customView, 0);
         snackbar.show();
     }
-
-    public static void makeSnackbarRound (Context context, Snackbar snackbar) {
+    public static void makeSnackbarRound (Snackbar snackbar) {
         android.view.View snackbarView = snackbar.getView();
         android.widget.TextView textView = snackbarView.findViewById(R.id.snackbar_text);
         if (textView != null) {
@@ -602,8 +600,7 @@ public class HelperUnit {
         }
         android.graphics.drawable.GradientDrawable background = new android.graphics.drawable.GradientDrawable();
         background.setShape(android.graphics.drawable.GradientDrawable.RECTANGLE);
-        float density = context.getResources().getDisplayMetrics().density;
-        background.setCornerRadius(24 * density);
+        background.setCornerRadius(60f);
         if (snackbarView.getBackground() instanceof android.graphics.drawable.ColorDrawable) {
             background.setColor(((android.graphics.drawable.ColorDrawable) snackbarView.getBackground()).getColor());
         } else {

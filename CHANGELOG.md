@@ -1,5 +1,7 @@
 ### v 23 Harriet Tubman (WIP)
 
+*Harriet "Moses" Tubman (1822 – 1913) was an American abolitionist and social activist.*
+
 - fix: Unable to access full tab list #1282
 - fix: Hide URL-Bar/Status Bar when Scrolling #1278
 - fix: auto hide/show control bar when scrolled up/down #1283

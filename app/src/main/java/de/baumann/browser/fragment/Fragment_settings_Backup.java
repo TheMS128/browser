@@ -66,7 +66,7 @@ public class Fragment_settings_Backup extends BasePreferenceFragment {
         ib_backup.setOnClickListener(v -> {
             LinearLayout root = getActivity().findViewById(R.id.root);
             Snackbar snackbarBottom = Snackbar.make(root, R.string.toast_backup, Snackbar.LENGTH_SHORT);
-            HelperUnit.makeSnackbarRound(getContext(), snackbarBottom);
+            HelperUnit.makeSnackbarRound(snackbarBottom);
             snackbarBottom.setAction(this.getString(R.string.app_ok), (r -> backup(activity)));
             snackbarBottom.show();
         });
@@ -75,7 +75,7 @@ public class Fragment_settings_Backup extends BasePreferenceFragment {
         ib_restore.setOnClickListener(v -> {
             LinearLayout root = getActivity().findViewById(R.id.root);
             Snackbar snackbarBottom = Snackbar.make(root, R.string.hint_database, Snackbar.LENGTH_SHORT);
-            HelperUnit.makeSnackbarRound(getContext(), snackbarBottom);
+            HelperUnit.makeSnackbarRound(snackbarBottom);
             snackbarBottom.setAction(this.getString(R.string.app_ok), (r -> {
                 if (!BackupUnit.checkPermissionStorage(context)) {
                     BackupUnit.requestPermission(activity);

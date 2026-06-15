@@ -45,7 +45,7 @@ public class AdapterSettingsMenu extends RecyclerView.Adapter<AdapterSettingsMen
 
         holder.itemView.setOnClickListener(v -> {
             item.setSelected(!item.isSelected());
-            notifyItemChanged(holder.getAdapterPosition());
+            notifyItemChanged(holder.getAbsoluteAdapterPosition());
         });
     }
 

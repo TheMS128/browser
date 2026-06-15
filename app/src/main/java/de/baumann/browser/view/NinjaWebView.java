@@ -45,6 +45,7 @@ import de.baumann.browser.browser.List_standard;
 import de.baumann.browser.browser.NinjaDownloadListener;
 import de.baumann.browser.browser.NinjaWebChromeClient;
 import de.baumann.browser.browser.NinjaWebViewClient;
+import de.baumann.browser.browser.WebAppInterface;
 import de.baumann.browser.database.FaviconHelper;
 import de.baumann.browser.database.Record;
 import de.baumann.browser.database.RecordAction;
@@ -203,6 +204,8 @@ public class NinjaWebView extends WebView implements AlbumController {
         } catch (Exception e) {
             Log.i(TAG, "Error loading cookies:" + e);
         }
+        this.addJavascriptInterface(new WebAppInterface(context), "AndroidInterface");
+
         profile = profileOriginal;
     }
 
@@ -305,7 +308,6 @@ public class NinjaWebView extends WebView implements AlbumController {
     @Override
     public synchronized void loadUrl(@NonNull String url) {
 
-        //browserController.hideSearch();
         InputMethodManager imm = (InputMethodManager) this.context.getSystemService(Context.INPUT_METHOD_SERVICE);
         imm.hideSoftInputFromWindow(this.getWindowToken(), 0);
 

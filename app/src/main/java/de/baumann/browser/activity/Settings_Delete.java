@@ -40,7 +40,7 @@ public class Settings_Delete extends AppCompatActivity {
         button.setOnClickListener(v -> {
             LinearLayout root = findViewById(R.id.root);
             Snackbar snackbarBottom = Snackbar.make(root, R.string.hint_database, Snackbar.LENGTH_SHORT);
-            HelperUnit.makeSnackbarRound(this, snackbarBottom);
+            HelperUnit.makeSnackbarRound(snackbarBottom);
             snackbarBottom.setAction(this.getString(R.string.app_ok), (r -> BrowserUnit.clearBrowserData(this)));
             snackbarBottom.show();
         });

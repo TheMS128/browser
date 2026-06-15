@@ -76,7 +76,7 @@ public class Settings_ProfileList extends AppCompatActivity {
                 deleteEntry.setOnClickListener(v1 -> {
 
                     Snackbar snackbarDelete = Snackbar.make(v1, R.string.hint_database, Snackbar.LENGTH_SHORT);
-                    HelperUnit.makeSnackbarRound(this.getContext(), snackbarDelete);
+                    HelperUnit.makeSnackbarRound(snackbarDelete);
                     snackbarDelete.setAction(this.getContext().getString(R.string.app_ok), (v2 -> {
                         try {
                             listStandard.removeDomain(list.get(position));
