@@ -89,15 +89,13 @@ public class AdapterSearch extends BaseAdapter implements Filterable {
         View view = convertView;
         Holder holder;
 
-
-
         if (view == null) {
             view = LayoutInflater.from(context).inflate(layoutResId, null, false);
             holder = new Holder();
             holder.titleView = view.findViewById(R.id.titleView);
             holder.urlView = view.findViewById(R.id.dateView);
-            holder.favicon = view.findViewById(R.id.faviconView);
-            holder.albumCardView = view.findViewById(R.id.albumCardView);
+            holder.favicon = view.findViewById(R.id.item_icon);
+            holder.albumCardView = view.findViewById(R.id.item_CardViewItem);
             view.setTag(holder);
         } else {
             holder = (Holder) view.getTag();
@@ -177,7 +175,6 @@ public class AdapterSearch extends BaseAdapter implements Filterable {
         private ImageView favicon;
         private TextView titleView;
         private TextView urlView;
-
         private MaterialCardView albumCardView;
     }
 

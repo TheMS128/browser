@@ -50,6 +50,7 @@ import android.view.ViewGroup;
 import android.view.WindowInsets;
 import android.view.WindowInsetsController;
 import android.view.WindowManager;
+import android.view.inputmethod.InputMethodManager;
 import android.webkit.ValueCallback;
 import android.webkit.WebBackForwardList;
 import android.webkit.WebChromeClient;
@@ -90,7 +91,6 @@ import androidx.webkit.WebViewFeature;
 import com.google.android.material.badge.BadgeDrawable;
 import com.google.android.material.badge.BadgeUtils;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
-import com.google.android.material.button.MaterialButton;
 import com.google.android.material.card.MaterialCardView;
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -266,7 +266,7 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
         });
 
         MaterialAlertDialogBuilder builderOverview = new MaterialAlertDialogBuilder(context);
-        View dialogViewOverview = View.inflate(context, R.layout.sheet_overview, null);
+        View dialogViewOverview = View.inflate(context, R.layout.dialog_overview, null);
         builderOverview.setView(dialogViewOverview);
         dialogOverview = builderOverview.create();
         bottom_navigation = dialogViewOverview.findViewById(R.id.bottom_navigation);
@@ -275,7 +275,7 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
         dialogOverview.show();
 
         MaterialAlertDialogBuilder builderSearch = new MaterialAlertDialogBuilder(context);
-        dialogViewSearch = View.inflate(context, R.layout.sheet_search, null);
+        dialogViewSearch = View.inflate(context, R.layout.dialog_search, null);
         builderSearch.setView(dialogViewSearch);
         dialogSearch = builderSearch.create();
         HelperUnit.setupDialog(context, dialogSearch);
@@ -459,12 +459,10 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
     @Override
     public synchronized void updateProgress(int progress) {
         progressBar.setProgressCompat(progress, true);
-        if (progress != BrowserUnit.LOADING_STOPPED) {
-            updateOmniBox();
-        }
+        updateOmniBox();
+        saveOpenedTabs();
         if (progress < 100) {
             progressBar.setVisibility(VISIBLE);
-            saveOpenedTabs();
         }
     }
 
@@ -706,6 +704,17 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
         appBar_title = findViewById(R.id.appBar_title);
         LinearLayout appBar_buttons = findViewById(R.id.appBar_buttons);
 
+        FloatingActionButton fab_showAppBar = findViewById(R.id.fab_showAppBar);
+        fab_showAppBar.setOnClickListener(v1 -> {
+            appBar.setVisibility(VISIBLE);
+            ObjectAnimator animationBack = ObjectAnimator.ofFloat(appBar, "translationY", 0f);
+            animationBack.setDuration(250);
+            animationBack.start();
+            ObjectAnimator animationBack2 = ObjectAnimator.ofFloat(appBar_buttons, "translationY", 0f);
+            animationBack2.setDuration(250);
+            animationBack2.start();
+        });
+
         appBar_title.setOnClickListener(view -> {
             initSearch();
             sp.edit().putString("sp_search_customSearches", "").apply();
@@ -721,18 +730,6 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
             ObjectAnimator animation2 = ObjectAnimator.ofFloat(appBar_buttons, "translationY", 275f);
             animation2.setDuration(250);
             animation2.start();
-
-            FloatingActionButton fab_showAppBar = findViewById(R.id.fab_showAppBar);
-            fab_showAppBar.setVisibility(VISIBLE);
-            fab_showAppBar.setOnClickListener(v1 -> {
-                fab_showAppBar.setVisibility(GONE);
-                ObjectAnimator animationBack = ObjectAnimator.ofFloat(appBar, "translationY", 0f);
-                animationBack.setDuration(250);
-                animationBack.start();
-                ObjectAnimator animationBack2 = ObjectAnimator.ofFloat(appBar_buttons, "translationY", 0f);
-                animationBack2.setDuration(250);
-                animationBack2.start();
-            });
             return true;
         });
 
@@ -795,21 +792,21 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
         });
         search_textField.setEndIconOnLongClickListener(v -> {
             String query = Objects.requireNonNull(search_input.getText()).toString().trim();
-            if (!query.isEmpty()) {
+            if (!query.isEmpty() && !query.equals(ninjaWebView.getUrl())) {
                 showDialogCustomSearches(query);
+            } else {
+                NinjaToast.show(this, R.string.toast_input_empty);
             }
             return false;
         });
         search_textField.setEndIconOnClickListener(v -> {
             String query = Objects.requireNonNull(search_input.getText()).toString().trim();
-            if (!query.isEmpty()) {
-                handleFinalSearch(query);
-            }
+            handleFinalSearch(query);
         });
         search_input.setOnEditorActionListener((v, actionId, event) -> {
             String query = Objects.requireNonNull(search_input.getText()).toString().trim();
             handleFinalSearch(query);
-            return false;
+            return true;
         });
 
         search_input.addTextChangedListener(new TextWatcher() {
@@ -825,12 +822,13 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
                     context.getTheme().resolveAttribute(R.attr.colorOnSurface, typedValue, true);
                     int color = typedValue.data;
                     search_textField.setStartIconTintList(ColorStateList.valueOf(color));
+                    search_textField.setEndIconTintList(ColorStateList.valueOf(color));
                 } else {
                     search_textField.setStartIconTintList(ColorStateList.valueOf(Color.GRAY));
+                    search_textField.setEndIconTintList(ColorStateList.valueOf(Color.GRAY));
                 }
                 adapterSearch.getFilter().filter(s);
                 sp.edit().putString("searchInput", s.toString()).apply();// Hier kannst du den Live-String direkt verarbeiten (z.B. für Vorschläge)
-                onLiveTextChanged(liveText);
             }
 
             @Override
@@ -842,12 +840,14 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
             return true;
         });
     }
-    private void onLiveTextChanged(String liveText) {
-        System.out.println("Nutzer tippt gerade: " + liveText);
-    }
+
     private void handleFinalSearch(String query) {
-        hideSearch();
-        ninjaWebView.loadUrl(query);
+        if (!query.isEmpty() && !query.equals(ninjaWebView.getUrl())) {
+            hideSearch();
+            ninjaWebView.loadUrl(query);
+        } else {
+            NinjaToast.show(this, R.string.toast_input_empty);
+        }
     }
 
     @SuppressLint({"UnsafeOptInUsageError"})
@@ -866,6 +866,9 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
             catch (Exception e) {Log.i(TAG, "dialogCustomSearches:" + e);}
         }
 
+        searchOnSiteLayout.setVisibility(GONE);
+        appBar.setVisibility(VISIBLE);
+        searchOnSiteInput.setText("");
         badgeDrawable.setVisible(BrowserContainer.size() > 1);
         badgeDrawable.setNumber(BrowserContainer.size());
         BadgeUtils.attachBadgeDrawable(badgeDrawable, fab_overview, findViewById(R.id.layout));
@@ -893,6 +896,8 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
         searchOnSite_buttonClose.setOnClickListener(v -> {
             if (searchOnSiteInput.getText().length() > 0) searchOnSiteInput.setText("");
             else {
+                InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+                imm.hideSoftInputFromWindow(searchOnSiteInput.getWindowToken(), 0);
                 searchOnSiteLayout.setVisibility(GONE);
                 appBar.setVisibility(VISIBLE);
             }
@@ -1190,7 +1195,7 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
                         AlertDialog dialogFilter = builderFilter.create();
                         dialogFilter.show();
                         HelperUnit.setupDialog(context, dialogFilter);
-                        CardView cardView = dialogViewFilter.findViewById(R.id.albumCardView);
+                        CardView cardView = dialogViewFilter.findViewById(R.id.item_CardViewItem);
                         cardView.setVisibility(GONE);
 
                         GridView menuEditFilter = dialogViewFilter.findViewById(R.id.menu_grid);
@@ -1344,7 +1349,7 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
 
         if (url != null) {
             MaterialAlertDialogBuilder builderFastToggle = new MaterialAlertDialogBuilder(context);
-            View dialogViewFastToggle = View.inflate(context, R.layout.dialog_settings, null);
+            View dialogViewFastToggle = View.inflate(context, R.layout.dialog_fast_toggle, null);
             builderFastToggle.setView(dialogViewFastToggle);
             AlertDialog dialogFastToggle = builderFastToggle.create();
             HelperUnit.setupDialog(context, dialogFastToggle);
@@ -1432,7 +1437,7 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
                 popupMenu.show();
             });
 
-            Button checkbox_redirect = dialogViewFastToggle.findViewById(R.id.checkbox_redirect);
+            Button checkbox_redirect = dialogViewFastToggle.findViewById(R.id.item_checkBox);
             checkbox_redirect.setOnClickListener(v -> new CustomRedirectsDialog().show(getSupportFragmentManager(),"redirect"));
 
             CheckBox checkbox_screenOn = dialogViewFastToggle.findViewById(R.id.checkbox_screenOn);
@@ -1830,7 +1835,7 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
         int color = typedValue.data;
         if (profile.equals("profileStandard")) {
             floatingActionButton.setImageResource(R.drawable.icon_profile_standard);
-            fab_menu.setImageResource(R.drawable.icon_overflow);
+            fab_menu.setImageResource(R.drawable.icon_profile_standard);
         } else {
             floatingActionButton.setImageResource(R.drawable.icon_profile_changed);
             fab_menu.setImageResource(R.drawable.icon_profile_changed);
@@ -1851,7 +1856,7 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
         AlertDialog dialog = builder.create();
         dialog.show();
         HelperUnit.setupDialog(context, dialog);
-        CardView cardView = dialogView.findViewById(R.id.albumCardView);
+        CardView cardView = dialogView.findViewById(R.id.item_CardViewItem);
         cardView.setVisibility(GONE);
 
         GridView menu_grid = dialogView.findViewById(R.id.menu_grid);
@@ -1901,7 +1906,7 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
         AdapterCustomSearches adapter = new AdapterCustomSearches(context, url, redirects);
         recyclerView.setAdapter(adapter);
         if (url.length() > 150) {
-            url = url.substring(0, 150) + " [...]?\"";
+            url = url.substring(0, 150) + " [...]";
         }
         String text = "-> " + url;
         builder.setTitle(R.string.custom_searches_title);
@@ -2373,11 +2378,9 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
                     animation.setDuration(250);
                     animation.start();
                     LinearLayout appBarButtons = findViewById(R.id.appBar_buttons);
-                    FloatingActionButton showOmniBox = findViewById(R.id.fab_showAppBar);
                     ObjectAnimator animationBack = ObjectAnimator.ofFloat(appBarButtons, "translationY", 0f);
                     animationBack.setDuration(250);
                     animationBack.start();
-                    showOmniBox.setVisibility(GONE);
                 } else if (scrollY < ninjaWebView.getScrollY()) {
                     ObjectAnimator animation = ObjectAnimator.ofFloat(appBar, "translationY", 275f);
                     animation.setDuration(250);
@@ -2494,27 +2497,14 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
             ninjaWebView.setProfileDefaultValues();
 
             MaterialAlertDialogBuilder builder = new MaterialAlertDialogBuilder(context);
-            View dialogView = View.inflate(context, R.layout.dialog_intro, null);
-            builder.setView(dialogView);
-            builder.setTitle(R.string.app_intro_a);
+            String m = getString(R.string.app_intro_a) + " " +getString(R.string.app_intro_b);
+            builder.setTitle(R.string.app_name);
+            builder.setMessage(m);
             builder.setIcon(R.drawable.icon_web);
             builder.setPositiveButton(R.string.app_ok, (dialog, whichButton) -> dialog.cancel());
             AlertDialog dialog = builder.create();
             dialog.show();
             HelperUnit.setupDialog(context, dialog);
-
-            MaterialButton startBrowsing = dialogView.findViewById(R.id.startBrowsing);
-            startBrowsing.setOnClickListener(v -> {
-                dialog.cancel();
-                HelperUnit.showSoftKeyboard(search_input);
-            });
-
-            MaterialButton openSettings = dialogView.findViewById(R.id.openSettings);
-            openSettings.setOnClickListener(v -> {
-                Intent settings = new Intent(BrowserActivity.this, Settings_Activity.class);
-                startActivity(settings);
-                dialog.cancel();
-            });
         }
 
         ninjaWebView.setBrowserController(this);

@@ -49,7 +49,6 @@
     <string name="dialog_sign_in_username">Nazwa użytkownika</string>
     <string name="dialog_sign_in_password">Hasło</string>
     <string name="dialog_title_download">Pobrać plik?</string>
-    <string name="dialog_content_resubmission">Ponownie przesłać swoje dane?</string>
     <string name="dialog_content_ssl_error">Wykryto niezaufany certyfikat. Chcesz kontynuować?</string>
     <string name="dialog_sortName">Sortuj według nazwy</string>
     <string name="dialog_sortIcon">Sortuj według ikony</string>
@@ -145,8 +144,6 @@
     <string name="app_error_save">Już zapisane.</string>
     <string name="app_intro_a">Dziękujemy za korzystanie z FOSS Browser!</string>
     <string name="app_intro_b">Aktualnie otwartą stroną jest WIKI przeglądarki FOSS. Strona ta jest również zapisywana jako pierwsza zakładka. Na WIKI można znaleźć pomocne wskazówki i linki.</string>
-    <string name="app_intro_c">Aby rozpocząć przeglądanie, wystarczy nacisnąć przycisk na pasku narzędzi. Możesz wyszukać coś w sieci lub wpisać adres URL do otwarcia.</string>
-    <string name="app_intro_d">Możesz także otworzyć ustawienia i skonfigurować FOSS Browser do swoich potrzeb.</string>
     <string name="menu_shareOpenWith">Otwórz za pomocą …</string>
     <string name="dialog_sortDomain">Sortuj według domeny</string>
     <string name="setting_title_deny_cookie_banners">Cookie Banner Blocker</string>

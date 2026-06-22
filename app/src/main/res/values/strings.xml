@@ -60,7 +60,6 @@
     <string name="dialog_sign_in_username">Username</string>
     <string name="dialog_sign_in_password">Password</string>
     <string name="dialog_title_download">Download file?</string>
-    <string name="dialog_content_resubmission">Resubmit data?</string>
     <string name="dialog_content_ssl_error">The certificate of the site is not trusted. Proceed anyway?</string>
     <string name="dialog_sortName">Sort by name</string>
     <string name="dialog_sortIcon">Sort by filter</string>
@@ -167,6 +166,4 @@
     <string name="menu_delete_entry">Delete entry</string>
     <string name="app_intro_a">Thanks for using FOSS Browser!</string>
     <string name="app_intro_b">The currently opened website is the WIKI of FOSS Browser. This site is also saved as your first Bookmark. On the WIKI you can find helpful tips and links.</string>
-    <string name="app_intro_c">To start browsing just tip on the toolbar. You can search the web for something or enter an url to open.</string>
-    <string name="app_intro_d">You can also open settings and configure FOSS Browser to your needs.</string>
 </resources>

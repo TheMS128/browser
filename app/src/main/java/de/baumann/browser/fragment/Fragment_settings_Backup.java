@@ -90,7 +90,6 @@ public class Fragment_settings_Backup extends BasePreferenceFragment {
                     if (sp.getBoolean("bookmark_simple", false)) {
                         BackupUnit.restoreData(getActivity(), 5);
                     }
-                    sp.edit().putInt("restart_changed", 1).apply();
                 }
             }));
             snackbarBottom.show();

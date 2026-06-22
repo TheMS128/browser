@@ -56,7 +56,6 @@
     <string name="dialog_sign_in_username">Kasutajanimi</string>
     <string name="dialog_sign_in_password">Salasõna</string>
     <string name="dialog_title_download">Kas laadime faili alla?</string>
-    <string name="dialog_content_resubmission">Kas saadame andmed uuesti?</string>
     <string name="dialog_sortName">Järjesta nime alusel</string>
     <string name="dialog_sortIcon">Järjesta ikooni alusel</string>
     <string name="dialog_sortDate">Järjesta kuupäeva alusel</string>
@@ -92,7 +91,6 @@
     <string name="setting_backup_sumSettings">Rakenduse ja veebisaidi seadistused</string>
     <string name="setting_title_longPress">Pikk vajutus</string>
     <string name="setting_gesture_up">Viipamine üles</string>
-    <string name="app_intro_d">Lisaks saad alati avada seadistused ning kohendada FOSS Brauseri toimima vastavalt sinu eelistustele.</string>
     <string name="menu_restart">Käivita rakendus ja laadi vahekaardid uuesti</string>
     <string name="setting_title_screenOn">Hoia ekraan sisselülitatuna</string>
     <string name="app_intro_a">Suur tänu, et kasutad FOSS Brauserit!</string>
@@ -151,7 +149,6 @@
     <string name="menu_nightView">Öövaade</string>
     <string name="setting_summary_tabsReload">FOSS Brauseri käivitamisel taasta viimatikasutatud vahekaardid.</string>
     <string name="hint_DRM_Media">Kas lubad DRM-iga kaitstud meedia esitamist?</string>
-    <string name="app_intro_c">Alustamaks kirjuta midagi otsinguribale. See võib olla üksik sõna (siis käivitub otsing) või veebiaadress (siis avaneb see aadress).</string>
     <string name="setting_title_profiles_privacy">Privaatsus</string>
     <string name="setting_title_save_data">Küsi luba andmete salvestamiseks</string>
     <string name="setting_summary_cookie_delete">Kui see on kasutusel, siis eemaldatakse kõik küpsised, sealhulgas usaldatud veebisaitide omad.</string>

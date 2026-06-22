@@ -250,7 +250,7 @@ public class BrowserUnit {
         }
         if (clearDB) {
             context.deleteDatabase("Ninja4.db");
-            context.deleteDatabase("faviconView.db");
+            context.deleteDatabase("item_icon.db");
             sp.edit().putInt("restart_changed", 1).apply();
         }
         if (clearIndexedDB) {

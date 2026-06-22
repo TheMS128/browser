@@ -459,7 +459,7 @@ public class NinjaWebView extends WebView implements AlbumController {
             View dialogView = View.inflate(context, R.layout.dialog_menu, null);
             MaterialAlertDialogBuilder builder = new MaterialAlertDialogBuilder(context);
 
-            CardView albumCardView = dialogView.findViewById(R.id.albumCardView);
+            CardView albumCardView = dialogView.findViewById(R.id.item_CardViewItem);
             albumCardView.setVisibility(GONE);
 
             String secure = url.replace("http://", "https://");
@@ -547,7 +547,7 @@ public class NinjaWebView extends WebView implements AlbumController {
     }
 
     public synchronized void updateFavicon(String url) {
-        FaviconHelper.setFavicon(context, album.getAlbumView(), url, R.id.faviconView, R.drawable.icon_image_broken);
+        FaviconHelper.setFavicon(context, album.getAlbumView(), url, R.id.item_icon, R.drawable.icon_image_broken);
     }
 
     @Override

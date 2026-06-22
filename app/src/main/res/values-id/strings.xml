@@ -48,7 +48,6 @@
     <string name="dialog_sign_in_username">Nama pengguna</string>
     <string name="dialog_sign_in_password">Kata sandi</string>
     <string name="dialog_title_download">Unduh file ini?</string>
-    <string name="dialog_content_resubmission">Kirim ulang data Anda?</string>
     <string name="dialog_content_ssl_error">Sertifikat dari situs tidak dapat dipercaya. Tetap lanjutkan?</string>
     <string name="dialog_sortName">Urutkan berdasarkan nama</string>
     <string name="dialog_sortIcon">Urutkan berdasarkan icon</string>
@@ -145,8 +144,6 @@
     <string name="menu_shareOpenWith">Buka dengan …</string>
     <string name="app_intro_a">Terima kasih telah menggunakan FOSS Browser!</string>
     <string name="app_intro_b">Situs web yang saat ini dibuka adalah WIKI dari FOSS Browser. Situs ini juga disimpan sebagai Bookmark pertama Anda. Di WIKI Anda dapat menemukan tips dan tautan yang bermanfaat.</string>
-    <string name="app_intro_c">Untuk memulai penjelajahan, cukup klik pada toolbar. Anda dapat mencari sesuatu di web atau memasukkan url untuk dibuka.</string>
-    <string name="app_intro_d">Anda juga dapat membuka pengaturan dan mengonfigurasi FOSS Browser sesuai kebutuhan Anda.</string>
     <string name="app_error_save">Sudah disimpan.</string>
     <string name="setting_title_deny_cookie_banners">Pemblokir Spanduk Cookie</string>
     <string name="dialog_sortDomain">Urutkan berdasarkan domain</string>

@@ -54,8 +54,8 @@ public class AdapterRecord extends ArrayAdapter<Record> {
             holder = new Holder();
             holder.title = view.findViewById(R.id.titleView);
             holder.time = view.findViewById(R.id.dateView);
-            holder.favicon = view.findViewById(R.id.faviconView);
-            holder.cardView = view.findViewById(R.id.albumCardView);
+            holder.favicon = view.findViewById(R.id.item_icon);
+            holder.cardView = view.findViewById(R.id.item_CardViewItem);
             view.setTag(holder);
         } else {
             holder = (Holder) view.getTag();

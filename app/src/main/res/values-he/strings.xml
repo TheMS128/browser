@@ -49,7 +49,6 @@
     <string name="dialog_sign_in_username">שם משתמש</string>
     <string name="dialog_sign_in_password">סיסמה</string>
     <string name="dialog_title_download">להוריד את הקובץ?</string>
-    <string name="dialog_content_resubmission">לשלוח מחדש את הנתונים שלך?</string>
     <string name="dialog_content_ssl_error">האישור של האתר אינו מהימן. להמשיך בכל זאת?</string>
     <string name="dialog_sortName">מיין לפי שם</string>
     <string name="dialog_sortIcon">מיין לפי סמל</string>
@@ -167,6 +166,4 @@
     <string name="menu_delete_entry">מחק רשומה</string>
     <string name="app_intro_a">תודה על השימוש בדפדפן FOSS!</string>
     <string name="app_intro_b">האתר הפתוח כרגע הוא ה-WIKI של דפדפן FOSS. אתר זה נשמר גם כסימניה הראשונה שלך. ב-WIKI תוכל למצוא טיפים וקישורים שימושיים.</string>
-    <string name="app_intro_c">כדי להתחיל לגלוש, פשוט הקש על סרגל הכלים. תוכל לחפש משהו באינטרנט או להזין כתובת URL כדי לפתוח אותה.</string>
-    <string name="app_intro_d">ניתן גם לפתוח את ההגדרות ולהתאים את דפדפן FOSS לצרכים שלך.</string>
 </resources>

@@ -1,5 +1,7 @@
 package de.baumann.browser.view;
 
+import static android.view.View.GONE;
+
 import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -26,7 +28,7 @@ public class AdapterSettingsMenu extends RecyclerView.Adapter<AdapterSettingsMen
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_settings_menu, parent, false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_checkbox, parent, false);
         return new ViewHolder(view);
     }
 
@@ -67,10 +69,13 @@ public class AdapterSettingsMenu extends RecyclerView.Adapter<AdapterSettingsMen
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
-            textView = itemView.findViewById(R.id.itemTitle);
-            imageView = itemView.findViewById(R.id.itemIcon);
-            checkBox = itemView.findViewById(R.id.itemCheckBox);
-            cardView = itemView.findViewById(R.id.cardView);
+            textView = itemView.findViewById(R.id.titleView);
+            imageView = itemView.findViewById(R.id.item_icon);
+            checkBox = itemView.findViewById(R.id.item_checkBox);
+            cardView = itemView.findViewById(R.id.item_cardView);
+
+            TextView tv = itemView.findViewById(R.id.dateView);
+            tv.setVisibility(GONE);
         }
     }
 }

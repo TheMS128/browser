@@ -49,7 +49,6 @@
     <string name="dialog_sign_in_username">Usuário</string>
     <string name="dialog_sign_in_password">Senha</string>
     <string name="dialog_title_download">Baixar arquivo?</string>
-    <string name="dialog_content_resubmission">Reenviar os dados?</string>
     <string name="dialog_content_ssl_error">O certificado do site não é de confiança. Continuar?</string>
     <string name="dialog_sortName">Ordenar por nome</string>
     <string name="dialog_sortIcon">Ordenar por ícone</string>
@@ -143,8 +142,6 @@
     <string name="setting_title_cookie_thirdParty">Cookies de terceiros</string>
     <string name="title_appDatabase">Base de dados</string>
     <string name="app_error_save">Já guardado.</string>
-    <string name="app_intro_c">Para começar a navegar, basta dar um toque na barra de ferramentas. Pode procurar algo na web ou introduzir um URL para abrir.</string>
-    <string name="app_intro_d">Também pode abrir as definições e configurar o FOSS Browser de acordo com as suas necessidades.</string>
     <string name="menu_shareOpenWith">Abrir com …</string>
     <string name="app_intro_a">Obrigado por utilizar o FOSS Browser!</string>
     <string name="app_intro_b">O site atualmente aberto é a WIKI do Navegador FOSS. Este site também é guardado como o seu primeiro Favorito. Na WIKI pode encontrar dicas e ligações úteis.</string>

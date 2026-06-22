@@ -196,7 +196,7 @@ public class NinjaWebChromeClient extends WebChromeClient {
     @Override
     public void onReceivedIcon(WebView view, Bitmap icon) {
         String url = ninjaWebView.getUrl();
-        ImageView iv = ninjaWebView.getAlbumView().findViewById(R.id.faviconView);
+        ImageView iv = ninjaWebView.getAlbumView().findViewById(R.id.item_icon);
         if (url == null) {
             iv.setImageResource(R.drawable.icon_image_broken);
         } else if (url.equals("about:blank")) {
@@ -213,7 +213,7 @@ public class NinjaWebChromeClient extends WebChromeClient {
     public void onReceivedTitle(WebView view, String sTitle) {
         super.onReceivedTitle(view, sTitle);
         String url = ninjaWebView.getUrl();
-        ImageView iv = ninjaWebView.getAlbumView().findViewById(R.id.faviconView);
+        ImageView iv = ninjaWebView.getAlbumView().findViewById(R.id.item_icon);
         if (url == null) {
             iv.setImageResource(R.drawable.icon_image_broken);
         } else if (url.equals("about:blank")) {

@@ -49,7 +49,6 @@
     <string name="dialog_sign_in_username">Felhasználónév</string>
     <string name="dialog_sign_in_password">Jelszó</string>
     <string name="dialog_title_download">Letölti a fájlt?</string>
-    <string name="dialog_content_resubmission">Újraküldi az adatait?</string>
     <string name="dialog_content_ssl_error">A weboldal tanúsítványa nem megbízható. Mindenképpen továbblép?</string>
     <string name="dialog_sortName">Rendezés név szerint</string>
     <string name="dialog_sortIcon">Rendezés ikon szerint</string>
@@ -143,8 +142,6 @@
     <string name="setting_title_cookie_thirdParty">Harmadik fél sütik</string>
     <string name="title_appDatabase">Adatbázis</string>
     <string name="app_intro_a">Köszönjük, hogy használja a FOSS Browser-t!</string>
-    <string name="app_intro_c">A böngészés megkezdéséhez csak tippelj az eszköztárra. Kereshet a weben valamit, vagy megadhat egy url-t a megnyitáshoz.</string>
-    <string name="app_intro_d">Megnyithatja a beállításokat is, és beállíthatja a FOSS Browser-t az igényeinek megfelelően.</string>
     <string name="app_error_save">Már elmentettem.</string>
     <string name="app_intro_b">A jelenleg megnyitott weboldal a FOSS Browser WIKI-je. Ez a webhely szintén az első könyvjelzőként van elmentve. A WIKI-ben hasznos tippeket és linkeket találhat.</string>
     <string name="menu_shareOpenWith">Nyissa meg …</string>

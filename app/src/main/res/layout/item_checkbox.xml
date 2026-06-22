@@ -12,7 +12,7 @@
 
     <com.google.android.material.card.MaterialCardView
         style="@style/Widget.Material3.CardView.Outlined"
-        android:id="@+id/albumCardView"
+        android:id="@+id/item_CardViewItem"
         android:layout_width="match_parent"
         android:layout_height="?android:attr/listPreferredItemHeightSmall"
         android:minHeight="?android:attr/listPreferredItemHeightSmall">
@@ -22,7 +22,7 @@
             android:layout_height="match_parent">
 
             <com.google.android.material.card.MaterialCardView
-                android:id="@+id/cardView"
+                android:id="@+id/item_cardView"
                 style="@style/Widget.Material3.CardView.Filled"
                 android:layout_width="25dp"
                 android:layout_height="25dp"
@@ -33,7 +33,7 @@
                 app:cardCornerRadius="4dp">
 
                 <ImageView
-                    android:id="@+id/faviconView"
+                    android:id="@+id/item_icon"
                     android:layout_width="25dp"
                     android:layout_height="25dp"
                     android:scaleType="fitCenter"
@@ -43,7 +43,7 @@
             </com.google.android.material.card.MaterialCardView>
 
             <CheckBox
-                android:id="@+id/checkbox_redirect"
+                android:id="@+id/item_checkBox"
                 android:layout_width="wrap_content"
                 android:layoutDirection="rtl"
                 android:layout_height="?android:attr/listPreferredItemHeightSmall"
@@ -56,8 +56,8 @@
                 android:layout_height="match_parent"
                 android:id="@+id/textGroup"
                 android:orientation="vertical"
-                android:layout_toEndOf="@id/cardView"
-                android:layout_toStartOf="@id/checkbox_redirect"
+                android:layout_toEndOf="@id/item_cardView"
+                android:layout_toStartOf="@id/item_checkBox"
                 android:gravity="center_vertical"
                 android:layout_marginBottom="5dp"
                 android:layout_marginTop="5dp"

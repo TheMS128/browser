@@ -49,7 +49,6 @@
     <string name="dialog_sign_in_username">Корисничко име</string>
     <string name="dialog_sign_in_password">Лозинка</string>
     <string name="dialog_title_download">Преузми датотеку?</string>
-    <string name="dialog_content_resubmission">Поново пошаљите Ваше податке?</string>
     <string name="dialog_content_ssl_error">Сертификат ове странице је неважећи. Ипак наставите?</string>
     <string name="dialog_sortName">Сортирај по имену</string>
     <string name="dialog_sortIcon">Сортирај по иконици</string>
@@ -167,6 +166,4 @@
     <string name="menu_delete_entry">Избриши унос</string>
     <string name="app_intro_a">Хвала што користите FOSS Browser!</string>
     <string name="app_intro_b">Тренутно отворена веб-страница је WIKI прегледача FOSS. Ова страница је такође сачувана као ваша прва ознака. На WIKI-ју можете пронаћи корисне савете и линкове.</string>
-    <string name="app_intro_c">Да бисте почели претраживање, једноставно додирните траку алата. Можете претраживати интернет по нечему или унети УРЛ за отварање.</string>
-    <string name="app_intro_d">Такође можете да отворите подешавања и прилагодите FOSS Browser својим потребама.</string>
 </resources>

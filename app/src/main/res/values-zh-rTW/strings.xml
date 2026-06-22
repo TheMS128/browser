@@ -41,7 +41,6 @@
     <string name="dialog_sign_in_username">使用者名稱</string>
     <string name="dialog_sign_in_password">密碼</string>
     <string name="dialog_title_download">下載此檔案？</string>
-    <string name="dialog_content_resubmission">重新提交資料？</string>
     <string name="dialog_content_ssl_error">網站的憑證不受信任，仍要造訪？</string>
     <string name="dialog_sortName">按名稱排序</string>
     <string name="dialog_sortIcon">按圖示排序</string>
@@ -148,8 +147,6 @@
     <string name="setting_title_cookie_thirdParty">第三方 Cookie</string>
     <string name="title_appDatabase">資料庫</string>
     <string name="app_intro_a">感謝您使用 FOSS Browser！</string>
-    <string name="app_intro_c">要開始瀏覽，只需在工具列上按一下。您可以在網路上搜尋或輸入網址來開啟。</string>
-    <string name="app_intro_d">您也可以開啟設定並依照您的需求設定FOSS Browser。</string>
     <string name="app_intro_b">目前開啟的網站是 FOSS Browser 的 WIKI。這個網站也會被儲存為您的第一個書籤。在 WIKI 上您可以找到有用的提示和連結。</string>
     <string name="app_never">從不</string>
     <string name="setting_title_deny_cookie_banners">Cookie 橫幅封鎖程式</string>

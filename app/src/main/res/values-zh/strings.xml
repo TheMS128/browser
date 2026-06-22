@@ -49,7 +49,6 @@
     <string name="dialog_sign_in_username">用户名</string>
     <string name="dialog_sign_in_password">密码</string>
     <string name="dialog_title_download">是否下载文件？</string>
-    <string name="dialog_content_resubmission">是否重新提交数据？</string>
     <string name="dialog_content_ssl_error">该网站的证书不受信任。是否仍要继续？</string>
     <string name="dialog_sortName">按名称排序</string>
     <string name="dialog_sortIcon">按图标排序</string>
@@ -145,8 +144,6 @@
     <string name="app_error_save">已保存。</string>
     <string name="menu_shareOpenWith">打开方式…</string>
     <string name="app_intro_b">当前打开的网站是 FOSS 浏览器的维基页面。该网站也保存为您的第一个书签。在维基上，您可以找到有用的提示和链接。</string>
-    <string name="app_intro_c">要开始浏览，只需点按工具栏。您可以搜索网络内容，也可以输入网址打开。</string>
-    <string name="app_intro_d">您还可以打开设置，根据您的需要配置 FOSS 浏览器。</string>
     <string name="app_intro_a">感谢您使用 FOSS 浏览器！</string>
     <string name="setting_title_deny_cookie_banners">Cookie 横幅广告拦截器</string>
     <string name="dialog_sortDomain">按域名排序</string>

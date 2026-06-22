@@ -49,7 +49,6 @@
     <string name="dialog_sign_in_username">Nume de utilizator</string>
     <string name="dialog_sign_in_password">Parolă</string>
     <string name="dialog_title_download">Descarci fișierul?</string>
-    <string name="dialog_content_resubmission">Retrimiți datele?</string>
     <string name="dialog_content_ssl_error">Certificatul site-ului nu este de încredere. Continui oricum?</string>
     <string name="dialog_sortName">Sortează după nume</string>
     <string name="dialog_sortIcon">Sortează după pictogramă</string>
@@ -144,8 +143,6 @@
     <string name="title_appDatabase">Baza de date</string>
     <string name="app_error_save">Deja salvat.</string>
     <string name="menu_shareOpenWith">Deschideți cu …</string>
-    <string name="app_intro_c">Pentru a începe să navigați, trebuie doar să apăsați pe bara de instrumente. Puteți căuta ceva pe internet sau puteți introduce o adresă URL pentru a o deschide.</string>
-    <string name="app_intro_d">De asemenea, puteți deschide setările și configura FOSS Browser în funcție de nevoile dumneavoastră.</string>
     <string name="app_intro_a">Vă mulțumim că folosiți FOSS Browser!</string>
     <string name="app_intro_b">Site-ul web deschis în prezent este WIKI al FOSS Browser. De asemenea, acest site este salvat ca primul marcaj. Pe WIKI puteți găsi sfaturi și link-uri utile.</string>
     <string name="setting_title_deny_cookie_banners">Cookie Banner Blocker</string>

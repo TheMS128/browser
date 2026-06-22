@@ -49,7 +49,6 @@
     <string name="dialog_sign_in_username">Tên người dùng</string>
     <string name="dialog_sign_in_password">Mật khẩu</string>
     <string name="dialog_title_download">Tải tệp xuống?</string>
-    <string name="dialog_content_resubmission">Gửi lại dữ liệu của bạn?</string>
     <string name="dialog_content_ssl_error">Chứng chỉ của trang web không được tin cậy. Vẫn tiếp tục?</string>
     <string name="dialog_sortName">Sắp xếp theo tên</string>
     <string name="dialog_sortIcon">Sắp xếp theo biểu tượng</string>
@@ -167,6 +166,4 @@
     <string name="menu_delete_entry">Xóa mục</string>
     <string name="app_intro_a">Cảm ơn bạn đã sử dụng FOSS Browser!</string>
     <string name="app_intro_b">Trang web hiện đang mở là trang WIKI của FOSS Browser. Trang này cũng đã được lưu làm dấu trang đầu tiên của bạn. Trên trang WIKI, bạn có thể tìm thấy các mẹo hữu ích và các liên kết.</string>
-    <string name="app_intro_c">Để bắt đầu duyệt web, chỉ cần nhấn vào thanh công cụ. Bạn có thể tìm kiếm trên web hoặc nhập địa chỉ URL để mở trang web.</string>
-    <string name="app_intro_d">Bạn cũng có thể mở phần cài đặt và tùy chỉnh trình duyệt FOSS theo nhu cầu của mình.</string>
 </resources>

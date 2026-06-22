@@ -48,7 +48,6 @@
     <string name="dialog_sign_in_username">Korisničko ime</string>
     <string name="dialog_sign_in_password">Šifra</string>
     <string name="dialog_title_download">Preuzmi datoteku?</string>
-    <string name="dialog_content_resubmission">Ponovo poslati vaše podatke?</string>
     <string name="dialog_content_ssl_error">Certifikat ove stranice nije pouzdan. Ipak nastavite?</string>
     <string name="dialog_sortName">Sortiraj po imenu</string>
     <string name="dialog_sortIcon">Sortiraj po ikoni</string>

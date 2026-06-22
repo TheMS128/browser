@@ -49,7 +49,6 @@
     <string name="dialog_sign_in_username">نام کاربری</string>
     <string name="dialog_sign_in_password">گذرواژه</string>
     <string name="dialog_title_download">فایل بارگیری شود؟</string>
-    <string name="dialog_content_resubmission">درخواست دوباره ارسال شود؟</string>
     <string name="dialog_content_ssl_error">مجوز سایت مورد نظر مورد اعتماد نمی باشد،در هر صورت ادامه دهم؟</string>
     <string name="dialog_sortName">مرتب سازی بر اساس نام</string>
     <string name="dialog_sortIcon">مرتب‌سازی بر اساس تصویر</string>
@@ -167,6 +166,4 @@
     <string name="menu_delete_entry">حذف ورودی</string>
     <string name="app_intro_a">از اینکه از مرورگر FOSS استفاده می‌کنید، سپاسگزاریم!</string>
     <string name="app_intro_b">وب‌سایت فعلی که باز است، ویکی مرورگر FOSS است. این سایت همچنین به‌عنوان اولین نشانک شما ذخیره شده است. در ویکی می‌توانید نکات و پیوندهای مفیدی را بیابید.</string>
-    <string name="app_intro_c">برای شروع مرور، کافی است روی نوار ابزار ضربه بزنید. می‌توانید در وب به دنبال چیزی بگردید یا یک نشانی وب وارد کنید تا باز شود.</string>
-    <string name="app_intro_d">همچنین می‌توانید تنظیمات را باز کرده و مرورگر FOSS را متناسب با نیازهای خود پیکربندی کنید.</string>
 </resources>

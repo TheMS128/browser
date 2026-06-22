@@ -46,7 +46,7 @@ public class AdapterCustomRedirect extends RecyclerView.Adapter<RedirectsViewHol
     @NonNull
     @Override
     public RedirectsViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_redirect, parent, false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_checkbox, parent, false);
         return new RedirectsViewHolder(view);
     }
 
@@ -57,15 +57,15 @@ public class AdapterCustomRedirect extends RecyclerView.Adapter<RedirectsViewHol
         CustomRedirect current = redirects.get(position);
         TextView source = holder.itemView.findViewById(R.id.titleView);
         TextView target = holder.itemView.findViewById(R.id.dateView);
-        ImageView remove = holder.itemView.findViewById(R.id.faviconView);
-        CardView albumCardView = holder.itemView.findViewById(R.id.albumCardView);
+        ImageView remove = holder.itemView.findViewById(R.id.item_icon);
+        CardView albumCardView = holder.itemView.findViewById(R.id.item_CardViewItem);
 
         TypedValue typedValue = new TypedValue();
         context.getTheme().resolveAttribute(R.attr.colorSurfaceContainerHighest, typedValue, true);
         int color = typedValue.data;
         albumCardView.setCardBackgroundColor(color);
 
-        CheckBox checkbox_redirect = holder.itemView.findViewById(R.id.checkbox_redirect);
+        CheckBox checkbox_redirect = holder.itemView.findViewById(R.id.item_checkBox);
         checkbox_redirect.setChecked(sp.getBoolean(current.getSource(), true));
         checkbox_redirect.setOnClickListener(v -> {
             sp.edit().putBoolean(current.getSource(), checkbox_redirect.isChecked()).apply();

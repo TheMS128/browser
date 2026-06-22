@@ -49,7 +49,6 @@
     <string name="dialog_sign_in_username">Kullanıcı adı</string>
     <string name="dialog_sign_in_password">Şifre</string>
     <string name="dialog_title_download">Dosya indirilsin mi?</string>
-    <string name="dialog_content_resubmission">Verileriniz yeniden gönderilsin mi?</string>
     <string name="dialog_content_ssl_error">Sitenin sertifikası güvenilir değil. Yine de devam edilsin mi?</string>
     <string name="dialog_sortName">İsme göre sırala</string>
     <string name="dialog_sortIcon">Simgeye göre sırala</string>
@@ -144,8 +143,6 @@
     <string name="title_appDatabase">Veritabanı</string>
     <string name="app_error_save">Çoktan kaydedildi.</string>
     <string name="menu_shareOpenWith">İle açın …</string>
-    <string name="app_intro_c">Göz atmaya başlamak için araç çubuğuna dokunmanız yeterlidir. Web\'de bir şey arayabilir veya açmak için bir url girebilirsiniz.</string>
-    <string name="app_intro_d">Ayrıca ayarları açabilir ve FOSS Browser\'ı ihtiyaçlarınıza göre yapılandırabilirsiniz.</string>
     <string name="app_intro_b">Şu anda açık olan web sitesi FOSS Browser\'ın WIKI\'sidir. Bu site aynı zamanda ilk Yer İşaretiniz olarak kaydedilir. WIKI\'de yararlı ipuçları ve bağlantılar bulabilirsiniz.</string>
     <string name="app_intro_a">FOSS Browser\'ı kullandığınız için teşekkürler!</string>
     <string name="dialog_sortDomain">Etki alanına göre sırala</string>

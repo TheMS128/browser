@@ -49,7 +49,6 @@
     <string name="dialog_sign_in_username">Όνομα χρήστη</string>
     <string name="dialog_sign_in_password">Κωδικός πρόσβασης</string>
     <string name="dialog_title_download">Λήψη του αρχείου;</string>
-    <string name="dialog_content_resubmission">Εκ νέου υποβολή των δεδομένων σας;</string>
     <string name="dialog_content_ssl_error">Το πιστοποιητικό του ιστότοπου δεν είναι αξιόπιστο. Συνέχεια πάραυτα;</string>
     <string name="dialog_sortName">Ταξινόμηση κατά όνομα</string>
     <string name="dialog_sortIcon">Ταξινόμηση κατά εικονίδιο</string>
@@ -144,10 +143,8 @@
     <string name="title_appDatabase">Βάση δεδομένων</string>
     <string name="app_error_save">Έχει ήδη αποθηκευτεί.</string>
     <string name="menu_shareOpenWith">Ανοίξτε με …</string>
-    <string name="app_intro_d">Μπορείτε επίσης να ανοίξετε τις ρυθμίσεις και να διαμορφώσετε το FOSS Browser σύμφωνα με τις ανάγκες σας.</string>
     <string name="app_intro_a">Ευχαριστούμε για τη χρήση του FOSS Browser!</string>
     <string name="app_intro_b">Ο δικτυακός τόπος που είναι ανοιχτός αυτή τη στιγμή είναι το WIKI του FOSS Browser. Αυτός ο ιστότοπος είναι επίσης αποθηκευμένος ως ο πρώτος σας σελιδοδείκτης. Στο WIKI μπορείτε να βρείτε χρήσιμες συμβουλές και συνδέσμους.</string>
-    <string name="app_intro_c">Για να ξεκινήσετε την περιήγηση, απλώς συμβουλέψτε τη γραμμή εργαλείων. Μπορείτε να αναζητήσετε κάτι στο διαδίκτυο ή να εισαγάγετε ένα url για να το ανοίξετε.</string>
     <string name="setting_title_deny_cookie_banners">Αποκλεισμός banner cookie</string>
     <string name="dialog_sortDomain">Ταξινόμηση ανά τομέα</string>
     <string name="dialog_tracking">Πιθανή διεύθυνση URL παρακολούθησης. Αφαιρέστε το τμήμα παρακολούθησης:</string>

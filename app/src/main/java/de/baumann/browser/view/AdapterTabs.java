@@ -54,7 +54,7 @@ public class AdapterTabs {
     @SuppressLint("InflateParams")
     private void initUI() {
         albumView = LayoutInflater.from(context).inflate(R.layout.item_list, null, false);
-        albumCardView = albumView.findViewById(R.id.albumCardView);
+        albumCardView = albumView.findViewById(R.id.item_CardViewItem);
         albumTitle = albumView.findViewById(R.id.titleView);
         albumUrl = albumView.findViewById(R.id.dateView);
         ImageView albumClose = albumView.findViewById(R.id.iconView);

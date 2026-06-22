@@ -41,7 +41,7 @@
 
     </PreferenceCategory>
 
-    <PreferenceCategory android:icon="@drawable/icon_overflow">
+    <PreferenceCategory android:icon="@drawable/icon_profile_standard">
 
         <ListPreference
             android:defaultValue="19"

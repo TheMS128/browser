@@ -49,7 +49,6 @@
     <string name="dialog_sign_in_username">ユーザー名</string>
     <string name="dialog_sign_in_password">パスワード</string>
     <string name="dialog_title_download">ファイルをダウンロードしますか?</string>
-    <string name="dialog_content_resubmission">データを再送信しますか?</string>
     <string name="dialog_content_ssl_error">このサーバの証明書は信頼されていません。続行しますか?</string>
     <string name="dialog_sortName">名前順</string>
     <string name="dialog_sortIcon">アイコン順</string>
@@ -145,8 +144,6 @@
     <string name="app_error_save">すでに保存されている。</string>
     <string name="app_intro_a">FOSS Browserをご利用いただきありがとうございます！</string>
     <string name="app_intro_b">現在開いているウェブサイトはFOSS BrowserのWIKIです。このサイトは最初のブックマークとしても保存されます。WIKIには役立つヒントやリンクがあります。</string>
-    <string name="app_intro_c">ブラウジングを開始するには、ツールバーを傾けるだけです。何かを検索したり、URLを入力して開くことができます。</string>
-    <string name="app_intro_d">設定を開いてFOSS Browserを設定することもできます。</string>
     <string name="menu_shareOpenWith">オープン・ウィズ・ …</string>
     <string name="dialog_sortDomain">ドメイン順</string>
     <string name="setting_title_deny_cookie_banners">クッキーバナーブロッカー</string>

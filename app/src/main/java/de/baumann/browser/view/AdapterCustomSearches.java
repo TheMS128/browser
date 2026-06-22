@@ -61,14 +61,18 @@ public class AdapterCustomSearches extends RecyclerView.Adapter<RedirectsViewHol
         TypedValue typedValue = new TypedValue();
         context.getTheme().resolveAttribute(R.attr.colorSurfaceContainerHighest, typedValue, true);
         int color = typedValue.data;
-        CardView albumCardView = holder.itemView.findViewById(R.id.albumCardView);
+        CardView albumCardView = holder.itemView.findViewById(R.id.item_CardViewItem);
         albumCardView.setCardBackgroundColor(color);
-        CardView cardView = holder.itemView.findViewById(R.id.cardView);
+        CardView cardView = holder.itemView.findViewById(R.id.item_cardView);
         cardView.setVisibility(GONE);
+
+
 
         remove.setVisibility(VISIBLE);
         source.setText(current.getSource());
         target.setText(current.getTarget());
+        HelperUnit.setHighLightedText(context, target, current.getTarget(), HelperUnit.domain(current.getTarget()));
+
         remove.setOnClickListener(v -> {
             Snackbar snackbar = Snackbar.make(holder.itemView, R.string.hint_database, Snackbar.LENGTH_SHORT);
             HelperUnit.makeSnackbarRound(snackbar);

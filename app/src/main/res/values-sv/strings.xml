@@ -49,7 +49,6 @@
     <string name="dialog_sign_in_username">Användarnamn</string>
     <string name="dialog_sign_in_password">Lösenord</string>
     <string name="dialog_title_download">Ladda ner filen?</string>
-    <string name="dialog_content_resubmission">Skicka data på nytt?</string>
     <string name="dialog_content_ssl_error">Certifikatet för webbplatsen är inte betrott. Fortsätt ändå?</string>
     <string name="dialog_sortName">Sortera efter namn</string>
     <string name="dialog_sortIcon">Sortera efter ikon</string>
@@ -143,8 +142,6 @@
     <string name="setting_title_cookie_thirdParty">Cookies från tredje part</string>
     <string name="title_appDatabase">Databas</string>
     <string name="menu_shareOpenWith">Öppna med …</string>
-    <string name="app_intro_c">För att börja surfa pekar du bara på verktygsfältet. Du kan söka efter något på webben eller ange en webbadress som ska öppnas.</string>
-    <string name="app_intro_d">Du kan också öppna inställningar och konfigurera FOSS Browser efter dina behov.</string>
     <string name="app_intro_b">Den för närvarande öppnade webbplatsen är WIKI för FOSS Browser. Denna webbplats sparas också som ditt första bokmärke. På WIKI kan du hitta användbara tips och länkar.</string>
     <string name="app_error_save">Redan sparad.</string>
     <string name="app_intro_a">Tack för att du använder FOSS Browser!</string>

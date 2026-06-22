@@ -48,7 +48,6 @@
     <string name="dialog_sign_in_username">اسم المستخدم</string>
     <string name="dialog_sign_in_password">كلمة السر</string>
     <string name="dialog_title_download">تنزيل الملف؟</string>
-    <string name="dialog_content_resubmission">هل تريد اعادة إرسال بياناتك؟</string>
     <string name="dialog_content_ssl_error">شهادة الموقع غير موثوق بها. هل تريد المتابعة على أية حال؟</string>
     <string name="dialog_sortName">افرز حسب الاسم</string>
     <string name="dialog_sortIcon">افرز حسب الأيقونة</string>
@@ -146,8 +145,6 @@
     <string name="menu_shareOpenWith">افتح مع …</string>
     <string name="app_intro_a">شكراً لاستخدامك متصفح FOSS!</string>
     <string name="app_intro_b">الموقع المفتوح حالياً هو WIKI لمتصفح FOSS. يتم حفظ هذا الموقع أيضاً كأول إشارة مرجعية لك. في WIKI يمكنك العثور على نصائح وروابط مفيدة.</string>
-    <string name="app_intro_d">يمكنك أيضًا فتح الإعدادات وتهيئة متصفح FOSS وفقًا لاحتياجاتك.</string>
-    <string name="app_intro_c">لبدء التصفح فقط اضغط على شريط الأدوات. يمكنك البحث في الويب عن شيء ما أو إدخال عنوان url لفتحه.</string>
     <string name="dialog_sortDomain">فرز حسب المجال</string>
     <string name="setting_title_deny_cookie_banners">مانع شعارات ملفات تعريف الارتباط</string>
     <string name="dialog_tracking">عنوان URL التتبع المحتمل. إزالة جزء التتبع:</string>
