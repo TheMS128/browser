@@ -1,4 +1,5 @@
 v 23 Harriet Tubman
+
 **** Harriet "Moses" Tubman (1822 – 1913) was an American abolitionist and social activist.****
 
 - fix: Unable to access full tab list #1282
@@ -19,3 +20,4 @@ v 23 Harriet Tubman
 - removed: redundant settings (autofill, custom javascript)
 - removed: StartSite
 - new: menu settings
+- many more imrovements and fixes
