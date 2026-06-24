@@ -1,3 +1,8 @@
+### v 24 (WIP)
+
+- updated: WIKI
+
+
 ### v 23 Harriet Tubman
 
 *Harriet "Moses" Tubman (1822 – 1913) was an American abolitionist and social activist.*
