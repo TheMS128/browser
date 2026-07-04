@@ -459,6 +459,7 @@ public class NinjaWebViewClient extends WebViewClient {
         final Uri uri = request.getUrl();
         String url = uri.toString();
         if (url.startsWith("http:") || url.startsWith("https:")) {
+            view.loadUrl(url);
             String mCurrentUrl = sp.getString("mCurrentUrl", "");
             if(url.equals(mCurrentUrl) && sp.getBoolean("backPressed", false)) {
                 String historyUrl="";
@@ -493,7 +494,7 @@ public class NinjaWebViewClient extends WebViewClient {
     public void onFormResubmission(WebView view, @NonNull final Message doNotResend, final Message resend) {
         HelperUnit.showCustomSnackbarWithTwoActions(
                 context, view, null,
-                view.getTitle(), view.getUrl(),
+                view.getTitle(), context.getString(R.string.dialog_content_resubmission),view.getUrl(),
                 R.drawable.icon_check, () -> {
                     resend.sendToTarget();
                     return true;
@@ -534,7 +535,7 @@ public class NinjaWebViewClient extends WebViewClient {
 
         HelperUnit.showCustomSnackbarWithTwoActions(
                 context, view, null,
-                view.getTitle(), text,
+                view.getTitle(), text, ninjaWebView.getUrl(),
                 R.drawable.icon_check, () -> {
                     handler.proceed();
                     ninjaWebView.reload();

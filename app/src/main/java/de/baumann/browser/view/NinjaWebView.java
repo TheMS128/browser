@@ -185,7 +185,7 @@ public class NinjaWebView extends WebView implements AlbumController {
         webSettings.setJavaScriptEnabled(sp.getBoolean(profile + "_javascript", true));
         webSettings.setJavaScriptCanOpenWindowsAutomatically(sp.getBoolean(profile + "_javascriptPopUp", false));
 
-        fingerPrintProtection = sp.getBoolean(profile + "_fingerPrintProtection", true);
+        fingerPrintProtection = sp.getBoolean(profile + "_fingerPrintProtection", false);
         history = sp.getBoolean(profile + "_saveHistory", true);
         adBlock = sp.getBoolean(profile + "_adBlock", true);
         saveData = sp.getBoolean(profile + "_saveData", true);
@@ -193,7 +193,7 @@ public class NinjaWebView extends WebView implements AlbumController {
 
         try {
             CookieManager manager = CookieManager.getInstance();
-            if (sp.getBoolean(profile + "_cookies", false)) {
+            if (sp.getBoolean(profile + "_cookies", true)) {
                 manager.setAcceptCookie(true);
                 manager.getCookie(url);
             } else manager.setAcceptCookie(false);
@@ -220,18 +220,18 @@ public class NinjaWebView extends WebView implements AlbumController {
                 .putBoolean("profileStandard_saveData", true)
                 .putBoolean("profileStandard_images", true)
                 .putBoolean("profileStandard_adBlock", true)
-                .putBoolean("profileStandard_trackingULS", true)
+                .putBoolean("profileStandard_trackingULS", false)
                 .putBoolean("profileStandard_location", false)
-                .putBoolean("profileStandard_fingerPrintProtection", true)
+                .putBoolean("profileStandard_fingerPrintProtection", false)
                 .putBoolean("profileStandard_cookies", true)
                 .putBoolean("profileStandard_cookiesThirdParty", false)
-                .putBoolean("profileStandard_deny_cookie_banners", false)
+                .putBoolean("profileStandard_deny_cookie_banners", true)
                 .putBoolean("profileStandard_javascript", true)
                 .putBoolean("profileStandard_javascriptPopUp", false)
                 .putBoolean("profileStandard_saveHistory", true)
                 .putBoolean("profileStandard_camera", false)
                 .putBoolean("profileStandard_microphone", false)
-                .putBoolean("profileStandard_dom", false)
+                .putBoolean("profileStandard_dom", true)
                 .putBoolean("profileStandard_night", true)
                 .putBoolean("profileStandard_desktop", false).apply();
     }
@@ -253,7 +253,7 @@ public class NinjaWebView extends WebView implements AlbumController {
                 .putBoolean("profileChanged_saveHistory", sp.getBoolean( "profileStandard_saveHistory", true))
                 .putBoolean("profileChanged_camera", sp.getBoolean( "profileStandard_camera", false))
                 .putBoolean("profileChanged_microphone", sp.getBoolean( "profileStandard_microphone", false))
-                .putBoolean("profileChanged_dom", sp.getBoolean( "profileStandard_dom", false))
+                .putBoolean("profileChanged_dom", sp.getBoolean( "profileStandard_dom", true))
                 .putBoolean("profileChanged_night", sp.getBoolean( "profileStandard_night", true))
                 .putBoolean("profileChanged_desktop", sp.getBoolean( "profileStandard_desktop", false)).apply();
     }
@@ -270,7 +270,7 @@ public class NinjaWebView extends WebView implements AlbumController {
         requestHeaders.put("X-Requested-With", "com.duckduckgo.mobile.android");
         requestHeaders.put("Referer", this.getUrl());
         profile = sp.getString("profile", "profileStandard");
-        if (sp.getBoolean(profile + "_saveData", false)) requestHeaders.put("Save-Data", "on");
+        if (sp.getBoolean(profile + "_saveData", true)) requestHeaders.put("Save-Data", "on");
         return requestHeaders;
     }
 
@@ -361,7 +361,7 @@ public class NinjaWebView extends WebView implements AlbumController {
                 textGroup.setOnClickListener(v ->
                         HelperUnit.showCustomSnackbarWithTwoActions(
                         context, dialogView, null,
-                        HelperUnit.domain(urlToLoad), urlToLoad,
+                        HelperUnit.domain(urlToLoad),"" ,urlToLoad,
                         R.drawable.icon_share, () -> {
                             Intent sharingIntent;
                             sharingIntent = new Intent(Intent.ACTION_SEND);

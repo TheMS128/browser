@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <string name="dialog_content_resubmission">Resubmit data?</string>
     <string name="app_never">Never</string>
     <string name="app_always">Always</string>
     <string name="app_restart">On restart</string>

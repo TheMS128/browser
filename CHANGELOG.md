@@ -1,6 +1,11 @@
 ### v 24 (WIP)
 
-- updated: WIKI
+- fix: default standard profile settings
+- improved: AdBlock download
+- improved: snackbar with clickable link
+- improved: deleting of saved domain settings
+- improved: download of blob:/data:-files 
+- updated: WIKI + help links in app
 
 
 ### v 23 Harriet Tubman

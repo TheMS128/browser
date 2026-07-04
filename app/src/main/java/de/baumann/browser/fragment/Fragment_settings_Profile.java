@@ -31,9 +31,8 @@ public class Fragment_settings_Profile extends BasePreferenceFragment  implement
     @Override
     public void onSharedPreferenceChanged(final SharedPreferences sp, String key) {
         updatePrefSummary(findPreference(key));
-        String profile = sp.getString("profileToEdit", "profileStandard");
-        if (key.equals(profile + "_sp_deny_cookie_banners")) {
-            if (sp.getBoolean(profile + "_sp_deny_cookie_banners",false)) BannerBlock.downloadBanners(getActivity());
+        if (key.equals("profileStandard_adBlock")) {
+            if (sp.getBoolean("profileStandard_adBlock",false)) BannerBlock.downloadBanners(getActivity());
         }
     }
 

@@ -7,12 +7,20 @@
     android:padding="16dp"
     android:layout_margin="8dp">
 
-    <!-- Textfeld: Standardfarbe Weiß -->
-    <TextView
-        android:id="@+id/custom_snackbar_text"
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/snackbar_scrollview"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textColor="#FFFFFF" />
+        android:scrollbars="vertical">
+
+        <TextView
+            android:id="@+id/custom_snackbar_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="#FFFFFF" />
+
+    </androidx.core.widget.NestedScrollView>
+
 
     <!-- Container für die Knöpfe -->
     <LinearLayout

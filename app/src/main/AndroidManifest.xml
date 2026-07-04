@@ -3,8 +3,6 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
-    <!-- Permission -->
-
     <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
     <uses-permission android:name="android.permission.RECORD_AUDIO" />
     <uses-permission android:name="android.permission.RECORD_VIDEO" tools:ignore="SystemPermissionTypo" />
@@ -23,7 +21,6 @@
     <uses-permission android:name="android.permission.CAMERA" />
     <uses-feature android:name="android.hardware.camera" android:required="false" />
 
-    <!-- Application -->
     <application
         android:allowBackup="true"
         android:hardwareAccelerated="true"
@@ -42,7 +39,6 @@
             android:name="android.webkit.WebView.MetricsOptOut"
             android:value="true" />
 
-        <!-- BrowserActivity -->
         <activity
             android:name="de.baumann.browser.activity.BrowserActivity"
             android:configChanges="orientation|uiMode|screenSize|smallestScreenSize|screenLayout"
@@ -90,7 +86,6 @@
             android:label="@string/dialog_postOnWebsite"
             android:theme="@android:style/Theme.NoDisplay"
             android:exported="true">
-
             <intent-filter>
                 <action android:name="android.intent.action.SEND" />
                 <category android:name="android.intent.category.DEFAULT" />
@@ -103,7 +98,6 @@
             android:label="@string/custom_searches_title"
             android:theme="@android:style/Theme.NoDisplay"
             android:exported="true">
-
             <intent-filter>
                 <action android:name="android.intent.action.SEND" />
                 <category android:name="android.intent.category.DEFAULT" />
@@ -111,36 +105,27 @@
             </intent-filter>
         </activity>
 
-
-        <!-- Settings -->
         <activity
             android:name="de.baumann.browser.activity.Settings_Activity"
-            android:label="@string/setting_label" />
-
+            android:label="@string/setting_title_browser" />
         <activity
             android:name="de.baumann.browser.activity.Settings_ProfileList"
             android:label="@string/setting_title_savedWebSites" />
-
         <activity
             android:name="de.baumann.browser.activity.Settings_Delete"
             android:label="@string/menu_delete" />
-
         <activity
             android:name="de.baumann.browser.activity.Settings_Backup"
             android:label="@string/setting_title_data" />
-
         <activity
             android:name="de.baumann.browser.activity.Settings_Gesture"
             android:label="@string/setting_gestures" />
-
         <activity
             android:name="de.baumann.browser.activity.Settings_Filter"
             android:label="@string/setting_filter" />
-
         <activity
             android:name="de.baumann.browser.activity.Settings_Profile"
             android:label="@string/setting_title_profiles_standard" />
-
         <activity
             android:name="de.baumann.browser.activity.Settings_Menu"
             android:label="@string/setting_menu" />

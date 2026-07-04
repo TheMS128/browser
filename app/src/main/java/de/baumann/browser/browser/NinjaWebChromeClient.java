@@ -179,7 +179,7 @@ public class NinjaWebChromeClient extends WebChromeClient {
                 } else {
                     HelperUnit.showCustomSnackbarWithTwoActions(
                             ninjaWebView.getContext(), ninjaWebView, null,
-                            ninjaWebView.getContext().getString(R.string.app_warning), ninjaWebView.getContext().getString(R.string.hint_DRM_Media),
+                            ninjaWebView.getContext().getString(R.string.app_warning), ninjaWebView.getContext().getString(R.string.hint_DRM_Media), ninjaWebView.getUrl(),
                             R.drawable.icon_check, () -> {
                                 request.grant(request.getResources());
                                 return true;

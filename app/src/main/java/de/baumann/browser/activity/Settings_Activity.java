@@ -43,7 +43,7 @@ public class Settings_Activity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem menuItem) {
         if (menuItem.getItemId() == android.R.id.home) finish();
         else if (menuItem.getItemId() == R.id.menu_help) {
-            Uri webpage = Uri.parse("https://codeberg.org/Gaukler_Faun/FOSS_Browser/wiki/Home");
+            Uri webpage = Uri.parse("https://codeberg.org/Gaukler_Faun/FOSS_Browser/wiki/Browser-settings");
             BrowserUnit.intentURL(this, webpage);
         }
         return true;

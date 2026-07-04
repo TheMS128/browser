@@ -37,7 +37,6 @@ public class AdapterMenu extends RecyclerView.Adapter<AdapterMenu.ViewHolder> {
         MenuItem item = gridItems.get(position);
         holder.titleTextView.setText(item.getTitle());
         holder.iconImageView.setImageResource(item.getIconResId());
-
         holder.itemView.setOnClickListener(v -> listener.onItemClick(item));
     }
 

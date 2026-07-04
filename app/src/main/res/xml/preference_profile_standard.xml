@@ -60,7 +60,7 @@
             android:key="profileStandard_deny_cookie_banners"
             android:icon="@drawable/icon_cookie"
             android:summary="@string/setting_title_deny_cookie_banners"
-            android:defaultValue="false" />
+            android:defaultValue="true" />
 
         <CheckBoxPreference
             android:defaultValue="true"
@@ -75,7 +75,7 @@
             android:summary="@string/setting_title_adblock" />
 
         <CheckBoxPreference
-            android:defaultValue="true"
+            android:defaultValue="false"
             android:icon="@drawable/icon_fingerprint"
             android:key="profileStandard_fingerPrintProtection"
             android:summary="@string/setting_title_fingerPrint" />

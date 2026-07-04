@@ -12,7 +12,6 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
-import java.util.Collections;
 import java.util.List;
 
 import de.baumann.browser.R;
@@ -35,30 +34,45 @@ public class AdapterSettingsMenu extends RecyclerView.Adapter<AdapterSettingsMen
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         MenuItem item = itemList.get(position);
+
         holder.textView.setText(item.getTitle());
         holder.imageView.setImageResource(item.getIconResId());
-        holder.checkBox.setChecked(item.isSelected());
 
+        // 1. WICHTIG: Eventuelle alte Listener entfernen, bevor der Status gesetzt wird
+        holder.checkBox.setOnCheckedChangeListener(null);
+        holder.itemView.setOnClickListener(null);
+
+        // 2. Visuellen Status setzen
+        holder.checkBox.setChecked(item.isSelected());
         if (item.isSelected()) {
             holder.cardView.setCardBackgroundColor(Color.parseColor("#E3F2FD")); // Sanftes Blau
         } else {
             holder.cardView.setCardBackgroundColor(Color.WHITE);
         }
 
+        // 3. Listener für die Checkbox (falls direkt auf das Häkchen getippt wird)
+        holder.checkBox.setOnCheckedChangeListener((buttonView, isChecked) -> {
+            item.setSelected(isChecked);
+            // Hintergrundfarbe der Karte sofort anpassen
+            if (isChecked) {
+                holder.cardView.setCardBackgroundColor(Color.parseColor("#E3F2FD"));
+            } else {
+                holder.cardView.setCardBackgroundColor(Color.WHITE);
+            }
+        });
+
+        // 4. Listener für die gesamte Zeile (schaltet den Status um)
         holder.itemView.setOnClickListener(v -> {
-            item.setSelected(!item.isSelected());
-            notifyItemChanged(holder.getAbsoluteAdapterPosition());
+            boolean nextState = !item.isSelected();
+            item.setSelected(nextState);
+            // Nutzt die aktuelle Position des ViewHolders für ein sauberes UI-Update
+            notifyItemChanged(holder.getBindingAdapterPosition());
         });
     }
 
     @Override
     public int getItemCount() {
         return itemList.size();
-    }
-
-    public void onItemMove(int fromPosition, int toPosition) {
-        Collections.swap(itemList, fromPosition, toPosition);
-        notifyItemMoved(fromPosition, toPosition);
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {

@@ -66,7 +66,7 @@ public class AdapterCustomRedirect extends RecyclerView.Adapter<RedirectsViewHol
         albumCardView.setCardBackgroundColor(color);
 
         CheckBox checkbox_redirect = holder.itemView.findViewById(R.id.item_checkBox);
-        checkbox_redirect.setChecked(sp.getBoolean(current.getSource(), true));
+        checkbox_redirect.setChecked(sp.getBoolean(current.getSource(), false));
         checkbox_redirect.setOnClickListener(v -> {
             sp.edit().putBoolean(current.getSource(), checkbox_redirect.isChecked()).apply();
             checkbox_redirect.setChecked(sp.getBoolean(current.getSource(), true));

@@ -22,6 +22,7 @@ package de.baumann.browser.unit;
 import static android.content.ContentValues.TAG;
 
 import android.Manifest;
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.Dialog;
 import android.app.DownloadManager;
@@ -31,8 +32,14 @@ import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.content.pm.ShortcutInfo;
 import android.content.pm.ShortcutManager;
+import android.content.res.ColorStateList;
+import android.content.res.Configuration;
 import android.graphics.Bitmap;
+import android.graphics.Color;
 import android.graphics.PorterDuff;
+import android.graphics.Typeface;
+import android.graphics.drawable.ColorDrawable;
+import android.graphics.drawable.GradientDrawable;
 import android.graphics.drawable.Icon;
 import android.net.Uri;
 import android.os.Environment;
@@ -40,14 +47,21 @@ import android.os.Handler;
 import android.os.SystemClock;
 import android.text.Spannable;
 import android.text.SpannableString;
+import android.text.SpannableStringBuilder;
+import android.text.Spanned;
+import android.text.TextPaint;
 import android.text.TextUtils;
+import android.text.style.ClickableSpan;
 import android.text.style.ForegroundColorSpan;
+import android.text.style.StyleSpan;
 import android.util.DisplayMetrics;
 import android.util.Log;
 import android.util.TypedValue;
 import android.view.Gravity;
+import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.ViewGroup;
 import android.webkit.CookieManager;
 import android.webkit.URLUtil;
 import android.widget.Button;
@@ -56,10 +70,13 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.core.content.res.ResourcesCompat;
+import androidx.core.widget.NestedScrollView;
 import androidx.preference.PreferenceManager;
 
+import com.google.android.material.button.MaterialButton;
 import com.google.android.material.card.MaterialCardView;
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 import com.google.android.material.snackbar.Snackbar;
@@ -78,12 +95,14 @@ import java.util.function.BooleanSupplier;
 import de.baumann.browser.R;
 import de.baumann.browser.activity.BrowserActivity;
 import de.baumann.browser.activity.Settings_Menu;
+import de.baumann.browser.browser.BrowserController;
 import de.baumann.browser.browser.DataURIParser;
 import de.baumann.browser.browser.List_standard;
 import de.baumann.browser.database.FaviconHelper;
 import de.baumann.browser.view.GridItem;
 import de.baumann.browser.view.MenuItem;
 import de.baumann.browser.view.NinjaToast;
+import de.baumann.browser.view.NinjaWebView;
 
 public class HelperUnit {
 
@@ -513,59 +532,118 @@ public class HelperUnit {
             View anchorView,
             String title,
             String text,
+            String link,
             int firstIconResId,
             BooleanSupplier firstActionListener,
             int secondIconResId,
             BooleanSupplier secondActionListener) {
-        android.text.SpannableStringBuilder snackbarText = new android.text.SpannableStringBuilder();
-        snackbarText.append(title);
-        snackbarText.setSpan(
-                new android.text.style.StyleSpan(android.graphics.Typeface.BOLD),
-                0,
-                title.length(),
-                android.text.Spanned.SPAN_EXCLUSIVE_EXCLUSIVE
-        );
-        snackbarText.append("\n\n").append(text);
-        com.google.android.material.snackbar.Snackbar snackbar =
-                com.google.android.material.snackbar.Snackbar.make(
-                        parentView,
-                        "",
-                        com.google.android.material.snackbar.Snackbar.LENGTH_INDEFINITE
-                );
 
-        if (anchorView != null) {
-            snackbar.setAnchorView(anchorView);
+        SpannableStringBuilder snackbarText = new SpannableStringBuilder();
+        if (title != null && !title.isEmpty()) {
+            snackbarText.append(title);
+            snackbarText.setSpan(
+                    new StyleSpan(Typeface.BOLD),
+                    0,
+                    title.length(),
+                    Spanned.SPAN_EXCLUSIVE_EXCLUSIVE
+            );
+        }
+        if (text != null && !text.isEmpty()) {
+            if (snackbarText.length() > 0) {
+                snackbarText.append("\n\n");
+            }
+            snackbarText.append(text);
         }
 
-        android.view.ViewGroup layout = (android.view.ViewGroup) snackbar.getView();
-        layout.removeAllViews();
-        layout.setPadding(0, 0, 0, 0);
-        layout.setBackgroundColor(android.graphics.Color.TRANSPARENT);
-
-        android.view.LayoutInflater inflater = android.view.LayoutInflater.from(context);
-        @android.annotation.SuppressLint("InflateParams")
-        android.view.View customView = inflater.inflate(R.layout.custom_snackbar, null);
-        int currentNightMode = context.getResources().getConfiguration().uiMode & android.content.res.Configuration.UI_MODE_NIGHT_MASK;
+        // Dynamische Bestimmung der Farben basierend auf dem Night Mode
+        int currentNightMode = context.getResources().getConfiguration().uiMode & Configuration.UI_MODE_NIGHT_MASK;
         int backgroundColor;
-        android.content.res.ColorStateList contentColor;
-        if (currentNightMode == android.content.res.Configuration.UI_MODE_NIGHT_YES) {
-            backgroundColor = android.graphics.Color.parseColor("#E0E0E0"); // Hellgrau/Weiß
-            contentColor = android.content.res.ColorStateList.valueOf(android.graphics.Color.BLACK); // Schwarz
+        ColorStateList contentColor;
+
+        TypedValue typedValue = new TypedValue();
+        context.getTheme().resolveAttribute(R.attr.colorPrimaryInverse, typedValue, true);
+        int color = typedValue.data;
+
+        if (currentNightMode == Configuration.UI_MODE_NIGHT_YES) {
+            backgroundColor = Color.parseColor("#E0E0E0"); // Hellgrau/Weiß
+            contentColor = ColorStateList.valueOf(Color.BLACK); // Schwarz
         } else {
-            backgroundColor = android.graphics.Color.parseColor("#323232");
-            contentColor = android.content.res.ColorStateList.valueOf(android.graphics.Color.WHITE); // Weiß
+            backgroundColor = Color.parseColor("#323232");
+            contentColor = ColorStateList.valueOf(Color.WHITE); // Weiß
         }
-        android.graphics.drawable.GradientDrawable shape = new android.graphics.drawable.GradientDrawable();
-        shape.setShape(android.graphics.drawable.GradientDrawable.RECTANGLE);
+
+        LayoutInflater inflater = LayoutInflater.from(context);
+        @SuppressLint("InflateParams")
+        View customView = inflater.inflate(R.layout.custom_snackbar, null);
+
+        GradientDrawable shape = new GradientDrawable();
+        shape.setShape(GradientDrawable.RECTANGLE);
         shape.setColor(backgroundColor);
         shape.setCornerRadius(60f);
         customView.setBackground(shape);
-        android.widget.TextView textView = customView.findViewById(R.id.custom_snackbar_text);
+        TextView textView = customView.findViewById(R.id.custom_snackbar_text);
+
+        if (link != null && !link.isEmpty()) {
+            if (snackbarText.length() > 0) {
+                snackbarText.append("\n\n");
+            }
+            snackbarText.append(link);
+            int linkStart = snackbarText.length() - link.length();
+            int linkEnd = snackbarText.length();
+
+            ClickableSpan clickableSpan = new ClickableSpan() {
+                @Override
+                public void onClick(@NonNull View widget) {}
+
+                @Override
+                public void updateDrawState(@NonNull TextPaint ds) {
+                    super.updateDrawState(ds);
+                    ds.setColor(color); // Setzt die passende Link-Farbe
+                    ds.setUnderlineText(true); // Unterstreichung aktivieren
+                }
+            };
+            if (!link.startsWith("blob:") && !link.startsWith("data:")) {
+                snackbarText.setSpan(clickableSpan, linkStart, linkEnd, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+            }
+        }
+
+        Snackbar snackbar = Snackbar.make(parentView, "", Snackbar.LENGTH_INDEFINITE);
+        if (anchorView != null) {snackbar.setAnchorView(anchorView);}
+
+        ViewGroup layout = (ViewGroup) snackbar.getView();
+        layout.removeAllViews();
+        layout.setPadding(0, 0, 0, 0);
+        layout.setBackgroundColor(Color.TRANSPARENT);
+
+        NestedScrollView scrollView = customView.findViewById(R.id.snackbar_scrollview);
+
         if (textView != null) {
             textView.setText(snackbarText);
             textView.setTextColor(contentColor.getDefaultColor());
+
+            if (scrollView != null) {
+                int screenHeight = textView.getContext().getResources().getDisplayMetrics().heightPixels;
+                int maxPx = (screenHeight * 2) / 3;
+                scrollView.post(() -> {
+                    if (scrollView.getHeight() > maxPx) {
+                        scrollView.getLayoutParams().height = maxPx;
+                        scrollView.requestLayout();
+                    }
+                });
+            }
+
+            if (link != null && !link.isEmpty() && !link.startsWith("blob:") && !link.startsWith("data:")) {
+                textView.setOnClickListener(v -> {
+                    BrowserController browserController = NinjaWebView.getBrowserController();
+                    browserController.hideOverflow();
+                    browserController.showOverflow(null, textView, 6, title, link, null, null, 0);
+                    snackbar.dismiss();
+                });
+            }
+
         }
-        com.google.android.material.button.MaterialButton firstButton = customView.findViewById(R.id.custom_btn_one);
+
+        MaterialButton firstButton = customView.findViewById(R.id.custom_btn_one);
         if (firstButton != null && firstIconResId != 0) {
             firstButton.setIconResource(firstIconResId);
             firstButton.setIconTint(contentColor);
@@ -577,7 +655,8 @@ public class HelperUnit {
                 });
             }
         }
-        com.google.android.material.button.MaterialButton secondButton = customView.findViewById(R.id.custom_btn_two);
+
+        MaterialButton secondButton = customView.findViewById(R.id.custom_btn_two);
         if (secondButton != null && secondIconResId != 0) {
             secondButton.setIconResource(secondIconResId);
             secondButton.setIconTint(contentColor);
@@ -589,22 +668,23 @@ public class HelperUnit {
                 });
             }
         }
+
         layout.addView(customView, 0);
         snackbar.show();
     }
     public static void makeSnackbarRound (Snackbar snackbar) {
-        android.view.View snackbarView = snackbar.getView();
-        android.widget.TextView textView = snackbarView.findViewById(R.id.snackbar_text);
+        View snackbarView = snackbar.getView();
+        TextView textView = snackbarView.findViewById(R.id.snackbar_text);
         if (textView != null) {
-            textView.setMaxLines(100);
+            textView.setMaxLines(30);
         }
-        android.graphics.drawable.GradientDrawable background = new android.graphics.drawable.GradientDrawable();
-        background.setShape(android.graphics.drawable.GradientDrawable.RECTANGLE);
+        GradientDrawable background = new GradientDrawable();
+        background.setShape(GradientDrawable.RECTANGLE);
         background.setCornerRadius(60f);
-        if (snackbarView.getBackground() instanceof android.graphics.drawable.ColorDrawable) {
-            background.setColor(((android.graphics.drawable.ColorDrawable) snackbarView.getBackground()).getColor());
+        if (snackbarView.getBackground() instanceof ColorDrawable) {
+            background.setColor(((ColorDrawable) snackbarView.getBackground()).getColor());
         } else {
-            background.setColor(android.graphics.Color.parseColor("#323232"));
+            background.setColor(Color.parseColor("#323232"));
         }
         snackbarView.setBackground(background);
         snackbar.setTextMaxLines(100);

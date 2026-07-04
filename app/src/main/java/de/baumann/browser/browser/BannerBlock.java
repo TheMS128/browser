@@ -32,7 +32,6 @@ import de.baumann.browser.view.NinjaToast;
 public class BannerBlock {
     private static final String FILE = "banners.txt";
     private static String configString = "";
-
     private static void loadHosts(final Context context) {
         try {
             File file = new File(context.getDir("filesdir", Context.MODE_PRIVATE) + "/"+FILE);
@@ -46,7 +45,6 @@ public class BannerBlock {
             throw new RuntimeException(e);
         }
     }
-
     public static void downloadBanners(final Context context) {
         Thread thread = new Thread(() -> {
 
@@ -81,10 +79,9 @@ public class BannerBlock {
                 outStream.flush();
                 outStream.close();
                 inStream.close();
-
-                loadHosts(context);  //reload hosts after update
+                loadHosts(context);
+                //reload hosts after update
                 Log.w("browser", "Mozilla cookie banner rules updated");
-
             } catch (IOException i) {
                 Log.w("browser", "Error updating Mozilla cookie banner rules", i);
             }
@@ -105,9 +102,7 @@ public class BannerBlock {
             if (lastModified.before(time.getTime())) {
                 //also download again if something is wrong with the file
                 //update if file is older than 3 days and Feature switched on
-                if (sp.getBoolean("profileProtected_deny_cookie_banners", false)
-                || sp.getBoolean("profileStandard_deny_cookie_banners", false)
-                        || sp.getBoolean("profileTrusted_deny_cookie_banners", false)) {
+                if (sp.getBoolean("profileStandard_adBlock", true)) {
                     downloadBanners(context);
                 }
             }

@@ -20,10 +20,10 @@ public interface BrowserController {
     void showFileChooser(ValueCallback<Uri[]> filePathCallback);
     void onShowCustomView(View view, WebChromeClient.CustomViewCallback callback);
     void hideOverview();
+    void hideOverflow();
     void hideSearch();
     void onHideCustomView();
     void showDialogFastToggle(String title, String url, FloatingActionButton floatingActionButton);
     void setProfileIcon (FloatingActionButton floatingActionButton, String url);
-
     void showOverflow(Dialog dialog, View view, int hideMenu, String title, String url, final AdapterRecord adapterRecord, List<Record> recordList, int location);
 }

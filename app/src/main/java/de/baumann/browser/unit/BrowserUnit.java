@@ -30,12 +30,10 @@ import androidx.core.app.NotificationCompat;
 import androidx.preference.PreferenceManager;
 
 import com.google.android.material.dialog.MaterialAlertDialogBuilder;
-import com.google.android.material.snackbar.Snackbar;
 
 import org.json.JSONException;
 
 import java.io.File;
-import java.io.FileOutputStream;
 import java.util.List;
 import java.util.Locale;
 import java.util.Objects;
@@ -43,7 +41,6 @@ import java.util.regex.Pattern;
 
 import de.baumann.browser.R;
 import de.baumann.browser.activity.BrowserActivity;
-import de.baumann.browser.browser.DataURIParser;
 import de.baumann.browser.browser.List_standard;
 import de.baumann.browser.database.RecordAction;
 import de.baumann.browser.objects.CustomRedirect;
@@ -169,34 +166,20 @@ public class BrowserUnit {
         Activity activity = (Activity) context;
         if (BackupUnit.checkPermissionStorage(context)) {
             try {
-                if (url.startsWith("data:")) {
-                    DataURIParser dataURIParser = new DataURIParser(url);
-                    File file = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS), fileName);
-                    FileOutputStream fos = new FileOutputStream(file);
-                    fos.write(dataURIParser.getImagedata());
-                    fos.flush();
-                    fos.close();
-
-                    String text = context.getString(R.string.app_done) + ". " + context.getString(R.string.menu_download) +"?";
-                    Snackbar snackbar = Snackbar.make(BrowserActivity.getView(), text, Snackbar.LENGTH_LONG);
-                    snackbar.setAction(context.getString(R.string.app_ok), v -> context.startActivity(Intent.createChooser(new Intent(DownloadManager.ACTION_VIEW_DOWNLOADS), null)));
-                    snackbar.show();
-                } else {
-                    DownloadManager.Request request = new DownloadManager.Request(Uri.parse(url));
-                    CookieManager cookieManager = CookieManager.getInstance();
-                    String cookie = cookieManager.getCookie(url);
-                    request.addRequestHeader("Cookie", cookie);
-                    request.addRequestHeader("Accept", "text/html, application/xhtml+xml, *" + "/" + "*");
-                    request.addRequestHeader("Accept-Language", "en-US,en;q=0.7,he;q=0.3");
-                    request.addRequestHeader("Referer", url);
-                    request.setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE_NOTIFY_COMPLETED);
-                    request.setTitle(fileName);
-                    request.setMimeType(mimeType);
-                    request.setDestinationInExternalPublicDir(Environment.DIRECTORY_DOWNLOADS, fileName);
-                    DownloadManager manager = (DownloadManager) context.getSystemService(Context.DOWNLOAD_SERVICE);
-                    assert manager != null;
-                    manager.enqueue(request);
-                }
+                DownloadManager.Request request = new DownloadManager.Request(Uri.parse(url));
+                CookieManager cookieManager = CookieManager.getInstance();
+                String cookie = cookieManager.getCookie(url);
+                request.addRequestHeader("Cookie", cookie);
+                request.addRequestHeader("Accept", "text/html, application/xhtml+xml, *" + "/" + "*");
+                request.addRequestHeader("Accept-Language", "en-US,en;q=0.7,he;q=0.3");
+                request.addRequestHeader("Referer", url);
+                request.setNotificationVisibility(DownloadManager.Request.VISIBILITY_VISIBLE_NOTIFY_COMPLETED);
+                request.setTitle(fileName);
+                request.setMimeType(mimeType);
+                request.setDestinationInExternalPublicDir(Environment.DIRECTORY_DOWNLOADS, fileName);
+                DownloadManager manager = (DownloadManager) context.getSystemService(Context.DOWNLOAD_SERVICE);
+                assert manager != null;
+                manager.enqueue(request);
             } catch (Exception e) {
                 Toast.makeText(context, context.getString(R.string.app_error) + e.toString().substring(e.toString().indexOf(":")), Toast.LENGTH_LONG).show();
                 Log.i(TAG, "FOSS Browser: Error Downloading File:" + e);
@@ -356,7 +339,7 @@ public class BrowserUnit {
             if (sp.getString("openBackground_dialog", "show").equals("show")) {
                 HelperUnit.showCustomSnackbarWithTwoActions(
                         activity, webView, null,
-                        activity.getString(R.string.dialog_backGround), activity.getString(R.string.app_session),
+                        activity.getString(R.string.dialog_backGround), activity.getString(R.string.app_session), url,
                         R.drawable.icon_check, () -> {
                             sp.edit().putString("openBackground_dialog", "always").apply();
                             displayNotification ( activity,  mNotifyMgr,  buildNotification);
