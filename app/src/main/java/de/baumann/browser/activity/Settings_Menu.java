@@ -64,23 +64,39 @@ public class Settings_Menu extends AppCompatActivity {
             public boolean onMove(@NonNull RecyclerView recyclerView,
                                   @NonNull RecyclerView.ViewHolder viewHolder,
                                   @NonNull RecyclerView.ViewHolder target) {
-                int fromPosition = viewHolder.getAdapterPosition();
-                int toPosition = target.getAdapterPosition();
-
-                // Nur die Liste im Speicher tauschen und visuell updaten
+                int fromPosition = viewHolder.getBindingAdapterPosition();
+                int toPosition = target.getBindingAdapterPosition();
+                if (fromPosition == RecyclerView.NO_POSITION || toPosition == RecyclerView.NO_POSITION) {
+                    return false;
+                }
                 Collections.swap(masterList, fromPosition, toPosition);
                 adapter.notifyItemMoved(fromPosition, toPosition);
                 return true;
             }
 
             @Override
-            public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder, int direction) {
-                // Keine Aktion benötigt
-            }
+            public void onSwiped(@NonNull RecyclerView.ViewHolder viewHolder, int direction) {}
         };
 
         ItemTouchHelper itemTouchHelper = new ItemTouchHelper(simpleCallback);
         itemTouchHelper.attachToRecyclerView(recyclerView);
+    }
+
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_help, menu);
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(android.view.MenuItem menuItem) {
+        if (menuItem.getItemId() == android.R.id.home) finish();
+        else if (menuItem.getItemId() == R.id.menu_help) {
+            Uri webpage = Uri.parse("https://codeberg.org/Gaukler_Faun/FOSS_Browser/wiki/Menu");
+            BrowserUnit.intentURL(this, webpage);
+        }
+        return true;
     }
 
     // Garantiert, dass die Liste gespeichert wird, wenn die Activity in den Hintergrund tritt oder geschlossen wird

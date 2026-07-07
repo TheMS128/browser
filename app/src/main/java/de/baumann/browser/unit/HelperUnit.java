@@ -565,8 +565,8 @@ public class HelperUnit {
         int color = typedValue.data;
 
         if (currentNightMode == Configuration.UI_MODE_NIGHT_YES) {
-            backgroundColor = Color.parseColor("#E0E0E0"); // Hellgrau/Weiß
-            contentColor = ColorStateList.valueOf(Color.BLACK); // Schwarz
+            backgroundColor = Color.parseColor("#E0E0E0");
+            contentColor = ColorStateList.valueOf(Color.BLACK);
         } else {
             backgroundColor = Color.parseColor("#323232");
             contentColor = ColorStateList.valueOf(Color.WHITE); // Weiß
@@ -598,8 +598,8 @@ public class HelperUnit {
                 @Override
                 public void updateDrawState(@NonNull TextPaint ds) {
                     super.updateDrawState(ds);
-                    ds.setColor(color); // Setzt die passende Link-Farbe
-                    ds.setUnderlineText(true); // Unterstreichung aktivieren
+                    ds.setColor(color);
+                    ds.setUnderlineText(true);
                 }
             };
             if (!link.startsWith("blob:") && !link.startsWith("data:")) {
@@ -632,11 +632,11 @@ public class HelperUnit {
                 });
             }
 
-            if (link != null && !link.isEmpty() && !link.startsWith("blob:") && !link.startsWith("data:")) {
+            if (link != null && !link.isEmpty() && !link.startsWith("data:")) {
                 textView.setOnClickListener(v -> {
                     BrowserController browserController = NinjaWebView.getBrowserController();
                     browserController.hideOverflow();
-                    browserController.showOverflow(null, textView, 6, title, link, null, null, 0);
+                    browserController.showOverflow(null, textView, 1, title, link, null, null, 0);
                     snackbar.dismiss();
                 });
             }

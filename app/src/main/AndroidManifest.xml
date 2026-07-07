@@ -49,6 +49,20 @@
             android:launchMode="singleTask">
 
             <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+                <!-- Filter für HTML -->
+                <data android:mimeType="text/html" />
+                <!-- Filter für XML -->
+                <data android:mimeType="text/xml" />
+                <data android:mimeType="application/xml" />
+                <!-- Filter für normale Textdateien -->
+                <data android:mimeType="text/plain" />
+                <data android:mimeType="application/json" />
+            </intent-filter>
+
+            <intent-filter>
                 <action android:name="android.intent.action.SEND" />
                 <category android:name="android.intent.category.DEFAULT" />
                 <data android:mimeType="text/plain" />

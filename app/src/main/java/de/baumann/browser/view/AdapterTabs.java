@@ -68,7 +68,7 @@ public class AdapterTabs {
         });
         assert albumCardView != null;
         albumView.setOnLongClickListener(v -> {
-            browserController.showOverflow(null, albumCardView, 5, albumTitle.getText().toString(), albumUrl.getText().toString(), null, null, 0);
+            browserController.showOverflow(null, albumCardView, 1, albumTitle.getText().toString(), albumUrl.getText().toString(), null, null, 0);
             return true;
         });
     }

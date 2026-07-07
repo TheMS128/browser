@@ -26,6 +26,7 @@ import android.content.pm.PackageManager;
 import android.content.res.ColorStateList;
 import android.content.res.Configuration;
 import android.content.res.Resources;
+import android.database.Cursor;
 import android.graphics.Color;
 import android.media.MediaPlayer;
 import android.net.Uri;
@@ -35,6 +36,7 @@ import android.os.Handler;
 import android.print.PrintAttributes;
 import android.print.PrintDocumentAdapter;
 import android.print.PrintManager;
+import android.provider.OpenableColumns;
 import android.text.Editable;
 import android.text.TextUtils;
 import android.text.TextWatcher;
@@ -100,6 +102,11 @@ import com.google.gson.reflect.TypeToken;
 
 import org.json.JSONException;
 
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -452,17 +459,16 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
 
     @Override
     public synchronized void updateProgress(int progress) {
-
         progressBar.setProgressCompat(progress, true);
-        progressBar.setVisibility(GONE);
-        updateOmniBox();
-        saveOpenedTabs();
         if (progress < 100) {
             progressBar.setVisibility(VISIBLE);
-        }
-        if (progress == 100) {
+        } else {
+            progressBar.setVisibility(GONE);
+            updateOmniBox();
+            saveOpenedTabs();
+            FaviconHelper.setFavicon(context, contentView, ninjaWebView.getUrl(), R.id.menu_icon, R.drawable.icon_image_broken);
             final Handler handler = new Handler();
-            handler.postDelayed(() -> FaviconHelper.setFavicon(context, contentView, ninjaWebView.getUrl(), R.id.menu_icon, R.drawable.icon_image_broken), 100);
+            handler.postDelayed(() -> FaviconHelper.setFavicon(context, contentView, ninjaWebView.getUrl(), R.id.menu_icon, R.drawable.icon_image_broken), 500);
         }
     }
 
@@ -1020,10 +1026,7 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
                         shareLink(title, url);
                         return true;
                     },
-                    R.drawable.icon_close, () -> {
-                        // AKTION 2: Abbrechen schließt immer sofort
-                        return true;
-                    }
+                    R.drawable.icon_close, () -> true
             );
         });
 
@@ -1058,18 +1061,10 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
                     break;
                 case R.drawable.icon_tab_plus:
                     if (hideMenu ==2) {dialog.cancel();}
-                    if (url.equals(ninjaWebView.getUrl())) {
-                        addAlbum(HelperUnit.domain(favURL), favURL, true);
-                    } else {
-                        addAlbum(HelperUnit.domain(url), url, true);
-                    }
+                    addAlbum(HelperUnit.domain(url), url, true);
                     break;
                 case R.drawable.icon_tab_background:
-                    if (url.equals(ninjaWebView.getUrl())) {
-                        addAlbum(HelperUnit.domain(favURL), favURL, false);
-                    } else {
-                        addAlbum(HelperUnit.domain(url), url, false);
-                    }
+                    addAlbum(HelperUnit.domain(url), url, false);
                     break;
                 case R.drawable.icon_refresh:
                     ninjaWebView.reload();
@@ -1266,9 +1261,7 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
             removeItemByName(getString(R.string.setting_label), selectedItemsList, adapter);
             removeItemByName(getString(R.string.menu_download), selectedItemsList, adapter);
             removeItemByName(getString(R.string.app_help), selectedItemsList, adapter);
-            if (!(hideMenu == 5)) {
-                removeItemByName(getString(R.string.menu_closeTab), selectedItemsList, adapter);
-            }
+            removeItemByName(getString(R.string.menu_closeTab), selectedItemsList, adapter);
         }
         if (hideMenu == 0) {
             //Main menu
@@ -1292,18 +1285,6 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
             // History
             removeItemByName(getString(R.string.menu_delete), selectedItemsList, adapter);
             removeItemByName(getString(R.string.menu_edit), selectedItemsList, adapter);
-        } else if (hideMenu == 5) {
-            // Tabs
-            removeItemByName(getString(R.string.menu_delete), selectedItemsList, adapter);
-            removeItemByName(getString(R.string.menu_delete_entry), selectedItemsList, adapter);
-            removeItemByName(getString(R.string.menu_edit), selectedItemsList, adapter);
-            removeItemByName(getString(R.string.main_menu_new_tab), selectedItemsList, adapter);
-            removeItemByName(getString(R.string.main_menu_new_tabOpen), selectedItemsList, adapter);
-        } else if (hideMenu == 6) {
-            //removeItemByName(getString(R.string.main_menu_new_tabOpen), selectedItemsList, adapter);
-            removeItemByName(getString(R.string.menu_delete), selectedItemsList, adapter);
-            removeItemByName(getString(R.string.menu_delete_entry), selectedItemsList, adapter);
-            removeItemByName(getString(R.string.menu_edit), selectedItemsList, adapter);
         }
 
         builder.setView(dialogView);
@@ -1312,6 +1293,10 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
         FloatingActionButton buttonProfile = dialogView.findViewById(R.id.buttonProfile);
         setProfileIcon(buttonProfile, url);
         buttonProfile.setOnClickListener(v -> {
+            showDialogFastToggle(title,url, fab_menu);
+            dialog_overflow.cancel();
+        });
+        buttonProfile.setOnLongClickListener(v -> {
             sp.edit().putString("profile", "profileStandard").apply();
             setProfileIcon(buttonProfile, url);
             dialog_overflow.cancel();
@@ -1319,10 +1304,6 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
             if (!listStandard.isWhite(url)){
                 ninjaWebView.reload();
             }
-        });
-        buttonProfile.setOnLongClickListener(v -> {
-            showDialogFastToggle(title,url, fab_menu);
-            dialog_overflow.cancel();
             return false;
         });
 
@@ -1380,18 +1361,18 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
             FloatingActionButton buttonProfile = dialogViewFastToggle.findViewById(R.id.buttonProfile);
             setProfileIcon(buttonProfile, url);
             buttonProfile.setOnClickListener(v -> {
+                String cat = "    ¯\\_(ツ)_/¯    ";
+                Snackbar snackbar = Snackbar.make(dialogViewFastToggle, cat, Snackbar.LENGTH_LONG);
+                HelperUnit.makeSnackbarRound(snackbar);
+                snackbar.show();
+            });
+            buttonProfile.setOnLongClickListener(v -> {
                 sp.edit().putString("profile", "profileStandard").apply();
                 setProfileIcon(buttonProfile, url);
                 dialogFastToggle.cancel();
                 if (!listStandard.isWhite(url)){
                     ninjaWebView.reload();
                 }
-            });
-            buttonProfile.setOnLongClickListener(v -> {
-                String cat = "    ¯\\_(ツ)_/¯    ";
-                Snackbar snackbar = Snackbar.make(dialogViewFastToggle, cat, Snackbar.LENGTH_LONG);
-                HelperUnit.makeSnackbarRound(snackbar);
-                snackbar.show();
                 return true;
             });
 
@@ -2043,16 +2024,13 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
                 FloatingActionButton buttonProfile = dialogView.findViewById(R.id.buttonProfile);
                 NinjaWebView.getBrowserController().setProfileIcon(buttonProfile, url);
                 FaviconHelper.setFavicon(context, dialogView, url, R.id.menu_icon, R.drawable.icon_image_broken);
-                buttonProfile.setOnClickListener(v -> {
+                buttonProfile.setOnClickListener(v -> showDialogFastToggle(title,url, buttonProfile));
+                buttonProfile.setOnLongClickListener(v -> {
                     sp.edit().putString("profile", "profileStandard").apply();
                     NinjaWebView.getBrowserController().setProfileIcon(buttonProfile, url);
                     if (!listStandard.isWhite(url)){
                         ninjaWebView.reload();
-                    }
-                });
-                buttonProfile.setOnLongClickListener(v -> {
-                    NinjaWebView.getBrowserController().showDialogFastToggle(title,url, buttonProfile);
-                    return false;
+                    }return false;
                 });
                 builderTrack.setView(dialogView);
 
@@ -2288,10 +2266,6 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
                 sp.edit().putString("profile", "profileStandard").apply();
                 ninjaWebView.reload();
                 break;
-            case "28":
-                sp.edit().putBoolean("redirect", !sp.getBoolean("redirect", false)).apply();
-                ninjaWebView.reload();
-                break;
             case "29":
                 startActivity(Intent.createChooser(new Intent(DownloadManager.ACTION_VIEW_DOWNLOADS), null));
                 break;
@@ -2305,6 +2279,9 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
                 setSelectedTab();
                 showOverview();
                 break;
+            case "32":
+                ninjaWebView.loadUrl(sp.getString("favoriteURL", "https://codeberg.org/Gaukler_Faun/FOSS_Browser/wiki"));
+                break;
         }
     }
 
@@ -2317,23 +2294,118 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
             snackbar.show();
         }
     }
+    private File copyHtmlToCache(Context context, Uri uri) {
+        try {
+            InputStream inputStream = context.getContentResolver().openInputStream(uri);
+            if (inputStream == null) return null;
+            File cacheFile = new File(context.getCacheDir(), "temp_preview.html");
+            FileOutputStream outputStream = new FileOutputStream(cacheFile);
+            byte[] buffer = new byte[4096];
+            int bytesRead;
+            while ((bytesRead = inputStream.read(buffer)) != -1) {
+                outputStream.write(buffer, 0, bytesRead);
+            }
+            inputStream.close();
+            outputStream.close();
+            return cacheFile;
+        } catch (Exception e) {
+            String text = context.getString(R.string.app_error) + ": " + e;
+            NinjaToast.show(context, text);
+            return null;
+        }
+    }
+
+    private String getFileNameFromUri(Context context, Uri uri) {
+        String result = null;
+        if (Objects.equals(uri.getScheme(), "content")) {
+            try (Cursor cursor = context.getContentResolver().query(uri, null, null, null, null)) {
+                if (cursor != null && cursor.moveToFirst()) {
+                    int index = cursor.getColumnIndex(OpenableColumns.DISPLAY_NAME);
+                    if (index != -1) {
+                        result = cursor.getString(index);
+                    }
+                }
+            } catch (Exception ignored) {}
+        }
+        if (result == null) {
+            result = uri.getPath();
+            assert result != null;
+            int cut = result.lastIndexOf('/');
+            if (cut != -1) {
+                result = result.substring(cut + 1);
+            }
+        }
+        return result;
+    }
 
     @SuppressLint("SetJavaScriptEnabled")
     private void dispatchIntent(Intent intent) {
 
         String action = intent.getAction();
         String url = intent.getStringExtra(Intent.EXTRA_TEXT);
-
+        Uri dataUri = intent.getData();
+        String mimeType = intent.getType();
         if ("".equals(action)) {
             Log.i(TAG, "resumed FOSS browser");
         } else if (filePathCallback != null) {
             filePathCallback = null;
             getIntent().setAction("");
-        } else if (Intent.ACTION_VIEW.equals(action)) {
-            sp.edit().putBoolean("show_overview", false).apply();
-            getIntent().setAction("");
-            addAlbum(null, Objects.requireNonNull(getIntent().getData()).toString(), true);
-            BrowserUnit.openInBackground(activity, ninjaWebView);
+        } else if (Intent.ACTION_VIEW.equals(action) && dataUri != null) {
+            String fileContent = readTextFromUri(this, dataUri);
+            String fileName = getFileNameFromUri (context, dataUri);
+            if (!fileContent.trim().isEmpty()) {
+                if (mimeType != null && mimeType.contains("html")) {
+                    // HTML über die sichere Cache-Methode laden (damit CSS/Bilder funktionieren)
+                    File localHtmlFile = copyHtmlToCache(this, dataUri);
+                    if (localHtmlFile != null && localHtmlFile.exists()) {
+                        addAlbum(fileName, "file://" + localHtmlFile.getAbsolutePath(), true);
+                        ninjaWebView.loadUrl("file://" + localHtmlFile.getAbsolutePath());
+                    } else {
+                        addAlbum(fileName, "about:blank" , true);
+                        ninjaWebView.loadDataWithBaseURL(null, fileContent, "text/html", "UTF-8", null);
+                    }
+                } else {
+                    // XML, JSON oder TXT: In HTML-Code-Ansicht einbetten
+                    String langClass = "language-txt";
+                    String formattedContent = fileContent;
+                    if (mimeType != null && (mimeType.contains("xml") || fileContent.trim().startsWith("<"))) {
+                        langClass = "language-xml";
+                    } else if (mimeType != null && mimeType.contains("json") || fileContent.trim().startsWith("{") || fileContent.trim().startsWith("[")) {
+                        langClass = "language-json";
+                        try {
+                            if (fileContent.trim().startsWith("{")) {
+                                org.json.JSONObject jsonObject = new org.json.JSONObject(fileContent);
+                                formattedContent = jsonObject.toString(2);
+                            } else if (fileContent.trim().startsWith("[")) {
+                                org.json.JSONArray jsonArray = new org.json.JSONArray(fileContent);
+                                formattedContent = jsonArray.toString(2);
+                            }
+                        } catch (Exception ignored) {}
+                    }
+                    String escapedContent = formattedContent.replace("&", "&amp;").replace("<", "&lt;").replace(">", "&gt;");
+                    String htmlWrapper = "<html><head>"
+                            + "<meta name='viewport' content='width=device-width, initial-scale=1.0'>"
+                            + "<link rel='stylesheet' href='https://cloudflare.com' />"
+                            + "<style>"
+                            + "  body { margin: 0; padding: 10px; background: #fafafa; font-size: 14px; }"
+                            + "  pre, code { font-family: monospace !important; white-space: pre !important; word-wrap: normal !important; }"
+                            + "</style></head><body>"
+                            + "<pre class='" + langClass + "'><code class='" + langClass + "'>"
+                            + escapedContent
+                            + "</code></pre>"
+                            + "<script src='https://cloudflare.com'></script>"
+                            + "<script src='https://cloudflare.com'></script>"
+                            + "<script src='https://cloudflare.com'></script>"
+                            + "</body></html>";
+                    addAlbum(fileName, "file://" + "https://localhost", true);
+                    ninjaWebView.loadDataWithBaseURL("https://localhost", htmlWrapper, "text/html", "UTF-8", null);
+                }
+            } else {
+                sp.edit().putBoolean("show_overview", false).apply();
+                getIntent().setAction("");
+                addAlbum(null, Objects.requireNonNull(getIntent().getData()).toString(), true);
+                BrowserUnit.openInBackground(activity, ninjaWebView);
+            }
         } else if ("postLink".equals(action)) {
             sp.edit().putBoolean("show_overview", false).apply();
             getIntent().setAction("");
@@ -2363,6 +2435,21 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
             getIntent().setAction("");
             addAlbum(null, url, true);
         }
+    }
+    private String readTextFromUri(Context context, Uri uri) {
+        StringBuilder stringBuilder = new StringBuilder();
+        try {
+            InputStream inputStream = context.getContentResolver().openInputStream(uri);
+            if (inputStream != null) {
+                BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream));
+                String line;
+                while ((line = reader.readLine()) != null) {
+                    stringBuilder.append(line).append("\n");
+                }
+                inputStream.close();
+            }
+        } catch (Exception ignored) {}
+        return stringBuilder.toString();
     }
 
     @SuppressLint("ClickableViewAccessibility")
@@ -2499,7 +2586,8 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
             ninjaWebView.setPredecessor(currentAlbumController);
             //save currentAlbumController and use when TAB is closed via Back button
             int index = BrowserContainer.indexOf(currentAlbumController) + 1;
-            BrowserContainer.add(ninjaWebView, index); }
+            BrowserContainer.add(ninjaWebView, index);
+        }
         else BrowserContainer.add(ninjaWebView);
 
         if (!foreground) ninjaWebView.deactivate();

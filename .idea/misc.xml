@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="CMakeSettings">
     <configurations>
@@ -140,6 +141,9 @@
         <entry key="app/src/main/res/xml/preference_ui.xml" value="0.15319148936170213" />
       </map>
     </option>
+  </component>
+  <component name="EntryPointsManager">
+    <pattern value="de.baumann.browser.browser.WebAppInterface" method="processBlob" />
   </component>
   <component name="NullableNotNullManager">
     <option name="myDefaultNullable" value="org.jetbrains.annotations.Nullable" />

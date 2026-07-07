@@ -12,7 +12,6 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ListView;
 
@@ -26,7 +25,6 @@ import com.google.android.material.card.MaterialCardView;
 import com.google.android.material.snackbar.Snackbar;
 
 import java.util.List;
-import java.util.Map;
 import java.util.Objects;
 
 import de.baumann.browser.R;
@@ -42,7 +40,6 @@ public class Settings_ProfileList extends AppCompatActivity {
 
     private List<String> list;
     private List_standard listStandard;
-    private AdapterProfileList adapter;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -61,45 +58,8 @@ public class Settings_ProfileList extends AppCompatActivity {
         action.close();
         ListView listView = findViewById(R.id.whitelist);
         listView.setEmptyView(findViewById(R.id.whitelist_empty));
-
-        SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(this);
-        Button profileListDelete = findViewById(R.id.profileListDelete);
-        profileListDelete.setOnClickListener(v -> {
-            Snackbar snackbarDelete = Snackbar.make(v, R.string.hint_database, Snackbar.LENGTH_SHORT);
-            HelperUnit.makeSnackbarRound(snackbarDelete);
-            snackbarDelete.setAction(this.getString(R.string.app_ok), (v2 -> {
-                list.clear();
-                listStandard.clearDomains();
-                adapter.notifyDataSetChanged();
-                SharedPreferences.Editor editor = sp.edit();
-
-                String[] suffixes = {
-                        "_saveData", "_images", "_adBlock", "_trackingULS", "_location",
-                        "_fingerPrintProtection", "_cookies", "_cookiesThirdParty",
-                        "_deny_cookie_banners", "_javascript", "_javascriptPopUp",
-                        "_saveHistory", "_camera", "_microphone", "_dom", "_night",
-                        "_drm", "_desktop"
-                };
-                Map<String, ?> allEntries = sp.getAll();
-                for (Map.Entry<String, ?> entry : allEntries.entrySet()) {
-                    String key = entry.getKey();
-                    if (key.toLowerCase().startsWith("standard")) {
-                        continue;
-                    }
-                    for (String suffix : suffixes) {
-                        if (key.endsWith(suffix)) {
-                            editor.remove(key);
-                            break;
-                        }
-                    }
-                }
-                editor.apply();
-            }));
-            snackbarDelete.show();
-        });
-
         //noinspection NullableProblems
-        adapter = new AdapterProfileList(this, list) {
+        AdapterProfileList adapter = new AdapterProfileList(this, list) {
             @Override
             public View getView(final int position, View convertView, @NonNull ViewGroup parent) {
                 View v = super.getView(position, convertView, parent);
@@ -141,8 +101,9 @@ public class Settings_ProfileList extends AppCompatActivity {
                                     .remove(list.get(position) + "_drm")
                                     .remove(list.get(position) + "_desktop").apply();
                             NinjaToast.show(Settings_ProfileList.this, R.string.app_done);
+                        } catch (Exception e) {
+                            Log.i(TAG, "dialogCustomSearches:" + e);
                         }
-                        catch (Exception e) {Log.i(TAG, "dialogCustomSearches:" + e);}
                     }));
                     snackbarDelete.show();
                 });

@@ -459,7 +459,7 @@ public class NinjaWebViewClient extends WebViewClient {
         final Uri uri = request.getUrl();
         String url = uri.toString();
         if (url.startsWith("http:") || url.startsWith("https:")) {
-            view.loadUrl(url);
+            //view.loadUrl(url);
             String mCurrentUrl = sp.getString("mCurrentUrl", "");
             if(url.equals(mCurrentUrl) && sp.getBoolean("backPressed", false)) {
                 String historyUrl="";

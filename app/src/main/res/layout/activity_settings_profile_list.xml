@@ -21,17 +21,6 @@
 
         </com.google.android.material.appbar.AppBarLayout>
 
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/profileListDelete"
-            style="@style/Widget.Material3.Button"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="20dp"
-            android:ellipsize="end"
-            android:maxLines="1"
-            android:text="@string/menu_delete"
-            android:textAllCaps="true" />
-
         <ListView
             android:id="@+id/whitelist"
             android:layout_width="match_parent"

@@ -91,50 +91,47 @@ public class NinjaDownloadListener implements DownloadListener {
                     R.drawable.icon_close, () -> true
             );
         } else if (downloadUrl.startsWith("data:")) {
-            String d = webView.getContext().getString(R.string.dialog_title_download) + " - " + generatedFileName;
+
+            int commaIndex = downloadUrl.indexOf(",");
+            if (commaIndex == -1) throw new IllegalArgumentException("Ungültige Data-URL");
+            String base64Data = downloadUrl.substring(commaIndex + 1);
+            byte[] decodedBytes = Base64.decode(base64Data, Base64.DEFAULT);
+            String realExtension = getExtensionFromBytes(decodedBytes);
+            String finalFileName = generatedFileName;
+            if (finalFileName.contains(".")) {
+                finalFileName = finalFileName.substring(0, finalFileName.lastIndexOf(".")) + "." + realExtension;
+            } else {
+                finalFileName = finalFileName + "." + realExtension;
+            }
+
+            String d = webView.getContext().getString(R.string.dialog_title_download) + " - " + finalFileName;
             HelperUnit.showCustomSnackbarWithTwoActions(
                     webView.getContext(), webView, null,
                     webView.getTitle(), d, downloadUrl,
                     R.drawable.icon_check, () -> {
-                        // Sofortiges Feedback auf dem UI-Thread anzeigen
-                        String processingText = webView.getContext().getString(R.string.menu_download) + "...";
-                        Snackbar snackbar = Snackbar.make(webView, processingText, Snackbar.LENGTH_INDEFINITE);
-                        HelperUnit.makeSnackbarRound(snackbar);
-                        snackbar.show();
-
                         Executors.newSingleThreadExecutor().execute(() -> {
                             try {
-                                int commaIndex = downloadUrl.indexOf(",");
-                                if (commaIndex == -1) throw new IllegalArgumentException("Ungültige Data-URL");
-                                String base64Data = downloadUrl.substring(commaIndex + 1);
-                                byte[] decodedBytes = Base64.decode(base64Data, Base64.DEFAULT);
-                                String realExtension = getExtensionFromBytes(decodedBytes);
-                                String finalFileName = generatedFileName;
-                                if (finalFileName.contains(".")) {
-                                    finalFileName = finalFileName.substring(0, finalFileName.lastIndexOf(".")) + "." + realExtension;
+                                String finalFileName2 = generatedFileName;
+                                if (finalFileName2.contains(".")) {
+                                    finalFileName2 = finalFileName2.substring(0, finalFileName2.lastIndexOf(".")) + "." + realExtension;
                                 } else {
-                                    finalFileName = finalFileName + "." + realExtension;
+                                    finalFileName2 = finalFileName2 + "." + realExtension;
                                 }
                                 File downloadDir = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS);
-                                File file = new File(downloadDir, finalFileName);
+                                File file = new File(downloadDir, finalFileName2);
                                 try (BufferedOutputStream bos = new BufferedOutputStream(Files.newOutputStream(file.toPath()))) {
                                     bos.write(decodedBytes);
                                     bos.flush();
                                 }
-                                // UI-Update nach erfolgreichem Speichern
                                 webView.post(() -> {
                                     String text = webView.getContext().getString(R.string.app_done) + ". " + webView.getContext().getString(R.string.menu_download) + "?";
-                                    snackbar.setText(text);
-                                    snackbar.setDuration(Snackbar.LENGTH_LONG);
-                                    snackbar.setAction(context.getString(R.string.app_ok), v ->
-                                            webView.getContext().startActivity(Intent.createChooser(new Intent(DownloadManager.ACTION_VIEW_DOWNLOADS), null))
-                                    );
+                                    Snackbar snackbar = Snackbar.make(webView, text, Snackbar.LENGTH_SHORT);
+                                    HelperUnit.makeSnackbarRound(snackbar);
+                                    snackbar.setAction(context.getString(R.string.app_ok), (v -> webView.getContext().startActivity(Intent.createChooser(new Intent(DownloadManager.ACTION_VIEW_DOWNLOADS), null))));
                                     snackbar.show();
                                 });
-
                             } catch (Exception e) {
                                 webView.post(() -> {
-                                    snackbar.dismiss();
                                     String textToShow = context.getString(R.string.app_error) + ": " + e.getMessage();
                                     NinjaToast.show(webView.getContext(), textToShow);
                                 });
