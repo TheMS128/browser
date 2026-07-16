@@ -49,50 +49,26 @@
             android:exported="true"
             android:launchMode="singleTask">
 
-            <!-- 1. NEU: Universeller Mime-Type Filter für bekannte Text- und Code-Inhalte -->
             <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
                 <category android:name="android.intent.category.DEFAULT" />
                 <category android:name="android.intent.category.BROWSABLE" />
-
-                <data android:mimeType="text/html" />
-                <data android:mimeType="text/plain" />
-                <data android:mimeType="text/xml" />
-                <data android:mimeType="application/xml" />
+                <!-- Fängt jede Form von Text- und Code-Struktur ab (inkl. .txt, .html etc.) -->
+                <data android:mimeType="text/*" />
+                <!-- Sicherheitsnetz für Dateimanager, die JSON/XML als App-Typ statt Text deklarieren -->
                 <data android:mimeType="application/json" />
-                <data android:mimeType="text/javascript" />
-                <!-- Fängt unvollständig deklarierte Code-Dateien aus Dateimanagern ab -->
-                <data android:mimeType="application/octet-stream" />
+                <data android:mimeType="application/xml" />
             </intent-filter>
 
-            <!-- 2. NEU: Universeller Pfad-Filter für Datei-Endungen (file:// und content://) -->
-            <intent-filter>
+            <!-- 2. FILTER: Fängt alle anderen Dateien (inkl. .org) ab, bei denen der Mime-Type unbekannt ist -->
+            <intent-filter tools:ignore="AppLinkUrlError">
                 <action android:name="android.intent.action.VIEW" />
                 <category android:name="android.intent.category.DEFAULT" />
-                <category android:name="android.intent.category.BROWSABLE" />
 
-                <data android:scheme="file" />
                 <data android:scheme="content" />
-                <data android:host="*" />
-
-                <data android:pathPattern=".*\\.html" />
-                <data android:pathPattern=".*\\.txt" />
-                <data android:pathPattern=".*\\.xml" />
-                <data android:pathPattern=".*\\.json" />
-                <data android:pathPattern=".*\\.java" />
-                <data android:pathPattern=".*\\.md" />
-                <data android:pathPattern=".*\\.js" />
-                <data android:pathPattern=".*\\.css" />
-                <data android:pathPattern=".*\\.sh" />
-            </intent-filter>
-
-            <!-- Standard Web-Links abfangen -->
-            <intent-filter>
-                <action android:name="android.intent.action.VIEW" />
-                <category android:name="android.intent.category.DEFAULT" />
-                <category android:name="android.intent.category.BROWSABLE" />
-                <data android:scheme="http" />
-                <data android:scheme="https" />
+                <data android:scheme="file" />
+                <!-- Verpflichtend, damit Android die URI unabhängig vom Namen an die App übergibt -->
+                <data android:mimeType="*/*" />
             </intent-filter>
 
             <!-- Text über das Android 'Teilen'-Menü empfangen -->

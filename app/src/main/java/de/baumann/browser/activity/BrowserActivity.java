@@ -65,6 +65,7 @@ import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 import android.widget.VideoView;
 
 import androidx.activity.EdgeToEdge;
@@ -2315,32 +2316,8 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
         }
     }
 
-    private String getFileNameFromUri(Context context, Uri uri) {
-        String result = null;
-        if (Objects.equals(uri.getScheme(), "content")) {
-            try (Cursor cursor = context.getContentResolver().query(uri, null, null, null, null)) {
-                if (cursor != null && cursor.moveToFirst()) {
-                    int index = cursor.getColumnIndex(OpenableColumns.DISPLAY_NAME);
-                    if (index != -1) {
-                        result = cursor.getString(index);
-                    }
-                }
-            } catch (Exception ignored) {}
-        }
-        if (result == null) {
-            result = uri.getPath();
-            assert result != null;
-            int cut = result.lastIndexOf('/');
-            if (cut != -1) {
-                result = result.substring(cut + 1);
-            }
-        }
-        return result;
-    }
-
     @SuppressLint("SetJavaScriptEnabled")
     private void dispatchIntent(Intent intent) {
-
         String action = intent.getAction();
         String url = intent.getStringExtra(Intent.EXTRA_TEXT);
         Uri dataUri = intent.getData();
@@ -2351,8 +2328,38 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
             filePathCallback = null;
             getIntent().setAction("");
         } else if (Intent.ACTION_VIEW.equals(action) && dataUri != null) {
-            // 1. Dateinamen und Pfad ermitteln
-            String fileName = getFileNameFromUri(context, dataUri);
+            String fileName = null;
+            // 1. Echten Dateinamen aus der URI ermitteln
+            if ("content".equals(dataUri.getScheme())) {
+                try (Cursor cursor = getContentResolver().query(dataUri, null, null, null, null)) {
+                    if (cursor != null && cursor.moveToFirst()) {
+                        int nameIndex = cursor.getColumnIndex(OpenableColumns.DISPLAY_NAME);
+                        if (nameIndex != -1) {
+                            fileName = cursor.getString(nameIndex); // z.B. "notizen.org"
+                        }
+                    }
+                } catch (Exception e) {
+                    NinjaToast.show(context, getString(R.string.app_error));
+                }
+            } else if ("file".equals(dataUri.getScheme())) {
+                fileName = dataUri.getLastPathSegment();
+            }
+            // 2. Dateiendung prüfen und filtern
+            if (fileName != null) {
+                String extension = "";
+                int lastDot = fileName.lastIndexOf('.');
+                if (lastDot >= 0) {
+                    extension = fileName.substring(lastDot + 1).toLowerCase();
+                }
+                // Liste aller erlaubten Text- und Code-Endungen
+                List<String> allowedExtensions = Arrays.asList(
+                        "html", "txt", "xml", "json", "java", "md", "js", "css", "sh", "py", "org", "gpx"
+                );
+                if (!allowedExtensions.contains(extension)) {
+                    Toast.makeText(this, getString(R.string.dialog_supported), Toast.LENGTH_SHORT).show();
+                    return;
+                }
+            }
             String filePath = dataUri.getPath();
             // Liefert den Pfad (z. B. /storage/emulated/0/Download/file.txt)
             // Falls der Pfad über einen ContentProvider verschlüsselt ist, nutzen wir die URI als Identifikator
@@ -2360,7 +2367,6 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
             // Die virtuelle oder echte Datei-URL für die WebView (wichtig für webView.getUrl())
             String virtualFileUrl = filePath != null ? "file://" + filePath : dataUri.toString();
             String fileContent = readTextFromUri(this, dataUri);
-
             if (!fileContent.trim().isEmpty()) {
                 if (mimeType != null && mimeType.contains("html")) {
                     // HTML über die sichere Cache-Methode laden (damit CSS/Bilder funktionieren)
@@ -2390,11 +2396,16 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
                                 org.json.JSONArray jsonArray = new org.json.JSONArray(fileContent);
                                 formattedContent = jsonArray.toString(2);
                             }
-                        } catch (Exception ignored) {}
-                    } else if (fileName.endsWith(".java")) {
-                        langClass = "language-java";
-                    } else if (fileName.endsWith(".md")) {
-                        langClass = "language-markdown";
+                        } catch (Exception ignored) {
+                            NinjaToast.show(context, getString(R.string.app_error));
+                        }
+                    } else {
+                        assert fileName != null;
+                        if (fileName.endsWith(".java")) {
+                            langClass = "language-java";
+                        } else if (fileName.endsWith(".md")) {
+                            langClass = "language-markdown";
+                        }
                     }
                     // HTML-Sonderzeichen maskieren
                     String escapedContent = formattedContent.replace("&", "&amp;").replace("<", "&lt;").replace(">", "&gt;");

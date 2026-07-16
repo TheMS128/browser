@@ -37,6 +37,7 @@ import java.net.URISyntaxException;
 import java.util.List;
 import java.util.Locale;
 import java.util.Objects;
+import java.util.regex.Pattern;
 
 import de.baumann.browser.R;
 import de.baumann.browser.activity.BrowserActivity;
@@ -55,13 +56,26 @@ public class BrowserUnit {
         if (urlString == null || urlString.trim().isEmpty()) {
             return false;
         }
+
+        urlString = urlString.trim();
         try {
             URI uri = new URI(urlString);
+
+            // Fall 1: Die URL hat bereits ein explizites Schema
             if (uri.getScheme() != null) {
-                return true;
+                String scheme = uri.getScheme().toLowerCase();
+                // Erlaubt Web-Links sowie lokale Datei- und Inhalts-Pfade von Android
+                return "http".equals(scheme) || "https".equals(scheme) || "file".equals(scheme) || "content".equals(scheme);
             }
-            URI fallbackUri = new URI("http://" + urlString);
-            return fallbackUri.getHost() != null;
+
+            // Fall 2: Die Eingabe hat kein Schema (z.B. "google.com")
+            Pattern domainPattern = Pattern.compile("^[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}(/.*)?$");
+            if (domainPattern.matcher(urlString).matches()) {
+                URI fallbackUri = new URI("http://" + urlString);
+                return fallbackUri.getHost() != null && fallbackUri.getHost().contains(".");
+            }
+
+            return false;
         } catch (URISyntaxException e) {
             return false;
         }

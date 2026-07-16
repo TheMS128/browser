@@ -65,6 +65,7 @@
     <string name="dialog_sortName">Sort by name</string>
     <string name="dialog_sortIcon">Sort by filter</string>
     <string name="dialog_sortDate">Sort by date</string>
+    <string name="dialog_supported">Only text files supported.</string>
     <string name="dialog_sortDomain">Sort by domain</string>
     <string name="dialog_backGround">Open links in background …</string>
     <string name="dialog_tracking">Possible tracking URL. Remove tracking part:</string>
