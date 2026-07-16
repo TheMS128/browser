@@ -73,16 +73,6 @@
     <string name="setting_title_browser">Browser Settings</string>
     <string name="setting_title_search_engine">Search engine</string>
     <string name="setting_title_trackingURL">Tracking-URL popup</string>
-    <string name="setting_summary_search_engine_google">Google</string>
-    <string name="setting_summary_search_engine_duckduckgo">DuckDuckGo</string>
-    <string name="setting_summary_search_engine_startpage">StartPage</string>
-    <string name="setting_summary_search_engine_bing">Bing</string>
-    <string name="setting_summary_search_engine_baidu">Baidu</string>
-    <string name="setting_summary_search_engine_startpage_de">StartPage (de)</string>
-    <string name="setting_summary_search_engine_searx">Searx</string>
-    <string name="setting_summary_search_engine_qwant">Qwant</string>
-    <string name="setting_summary_search_engine_ecosia">Ecosia</string>
-    <string name="setting_summary_search_engine_metager">Metager</string>
     <string name="setting_title_font">Font size</string>
     <string name="setting_title_savedWebSites">Saved websites</string>
     <string name="setting_title_dom">DOM Storage</string>

@@ -56,16 +56,6 @@
     <string name="setting_label">تنظیمات</string>
     <string name="setting_title_browser">تنظیمات مرورگر</string>
     <string name="setting_title_search_engine">موتور جستجو</string>
-    <string name="setting_summary_search_engine_google">گوگل</string>
-    <string name="setting_summary_search_engine_duckduckgo">DuckDuckGo</string>
-    <string name="setting_summary_search_engine_startpage">StartPage</string>
-    <string name="setting_summary_search_engine_bing">Bing</string>
-    <string name="setting_summary_search_engine_baidu">Baidu</string>
-    <string name="setting_summary_search_engine_startpage_de">StartPage (De)</string>
-    <string name="setting_summary_search_engine_searx">Searx</string>
-    <string name="setting_summary_search_engine_qwant">Qwant</string>
-    <string name="setting_summary_search_engine_ecosia">Ecosia</string>
-    <string name="setting_summary_search_engine_metager">Metager</string>
     <string name="setting_title_font">اندازه قلم</string>
     <string name="setting_title_dom">محل ذخیره DOM</string>
     <string name="source">منبع</string>

@@ -56,16 +56,6 @@
     <string name="setting_label">Налаштування</string>
     <string name="setting_title_browser">Налаштування браузера</string>
     <string name="setting_title_search_engine">Пошукова система</string>
-    <string name="setting_summary_search_engine_google">Google</string>
-    <string name="setting_summary_search_engine_duckduckgo">DuckDuckGo</string>
-    <string name="setting_summary_search_engine_startpage">StartPage</string>
-    <string name="setting_summary_search_engine_bing">Bing</string>
-    <string name="setting_summary_search_engine_baidu">Baidu</string>
-    <string name="setting_summary_search_engine_startpage_de">StartPage (de)</string>
-    <string name="setting_summary_search_engine_searx">Searx</string>
-    <string name="setting_summary_search_engine_qwant">Qwant</string>
-    <string name="setting_summary_search_engine_ecosia">Ecosia</string>
-    <string name="setting_summary_search_engine_metager">Metager</string>
     <string name="setting_title_font">Розмір шрифту</string>
     <string name="setting_title_dom">DOM сховище</string>
     <string name="source">Джерело</string>

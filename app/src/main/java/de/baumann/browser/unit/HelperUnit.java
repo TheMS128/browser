@@ -620,6 +620,7 @@ public class HelperUnit {
         if (textView != null) {
             textView.setText(snackbarText);
             textView.setTextColor(contentColor.getDefaultColor());
+            textView.setTextIsSelectable(true);
 
             if (scrollView != null) {
                 int screenHeight = textView.getContext().getResources().getDisplayMetrics().heightPixels;
@@ -640,7 +641,6 @@ public class HelperUnit {
                     snackbar.dismiss();
                 });
             }
-
         }
 
         MaterialButton firstButton = customView.findViewById(R.id.custom_btn_one);

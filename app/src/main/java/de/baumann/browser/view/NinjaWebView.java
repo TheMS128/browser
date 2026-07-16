@@ -382,7 +382,7 @@ public class NinjaWebView extends WebView implements AlbumController {
 
                 FloatingActionButton buttonProfile = dialogView.findViewById(R.id.buttonProfile);
                 NinjaWebView.getBrowserController().setProfileIcon(buttonProfile, urlToLoad);
-                FaviconHelper.setFavicon(context, dialogView, url, R.id.menu_icon, R.drawable.icon_image_broken);
+                FaviconHelper.setFavicon(context, dialogView, urlToLoad, R.id.menu_icon, R.drawable.icon_image_broken);
                 buttonProfile.setOnClickListener(v -> NinjaWebView.getBrowserController().showDialogFastToggle(HelperUnit.domain(urlToLoad),urlToLoad, buttonProfile));
                 buttonProfile.setOnLongClickListener(v -> {
                     sp.edit().putString("profile", "profileStandard").apply();

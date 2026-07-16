@@ -19,21 +19,16 @@
 
 package de.baumann.browser.unit;
 
-import static android.Manifest.permission.READ_EXTERNAL_STORAGE;
-import static android.Manifest.permission.WRITE_EXTERNAL_STORAGE;
-import static android.os.Build.VERSION.SDK_INT;
 import static android.os.Environment.DIRECTORY_DOCUMENTS;
 
+import android.Manifest;
 import android.app.Activity;
 import android.content.Context;
-import android.content.Intent;
 import android.content.pm.PackageManager;
-import android.net.Uri;
 import android.os.Build;
 import android.os.Environment;
 import android.os.Handler;
 import android.os.Looper;
-import android.provider.Settings;
 import android.util.Log;
 import android.util.Patterns;
 
@@ -67,35 +62,36 @@ public class BackupUnit {
     private static final String BOOKMARK_TYPE_SIMPLE = "<DT><A HREF=\"{url}\">{title}</A>";
     private static final String BOOKMARK_TITLE = "{title}";
     private static final String BOOKMARK_URL = "{url}";
-
+    // Thread-Pool einmalig global deklarieren statt bei jedem Klick neu zu instanziieren (schont Ressourcen)
     public static boolean checkPermissionStorage(Context context) {
-        if (SDK_INT >= Build.VERSION_CODES.R) return Environment.isExternalStorageManager();
-        else {
-            int result = ContextCompat.checkSelfPermission(context, READ_EXTERNAL_STORAGE);
-            int result1 = ContextCompat.checkSelfPermission(context, WRITE_EXTERNAL_STORAGE);
-            return result == PackageManager.PERMISSION_GRANTED && result1 == PackageManager.PERMISSION_GRANTED; }
+        if (context == null) return false;
+        // Ab Android 10 (Q, API 29) wird dank Scoped Storage/MediaStore keine Berechtigung für Documents mehr benötigt
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
+            return true;
+        }
+        // Für Android 9 und älter prüfen wir die klassischen Lese- und Schreibrechte
+        int readCheck = ContextCompat.checkSelfPermission(context, Manifest.permission.READ_EXTERNAL_STORAGE);
+        int writeCheck = ContextCompat.checkSelfPermission(context, Manifest.permission.WRITE_EXTERNAL_STORAGE);
+        return readCheck == PackageManager.PERMISSION_GRANTED && writeCheck == PackageManager.PERMISSION_GRANTED;
     }
 
     public static void requestPermission(Activity activity) {
+        if (activity == null || activity.isFinishing()) return;
+        // Ab Android 10 ist dieser Dialog überflüssig, da MediaStore direkt funktioniert
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
+            return;
+        }
         MaterialAlertDialogBuilder builder = new MaterialAlertDialogBuilder(activity);
         builder.setIcon(R.drawable.icon_alert);
         builder.setTitle(R.string.app_warning);
         builder.setMessage(R.string.app_permission);
         builder.setPositiveButton(R.string.app_ok, (dialog, whichButton) -> {
-            dialog.cancel();
-            if (SDK_INT >= Build.VERSION_CODES.R) {
-                try {
-                    Intent intent = new Intent(Settings.ACTION_MANAGE_APP_ALL_FILES_ACCESS_PERMISSION);
-                    intent.addCategory("android.intent.category.DEFAULT");
-                    intent.setData(Uri.parse(String.format("package:%s", activity.getPackageName())));
-                    activity.startActivity(intent); }
-                catch (Exception e) {
-                    Intent intent = new Intent();
-                    intent.setAction(Settings.ACTION_MANAGE_ALL_FILES_ACCESS_PERMISSION);
-                    activity.startActivity(intent); }}
-            else {
-                //below android 11
-                ActivityCompat.requestPermissions(activity, new String[]{WRITE_EXTERNAL_STORAGE}, PERMISSION_REQUEST_CODE); }
+            // Erst das eigene Fenster sauber schließen, um Klick-Sperren (Overlays) zu vermeiden
+            dialog.dismiss();
+            // Da wir uns hier sicher unter Android 10 befinden, fordern wir die klassischen Rechte an
+            ActivityCompat.requestPermissions(activity,
+                    new String[]{Manifest.permission.READ_EXTERNAL_STORAGE, Manifest.permission.WRITE_EXTERNAL_STORAGE},
+                    PERMISSION_REQUEST_CODE);
         });
         builder.setNegativeButton(R.string.app_cancel, (dialog, whichButton) -> dialog.cancel());
         AlertDialog dialog = builder.create();
@@ -103,24 +99,31 @@ public class BackupUnit {
         HelperUnit.setupDialog(activity, dialog);
     }
 
-    public static void makeBackupDir() {
-        File backupDir = new File(Environment.getExternalStoragePublicDirectory(DIRECTORY_DOCUMENTS), "browser_backup//");
-        boolean wasSuccessful = backupDir.mkdirs();
-        if (!wasSuccessful) System.out.println("was not successful.");
+    public static void makeBackupDir(Context context) {
+        if (context == null) return;
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
+            // Unter Scoped Storage übernimmt der MediaStore das automatische Erstellen von Unterordnern beim ersten Schreiben.
+            // Ein manuelles Vorerstellen über File-Objekte im öffentlichen Speicher ist ab Android 10 blockiert.
+            Log.d("FOSS Browser", "Verzeichnis-Erstellung wird automatisch vom MediaStore verwaltet.");
+        } else {
+            // Klassischer Weg für ältere Geräte (Fehlerhaften Doppel-Slash '//' entfernt)
+            File backupDir = new File(Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOCUMENTS), "browser_backup");
+            if (!backupDir.exists() && !backupDir.mkdirs()) {
+                Log.e("FOSS Browser", "Ordner konnte auf altem Gerät nicht erstellt werden.");
+            }
+        }
     }
 
     public static void backupData(Activity context, int i) {
         ExecutorService executor = Executors.newSingleThreadExecutor();
         Handler handler = new Handler(Looper.getMainLooper());
         executor.execute(() -> {
-            //Background work here
             if (i == 5) {
                 exportBookmarksSimple(context);
             } else {
                 exportList(context);
             }
             handler.post(() -> {
-                //UI Thread work here
                 String text = context.getString(R.string.app_done) + ": " + context.getString(R.string.setting_title_data);
                 NinjaToast.show(context, text);
             });
@@ -131,14 +134,12 @@ public class BackupUnit {
         ExecutorService executor = Executors.newSingleThreadExecutor();
         Handler handler = new Handler(Looper.getMainLooper());
         executor.execute(() -> {
-            //Background work here
             if (i == 5) {
                 importBookmarksSimple(context);
             } else {
                 importList(context);
             }
             handler.post(() -> {
-                //UI Thread work here
                 String text = context.getString(R.string.app_done) + ": " + context.getString(R.string.settings_data_restore);
                 NinjaToast.show(context, text);
             });

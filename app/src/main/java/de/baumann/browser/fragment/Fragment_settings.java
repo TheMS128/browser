@@ -8,7 +8,6 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 
-import androidx.preference.EditTextPreference;
 import androidx.preference.ListPreference;
 import androidx.preference.Preference;
 import androidx.preference.PreferenceGroup;
@@ -119,10 +118,6 @@ public class Fragment_settings extends BasePreferenceFragment implements SharedP
             ListPreference listPref = (ListPreference) p;
             if (p.getSummaryProvider() == null) p.setSummary(listPref.getEntry());
             sp_ad_block.setSummary(AdBlock.getHostsDate(requireContext()));
-        }
-        if (p instanceof EditTextPreference) {
-            EditTextPreference editTextPref = (EditTextPreference) p;
-            p.setSummary(editTextPref.getText());
         }
 
         Context context = getContext();

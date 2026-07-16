@@ -707,6 +707,7 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
     private void initOmniBox() {
 
         search_input = dialogViewSearch.findViewById(R.id.search_input);
+        appBar = findViewById(R.id.appBar);
         appBar_title = findViewById(R.id.appBar_title);
         contentView = findViewById(android.R.id.content);
         LinearLayout appBar_buttons = findViewById(R.id.appBar_buttons);
@@ -722,15 +723,14 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
             animationBack2.start();
         });
 
-        appBar_title.setOnClickListener(view -> {
+        appBar.setOnClickListener(view -> {
             initSearch();
             sp.edit().putString("sp_search_customSearches", "").apply();
             search_input.setText(ninjaWebView.getUrl());
             dialogSearch.show();
             HelperUnit.showSoftKeyboard(search_input);
         });
-        appBar_title.setOnLongClickListener(v -> {
-            CardView appBar = findViewById(R.id.appBar);
+        appBar.setOnLongClickListener(v -> {
             ObjectAnimator animation = ObjectAnimator.ofFloat(appBar, "translationY", 275f);
             animation.setDuration(250);
             animation.start();
@@ -1130,7 +1130,7 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
                     triggerRebirth(context);
                     break;
                 case R.drawable.icon_help:
-                    Uri webpage = Uri.parse("https://codeberg.org/Gaukler_Faun/FOSS_Browser/wiki/Context-menu");
+                    Uri webpage = Uri.parse("https://codeberg.org/Gaukler_Faun/FOSS_Browser/wiki/Home");
                     BrowserUnit.intentURL(this, webpage);
                     break;
                 case R.drawable.icon_delete:
@@ -2351,8 +2351,16 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
             filePathCallback = null;
             getIntent().setAction("");
         } else if (Intent.ACTION_VIEW.equals(action) && dataUri != null) {
+            // 1. Dateinamen und Pfad ermitteln
+            String fileName = getFileNameFromUri(context, dataUri);
+            String filePath = dataUri.getPath();
+            // Liefert den Pfad (z. B. /storage/emulated/0/Download/file.txt)
+            // Falls der Pfad über einen ContentProvider verschlüsselt ist, nutzen wir die URI als Identifikator
+            String displayPath = filePath != null ? filePath : dataUri.toString();
+            // Die virtuelle oder echte Datei-URL für die WebView (wichtig für webView.getUrl())
+            String virtualFileUrl = filePath != null ? "file://" + filePath : dataUri.toString();
             String fileContent = readTextFromUri(this, dataUri);
-            String fileName = getFileNameFromUri (context, dataUri);
+
             if (!fileContent.trim().isEmpty()) {
                 if (mimeType != null && mimeType.contains("html")) {
                     // HTML über die sichere Cache-Methode laden (damit CSS/Bilder funktionieren)
@@ -2365,12 +2373,14 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
                         ninjaWebView.loadDataWithBaseURL(null, fileContent, "text/html", "UTF-8", null);
                     }
                 } else {
-                    // XML, JSON oder TXT: In HTML-Code-Ansicht einbetten
+                    // UNIVERSAL-METHODE für XML, JSON, TXT, JAVA, MD, etc.
                     String langClass = "language-txt";
                     String formattedContent = fileContent;
+                    // Mime-Type oder Inhalts-Erkennung für das Syntax-Highlighting
                     if (mimeType != null && (mimeType.contains("xml") || fileContent.trim().startsWith("<"))) {
                         langClass = "language-xml";
-                    } else if (mimeType != null && mimeType.contains("json") || fileContent.trim().startsWith("{") || fileContent.trim().startsWith("[")) {
+                    } else if (mimeType != null && (mimeType.contains("json") || mimeType.contains("javascript"))
+                            || fileContent.trim().startsWith("{") || fileContent.trim().startsWith("[")) {
                         langClass = "language-json";
                         try {
                             if (fileContent.trim().startsWith("{")) {
@@ -2381,24 +2391,39 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
                                 formattedContent = jsonArray.toString(2);
                             }
                         } catch (Exception ignored) {}
+                    } else if (fileName.endsWith(".java")) {
+                        langClass = "language-java";
+                    } else if (fileName.endsWith(".md")) {
+                        langClass = "language-markdown";
                     }
+                    // HTML-Sonderzeichen maskieren
                     String escapedContent = formattedContent.replace("&", "&amp;").replace("<", "&lt;").replace(">", "&gt;");
+                    // Das universelle HTML-Gerüst mit Dateiname, Pfad und responsivem Code-Block
+                    // NEU: Das <title>-Tag sorgt dafür, dass ninjaWebView.getTitle() den Dateinamen liefert
                     String htmlWrapper = "<html><head>"
                             + "<meta name='viewport' content='width=device-width, initial-scale=1.0'>"
+                            + "<title>" + fileName + "</title>"
                             + "<link rel='stylesheet' href='https://cloudflare.com' />"
                             + "<style>"
-                            + "  body { margin: 0; padding: 10px; background: #fafafa; font-size: 14px; }"
-                            + "  pre, code { font-family: monospace !important; white-space: pre !important; word-wrap: normal !important; }"
+                            + "  body { margin: 0; padding: 15px; background: #fafafa; font-family: sans-serif; color: #333; }"
+                            + "  .file-info { background: #eaeaea; padding: 10px; border-radius: 5px; font-size: 12px; margin-bottom: 15px; border-left: 4px solid #007bb6; word-break: break-all; }"
+                            + "  .file-info b { color: #111; }"
+                            + "  pre, code { font-family: monospace !important; font-size: 13px !important; white-space: pre-wrap !important; word-wrap: break-word !important; }"
                             + "</style></head><body>"
+                            + "<div class='file-info'>"
+                            + "  <b>Datei:</b> " + fileName + "<br/>"
+                            + "  <b>Pfad:</b> " + displayPath
+                            + "</div>"
                             + "<pre class='" + langClass + "'><code class='" + langClass + "'>"
                             + escapedContent
                             + "</code></pre>"
                             + "<script src='https://cloudflare.com'></script>"
                             + "<script src='https://cloudflare.com'></script>"
-                            + "<script src='https://cloudflare.com'></script>"
                             + "</body></html>";
-                    addAlbum(fileName, "file://" + "https://localhost", true);
-                    ninjaWebView.loadDataWithBaseURL("https://localhost", htmlWrapper, "text/html", "UTF-8", null);
+                    addAlbum(fileName, virtualFileUrl, true);
+                    ninjaWebView.getSettings().setDefaultTextEncodingName("utf-8");
+                    // WICHTIG: virtualFileUrl als BaseURL übergeben zwingt webView.getUrl() diesen Pfad anzuzeigen
+                    ninjaWebView.loadDataWithBaseURL(virtualFileUrl, htmlWrapper, "text/html", "UTF-8", null);
                 }
             } else {
                 sp.edit().putBoolean("show_overview", false).apply();
@@ -2455,7 +2480,6 @@ public class BrowserActivity extends AppCompatActivity implements BrowserControl
     @SuppressLint("ClickableViewAccessibility")
     private void setWebView(String title, final String url, final boolean foreground) {
         ninjaWebView = new NinjaWebView(context);
-        appBar = findViewById(R.id.appBar);
         ninjaWebView.setOnScrollChangeListener((v, scrollX, scrollY, oldScrollX, oldScrollY) -> {
             final Handler handler = new Handler();
             handler.postDelayed(() -> {

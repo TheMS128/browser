@@ -56,16 +56,6 @@
     <string name="setting_label">Подешавања</string>
     <string name="setting_title_browser">Подешавања прегледача</string>
     <string name="setting_title_search_engine">Претраживач</string>
-    <string name="setting_summary_search_engine_google">Гугл</string>
-    <string name="setting_summary_search_engine_duckduckgo">Дакдакго</string>
-    <string name="setting_summary_search_engine_startpage">Стартпејџ</string>
-    <string name="setting_summary_search_engine_bing">Бинг</string>
-    <string name="setting_summary_search_engine_baidu">Бајду</string>
-    <string name="setting_summary_search_engine_startpage_de">Стартпејџ (de)</string>
-    <string name="setting_summary_search_engine_searx">Серкс</string>
-    <string name="setting_summary_search_engine_qwant">Квант</string>
-    <string name="setting_summary_search_engine_ecosia">Екозија</string>
-    <string name="setting_summary_search_engine_metager">Метагер</string>
     <string name="setting_title_font">Величина слова</string>
     <string name="setting_title_dom">ДОМ складиште</string>
     <string name="source">Извор</string>

@@ -8,6 +8,7 @@
 - improved: search bar
 - improved: gesture settings
 - improved: menu settings
+- improved: search providers
 - updated: WIKI + help links in app
 - updated: translations
 

@@ -107,7 +107,7 @@ public class Fragment_settings_Backup extends BasePreferenceFragment {
         SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(activity);if (!BackupUnit.checkPermissionStorage(activity)) {
             BackupUnit.requestPermission(activity);
         } else {
-            BackupUnit.makeBackupDir();
+            BackupUnit.makeBackupDir(activity);
             if (sp.getBoolean("database", false)) {
                 copyDirectory(sourceDB, backupDB);
             }

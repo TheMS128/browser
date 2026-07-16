@@ -55,16 +55,6 @@
     <string name="setting_label">الاعدادات</string>
     <string name="setting_title_browser">إعدادات المتصفح</string>
     <string name="setting_title_search_engine">محرك البحث</string>
-    <string name="setting_summary_search_engine_google">غوغل</string>
-    <string name="setting_summary_search_engine_duckduckgo">محرك DuckDuckGo</string>
-    <string name="setting_summary_search_engine_startpage">محرك StartPage</string>
-    <string name="setting_summary_search_engine_bing">محرك Bing</string>
-    <string name="setting_summary_search_engine_baidu">محرك Baidu</string>
-    <string name="setting_summary_search_engine_startpage_de">محرك StartPage (المانيا)</string>
-    <string name="setting_summary_search_engine_searx">محرك Searx</string>
-    <string name="setting_summary_search_engine_qwant">محرك Qwant</string>
-    <string name="setting_summary_search_engine_ecosia">محرك Ecosia</string>
-    <string name="setting_summary_search_engine_metager">Metager</string>
     <string name="setting_title_font">حجم الخط</string>
     <string name="setting_title_dom">تخزين DOM</string>
     <string name="source">Source</string>

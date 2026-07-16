@@ -56,16 +56,6 @@
     <string name="setting_label">הגדרות</string>
     <string name="setting_title_browser">הגדרות דפדפן</string>
     <string name="setting_title_search_engine">מנוע חיפוש</string>
-    <string name="setting_summary_search_engine_google">גוגל</string>
-    <string name="setting_summary_search_engine_duckduckgo">DuckDuckGo</string>
-    <string name="setting_summary_search_engine_startpage">דף פתיחה</string>
-    <string name="setting_summary_search_engine_bing">בינג</string>
-    <string name="setting_summary_search_engine_baidu">baidu</string>
-    <string name="setting_summary_search_engine_startpage_de">דף התחלה (מאת)</string>
-    <string name="setting_summary_search_engine_searx">Searx</string>
-    <string name="setting_summary_search_engine_qwant">Qwant</string>
-    <string name="setting_summary_search_engine_ecosia">ecosia</string>
-    <string name="setting_summary_search_engine_metager">metager</string>
     <string name="setting_title_font">גודל גופן</string>
     <string name="setting_title_dom">אחסון DOM</string>
     <string name="source">מקור</string>
