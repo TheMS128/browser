@@ -510,25 +510,6 @@ public class NinjaWebViewClient extends WebViewClient {
     @SuppressLint("WebViewClientOnReceivedSslError")
     @Override
     public void onReceivedSslError(WebView view, final SslErrorHandler handler, SslError error) {
-        String certificateInfo = "No certificate";
-
-        if (error.getCertificate() != null) {
-            certificateInfo =
-                    "Issued to:\n" +
-                    error.getCertificate().getIssuedTo().getDName() +
-                    "\n\nIssued by:\n" +
-                    error.getCertificate().getIssuedBy().getDName();
-        }
-
-        new MaterialAlertDialogBuilder(context)
-                .setTitle("SSL diagnostic")
-                .setMessage(
-                        "URL:\n" + error.getUrl() +
-                        "\n\nPrimary error: " + error.getPrimaryError() +
-                        "\n\n" + certificateInfo
-                )
-                .setPositiveButton("OK", null)
-                .show();
         String message;
         view.stopLoading();
         switch (error.getPrimaryError()) {
