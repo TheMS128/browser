@@ -509,6 +509,7 @@ public class NinjaWebViewClient extends WebViewClient {
     @SuppressLint("WebViewClientOnReceivedSslError")
     @Override
     public void onReceivedSslError(WebView view, final SslErrorHandler handler, SslError error) {
+        Log.e("FOSS_SSL", "SSL_ERROR: " + error)
         String message;
         view.stopLoading();
         switch (error.getPrimaryError()) {
