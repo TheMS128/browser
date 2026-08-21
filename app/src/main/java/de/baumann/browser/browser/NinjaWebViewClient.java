@@ -21,6 +21,7 @@ import android.webkit.WebView;
 import android.webkit.WebViewClient;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
@@ -509,7 +510,7 @@ public class NinjaWebViewClient extends WebViewClient {
     @SuppressLint("WebViewClientOnReceivedSslError")
     @Override
     public void onReceivedSslError(WebView view, final SslErrorHandler handler, SslError error) {
-        Log.e("FOSS_SSL", "SSL_ERROR: " + error)
+        Toast.makeText( view.getContext(), "SSL ERROR:\n" + error.toString(), Toast.LENGTH_LONG ).show();
         String message;
         view.stopLoading();
         switch (error.getPrimaryError()) {
