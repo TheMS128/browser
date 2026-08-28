@@ -157,7 +157,7 @@ public class NinjaWebView extends WebView implements AlbumController {
         }
 
         String desktopUserAgent = "Mozilla/5.0 (X11; Linux " + System.getProperty("os.arch") + ")";
-        String mobileUserAgent = WebSettings.getDefaultUserAgent(context);
+        String mobileUserAgent = String mobileUserAgent = "Mozilla/5.0 (Linux; Android 15) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Mobile Safari/537.36";
 
         //Override UserAgent if own UserAgent is defined
         if (!sp.contains("userAgentSwitch")) {
